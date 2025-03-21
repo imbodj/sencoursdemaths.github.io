@@ -1,0 +1,315 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{155}{Exponentielle de matrices. Applications.}
+  
+  \subsection{Construction}
+  
+  Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Soit $n \geq 1$ un entier.
+  
+  \subsubsection{Algèbres de Banach}
+  
+  \reference[DAN]{278}
+  
+  \begin{lemma}
+    Pour tout réel positif $a$, la série $\sum \frac{a^n}{n!}$ est convergente.
+  \end{lemma}
+  
+  \reference{174}
+  
+  \begin{definition}
+    Soit $\mathcal{A}$ une algèbre.
+    \begin{itemize}
+      \item On dit que $\Vert . \Vert$ est une norme d'algèbre sur $\mathcal{A}$ si :
+      \begin{enumerate}[label=(\roman*)]
+        \item $(\mathcal{A}, \Vert . \Vert)$ est un espace vectoriel normé.
+        \item $\forall x, y \in \mathcal{A}, \, \Vert x \times y \Vert \leq \Vert x \Vert \Vert y \Vert$.
+      \end{enumerate}
+      \item Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{A}$. Si $(\mathcal{A}, \Vert . \Vert)$ est un espace vectoriel complet, on dit que $\mathcal{A}$ est une \textbf{algèbre de Banach}.
+    \end{itemize}
+  \end{definition}
+  
+  \reference{183}
+  
+  \begin{proposition}
+    Soit $\Vert . \Vert$ une norme sur $\mathbb{K}^n$. Muni de la norme
+    \[ \VERT . \VERT : M \mapsto \sup_{x \neq 0} \frac{\Vert Mx \Vert}{\Vert x \Vert} \]
+    l'algèbre $(\mathcal{M}_n(\mathbb{K}), \VERT . \VERT)$ est une algèbre de Banach.
+  \end{proposition}
+  
+  \begin{cexample}
+    Ce n'est pas vrai pour n'importe quelle norme : la norme infinie $\Vert . \Vert_\infty$ sur $\mathcal{M}_n(\mathbb{K})$ n'est pas une norme d'algèbre.
+  \end{cexample}
+  
+  \reference{278}
+  
+  \begin{proposition}
+    Soit $\mathcal{A}$ une algèbre de Banach unitaire. Pour tout élément $A \in \mathcal{A}$, la série $\sum \frac{A^n}{n!}$ est convergente.
+  \end{proposition}
+  
+  \subsubsection{Exponentielle de matrices}
+  
+  \reference{345}
+  
+  \begin{definition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On appelle \textbf{exponentielle} de $A$, et on note $\exp(A)$ ou $e^A$ l'élément de $\mathcal{M}_n(\mathbb{K})$ suivant :
+    \[ \exp(A) = \sum_{n=0}^{+\infty} \frac{A^n}{n!} \]
+  \end{definition}
+  
+  \reference{356}
+  
+  \begin{example}
+    Soient $a_1, \dots, a_n \in \mathbb{K}$ et $D = \operatorname{Diag}(a_1, \dots, a_n) \in \mathcal{M}_3(\mathbb{K})$. Alors,
+    \[ \exp(D) = \operatorname{Diag}(e^{a_1}, \dots, e^{a_n}) \]
+  \end{example}
+  
+  \reference[GRI]{378}
+  
+  \begin{remark}
+    En particulier, $\exp(0) = I_n$.
+  \end{remark}
+  
+  \subsubsection{Propriétés}
+  
+  \begin{proposition}
+    Soient $A, B \in \mathcal{M}_n(\mathbb{K})$ qui commutent. Alors,
+    \[ e^{A+B} = e^{A} e^{B} \]
+  \end{proposition}
+  
+  \begin{corollary}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. Alors, $e^A \in \mathrm{GL}_n(\mathbb{K})$ et,
+    \[ \left( e^A \right)^{-1} = e^{-A} \]
+  \end{corollary}
+  
+  \begin{proposition}
+    Soient $A, B \in \mathcal{M}_n(\mathbb{K})$ telles que $B = PAP^{-1}$ pour $P \in \mathrm{GL}_n(\mathbb{K})$. Alors,
+    \[ e^{PAP^{-1}} = Pe^AP^{-1} \]
+  \end{proposition}
+  
+  \begin{lemma}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ une matrice triangulaire supérieure, de la forme $A = \begin{pmatrix} \lambda_1 & & * \\ & \ddots & \\ & & \lambda_n \end{pmatrix}$. Alors,
+    \[
+      e^A =
+      \begin{pmatrix}
+        e^\lambda_1 & & * \\
+        & \ddots & \\
+        & & e^\lambda_n
+      \end{pmatrix}
+    \]
+  \end{lemma}
+  
+  \reference[ROM21]{762}
+  
+  \begin{proposition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. Alors,
+    \[ \det(\exp(A)) = e^{\trace(A)} \]
+  \end{proposition}
+  
+  \begin{proposition}
+    $\exp : \mathcal{M}_n(\mathbb{K}) \rightarrow \mathrm{GL}_n(\mathbb{K})$ est continue. De plus, pour tout $A \in \mathcal{M}_n(\mathbb{K})$, $\exp(A)$ est un polynôme en $A$.
+  \end{proposition}
+
+  \subsection{Calcul pratique}
+  
+  \reference[GOU21]{206}
+  
+  \begin{proposition}
+    Soit $N \in \mathcal{M}_n(\mathbb{K})$ nilpotente d'indice $q$. Alors,
+    \[ e^N = \sum_{k=0}^{q-1} \frac{A^k}{k!} \]
+  \end{proposition}
+  
+  \begin{theorem}[Décomposition de Dunford]
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On suppose que $\pi_A$ est scindé sur $\mathbb{K}$. Alors il existe un unique couple de matrices $(D, N)$ tels que :
+    \begin{itemize}
+      \item $D$ est diagonalisable et $N$ est nilpotente.
+      \item $A = D + N$.
+      \item $DN = ND$.
+    \end{itemize}
+  \end{theorem}
+  
+  \begin{corollary}
+    Si $A$ vérifie les hypothèse précédentes, pour tout $k \in \mathbb{N}$, $A^k = (D + N)^k = \sum_{i=0}^m \binom{k}{i} D^i N^{k-i}$, avec $m = \min(k, l)$ où $l$ désigne l'indice de nilpotence de $N$.
+  \end{corollary}
+  
+  \reference[ROM21]{765}
+  
+  \begin{example}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ qui admet une décomposition de Dunford $A = D+N$ où $D$ est diagonalisable et $N$ est nilpotente d'indice $q$. Alors,
+    \begin{itemize}
+      \item $e^A = e^D e^N = e^D \sum_{k=0}^{q-1} \frac{N^k}{k!}$.
+      \item La décomposition de Dunford de $e^A$ est $e^A = e^D + e^D(e^N - I_n)$ avec $e^D$ diagonalisable et $e^D(e^N - I_n)$ nilpotente.
+    \end{itemize}
+  \end{example}
+  
+  \begin{application}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ dont le polynôme caractéristique est scindé sur $\mathbb{K}$. Alors $A$ est diagonalisable si et seulement si $e^A$ l'est.
+  \end{application}
+  
+  \reference[GOU21]{209}
+  
+  \begin{example}
+    On a
+    \[ \exp \left( \begin{pmatrix} 1 & 4 & -2 \\ 0 & 6 & -3 \\ -1 & 4 & 0 \end{pmatrix} \right) = \begin{pmatrix} -6e^2 + 3e^3 & -4e^2 + 4e^3 & 10e^2 - 6e^3 \\ -6e^2 + 3e^3 & -3e^2 + 4e^3 & 9e^2 - 6e^3 \\ -7e^2 + 3e^3 & -4e^2 + 4e^3 & 11e^2 - 6e^3 \end{pmatrix} \]
+  \end{example}
+  
+  \subsection{Étude de l'exponentielle de matrices}
+  
+  \subsubsection{Dérivabilité, différentiabilité}
+  
+  \reference{195}
+  
+  \begin{proposition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. L'application $t \mapsto e^{tA}$ est dérivable, de dérivée $t \mapsto Ae^{tA}$.
+  \end{proposition}
+  
+  \reference[C-G]{384}
+  
+  \begin{proposition}[Logarithme matriciel]
+    \label{155-1}
+    $\exp$ est différentiable en $0$ et sa différentielle est $I_n$ ; c'est un difféomorphisme local sur un voisinage de $0$. Plus précisément, si $H \in \mathcal{M}_n(\mathbb{K})$ telle que $\VERT H \VERT \leq 1$, alors
+    \[ \exp^{-1}(I_n + H) = \sum_{n=1}^{+\infty} (-1)^{n-1} \frac{H^n}{n} \]
+    On note alors $\ln(H) = \exp^{-1}(H)$.
+  \end{proposition}
+  
+  \reference[ROM21]{762}
+  
+  \begin{theorem}
+    $\exp$ est de classe $\mathcal{C}^1$ sur $\mathcal{M}_n(\mathbb{K})$ avec, pour toutes matrices $A, H \in \mathcal{M}_n(\mathbb{K})$ :
+    \[ \mathrm{d}\exp_A(H) = \sum_{n=1}^{+\infty} \frac{1}{n!} \left( \sum_{\substack{i,j \in \llbracket 0, n-1 \rrbracket \\ i+j = n-1}} A^i H A^j \right) \]
+  \end{theorem}
+  
+  \subsubsection{Image directe}
+  
+  \paragraph{Image de \texorpdfstring{$\mathcal{M}_n(\mathbb{C})$}{Mₙ(C)}}
+  
+  \reference[C-G]{387}
+  
+  \begin{example}
+    \[ \forall k \in \mathbb{Z}, \, e^{2ik\pi} = e^0 = 1 \]
+    En particulier, $\exp$ n'est pas injective pour $n \geq 1$.
+  \end{example}
+  
+  \reference[I-P]{396}
+  
+  \begin{lemma}
+    Soit $M \in \mathrm{GL}_n(\mathbb{C})$. Alors $M^{-1} \in \mathbb{C}[M]$.
+  \end{lemma}
+  
+  \begin{theorem}
+    $\exp : \mathcal{M}_n(\mathbb{C}) \rightarrow \mathrm{GL}_n(\mathbb{C})$ est surjective.
+  \end{theorem}
+  
+  \begin{application}
+    $\exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R})^2$, où $\mathrm{GL}_n(\mathbb{R})^2$ désigne les carrés de $\mathrm{GL}_n(\mathbb{R})$.
+  \end{application}
+  
+  \reference[ROM21]{770}
+  
+  \begin{application}
+    $\mathrm{GL}_n(\mathbb{C})$ est connexe par arcs.
+  \end{application}
+  
+  \paragraph{Image de \texorpdfstring{$\mathcal{M}_n(\mathbb{R})$}{Mₙ(R)}}
+  
+  \reference[C-G]{387}
+  
+  \begin{example}
+    \[ \forall k \in \mathbb{Z}, \, \exp \left( \begin{pmatrix} 0 & -2k\pi \\ 2k\pi & 0 \end{pmatrix} \right) = \exp(0) = I_2 \]
+    En particulier, $\exp$ n'est pas injective pour $n \geq 2$.
+  \end{example}
+  
+  \begin{proposition}
+    En fait,
+    \[ \exp(\mathcal{M}_n(\mathbb{R})) = \{ M^2 \mid M \in \mathcal{M}_n(\mathbb{R}) \} \]
+  \end{proposition}
+  
+  \begin{example}
+    La matrice $\begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ n'est pas dans l'image de l'exponentielle réelle.
+  \end{example}
+  
+  \paragraph{Images de $\mathcal{S}_n(\mathbb{R})$ et $\mathcal{H}_n(\mathbb{C})$}
+  
+  \reference[I-P]{182}
+  
+  \begin{lemma}
+    Soit $M \in \mathcal{S}_n(\mathbb{R})$. Alors,
+    \[ \VERT M \VERT = \rho(M) \]
+    où $\rho$ est l'application qui a une matrice y associe son rayon spectral.
+  \end{lemma}
+  
+  \dev{homeomorphisme-de-l-exponentielle}
+  
+  \begin{theorem}
+    L'application $\exp : \mathcal{S}_n(\mathbb{R}) \rightarrow \mathcal{S}^{++}_n(\mathbb{R})$ est un homéomorphisme.
+  \end{theorem}
+  
+  \reference[C-G]{385}
+  
+  \begin{remark}
+    On a le même résultat pour $\exp : \mathcal{H}_n(\mathbb{C}) \rightarrow \mathcal{H}^{++}_n(\mathbb{C})$.
+  \end{remark}
+  
+  \begin{application}
+    On a des homéomorphismes :
+    \[ \mathrm{GL}_n(\mathbb{R}) \sim \mathcal{O}_n(\mathbb{R}) \times \mathbb{R}^{\frac{n(n+1)}{2}} \text{ et } \mathrm{GL}_n(\mathbb{C}) \sim \mathcal{U}_n(\mathbb{C}) \times \mathbb{R}^{n^2} \]
+  \end{application}
+  
+  \paragraph{Image du cône nilpotent $\mathcal{N}_n(\mathbb{C})$}
+  
+  \reference[ROM21]{766}
+  
+  \begin{notation}
+    On note $\mathcal{N}_n(\mathbb{C})$ le sous-ensemble de $\mathcal{M}_n(\mathbb{C})$ formé des matrices nilpotentes et $\mathcal{L}_n(\mathbb{C}) = \mathcal{N}_n(\mathbb{C}) - I_n$ le sous-ensemble de $\mathcal{M}_n(\mathbb{C})$ formé des matrices unipotentes.
+  \end{notation}
+  
+  \begin{proposition}
+    Soit $A \in \mathcal{N}_n(\mathbb{C})$. Alors $e^A \in \mathcal{L}_n(\mathbb{C})$ et $\ln(e^{tA}) = tA$ pour tout $t \in \mathbb{R}$.
+  \end{proposition}
+  
+  \begin{theorem}
+    L'exponentielle matricielle réalise une bijection de $\mathcal{N}_n(\mathbb{C})$ sur $\mathcal{L}_n(\mathbb{C})$ d'inverse le logarithme matriciel défini à la \cref{155-1}.
+  \end{theorem}
+  
+  \subsection{Applications}
+  
+  \subsubsection{Équations différentielles}
+  
+  \reference[GOU20]{376}
+  
+  \begin{theorem}[Cauchy-Lipschitz linéaire]
+    Soient $A : I \rightarrow \mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^d$ deux fonctions continues. Alors $\forall t_0 \in I$, le problème de Cauchy
+    \[ \begin{cases} Y' = A(t)Y + B(t) \\ Y(t_0) = y_0 \end{cases} \]
+    admet une unique solution définie sur $I$ tout entier.
+  \end{theorem}
+  
+  \begin{proposition}
+    Une équation différentielle linéaire homogène $Y' = AY$ (où $A \in \mathcal{M}_n(\mathbb{R})$ est constante en $t$) a ses solutions maximales définies sur $\mathbb{R}$ et le problème de Cauchy
+    \[ \begin{cases} Y' = AY \\ Y(0) = y_0 \end{cases} \]
+    a pour (unique) solution $t \mapsto e^{tA} y_0$.
+  \end{proposition}
+  
+  \begin{example}
+    Les solutions de
+    \[ Y' = \begin{pmatrix} 1 & 0 & 1 \\ 0 & -1 & -1 \\ 0 & 2 & 1 \end{pmatrix} Y \]
+    sont les
+    \[ t \mapsto \alpha e^t \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + \beta e^{it} \begin{pmatrix} 1+i \\ 1-i \\ -2 \end{pmatrix} + \gamma e^{-it} \begin{pmatrix} 1-i \\ 1+i \\ -2 \end{pmatrix} \]
+    où $\alpha, \beta, \gamma \in \mathbb{C}$.
+  \end{example}
+  
+  \subsubsection{Équations matricielles}
+  
+  \reference[I-P]{177}
+  
+  \begin{lemma}
+    Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
+  \end{lemma}
+  
+  \dev{equation-de-sylvester}
+  
+  \begin{application}[Équation de Sylvester]
+    Soient $A$ et $B \in \mathcal{M}_n(\mathbb{C})$ deux matrices dont les valeurs propres sont de partie réelle strictement négative. Alors pour tout $C \in \mathcal{M}_n(\mathbb{C})$, l'équation $AX + XB = C$ admet une unique solution $X$ dans $\mathcal{M}_n(\mathbb{C})$.
+  \end{application}
+  %</content>
+\end{document}

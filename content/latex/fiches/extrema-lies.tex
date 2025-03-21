@@ -1,0 +1,78 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra, analysis}{extrema-lies}{Extrema liés}
+
+  \summary{Rédaction ``propre'' et la plus détaillée possible de l'existence et l'unicité des multiplicateurs de Lagrange liant les différentielles de plusieurs fonctions sous certaines hypothèses.}
+
+  \reference[GOU20]{337}
+
+  \begin{theorem}[Extrema liés]
+    Soit $U$ un ouvert de $\mathbb{R}^n$ et soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe des uniques $\lambda_1, \dots, \lambda_r$ appelés \textbf{multiplicateurs de Lagrange} tels que
+    \[ \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
+  \end{theorem}
+
+  \reference{347}
+
+  \begin{proof}
+    Soit $s = n-r$. Identifions $\mathbb{R}^n$ à $\mathbb{R}^s \times \mathbb{R}^r$ et écrivons les éléments $(x, y)$ de $\mathbb{R}^n$ sous la forme $(x, y) = (x_1, \dots, x_s, y_1, \dots, y_r)$. On notera également par la suite $a = (\alpha, \beta)$ avec $\alpha \in \mathbb{R}^s$ et $\beta \in \mathbb{R}^r$. On a déjà plusieurs informations :
+    \begin{itemize}
+      \item Déjà, $r \leq n$, car les formes linéaires $\mathrm{d}(g_i)_a$ forment une famille libre de $(\mathbb{R}^n)^*$, qui est de dimension $n$.
+      \item De plus, si $r = n$, la démonstration est triviale car $(\mathrm{d}(g_i)_a)_{i \in \llbracket 1, n \rrbracket}$ est alors une base de $(\mathbb{R}^n)^*$.
+    \end{itemize}
+    Pour ces raisons, nous supposerons dans la suite $r \leq n-1$ (ie. $s \geq 1$).
+    \newpar
+    Comme $(\mathrm{d}(g_i)_a)_{i \in \llbracket 1, r \rrbracket}$ est une famille libre, la matrice
+    \[ \begin{pmatrix}
+      \left( \frac{\partial g_i}{\partial x_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, s \rrbracket}} & \left( \frac{\partial g_i}{\partial y_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, r \rrbracket}}
+    \end{pmatrix} \]
+    est de rang $r$. On peut donc extraire une sous-matrice de taille $r \times r$ inversible. Quitte à changer le nom des variables, on peut supposer que c'est la sous-matrice de droite, ie.
+    \[ \det \left( \left( \frac{\partial g_i}{\partial y_j}(a) \right)_{i, j \in \llbracket 1, r \rrbracket} \right) \neq 0 \tag{$*$} \]
+    On va appliquer le théorème des fonctions implicites à la fonction $g = (g_1, \dots, g_r)$. Pour cela, on vérifie les hypothèses :
+    \begin{itemize}
+      \item $g$ est de classe $\mathcal{C}^1$.
+      \item $g(\alpha, \beta) = 0$ car $(\alpha, \beta) = a \in \Gamma$.
+      \item La différentielle partielle $\mathrm{d}_y g_a$ est inversible par $(*)$.
+    \end{itemize}
+    Ainsi, il existe :
+    \begin{itemize}
+      \item $U'$ voisinage de $\alpha$ dans $\mathbb{R}^s$.
+      \item $V'$ voisinage de $\beta$ dans $\mathbb{R}^r$.
+      \item $\varphi : U' \rightarrow V'$ de classe $\mathcal{C}^1$ telle que $\varphi(\alpha) = \beta$ et $\forall (x, y) \in U' \times V'$, $(x, y) \in \Gamma \iff g(x, y) = 0 \iff y = \varphi(x)$.
+    \end{itemize}
+    En d'autres termes, sur un voisinage de $a$, les éléments de $\Gamma$ s'écrivent $(x, \varphi(x))$. On pose maintenant $u : x \mapsto (x, \varphi(x))$ et $h = f \circ u$. Par composition, $h$ est différentiable en $\alpha$ et
+    \[ 0 \overset{\alpha \text{ extremum de } h}{=} \mathrm{d}h_\alpha = \mathrm{d}(f \circ u)_\alpha = \mathrm{d}f_{u(\alpha)} \circ \mathrm{d}u_\alpha = \mathrm{d}f_a \circ \mathrm{d}u_\alpha \]
+    En termes de matrices, cela donne :
+    \begin{align*}
+      \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} &= \begin{pmatrix} \left( \frac{\partial f}{\partial x_j}(a) \right)_{j \in \llbracket 1, s \rrbracket} & \left( \frac{\partial f}{\partial y_j}(a) \right)_{j \in \llbracket 1, r \rrbracket} \end{pmatrix} \begin{pmatrix} I_s \\ \left( \frac{\partial \varphi_i}{\partial x_j}(\alpha) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, s \rrbracket}} \end{pmatrix} \\
+      &= \begin{pmatrix} \frac{\partial f}{\partial x_1}(a) + \sum_{k=1}^r \frac{\partial f}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_1}(\alpha) \\ \vdots \\ \frac{\partial f}{\partial x_s}(a) + \sum_{k=1}^r \frac{\partial f}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_s}(\alpha) \end{pmatrix}
+    \end{align*}
+    On aboutit à la relation suivante :
+    \[ \forall i \in \llbracket 1, s \rrbracket, \, \frac{\partial f}{\partial x_i}(a) + \sum_{k=1}^r \frac{\partial f}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_i}(\alpha) = 0 \tag{$**$} \]
+    Comme $\forall j \in \llbracket 1, r \rrbracket$, $g_j(\alpha, \varphi(\alpha)) = g_j(a) = 0$, on peut aboutir de la même manière à la relation suivante :
+    \[ \forall i \in \llbracket 1, s \rrbracket, \forall j \in \llbracket 1, r \rrbracket, \, \frac{\partial g_j}{\partial x_i}(a) + \sum_{k=1}^r \frac{\partial g_j}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_i}(\alpha) = 0 \tag{$***$} \]
+    On considère maintenant la matrice $M$ suivante :
+    \[ M = \begin{pmatrix}
+      \left( \frac{\partial f}{\partial x_j}(a) \right)_{j \in \llbracket 1, s \rrbracket} & \left( \frac{\partial f}{\partial y_j}(a) \right)_{j \in \llbracket 1, r \rrbracket} \\
+      \left( \frac{\partial g_i}{\partial x_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, s \rrbracket}} & \left( \frac{\partial g_i}{\partial y_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, r \rrbracket}}
+    \end{pmatrix} \]
+    Par $(**)$ et $(***)$, les $s$ premiers vecteurs colonnes de cette matrice s'expriment linéairement en fonction de ses $r$ derniers. Donc $\rang (M) \leq r$. Mais, le rang des vecteurs lignes d'une matrice est égal au rang de ses vecteurs colonnes. Donc les $r+1$ vecteurs lignes de $M$ forment une famille liée. Mais par hypothèse, les $r$ dernières lignes sont libres. Donc la première ligne est combinaison linéaire des $r$ dernières, ce qui se réécrit :
+    \[ \exists \lambda_1, \dots, \lambda_r \in \mathbb{R} \text{ tels que } \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
+    L'unicité est claire car $(\mathrm{d}(g_i)_a)_{i \in \llbracket 1, r \rrbracket}$ est une famille libre.
+  \end{proof}
+
+  Attention à la rigueur et à la propreté dans cette démonstration. On peut très vite se perdre si l'on va trop vite ou si l'on ne prend pas le temps de bien écrire chaque donnée.
+
+  \reference[BMP]{20}
+
+  \begin{remark}
+    Il paraît que le jury n'aime pas beaucoup cette démonstration. Si vous la proposez en développement, soyez sûr de pouvoir en donner une interprétation géométrique : grâce à la condition d'indépendance des $\mathrm{d}(g_i)_a$, $\Gamma$ est une sous-variété de $\mathbb{R}^n$ autour du point $a$. D'autre part,
+    \[ \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \iff \bigcap_{i=1}^r \ker(\mathrm{d}(g_i)_a) \subseteq \ker(\mathrm{d}f_a) \tag{$*$} \]
+    En particulier, $\mathrm{d}f_a$ est nulle sur $\bigcap_{i=1}^r \ker(\mathrm{d}(g_i)_a)$. Or, l'espace tangent en $a$ à la sous-variété $\{ x \text{ proche de } a \mid g_1(x) = \dots = g_r(x) = 0 \}$ est justement $\{ h \in \mathbb{R}^n \mid \mathrm{d}(g_1)_a(h) = \dots = \mathrm{d}(g_r)_a(h) = 0 \}$.
+    \newpar
+    Bref, la condition $(*)$ exprime que $\mathrm{d}f_a$ est nulle sur le plan tangent à $\Gamma$ en $a$. Ceci équivaut aussi à ce que $\nabla f_a$ soit orthogonal à l'espace tangent à $\Gamma$ en $a$. Ainsi, la seule manière de rendre $f$ plus petit serait de ``sortir de $\Gamma$''.
+  \end{remark}
+  %</content>
+\end{document}

@@ -1,0 +1,474 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{241}{Suites et séries de fonctions. Exemples et contre-exemples.}
+
+  \subsection{Convergences de suite et de séries de fonctions}
+
+  \subsubsection{Suites de fonctions}
+
+  \reference[GOU20]{231}
+
+  \begin{definition}
+    Soient $(f_n)$ et $f$ respectivement une suite de fonctions et une fonction définies sur un ensemble $X$ à valeurs dans un espace métrique $(E, d)$. On dit que :
+    \begin{itemize}
+      \item $(f_n)$ \textbf{converge simplement} vers $f$ si
+      \[ \forall x \in X, \, \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, d(f_n(x), f(x)) < \epsilon \]
+      \item $(f_n)$ \textbf{converge uniformément} vers $f$ si
+      \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, \forall x \in X, \, d(f_n(x), f(x)) < \epsilon \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    La convergence uniforme entraîne la convergence simple.
+  \end{proposition}
+
+  \begin{cexample}
+    La réciproque est fausse. Il suffit en effet de considérer la suite $(f_n)$ définie pour tout $n \in \mathbb{N}$ et pour tout $x \in [0,1]$ par $f_n(x) = x^n$ converge simplement sur $[0,1]$ mais pas uniformément.
+  \end{cexample}
+
+  \begin{theorem}[Critère de Cauchy uniforme]
+    Soit $(f_n)$ une suite de fonctions définies sur un ensemble $X$ à valeurs dans un espace métrique $(E, d)$. Alors $(f_n)$ converge uniformément si
+    \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall p > q \geq N, \forall x \in X, \, d(f_p(x), f_q(x)) < \epsilon \]
+  \end{theorem}
+
+  \reference{237}
+
+  \begin{corollary}
+    Une limite uniforme sur $\mathbb{R}$ de fonctions polynômiales est une fonction polynômiale.
+  \end{corollary}
+
+  \reference{232}
+
+  \begin{notation}
+    \begin{itemize}
+      \item Pour toute fonction $g$ bornée sur un ensemble $X$ et à valeurs dans un espace vectoriel normé $(E, \Vert . \Vert)$, on note
+      \[ \Vert g \Vert_\infty = \sup_{x \in X} \Vert g(x) \Vert \]
+      \item On note $\mathcal{B}(X,E)$ l'ensemble des applications bornées de $X$ dans $E$.
+    \end{itemize}
+  \end{notation}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, une suite de fonctions $(f_n)$ de $\mathcal{B}(X,E)$ converge uniformément vers $f \in \mathcal{B}(X,E)$ si $\Vert f_n - f \Vert_\infty \longrightarrow_{n \rightarrow +\infty} 0$.
+  \end{proposition}
+
+  \begin{example}
+    La suite de fonctions $(f_n)$ définie pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto \left( 1 - \frac{x}{n} \right)^n \mathbb{1}_{[0,n]}$ converge uniformément vers $f : x \mapsto e^{-x}$ sur $\mathbb{R}^+$.
+  \end{example}
+
+  \subsubsection{Séries de fonctions}
+
+  \reference{232}
+
+  \begin{definition}
+    Soit $(g_n)$ une suite de fonctions. On appelle \textbf{série de fonctions} de terme général $g_n$, notée $\sum g_n$ la suite de fonctions $(S_n)$ où
+    \[ \forall n \in \mathbb{N}, \, S_n = \sum_{k=0}^n g_k \]
+  \end{definition}
+
+  \begin{definition}
+    Soient $X$ un ensemble et $(E, \Vert . \Vert)$ un espace vectoriel normé. On dit qu'une série de fonctions à termes dans $\mathcal{B}(X, E)$ \textbf{converge normalement} si la série numérique $\sum \Vert g_n \Vert_\infty$ converge.
+  \end{definition}
+
+  \begin{remark}
+    En reprenant les notations précédentes, il est équivalent de dire qu'une série de fonctions $\sum g_n$ converge normalement s'il existe une série à termes positifs $\sum a_n$ convergente et telle que
+    \[ \forall n \in \mathbb{N}, \, \forall x \in X, \Vert g_n(x) \Vert \leq a_n \]
+  \end{remark}
+
+  \begin{example}
+    La série de fonctions $\sum g_n$ où $(g_n)$ est définie par
+    \[ \forall n \in \mathbb{N}, \, g_n : x \mapsto \frac{x^n}{n^2} \]
+    converge normalement sur $[0,1]$ car $\Vert g_n \Vert_\infty = \frac{1}{n^2}$.
+  \end{example}
+
+  \begin{theorem}
+    Une série de fonctions à valeurs dans un espace de Banach qui converge normalement sur un ensemble $X$ converge uniformément sur $X$.
+  \end{theorem}
+
+  \begin{cexample}
+    La réciproque est fausse. Par exemple, la série de fonctions $\sum (-1)^n g_n$ où $(g_n)$ est définie par
+    \[ \forall n \in \mathbb{N}, \, g_n : x \mapsto \frac{x}{n^2 + x^2} \]
+    converge uniformément sur $\mathbb{R}^+$ mais pas normalement.
+  \end{cexample}
+
+  \subsubsection{Définition sur un compact}
+
+  \reference{238}
+
+  \begin{theorem}[Théorèmes de Dini]
+    \begin{enumerate}[label=(\roman*)]
+      \item Soit $(f_n)$ une suite \textit{croissante} de fonctions réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
+      \item Soit $(f_n)$ une suite de \textit{fonctions croissantes} réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{242}
+
+  \begin{theorem}[Bernstein]
+    Soit $f : [0,1] \rightarrow \mathbb{C}$ continue. On note
+    \[ B_n(f) : x \mapsto \sum_{k=0}^{n} f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k} \]
+    Alors,
+    \[ \Vert B_n(f) - f \Vert_\infty \longrightarrow_{n \rightarrow +\infty} 0 \]
+  \end{theorem}
+
+  \reference{304}
+  \dev{theoreme-de-weierstrass-par-la-convolution}
+
+  \begin{corollary}[Weierstrass]
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+  \end{corollary}
+
+  On a une version plus générale de ce théorème.
+
+  \reference[LI]{46}
+
+  \begin{theorem}[Stone-Weierstrass]
+    Soit $K$ un espace compact et $\mathcal{A}$ une sous-algèbre de l'algèbre de Banach réelle $\mathcal{C}(K, \mathbb{R})$. On suppose de plus que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathcal{A}$ sépare les points de $K$ (ie. $\forall x \in K, \exists f \in A \text{ telle que } f(x) \neq f(y)$).
+      \item $\mathcal{A}$ contient les constantes.
+    \end{enumerate}
+    Alors $\mathcal{A}$ est dense dans $\mathcal{C}(K, \mathbb{R})$.
+  \end{theorem}
+
+  \begin{remark}
+    Il existe aussi une version ``complexe'' de ce théorème, où il faut supposer de plus que $\mathcal{A}$ est stable par conjugaison.
+  \end{remark}
+
+  \begin{example}
+    La suite de polynômes réels $(r_n)$ définie par récurrence par
+    \[ r_0 = 0 \text{ et } \forall n \in \mathbb{N}, r_{n+1} : t \mapsto r_n(t) + \frac{1}{2} (t - r_n(t)^2) \]
+    converge vers $\sqrt{.}$ sur $[0,1]$.
+  \end{example}
+
+  \subsection{Régularité de la limite}
+
+  \subsubsection{Continuité}
+
+  \reference[AMR11]{146}
+
+  \begin{theorem}[de la double limite]
+    Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(f_n)$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite quand $x$ tend vers $a$.
+    \end{enumerate}
+    Alors,
+    \[ \lim_{n \rightarrow +\infty} \left( \lim_{x \rightarrow a} f_n(x) \right) = \lim_{x \rightarrow a} \left( \lim_{n \rightarrow +\infty} f_n(x) \right) \]
+  \end{theorem}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(f_n)$ converge uniformément sur $X$ vers $f$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ est continue en $a$.
+    \end{enumerate}
+    Alors $f$ est continue en $a$.
+  \end{theorem}
+
+  \begin{example}
+    La suite $(f_n)$ définie sur $\mathbb{R}^+$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto e^{-nx}$ converge vers
+    \[
+    f :
+    \begin{array}{ccc}
+      \mathbb{R}^+ &\rightarrow& \mathbb{R}^+ \\
+      x &\mapsto& \begin{cases}
+        1 &\text{si } x = 0 \\
+        0 &\text{sinon}
+      \end{cases}
+    \end{array}
+    \]
+    Les fonctions $f_n$ sont continues, mais $f$ ne l'est pas : on n'a pas convergence uniforme sur $\mathbb{R}^+$.
+  \end{example}
+
+  \reference{195}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sum f_n$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite $\ell_n$ quand $x$ tend vers $a$.
+    \end{enumerate}
+    Alors, $\sum \ell_n$ converge dans $E$ et,
+    \[ \lim_{x \rightarrow a} \sum_{n=0}^{+\infty} f_n(x) = \sum_{n=0}^{+\infty} \lim_{x \rightarrow a} f_n(x) = \sum_{n=0}^{+\infty} \ell_n \]
+  \end{theorem}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sum f_n$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n$ est continue en $a$.
+    \end{enumerate}
+    Alors, $\sum_{n=0}^{+\infty} f_n$ est continue en $a$.
+  \end{theorem}
+
+  \begin{example}
+    La fonction $x \mapsto \sum_{n=0}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
+  \end{example}
+
+  \subsubsection{Dérivabilité}
+
+  \reference{148}
+
+  \begin{theorem}
+    Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace vectoriel normé et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
+      \item $(f_n)$ converge simplement sur $I$ vers $f$.
+      \item $(f_n')$ converge uniformément sur $I$.
+    \end{enumerate}
+    Alors $f$ est dérivable sur $I$ et $\forall x \in I$, $f'(x) = \lim_{n \rightarrow +\infty} f_n'(x)$.
+  \end{theorem}
+
+  \begin{cexample}
+    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
+  \end{cexample}
+
+  \reference{198}
+
+  \begin{theorem}
+    Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est de classe $\mathcal{C}^1$ sur $I$.
+      \item Il existe $x_0 \in I$ tel que $(f_n(x_0))$ converge.
+      \item $(f_n')$ converge uniformément sur $I$ vers $g$.
+    \end{enumerate}
+    Alors $(f_n)$ converge uniformément sur $I$ vers $f$ de classe $\mathcal{C}^1$ sur $I$ et $f' = g$.
+  \end{theorem}
+
+  \begin{theorem}
+    Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace de Banach et $\sum f_n$ une série de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
+      \item Il existe $x_0 \in I$ tel que $\sum f_n(x_0)$ converge.
+      \item $\sum f_n'$ converge uniformément sur $I$.
+    \end{enumerate}
+    Alors $\sum f_n$ converge simplement sur $I$ uniformément sur tout compact de $I$, et,
+    \[ \left( \sum_{n=0}^{+\infty} f_n \right)' = \sum_{n=0}^{+\infty} f_n' \]
+  \end{theorem}
+
+  \begin{example}
+    La fonction $\zeta : s \mapsto \sum_{n=1}^{+\infty} \frac{1}{n^s}$ est $\mathcal{C}^\infty$ sur $]1, +\infty[$ et,
+    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(s))^k}{n^s} \]
+  \end{example}
+
+  \subsubsection{Mesurabilité, intégrabilité}
+
+  \reference[GOU20]{233}
+
+  \begin{theorem}
+    Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est continue sur $I$.
+      \item $(f_n)$ converge uniformément sur $I$ vers $f$.
+    \end{enumerate}
+    Alors $f$ est continue et $\lim_{n \rightarrow +\infty} \int_a^b f_n(t) \, \mathrm{d}t = \int_a^b f(t) \, \mathrm{d}t$. Plus généralement, la fonction $F : x \mapsto \int_a^x f(t) \, \mathrm{d}t$ est limite uniforme sur $I$ de la suite de fonctions $(F_n)$ définie par
+    \[ \forall n \in \mathbb{N}, \, F_n : x \mapsto \int_a^x f_n(t) \, \mathrm{d}t \]
+  \end{theorem}
+
+  \begin{remark}
+    L'interversion se fait sous des hypothèses beaucoup moins contraignantes à l'aide du théorème de convergence dominée.
+  \end{remark}
+
+  \reference[B-P]{124}
+
+  \begin{theorem}[Convergence monotone]
+    Soit $(f_n)$ une suite croissante de fonctions mesurables positives. Alors, la limite $f$ de cette suite est mesurable positive, et,
+    \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \]
+  \end{theorem}
+
+  \reference{137}
+
+  \begin{theorem}[Lemme de Fatou]
+    Soit $(f_n)$ une suite de fonctions mesurables positives. Alors,
+    \[ 0 \leq \int_X \liminf f_n \, \mathrm{d}\mu \leq \liminf \int_X f_n \, \mathrm{d}\mu \leq +\infty \]
+  \end{theorem}
+
+  \begin{example}
+    \label{241-1}
+    Soit $f$ croissante sur $[0,1]$, continue en $0$ et dérivable en $1$ et dérivable pp. dans $[0,1]$. Alors,
+    \[ \int_{0}^{1} f'(x) \, \mathrm{d}x \leq f(1) - f(0) \]
+  \end{example}
+
+  \begin{theorem}[Convergence dominée]
+    Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
+    \begin{enumerate}[label=(\roman*)]
+      \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
+      \item $\exists g \in \mathcal{L}_1$ positive telle que
+      \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
+      Alors,
+      \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \text{ et } \lim_{n \rightarrow +\infty} \int_X \vert f_n - f \vert \, \mathrm{d}\mu = 0 \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    \begin{itemize}
+      \item On reprend l'\cref{241-1} et on suppose $f$ partout dérivable sur $[0,1]$ de dérivée bornée. Alors l'inégalité est une égalité.
+      \item Soit $\alpha > 1$. On pose $\forall n \geq 1, \, I_n(\alpha) = \int_0^n \left( 1 + \frac{x}{n} \right)^n e^{-\alpha x} \, \mathrm{d}x$. Alors,
+      \[ \lim_{n \rightarrow +\infty} I_n(\alpha) = \int_0^{+\infty} e^{(1-\alpha)x} \, \mathrm{d}x = \frac{1}{\alpha - 1} \]
+    \end{itemize}
+  \end{example}
+
+  \reference[AMR11]{156}
+
+  \begin{example}
+    \[ \lim_{n \rightarrow +\infty} \int_{0}^{+\infty} \frac{x^n}{x^{2n} + 1} \, \mathrm{d}x = 0 \]
+  \end{example}
+
+  \subsection{Séries particulières}
+
+  \subsubsection{Séries entières}
+
+  \reference[GOU20]{247}
+
+  \begin{definition}
+    On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
+  \end{definition}
+
+  \begin{lemma}[Abel]
+    Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
+      \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{definition}
+    En reprenant les notations précédentes, le nombre
+    \[ R = \sup \{ r \geq 0 \mid (|a_n|r^n) \text{ est bornée} \} \]
+    est le \textbf{rayon de convergence} de $\sum a_n z^n$.
+  \end{definition}
+
+  \reference{255}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\sum n^2 z^n$ a un rayon de convergence égal à $1$.
+      \item $\sum \frac{z^n}{n!}$ a un rayon de convergence infini. On note $z \mapsto e^z$ la fonction somme.
+    \end{itemize}
+  \end{example}
+
+  \reference[QUE]{57}
+
+  \begin{proposition}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{H}(D(0, r))$ et,
+    \[ S'(z) = \sum_{n=0}^{+\infty} n a_n z^{n-1} \]
+    pour tout $z \in D(0, r)$.
+    \newpar
+    Plus précisément, pour tout $k \in \mathbb{N}$, $S$ est $k$ fois dérivable avec
+    \[ S^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
+  \end{proposition}
+
+  \reference[GOU20]{263}
+  \dev{theoreme-d-abel-angulaire}
+
+  \begin{theorem}[Abel angulaire]
+    \label{241-2}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ telle que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+    \newpar
+    Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
+  \end{theorem}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
+  \end{application}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+  \end{application}
+
+  \begin{cexample}
+    La réciproque est fausse :
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+  \end{cexample}
+
+  \begin{theorem}[Taubérien faible]
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
+    \[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
+    Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
+  \end{theorem}
+
+  \begin{remark}
+    Ce dernier résultat est une réciproque partielle du \cref{241-2}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
+  \end{remark}
+
+  \subsubsection{Séries de Fourier}
+
+  \reference[Z-Q]{73}
+
+  \begin{notation}
+    \begin{itemize}
+      \item Pour tout $p \in [1, +\infty]$, on note $L_p^{2\pi}$ l'espace des fonctions $f : \mathbb{R} \rightarrow \mathbb{C}$, $2\pi$-périodiques et mesurables, telles que $\Vert f \Vert_p < +\infty$.
+      \item Pour tout $n \in \mathbb{Z}$, on note $e_n$ la fonction $2\pi$-périodique définie pour tout $t \in \mathbb{R}$ par $e_n(t) = e^{int}$.
+    \end{itemize}
+  \end{notation}
+
+  \reference[GOU20]{268}
+
+  \begin{definition}
+    Soit $f \in L_1^{2\pi}$. On appelle :
+    \begin{itemize}
+      \item \textbf{Coefficients de Fourier complexes}, les complexes définis par
+      \[ \forall n \in \mathbb{Z}, \, c_n(f) = \frac{1}{2 \pi} \int_0^{2\pi} f(t) e^{-int} \, \mathrm{d}t = \langle f, e_n \rangle \]
+      \item \textbf{Série de Fourier} associée à $f$ la série $(S_N(f))$ définie par
+      \[ \forall N \in \mathbb{N}, \, S_N(f) = \sum_{n=-N}^{N} c_n(f) e_n \overset{(*)}{=} \frac{a_0(f)}{2} + \sum_{n = 1}^N (a_n(f) \cos(nx) + b_n(f) \sin(nx)) \]
+    \end{itemize}
+  \end{definition}
+
+  \reference{271}
+
+  \begin{theorem}[Dirichlet]
+    Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, continue par morceaux sur $\mathbb{R}$ et $t_0 \in \mathbb{R}$ tels que la fonction
+    \[ h \mapsto \frac{f(t_0 + h) + f(t_0 - h) - f(t_0^+) - f(t_0^-)}{h} \]
+    est bornée au voisinage de $0$. Alors,
+    \[ S_N(f)(t_0) \longrightarrow_{N \rightarrow +\infty} \frac{f(t_0^+) + f(t_0^-)}{2} \]
+  \end{theorem}
+
+  \begin{cexample}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ paire, $2\pi$-périodique telle que :
+    \[ \forall x \in [0, \pi], f(x) = \sum_{p=1}^{+\infty} \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{x}{2} \right)
+    \]
+    Alors $f$ est bien définie et continue sur $\mathbb{R}$. Cependant, sa série de Fourier diverge en $0$.
+  \end{cexample}
+
+  \begin{corollary}
+    Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors,
+    \[ \forall x \in \mathbb{R}, \, S_N(f)(x) \longrightarrow_{N \rightarrow +\infty} \frac{f(x^+) + f(x^-)}{2} \]
+    En particulier, si $f$ est continue en $x$, la série de Fourier de $f$ converge vers $f(x)$.
+  \end{corollary}
+
+  \begin{example}
+    \label{241-3}
+    En reprenant la fonction de l'\cref{241-3},
+    \[ \forall x \in [-\pi, \pi], \, f(x) = \frac{2}{3} - \frac{4}{\pi^2} \sum_{n=1}^{+\infty} (-1)^n \frac{\cos(nx)}{n^2} \]
+  \end{example}
+
+  \reference[BMP]{128}
+
+  \begin{proposition}
+    Soit $f \in L_1^{2\pi}$ et telle que sa série de Fourier converge normalement. Alors, la somme $g : x \mapsto \sum_{n=-\infty}^{+\infty} c_n(f) e_n(x)$ est une fonction continue $2\pi$-périodique presque partout égale à $f$. De plus, si $f$ est continue, l'égalité $f(x) = g(x)$ est vraie pour tout $x$.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique continue et $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors $(S_N(f))$ converge normalement vers $f$.
+  \end{proposition}
+
+  \reference[AMR08]{211}
+
+  \begin{application}[Développement eulérien de la cotangente]
+    \[ \forall u \in \mathbb{R} \setminus \pi \mathbb{Z}, \, \operatorname{cotan}(u) = \frac{1}{u} + \sum_{n=1}^{+\infty} \frac{2u}{u^2 - n^2 \pi^2} \]
+  \end{application}
+
+  \reference[GOU20]{284}
+
+  \begin{theorem}[Formule sommatoire de Poisson]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction de classe $\mathcal{C}^1$ telle que $f(x) = O \left( \frac{1}{x^2} \right)$ et $f'(x) = O \left( \frac{1}{x^2} \right)$ quand $|x| \longrightarrow +\infty$. Alors :
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{Z}} f(x+n) = \sum_{n \in \mathbb{Z}} \widehat{f}(2 \pi n) e^{2 i \pi n x} \]
+  \end{theorem}
+
+  \begin{application}[Identité de Jacobi]
+    \[ \forall s > 0, \, \sum_{n=-\infty}^{+\infty} e^{-\pi n^2 s} = \frac{1}{\sqrt{s}} \sum_{n=-\infty}^{+\infty} e^{-\frac{\pi n^2}{s}} \]
+  \end{application}
+  %</content>
+\end{document}

@@ -1,0 +1,73 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra}{loi-d-inertie-de-sylvester}{Loi d'inertie de Sylvester}
+
+  \summary{Le but de ce développement est de montrer la très connue loi d'inertie de Sylvester qui donne l'existence (et une forme d'unicité) de la décomposition d'une forme quadratique réelle en carrés de formes linéaires indépendantes.}
+
+  \reference[GOU21]{243}
+
+  Soit $E$ un espace vectoriel sur $\mathbb{R}$ de dimension finie $n \geq 1$. Soit $\Phi$ une forme quadratique sur $E$.
+
+  \begin{notation}
+    \begin{itemize}
+      \item On note $\varphi$ la forme polaire associée à $\Phi$.
+      \item Si $\Gamma$ est une partie de $E^*$, on note $\Gamma^\circ$ son orthogonal (ie. $\Gamma^\circ = \{ x \in E \mid \forall f \in \Gamma, \, f(x) = 0 \}$).
+    \end{itemize}
+  \end{notation}
+
+  \begin{lemma}
+    \label{loi-d-inertie-de-sylvester-1}
+    Il existe une base de $E$ qui soit $\Phi$-orthogonale.
+  \end{lemma}
+
+  \begin{proof}
+    On procède par récurrence sur $n$.
+    \begin{itemize}
+      \item \uline{Si $n = 1$ :} il n'y a rien à montrer, tout base est $\Phi$-orthogonale.
+      \item \uline{On suppose le résultat vrai à un rang $n \geq 1$ et montrons le au rang $n + 1$.} Si $\Phi = 0$, alors tout base de $E$ est $\Phi$-orthogonale. Sinon, il existe $v \in E$ tel que $\Phi(v) \neq 0$. Dans ce cas, l'application $f = \varphi(v, .)$ est une forme linéaire non nulle sur $E$.
+      \newpar
+      $H = \ker(f)$ est un hyperplan de $E$ et comme $v \notin H$, on a $E = H \oplus \operatorname{Vect}(v)$. Or, $\dim(H) = n-1$, donc on peut appliquer l'hypothèse de récurrence à $\Phi_{|H}$, et on obtient une base $\mathcal{B}$ de $H$ qui est $\Phi$-orthogonale. En particulier, $\mathcal{B} \, \cup \, \{ v \}$ est une base $\Phi$-orthogonale de $E$.
+    \end{itemize}
+  \end{proof}
+
+  \begin{theorem}[Loi d'inertie de Sylvester]
+    \[ \exists p, q \in \mathbb{N} \text{ et } \exists f_1, \dots, f_{p+q} \in E^* \text{ tels que } \Phi = \sum_{i=1}^p |f_i|^2 - \sum_{i=p+1}^{p+q} |f_i|^2 \]
+    où les formes linéaires $f_i$ sont linéairement indépendantes et où $p + q \leq n$. De plus, ces entiers ne dépendent que de $\Phi$ et pas de la décomposition choisie.
+    \newpar
+    Le couple $(p,q)$ est la \textbf{signature} de $\Phi$ et le rang $\Phi$ est égal à $p+q$.
+  \end{theorem}
+
+  \begin{proof}
+    Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base $\Phi$-orthogonale (dont l'existence est assurée par le \cref{loi-d-inertie-de-sylvester-1}). En posant $\forall i \in \llbracket 1, n \rrbracket$, $\lambda_i = \Phi(e_i)$, on a
+    \[ \forall x \in E \text{ que l'on écrit } x = x_1 e_1 + \dots + x_n e_n, \, \Phi(x) = \sum_{i=1}^n |x_i|^2 \Phi(e_i) = \sum_{i=1}^n \lambda_i |x_i|^2 \]
+    Chaque $\lambda_i$ est strictement positif, strictement négatif, ou nul. Quitte à les réordonner, on peut supposer
+    \[ \lambda_1, \dots, \lambda_p > 0, \lambda_{p+1}, \dots, \lambda_{p+q} < 0, \text{ et } \lambda_{p+q+1} = \dots = \lambda_n = 0 \]
+    Pour $i \in \llbracket 1, p \rrbracket$, on peut écrire $\lambda_i = \omega_i^2$ et pour $i \in \llbracket p+1, p+q \rrbracket$, on peut écrire $\lambda_i = -\omega_i^2$ où les $\omega_i \in \mathbb{R}^*$. On définit :
+    \[ \forall i \in \llbracket 1, q \rrbracket, f_i = \omega_i e_i^* \]
+    Ainsi définies, les formes linéaires $f_i$ sont linéairement indépendantes et on obtient bien :
+    \[ \Phi = \sum_{i=1}^p |f_i|^2 - \sum_{i=p+1}^q |f_i|^2 \tag{$*$} \]
+    Reste maintenant à montrer l'indépendance de $p$ et de $q$ vis-à-vis de la décomposition choisie. Soit donc
+    \[ \Phi = \sum_{i=1}^{p'} |g_i|^2 - \sum_{i=p'+1}^{q'} |g_i|^2 \tag{$**$} \]
+    une autre écriture en carrés de formes linéaires indépendantes. Supposons $p' \neq p$ avec par exemple $p' > p$. Complétons $g_1, \dots, g_{p'+q'}$ en une base $g_1, \dots, g_n$ de $E^*$. Donc, la famille $\Gamma = (f_1, \dots, f_p, g_{p'+1}, \dots, g_n)$ est de cardinal $p + n - p' < n$. Elle ne peut donc pas former une base de $E^*$. Donc
+    \[ \dim(\Gamma^\circ) = \dim(E^*) - \dim(\Gamma) \geq 1 \]
+    Par conséquent,
+    \[ \exists x \neq 0 \text{ tel que } f_1(x) = \dots = f_p(x) = g_{p'+1}(x) = \dots = g_n(x) = 0 \]
+    Donc $\Phi(x) \leq 0$ par $(*)$. Supposons par l'absurde que
+    \[ g_1(x) = \dots = g_{p'}(x) = 0 \]
+    Comme $(g_i)_{i \in \llbracket 1, n \rrbracket}$ est une base de $E^*$ et que $x$ s'annule sur cette base, on a $x = 0$ : c'est absurde. Donc, il existe $i \in \llbracket 1, p' \rrbracket$ tel que $g_i(x) \neq 0$. En particulier $\Phi(x) > 0$ par $(**)$ : contradiction. Ainsi, $p = p'$. On montre de même que $q = q'$.
+    \newpar
+    Dans la base $\Phi$-orthogonale $(e_1, \dots, e_n)$, la matrice de $\Phi$ est
+    \[ \begin{pmatrix}
+      I_p & 0 & 0 \\
+      0 & -I_q & 0 \\
+      0 & 0 & 0
+    \end{pmatrix} \]
+    d'où le rang de $\Phi$.
+  \end{proof}
+
+  La preuve de \cite{[GOU21]} est un peu décousue. Il faut savoir recoller les morceaux pour bien montrer existence et ``unicité'' de la décomposition.
+  %</content>
+\end{document}

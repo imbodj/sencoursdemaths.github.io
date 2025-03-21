@@ -1,0 +1,470 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{121}{Nombres premiers. Applications.}
+
+  \subsection{Généralités}
+
+  \subsubsection{Nombres premiers et premiers entre eux}
+
+  \reference[GOU21]{9}
+
+  \begin{definition}
+    Soient $a, b \in \mathbb{Z}$. On dit que $a$ \textbf{divise} $b$ (ou que $b$ est un \textbf{multiple} de $a$), et on note $a \mid b$ s'il existe $n \in \mathbb{Z}$ tel que $b = an$. Dans le cas contraire, on note $a \nmid b$.
+  \end{definition}
+
+  \begin{theorem}[Division euclidienne dans $\mathbb{Z}$]
+    \[ \forall (a, b) \in \mathbb{Z}^2, \, \exists! (q, r) \in \mathbb{Z}^2 \text{ tel que } a=bq+r \text{ et } r \in \llbracket 0, \vert b \vert \rrbracket \]
+  \end{theorem}
+
+  \begin{definition}
+    Soient $a_1, \dots, a_n \in \mathbb{Z}$. Par principalité de $\mathbb{Z}$, il existe un unique $d \in \mathbb{N}$ tel que
+    \[ a_1\mathbb{Z} + \dots + a_n\mathbb{Z} = d\mathbb{Z} \]
+    Ainsi défini, $d$ s'appelle le \textbf{pgcd} de $a_1, \dots, a_n$ et on note $d = \operatorname{pgcd}(a_1, \dots, a_n)$.
+  \end{definition}
+
+  \begin{remark}
+    Dans la définition précédente, $d$ est le plus entier naturel divisant tous les $a_i$.
+  \end{remark}
+
+  \begin{definition}
+    Soient $a_1, \dots, a_n \in \mathbb{Z}$. Lorsque $\operatorname{pgcd}(a_1, \dots, a_n) = 1$, on dit que $a_1, \dots, a_n$ sont \textbf{premiers entre eux} \textit{dans leur ensemble}. Lorsque $\operatorname{pgcd}(a_i, a_j) = 1$ dès que $i \neq j$, on dit que $a_1, \dots, a_n$ sont \textbf{premiers entre eux} \textit{deux à deux}.
+  \end{definition}
+
+  \begin{theorem}[Bézout]
+    Soient $a_1, \dots, a_n \in \mathbb{Z}$.
+    \[ \operatorname{pgcd}(a_1, \dots, a_n) = 1 \iff \exists u_1, \dots, u_n \in \mathbb{Z} \text{ tels que } \sum_{i=1}^{n} u_i a_i = 1 \]
+  \end{theorem}
+
+  \begin{theorem}[Gauss]
+    Soient $a, b, c \in \mathbb{Z}$.
+    \[ a \mid bc \text{ et } \operatorname{pgcd}(a,b) = 1 \implies a \mid c \]
+  \end{theorem}
+
+  \reference[ROM21]{304}
+
+  \begin{definition}
+    On dit qu'un entier naturel $p$ est \textbf{premier} s'il est supérieur ou égal à $2$ et si ses seuls diviseurs positifs sont $1$ et $p$.
+  \end{definition}
+
+  \begin{example}
+    Les nombres de Fermat $F_n = 2^{2^n}+1$ sont premiers pour $n \in \llbracket 0,4 \rrbracket$, mais pas pour $n \in \llbracket 5,32 \rrbracket$.
+  \end{example}
+
+  \begin{theorem}[Euclide]
+    L'ensemble $\mathcal{P}$ des nombres premiers est infini.
+  \end{theorem}
+
+  \begin{theorem}[Fondamental de l'arithmétique]
+    Tout entier naturel $n \geq 2$ se décompose de manière unique sous la forme :
+    \[ n = \prod_{k=1}^r p_k^{\alpha_k} \]
+    où les $p_k$ sont des nombres premiers distincts et où les $\alpha_k$ sont des entiers naturels non nuls.
+  \end{theorem}
+
+  \reference[GOU21]{11}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $n = \prod_{i=1}^k p_i^{\alpha_i}$ et $m = \prod_{i=1}^k p_i^{\beta_i}$, alors $\operatorname{pgcd}(n,m) = \prod_{i=1}^k p_i^{\inf(\alpha_i, \beta_i)}$.
+      \item Soient $p \in \mathcal{P}$ et $k \in \llbracket 1, p-1 \rrbracket$. Alors $p \mid \binom{p}{k}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}[Fermat]
+    Soient $p \in \mathcal{P}$ et $a \in \mathbb{Z}$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $a^p \equiv a \mod p$.
+      \item $p \nmid a \implies a^{p-1} \equiv 1 \mod p$.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{Fonctions arithmétiques}
+
+  \reference[GOZ]{3}
+
+  \begin{definition}
+    On définit :
+    \begin{itemize}
+      \item L'\textbf{indicatrice d'Euler} $\varphi$ est la fonction qui à un entier $k$, associe le nombre d'entiers compris entre $1$ et $n$ qui sont premiers avec $k$.
+      \item La \textbf{fonction de Möbius}, notée $\mu$, par
+      \[
+      \mu :
+      \begin{array}{ccc}
+        \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+        n &\mapsto& \begin{cases}
+          1 &\text{si } n = 1 \\
+          (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
+          0 &\text{sinon}
+        \end{cases}
+      \end{array}
+      \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall m, n \in \mathbb{Z}$ premiers entre eux, $\varphi(mn) = \varphi(m)\varphi(n)$.
+      \item Pour tout entier relatif $a$ premier avec $n$, $a^{\varphi(n)} \equiv 1 \mod n$.
+      \item Pour tout entier naturel $n$, $\sum_{d \mid n} \varphi(d) = n$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{89}
+
+  \begin{theorem}[Formule d'inversion de Möbius]
+    Soient $f$ et $g$ des fonctions de $\mathbb{N}^*$ dans $\mathbb{C}$ telles que $\forall n \in \mathbb{N}^*, \, f(n) = \sum_{d \mid n} g(d)$. Alors,
+    \[ \forall n \in \mathbb{N}^*, \, g(n) = \sum_{d \mid n} \mu(d) f \left( \frac{n}{d} \right) \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \forall n \in \mathbb{N}^*, \, \varphi(n) = \sum_{d \mid n} d\mu \left( \frac{n}{d} \right) \]
+  \end{corollary}
+
+  \subsubsection{Répartition des nombres premiers}
+
+  \reference{67}
+
+  \begin{definition}
+    L'ensemble des générateurs de $\mu_n$, noté $\mu_n^*$, est formé des \textbf{racines primitives $n$-ièmes de l'unité}.
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mu_n^* = \{ e^{\frac{2ik\pi}{n}} \mid k \in \llbracket 0, n-1 \rrbracket, \, \operatorname{pgcd}(k, m) = 1 \}$.
+      \item $\vert \mu_n^* \vert = \varphi(n)$, où $\varphi$ désigne l'indicatrice d'Euler.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    On appelle \textbf{$n$-ième polynôme cyclotomique} le polynôme
+    \[ \Phi_n = \prod_{\xi \in \mu_n^*} (X - \xi) \]
+  \end{definition}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item $X^n - 1 = \prod_{d \mid n} \Phi_d$.
+      \item $\Phi_n \in \mathbb{Z}[X]$.
+      \item $\Phi_n$ est irréductible sur $\mathbb{Q}$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    Le polynôme minimal sur $\mathbb{Q}$ de tout élément $\xi$ de $\mu_n^*$ est $\Phi_n$. En particulier,
+    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(m) \]
+  \end{corollary}
+
+  \reference[GOU21]{99}
+  \dev{theoreme-de-dirichlet-faible}
+
+  \begin{theorem}[Dirichlet faible]
+    Pour tout entier $n$, il existe une infinité de nombres premiers congrus à $1$ modulo $n$.
+  \end{theorem}
+
+  \begin{remark}
+    La version forte de ce théorème est que, pour tout entiers naturels $a$, $b$ non nuls, il existe une infinité de nombres premiers de la forme $ak+b$, $k \in \mathbb{N}$.
+  \end{remark}
+
+  \reference{16}
+
+  \begin{theorem}[des nombres premiers]
+    Si $x > 0$, on note $\pi(x)$ le nombre de nombres premiers inférieurs à $x$. Alors,
+    \[ \pi(x) \sim \frac{x}{\ln(x)} \]
+  \end{theorem}
+
+  \subsection{Théorie des corps}
+
+  \subsubsection{Corps finis}
+
+  \reference[GOZ]{3}
+
+  \begin{proposition}
+    Les conditions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $n$ est un nombre premier.
+      \item $\mathbb{Z}/n\mathbb{Z}$ est un anneau intègre.
+      \item $\mathbb{Z}/n\mathbb{Z}$ est un corps.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{notation}
+    On note $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$.
+  \end{notation}
+
+  \reference{7}
+
+  \begin{definition}
+    Soit $A$ un anneau. L'application
+    \[
+      f_A :
+      \begin{array}{ccc}
+        \mathbb{Z} &\rightarrow& A \\
+        n &\mapsto& \underbrace{1 + \dots + 1}_{n \text{ fois}}
+      \end{array}
+    \]
+    On note $\operatorname{car}(A)$ l'unique $n \in \mathbb{N}$ tel que $\operatorname{Ker}(f_A) = n\mathbb{Z}$ : c'est la \textbf{caractéristique} de $A$.
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item \label{121-1} Soit $A$ un anneau intègre. Alors, $\operatorname{car}(A) = 0 \text{ ou } p$ avec $p$ premier.
+      \item Soit $A$ un anneau fini. Alors, $\operatorname{car}(A) \neq 0$ et $\operatorname{car}(A) \mid |A|$.
+      \item Un anneau et un quelconque de ses sous-anneaux ont la même caractéristique.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Le \cref{121-1} est en particulier vrai pour un corps.
+      \item Si $\operatorname{car}(A) = 0$, $A$ est infini.
+    \end{itemize}
+  \end{remark}
+
+  \reference{81}
+
+  \begin{proposition}
+    Soit $\mathbb{K}$ un corps fini.
+    \begin{enumerate}[label=(\roman*)]
+      \item $\operatorname{car}(\mathbb{K})$ est un nombre premier $p$.
+      \item Le sous-corps premier de $\mathbb{K}$ est isomorphe à $\mathbb{F}_p$.
+      \item $\vert \mathbb{K} \vert = p^n$ pour $n \geq 2$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $\mathbb{K}$ un corps de caractéristique $p$. L'application
+    \[
+      \operatorname{Frob} :
+      \begin{array}{ccc}
+        \mathbb{K} &\rightarrow& \mathbb{K} \\
+        x &\mapsto& x^p
+      \end{array}
+    \]
+    est un morphisme de corps.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\mathbb{K}$ est fini, c'est un automorphisme.
+      \item Si $\mathbb{K} = \mathbb{F}_p$, c'est l'identité.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}
+    Soient $p \in \mathcal{P}$ et $n \in \mathbb{N}^*$. On pose $q = p^n$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe un corps $\mathbb{K}$ à $q$ éléments : c'est le corps de décomposition de $X^q - X$ sur $\mathbb{F}_p$.
+      \item $\mathbb{K}$ est unique à isomorphisme près : on le note $\mathbb{F}_q$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}[Théorème de Wilson]
+    Soit $n \geq 2$ un entier. Alors,
+    \[ n \text{ est premier} \iff (n-1)!+1 \equiv 0 \mod n \]
+  \end{corollary}
+
+  \reference[PER]{74}
+
+  \begin{theorem}
+    $\mathbb{F}_q^*$ est cyclique, isomorphe à $\mathbb{Z}/(q-1)\mathbb{Z}$.
+  \end{theorem}
+
+  \begin{remark}
+    En fait, tout sous-groupe fini du groupe multiplicatif d'un corps commutatif est cyclique.
+  \end{remark}
+
+  \reference[GOU21]{100}
+
+  \begin{theorem}[Wedderburn]
+    Tout corps fini est commutatif.
+  \end{theorem}
+
+  \subsubsection{Carrés dans les corps finis}
+
+  \reference[GOZ]{93}
+
+  Soit $q = p^n$ avec $p$ premier et $n \geq 2$.
+
+  \begin{proposition}
+    On note $\mathbb{F}_q^2 = \{ x^2 \mid x \in \mathbb{F}_q \}$ et $\mathbb{F}_q^{*2} = \mathbb{F}_q^2 \, \cap \, \mathbb{F}_q^*$. Alors $\mathbb{F}_q^{*2}$ est un sous-groupe de $\mathbb{F}_q^*$.
+  \end{proposition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $p = 2$, $\mathbb{F}_q^2 = \mathbb{F}_q$, donc $\mathbb{F}_q^{*2} = \mathbb{F}_q^*$.
+      \item Si $p > 2$, alors :
+      \begin{itemize}
+        \item $\mathbb{F}_q^{*2}$ est le noyau de l'endomorphisme de $\mathbb{F}_q^*$ défini par $x \mapsto x^{\frac{q-1}{2}}$.
+        \item $\mathbb{F}_q^{*2}$ est un sous-groupe d'indice $2$ de $\mathbb{F}_q^*$.
+        \item $\vert \mathbb{F}_q^{*2} \vert = \frac{q-1}{2}$ et $\vert \mathbb{F}_q^2 \vert = \frac{q+1}{2}$.
+        \item $(-1) \in \mathbb{F}_q^{*2} \iff q \equiv 1 \mod 4$.
+      \end{itemize}
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[I-P]{203}
+
+  \begin{notation}
+    Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$. On a ainsi $\left( \frac{a}{p} \right) = \pm 1$ avec $\left( \frac{a}{p} \right) = 1$ si et seulement si $a \in \mathbb{F}_p^2$.
+  \end{notation}
+
+  \begin{application}[Frobenius-Zolotarev]
+    Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
+    \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
+    où $u$ est vu comme une permutation des éléments de $V$.
+  \end{application}
+
+  \subsubsection{Réduction modulo \texorpdfstring{$p$}{p}}
+
+  Le résultat suivant justifie que l'on s'intéresse aux polynômes irréductibles en théorie des corps.
+
+  \reference[GOZ]{57}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$ un polynôme irréductible sur un corps $\mathbb{K}$.
+    \begin{itemize}
+      \item Il existe un corps de rupture de $P$.
+      \item Si $\mathbb{L} = \mathbb{K}[\alpha]$ et $\mathbb{L}' = \mathbb{K}[\beta]$ sont deux corps de rupture de $P$, alors il existe un unique $\mathbb{K}$-isomorphisme $\varphi : \mathbb{L} \rightarrow \mathbb{L}'$ tel que $\varphi(\alpha) = \beta$.
+      \item $\mathbb{K}[X]/(P)$ est un corps de rupture de $P$.
+    \end{itemize}
+  \end{theorem}
+
+  \reference{10}
+
+  \begin{lemma}[Gauss]
+    \begin{enumerate}[label=(\roman*)]
+      \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est égal à $1$).
+      \item $\forall P, Q \in \mathbb{Z}[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
+    \end{enumerate}
+  \end{lemma}
+
+  \dev{critere-d-eisenstein}
+
+  \begin{theorem}[Critère d'Eisenstein]
+    Soit $P = \sum_{i=0}^n a_i X^i \in \mathbb{Z}[X]$ de degré $n \geq 1$. On suppose qu'il existe $p$ premier tel que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
+      \item $p \nmid a_n$.
+      \item $p^2 \nmid a_0$.
+    \end{enumerate}
+    Alors $P$ est irréductible dans $\mathbb{Q}[X]$.
+  \end{theorem}
+
+  \reference[PER]{67}
+
+  \begin{application}
+    Soit $n \in \mathbb{N}^*$. Il existe des polynômes irréductibles de degré $n$ sur $\mathbb{Z}$.
+  \end{application}
+
+  \reference[GOZ]{12}
+
+  \begin{theorem}[Critère d'irréductibilité modulo $p$]
+    Soit $P = \sum_{i=0}^n a_i X^i \in \mathbb{Z}[X]$ de degré $n \geq 1$. Soit $p$ un premier. On suppose $p \nmid a_n$.
+    \newpar
+    Si $\overline{P}$ est irréductible dans $(\mathbb{Z}/p\mathbb{Z})[X]$, alors $P$ est irréductible dans $\mathbb{Q}[X]$.
+  \end{theorem}
+
+  \begin{example}
+    Le polynôme $X^3-127X^2+3608X+19$ est irréductible dans $\mathbb{Z}[X]$.
+  \end{example}
+
+  \subsection{Autres applications en algèbre}
+
+  \subsubsection{Entiers sommes de deux carrés}
+
+  \reference[I-P]{137}
+
+  \begin{notation}
+    On note \[ N :
+    \begin{array}{ccc}
+      \mathbb{Z}[i] &\rightarrow& \mathbb{N} \\
+      a+ib &\mapsto& a^2 + b^2
+    \end{array}
+    \] et $\Sigma$ l'ensemble des entiers qui sont somme de deux carrés.
+  \end{notation}
+
+  \begin{remark}
+    $n \in \Sigma \iff \exists z \in \mathbb{Z}[i] \text{ tel que } N(z)=n$.
+  \end{remark}
+
+  \begin{theorem}[Deux carrés de Fermat]
+    Soit $n \in \mathbb{N}^*$. Alors $n \in \Sigma$ si et seulement si $v_p(n)$ est pair pour tout $p$ premier tel que $p \equiv 3 \mod 4$ (où $v_p(n)$ désigne la valuation $p$-adique de $n$).
+  \end{theorem}
+
+  \subsubsection{En théorie des groupes}
+
+  \reference[ROM21]{22}
+
+  Soit $G$ un groupe fini opérant sur un ensemble fini $X$.
+
+  \begin{definition}
+    On dit que $G$ est un \textbf{$p$-groupe} s'il est d'ordre une puissance d'un nombre premier $p$.
+  \end{definition}
+
+  \begin{theorem}[Formule des classes]
+    Soit $\Omega$ un système de représentants des orbites de l'action de $G$ sur $X$. Alors,
+    \[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe opérant sur $X$, alors,
+    \[ |X^G| \equiv |X| \mod p \]
+    où $X^G$ désigne l'ensemble des points fixes de $X$ sous l'action de $G$.
+  \end{corollary}
+
+  \begin{corollary}
+    On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
+    \begin{align*}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+    \end{align*}
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Le centre d'un $p$-groupe non trivial est non trivial.
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Un groupe d'ordre $p^2$ est toujours abélien.
+  \end{corollary}
+
+  \begin{application}[Théorème de Cauchy]
+    On suppose $G$ non trivial et fini. Soit $p$ un premier divisant l'ordre de $G$. Alors il existe un élément d'ordre $p$ dans $G$.
+  \end{application}
+
+  \reference[GOU21]{44}
+
+  \begin{application}[Premier théorème de Sylow]
+    On suppose $G$ fini d'ordre $n p^\alpha$ avec $n, \alpha \in \mathbb{N}$ et $p$ premier tel que $p \nmid n$. Alors, il existe un sous-groupe de $G$ d’ordre $p^\alpha$.
+  \end{application}
+
+  \subsubsection{RSA}
+
+  \reference[ULM18]{62}
+
+  \begin{definition}
+    Afin de chiffrer un \textbf{message} (tout entier découpé en séquence d'entiers de taille bornée) en utilisant RSA, on doit a besoin de deux clés :
+    \begin{itemize}
+      \item Une \textbf{clé privée}, qui est un couple de nombres premiers $(p,q)$.
+      \item La \textbf{clé publique} correspondante, qui est le couple $(n,e)$ où $n = pq$ et $e$ est l'inverse de $d$ modulo $\phi(n)$ où $d$ désigne un nombre premier à $\phi(n)$.
+    \end{itemize}
+  \end{definition}
+
+  Nous conserverons ces notations pour la suite.
+
+  \begin{theorem}[Chiffrement RSA]
+    Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$ :
+      \[ m' = (m_i^e)_{i \in \llbracket 1, r \rrbracket} \]
+      \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :
+      \[ \forall i \in \llbracket 1, r \rrbracket, \, (m_i^e)^d \equiv d \mod n \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{remark}
+    \begin{itemize}
+      \item L'intérêt vient pour des premiers $p$ et $q$ très grands : il devient alors très compliqué de factoriser $n$ et d'obtenir la clé privée.
+      \item Les inverses peuvent se calculer à l'aide de l'algorithme de Bézout.
+    \end{itemize}
+  \end{remark}
+  %</content>
+\end{document}

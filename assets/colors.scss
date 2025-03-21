@@ -1,0 +1,34 @@
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+$primary: $blue;
+$dark: #212529;
+
+$banner-colors: (
+  'dark': #3f474e,
+  'teal': #00695c,
+  'red': #ffcdd2
+);
+
+$math-environments: (
+  'property': #fffde7,
+  'proposition': #fff8e1,
+  'lemma': #fff3e0,
+  'theorem': #ffebee,
+  'corollary': #fce4ec,
+  'definition': #ede7f6,
+  'notation': #f3e5f5,
+  'example': #e0f7fa,
+  'cexample': #efebe9,
+  'application': #e0f2f1,
+  'remark': #e8f5e9,
+  'algorithm': #eceff1,
+  'proof': #e1f5fe
+);

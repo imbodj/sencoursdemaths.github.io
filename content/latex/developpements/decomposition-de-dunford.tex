@@ -1,0 +1,50 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra}{decomposition-de-dunford}{Décomposition de Dunford}
+
+  \summary{On démontre l'existence et l'unicité de la décomposition de Dunford pour tout endomorphisme d'un espace vectoriel de dimension finie.}
+
+  \reference[GOU21]{203}
+
+  Soit $E$ un espace vectoriel de dimension finie sur un corps commutatif $\mathbb{K}$.
+
+  \begin{theorem}[Décomposition de Dunford]
+    Soit $f \in E$ un endomorphisme tel que son polynôme minimal $\pi_f$ soit scindé sur $\mathbb{K}$. Alors il existe un unique couple d'endomorphismes $(d, n)$ tel que :
+    \begin{itemize}
+      \item $f = d + n$.
+      \item $d$ est diagonalisable et $n$ est nilpotent.
+      \item $d \circ n = n \circ d$.
+    \end{itemize}
+  \end{theorem}
+
+  \begin{proof}
+    On écrit $\pi_f = (-1)^n \prod_{i=1}^s (X - \lambda_i)^{\alpha_i}$ et pour tout $i$, on note $N_i = \ker((f-\lambda_i \id_E)^{\alpha_i})$ le $i$-ième sous-espace caractéristique de $f$.
+    \newpar
+    \uline{Construction :} Comme $E = N_1 \oplus \dots \oplus N_s$, il suffit de définir $d$ et $n$ sur chaque $N_i$. On les définit pour tout $i$ et pour tout $x \in N_i$ comme tels :
+    \begin{itemize}
+      \item $d(x) = \lambda_i x \implies d_{|N_i} = \lambda_i \id_{N_i}$
+      \item $n(x) = f(x) - \lambda_i x = f(x) - d(x) \implies n = f - d$.
+    \end{itemize}
+    \medskip
+    \uline{Vérification :}
+    \begin{itemize}
+      \item Les restrictions de $d$ et $n$ à $N_i$ sont bien des endomorphismes car les espaces $N_i$ sont stables par $f$ et par $d$ (cf. définition de $d$), donc aussi par $n = f - d$.
+      \item $d$ est diagonalisable et pour tout $i$, $n_{|N_i}^{\alpha_i} = 0$ (car $\forall x \in N_i, \, (f-\lambda_i)^{\alpha_i}(x) = 0$ par définition de $N_i$). On pose donc $\alpha = \max_{i} \{ \alpha_i \}$ et on a $n_{|N_i}^\alpha = 0$ pour tout $i$, donc $n^\alpha = 0$ par somme directe. Ainsi, $n$ est nilpotent.
+      \item Pour tout $i$, on a $d_{|N_i} = \lambda_i \id_E$, donc $n_{|N_i} \circ d_{|N_i} = d_{|N_i} \circ n_{|N_i}$ i.e. $d$ et $n$ commutent sur chaque $N_i$ donc sur $E$ tout entier.
+    \end{itemize}
+    \medskip
+    \uline{Unicité :} Soit $(d', n')$ un autre couple d'endomorphismes de $E$ vérifiant les hypothèses. On remarque d'abord que $d'$ et $f$ commutent (car $d'$ commute avec $d'$ et $n'$, donc avec $f = d' + n'$ aussi). Pour tout $i$, $N_i$ est stable par $d'$ (car $\forall x \in N_i, \, (f-\lambda_i \id_E)^{\alpha_i}(d'(x)) = d' \circ (f-\lambda_i \id_E)^{\alpha_i}(x) = 0$). Comme $d_{|N_i} = \lambda_i \id_{N_i}$, on en déduit que $d \circ d' = d' \circ d$ sur $N_i$. Donc c'est également vrai sur $E$ tout entier. Ainsi, $d$ et $d'$ sont diagonalisables dans une même base, donc $d - d'$ est diagonalisable.
+    \newpar
+    D'autre part, comme $n = f-d$, $n' = f-d'$ et que $d$ et $d'$ commutent, $n$ et $n'$ commutent. Si on choisit $p$ et $q$ tels que $n^p = n'^q = 0$, alors :
+    \[ (n-n')^{p+q} = \sum_{i=0}^{p+q} \binom{p+q}{i} n^{i} (-1)^{p+q-i} n'^{p+q-i} = 0 \]
+    (dans chaque terme de la somme, soit $i \geq p$, soit $p+q-i \geq q$). Donc $n - n' = d' - d$ est nilpotent. Or nous avions montré que $d' - d$ est diagonalisable, donc $d'-d = 0$. Finalement, on a $d = d'$ et $n = n'$.
+  \end{proof}
+
+  \begin{remark}
+    On peut démontrer que les endomorphismes $d$ et $n$ sont des polynômes en $f$.
+  \end{remark}
+  %</content>
+\end{document}

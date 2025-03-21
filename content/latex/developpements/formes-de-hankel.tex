@@ -1,0 +1,74 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra}{formes-de-hankel}{Formes de Hankel}
+
+  \summary{Le but de ce développement est de construire une forme quadratique permettant de dénombrer les racines réelles distinctes d'un polynôme en fonction de ses racines complexes.}
+
+  \reference[C-G]{356}
+
+  Soit $P \in \mathbb{R}[X]$ un polynôme de degré $n$.
+
+  \begin{theorem}[Formes de Hankel]
+    On note $x_1, \dots, x_t$ les racines complexes de $P$ de multiplicités respectives $m_1, \dots, m_t$. On pose
+    \[ s_0 = n \text{ et } \forall k \geq 1, \, s_k = \sum_{i=1}^t m_i x_i^k \]
+    Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sigma = \sum_{i, j \in \llbracket 0, n-1 \rrbracket} s_{i+j} X_i X_j$ définit une forme quadratique sur $\mathbb{C}^n$ ainsi qu'une forme quadratique $\sigma_{\mathbb{R}}$ sur $\mathbb{R}^n$.
+      \item Si on note $(p,q)$ la signature de $\sigma_{\mathbb{R}}$, on a :
+      \begin{itemize}
+        \item $t = p + q$.
+        \item Le nombre de racines réelles distinctes de $P$ est $p-q$.
+      \end{itemize}
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}
+    $\sigma$ est un polynôme homogène de degré $2$ sur $\mathbb{C}$ (car la somme des exposants est $2$ pour chacun des monômes), qui définit donc une forme quadratique sur $\mathbb{C}^n$. De plus, on peut écrire :
+    \[ \forall k \geq 1, \, s_k = \sum_{\substack{x_i \text{ racine de P} \\ x_i \in \mathbb{R}}} m_i x^i + \sum_{\substack{x \text{ racine de P} \\ x_i \in \mathbb{C}}} m_i (x^i + \overline{x}^k) \]
+    donc $s_k = \overline{s_k}$ ie. $s_k \in \mathbb{R}$. Donc $\sigma$ définit une forme quadratique $\sigma_{\mathbb{R}}$ sur $\mathbb{R}^n$. D'où le premier point.
+    \newpar
+    Soit $\varphi_k$ la forme linéaire sur $\mathbb{C}^n$ définie par le polynôme homogène de degré $1$
+    \[ P_k(X_0, \dots, X_{n-1}) = X_0 + x_k X_1 + \dots + x_k^{n-1} X_{n-1} \]
+    pour $k \in \llbracket 0, t \rrbracket$. Dans la base duale $(e_i^*)_{i \in \llbracket 0, n-1 \rrbracket}$ de la base canonique $(e_i)_{i \in \llbracket 0, n-1 \rrbracket}$ de $\mathbb{C}^n$, on a
+    \[ \varphi_k = e_0^* + x_k e_1^* + \dots + x_k^{n-1} e_{n-1}^* \]
+    Et comme
+    \[ \det((\varphi_k)_{k \in \llbracket 0, t \rrbracket}) = \begin{vmatrix} 1 & 1 & \dots & 1 \\ x_0 & x_1 & \dots & x_t \\ \vdots & \ddots & \ddots & \vdots \\ x_0^{n-1} & x_1^{n-1} & \dots & x_t^{n-1} \end{vmatrix} \overset{\text{Vandermonde}}{\neq} 0 \]
+    la famille $(\varphi_k)_{k \in \llbracket 0, t \rrbracket}$ est de rang $t$ sur $\mathbb{C}$. Or, le coefficient de $X_i X_j$ dans $\sum_{k=1}^t m_k P_k^2$ vaut
+    \[ \begin{cases} \sum_{k=1}^t m_k x_k^{2i} = s_{i+j} &\text{ si } i=j \\ \sum_{k=1}^t 2 m_k x_k^i x_k^j = \sum_{k=1}^t 2 m_k x_k^{i+j} = 2s_{i+j} &\text{ sinon} \end{cases} \]
+    donc, $\sigma = \sum_{k=1}^t m_k \varphi_k^2$. En particulier, $\rang (\sigma) = t$ par indépendance des $\varphi_k$. On en déduit,
+    \[ p+q = \rang(\sigma_{\mathbb{R}}) = \rang(\sigma) = t \]
+    (le rang est invariant par extension de corps).
+    \newpar
+    Soit $k \in \llbracket 0, t \rrbracket$. Calculons la signature de la forme quadratique $\varphi_k^2 + \overline{\varphi_k}^2$ :
+    \begin{itemize}
+      \item Si $x_k \in \mathbb{R}$, on a $\varphi_k^2 + \overline{\varphi_k}^2 = 2 \varphi_k^2$, qui est de signature $(1, 0)$ car $\varphi_k \neq 0$.
+      \item Si $x_k \notin \mathbb{R}$, on a $\varphi_k^2 + \overline{\varphi_k}^2 = 2 \operatorname{Re}(\varphi_k)^2 - 2 \operatorname{Im}(\varphi_k)^2$ qui est bien une forme quadratique réelle. Et $x_k \neq \overline{x_k}$, donc la matrice
+      \[ \begin{pmatrix} 1 & 1 \\ x_k & \overline{x_k} \\ \vdots & \vdots \\ x_k^{n-1} & \overline{x_k}^{n-1} \end{pmatrix} \]
+      est de rang $2$ (cf. le mineur correspondant aux deux premières lignes). Donc $\varphi_k$ et $\overline{\varphi_k}$ sont indépendantes. Ainsi, $\rang(\varphi_k^2 + \overline{\varphi_k}^2) = 2$ sur $\mathbb{C}$, donc sur $\mathbb{R}$ aussi (toujours par invariance du rang par extension de corps). Donc la signature de $\varphi_k^2 + \overline{\varphi_k}^2$ est $(1, 1)$.
+    \end{itemize}
+    Maintenant, regroupons les $\varphi_k$ conjuguées entre elles lorsqu'elles ne sont pas réelles :
+    \[ \sigma = \sum_{\substack{k=1 \\ x_k \in \mathbb{R}}}^t m_k \varphi_k^2 + \sum_{\substack{k=1 \\ x_k \notin \mathbb{R}}}^t m_k (\varphi_k^2 + \overline{\varphi_k}^2) \]
+    En passant à la signature, on obtient :
+    \[ (p, q) = (r, 0) + \left( \frac{t-r}{2}, \frac{t-r}{2} \right) = \left( \frac{t+r}{2}, \frac{t-r}{2} \right) \]
+    où $r$ désigne le nombre de racines réelles distinctes de $P$. Par unicité de la signature d'une forme quadratique réelle, on a bien $p-q=r$. D'où le point $(ii)$.
+  \end{proof}
+
+  \begin{remark}
+    Tout l'intérêt de ces formes quadratiques est qu'on peut calculer les $s_k$ par récurrence en utilisant les polynômes symétriques élémentaires, sans avoir besoin des racines.
+  \end{remark}
+
+  \reference[GOU21]{86}
+
+  \begin{proposition}[Sommes de Newton]
+    On pose $P = \sum_{k=0}^n a_k X^k$. Les sommes de Newton vérifient les relations suivantes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $s_0 = n$.
+      \item $\forall k \in \llbracket 1, n-1 \rrbracket, \, s_k = -k a_{n-k} \sum_{i=1}^{k-1} s_i a_{n-k+i}$.
+      \item $\forall p \in \mathbb{N}, \, s_{p+n} = \sum_{i=1}^{n} s_i a_{p+n-i}$.
+    \end{enumerate}
+  \end{proposition}
+  %</content>
+\end{document}

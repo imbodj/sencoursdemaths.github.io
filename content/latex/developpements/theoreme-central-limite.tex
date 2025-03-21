@@ -1,0 +1,101 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{theoreme-central-limite}{Théorème central limite}
+
+  \summary{En établissant d'abord le théorème de Lévy, on démontre le théorème central limite, qui dit que si $(X_n)$ est une suite de variables aléatoires identiquement distribuées admettant un moment d'ordre $2$, alors $\frac{X_1 + \dots + X_n - n \mathbb{E}(X_1)}{\sqrt{n}}$ converge en loi vers $\mathcal{N}(0, \operatorname{Var}(X_1))$.}
+
+  \begin{notation}
+    Si $X$ est une variable aléatoire réelle, on note $\phi_X$ sa fonction caractéristique.
+  \end{notation}
+
+  \reference[Z-Q]{544}
+
+  \begin{theorem}[Lévy]
+    \label{theoreme-central-limite-1}
+    Soient $(X_n)$ une suite de variables aléatoires réelles définies sur un espace probabilité $(\Omega, \mathcal{A}, \mathbb{P})$ et $X$ une variable aléatoire réelle définie sur le même espace. Alors :
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
+  \end{theorem}
+
+  \begin{proof}
+    \uline{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
+    \[ \lim_{n \rightarrow +\infty} \mathbb{E}(g_t(X_n)) = \mathbb{E}(g_t(X)) \]
+    ce que l'on voulait.
+    \newpar
+    \uline{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$. On suppose que sa transformée de Fourier, $f = \widehat{\varphi}$ appartient également à $L_1(\mathbb{R})$. Alors
+    \[ \mathbb{E}(f(X_n)) = \mathbb{E} \left ( \int_{\mathbb{R}} e^{itX_n} \varphi(t) \, \mathrm{d}t \right ) \]
+    Comme la fonction $(\omega, t) \mapsto e^{itX_n(\omega)} \varphi(t)$ est intégrable pour la mesure $\mathbb{P} \otimes \lambda$, on peut appliquer le théorème de Fubini-Lebesgue pour intervertir espérance et intégrale :
+    \begin{align*}
+      \mathbb{E}(f(X_n)) = \int_{\mathbb{R}} \mathbb{E} (e^{itX_n}) \varphi(t) \, \mathrm{d}t
+    \end{align*}
+    On définit maintenant la suite de fonction $g_n : t \mapsto \mathbb{E} (e^{itX_n}) \varphi(t)$. Alors :
+    \begin{itemize}
+      \item $\forall n \in \mathbb{N}$, $g_n$ est mesurable.
+      \item La suite de fonction $(g_n)$ converge presque partout vers $g : t \mapsto \mathbb{E} (e^{itX}) \varphi(t)$ par hypothèse.
+      \item $\forall n \in \mathbb{N}$ et pp. en $t \in \mathbb{R}$, $|g_n(t)| \leq \mathbb{E} (|e^{itX_n}|) |\varphi(t)| \leq \mathbb{P}(\Omega) |\varphi(t)| = |\varphi(t)|$ avec $|\varphi| \in L_1(\mathbb{R})$.
+    \end{itemize}
+    On peut donc appliquer le théorème de convergence dominée pour obtenir
+    \[ \mathbb{E}(f(X_n)) \longrightarrow \int_{\mathbb{R}} \mathbb{E} (e^{itX}) \varphi(t) \, \mathrm{d}t = \mathbb{E}(f(X)) \]
+    Ainsi, le résultat est vrai pour toute fonction $L_1(\mathbb{R})$ dans l'image de $L_1(\mathbb{R})$ par la transformée de Fourier. En particulier, il est vrai pour tout $f \in \mathcal{S}(\mathbb{R})$, dense dans $(\mathcal{C}(\mathbb{R}), \Vert . \Vert_\infty)$. Soient maintenant $f \in \mathcal{C}(\mathbb{R})$ et $(f_k)$ une suite de fonctions de $\mathcal{S}(\mathbb{R})$ qui converge uniformément vers $f$. Alors,
+    \begin{align*}
+      |\mathbb{E}(f(X_n)) - \mathbb{E}(f(X))| &= |\mathbb{E}(f(X_n)) - \mathbb{E}(f_k(X_n)) + \mathbb{E}(f_k(X_n)) \\
+      &- \mathbb{E}(f_k(X)) + \mathbb{E}(f_k(X)) - \mathbb{E}(f(X))| \\
+      &\leq 2 \Vert f - f_k \Vert_\infty + |\mathbb{E}(f_k(X_n)) - \mathbb{E}(f_k(X))| \\
+      &\longrightarrow 0
+    \end{align*}
+  \end{proof}
+
+  \reference[G-K]{307}
+
+  \begin{lemma}
+    \label{theoreme-central-limite-2}
+    Soient $u, v \in \mathbb{C}$ de module inférieur ou égal à $1$ et $n \in \mathbb{N}^*$. Alors
+    \[ |z^n - u^n| \leq n |z-u| \]
+  \end{lemma}
+
+  \begin{proof}
+    $|z^n - u^n| = |(z-u) \sum_{k=0}^{n-1} z^k u^{n-1-k}| \leq n |z-u|$.
+  \end{proof}
+
+  \begin{theorem}[Central limite]
+    Soit $(X_n)$ une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
+    \[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
+  \end{theorem}
+
+  \begin{proof}
+    On a $S_n = \sum_{k=1}^n (X_k - m)$. Notons $\phi$ la fonction caractéristique de $X_1 - m$. Comme les variables aléatoires $X_1 - m, \dots, X_n - m$ sont indépendantes de même loi, la fonction caractéristique de $\frac{S_n}{\sqrt{n}}$ vaut $\forall t \in \mathbb{R}$,
+    \begin{align*}
+      \phi_{\frac{S_n}{\sqrt{n}}}(t) &= \mathbb{E} \left( e^{iS_n \left( \frac{t}{\sqrt{n}} \right)} \right) \\
+      &= \mathbb{E} \left( \prod_{k=1}^n e^{i(X_k -m) \left( \frac{t}{\sqrt{n}} \right)} \right) \\
+      &= \prod_{k=1}^n \phi_{X_k - m} \left ( \frac{t}{\sqrt{n}} \right) \\
+      &= \phi \left ( \frac{t}{\sqrt{n}} \right)^n
+    \end{align*}
+    D'après le \cref{theoreme-central-limite-1}, pour montrer que $\frac{S_n}{\sqrt{n}}$ converge en loi vers $\mathcal{N}(0, \sigma^2)$, il suffit de montrer que
+    \[ \forall t \in \mathbb{R}, \, \lim_{n \rightarrow +\infty} \phi \left ( \frac{t}{\sqrt{n}} \right)^n = e^{-\frac{\sigma^2}{2} t^2} \]
+    car $t \mapsto e^{-\frac{\sigma^2}{2} t^2}$ est la fonction caractéristique de la loi $\mathcal{N}(0, \sigma^2)$.
+    \newpar
+    Comme $X_1$ admet un moment d'ordre $2$, $\phi$ est de classe $\mathcal{C}^2$ et
+    \begin{itemize}
+      \item $\phi(0) = 1$.
+      \item $\phi'(0) = i^1 \mathbb{E}(X_1^1) = 0$.
+      \item $\phi''(0) = i^2 \mathbb{E}(X_1^2) = - E(X^2) = -\sigma^2$ (car $m = 0$).
+    \end{itemize}
+    Ce qui donne le développement limité en $0$ de $\phi$ à l'ordre $2$ (par la formule de Taylor-Young) :
+    \[ \phi(t) = \phi(0) + \frac{\phi'(0)}{1!} (t-0) + \frac{\phi''(0)}{2!} (t-0)^2 + o(t^2) = 1 - \frac{\sigma^2 t^2}{2} + o(t^2) \tag{$*$} \]
+    Et, en appliquant le \cref{theoreme-central-limite-2} :
+    \begin{align*}
+      \left | \phi \left ( \frac{t}{\sqrt{n}} \right)^n - e^{-\frac{\sigma^2}{2} t^2} \right | &= \left | \phi \left ( \frac{t}{\sqrt{n}} \right)^n - \left( e^{- \frac{\sigma^2}{2n} t^2} \right)^n \right | \\
+      &\leq n \left | \phi \left ( \frac{t}{\sqrt{n}} \right) - e^{-\frac{\sigma^2}{2n} t^2} \right |
+    \end{align*}
+    \[  \]
+    On a d'une part, par développement limité :
+    \[ e^{-\frac{\sigma^2}{2n} t^2} = 1 - \frac{\sigma^2}{2n} t^2 + o \left ( \frac{1}{n} \right) \]
+    Et d'autre part, par $(*)$ :
+    \[ \phi \left ( \frac{t}{\sqrt{n}} \right) = 1 - \frac{\sigma^2}{2n}t^2 + o \left ( \frac{1}{n} \right ) \]
+    On obtient ainsi le résultat cherché, à savoir :
+    \[ n \left | \phi \left ( \frac{t}{\sqrt{n}} \right) - e^{-\frac{\sigma^2}{2n} t^2} \right | = o (1) \]
+  \end{proof}
+  %</content>
+\end{document}

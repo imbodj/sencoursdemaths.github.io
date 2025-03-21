@@ -1,0 +1,116 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{theoreme-d-abel-angulaire}{Théorème d'Abel angulaire}
+
+  \summary{On montre le théorème d'Abel ``angulaire'', qui permet d'intervertir certaines sommes et limites, et on l'applique justement au calcul de deux sommes.}
+
+  \reference[GOU20]{263}
+
+  \begin{theorem}[Abel angulaire]
+    \label{theoreme-d-abel-angulaire-1}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ telle que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->] (-3, 0) -- (3, 0) node[right] {$x$};
+        \draw[->] (0, -3) -- (0, 3) node[above] {$y$};
+        \draw (0,2) node {$\bullet$} node[above right]{$1$};
+        \draw (2,0) node {$\bullet$} node[below right]{$1$};
+        \draw (0,0) circle (2);
+        \coordinate (A) at (130:3.5);
+        \coordinate (B) at (230:3.5);
+        \coordinate (C) at (2,0);
+        \begin{scope}
+          \path[clip] circle (2);
+          \path[clip] (A) -- (B) -- (C) -- cycle;
+          \draw [transparent, fill=blue!30, fill opacity=0.3] (C) circle (9);
+        \end{scope}
+        \begin{scope}
+          \path[clip] (A) -- (180:3.5) -- (C) -- cycle;
+          \draw (C) circle (1);
+        \end{scope}
+        \draw (0.7,0.35) node {$\theta_0$};
+        \draw (C) -- (A);
+        \draw (C) -- (B);
+        \coordinate (S) at (210:3.5);
+        \coordinate (E) at (-0.5,-0.5);
+        \draw [->] (S) to [out=50] (E);
+        \draw (212:3.7) node {$\Delta_{\theta_0}$};
+      \end{tikzpicture}
+    \end{center}
+    Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
+  \end{theorem}
+
+  \begin{proof}
+    On note $\forall n \in \mathbb{N}$, $S = \sum_{n=0}^{+\infty} a_n$, $S_n = \sum_{k=0}^n a_k$ et $R_n = S - S_n$. On chercher à majorer $|f(z) - S|$ ; on va effectuer une transformation d'Abel en écrivant $\forall n \geq 1$, $a_n = R_{n-1} - R_n$. Soit $z \in D \setminus \{ 0 \}$. $\forall N \in \mathbb{N}^*$, on a
+    \begin{align*}
+      \sum_{n=0}^N a_n z^n - S_N &= \sum_{n=0}^N a_n(z^n - 1) \\
+      &= \sum_{n=1}^N (R_{n-1} - R_n)(z^n - 1) \\
+      &= \sum_{n=0}^{N-1} R_n(z^{n+1} - 1) - \sum_{n=1}^N R_n(z^n - 1) \\
+      &= \sum_{n=0}^{N-1} R_n(z^{n+1} - z^n) - R_N(z^N - 1) \\
+      &= (z-1) \sum_{n=0}^{N-1} R_nz^n - R_N(z^N - 1)
+    \end{align*}
+    Donc en faisant $N \rightarrow +\infty$ :
+    \[ f(z) - S = (z-1) \sum_{n=0}^{+\infty} R_nz^n \tag{$*$} \]
+    Soit $\epsilon > 0$. $\exists N \in \mathbb{N}$ tel que $\forall n \geq N$, $|R_n| < \epsilon$. D'après $(*)$, $\forall z \in D$,
+    \begin{align*}
+      |f(z)-S| &\leq |z-1| \left| \sum_{n=0}^N R_n z^n \right| + \epsilon |z-1| \left( \sum_{n=N+1}^{+\infty} |z|^n \right) \\
+      &\leq |z-1| \left( \sum_{n=0}^N |R_n| \right) + \epsilon \frac{|z-1|}{1-|z|} \tag{$**$}
+    \end{align*}
+    Soit $z \in \Delta_{\theta_0}$ de sorte que $z = 1-\rho e^{i\theta}$ avec $\rho > 0$ et $|\theta| \leq \theta_0$. Notons avant toute chose que $|z-1| = \rho$. Cherchons maintenant des conditions sur $z$ pour majorer les deux termes :
+    \begin{itemize}
+      \item On a :
+      \begin{align*}
+        |z|^2 &= (1 - \rho \cos(\theta))^2 + (\rho \sin(\theta))^2 \\
+        &= 1 - 2 \rho \cos(\theta) + \rho^2 (\cos(\theta)^2 + \sin(\theta)^2) \\
+        &= 1 - 2 \rho \cos(\theta) + \rho^2
+      \end{align*}
+      En supposant $\rho \leq \cos(\theta_0)$, cela permet de majorer le deuxième terme de $(**)$ :
+      \begin{align*}
+        \frac{|z-1|}{1-|z|} &= \frac{|z-1|}{1-|z|^2}(1+|z|) \\
+        &= \frac{\rho}{2 \rho \cos(\theta) - \rho^2}(1+|z|) \\
+        &\leq \frac{2}{2\cos(\theta) - \rho} \\
+        &\leq \frac{2}{2\cos(\theta_0) - \cos(\theta_0)} \\
+        &= \frac{2}{\cos(\theta_0)}
+      \end{align*}
+      \item Soit $\alpha > 0$ suffisamment petit pour que $\alpha \sum_{n=0}^N |R_n| < \epsilon$. Si $z \in \Delta_{\theta_0}$ tel que $|z-1| \leq \alpha$, alors on peut majorer le premier terme de $(**)$ :
+      \[ |z-1| \left( \sum_{n=0}^N |R_n| \right) \leq \alpha \left( \sum_{n=0}^N |R_n| \right) < \epsilon \]
+    \end{itemize}
+    Donc, en faisant $z \longrightarrow 1$ tel que $z \in \Delta_{\theta_0}$ (on aura bien $\rho = |z-1| \leq \inf \{ \alpha, \cos(\theta_0) \}$), et en injectant les deux majorations trouvées dans $(**)$ :
+    \[ |f(z)-S| \leq \epsilon + \epsilon \frac{2}{\cos(\theta_0)} = \epsilon \left(1 + \frac{2}{\cos(\theta_0)} \right) \]
+    d'où le résultat.
+  \end{proof}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
+  \end{application}
+
+  \begin{proof}
+    En appliquant le \cref{theoreme-d-abel-angulaire-1} :
+    \begin{align*}
+      \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} x^n \\
+      &\overset{x > 0}{=} \lim_{\substack{x \rightarrow 1 \\ x < 1}} \frac{1}{\sqrt{x}} \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} \sqrt{x}^{2n+1} \\
+      &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \frac{1}{\sqrt{x}} \arctan(\sqrt{x}) \\
+      &= \arctan(1) \\
+      &= \frac{\pi}{4}
+    \end{align*}
+  \end{proof}
+
+  La preuve de l'application précédente écrite dans \cite{[GOU20]} est un peu lacunaire. Merci aux personnes qui l'ont signalée et corrigée.
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+  \end{application}
+
+  \begin{proof}
+    Toujours en appliquant le \cref{theoreme-d-abel-angulaire-1} :
+    \begin{align*}
+      \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} x^n \\
+      &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \ln(1 + x) \\
+      &= \ln(2)
+    \end{align*}
+  \end{proof}
+  %</content>
+\end{document}

@@ -1,0 +1,311 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{204}{Connexité. Exemples d'applications.}
+
+  \subsection{Diverses approches de la connexité}
+
+  Soit $(E,d)$ un espace métrique.
+
+  \subsubsection{Une approche topologique}
+
+  \reference[GOU20]{38}
+
+  \begin{proposition}
+    \label{204-1}
+    Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item Il n'existe pas de partition de $E$ en deux ouverts disjoints non vides.
+      \item Il n'existe pas de partition de $E$ en deux fermés disjoints non vides.
+      \item Les seules parties ouvertes de $E$ sont $\emptyset$ et $E$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Un espace métrique vérifiant l'une des assertions de \cref{204-1} est dit \textbf{connexe}.
+  \end{definition}
+
+  \begin{remark}
+    Remarquons qu'il s'agit-là d'une définition \textit{topologique} : tous les résultats de cette sous-section sont donc valables dans le cadre plus général d'un espace topologique.
+  \end{remark}
+
+  \begin{proposition}
+    Soit $A \subseteq E$. Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item $A$ est connexe.
+      \item Si $A \subseteq O_1 \, \cap \, O_2$ avec $O_1$, $O_2$ ouverts de $E$ tels que $A \, \cap \, O_1 \, \cap \, O_2 = \emptyset$, alors
+      \[ (A \, \cap \, O_1 = \emptyset \text{ et } A \subseteq O_2) \text{ ou } (A \, \cap \, O_2 = \emptyset \text{ et } A \subseteq O_1) \]
+      \item Si $A \subseteq F_1 \, \cap \, F_2$ avec $F_1$, $F_2$ fermés de $E$ tels que $A \, \cap \, F_1 \, \cap \, F_2 = \emptyset$, alors
+      \[ (A \, \cap \, F_1 = \emptyset \text{ et } A \subseteq F_2) \text{ ou } (A \, \cap \, F_2 = \emptyset \text{ et } A \subseteq F_1) \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    $\mathbb{Q}$ n'est pas un connexe de $\mathbb{R}$.
+  \end{example}
+
+  \reference{350}
+
+  \begin{proposition}
+    Une partie ouverte et fermée d'un espace connexe est vide ou égale à l'espace entier.
+  \end{proposition}
+
+  \reference{39}
+
+  \begin{proposition}
+    L'image d'un connexe par une application continue est connexe.
+  \end{proposition}
+
+  \reference{44}
+
+  \begin{application}
+    Soit $f : \mathbb{U} \rightarrow \mathbb{R}$ continue. Alors il existe deux points diamétralement opposés de $\mathbb{U}$ qui ont la même image par $f$.
+  \end{application}
+
+  \reference{39}
+
+  \begin{corollary}
+    $E$ est connexe si et seulement si toute application continue de $E$ dans $\{ 0, 1 \}$ est constante.
+  \end{corollary}
+
+  \begin{proposition}
+    Soit $(C_i)_{i \in I}$ une famille de parties connexes de $E$. On suppose que
+    \[ \exists i_0 \in I \text{ tel que } \forall i \in I, \, C_{i_0} \, \cap \, C_i \neq \emptyset \]
+    Alors, $\bigcup_{i \in I} C_i$ est connexe.
+  \end{proposition}
+
+  \begin{cexample}
+    $\{ 0 \}$ et $\{ 1 \}$ sont des connexes de $\mathbb{R}$, mais pas $\{ 0 \} \, \cup \, \{ 1 \} = \{ 0, 1 \}$.
+  \end{cexample}
+
+  \begin{proposition}
+    Un produit fini d'espaces métriques est connexe si et seulement si ces espaces métriques sont tous connexes.
+  \end{proposition}
+
+  \reference[I-P]{116}
+  \dev{connexite-des-valeurs-d-adherence-d-une-suite-dans-un-compact}
+
+  \begin{application}
+    Soit $(E, d)$ un espace métrique compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
+  \end{application}
+
+  \begin{corollary}[Lemme de la grenouille]
+    Soient $f : [0, 1] \rightarrow [0, 1]$ continue et $(x_n)$ une suite de $[0, 1]$ telle que
+    \[ \begin{cases} x_0 \in [0, 1] \\ x_{n+1} = f(x_n) \end{cases} \]
+    Alors $(x_n)$ converge si et seulement si $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$.
+  \end{corollary}
+
+  \subsubsection{Une approche géométrique}
+
+  \reference[GOU20]{42}
+
+  \begin{definition}
+    On appelle \textbf{chemin} de $E$ tout application $\gamma : [0,1] \rightarrow E$ continue. L'image $\gamma^* = \gamma([0,1])$ du chemin s'appelle un \textbf{arc}, $\gamma(0)$ \textbf{l'origine} de l'arc et $\gamma(1)$ son \textbf{extrémité}.
+  \end{definition}
+
+  \begin{definition}
+    $E$ est dit \textbf{connexe par arcs} si pour tout $(a,b) \in E^2$, il existe un arc inclus dans $E$ d'origine $a$ et d'extrémité $b$.
+  \end{definition}
+
+  \begin{remark}
+    Il s'agit là encore d'une définition topologique.
+  \end{remark}
+
+  \begin{theorem}
+    Un espace connexe par arcs est connexe.
+  \end{theorem}
+
+  \begin{cexample}
+    L'ensemble
+    \[
+      \Gamma = \left( \bigcup_{x \in \mathbb{Q}} (\{ x \} \times \mathbb{R}^+) \right) \, \cup \, \left( \bigcup_{x \in \mathbb{R} \setminus \mathbb{Q}} (\{ x \} \times \mathbb{R}^-_*) \right)
+    \]
+    est un connexe de $\mathbb{R}^2$ non connexe par arcs.
+  \end{cexample}
+
+  \begin{proposition}
+    La réciproque est vraie dans un ouvert d'un espace vectoriel normé.
+  \end{proposition}
+
+  \begin{application}
+    $\mathbb{R}$ et $\mathbb{R}^2$ ne sont pas homéomorphes.
+  \end{application}
+
+  \subsubsection{Une approche algébrique}
+
+  \begin{definition}
+    On définit la relation $\mathcal{R}$ suivante sur $E$ :
+    \[ x \mathcal{R} y \iff \exists C \subseteq E \text{ connexe tel que } x, y \in E \]
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathcal{R}$ est une relation d'équivalence sur $E$.
+      \item Si $x \in E$, sa classe d'équivalence est la réunion des connexes contenant $x$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Une classe d'équivalence pour la relation $\mathcal{R}$ est une \textbf{composante connexe} de $E$.
+  \end{definition}
+
+  \begin{remark}
+    $E$ est la réunion disjointe de ses composantes connexes. $E$ est donc connexe s'il n'admet qu'une seule composante connexe.
+  \end{remark}
+
+  \reference[ROM21]{724}
+
+  \begin{example}
+    On se place dans le cadre où $E$ est un espace vectoriel euclidien. Alors, $\mathcal{O}(E)$ est non-connexe. Ses composantes connexes sont $\mathrm{SO}(E)$ et $\{ u \in \mathcal{O}(E) \mid \det(u) = -1 \}$.
+  \end{example}
+
+  \reference[GOU20]{41}
+
+  \begin{proposition}
+    Les composantes connexes de $E$ sont des fermés de $E$. Si elles sont en nombre fini, ce sont également des ouverts de $E$.
+  \end{proposition}
+
+  \subsection{Exemples d'applications en analyse}
+
+  \subsubsection{En analyse réelle}
+
+  \reference{41}
+
+  \begin{theorem}
+    Les connexes de $\mathbb{R}$ sont les intervalles.
+  \end{theorem}
+
+  \begin{theorem}[Des valeurs intermédiaires]
+    Soient $I$ un intervalle de $\mathbb{R}$ et $f : I \rightarrow \mathbb{R}$ continue sur $I$. Alors $f(I)$ est un intervalle.
+  \end{theorem}
+
+  \begin{remark}
+    Une autre manière d'écrire ce résultat est que si $f(a) \leq f(b)$ (resp. $f(a) \geq f(b)$) avec $a<b$, alors pour tout $\gamma \in [f(a),f(b)]$ (resp. pour tout $\gamma \in [f(b),f(a)]$), il existe $c \in [a,b]$ tel que $f(c) = \gamma$.
+  \end{remark}
+
+  \reference{47}
+
+  \begin{corollary}[Théorème de Darboux]
+    Soient $I$ un intervalle de $\mathbb{R}$ et $f : I \rightarrow \mathbb{R}$ dérivable sur $I$. Alors $f'(I)$ est un intervalle.
+  \end{corollary}
+
+  \subsubsection{En calcul différentiel}
+
+  \reference{328}
+
+  \begin{proposition}
+    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow F$ où $F$ est un espace vectoriel normé. Si $f$ est différentiable telle que $\forall x \in U, \, \mathrm{d}f_x = 0$, alors $f$ est constante sur $U$.
+  \end{proposition}
+
+  \reference[BMP]{80}
+
+  \begin{example}
+    Soit $f$ une fonction holomorphe sur un ouvert connexe $\Omega$ de $\mathbb{C}$ telle que la suite $(f^{(n)})$ converge uniformément sur tout compact de $\Omega$. On note $g$ la limite de la suite $(f^{(n)})$. Alors, il existe $C \in \mathbb{C}$ tel que $g = C\exp$.
+  \end{example}
+
+  \reference[GOU20]{349}
+
+  \begin{proposition}
+    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow E$. Si $f$ est de classe $\mathcal{C}^1$ telle que $\forall x \in U, \, \mathrm{d}f_x$ est une isométrie, alors $f$ est une isométrie affine.
+  \end{proposition}
+
+  \subsubsection{En analyse complexe}
+
+  \reference[BMP]{53}
+
+  Soit $\Omega \subseteq \mathbb{C}$ un ouvert. On suppose $\Omega$ connexe. Soit $f : \Omega \rightarrow \mathbb{C}$.
+
+  \begin{theorem}[Zéros isolés]
+    \label{204-2}
+    Si $f$ est une fonction analytique sur $\Omega$ et si $f$ n'est pas identiquement nulle, alors l'ensemble des zéros de $f$ n'admet pas de point d'accumulation dans $\Omega$.
+  \end{theorem}
+
+  \begin{corollary}
+    L'ensemble des zéros d'une fonction analytique non nulle sur $\Omega$ est au plus dénombrable.
+  \end{corollary}
+
+  \begin{remark}[Prolongement analytique]
+    Reformulé de manière équivalente au \cref{204-2}, si deux fonctions analytiques coïncident sur un sous-ensemble de $\Omega$ qui possède un point d'accumulation dans $\Omega$, alors elles sont égales sur $\Omega$.
+  \end{remark}
+
+  \reference{77}
+
+  \begin{example}
+    Il existe une unique fonction $g$ holomorphe sur $\mathbb{C}$ telle que
+    \[ \forall n \in \mathbb{N}^*, \, g\left( \frac{1}{n} \right) = \frac{1}{n} \]
+    et c'est la fonction identité.
+  \end{example}
+
+  \begin{cexample}
+    Il existe au moins deux fonctions $g$ holomorphes sur $\Omega = \{ z \in \mathbb{C} \mid \operatorname{Re}(z) > 0 \}$ telles que
+    \[ \forall n \in \mathbb{N}^*, \, g\left( \frac{1}{n} \right) = 0 \]
+  \end{cexample}
+
+  \reference{83}
+
+  \begin{application}[Transformée de Fourier d'une Gaussienne]
+    On a
+    \[ \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\pi} e^{-\frac{x^2}{4}} \]
+  \end{application}
+
+  \reference{72}
+
+  \begin{theorem}[Principe du maximum]
+    On suppose $\Omega$ borné et $f$ holomorphe sur $\Omega$ et continue sur $\overline{\Omega}$. On note $M$ le maximum de $f$ sur la frontière de $\Omega$. Alors,
+    \begin{enumerate}[label=(\roman*)]
+      \item Pour tout $z \in \Omega$, $\vert f(z) \vert \leq M$.
+      \item S'il existe $z_0 \in \Omega$ tel que $\vert f(z) \vert = M$, alors $f$ est constant sur $\Omega$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{80}
+
+  \begin{application}
+    Soit $(f_n)$ une suite de fonctions holomorphes sur $\Omega$ et continues sur $\overline{\Omega}$. Si $(f_n)$ converge uniformément sur la frontière de $\Omega$, alors $(f_n)$ converge uniformément sur $\Omega$ et la limite est holomorphe.
+  \end{application}
+
+  \begin{application}
+    On suppose que $D(0,1) \subseteq \Omega$ et $f$ holomorphe sur $\Omega$. On suppose de plus que $f(0) = 1$ et $\vert f(z) \vert \geq 2$ sur le cercle unité. Alors $f$ s'annule sur le cercle unité.
+  \end{application}
+
+  \subsection{Exemple d'application en algèbre}
+
+  \reference[BMP]{213}
+
+  \begin{proposition}
+    $\mathrm{GL}_n(\mathbb{R})$ n'est pas connexe. Ses composantes connexes sont $\mathrm{GL}_n(\mathbb{R})^+$ et $\mathrm{GL}_n(\mathbb{R})^-$.
+  \end{proposition}
+
+  \begin{application}
+    $\exp : \mathcal{M}_n(\mathbb{R}) \rightarrow \mathrm{GL}_n(\mathbb{R})$ n'est pas surjective.
+  \end{application}
+
+  \reference[ROM21]{770}
+
+  \begin{proposition}
+    $\mathrm{GL}_n(\mathbb{C})$ est connexe par arcs.
+  \end{proposition}
+
+  \reference[I-P]{396}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item Soit $A \in \mathcal{M}_n(\mathbb{C})$. Alors $\exp(A) \in \mathrm{GL}_n(\mathbb{C})$.
+      \item $\exp$ est différentiable en $0$ et $\mathrm{d}\exp_0 = \operatorname{id}_{\mathcal{M}_n(\mathbb{C})}$.
+      \item Soit $M \in \mathrm{GL}_n(\mathbb{C})$. Alors $M^{-1} \in \mathbb{C}[M]$.
+    \end{enumerate}
+  \end{lemma}
+
+  \dev{surjectivite-de-l-exponentielle}
+
+  \begin{theorem}
+    $\exp : \mathcal{M}_n(\mathbb{C}) \rightarrow \mathrm{GL}_n(\mathbb{C})$ est surjective.
+  \end{theorem}
+
+  \begin{application}
+    $\exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R})^2$, où $\mathrm{GL}_n(\mathbb{R})^2$ désigne les carrés de $\mathrm{GL}_n(\mathbb{R})$.
+  \end{application}
+  %</content>
+\end{document}

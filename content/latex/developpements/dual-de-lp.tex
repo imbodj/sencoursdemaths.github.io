@@ -1,0 +1,98 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{dual-de-lp}{Dual de \texorpdfstring{$L_p$}{Lp}}
+
+  \summary{Avec les propriétés hilbertiennes de $L_2$ couplées à certaines propriétés des espaces $L_p$, on montre que le dual d'un espace $L_p$ est $L_q$ pour $\frac{1}{p} + \frac{1}{q} = 1$, dans le cas où $p \in ]1, 2[$ et où l'espace est de mesure finie.}
+
+  Soit $(X, \mathcal{A}, \mu)$ un espace mesuré de mesure finie.
+
+  \begin{notation}
+    On note $\forall p \in ]1, 2[$, $L_p = L_p(X, \mathcal{A}, \mu)$.
+  \end{notation}
+
+  \begin{lemma}
+    \label{dual-de-lp-1}
+    Soient $p \in ]1, 2[$ et $f \in L_2$. Alors $f \in L_p$ telle que $\Vert f \Vert_p \leq M \Vert f \Vert_2$ où $M \geq 0$.
+  \end{lemma}
+
+  \begin{proof}
+    Comme $p \in ]1, 2[$, on a $\frac{2}{p} > 1$. Soit $r$ tel que $\frac{p}{2} + \frac{1}{r} = 1$. On applique l'inégalité de Hölder à $g = \vert f \vert^p \mathbb{1}_X$ de sorte que
+    \[ \int_X \vert f \vert^p \, \mathrm{d}\mu = \Vert \vert f \vert^p \mathbb{1}_X \Vert_1 \leq \Vert \vert f \vert^p \Vert_{\frac{2}{p}} \Vert \mathbb{1}_X \Vert_r \leq \mu(X)^{\frac{1}{r}} \Vert f \Vert_2^p \]
+    d'où le résultat.
+  \end{proof}
+
+  \begin{lemma}
+    \label{dual-de-lp-2}
+    Soit $p \in ]1, 2[$. Alors $L_2$ est dense dans $L_p$ pour la norme $\Vert . \Vert_p$.
+  \end{lemma}
+
+  \begin{proof}
+    Soit $f \in L_p$. On considère la suite de fonction $(f_n)$ définie par
+    \[ \forall n \in \mathbb{N}, \, f_n = f \mathbb{1}_{|f| \leq n} \]
+    Clairement, $(f_n)$ est une suite de $L_2$. On va chercher à appliquer le théorème de convergence dominée à la suite de fonctions $(g_n)$ définie pour tout $n \in \mathbb{N}$ par $g_n = |f_n - f|^p$ :
+    \begin{itemize}
+      \item $\forall n \in \mathbb{N}$, $g_n$ est mesurable.
+      \item $(g_n)$ converge presque partout vers la fonction nulle.
+      \item Par convexité de la fonction $x \mapsto x^p$, on a
+      \[ |f_n - f|^p = 2^p \left| \frac{f_n}{2} - \frac{f}{2} \right|^p \leq 2^{p-1} (|f|^p + |f_n|^p) \leq 2^p |f|^p \in L_1 \]
+    \end{itemize}
+    On peut donc conclure
+    \[ \Vert f - f_n \Vert^p_p = \int_X |f - f_n|^p \, \mathrm{d}\mu \longrightarrow 0 \]
+    ce qu'il fallait démontrer.
+  \end{proof}
+
+  \reference[Z-Q]{222}
+
+  \begin{theorem}
+    L'application
+    \[
+    \varphi :
+    \begin{array}{ll}
+      L_q &\rightarrow (L_p)' \\
+      g &\mapsto \left( \varphi_g : f \mapsto \int_X f \overline{g} \, \mathrm{d}\mu \right)
+    \end{array}
+    \qquad \text{ où } \frac{1}{p} + \frac{1}{q} = 1
+    \]
+    est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
+  \end{theorem}
+
+  \begin{proof}
+    Soient $g \in L_q$ et $f \in L_p$. L'inégalité de Hölder donne
+    \[ \vert \varphi_g(f) \vert \leq \Vert g \Vert_q \Vert f \Vert_p \]
+    donc $\varphi_g \in (L_p)'$ et $\VERT \varphi_g \VERT \leq \Vert g \Vert_q$. De plus, si $g = 0$, alors $\VERT \varphi_g \VERT = \Vert g \Vert_q = 0$. On peut donc supposer $g \neq 0$.
+    \newpar
+     Soit $u$ une fonction mesurable de module 1, telle que $g = u \vert g \vert$. On pose $h = \overline{u} \vert g \vert^{q-1}$. Comme $q = p(q-1)$, on a
+    \[ \int_X \vert h \vert^p \, \mathrm{d}\mu = \int_X \vert g \vert^{(q-1)p} \, \mathrm{d}\mu = \int_X \vert g \vert^{q} \, \mathrm{d}\mu < + \infty \]
+    d'où $h \in L_p$ et $\Vert h \Vert_p^p = \Vert g \Vert_q^q = \vert \varphi_g(h) \vert$. Comme, $\frac{\vert \varphi_g(h) \vert}{\Vert h \Vert_p} \leq \VERT \varphi_g \VERT$, on a en particulier,
+    \[ \underbrace{\int_X \vert g \vert^{q} \, \mathrm{d}\mu}_{= \vert \varphi_g(h) \vert} \leq \VERT \varphi_g \VERT \underbrace{\left ( \int_X \vert g \vert^{q} \, \mathrm{d}\mu \right )^{\frac{1}{p}}}_{= \Vert h \Vert_p} \]
+    et ainsi,
+    \[ \VERT \varphi_g \VERT \geq \left ( \int_X \vert g \vert^{q} \, \mathrm{d}\mu \right )^{1 - \frac{1}{p}} = \left ( \int_X \vert g \vert^{q} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \Vert g \Vert_q \]
+    donc $\VERT \varphi_g \VERT = \Vert g \Vert_q$ et $\varphi$ est une isométrie.
+    \newpar
+    Montrons qu'elle est surjective. Soit $\ell \in (L_p)'$. D'après le \cref{dual-de-lp-1}, on a $L_2 \subseteq L_p$, donc on peut considérer la restriction $\widetilde{\ell} = \ell_{| L_2}$.
+    \[ \forall f \in L_2, \quad \vert \widetilde{\ell}(f) \vert \leq \VERT \ell \VERT \Vert f \Vert_p \leq M \Vert \ell \Vert \Vert f \Vert_2 \implies \widetilde{\ell} \in (L_2)' \]
+    Comme $L_2$ est un espace de Hilbert, on peut appliquer le théorème de représentation de Riesz à $\widetilde{\ell}$. Il existe $g \in L_2$ telle que
+    \[ \forall f \in L_2, \quad \widetilde{\ell}(f) = \int_X f \overline{g} \, \mathrm{d}\mu \]
+    Pour conclure, il reste à montrer que $g \in L_q$ et que l'égalité précédente est vérifiée sur $L_p$. Comme précédemment, on considère $u$ de module $1$ telle que $g = u \vert g \vert$ et on pose $f_n = \overline{u} \vert g \vert^{q-1} \mathbb{1}_{\vert g \vert \leq n} \in L_\infty \subseteq L_2$. On a
+    \[ \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu = \vert \ell(f_n) \vert \leq \Vert \ell \Vert \Vert f_n \Vert_p = \Vert \ell \Vert \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{p}} \]
+    D'où
+    \[ \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{1 - \frac{1}{p}} \leq \VERT \ell \VERT \]
+    D'après le théorème de convergence monotone, on a
+    \[ \lim_{n \rightarrow +\infty} \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \left ( \int_X \vert g \vert^q \, \mathrm{d}\mu \right )^{\frac{1}{q}} \leq \VERT \ell \VERT \]
+    Et en particulier, $g \in L_q$ de norme inférieure ou égale à $\VERT \ell \VERT$. Ainsi, on a $\forall f \in L_2$, $\ell(f) = \varphi_g(f)$. Les applications $\ell$ et $\varphi_g$ sont continues sur $L_p$ et $L_2$ est dense dans $L_p$ (par le \cref{dual-de-lp-2}), donc on a bien $\ell = \varphi_g = \varphi(g)$.
+  \end{proof}
+
+  \reference[LI]{140}
+
+  \begin{remark}
+    Plus généralement, si l'on identifie $g$ et $\varphi_g$ :
+    \begin{itemize}
+      \item $L_q$ est le dual topologique de $L_p$ pour $p \in ]1, +\infty[$.
+      \item $L_\infty$ est le dual topologique de $L_1$ si $\mu$ est $\sigma$-finie.
+    \end{itemize}
+  \end{remark}
+  %</content>
+\end{document}

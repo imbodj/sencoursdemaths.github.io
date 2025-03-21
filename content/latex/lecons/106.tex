@@ -1,0 +1,434 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{106}{Groupe linéaire d'un espace vectoriel de dimension finie \texorpdfstring{$E$}{E}, sous-groupes de \texorpdfstring{$\mathrm{GL}(E)$}{GL(E)}. Applications.}
+
+  Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps $\mathbb{K}$.
+
+  \subsection{Étude du groupe linéaire}
+
+  \subsubsection{\texorpdfstring{$\mathrm{GL}(E)$}{GL(E)} et son lien avec l'algèbre des matrices}
+
+  \reference[ROM21]{139}
+
+  \begin{definition}
+    Le \textbf{groupe linéaire} de $E$ est le groupe des applications $\mathbb{K}$-linéaires bijectives de $E$ dans $E$.
+  \end{definition}
+
+  \reference[PER]{95}
+
+  \begin{remark}
+    Le choix d'une base de $E$ permet de réaliser un isomorphisme d'algèbre de $\mathcal{L}(E)$ sur $\mathcal{M}_n(\mathbb{K})$ et cet isomorphisme induit un isomorphisme de $\mathrm{GL}(E)$ sur $\mathrm{GL}_n(\mathbb{K})$.
+    Cet isomorphisme se définit à l'aide du choix d'une base, il n'est donc pas canonique.
+  \end{remark}
+
+  Pour cette raison, on pourra par la suite confondre $\mathrm{GL}(E)$ et $\mathrm{GL}_n(\mathbb{K})$.
+
+  \begin{proposition}
+    $\det : \mathrm{GL}(E) \rightarrow \mathbb{K}^*$ est un morphisme surjectif.
+  \end{proposition}
+
+  \reference[ROM21]{140}
+
+  \begin{theorem}
+    Soit $u \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $u \in \mathrm{GL}(E)$.
+      \item $\ker(u) = \{ 0 \}$.
+      \item $\im(u) = E$.
+      \item $\rang(u) = n$.
+      \item $\det(u) = 0$.
+      \item $u$ transforme toute base de $E$ en une base de $E$.
+      \item Il existe $v \in \mathcal{L}(E)$ tel que $u \circ v = \operatorname{id}_E$.
+      \item Il existe $w \in \mathcal{L}(E)$ tel que $w \circ u = \operatorname{id}_E$.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{Centre}
+
+  \reference[PER]{98}
+
+  \begin{proposition}
+    Soit $u \in \mathrm{GL}(E)$ un endomorphisme laissant invariantes toutes les droites vectorielles de $E$. Alors $u$ est une homothétie.
+  \end{proposition}
+
+  \begin{theorem}
+    \[ \mathrm{GL}(E) = \mathbb{K}^* \cdot \operatorname{id}_E \]
+  \end{theorem}
+
+  \subsubsection{Sous-groupes notables}
+
+  \paragraph{Groupe orthogonal}
+
+  \reference[ROM21]{720}
+
+  \begin{definition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{orthogonal} (ou est une \textbf{isométrie}) s'il est tel que $\langle u(x), u(y) \rangle = \langle x, y \rangle$ pour tout $x, y \in E$. On note $\mathcal{O}(E)$ l'ensemble des endomorphismes orthogonaux de $E$.
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item Les seules homothéties qui sont des isométries sont $-\operatorname{id}_E$ et $\operatorname{id}_E$.
+      \item Si $n = 1$, on a $\mathcal{O}(E) = \{ \pm \operatorname{id}_E \}$.
+    \end{itemize}
+  \end{example}
+
+  \reference{743}
+
+  \begin{proposition}
+    Soit $u \in \mathcal{L}(E)$.
+    \[ u = \mathcal{O}(E) \iff \forall x \in E, \, \Vert u(x) \Vert \iff u \in \mathrm{GL}(E) \text{ et } u^{-1} = u^* \]
+  \end{proposition}
+
+  \reference{721}
+
+  \begin{theorem}
+    Les isométries sont des automorphismes. Il en résulte que $\mathcal{O}(E)$ est un sous-groupe de $\mathrm{GL}(E)$.
+  \end{theorem}
+
+  \begin{remark}
+    Ce n'est pas vrai en dimension infinie.
+  \end{remark}
+
+  \begin{theorem}
+    Un endomorphisme de $E$ est une isométrie si et seulement s'il transforme toute base orthonormée de $E$ en une base orthonormée.
+  \end{theorem}
+
+  \begin{theorem}
+    Un endomorphisme de $E$ est une isométrie si et seulement si sa matrice $A$ dans une base orthonormée est inversible, d'inverse $\tr{A}$.
+    \newpar
+    On dit alors que $A$ est \textbf{orthogonale}.
+  \end{theorem}
+
+  \begin{notation}
+    On note $\mathcal{O}_n(\mathbb{R})$ le groupe des matrices orthogonales.
+  \end{notation}
+
+  \begin{theorem}
+    \[ \forall u \in \mathcal{O}(E), \, \det(u) = \pm 1 \]
+  \end{theorem}
+
+  \begin{remark}
+    On a des résultats équivalents pour les matrices.
+  \end{remark}
+
+  \begin{theorem}[Réduction des endomorphismes orthogonaux]
+    Soit $u \in \mathcal{O}(E)$. Alors, il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+    \[ \begin{pmatrix} I_p & 0 & 0 & \dots & 0 \\ 0 & -I_q & 0 & \dots & 0 \\ 0 & 0 & R_1 & \ddots & \vdots \\ \vdots & \ddots & \ddots & \ddots & 0 \\ 0 & \dots & \dots & 0 & R_r \end{pmatrix} \]
+    où $R_i = \begin{pmatrix} \cos(\theta_i) & -\sin(\theta_i) \\ \sin(\theta_i) & \cos(\theta_i) \end{pmatrix}$ avec $\forall i \in \llbracket 1, r \rrbracket, \, \theta_i \in ]0,2\pi[$.
+  \end{theorem}
+
+  \paragraph{Groupe spécial linéaire}
+
+  \reference{141}
+
+  \begin{definition}
+    On définit $\mathrm{SL}(E) = \ker(\det)$ le \textbf{groupe spécial linéaire} de $E$.
+  \end{definition}
+
+  \begin{remark}
+    On peut définir de manière analogue $\mathrm{SL}_n(\mathbb{K})$, et on a encore un isomorphisme entre ces deux groupes.
+  \end{remark}
+
+  \begin{theorem}
+    $\mathrm{SL}(E)$ est un sous-groupe distingué de $\mathrm{GL}(E)$. Le groupe quotient $\mathrm{GL}(E)/\mathrm{SL}(E)$ est isomorphe à $\mathbb{K}^*$ et on a la suite exacte :
+    \[ \{ \operatorname{id}_E \} \rightarrow \mathrm{SL}(E) \rightarrow \mathrm{GL}(E) \xrightarrow{\det} \mathbb{K}^* \rightarrow \{ \operatorname{id}_E \} \]
+  \end{theorem}
+
+  \begin{theorem}
+    \[ Z(\mathrm{SL}(E)) = \mu_n(\mathbb{K}) \cdot \operatorname{id}_E \]
+    où $\mu_n(\mathbb{K})$ désigne le groupe des racines de l'unité de $\mathbb{K}$.
+  \end{theorem}
+
+  \reference[PER]{97}
+
+  \begin{proposition}
+    Soit $u \in \mathrm{GL}(E) \setminus \{ \operatorname{id}_E \}$. Soit $H$ un hyperplan de $E$ tel que $u_{|H} = \operatorname{id}_H$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\det(u) = 1$.
+      \item $u$ n'est pas diagonalisable.
+      \item $\im(u - \operatorname{id}_E) \subseteq H$.
+      \item Le morphisme induit $\overline{u} : E/H \rightarrow E/H$ est l'identité de $E/H$.
+      \item En notant $H = \ker(f)$ (où $f$ désigne une forme linéaire sur $E$), il existe $a \in H \setminus \{ 0 \}$ tel que
+      \[ u = \operatorname{id}_E + f \cdot a \]
+      \item Dans une base adaptée, la matrice de $u$ s'écrit
+      \[
+      \begin{pmatrix}
+        I_{n-2} & 0 & 0 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+      \end{pmatrix}
+      \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    En reprenant les notations précédentes, on dit que $u$ est une \textbf{transvection} d'hyperplan $H$ et de droite $\operatorname{Vect}(a)$.
+  \end{definition}
+
+  \begin{proposition}
+    Soient $u \in \mathrm{GL}(E)$ et $\tau$ une transvection d'hyperplan $H$ et de droite $D$. Alors, $u \tau u^{-1}$ est une transvection d'hyperplan $u(H)$ et de droite $u(D)$.
+  \end{proposition}
+
+  \begin{theorem}
+    Si $n \geq 2$, les transvections engendrent $\mathrm{SL}(E)$.
+  \end{theorem}
+
+  \subsubsection{Générateurs}
+
+  \begin{proposition}
+    Soit $u \in \mathrm{GL}(E)$. Soit $H$ un hyperplan de $E$ tel que $u_{|H} = \operatorname{id}_H$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\det(u) = \lambda \neq 1$.
+      \item $u$ admet une valeur propre $\lambda \neq 1$.
+      \item $\im(u - \operatorname{id}_E) \not\subseteq H$.
+      \item Dans une base adaptée, la matrice de $u$ s'écrit
+      \[
+        \begin{pmatrix}
+          I_{n-1} & 0 \\
+          0 & \lambda
+        \end{pmatrix}
+      \]
+      avec $\lambda \neq 1$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    En reprenant les notations précédentes, on dit que $u$ est une \textbf{dilatation} de rapport $\lambda$.
+  \end{definition}
+
+  \begin{theorem}
+    Si $n \geq 2$, les transvections et les dilatations engendrent $\mathrm{GL}(E)$.
+  \end{theorem}
+
+  \reference[I-P]{203}
+
+  \begin{notation}
+    Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$.
+  \end{notation}
+
+  \begin{lemma}
+    Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie. Les dilatations engendrent $\mathrm{GL}(V)$.
+  \end{lemma}
+
+  \dev{theoreme-de-frobenius-zolotarev}
+
+  \begin{application}[Théorème de Frobenius-Zolotarev]
+    Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
+    \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
+    où $u$ est vu comme une permutation des éléments de $V$.
+  \end{application}
+
+  \subsubsection{Groupes projectifs}
+
+  \reference[ROM21]{141}
+
+  \begin{definition}
+    On définit $\mathrm{PGL}(E)$ (resp. $\mathrm{PSL}(E)$) le quotient de $\mathrm{GL}(E)$ (resp. $\mathrm{SL}(E)$) par son centre.
+  \end{definition}
+
+  \begin{proposition}
+    \[ Z(\mathrm{PGL}(E)) = Z(\mathrm{PSL}(E)) = \{ \operatorname{id}_E \} \]
+  \end{proposition}
+
+  \reference[ULM21]{124}
+
+  On se place pour la suite de cette sous-section dans le cas où $\mathbb{K} = \mathbb{F}_q$.
+
+  \begin{proposition}
+    Les groupes précédents sont finis, et :
+    \begin{enumerate}[label=(\roman*)]
+      \item $|\mathrm{GL}(E)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
+      \item $|\mathrm{PGL}(E)| = |\mathrm{SL}(E)| = \frac{|\mathrm{GL}(E)|}{q-1}$.
+      \item $|\mathrm{PSL}(E)| = |\mathrm{SL}(E)| = \frac{|\mathrm{GL}(E)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[ROM21]{157}
+
+  \begin{application}
+    Pour tout entier $p \in \llbracket 1, n \rrbracket$, il y a
+    \[ \frac{\prod_{k=n-(p-1)}^{n} (q^k - 1)}{\prod_{k=1}^{p} (q^k - 1)} \]
+    sous-espaces vectoriels de dimension $p$ dans $E$.
+  \end{application}
+
+  \subsection{Actions sur l'algèbre des matrices}
+
+  \subsubsection{Action par translation}
+
+  \reference[ROM21]{184}
+
+  \begin{proposition}
+    Les applications
+    \[
+    \begin{array}{ccc}
+      \mathrm{GL}_n(\mathbb{K}) \times \mathcal{M}_n(\mathbb{K}) &\rightarrow& \mathcal{M}_n(\mathbb{K}) \\
+      (P, A) &\mapsto& PA
+    \end{array}
+    \]
+    et
+    \[
+    \begin{array}{ccc}
+      \mathrm{GL}_n(\mathbb{K}) \times \mathcal{M}_n(\mathbb{K}) &\rightarrow& \mathcal{M}_n(\mathbb{K}) \\
+      (P, A) &\mapsto& AP^{-1}
+    \end{array}
+    \]
+    définissent une action de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+  \end{proposition}
+
+  \begin{remark}
+    Pour la première action, deux matrices sont dans la même orbite si et seulement si elles ont même noyau. Pour la seconde, deux matrices sont dans la même orbite si et seulement si elles ont même image.
+  \end{remark}
+
+  \reference[C-G]{376}
+
+  \begin{lemma}
+    \[ \forall A \in \mathcal{S}_n^{++}(\mathbb{R}) \, \exists! B \in \mathcal{S}_n^{++}(\mathbb{R}) \text{ telle que } B^2 = A \]
+  \end{lemma}
+
+  \dev{decomposition-polaire}
+
+  \begin{theorem}[Décomposition polaire]
+    L'application
+    \[ \mu :
+    \begin{array}{ccc}
+      \mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+      (O, S) &\mapsto& OS
+    \end{array}
+    \]
+    est un homéomorphisme.
+  \end{theorem}
+
+  \begin{remark}
+    Ainsi, pour toute matrice $A \in \mathrm{GL}_n(\mathbb{R})$, il existe un représentant de $\mathcal{O}_n(\mathbb{R})$ pour l'action par translation à gauche.
+  \end{remark}
+
+  \subsubsection{Action par conjugaison}
+
+  \reference[ROM21]{199}
+
+  \begin{proposition}
+    L'application
+    \[
+      \begin{array}{ccc}
+        \mathrm{GL}_n(\mathbb{K}) \times \mathcal{M}_n(\mathbb{K}) &\rightarrow& \mathcal{M}_n(\mathbb{K}) \\
+        (P, A) &\mapsto& PAP^{-1}
+      \end{array}
+    \]
+    définit une action de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+  \end{proposition}
+
+  \begin{definition}
+    Deux matrices qui sont dans la même orbite pour cette action sont dites \textbf{semblables}.
+  \end{definition}
+
+  \reference[GOU21]{127}
+
+  \begin{remark}
+    Deux matrices semblables représentes la même application linéaire dans deux bases de $\mathbb{K}^n$.
+  \end{remark}
+
+  \reference[ROM21]{199}
+
+  \begin{theorem}
+    Soient $A$ et $B$ deux matrices semblables. Alors :
+    \begin{itemize}
+      \item $\trace(A) = \trace(B)$.
+      \item $\det(A) = \det(B)$.
+      \item $\rang(A) = \rang(B)$.
+      \item $\chi_A = \chi_B$.
+      \item $\pi_A = \pi_B$.
+    \end{itemize}
+  \end{theorem}
+
+  \reference[D-L]{137}
+
+  \begin{cexample}
+    Les matrices $\begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix}$ et $\begin{pmatrix} 0 & 1 \\ 0 & 0\end{pmatrix}$ ont la même trace, le même déterminant, le même polynôme caractéristique, mais ne sont pas semblables.
+  \end{cexample}
+
+  \reference[GOU21]{167}
+
+  \begin{theorem}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $A, B \in \mathcal{M}_n(\mathbb{K})$. On suppose $\mathbb{K}$ infini et $A, B$  semblables sur $\mathbb{L}$. Alors $A$ et $B$ sont semblables sur $\mathbb{K}$.
+  \end{theorem}
+
+  \subsubsection{Action par congruence}
+
+  \reference[ROM21]{206}
+
+  On suppose $\mathbb{K}$ de caractéristique différente de $2$.
+
+  \begin{proposition}
+    L'application
+    \[
+    \begin{array}{ccc}
+      \mathrm{GL}_n(\mathbb{K}) \times \mathcal{S}_n(\mathbb{K}) &\rightarrow& \mathcal{S}_n(\mathbb{K}) \\
+      (P, A) &\mapsto& PA\tr{P}
+    \end{array}
+    \]
+    définit une action de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{S}_n(\mathbb{K})$.
+  \end{proposition}
+
+  \begin{definition}
+    Deux matrices qui sont dans la même orbite pour cette action sont dites \textbf{congruentes}.
+  \end{definition}
+
+  \begin{remark}
+    Deux matrices congruentes représentent la même forme quadratique dans deux bases de $\mathbb{K}^n$.
+  \end{remark}
+
+  \begin{theorem}[Spectral]
+    Toute matrice symétrique est congruente à une matrice diagonale.
+  \end{theorem}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item \uline{Si $\mathbb{K} = \mathbb{C}$ :} deux matrices symétriques $A$ et $B$ sont congruentes si et seulement si elles ont même rang. Les orbites pour cette action sont les ensembles
+      \[ \mathcal{O}_r = \{ A \in \mathcal{S}_n(\mathbb{C}) \mid \rang(A) = r \} \]
+      pour $r \in \llbracket 1, n \rrbracket$.
+      \item \uline{Si $\mathbb{K} = \mathbb{R}$ :} deux matrices symétriques $A$ et $B$ sont congruentes si et seulement si elles ont même signature. Les orbites pour cette action sont les ensembles
+      \[ \mathcal{O}_{(s,r)} = \{ A \in \mathcal{S}_n(\mathbb{C}) \mid \operatorname{sign}(\Phi_A) = (s,t) \} \]
+      où $\Phi_A$ désigne la forme quadratique associée à une matrice $A \in \mathcal{S}_n(\mathbb{R})$.
+      \item \uline{Si $\mathbb{K} = \mathbb{F}_q$ :} deux matrices symétriques $A$ et $B$ sont congruentes si et seulement si elles même déterminant modulo $q$.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsection{Topologie}
+
+  \reference{159}
+
+  On se place pour la suite de cette sous-section dans le cas où $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. On munit $E$ d'une norme $\Vert . \Vert$ et on note $\VERT . \VERT$ la norme subordonnée associée.
+
+  \begin{proposition}
+    L'espace $(\mathcal{L}(E), \VERT . \VERT)$ des applications continues de $E$ dans $E$ est une algèbre de Banach.
+  \end{proposition}
+
+  \begin{theorem}
+    $\mathrm{GL}(E)$ est un ouvert dense de $\mathcal{L}(E)$ et l'application $u \mapsto u^{-1}$ est continue sur $\mathrm{GL}(E)$.
+  \end{theorem}
+
+  \reference[C-G]{62}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathrm{SO}_n(\mathbb{R})$ est compact (et connexe).
+      \item $\mathcal{O}_n(\mathbb{R})$ est compact (non-connexe).
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{379}
+
+  \begin{proposition}
+    Tout sous-groupe compact de $\mathrm{GL}_n(\mathbb{R})$ qui contient $\mathcal{O}_n(\mathbb{R})$ est $\mathcal{O}_n(\mathbb{R})$.
+  \end{proposition}
+
+  \reference{401}
+
+  \begin{proposition}
+    $\mathrm{GL}_n(\mathbb{R})^+$ est connexe.
+  \end{proposition}
+  %</content>
+\end{document}

@@ -1,0 +1,383 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{236}{Illustrer par des exemples quelques méthodes de calcul d'intégrales de fonctions d'une ou plusieurs variables.}
+
+  \subsection{Méthodes de base pour les fonction d'une variable}
+
+  \subsubsection{Primitives}
+
+  \reference[GOU20]{127}
+
+  \begin{theorem}[Fondamental de l'analyse]
+    Soit $f : [a,b] \rightarrow E$ (où $[a,b] \subseteq \mathbb{R}$ est un segment et $E$ un espace de Banach sur $\mathbb{R}$ ou $\mathbb{C}$).
+    \begin{enumerate}[label=(\roman*)]
+      \item L'application
+      \[
+      F :
+      \begin{array}{ccc}
+        [a,b] &\rightarrow& E \\
+        x &\mapsto& \int_a^x f(t) \, \mathrm{d}t
+      \end{array}
+      \]
+      est $\mathcal{C}^1$ par morceaux, continue, dérivable à gauche et à droite sur $[a,b]$ telle que
+      \[ F'_g(x) = \lim_{\substack{t \rightarrow x\\t < x}} f'(t) \text{ et } F'_d(x) = \lim_{\substack{t \rightarrow x\\t > x}} f'(t) \]
+      \item Si $f$ est continue sur $[a,b]$, $F$ est de classe $\mathcal{C}^1$ sur $[a,b]$ avec $F'(x) = f(x)$ pour tout $x \in [a,b]$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $[a,b] \subseteq \mathbb{R}$ un segment. Toute application continue $f : [a,b] \rightarrow \mathbb{R}$ admet au moins une primitive, et pour toute primitive $F$ de $f$ sur $[a,b]$, on a
+    \[ \int_a^b f(x) \, \mathrm{d}x = \left[ F(x) \right]^b_a = F(b) - F(a) \]
+  \end{corollary}
+
+  \begin{example}
+    \label{236-1}
+    Pour tout $n \in \mathbb{N}$, on note $W_n = \int_{0}^{\frac{\pi}{2}} \sin(x)^n \, \mathrm{d}x$. Alors, $W_0 = \frac{\pi}{2}$ et $W_1 = 1$.
+  \end{example}
+
+  \reference{137}
+
+  \begin{proposition}
+    Soit $F \in \mathbb{R}(X)$. Pour intégrer $x \mapsto F(x)$, on fait une décomposition en éléments simples de $F$, qui nous ramène à calculer des primitives de la forme
+    \[ \int \frac{\mathrm{d}x}{(x-a)^h} \, \mathrm{d}x \text{ et } \int \frac{ax+b}{(x^2+cx+d)^h} \, \mathrm{d}x \]
+    où $h \in \mathbb{N}^*$ et $c-4d < 0$.
+  \end{proposition}
+
+  \begin{example}
+    \[ \int^x \frac{1-x}{(x^2+x+1)^2} \, \mathrm{d}x = \frac{x+1}{x^2+x+1} + \frac{2}{\sqrt{3}} \arctan \left( \frac{2x+1}{\sqrt{3}} \right) + k \text{ avec } k \in \mathbb{R} \]
+  \end{example}
+
+  \subsubsection{Changement de variable}
+
+  \reference{127}
+
+  \begin{theorem}[Changement de variable]
+    Soit $[a,b] \subseteq \mathbb{R}$ un segment. Soit $\varphi : [a,b] \rightarrow \mathbb{R}$ une application de classe $\mathcal{C}^1$ et $f : I \rightarrow E$ où $I$ est un intervalle tel que $\varphi([a,b]) \subseteq I$. Alors,
+    \[ \int_a^b f(\varphi(t)) \varphi'(t) \, \mathrm{d}t = \int_{\varphi(a)}^{\varphi(b)} f(u) \, \mathrm{d}u \]
+  \end{theorem}
+
+  \reference{178}
+
+  \begin{example}
+    \[ \int_0^{\frac{\pi}{2}} \ln(\sin(x)) \, \mathrm{d}x = -\frac{\pi \ln(2)}{2} \]
+  \end{example}
+
+  \reference{139}
+
+  \begin{proposition}[Règle de Bioche]
+    Soit $R \in \mathbb{R}(X, Y)$. Pour calculer une primitive d'une fonction de la forme $f : x \mapsto R(\sin(x), \cos(x))$, on peut utiliser la règle de Bioche :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $\pi - x$, on pose $t = \sin(x)$.
+      \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $- x$, on pose $t = \cos(x)$.
+      \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $\pi + x$, on pose $t = \tan(x)$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    \[ \int^u \frac{\sin(x)^3}{1+\cos(x)^2} \, \mathrm{d}x \overset{t = \cos(x)}{=} \int^{\cos(u)} \frac{1-t^2}{1+t^2} (-\mathrm{d}t) = \cos(u) - 2\arctan(\cos(u)) + k \text{ avec } k \in \mathbb{R} \]
+  \end{example}
+
+  \subsubsection{Intégration par parties}
+
+  \reference{127}
+
+  \begin{theorem}[Intégration par parties]
+    Soit $[a,b] \subseteq \mathbb{R}$ un segment. Soient $u, v : [a,b] \rightarrow \mathbb{C}$ deux fonctions de classe $\mathcal{C}^1$. Alors,
+    \[ \int_a^b u(x)v'(x) \, \mathrm{d}x = \left[ u(x) v(x) \right]_a^b - \int_a^b u'(x) v(x) \, \mathrm{d}x \]
+  \end{theorem}
+
+  \reference{162}
+
+  \begin{example}[Fonction $\Gamma$ d'Euler]
+    \label{236-2}
+    On pose
+    \[ \forall x > 0, \, \Gamma(x) = \int_0^{+\infty} e^{-t} t^{x-1} \, \mathrm{d}t \]
+    Alors,
+    \[ \forall x > 0, \, \Gamma(x+1) = x \Gamma(x) \]
+    et en particulier, $\forall n \in \mathbb{N}, \, \Gamma(n) = n!$.
+  \end{example}
+
+  \reference{130}
+
+  \begin{example}[Intégrales de Wallis]
+    En reprenant l'\cref{236-1}, on a
+    \[ \forall p \in \mathbb{N}^*, \, W_{2p} = \frac{(2p-1)(2p-3) \dots 1}{2p (2p-2) \dots 2} \frac{\pi}{2} \text{ et } W_{2p+1} = \frac{2p (2p-2) \dots 2}{(2p-1)(2p-3) \dots 1} \]
+  \end{example}
+
+  \reference{167}
+
+  \begin{application}[Intégrale de Gauss]
+    \[ I = \int_0^{+\infty} e^{-t^2} \, \mathrm{d}t = \frac{\sqrt{\pi}}{2} \]
+  \end{application}
+
+  \subsection{Méthodes pour les fonctions de plusieurs variables}
+
+  \subsubsection{Intégration sur un espace produit}
+
+  \reference[B-P]{237}
+
+  \begin{theorem}[Fubini-Tonelli]
+    Soient $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ deux espaces mesurés et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
+      \item Dans $\overline{\mathbb{R}^+}$,
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{theorem}[Fubini-Lebesgue]
+    Soient $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ deux espaces mesurés et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
+      \item On a :
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{cexample}
+    On considère $f : (x,y) \mapsto 2e^{-2xy} - e^{-xy}$. Alors, $\int_{[0,1]} \left( \int_{\mathbb{R}^+} f(x,y) \, \mathrm{d}x \right) \mathrm{d}y = 0$, mais $\int_{\mathbb{R}^+} \left( \int_{[0,1]} f(x,y) \, \mathrm{d}y \right) \mathrm{d}x = \ln(2)$.
+  \end{cexample}
+
+  \reference[GOU20]{359}
+
+  \begin{example}
+    Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
+    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+  \end{example}
+
+  \subsubsection{Changement de variable généralisé}
+
+  \reference[BMP]{9}
+
+  \begin{theorem}
+    Soient $E$ et $F$ deux espaces de Banach et $U \subseteq E$ un ouvert.
+    Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et tout fonction $f$ appartient à $L_1$ si et seulement si $\vert \det \operatorname{Jac}(\varphi)_a \vert f \circ \varphi$ appartient à $L_1$. Dans ce cas,
+    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_a \vert f (\varphi(y)) \, \mathrm{d}y \]
+  \end{theorem}
+
+  \reference[GOU20]{355}
+
+  \begin{example}[Coordonnées polaires]
+    L'application
+    \[
+      \begin{array}{ccc}
+        \mathbb{R}^+ \times [0,2\pi] &\rightarrow& \mathbb{R} \times \mathbb{R} \\
+        (r,\theta) &\mapsto& (r\cos(\theta), r\sin(\theta))
+      \end{array}
+    \]
+    est un difféomorphisme de classe $\mathcal{C}^1$ donc le jacobien en $(r,\theta) \in \mathbb{R}^+ \times [0,2\pi]$ vaut $r$.
+  \end{example}
+
+  \begin{example}[Coordonnées sphériques]
+    L'application
+    \[
+      \begin{array}{ccc}
+        \mathbb{R}^+ \times [0,2\pi] \times \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] &\rightarrow& \mathbb{R} \times \mathbb{R} \times \mathbb{R} \\
+        (r,\theta,\varphi) &\mapsto& (r\cos(\varphi)\cos(\theta), r\cos(\varphi)\sin(\theta), r\sin(\varphi))
+      \end{array}
+    \]
+    est un difféomorphisme de classe $\mathcal{C}^1$ donc le jacobien en $(r,\theta,\varphi) \in \mathbb{R}^+ \times [0,2\pi] \times \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right]$ vaut $r^2 \cos(\varphi)$.
+  \end{example}
+
+  \begin{application}[Intégrale de Gauss]
+    En passant en coordonnées polaires,
+    \[ \int_{\mathbb{R}} e^{-x^2} \, \mathrm{d}x = \sqrt{\pi} \]
+  \end{application}
+
+  \subsection{Utilisation des théorèmes d'intégration}
+
+  Soit $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ un espace mesuré.
+
+  \subsubsection{Convergence dominée}
+
+  \reference[B-P]{140}
+
+  \begin{theorem}[Convergence dominée]
+    Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
+    \begin{enumerate}[label=(\roman*)]
+      \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
+      \item $\exists g \in \mathcal{L}_1$ positive telle que
+      \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
+      Alors,
+      \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \text{ et } \lim_{n \rightarrow +\infty} \int_X \vert f_n - f \vert \, \mathrm{d}\mu = 0 \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    Soit $\alpha > 1$. On pose $\forall n \geq 1, \, I_n(\alpha) = \int_0^n \left( 1 + \frac{x}{n} \right)^n e^{-\alpha x} \, \mathrm{d}x$. Alors,
+    \[ \lim_{n \rightarrow +\infty} I_n(\alpha) = \int_0^{+\infty} e^{(1-\alpha)x} \, \mathrm{d}x = \frac{1}{\alpha - 1} \]
+  \end{example}
+
+  \reference[AMR11]{156}
+
+  \begin{example}
+    \[ \lim_{n \rightarrow +\infty} \int_{0}^{+\infty} \frac{x^n}{x^{2n} + 1} \, \mathrm{d}x = 0 \]
+  \end{example}
+
+  \reference[G-K]{104}
+
+  \begin{example}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{3n+1} = \int_0^1 \frac{\mathrm{d}x}{x^3 + 1} \, \mathrm{d}x = \frac{3\ln(2) + \sqrt{3}\pi}{9} \]
+  \end{example}
+
+  \subsubsection{Régularité sous l'intégrale}
+
+  \reference[Z-Q]{312}
+
+  Soit $f : E \times X \rightarrow \mathbb{C}$ où $(E, d)$ est un espace métrique. On pose $F : t \mapsto \int_X f(t, x) \, \mathrm{d}\mu(x)$.
+
+  \begin{theorem}[Continuité sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
+      \item $\exists g \in L_1(X)$ positive telle que
+      \[ |f(t,x)| \leq g(x) \quad \forall t \in E, \text{pp. en } x \in X \]
+    \end{enumerate}
+    Alors $F$ est continue en $t_0$.
+  \end{theorem}
+
+  \reference{318}
+
+  \begin{example}
+    La fonction $\Gamma$ de l'\cref{236-2} est bien définie et continue sur $\mathbb{R}^+_*$.
+  \end{example}
+
+  \reference{313}
+
+  On suppose maintenant que $E$ est un intervalle $I$ ouvert de $\mathbb{R}$.
+
+  \begin{theorem}[Dérivation sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
+      \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
+      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+  \end{theorem}
+
+  \reference[GOU20]{169}
+
+  \begin{application}[Transformée de Fourier d'une Gaussienne]
+    En résolvant une équation différentielle linéaire, on a
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+  \end{application}
+
+  \reference[G-K]{107}
+  \dev{integrale-de-dirichlet}
+
+  \begin{application}[Intégrale de Dirichlet]
+    On pose $\forall x \geq 0$,
+    \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
+    alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
+      \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
+      \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
+    \end{enumerate}
+  \end{application}
+
+  \subsection{Utilisation de l'analyse complexe}
+
+  \subsubsection{Formule intégrale de Cauchy}
+
+  \reference[QUE]{134}
+
+  Soit $\Omega$ un ouvert de $\mathbb{C}$. Soit $f : \Omega \rightarrow \mathbb{C}$.
+
+  \begin{theorem}[Cauchy homologique]
+    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$ (ie. tel que $z \notin \Omega \implies I(a, \Gamma) = 0$). On suppose $f \in \mathcal{H}(\Omega)$. Alors,
+    \[ \int_\Gamma f(z) \, \mathrm{d}z = 0 \]
+  \end{theorem}
+
+  \begin{corollary}[Formule intégrale de Cauchy]
+    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$. On suppose $f \in \mathcal{H}(\Omega)$. Alors,
+    \[ z_0 \in \Omega \setminus \Gamma^* \implies \frac{1}{2i\pi} \int_\Gamma \frac{f(z)}{z-z_0} \, \mathrm{d}z = I(z_0, \gamma) f(z_0) \]
+  \end{corollary}
+
+  \reference{85}
+  \reference[BMP]{64}
+
+  \begin{corollary}
+    On a $\mathcal{H}(\Omega) \subseteq \mathcal{A}(\Omega)$. De plus, si $a \in \Omega$ et que l'on pose $d = d(a, \mathbb{C} \setminus \Omega)$, on a
+    \[ f(a + h) = \sum_{n=0}^{+\infty} a_n h^n \text{ pour } \vert h \vert < d \text{ avec } a_n = \frac{f^{(n)}(a)}{n!} = \frac{1}{2i\pi} \int_{C^+(a,d)} \frac{f(z)}{(z-a)^{n+1}} \, \mathrm{d}z \]
+  \end{corollary}
+
+  \reference[AMR08]{156}
+  \dev{transformee-de-fourier-d-une-gaussienne}
+
+  \begin{application}[Transformée de Fourier d'une gaussienne]
+    On définit $\forall a \in \mathbb{R}^+_*$,
+    \[ \gamma_a :
+    \begin{array}{ccc}
+      \mathbb{R} &\rightarrow& \mathbb{R} \\
+      x &\mapsto& e^{-ax^2}
+    \end{array}
+    \]
+    Alors,
+    \[ \forall \xi \in \mathbb{R}, \, \widehat{\gamma_a}(\xi) = \sqrt{\frac{\pi}{a}} e^{\frac{- \xi^2}{4a}} \]
+  \end{application}
+
+  \subsubsection{Théorème des résidus}
+
+  \reference[QUE]{169}
+
+  \begin{theorem}[des résidus]
+    On suppose $f$ méromorphe sur $\Omega$ et on note $A$ l'ensemble de ses pôles. Soit $\gamma$ une courbe homologue à zéro dans $\Omega$ et ne rencontrant pas $A$. Alors,
+    \[ \int_\gamma f(z) \, \mathrm{d}z = 2i\pi \sum_{a \in A} I(a, \gamma) \operatorname{Res}(f, a) \]
+  \end{theorem}
+
+  \reference{173}
+
+  \begin{example}
+    \[ \int_{0}^{2\pi} \frac{1}{3 + 2\cos(t)} \, \mathrm{d}t = \frac{2\pi}{\sqrt{5}} \]
+  \end{example}
+
+  \begin{example}[Intégrale de Dirichlet]
+    \[ \int_{0}^{+\infty} \frac{\sin(x)}{x} \, \mathrm{d}x = \frac{\pi}{2} \]
+  \end{example}
+
+  \subsection{Calcul approché d'intégrales}
+
+  \reference[DEM]{21}
+
+  Soit $f$ une fonction réelle continue sur un intervalle $[a,b]$. On se donne $n+1$ points $x_0, \dots, x_n \in [a,b]$ distincts deux-à-deux.
+
+  \begin{definition}
+    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_1, \dots, x_n$ par
+    \[ \ell_i : x \mapsto \prod_{\substack{j=0\\j \neq i}}^n \frac{x-x_j}{x_i-x_j} \]
+  \end{definition}
+
+  \begin{theorem}
+    Il existe une unique fonction polynômiale $p_n$ de degré $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
+    \[ p_n = \sum_{i=0}^n f(x_i) \ell_i \]
+  \end{theorem}
+
+  \begin{theorem}
+    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_i),\max(x,x_i)[$ tel que
+    \[ f(x)-p_n(x) = \frac{\pi_{n+1}(x)}{(n+1)!} f^{(n+1)}(\xi_x) \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \Vert f - p_n \Vert_\infty \leq \frac{1}{(n+1)!} \Vert \pi_{n+1} \Vert_\infty \Vert f^{(n+1)} \Vert_\infty \]
+  \end{corollary}
+
+  \reference[DAN]{506}
+
+  \begin{application}[Calculs approchés d'intégrales]
+    On note $I(f) = \int_a^b f(t) \, \mathrm{d}t$. L'objectif est d'approximer $I(f)$ par une expression $P(f)$ et de majorer l'erreur d'approximation $E(f) = \vert I(f) - P(f) \vert$.
+    \begin{enumerate}[label=(\roman*)]
+      \item \uline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
+      \item \uline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode de Simpson.} On suppose $f$ de classe $\mathcal{C}^4$. Avec $P(f) = \frac{b-a}{6} \left(f(a) + f(b) + 4f \left( \frac{a+b}{2} \right)\right)$, on a $E(f) \leq \frac{(b-a)^3}{2880} \Vert f^{(4)} \Vert_\infty$.
+    \end{enumerate}
+  \end{application}
+  %</content>
+\end{document}

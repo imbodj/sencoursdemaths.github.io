@@ -1,0 +1,440 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{158}{Endomorphismes remarquables d'un espace vectoriel euclidien (de dimension finie).}
+
+  Soit $E$ un espace vectoriel sur $\mathbb{R}$ de dimension finie $n$. On munit $E$ d'un produit scalaire $\langle . , . \rangle$, qui en fait un \textbf{espace euclidien}. On note $\Vert . \Vert$ la norme associée à ce produit scalaire.
+
+  \subsection{Conséquences du caractère euclidien de \texorpdfstring{$E$}{E}}
+
+  \subsubsection{Adjoint d'un endomorphisme}
+
+  \reference[ROM21]{718}
+
+  \begin{lemma}[Théorème de représentation de Riesz]
+    \[ \forall \varphi \in E^*, \, \exists! a \in E \text{ tel que } \forall x \in E, \, \varphi(x) = \langle x, a \rangle \]
+  \end{lemma}
+
+  \begin{theorem}
+    \[ \forall u \in \mathcal{L}(E), \, \exists! u^* \in \mathcal{L}(E) \text{ tel que } \forall x, y \in E, \, \langle u(x), y \rangle = \langle x, u^*(y) \rangle \]
+  \end{theorem}
+
+  \begin{definition}
+    Avec les notations du théorème précédent, on dit que $u^*$ est \textbf{l'adjoint} de $u$.
+  \end{definition}
+
+  \begin{theorem}
+    Soient $\mathcal{B} = (e_i)_{i \in I}$ une base de $E$ et $G = (\langle e_i, e_j \rangle)_{i,j \in \llbracket 1, n \rrbracket}$ la matrice de Gram correspondante. Si $u \in \mathcal{L}(E)$ a pour matrice $A$ dans la base $\mathcal{B}$, alors la matrice de $u^*$ dans la base $\mathcal{B}$ est
+    \[ B = G^{-1} \tr{A} G \]
+    En particulier, si $\mathcal{B}$ est orthonormée, on a $B = \tr{A}$.
+  \end{theorem}
+
+  \reference{748}
+
+  \begin{proposition}
+    \[ \forall u \in \mathcal{L}(E), \, \VERT u \VERT = \VERT u^* \VERT \]
+    Il en résulte que l'application linéaire (cf. \cref{158-1}) $u \mapsto u^*$ est continue pour la norme $\VERT . \VERT$ subordonnée à $\Vert . \Vert$.
+  \end{proposition}
+
+  \subsubsection{Propriétés de l'adjoint}
+
+  \reference{719}
+
+  \begin{proposition}[Propriétés de $u \mapsto u^*$]
+    \label{158-1}
+    Soient $u, v \in \mathcal{L}(E)$. On a :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall \lambda \in \mathbb{R}, (\lambda u + v)^* = \lambda u^* + v^*$.
+      \item $(u^*)^* = u$.
+      \item $(u \circ v)^* = v^* \circ u^*$.
+      \item $u \in \mathrm{GL}(E) \implies u^* \in \mathrm{GL}(E)$, et $(u^*)^{-1} = (u^{-1})^*$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}[Propriétés de l'endomorphisme adjoint]
+    Soit $u \in \mathcal{L}(E)$. On a :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\det(u^*) = \det(u)$.
+      \item $\ker(u^*) = \mathrm{Im}(u)^\perp$.
+      \item $\mathrm{Im}(u^*) = \ker(u)^\perp$.
+      \item $\rang(u^*) = \rang(u)$.
+      \item Si $F$ est un sous-espace vectoriel de $E$ stable par $u$, alors $F^\perp$ est stable par $u^*$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{751}
+
+  \begin{proposition}
+    Soit $u \in \mathcal{L}(E)$.
+    \[ u = 0 \iff \trace(u \circ u^*) = 0 \]
+  \end{proposition}
+
+  \subsection{Endomorphismes normaux}
+
+  \reference{743}
+
+  \begin{definition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{normal} s'il est tel que $u \circ u^* = u^* \circ u$.
+  \end{definition}
+
+  \begin{remark}
+    En désignant par $A \in \mathcal{M}_n(\mathbb{R})$ la matrice de $u \in \mathcal{L}(E)$ dans une base orthonormée, $u$ est normal si et seulement si,
+    \[ \tr{A} A = A \tr{A} \]
+    ce qui se traduit en disant que la matrice $A$ est normale.
+  \end{remark}
+
+  \begin{example}
+    Les endomorphismes symétriques, anti-symétriques (\cref{158-3}) et orthogonaux (\cref{158-4}) sont des endomorphismes normaux.
+  \end{example}
+
+  \reference{758}
+
+  \begin{proposition}
+    $u \in \mathcal{L}(E)$ est normal si et seulement si $\Vert u (x) \Vert = \Vert u^* (x) \Vert$ pour tout $x \in E$ où $\Vert . \Vert$ est une norme euclidienne.
+  \end{proposition}
+
+  \reference{743}
+
+  \begin{proposition}
+    Soit $u \in \mathcal{L}(E)$ un endomorphisme normal.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $F$ est un sous-espace vectoriel de $E$ stable par $u$, alors $F^\perp$ est stable par $u$.
+      \item Il existe un sous-espace vectoriel de $E$ de dimension $1$ ou $2$ stable par $u$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}[Réduction dans le cas $n = 2$]
+    \label{158-2}
+    On suppose $n = 2$. Soit $u \in \mathcal{L}(E)$ un endomorphisme normal.
+    \begin{itemize}
+      \item \uline{Si $u$ a une valeur propre réelle :} $u$ est diagonalisable dans une base orthonormée.
+      \item \uline{Sinon :} il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+      \[ R(a,b) = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \]
+      avec $b \neq 0$.
+    \end{itemize}
+  \end{proposition}
+
+  \begin{theorem}[Réduction des endomorphismes normaux]
+    Soit $u \in \mathcal{L}(E)$ un endomorphisme normal. Alors, il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+    \[ \begin{pmatrix} D_p & 0 & 0 & \dots & 0 \\ 0 & R(a_1,b_1) & 0 & \dots & 0 \\ 0 & 0 & R(a_2,b_2) & \ddots & \vdots \\ \vdots & \ddots & \ddots & \ddots & 0 \\ 0 & \dots & \dots & 0 & R(a_r,b_r) \end{pmatrix} \]
+    où $D_p$ est diagonale d'ordre $p$ et $R(a,b)$ est définie à la \cref{158-2}.
+  \end{theorem}
+
+  \subsection{Endomorphismes symétriques}
+
+  \label{158-3}
+
+  \subsubsection{Définitions et propriétés}
+
+  \reference{732}
+
+  \begin{definition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{symétrique} s'il est tel que $u^* = u$.
+  \end{definition}
+
+  \begin{proposition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est symétrique si et seulement si sa matrice dans une base orthonormée est symétrique.
+  \end{proposition}
+
+  \begin{corollary}
+    $\mathcal{S}(E)$ est un sous-espace vectoriel de $E$ de dimension $\frac{n(n+1)}{2}$.
+  \end{corollary}
+
+  \begin{proposition}
+    Si $u \in \mathcal{S}(E)$, alors $u^p \in \mathcal{S}(E)$ pour tout entier naturel $p$, et $v^* \circ u \circ v \in \mathcal{S}(E)$ pour tout $v \in \mathcal{L}(E)$.
+  \end{proposition}
+
+  \begin{theorem}[Spectral]
+    Tout endomorphisme symétrique $u \in \mathcal{S}(E)$ se diagonalise dans une base orthonormée.
+  \end{theorem}
+
+  \begin{corollary}
+    Toute matrice symétrique réelle se diagonalise dans une base orthonormée.
+  \end{corollary}
+
+  \subsubsection{Endomorphismes symétriques positifs}
+
+  \begin{definition}
+    \begin{itemize}
+      \item Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{symétrique positif} (resp. \textbf{symétrique défini positif}) s'il est symétrique tel que $\langle x, u(x) \rangle \geq 0$ (resp. $\langle x, u(x) \rangle > 0$) pour tout $x \in E$. On note $\mathcal{S}^+(E)$ (resp. $\mathcal{S}^{++}(E)$) l'ensemble des endomorphismes symétriques positifs (resp. symétriques définis positifs).
+      \item Une matrice $A \in \mathcal{M}_n(\mathbb{R})$ est dite \textbf{symétrique positive} (resp. \textbf{symétrique définie positive}) si elle est symétrique telle que $\langle x, Ax \rangle \geq 0$ (resp. $\langle x, Ax \rangle > 0$) pour tout $x \in E$. On note $\mathcal{S}_n^+(\mathbb{R})$ (resp. $\mathcal{S}_n^{++}(\mathbb{R})$) l'ensemble des matrices symétriques positives (resp. symétriques définies positives).
+    \end{itemize}
+  \end{definition}
+
+  \begin{theorem}
+    Soit $u \in \mathcal{S}(E)$. Alors, $u \in \mathcal{S}^+(E)$ (resp. $u \in \mathcal{S}^{++}(E)$) si et seulement si toutes ses valeurs propres sont positives (resp. strictement positives).
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $A \in \mathcal{M}_n(\mathbb{R})$. Alors, $A \in \mathcal{S}^+_n(\mathbb{R})$ si et seulement s'il existe $B \in \mathcal{S}_n(\mathbb{R})$ telle que $A = \tr{B}B$.
+  \end{corollary}
+
+  \reference{752}
+
+  \begin{example}
+    \[ \begin{pmatrix} -1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 1 & -1 \end{pmatrix} = P^{-1} \begin{pmatrix} 1 & 0 & 0 \\ 0 & -2 & 0 \\ 0 & 0 & -2 \end{pmatrix} P \text{ avec } P = \frac{1}{\sqrt{6}} \begin{pmatrix} \sqrt{2} & \sqrt{3} & 1 \\ \sqrt{2} & -\sqrt{3} & 1 \\ \sqrt{2} & 0 & -2 \end{pmatrix} \]
+  \end{example}
+
+  \reference[I-P]{182}
+
+  \begin{lemma}
+    Soit $M \in \mathcal{S}_n(\mathbb{R})$. Alors,
+    \[ \VERT M \VERT = \rho(M) \]
+    où $\rho$ est l'application qui a une matrice y associe son rayon spectral.
+  \end{lemma}
+
+  \dev{homeomorphisme-de-l-exponentielle}
+
+  \begin{theorem}
+    L'application $\exp : \mathcal{S}_n(\mathbb{R}) \rightarrow \mathcal{S}^{++}_n(\mathbb{R})$ est un homéomorphisme.
+  \end{theorem}
+
+  \subsubsection{Endomorphismes antisymétriques}
+
+  \reference[ROM21]{718}
+
+  \begin{definition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{anti-symétrique} s'il est tel que $u^* = -u$.
+  \end{definition}
+
+  \reference{746}
+
+  \begin{theorem}
+    Soit $u \in \mathcal{L}(E)$ un endomorphisme anti-symétrique. Alors, les valeurs propres de $u$ sont imaginaires pures (éventuellement nulles) et il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+    \[ \begin{pmatrix} D_p & 0 & 0 & \dots & 0 \\ 0 & R(0,b_1) & 0 & \dots & 0 \\ 0 & 0 & R(0,b_2) & \ddots & \vdots \\ \vdots & \ddots & \ddots & \ddots & 0 \\ 0 & \dots & \dots & 0 & R(0,b_r) \end{pmatrix} \]
+    où $D_p$ est diagonale d'ordre $p$ et $R(a,b)$ est définie à la \cref{158-2}.
+  \end{theorem}
+
+  \subsection{Endomorphismes orthogonaux}
+
+  \label{158-4}
+
+  \subsubsection{Le groupe orthogonal}
+
+  \reference{720}
+
+  \begin{definition}
+    Un endomorphisme $u \in \mathcal{L}(E)$ est dit \textbf{orthogonal} (ou est une \textbf{isométrie}) s'il est tel que $\langle u(x), u(y) \rangle = \langle x, y \rangle$ pour tout $x, y \in E$. On note $\mathcal{O}(E)$ l'ensemble des endomorphismes orthogonaux de $E$.
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item Les seules homothéties qui sont des isométries sont $-\operatorname{id}_E$ et $\operatorname{id}_E$.
+      \item Si $n = 1$, on a $\mathcal{O}(E) = \{ \pm \operatorname{id}_E \}$.
+    \end{itemize}
+  \end{example}
+
+  \reference{743}
+
+  \begin{proposition}
+    Soit $u \in \mathcal{L}(E)$.
+    \[ u = \mathcal{O}(E) \iff \forall x \in E, \, \Vert u(x) \Vert \iff u \in \mathrm{GL}(E) \text{ et } u^{-1} = u^* \]
+  \end{proposition}
+
+  \reference{721}
+
+  \begin{theorem}
+    Les isométries sont des automorphismes. Il en résulte que $\mathcal{O}(E)$ est un sous-groupe de $\mathrm{GL}(E)$.
+  \end{theorem}
+
+  \begin{remark}
+    Ce n'est pas vrai en dimension infinie.
+  \end{remark}
+
+  \begin{theorem}
+    Un endomorphisme de $E$ est une isométrie si et seulement s'il transforme toute base orthonormée de $E$ en une base orthonormée.
+  \end{theorem}
+
+  \begin{theorem}
+    Un endomorphisme de $E$ est une isométrie si et seulement si sa matrice $A$ dans une base orthonormée est inversible, d'inverse $\tr{A}$.
+    \newpar
+    On dit alors que $A$ est \textbf{orthogonale}.
+  \end{theorem}
+
+  \begin{notation}
+    On note $\mathcal{O}_n(\mathbb{R})$ le groupe des matrices orthogonales.
+  \end{notation}
+
+  \begin{theorem}
+    \[ \forall u \in \mathcal{O}(E), \, \det(u) = \pm 1 \]
+  \end{theorem}
+
+  \begin{remark}
+    On a des résultats équivalents pour les matrices.
+  \end{remark}
+
+  \begin{theorem}[Réduction des endomorphismes orthogonaux]
+    Soit $u \in \mathcal{O}(E)$. Alors, il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+    \[ \begin{pmatrix} I_p & 0 & 0 & \dots & 0 \\ 0 & -I_q & 0 & \dots & 0 \\ 0 & 0 & R_1 & \ddots & \vdots \\ \vdots & \ddots & \ddots & \ddots & 0 \\ 0 & \dots & \dots & 0 & R_r \end{pmatrix} \]
+    où $R_i = R(\cos(\theta_i), \sin(\theta_i))$ avec $R(a,b)$ définie à la \cref{158-2} et $\forall i \in \llbracket 1, r \rrbracket, \, \theta_i \in ]0,2\pi[$.
+  \end{theorem}
+
+  \reference[C-G]{376}
+
+  \begin{lemma}
+    \[ \forall A \in \mathcal{S}_n^{++}(\mathbb{R}) \, \exists! B \in \mathcal{S}_n^{++}(\mathbb{R}) \text{ telle que } B^2 = A \]
+  \end{lemma}
+
+  \dev{decomposition-polaire}
+
+  \begin{theorem}[Décomposition polaire]
+    L'application
+    \[ \mu :
+    \begin{array}{ccc}
+      \mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+      (O, S) &\mapsto& OS
+    \end{array}
+    \]
+    est un homéomorphisme.
+  \end{theorem}
+
+  \subsubsection{Étude en dimensions \texorpdfstring{$2$}{2} et \texorpdfstring{$3$}{3}}
+
+  \reference[GRI]{241}
+
+  \begin{definition}
+    On définit $\mathrm{SO}(E) = \{ u \in \mathcal{O}(E) \mid \det(u) = 1 \}$ et $\mathrm{SO}_n(\mathbb{R}) = \{ A \in \mathcal{O}_n(\mathbb{R}) \mid \det(A) = 1 \}$
+  \end{definition}
+
+  \reference[ROM21]{724}
+
+  \begin{proposition}
+    $\mathrm{SO}(E)$ est un sous-groupe distingué de $\mathcal{O}(E)$ d'indice $2$ (de même que $\mathrm{SO}_n(\mathbb{R})$ dans $\mathcal{O}_n(\mathbb{R})$).
+  \end{proposition}
+
+  \reference[GRI]{241}
+
+  \begin{example}
+    \[ \frac{1}{3} \begin{pmatrix} 2 & -1 & 2 \\ 2 & 2 & -1 \\ -1 & 2 & 2 \end{pmatrix} \in \mathrm{SO}_3(\mathbb{R}) \]
+  \end{example}
+
+  \begin{theorem}
+    Soit $A \in \mathcal{O}_2(\mathbb{R})$. Alors :
+    \begin{itemize}
+      \item \uline{Si $A \in \mathrm{SO}_2(\mathbb{R})$ :}
+      \[ \exists \theta \in \mathbb{R} \text{ tel que } A = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix} \]
+      (rotation d'angle $\theta$).
+      \item \uline{Si $A \notin \mathrm{SO}_2(\mathbb{R})$ :}
+      \[ \exists \theta \in \mathbb{R} \text{ tel que } A = \begin{pmatrix} \cos(\theta) & \sin(\theta) \\ \sin(\theta) & -\cos(\theta) \end{pmatrix} \]
+      (symétrie orthogonale par rapport à la droite d'angle polaire $\frac{\theta}{2}$).
+    \end{itemize}
+  \end{theorem}
+
+  \begin{theorem}
+    On suppose $n = 3$. Soit $A \in \mathcal{O}_3(\mathbb{R})$ et $u$ l'endomorphisme de $E$ dont la matrice dans la base canonique est $A$. Alors, il existe $\mathcal{B}$ une base orthonormée de $E$ telle que la matrice de $u$ dans $\mathcal{B}$ est
+    \[ \begin{pmatrix} \cos(\theta) & -\sin(\theta) & 0 \\ \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & \epsilon \end{pmatrix} \]
+    avec $\epsilon = \pm 1$. On note $E_\epsilon$ le sous-espace vectoriel associé à la valeur propre $\epsilon$.
+    \begin{itemize}
+      \item \uline{Si $\epsilon = 1$ :} $f \in \mathrm{SO}(E)$ est la rotation d'angle $2\cos(\theta) + 1$ autour de l'axe $E_1$.
+      \item \uline{Si $\epsilon = -1$ :} $f \notin \mathrm{SO}(E)$ est la composée de la rotation d'angle $2\cos(\theta) - 1$ autour de l'axe $E_{-1}$ avec la symétrie orthogonale par rapport à $E_{-1}^{\perp}$.
+    \end{itemize}
+  \end{theorem}
+
+  \subsubsection{Propriétés topologiques}
+
+  \reference[ROM21]{722}
+
+  \begin{proposition}
+    $\mathcal{O}(E)$ est une partie compacte de $\mathcal{L}(E)$.
+  \end{proposition}
+
+  \begin{proposition}
+    $\mathrm{SO}(E)$ est connexe dans $\mathcal{O}(E)$.
+  \end{proposition}
+
+  \begin{corollary}
+    $\mathcal{O}(E)$ est non-connexe. Ses composantes connexes sont $\mathrm{SO}(E)$ et $\{ u \in \mathcal{O}(E) \mid \det(u) = -1 \}$.
+  \end{corollary}
+
+  \reference{756}
+
+  \begin{proposition}
+    Tout sous-groupe compact de $\mathrm{GL}(E)$ qui contient $\mathcal{O}(E)$ est égal à $\mathcal{O}(E)$.
+  \end{proposition}
+
+  \newpage
+  \section*{Annexes}
+
+  \reference[GRI]{242}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->] (-1, 0) -- (5, 0);
+        \draw[->] (0, -1) -- (0, 5);
+        \draw [teal,dashed,domain=-10:100] plot ({4*cos(\x)}, {4*sin(\x)});
+        \draw [->,color=teal,domain=10:60] plot ({cos(\x)}, {sin(\x)});
+        \node at (35:1.3) {\color{teal}$\theta$};
+        \draw (0,0) -- (10:4) node {\color{orange}$\bullet$} node[right] {\color{orange}$x$};
+        \draw (0,0) -- (60:4) node {\color{orange}$\bullet$} node[above right] {\color{orange}$Ax$};
+        \node at (2,-1) [below] {$A \in \mathrm{SO}_2(\mathbb{R})$};
+      \end{tikzpicture}
+      \hfill
+      \begin{tikzpicture}
+        \coordinate (A) at (20:4);
+        \coordinate (B) at (80:4);
+        \draw[->] (-1, 0) -- (5, 0);
+        \draw[->] (0, -1) -- (0, 5);
+        \draw[dashed] (A) -- (B);
+        \draw[teal] (0, 0) -- (50:5) node [above right] {\color{teal}$\frac{\theta}{2}$};
+        \draw (0,0) -- (A) node {\color{orange}$\bullet$} node[right] {\color{orange}$x$};
+        \draw (0,0) -- (B) node {\color{orange}$\bullet$} node[above right] {\color{orange}$Ax$};
+        \node at (2,-1) [below] {$A \notin \mathrm{SO}_2(\mathbb{R})$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Le groupe $\mathcal{O}_2(\mathbb{R})$.}
+  \end{figure}
+
+  \reference{244}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->] (-1, 0, 0) -- (5, 0, 0);
+        \draw[->] (0, -1, 0) -- (0, 5, 0) node [above] {$E_1$};
+        \draw[->] (0, 0, -1) -- (0, 0, 5);
+        \begin{scope}[canvas is zx plane at y=4]
+          \coordinate (O) at (0,0);
+          \draw[teal,dashed] (O) circle (2);
+          \coordinate (A) at (10:2);
+          \coordinate (B) at (60:2);
+          \draw [->,color=teal,domain=10:60] plot ({cos(\x)}, {sin(\x)});
+          \node at (35:1.5) {\color{teal}$\theta$};
+          \draw (O) -- (A);
+          \draw (O) -- (B);
+        \end{scope}
+        \draw (0,0,0) -- (A) node {\color{orange}$\bullet$} node[above left] {\color{orange}$x$};
+        \draw (0,0,0) -- (B) node {\color{orange}$\bullet$} node[above] {\color{orange}$Ax$};
+        \node at (2,-1) [below] {$A \in \mathrm{SO}_3(\mathbb{R})$};
+      \end{tikzpicture}
+      \hfill
+      \begin{tikzpicture}
+        \draw[->] (-1, 0, 0) -- (5, 0, 0);
+        \draw[->] (0, -1, 0) -- (0, 5, 0) node [above] {$E_{-1}$};
+        \draw[->] (0, 0, -1) -- (0, 0, 5);
+        \begin{scope}[canvas is zx plane at y=4]
+          \coordinate (O) at (0,0);
+          \draw[teal,dashed] (O) circle (2);
+          \coordinate (A) at (10:2);
+          \coordinate (B) at (60:2);
+          \draw [->,color=teal,domain=10:60] plot ({cos(\x)}, {sin(\x)});
+          \node at (35:1.5) {\color{teal}$\theta$};
+          \draw (O) -- (A);
+          \draw (O) -- (B);
+        \end{scope}
+        \begin{scope}[canvas is zx plane at y=0]
+          \coordinate (C) at (60:2);
+        \end{scope}
+        \draw (0,0,0) -- (A) node {\color{orange}$\bullet$} node[above left] {\color{orange}$x$};
+        \draw[dashed] (0,0,0) -- (B) node {\color{orange}$\bullet$};
+        \draw[dashed] (B) -- (C);
+        \draw (0,0,0) -- (C) node {\color{orange}$\bullet$} node[below right] {\color{orange}$Ax$};
+        \node at (2,-1) [below] {$A \notin \mathrm{SO}_3(\mathbb{R})$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Le groupe $\mathcal{O}_3(\mathbb{R})$.}
+  \end{figure}
+  %</content>
+\end{document}

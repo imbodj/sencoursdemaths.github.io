@@ -1,0 +1,66 @@
+% Listes :
+
+\setlist[enumerate,1]{label=(\roman*)}
+
+% Commandes :
+
+\providecommand{\lesson}[3]{%
+	\begin{docname}%
+		\section*{\textbf{#2} #3}%
+	\end{docname}%
+	\begin{doctitle}%
+		#3%
+	\end{doctitle}%
+	\begin{doccategories}%
+		#1%
+	\end{doccategories}%
+}
+
+\providecommand{\development}[3]{%
+	\begin{docname}%
+		\section*{#3}%
+	\end{docname}%
+	\begin{doctitle}%
+		#3%
+	\end{doctitle}%
+	\begin{doccategories}%
+		#1%
+	\end{doccategories}%
+}
+
+\providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
+
+\providecommand{\ranking}[1]{%
+	\begin{docname}%
+		\section*{Agrégation externe #1}%
+	\end{docname}%
+}
+
+\providecommand{\summary}[1]{%
+	\begin{docsummary}%
+		#1%
+	\end{docsummary}%
+	\newpar%
+}
+
+\providecommand{\reference}[2][]{%
+	\begin{bookref}%
+		\begin{bookrefshort}#1\end{bookrefshort}%
+		\begin{bookrefpage}p. #2\end{bookrefpage}%
+	\end{bookref}%
+}
+
+\providecommand{\dev}[1]{%
+	\begin{devlink}#1\end{devlink}%
+}
+
+\providecommand{\newpar}{
+
+
+}
+
+% Environnements :
+
+\renewenvironment{whitetabularx}[1]{\begin{tabularx}{\textwidth}{#1}}{\end{tabularx}}
+\renewenvironment{xltabular}[2]{\begin{tabularx}{#1}{#2}}{\end{tabularx}}
+\renewenvironment{flushright}{\begin{text-end}}{\end{text-end}}

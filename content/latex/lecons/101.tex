@@ -1,0 +1,416 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{101}{Groupe opérant sur un ensemble. Exemples et applications.}
+
+  Soit $G$ un groupe.
+
+  \subsection{Actions de groupe}
+
+  Soit $X \neq \emptyset$ un ensemble.
+
+  \subsubsection{Cas général}
+
+  \reference[ULM21]{29}
+
+  \begin{definition}
+    On appelle \textbf{action} (à gauche) de $G$ sur $X$ toute application
+    \[
+    \begin{array}{ccc}
+      G \times X &\rightarrow& X \\
+      (g, x) &\mapsto& g \cdot x
+    \end{array}
+    \]
+    satisfaisant les conditions suivantes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall g, h \in G$, $\forall x \in X$, $g \cdot (h \cdot x) = (gh) \cdot x$.
+      \item $\forall x \in X$, $e_G \cdot x = x$.
+    \end{enumerate}
+  \end{definition}
+
+  \begin{remark}
+    On peut de même définir une action à droite de $G$ sur $X$.
+  \end{remark}
+
+  \begin{example}
+    \begin{itemize}
+      \item Le groupe $S_X$ des bijections de $X$ dans $X$ opère naturellement sur $X$ par la relation $\sigma \cdot x = \sigma(x)$ pour tout $\sigma \in S_x$ et pour tout $x \in X$.
+      \item Pour un espace vectoriel $V$, le groupe $\mathrm{GL}(V)$ opère sur $V$.
+    \end{itemize}
+  \end{example}
+
+  On supposera par la suite que $G$ agit sur $X$ à gauche via l'action $\cdot$.
+
+  \begin{theorem}
+    On a une correspondance bijective entre les actions de $G$ sur $X$ et les morphismes de $G$ dans $S_X$. En effet, si $\cdot$ désigne une action de $G$ sur $X$, on peut y faire correspondre le morphisme
+    \[ \varphi :
+    \begin{array}{ccc}
+      G &\rightarrow& S_X \\
+      g &\mapsto& (x \mapsto g \cdot x)
+    \end{array}
+    \]
+  \end{theorem}
+
+  \begin{definition}
+    On définit pour tout $x \in X$ :
+    \begin{itemize}
+      \item $G \cdot x = \{ g \cdot x \mid g \in G \} \subseteq X$ l'\textbf{orbite de $x$}.
+      \item $\stab_G(x) = \{ g \in G \mid g \cdot x = x \} < G$ le \textbf{stabilisateur de $x$}.
+    \end{itemize}
+    On dit que l'action de $G$ sur $X$ est :
+    \begin{itemize}
+      \item \textbf{Libre} si $\stab_G(x) = \{ e_G \}$ pour tout $x \in X$.
+      \item \textbf{Transitive} si $G$ n'admet qu'une seule orbite.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    L'action du groupe diédral $\mathcal{D}_3$ sur les sommets d'un triangle équilatéral est transitive mais n'est pas libre.
+  \end{example}
+
+  \begin{proposition}
+    \label{101-1}
+    La relation $\sim$ définie sur $X$ par
+    \[ x \sim y \iff x \in G \cdot y \]
+    est une relation d'équivalence dont les classes d'équivalence sont les orbites des éléments de $X$ sous l'action de $G$.
+  \end{proposition}
+
+  \reference[PER]{57}
+
+  \begin{application}
+    Toute permutation $\sigma \in S_n$ s'écrit comme produit
+    \[ \sigma = \gamma_1 \dots \gamma_m \]
+    de cycles $\gamma_i$ de longueur $\geq 2$ dont les supports sont deux-à-deux disjoints. Cette décomposition est unique à l'ordre près.
+  \end{application}
+
+  \reference[ULM21]{33}
+
+  \begin{definition}
+    Une action  $\varphi : G \rightarrow S_X$ une action de $G$ sur $X$ est dite \textbf{fidèle} si $\ker(\varphi) = \{ e_G \}$.
+  \end{definition}
+
+  \begin{proposition}
+    Soit $\varphi : G \rightarrow S_X$ une action de $G$ sur $X$. Alors,
+    \[ \ker(\varphi) = \bigcap_{x \in X} \stab_G(x) \]
+  \end{proposition}
+
+  \begin{corollary}
+    Une action libre est fidèle.
+  \end{corollary}
+
+  \reference{71}
+
+  \begin{proposition}
+    Soit $x \in X$. L'application
+    \[ f :
+    \begin{array}{ccc}
+       G/\stab_G(x) &\rightarrow& G \cdot x \\
+       g \stab_G(x) &\mapsto& g \cdot x
+    \end{array}
+    \]
+    est une bijection.
+  \end{proposition}
+
+  \begin{remark}
+    Attention cependant, $G/\stab_G(x)$ n'est pas un groupe en général.
+  \end{remark}
+
+  \subsubsection{Cas fini}
+
+  On suppose ici que $G$ et $X$ sont finis.
+
+  \begin{proposition}
+    Soit $x \in X$. Alors :
+    \begin{itemize}
+      \item $|G \cdot x| = (G : \stab_G(x))$.
+      \item $|G| = |\stab_G(x)| |G \cdot x|$.
+      \item $|G \cdot x| = \frac{|G|}{|\stab_G(x)|}$
+    \end{itemize}
+  \end{proposition}
+
+  \begin{theorem}[Formule des classes]
+    Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1}. Alors,
+    \[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{theorem}
+
+  \begin{definition}
+    On définit :
+    \begin{itemize}
+      \item $X^G = \{ x \in X \mid \forall g \in G, \, g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par tous les éléments de $G$.
+      \item $X^g = \{ x \in X \mid g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par $g \in G$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{corollary}[Formule de Burnside]
+    Le nombre $r$ d'orbites de $X$ sous l'action de $G$ est donné par
+    \[ r = \frac{1}{|G|} \sum_{g \in G} |X^g| \]
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe (ie. l'ordre de $G$ est une puissance de $p$), alors,
+    \[ |X^G| \equiv |X| \mod p \]
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Le centre d'un $p$-groupe non trivial est non trivial.
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Un groupe d'ordre $p^2$ est toujours abélien.
+  \end{corollary}
+
+  \begin{application}[Théorème de Cauchy]
+    On suppose $G$ non trivial et fini. Soit $p$ un premier divisant l'ordre de $G$. Alors il existe un élément d'ordre $p$ dans $G$.
+  \end{application}
+
+  \reference[GOU21]{44}
+  \dev{theoreme-de-sylow}
+
+  \begin{application}[Premier théorème de Sylow]
+    On suppose $G$ fini d'ordre $n p^\alpha$ avec $n, \alpha \in \mathbb{N}$ et $p$ premier tel que $p \nmid n$. Alors, il existe un sous-groupe de $G$ d’ordre $p^\alpha$.
+  \end{application}
+
+  \subsection{Action d'un groupe sur un groupe}
+
+  \subsubsection{Action par translation}
+
+  \reference[ULM21]{34}
+
+  \begin{proposition}
+    $G$ agit sur lui-même par translation (à gauche) via l'action
+    \[ (g, h) \mapsto g \cdot h = gh \]
+    De plus, cette action est fidèle et transitive.
+  \end{proposition}
+
+  \begin{application}[Théorème de Cayley]
+    Tout groupe fini d'ordre $n$ est isomorphe à un sous-groupe de $S_n$.
+  \end{application}
+
+  \begin{proposition}
+    Soit $H < G$. Alors $G$ agit sur $G/H$ via l'action
+    \[ (g, hH) \mapsto g \cdot hH = (gh)H \]
+    De plus, cette action est transitive.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $H < G$. Soit $\varphi : G \rightarrow S_{G/H}$ le morphisme de l'action par translation de $G$ sur $G/H$. Alors,
+    \[ \ker(\varphi) = \bigcap_{g \in G} gHg^{-1} \]
+  \end{proposition}
+
+  \reference[PER]{17}
+
+  \begin{application}
+    On suppose que $G$ est de cardinal infini et que $G$ possède un sous-groupe d'indice fini distinct de $G$. Alors $G$ n'est pas simple.
+  \end{application}
+
+  \subsubsection{Action par conjugaison}
+
+  \reference[ULM21]{36}
+
+  \begin{proposition}
+    $G$ agit sur lui-même par conjugaison via l'action
+    \[ (g, h) \mapsto g \cdot h = ghg^{-1} \]
+  \end{proposition}
+
+  \begin{definition}
+    \begin{itemize}
+      \item L'orbite de $g \in G$ sous l'action par conjugaison de $G$ sur lui-même s'appelle la \textbf{classe de conjugaison de $g$}.
+      \item Le stabilisateur de $g \in G$ sous l'action par conjugaison de $G$ sur lui-même s'appelle le \textbf{centralisateur de $g$}.
+      \item Deux éléments de $G$ qui appartiennent à la même classe de conjugaison sont dits \textbf{conjugués}.
+    \end{itemize}
+  \end{definition}
+  
+  \reference[PER]{15}
+
+  \begin{example}
+    \begin{itemize}
+      \item Si $\sigma = \begin{pmatrix} a_1 & \dots & a_p \end{pmatrix} \in S_n$ est un $p$-cycle, et si $\tau \in S_n$, alors
+      \[ \tau \sigma \tau^{-1} = \begin{pmatrix} \tau(a_1) & \dots & \tau(a_p) \end{pmatrix} \]
+      \item Par conséquent, dans $S_n$, les $p$-cycles sont conjugués.
+      \item Pour $n \geq 5$, les $3$-cycles sont conjugués dans $A_n$.
+    \end{itemize}
+  \end{example}
+
+  \reference[ULM21]{36}
+
+  \begin{proposition}
+    Soit $g \in G$. Alors $g$ appartient au centre de $G$ (noté $Z(G)$) si et seulement si sa classe de conjugaison est réduite à un seul élément.
+  \end{proposition}
+
+  \begin{corollary}
+    $Z(G)$ est l'union des classes de conjugaison de taille $1$.
+  \end{corollary}
+
+  \reference[GOU21]{24}
+
+  \begin{proposition}
+    Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1} pour l'action par conjugaison. On note $\Omega' = Z(G) \setminus \Omega$. Alors,
+    \[ |G| = |Z(G)| + \sum_{\omega \in \Omega'} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{proposition}
+
+  \reference{100}
+  \dev{theoreme-de-wedderburn}
+
+  \begin{application}[Théorème de Wedderburn]
+    Tout corps fini est commutatif.
+  \end{application}
+
+  \reference[ULM21]{38}
+
+  \begin{proposition}
+    \label{101-2}
+    $G$ agit sur ses sous-groupes par conjugaison via l'action
+    \[ (g, H) \mapsto g \cdot H = gHg^{-1} \]
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $H < G$. Alors $H$ est distingué dans $G$ si et seulement si $H$ est un point fixe pour l'action de la \cref{101-2}.
+  \end{proposition}
+
+  \subsection{Action d'un groupe sur un espace vectoriel}
+
+  \subsubsection{Action par conjugaison sur les espaces de matrices}
+
+  Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$.
+
+  \reference[ROM21]{199}
+
+  \begin{proposition}
+    L'application
+    \[
+      \begin{array}{ccc}
+        \mathrm{GL}_n(\mathbb{K}) \times \mathcal{M}_n(\mathbb{K}) &\rightarrow& \mathcal{M}_n(\mathbb{K}) \\
+        (P, A) &\mapsto& PAP^{-1}
+      \end{array}
+    \]
+    définit une action de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+  \end{proposition}
+
+  \begin{definition}
+    Deux matrices qui sont dans la même orbite pour cette action sont dites \textbf{semblables}.
+  \end{definition}
+
+  \reference[GOU21]{127}
+
+  \begin{remark}
+    Deux matrices semblables représentes la même application linéaire dans deux bases de $\mathbb{K}^n$.
+  \end{remark}
+
+  C'est cette remarque qui justifie que l'on va étudier l'action par conjugaison de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+
+  \reference[ROM21]{199}
+
+  \begin{theorem}
+    Soient $A$ et $B$ deux matrices semblables. Alors :
+    \begin{itemize}
+      \item $\trace(A) = \trace(B)$.
+      \item $\det(A) = \det(B)$.
+      \item $\rang(A) = \rang(B)$.
+      \item $\chi_A = \chi_B$.
+      \item $\pi_A = \pi_B$.
+    \end{itemize}
+  \end{theorem}
+
+  \reference[D-L]{137}
+
+  \begin{cexample}
+    Les matrices $\begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix}$ et $\begin{pmatrix} 0 & 1 \\ 0 & 0\end{pmatrix}$ ont la même trace, le même déterminant, le même polynôme caractéristique, mais ne sont pas semblables.
+  \end{cexample}
+
+  \reference[GOU21]{167}
+
+  \begin{theorem}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $A, B \in \mathcal{M}_n(\mathbb{K})$. On suppose $\mathbb{K}$ infini et $A, B$  semblables sur $\mathbb{L}$. Alors $A$ et $B$ sont semblables sur $\mathbb{K}$.
+  \end{theorem}
+
+  \reference{397}
+
+  \begin{notation}
+    Soient $f \in \mathcal{L}(E)$ et $x \in E$. On note $P_{f,x}$ le polynôme unitaire engendrant l'idéal $\{ P \in \mathbb{K}[X] \mid P(f)(x) = 0 \}$ et $E_{f,x} = \{ P(f)(x) \mid P \in \mathbb{K}[X] \}$.
+  \end{notation}
+
+  \begin{lemma}
+    Soit $f \in \mathcal{L}(E)$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $k = \deg(\pi_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
+      \item Soit $x \in E$. Si $l = \deg(P_{f,x})$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{lemma}
+    Soit $f \in \mathcal{L}(E)$. Il existe $x \in E$ tel que $P_{f,x} = \pi_f$.
+  \end{lemma}
+
+  \begin{theorem}[Frobenius]
+    Soit $f \in \mathcal{L}(E)$. Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $E = \bigoplus_{i = 1}^r F_i$.
+      \item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
+      \item Si $P_i = \pi_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
+    \end{enumerate}
+    La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
+  \end{theorem}
+
+  \begin{corollary}
+    Deux endomorphismes sont semblables si et seulement s'ils ont les mêmes invariants de similitude.
+  \end{corollary}
+
+  \subsubsection{Représentations linéaires et caractères}
+
+  \reference[ULM21]{144}
+
+  Dans cette partie, on suppose que $G$ est d'ordre fini.
+
+  \begin{definition}
+    \begin{itemize}
+      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace-vectoriel de dimension finie $n$ sur $\mathbb{C}$.
+      \item On dit que $n$ est le \textbf{degré} de $\rho$.
+      \item On dit que $\rho$ est \textbf{irréductible} si $V \neq \{ 0 \}$ et si aucun sous-espace vectoriel de $V$ n'est stable par $\rho(g)$ pour tout $g \in G$, hormis $\{ 0 \}$ et $V$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    Soit $\varphi : G \rightarrow S_n$ le morphisme structurel d'une action de $G$ sur un ensemble de cardinal $n$. On obtient une représentation de $G$ sur $\mathbb{C}^n = \{ e_1, \dots, e_n \}$ en posant
+    \[ \rho(g)(e_i) = e_{\varphi(g)(i)} \]
+    c'est la représentation par permutations de $G$ associé à l'action. Elle est de degré $n$.
+  \end{example}
+
+  \begin{definition}
+    La représentation par permutations de $G$ associée à l'action par translation à gauche de $G$ sur lui-même est la \textbf{représentation régulière} de $G$, on la note $\rho_G$.
+  \end{definition}
+
+  \reference{150}
+
+  \begin{definition}
+    On peut associer à toute représentation linéaire $\rho$, son \textbf{caractère} $\chi = \operatorname{trace} \circ \rho$. On dit que $\chi$ est \textbf{irréductible} si $\rho$ est irréductible.
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Les caractères sont des fonctions constantes sur les classes de conjugaison.
+      \item Il y a autant de caractères irréductibles que de classes de conjugaisons.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
+  \end{definition}
+
+  \begin{theorem}[Maschke]
+    Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
+  \end{theorem}
+
+  \reference[PEY]{231}
+
+  \begin{theorem}
+    Les sous-groupes distingués de $G$ sont exactement les
+    \[ \bigcap_{i \in I} \ker(\rho_i) \text{ où } I \in \mathcal{P}(\llbracket 1, r \rrbracket) \]
+  \end{theorem}
+
+  \begin{corollary}
+    $G$ est simple si et seulement si $\forall i \neq 1$, $\forall g \neq e_G$, $\chi_i(g) \neq \chi_i(e_G)$.
+  \end{corollary}
+  %</content>
+\end{document}

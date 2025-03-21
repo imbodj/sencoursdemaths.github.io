@@ -1,0 +1,380 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{152}{Endomorphismes diagonalisables en dimension finie.}
+
+  Soit $E$ un espace vectoriel sur un corps $\mathbb{K}$ de dimension finie $n$. Soit $u \in \mathcal{L}(E)$ un endomorphisme de $E$.
+
+  \subsection{Spectre d'un endomorphisme}
+
+  \subsubsection{Valeurs propres, vecteurs propres}
+
+  \reference[GOU21]{171}
+
+  \begin{definition}
+    Soit $\lambda \in \mathbb{K}$.
+    \begin{itemize}
+      \item On dit que $\lambda$ est \textbf{valeur propre} de $u$ si $u - \lambda \operatorname{id}_E$ est non injective.
+      \item Un vecteur $x \neq 0$ tel que $u(x) = \lambda x$ est un \textbf{vecteur propre} de $u$ associé à la valeur propre $\lambda$.
+      \item $E_\lambda = \ker(u - \lambda \operatorname{id}_E)$ est le \textbf{sous-espace propre} associé à la valeur propre $\lambda$.
+      \item L'ensemble des valeurs propres de $u$ est appelé \textbf{spectre} de $u$. On le note $\operatorname{Sp}(u)$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item $0$ est valeur propre de $u$ si et seulement si $\ker(f) \neq \{ 0 \}$.
+      \item On peut définir de la même manière les mêmes notions pour une matrice de $\mathcal{M}_n(\mathbb{K})$ (une valeur est propre pour une matrice si et seulement si elle l'est pour l'endomorphisme associé). On reprendra les mêmes notations.
+      \item Les sous-espaces $E_\lambda$ sont stables par $u$ pour toute valeur propre $\lambda$.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    $\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ est vecteur propre de $\begin{pmatrix} 0 & 2 & -1 \\ 3 & -2 & 0 \\ -2 & 2 & 1 \end{pmatrix}$ associé à la valeur propre $1$.
+  \end{example}
+
+  \begin{theorem}
+    Soient $\lambda_1, \dots, \lambda_k$ des valeurs propres de $u$, distinctes deux à deux. Alors les sous-espaces propres $E_{\lambda_1}, \dots, E_{\lambda_k}$ sont en somme directe.
+  \end{theorem}
+
+  \reference[ROM21]{604}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$. Pour tout valeur propre $\lambda$ de $u$, $P(\lambda)$ est une valeur propre de $P(u)$. Si le corps $\mathbb{K}$ est algébriquement clos, on a alors
+    \[ \operatorname{Sp}(P(u)) = \{ P(\lambda) \mid \lambda \in \operatorname{Sp}(u) \} \]
+  \end{theorem}
+
+  \begin{cexample}
+    Pour $A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \in \mathcal{M}_2(\mathbb{R})$ et $P = X^2$, on a $A^2 = -I_2$ et $\operatorname{Sp}(A) = \emptyset$.
+  \end{cexample}
+
+  \subsubsection{Polynôme caractéristique}
+
+  \reference{644}
+
+  \begin{proposition}
+    En notant $\chi_u = \det(X \operatorname{id}_E - u)$,
+    \[ \operatorname{Sp}(u) = \{ \lambda \in \mathbb{K} \mid \chi_u(\lambda) = 0 \} \]
+  \end{proposition}
+
+  \begin{definition}
+    Le polynôme $\chi_u$ précédent est appelé \textbf{polynôme caractéristique} de $u$.
+  \end{definition}
+
+  \begin{remark}
+    On peut définir la même notion pour une matrice $A \in \mathcal{M}_n(\mathbb{K})$, ces deux notions coïncidant bien si $A$ est la matrice de $u$ dans une base quelconque de $E$.
+  \end{remark}
+
+  \begin{example}
+    Pour $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \mathcal{M}_2(\mathbb{K})$, on a $\chi_A = X^2 - \trace(A)X + \det(A)$.
+  \end{example}
+
+  \begin{proposition}
+    Soit $\lambda$ une valeur propre de $u$ de multiplicité $\alpha$ en tant que racine de $\chi_u$. Alors,
+    \[ \dim(E_\lambda) \in \llbracket 1, \alpha \rrbracket \]
+  \end{proposition}
+
+  \reference[GOU21]{172}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Le polynôme caractéristique est un invariant de similitude.
+      \item Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\chi_A = \sum_{k=0}^n a_k X^k$. Alors, $a_0 = \det(A)$ et $a_{n-1} = \trace(A)$ (à un signe près).
+    \end{enumerate}
+  \end{proposition}
+
+  \subsubsection{Polynôme minimal}
+
+  \reference[ROM21]{604}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathrm{Ann}(u) = \{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$ est un sous-ensemble de $\mathbb{K}[u]$ non réduit au polynôme nul.
+      \item $\mathrm{Ann}(u)$ est le noyau de $P \mapsto P(u)$ : c'est un idéal de $\mathbb{K}[u]$.
+      \item Il existe un unique polynôme unitaire engendrant cet idéal.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{definition}
+    On appelle \textbf{idéal annulateur} de $u$ l'idéal $\mathrm{Ann}(u)$. Le polynôme unitaire générateur est noté $\pi_u$ et est appelé \textbf{polynôme minimal} de $u$.
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item $\pi_u$ est le polynôme unitaire de plus petit degré annulant $u$.
+      \item Si $A \in \mathcal{M}_n(\mathbb{K})$ est la matrice de $u$ dans une base de $E$, on a $\mathrm{Ann}(u) = \mathrm{Ann}(A)$ et $\pi_u = \pi_A$.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    Un endomorphisme est nilpotent d'indice $q$ si et seulement si son polynôme minimal est $X^q$.
+  \end{example}
+
+  \begin{proposition}
+    Soit $F$ un sous-espace vectoriel de $E$ stable par $u$. Alors, le polynôme minimal de l'endomorphisme $u_{|F} : F \rightarrow F$ divise $\pi_u$.
+  \end{proposition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Les valeurs propres de $u$ sont racines de tout polynôme annulateur.
+      \item Les valeurs propres de $u$ sont exactement les racines de $\pi_u$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[GOU21]{186}
+
+  \begin{remark}
+    $\pi_u$ et $\chi_u$ partagent dont les mêmes racines.
+  \end{remark}
+
+  \reference[ROM21]{607}
+
+  \begin{theorem}[Cayley-Hamilton]
+    \[ \pi_u \mid \chi_u \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \dim(\mathbb{K}[u]) \leq n \]
+  \end{corollary}
+
+  \subsection{Diagonalisabilité}
+
+  \subsubsection{Définition}
+
+  \reference{683}
+
+  \begin{definition}
+    \begin{itemize}
+      \item On dit que $u$ est \textbf{diagonalisable} s'il existe une base de $E$ dans laquelle la matrice de $u$ est diagonale.
+      \item On dit qu'une matrice $A \in \mathcal{M}_n(\mathbb{K})$ est \textbf{diagonalisable} si elle est semblable à une matrice diagonale.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    $u$ est diagonalisable si et seulement si sa matrice dans n'importe quelle base de $E$ l'est.
+  \end{remark}
+
+  \reference[BMP]{166}
+
+  \begin{example}
+    \begin{itemize}
+      \item Les projecteurs (ie. les endomorphismes $p \in \mathcal{L}(E)$ tels que $p^2 = p$) sont toujours diagonalisables, à valeurs propres dans $\{ 0, 1 \}$.
+      \item Les symétries (ie. les endomorphismes $s \in \mathcal{L}(E)$ tels que $s^2 = \operatorname{id}_E$) sont toujours diagonalisables, à valeurs propres dans $\{ \pm 1 \}$. Par exemple, l'endomorphisme de transposition $A \mapsto \tr{A}$ est diagonalisable.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Critères}
+
+  \reference[ROM21]{683}
+
+  \begin{proposition}
+    Si $u$ a $n$ valeurs propres distinctes dans $\mathbb{K}$, alors il est diagonalisable.
+  \end{proposition}
+
+  \reference{609}
+
+  \begin{theorem}[Lemme des noyaux]
+    Soit $P = P_1 \dots P_k \in \mathbb{K}[X]$ où les polynômes $P_1, \dots, P_k$ sont premiers entre eux deux à deux. Alors,
+    \[ \ker(P(u)) = \bigoplus_{i=1}^k \ker(P_i(u)) \]
+  \end{theorem}
+
+  \reference{683}
+
+  \begin{theorem}
+    Soit $\operatorname{Sp}(u) = \{ \lambda_1, \dots, \lambda_p \}$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $u$ est diagonalisable sur $\mathbb{K}$.
+      \item $E = \bigoplus_{k=1}^p E_{\lambda_k}$.
+      \item $\sum_{k=1}^p \dim(E_{\lambda_k}) = n$.
+      \item $\chi_n$ est scindé sur $\mathbb{K}$ et pour tout $k \in \llbracket 1, p \rrbracket$, la dimension de $E_{\lambda_k}$ est égale à la multiplicité de $\lambda_k$ dans $\chi_u$.
+      \item $\exists P \in \mathrm{Ann}(u)$ scindé à racines simples.
+      \item $\pi_u$ est scindé à racines simples.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference[GOU21]{177}
+
+  \begin{example}
+    $\begin{pmatrix} 0 & 2 & -1 \\ 3 & -2 & 0 \\ -2 & 2 & 1 \end{pmatrix}$ est diagonalisable, semblable à $\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -4 \end{pmatrix}$.
+  \end{example}
+
+  \reference{188}
+
+  \begin{corollary}
+    Sur $\mathbb{K} = \mathbb{F}_q$, $u$ est diagonalisable si et seulement si $u^q = u$.
+  \end{corollary}
+
+  \reference{176}
+
+  \begin{theorem}[Diagonalisation simultanée]
+    Soit $(u_i)_{i \in I}$ une famille d'endomorphismes de $E$ diagonalisables. Il existe une base commune de diagonalisation dans $E$ pour $(u_i)_{i \in I}$ si et seulement si ces endomorphismes commutent deux-à-deux.
+  \end{theorem}
+
+  \begin{remark}
+    La réciproque est vraie.
+  \end{remark}
+
+  \subsubsection{Exemples d'endomorphismes diagonalisables dans un espace euclidien ou hermitien}
+
+  On se place dans le cas où $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$.
+  Si $\mathbb{K} = \mathbb{R}$, on munit $E$ d'un produit scalaire $\langle ., . \rangle$. Si $\mathbb{K} = \mathbb{C}$, on munit $E$ d'un produit scalaire hermitien $\langle ., . \rangle$.
+
+  \paragraph{Endomorphismes autoadjoints}
+
+  \reference[GOU21]{255}
+
+  \begin{lemma}
+    Il existe un unique $u^* \in \mathcal{L}(E)$ tel que
+    \[ \forall x, y \in E, \, \langle u(x), y \rangle = \langle x, u^*(y) \rangle \]
+  \end{lemma}
+
+  \begin{definition}
+    L'endomorphisme $u^*$ précédent est \textbf{l'adjoint} de $u$. On dit que $u$ est \textbf{autoadjoint} si $u = u^*$.
+  \end{definition}
+
+  \begin{proposition}
+    Soit $v \in \mathcal{L}(E)$. Alors $v = u^*$ si et seulement si la matrice de $v$ dans une base orthonormée $\mathcal{B}$ de $E$ est la transposée (transconjuguée dans le cas hermitien) de la matrice de $u$ dans $\mathcal{B}$.
+  \end{proposition}
+
+  \begin{theorem}
+    Tout endomorphisme autoadjoint se diagonalise dans une base orthonormée, ses valeurs propres étant réelles.
+  \end{theorem}
+
+  \reference[C-G]{376}
+
+  \begin{lemma}
+    \[ \forall A \in \mathcal{S}_n^{++}(\mathbb{R}) \, \exists! B \in \mathcal{S}_n^{++}(\mathbb{R}) \text{ telle que } B^2 = A \]
+  \end{lemma}
+
+  \dev{decomposition-polaire}
+
+  \begin{application}[Décomposition polaire]
+    L'application
+    \[ \mu :
+    \begin{array}{ccc}
+      \mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+      (O, S) &\mapsto& OS
+    \end{array}
+    \]
+    est un homéomorphisme.
+  \end{application}
+
+  \paragraph{Endomorphismes normaux}
+
+  On suppose dans toute cette sous-section que $\mathbb{K} = \mathbb{C}$.
+
+  \reference[GRI]{286}
+
+  \begin{definition}
+    $u$ est dit \textbf{normal} s'il est tel que $u \circ u^* = u^* \circ u$.
+  \end{definition}
+
+  \begin{proposition}
+    On suppose $u$ normal. Soit $\lambda \in \mathbb{C}$ une valeur propre de $u$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $E_\lambda^\perp = \{ x \in E^\lambda \mid \forall y \in E^\lambda, \, \langle x, y \rangle = 0 \}$ est stable par $u$.
+      \item $u_{| E_\lambda^\perp}$ est normal.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{corollary}
+    On suppose $u$ normal. Alors $u$ est diagonalisable dans une base orthonormée.
+  \end{corollary}
+
+  \subsubsection{Topologie}
+
+  \reference[BMP]{179}
+
+  \begin{proposition}
+    L'ensemble $\mathcal{D}_n(\mathbb{C})$ des matrices diagonalisables à coefficients complexes est dense dans $\mathcal{M}_n(\mathbb{C})$.
+  \end{proposition}
+
+  \begin{application}
+    L'application qui à une matrice $M \in \mathcal{M}_n(\mathbb{C})$ associe la partie diagonalisable de sa décomposition de Dunford $M = D + N$ n'est pas continue.
+  \end{application}
+
+  \reference{217}
+
+  \begin{application}
+    \[ \forall U \in \mathcal{M}_n(\mathbb{C}), \, \chi_U(U) = 0 \]
+  \end{application}
+
+  \subsection{Applications}
+
+  \subsubsection{Réduction}
+
+  \reference[GOU21]{203}
+  \dev{decomposition-de-dunford}
+
+  \begin{theorem}[Décomposition de Dunford]
+    On suppose que $\pi_u$ est scindé sur $\mathbb{K}$. Alors il existe un unique couple d'endomorphismes $(d, n)$ tels que :
+    \begin{itemize}
+      \item $d$ est diagonalisable et $n$ est nilpotent.
+      \item $u = d + n$.
+      \item $d n = n d$.
+    \end{itemize}
+  \end{theorem}
+
+  \begin{corollary}
+    Si $u$ vérifie les hypothèse précédentes, pour tout $k \in \mathbb{N}$, $u^k = (d + n)^k = \sum_{i=0}^m \binom{k}{i} d^i n^{k-i}$, avec $m = \min(k, l)$ où $l$ désigne l'indice de nilpotence de $n$.
+  \end{corollary}
+
+  \begin{remark}
+    On peut montrer de plus que $d$ et $n$ sont des polynômes en $u$.
+  \end{remark}
+
+  \subsubsection{Calcul d'exponentielles}
+
+  \reference[ROM21]{761}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item La série entière $\sum \frac{z^k}{k!}$ a un rayon de convergence infini.
+      \item $\sum \frac{A^k}{k!}$ est convergente pour toute matrice $A \in \mathcal{M}_n(\mathbb{K})$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{definition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On définit \textbf{l'exponentielle} de $A$ par
+    \[ \sum_{k=0}^{+\infty} \frac{A^k}{k!} \]
+    on la note aussi $\exp(A)$ ou $e^A$.
+  \end{definition}
+
+  \begin{theorem}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $A = \operatorname{Diag}(\lambda_1, \dots, \lambda_n)$, alors $\exp(A) = \operatorname{Diag}(e^\lambda_1, \dots, e^\lambda_n)$.
+      \item Si $B = PAP^{-1}$ pour $P \in \mathrm{GL}_n(\mathbb{K})$, alors $e^B = P^{-1} e^A P$.
+      \item $\det(e^A) = e^{\trace(A)}$.
+      \item $t \mapsto e^{tA}$ est de classe $\mathcal{C}^\infty$, de dérivée $t \mapsto e^{tA}A$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proposition}
+    Soient $A, B \in \mathcal{M}_n(\mathbb{K})$ qui commutent. Alors,
+    \[ e^A e^B = e^{A+B} = e^B e^A \]
+  \end{proposition}
+
+  \begin{example}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ qui admet une décomposition de Dunford $A = D+N$ où $D$ est diagonalisable et $N$ est nilpotente d'indice $q$. Alors,
+    \begin{itemize}
+      \item $e^A = e^D e^N = e^D \sum_{k=0}^{q-1} \frac{N^k}{k!}$.
+      \item La décomposition de Dunford de $e^A$ est $e^A = e^D + e^D(e^N - I_n)$ avec $e^D$ diagonalisable et $e^D(e^N - I_n)$ nilpotente.
+    \end{itemize}
+  \end{example}
+
+  \begin{application}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ dont le polynôme caractéristique est scindé sur $\mathbb{K}$. Alors $A$ est diagonalisable si et seulement si $e^A$ l'est.
+  \end{application}
+
+  \reference[GOU20]{380}
+
+  \begin{application}
+    Une équation différentielle linéaire homogène $(H) : Y' = AY$ (où $A$ est constante en $t$) a ses solutions maximales définies sur $\mathbb{R}$ et le problème de Cauchy
+    \[ \begin{cases} Y' = AY \\ Y(0) = y_0 \end{cases} \]
+    a pour (unique) solution $t \mapsto e^{tA} y_0$.
+  \end{application}
+  %</content>
+\end{document}

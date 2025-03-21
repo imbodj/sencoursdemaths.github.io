@@ -1,0 +1,526 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{261}{Loi d'une variable aléatoire : caractérisations, exemples, applications.}
+
+  Soit $(\Omega, \mathcal{A}, \mathbb{P})$ un espace probabilisé.
+
+  \subsection{Loi d'une variable aléatoire}
+
+  \subsubsection{Définitions}
+
+  \paragraph{Préliminaires théoriques}
+
+  \reference[GOU21]{334}
+
+  \begin{definition}
+    Soient $(E, \mathcal{F})$ un espace probabilisable. On appelle \textbf{variable aléatoire} toute fonction $X : \Omega \rightarrow E$ mesurable. On appelle \textbf{loi} de $X$ la mesure image de $\mathbb{P}$ par $X$, définie par
+    \[
+      \mathbb{P}_X :
+      \begin{array}{ccc}
+        \mathcal{F} &\rightarrow& [0,1] \\
+        F &\mapsto& \mathbb{P}(X^{-1}(F))
+      \end{array}
+    \]
+  \end{definition}
+
+  \begin{notation}
+    Pour alléger les notations, on écrira $\{ X \in F \}$ pour désigner l'ensemble $X^{-1}(F)$. Ainsi, $\mathbb{P}(X^{-1}(F))$ devient $\mathbb{P}(X \in F)$. De même, $\{ X = x \}$ désigne l'ensemble $X^{-1}(\{x\})$, $\{ X \leq a \}$ désigne l'ensemble $X^{-1}(]-\infty, a])$ (dans le cas réel), etc.
+  \end{notation}
+
+  \reference[G-K]{118}
+
+  \begin{example}
+    On se place dans $(\mathbb{R}, \mathcal{B}(\mathbb{R}), \mathbb{P})$ où $\mathbb{P} = \frac{1}{3} \delta_{-1} + \frac{1}{2} \delta_{0} + \frac{1}{6} \delta_{1}$ et on considère la fonction réelle $X : \omega \mapsto \omega$. Alors, $X$ est une variable aléatoire, dont la loi est $\mathbb{P}_X = \mathbb{P}$.
+  \end{example}
+
+  \reference[GOU21]{334}
+
+  \begin{definition}
+    Une variable aléatoire $X$ est dite \textbf{réelle} si son espace d'arrivée est $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$.
+  \end{definition}
+
+  \paragraph{Lois discrètes}
+
+  \reference[G-K]{335}
+
+  \begin{definition}
+    \begin{itemize}
+      \item On dit qu'une loi $\mu$ est \textbf{discrète} s'il existe un ensemble $D$ fini tel que $\mu(D) = 1$.
+      \item On dit que la variable aléatoire $X$ est discrète si sa loi $\mathbb{P}_X$ est discrète.
+    \end{itemize}
+  \end{definition}
+
+  \reference[GOU21]{335}
+
+  \begin{remark}
+    Cela revient à dire que $X(\Omega)$ est fini ou est dénombrable.
+  \end{remark}
+
+  \begin{example}
+    On pose $\Omega = \{ (\omega_n) \in \mathbb{R}^n \mid \omega_n \in \{ 0,1 \} \, \forall n \in \mathbb{N} \}$ et $X : (\omega_n) \mapsto \inf \{ n \in \mathbb{N} \mid \omega_n = 0 \}$. Alors $X$ est une variable aléatoire discrète, à valeurs dans $\mathbb{N} \cup \{ +\infty \}$.
+  \end{example}
+
+  \reference[G-K]{131}
+
+  \begin{proposition}
+    Si $X$ est une variable aléatoire discrète à valeurs dans un ensemble dénombrable $D$, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall A \in \mathcal{B}(\mathbb{R}), \mathbb{P}_X(A) = \sum_{i \in D \cap A} \mathbb{P}(X=i)$.
+      \item $\mathbb{P}_X = \sum_{i \in D} \mathbb{P}(X=i) \delta_i$ où les $\delta_i$ sont des masses de Dirac (voir \cref{261-1} \cref{261-2}).
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{137}
+
+  \begin{example}
+    \label{261-1}
+    Soit $X : \Omega \rightarrow \mathbb{R}$ une variable aléatoire réelle. Voici quelques exemples de lois discrètes classiques.
+    \begin{itemize}
+      \item \label{261-2} Si $x \in \Omega$, on pose $\delta_x : A \mapsto \mathbb{1}_A(x)$. C'est une loi discrète sur $\mathcal{P}(\Omega)$.
+      \item Soit $E \subseteq \Omega$ fini. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
+      \[
+      \begin{array}{ccc}
+        \mathcal{P}(\Omega) &\rightarrow& \llbracket 0, 1 \rrbracket \\
+        A &\mapsto& \frac{\vert A \, \cap \, E \vert}{\vert E \vert}
+      \end{array}
+      \]
+      \item $X$ suit une loi de Bernoulli de paramètre $p \in [0,1]$, notée $\mathcal{B}(p)$, si $\mathbb{P}(X=1) = p$ et $\mathbb{P}(X=0)=1-p$. Dans ce cas, $X$ est bien une loi discrète et on a
+      \[ \mathbb{P}_X = (1-p) \delta_0 + p \delta_1 \]
+      \item $X$ suit une loi de binomiale de paramètres $n \in \mathbb{N}$ et $p \in [0,1]$, notée $\mathcal{B}(n, p)$, si $X$ est la somme de $n$ variables aléatoires indépendantes qui suivent des lois de Bernoulli de paramètre $p$. Dans ce cas, $X$ est bien une loi discrète et on a
+      \[ \forall k \in \mathbb{N}, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+      \item $X$ suit une loi géométrique de paramètre $p \in ]0,1]$, notée $\mathcal{G}(p)$, si l'on a
+      \[ \forall k \in \mathbb{N}^{*}, \, \mathbb{P}(X = k) = p(1-p)^{k-1} \]
+      \item $X$ suit une loi de Poisson de paramètre $\lambda > 0$, notée $\mathcal{P}(\lambda)$, si l'on a
+      \[ \forall k \in \mathbb{N}^{*}, \, \mathbb{P}(X = k) = e^{-\lambda} \frac{\lambda^k}{k!} \]
+    \end{itemize}
+  \end{example}
+
+  \paragraph{Lois à densité}
+
+  \reference{134}
+
+  \begin{definition}
+    On dit qu'une loi réelle $\mu$ est \textbf{à densité} s'il existe une fonction mesurable $f$ telle que
+    \[ \forall A \in \mathcal{B}(\mathbb{R}), \, \mu(A) = \int_A f \mathrm{d}\lambda \]
+  \end{definition}
+
+  \begin{proposition}
+    Soit $X$ une variable aléatoire de densité $f$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Pour tout $a, b \in \mathbb{R}$ tels que $a \leq b$,
+      \begin{align*}
+        \mathbb{P}(a \leq X \leq b) &= \mathbb{P}(a \leq X < b) \\
+        &= \mathbb{P}(a < X \leq b) \\
+        &= \mathbb{P}(a < X < b) \\
+        &= \int_{[a,b]} f \, \mathrm{d}\lambda
+      \end{align*}
+      \item Pour tout $a \in \mathbb{R}$,
+      \[ \mathbb{P}(a \leq X) = \mathbb{P}(a < X) = \int_{[a,+\infty[} f \, \mathrm{d}\lambda = \int_{]a,+\infty[} f \, \mathrm{d}\lambda \]
+      et
+      \[ \mathbb{P}(a \geq X) = \mathbb{P}(a > X) = \int_{]-\infty, a]} f \, \mathrm{d}\lambda = \int_{]-\infty, a[} f \, \mathrm{d}\lambda \]
+      \item \[ \int_{\mathbb{R}} f \, \mathrm{d}\lambda = 1 \]
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{141}
+
+  \begin{example}
+    Soit $X : \Omega \rightarrow \mathbb{R}$ une variable aléatoire réelle. Voici quelques exemples de lois à densité classiques.
+    \begin{itemize}
+      \item $X$ suit une loi uniforme sur un compact $K$ de $\mathbb{R}$ si elle admet la densité
+      \[ x \mapsto \frac{1}{\lambda(K)} \mathbb{1}_K(x) \]
+      \item $X$ suit une loi gaussienne de paramètres $m \in \mathbb{R}$ et $\sigma^2 > 0$, notée $\mathcal{N}(m, \sigma^2)$ si elle admet la densité
+      \[ x \mapsto \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-m)^2}{2\sigma^2}} \]
+      \item $X$ suit une loi exponentielle de paramètre $a > 0$, notée $\mathcal{E}(a)$ si elle admet la densité
+      \[ x \mapsto a e^{-ax} \mathbb{1}_{\mathbb{R}^+}(x) \]
+      \item $X$ suit une loi Gamma de paramètres $a, \gamma > 0$, notée $\Gamma(a, \gamma)$ si elle admet la densité
+      \[ x \mapsto \frac{\gamma^a}{\Gamma(a)} x^{a-1} e^{-\gamma x} \mathbb{1}_{\mathbb{R}^+_*}(x) \]
+      où $\Gamma(a)$ est la valeur au point $a$ de la fonction $\Gamma$ d'Euler.
+    \end{itemize}
+  \end{example}
+
+  \reference{179}
+
+  \begin{theorem}
+    Soient $X$ et $Y$ deux variables aléatoires réelles indépendantes de densités respectives $f$ et $g$. Alors, $X + Y$ admet comme densité la fonction $f * g : x \mapsto \int_{\mathbb{R}} f(x-t) g(t) \, \mathrm{d}t$.
+  \end{theorem}
+
+  \subsubsection{Espérance}
+
+  \reference{159}
+
+  \begin{definition}
+    \begin{itemize}
+      \item On note $\mathcal{L}_1(\Omega, \mathcal{A}, \mathbb{P})$ (ou simplement $\mathcal{L}_1(\Omega)$ voire $\mathcal{L}_1$ s'il n'y a pas d'ambiguïté) l'espace des variables aléatoires intégrables sur $(\Omega, \mathcal{A}, \mathbb{P})$.
+      \item Si $X \in \mathcal{L}_1$, on peut définir son \textbf{espérance}
+      \[ \mathbb{E}(X) = \int_\Omega X(\omega) \, \mathrm{d}\mathbb{P}(\omega) \]
+    \end{itemize}
+  \end{definition}
+
+  \reference{164}
+
+  \begin{theorem}[Transfert]
+    Si $X$ est une variable aléatoire dont la loi $\mathbb{P}_X$ admet une densité $f$ par rapport à $\mathbb{P}$ et si $g$ est une fonction mesurable, alors
+    \[ g(X) \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert g(x) \vert f(x) \, \mathrm{d}\mathbb{P}(x) < +\infty \]
+    et dans ce cas,
+    \[ \mathbb{E}(g(X)) = \int_{\mathbb{R}} g(x) f(x) \, \mathrm{d}\mathbb{P}(x) \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $g$ une fonction mesurable. Si $X$ est une variable aléatoire discrète telle que $X(\Omega) = D$, alors
+    \[ g(X) \in \mathcal{L}_1 \iff \sum_{i \in D} \vert g(i) \vert \mathbb{P}(X = i) < +\infty \]
+    et dans ce cas,
+    \[ \mathbb{E}(g(X)) = \sum_{i \in D} g(i) \mathbb{P}(X = i) \]
+  \end{corollary}
+
+  \begin{remark}
+    En reprenant les notations précédentes, et avec $g : x \mapsto x$, on a
+    \[ X \in \mathcal{L}_1 \iff \sum_{i \in D} \vert i \vert \mathbb{P}(X = i) < +\infty \]
+    et dans ce cas,
+    \[ \mathbb{E}(X) = \sum_{i \in D} i \mathbb{P}(X = i) \]
+  \end{remark}
+
+  \begin{corollary}
+    Soit $g$ une fonction mesurable. Si $X$ est une variable aléatoire admettant $f$ comme densité, alors
+    \[ g(X) \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert g \vert f \, \mathrm{d}\lambda < +\infty \]
+    et dans ce cas,
+    \[ \mathbb{E}(g(X)) = \int_{\mathbb{R}} \vert g \vert f \, \mathrm{d}\lambda \]
+  \end{corollary}
+
+  \begin{remark}
+    En reprenant les notations précédentes, et avec $g : x \mapsto x$, on a
+    \[ X \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert x \vert f(x) \, \mathrm{d}x < +\infty \]
+    et dans ce cas,
+    \[ \mathbb{E}(X) = \int_{\mathbb{R}} \vert x \vert f(x) \, \mathrm{d}x \]
+  \end{remark}
+
+  \reference{187}
+
+  \begin{example}
+    Soit $X : \Omega \rightarrow \mathbb{R}$ une variable aléatoire réelle.
+    \begin{itemize}
+      \item $\mathbb{E}(\mathbb{1}_A) = \mathbb{P}(A)$.
+      \item $X \sim \mathcal{B}(n, p) \implies \mathbb{E}(X) = np$.
+      \item $X \sim \mathcal{G}(p) \implies \mathbb{E}(X) = \frac{1}{p}$.
+      \item $X \sim \mathcal{P}(\lambda) \implies \mathbb{E}(X) = \lambda$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Indépendance}
+
+  \reference{126}
+
+  \begin{definition}
+    Soient $(E, \mathcal{F})$ un espace probabilisable. On dit que deux variables aléatoires $X : \Omega \rightarrow E$ et $Y : \Omega \rightarrow E$ sont indépendantes si les tribus qu'elles engendrent sont indépendantes ie.
+    \[ \forall A, B \in \mathcal{F}, \, \mathbb{P}(\{ X \in A \} \, \cap \, \{ X \in B \}) = \mathbb{P}_X(A) \mathbb{P}_X(B) \]
+  \end{definition}
+
+  \begin{proposition}
+    Si $X$ et $Y$ sont deux variables aléatoires indépendantes, alors $f(X)$ et $g(Y)$ sont indépendantes pour toutes fonctions mesurables $f$ et $g$.
+  \end{proposition}
+
+  \begin{theorem}
+    Soient $X$ et $Y$ deux variables aléatoires. Alors, $X$ et $Y$ sont indépendantes si et seulement si $\mathbb{P}_{(X,Y)} = \mathbb{P}_X \otimes \mathbb{P}_Y$.
+  \end{theorem}
+
+  \begin{corollary}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes. Alors, $\mathbb{P}_{X+Y} = \mathbb{P}_X * \mathbb{P}_Y$.
+  \end{corollary}
+
+  \subsection{Caractérisation de la loi par des fonctions}
+
+  Soit $X : \Omega \rightarrow \mathbb{R}^d$.
+
+  \subsubsection{Fonctions de répartition}
+
+  \reference{118}
+
+  \begin{definition}
+    On appelle \textbf{fonction de répartition} de $X$, notée $F_X$ la fonction définie sur $\mathbb{R}^d$ par
+    \[ \forall (t_1, \dots, t_d) \in \mathbb{R}^d, \, F_X(t_1, \dots, t_d) = \mathbb{P}(X_1 \leq t_1, \dots, X_d) \]
+    où l'on a noté $X = (X_1, \dots, X_d)$.
+  \end{definition}
+
+  \reference{143}
+
+  \begin{example}
+    Si $X \sim \mathcal{E}(\lambda)$, alors
+    \[ \forall t \in \mathbb{R}, \, F_X(t) = 1 - e^{\lambda t} \mathbb{1}_{\mathbb{R}^+}(t) \]
+  \end{example}
+
+  \reference{118}
+
+  \begin{theorem}
+    Si deux variables (ou vecteurs) aléatoires ont la même fonction de répartition, alors elles ont même loi.
+  \end{theorem}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item $F_X$ est à valeurs dans $[0,1]$.
+      \item $F_X$ est croissante sur $\mathbb{R}$.
+      \item $\lim_{t \rightarrow -\infty} F_X(t) = 0$ et $\lim_{t \rightarrow +\infty} F_X(t) = 1$.
+      \item En tout point $x$ de $\mathbb{R}$, $F_X$ est continue à droite et admet une limite à gauche, qui vaut $F_X(x)$ si et seulement si $\mathbb{P}(X=x) = 0$.
+      \item L'ensemble des points de discontinuité de $F$ est fini ou dénombrable.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{theorem}
+    Soit $F : \mathbb{R} \rightarrow \mathbb{R}$ croissante, continue à droite et telle que $\lim_{t \rightarrow -\infty} F(t) = 0$ et $\lim_{t \rightarrow +\infty} F(t) = 1$. Alors, il existe une mesure de probabilité sur $\mathbb{R}$ dont $F$ est la fonction de répartition.
+  \end{theorem}
+
+  \subsubsection{Fonctions caractéristiques}
+
+  \reference{239}
+
+  \begin{definition}
+    On appelle \textbf{fonction caractéristique} de $X$ la fonction $\phi_X$ définie sur $\mathbb{R}^d$ par
+    \[ \phi_X : t \mapsto \mathbb{E}\left( e^{i \langle t, X \rangle} \right) \]
+  \end{definition}
+
+  \reference[AMR08]{156}
+
+  \begin{example}
+    Si $X \sim \mathcal{N}(0, \sigma^2)$, alors
+    \[ \forall t \in \mathbb{R}, \, \phi_X(t) = e^{-\frac{(xt)^2}{2}} \]
+  \end{example}
+
+  \reference[G-K]{239}
+
+  \begin{theorem}
+    Si deux variables (ou vecteurs) aléatoires ont la même fonction caractéristique, alors elles ont même loi.
+  \end{theorem}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\phi_X(0) = 1$.
+      \item $\vert \phi_X \vert \leq 1$.
+      \item $\phi$ est uniformément continue sur $\mathbb{R}^d$.
+    \end{enumerate}
+  \end{theorem}
+  
+  \begin{theorem}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes et $\mathcal{L}_1$. Alors,
+    \[ \mathbb{E}(X Y) = \mathbb{E}(X) \mathbb{E}(Y) \]
+  \end{theorem}
+
+  \begin{corollary}
+    Si deux variables aléatoires réelles $X$ et $Y$ sont indépendantes, alors $\phi_{X+Y} = \phi_X \phi_Y$.
+  \end{corollary}
+
+  \begin{theorem}
+    Si $X$ admet un moment d'ordre $N$ (ie. $\mathbb{E}(\Vert X \Vert^N)) < +\infty$), alors $\phi_X$ est $\mathcal{C}^N$ et, si $d = 1$,
+    \[ \forall k \in \llbracket 1, N \rrbracket, \, \phi_X^{(k)}(0) = i^k \mathbb{E}(X^k) \]
+  \end{theorem}
+
+  \begin{example}
+    Si $X$ admet un moment d'ordre $2$ et est centrée avec une variance $\sigma^2$, on a alors
+    \[ \phi_X(t) = 1 - \frac{\sigma^2 t^2}{2} + o(t^2) \]
+    quand $t$ tend vers $0$.
+  \end{example}
+
+  \subsubsection{Fonctions génératrices}
+
+  On suppose dans cette sous-section que $X$ est à valeurs dans $(\mathbb{N}, \mathcal{P}(\mathbb{N}))$.
+
+  \reference{235}
+
+  \begin{definition}
+    On appelle \textbf{fonction génératrice} de $X$ la fonction
+    \[
+    G_X :
+    \begin{array}{ccc}
+      [-1,1] &\rightarrow& \mathbb{R} \\
+      z &\mapsto& \sum_{k=0}^{+\infty} \mathbb{P}(X=k) z^k
+    \end{array}
+    \]
+  \end{definition}
+
+  \reference{246}
+
+  \begin{remark}
+    \[ \forall t \in \mathbb{R}, \, \phi_X(t) = G_X(e^{it}) \]
+  \end{remark}
+
+  \reference{236}
+
+  \begin{example}
+    \begin{itemize}
+      \item $X \sim \mathcal{B}(p) \implies \forall s \in [-1,1], \, G_X(s) = (1-p) + ps$.
+      \item $X \sim \mathcal{B}(n, p) \implies \forall s \in [-1,1], \, G_X(s) = ((1-p) + ps)^n$.
+      \item $X \sim \mathcal{G}(p) \implies \forall s \in [-1,1], \, G_X(s) = \frac{ps}{1-(1-p)s}$.
+      \item $X \sim \mathcal{P}(\lambda) \implies \forall s \in [-1,1], \, G_X(s) = e^{-\lambda (1-s)}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{proposition}
+    Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et à valeurs dans $\mathbb{N}$. Alors,
+    \[ G_{X_1 X_2} = G_{X_1} + G_{X_2} \]
+  \end{proposition}
+
+  \begin{theorem}
+    Sur $[0,1]$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec
+    \[ G_X^{(n)}(s) = \mathbb{E}(X(X-1) \dots (X-n+1)s^{X-n}) \]
+    En particulier,
+    \[ \mathbb{P}(X=n) = \frac{G_X^{(n)}(0)}{n!} \]
+    ce qui montre que la fonction génératrice caractérise la loi.
+  \end{theorem}
+
+  \reference[GOU21]{346}
+
+  \begin{example}
+    Si $X_1 \sim \mathcal{B}(n, p)$ et $X_2 \sim \mathcal{B}(m, p)$ sont indépendantes, alors $X_1 + X_2 \sim \mathcal{B}(n + m, p)$.
+  \end{example}
+
+  \reference[G-K]{238}
+
+  \begin{theorem}
+    $X \in \mathcal{L}_1$ si et seulement si $G_X$ admet une dérivée à gauche en $1$. Dans ce cas, $G'_X(1) = \mathbb{E}(X)$.
+  \end{theorem}
+
+  \subsection{Convergence en loi}
+
+  Soit $(X_n)$ une suite de vecteurs aléatoires à valeurs dans $(\mathbb{R}^d, \mathcal{B}(\mathbb{R}^d))$.
+
+  \subsubsection{Définition et premières propriétés}
+
+  \reference{295}
+
+  \begin{definition}
+    On dit que $(X_n)$ \textbf{converge en loi} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
+    \[ \forall f \in \mathcal{C}_b(\mathbb{R}^d, \mathbb{R}), \, \mathbb{E}(f(X_n)) \longrightarrow_{n \rightarrow +\infty} \mathbb{E}(f(X)) \]
+    On note cela $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{definition}
+
+  \reference{313}
+
+  \begin{example}
+    Si $\forall n \geq 1$, $X_n$ suit une loi uniforme sur $\llbracket 1, n-1 \rrbracket$, alors $\frac{X_n}{n}$ converge en loi vers la loi uniforme sur $[0,1]$.
+  \end{example}
+
+  \reference{295}
+
+  \begin{proposition}
+    Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} Y$, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item La limite $X$ est unique.
+      \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, Y \rangle$.
+    \end{enumerate}
+    Plus généralement, si $\forall n \in \mathbb{N}$, $X_n$ et $X$ sont à valeurs dans $E$, alors $f(X_n) \overset{(d)}{\longrightarrow} f(X)$ pour toute $f$ fonction définie et continue sur $E$.
+  \end{proposition}
+
+  \begin{theorem}[Lemme de Scheffé]
+    On suppose :
+    \begin{itemize}
+      \item $X_n \overset{(ps.)}{\longrightarrow} X$.
+      \item $\lim_{n \rightarrow +\infty} \int_\Omega X_n \, \mathrm{d}\mathbb{P} = \int_\Omega X \, \mathrm{d}\mathbb{P}$.
+    \end{itemize}
+    Alors, $X_n \overset{(L_1)}{\longrightarrow} X$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose :
+    \begin{itemize}
+      \item $\forall n \in \mathbb{N}$, $X_n$ admet une densité $f_n$.
+      \item $(f_n)$ converge presque partout vers une fonction $f$.
+      \item Il existe une variable aléatoire $X$ admettant $f$ pour densité.
+    \end{itemize}
+    Alors, $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{corollary}
+
+  \begin{corollary}
+    Si $X$ et $X_n$ sont des variables aléatoires à valeurs dans un ensemble dénombrable $D$ pour tout $n \in \mathbb{N}$, en supposant
+    \[ \forall k \in D, \, \mathbb{P}(X_n = k) = \mathbb{P}(X = k) \]
+    alors $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{corollary}
+
+  \begin{application}
+    Soit, pour $n \geq 1$, une variable aléatoire $X_n$ suivant la loi binomiale de paramètres $n$ et $p_n$. On suppose que $\lim_{n \rightarrow +\infty} n p_n = \lambda > 0$.
+    Alors,
+    \[ X_n \overset{(d)}{\longrightarrow} X \]
+    où $X$ suit une loi de Poisson de paramètre $\lambda$.
+  \end{application}
+
+  \reference{302}
+
+  \begin{theorem}
+    En notant $F_X$ la fonction de répartition d'une variable aléatoire $X$, on a,
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff F_{X_n}(x) \longrightarrow_{n \rightarrow +\infty} F_X(x) \]
+    en tout point $x$ où $F_X$ est continue.
+  \end{theorem}
+
+  \begin{theorem}
+    Soit $X : \Omega \rightarrow \mathbb{R}^d$ une variable aléatoire.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge en loi vers $X$.
+      \item Si $(X_n)$ converge en loi vers une constante $a$ (ou de manière équivalente, vers une masse de Dirac $\delta_a$), alors $(X_n)$ converge en probabilité vers $a$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference[HAU]{362}
+
+  \begin{cexample}
+    Si $(X_n)$ est une suite de variables aléatoires indépendantes identiquement distribuées de loi $\mathcal{B}(p)$, alors $(X_n)$ converge en loi vers $\mathcal{B}(2p(1-p))$, mais pas en probabilité.
+  \end{cexample}
+
+  \subsubsection{Théorème central limite et applications}
+
+  \reference[G-K]{305}
+
+  \begin{theorem}[Slutsky]
+    Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} c$ où $c$ est un vecteur constant, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $X_n + Y_n \overset{(d)}{\longrightarrow} X + c$.
+      \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, c \rangle$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference[Z-Q]{544}
+
+  \begin{theorem}[Lévy]
+    On suppose que $(X_n)$ est une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
+  \end{theorem}
+
+  \reference[G-K]{307}
+  \dev{theoreme-central-limite}
+
+  \begin{theorem}[Central limite]
+    On suppose que $(X_n)$ est une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
+    \[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
+  \end{theorem}
+
+  \begin{application}[Théorème de Moivre-Laplace]
+    On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
+    \[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
+  \end{application}
+
+  \reference{180}
+
+  \begin{lemma}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
+  \end{lemma}
+
+  \reference{556}
+
+  \begin{application}[Formule de Stirling]
+    \[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
+  \end{application}
+
+  \reference{390}
+  \dev{theoreme-des-evenements-rares-de-poisson}
+
+  \begin{application}[Théorème des événements rares de Poisson]
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
+      \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
+    \end{enumerate}
+    Alors, la suite de variables aléatoires $(S_n)$ définie par
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^n \mathbb{1}_{A_{n,k}} \]
+    converge en loi vers la loi de Poisson de paramètre $\lambda$.
+  \end{application}
+  %</content>
+\end{document}

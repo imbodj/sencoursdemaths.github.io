@@ -1,0 +1,533 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{215}{Applications différentiables définies sur un ouvert de \texorpdfstring{$\mathbb{R}^n$}{Rⁿ}. Exemples et applications.}
+
+  Sauf mention contraire, nous travaillerons sur l'espace vectoriel normé $\mathbb{R}^n$ pour $n \geq 1$. Soient $F$ un espace vectoriel normé sur $\mathbb{R}$ et $U \subseteq \mathbb{R}^n$ un ouvert.
+
+  \subsection{Généralisation de la notion de dérivée}
+
+  \subsubsection{Différentielle}
+
+  \reference[GOU20]{323}
+
+  \begin{definition}
+    Soit $(E, \Vert . \Vert)$ un espace vectoriel normé sur $\mathbb{R}$. Soient $U \subseteq E$ ouvert et $f : U \rightarrow F$ une application de $U$ dans $F$. $f$ est dite \textbf{différentiable} en un point $a$ de $U$ s'il existe $\ell_a \in \mathcal{L}(E,F)$ telle que
+    \[ f(a+h) = f(a) + \ell_a(h) + o(\Vert h \Vert) \text{ quand } h \longrightarrow 0 \]
+    Si $\ell_a$ existe, alors elle est unique et on la note $\mathrm{d}f_a$ : c'est la \textbf{différentielle} de $f$ en $a$.
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item En dimension quelconque $\mathrm{d}f_a$ dépend a priori des normes choisies sur $E$ et $F$. Cependant, en dimension finie, l'équivalence des normes implique que l'existence et la valeur de $\mathrm{d}f_a$ ne dépend pas des normes choisies.
+      \item La définition demande à $\ell_a$ d'être continue. En dimension finie, le problème ne se pose donc pas.
+      \item Une fonction réelle est différentiable en $a$ si et seulement si elle est dérivable en $a$. Dans ce cas, on a $\mathrm{d}f_a : h \mapsto f'(a)h$.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    Si $f$ est linéaire et continue, alors $\mathrm{d}f_a = f$ pour tout $a \in E$.
+  \end{example}
+
+  \begin{proposition}
+    Une fonction différentiable en un point et continue en ce point.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $V \subseteq F$ un ouvert. Soit $f : U \rightarrow F$ différentiable en un point $a$ de $U$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall \lambda \in \mathbb{R}$, $\lambda f$ est différentiable en $a$, et $\mathrm{d}(\lambda f)_a = \lambda \mathrm{d}f_a$.
+      \item Si $g : U \rightarrow F$ est différentiable en $a$, alors $f+g$ l'est aussi, et $\mathrm{d}(f+g)_a = \mathrm{d}f_a + \mathrm{d}g_a$.
+      \item Soit $g : V \rightarrow G$. On suppose $f(U) \subseteq V$ et $g$ différentiable en $f(a)$. Alors $g \circ f$ est différentiable en $a$ et, $\mathrm{d}(f \circ g)_a = \mathrm{d}g_{f(a)} \circ \mathrm{d}f_a$.
+    \end{enumerate}
+  \end{proposition}
+
+  \subsubsection{Dérivée selon un vecteur}
+
+  \reference{324}
+
+  \begin{definition}
+    Soit $a \in U$.
+    \begin{itemize}
+      \item Soit $v \in \mathbb{R}^n$. Si la fonction de la variable réelle $\varphi : t \mapsto f(a+tv)$ est dérivable en $0$, on dit que $f$ est \textbf{dérivable en $a$ selon le vecteur $v$}. On note alors
+      \[ f'_v(a) = \varphi'(0) \]
+      \item Soit $(e_1, \dots, e_n)$ la base canonique de $\mathbb{R}^n$ et soit $i \in \llbracket 1, n \rrbracket$. On dit que $f$ admet une \textbf{$i$-ième dérivée partielle en $a$} si $f$ est dérivable en $a$ selon le vecteur $e_i$. On note alors
+      \[ \frac{\partial f}{\partial x_i}(a) = f'_{e_i}(a) \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Soient $i \in \llbracket 1, n \rrbracket$ et $a = (a_1, \dots, a_n) \in \mathbb{R}^n$. La dérivée partielle $\frac{\partial f}{\partial x_i}(a)$ est aussi la dérivée de l'application partielle $t \mapsto f(a_1, \dots, a_{i-1}, a_i + t, a_{i+1}, \dots, a_n)$ en $t = 0$.
+  \end{remark}
+
+  \begin{proposition}
+    Une fonction différentiable en un point est dérivable selon tout vecteur en ce point.
+  \end{proposition}
+
+  \reference{329}
+
+  \begin{cexample}
+    La fonction
+    \[
+    \begin{array}{ccc}
+      \mathbb{R}^2 &\rightarrow& \mathbb{R} \\
+      (x,y) &\mapsto& \begin{cases}
+        \frac{y^2}{x} &\text{si } x \neq 0 \\
+        y &\text{sinon}
+      \end{cases}
+    \end{array}
+    \]
+    est dérivable selon tout vecteur au point $(0,0)$ mais n'est pas continue en $(0,0)$.
+  \end{cexample}
+
+  \reference{325}
+
+  \begin{theorem}
+    Si toutes les dérivées partielles de $f$ existent et si elles sont continues en un point $a$ de $U$, alors $f$ est différentiable en $a$ et on a
+    \[ \mathrm{d}f_a = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(a) e_i^* \]
+    où $(e_i^*)_{i \in \llbracket 1, n \rrbracket}$ est la base duale de la base canonique $(e_i)_{i \in \llbracket 1, n \rrbracket}$ de $\mathbb{R}^n$.
+  \end{theorem}
+
+  \begin{cexample}
+    La fonction
+    \[
+    f :
+    \begin{array}{ccc}
+      \mathbb{R} &\rightarrow& \mathbb{R} \\
+      (x,y) &\mapsto& \begin{cases}
+        x^2 \sin \left( \frac{1}{x} \right) &\text{si } x \neq 0 \\
+        0 &\text{sinon}
+      \end{cases}
+    \end{array}
+    \]
+    est différentiable en $0$, mais $f'$ n'est pas continue en $0$.
+  \end{cexample}
+
+  \reference{327}
+
+  \begin{corollary}
+    Soit $f : U \rightarrow \mathbb{R}^m$ différentiable en un point $a \in \mathbb{R}^n$. On note par $f_i$ la $i$-ième coordonnée de $f$ $\forall i \in \llbracket 1, m \rrbracket$. Alors la matrice de l'application linéaire $\mathrm{d}f_a$ dans les bases canoniques de $\mathbb{R}^n$ et $\mathbb{R}^m$ est
+    \[ \operatorname{Jac}(f)_a = \left( \frac{\partial f_i}{\partial x_j} \right)_{\substack{i \in \llbracket 1, m \rrbracket \\ j \in \llbracket 1, n \rrbracket}} \]
+  \end{corollary}
+
+  \begin{definition}
+    Soit $f : U \rightarrow \mathbb{R}^m$ différentiable en un point $a \in \mathbb{R}^n$. La matrice $\operatorname{Jac}(f)_a$ est la \textbf{jacobienne} de $f$ en $a$. Son déterminant est le \textbf{jacobien} de $f$ en $a$.
+  \end{definition}
+
+  \reference{354}
+
+  \begin{example}
+    Soit $f : (r,\theta) \mapsto (r\cos(\theta), r\sin(\theta))$, alors $\det(\operatorname{Jac}(f)_{(r,\theta)}) = r$.
+  \end{example}
+
+  \reference{327}
+
+  \begin{theorem}[Inégalité des accroissements finis]
+    Soit $f : U \rightarrow F$ continue sur un segment $[a,b] \subseteq U$ et différentiable sur $]a,b[$. On suppose qu'il existe $M > 0$ tel que $\VERT \mathrm{f}f_c \VERT \leq M$ pour tout $c \in ]a,b[$. Alors,
+    \[ \Vert f(b) - f(a) \Vert \leq M \Vert b - a \Vert \tag{$*$} \]
+  \end{theorem}
+
+  \begin{corollary}
+    En reprenant les notations du théorème précédent :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $U$ est convexe, si $f$ est différentiable sur $U$ et si $\VERT \mathrm{d}f_c \VERT \leq M$ pour tout $c \in U$, alors l'inégalité $(*)$ précédente est vraie pour tout $a,b \in U$.
+      \item Si $U$ est un ouvert connexe et $\mathrm{d}f_c = 0$ pour tout $c \in U$, alors $f$ est constante.
+    \end{enumerate}
+  \end{corollary}
+
+  \subsubsection{Différentielle itérée}
+
+  \begin{definition}
+    Soit $f : U \rightarrow F$. Sous réserve d'existence, on peut définir par récurrence sur $p$ une dérivée partielle d'ordre $p$ par la relation
+    \[ \frac{\partial^p}{\partial x_{i_p} \dots \partial x_{i_1}} f = \frac{\partial}{\partial x_{i_p}} \left( \frac{\partial^{p-1}}{\partial x_{i_{p-1}} \dots \partial x_{i_1}} f \right) \]
+    $f$ est alors dite de classe $\mathcal{C}^p$ si toutes ses dérivées partielles jusqu'à l'ordre $p$ existent et sont continues sur $U$.
+  \end{definition}
+
+  \reference{79}
+
+  \begin{example}
+    La fonction
+    \[
+    x \mapsto \begin{cases}
+      e^{-\frac{1}{x}} \text{ si } x > 0 \\
+      0 \text{ sinon}
+    \end{cases}
+    \]
+    est $\mathcal{C}^\infty$.
+  \end{example}
+
+  \reference{326}
+
+  \begin{theorem}[Schwarz]
+    On se place dans la cas $n = 2$. Soit $f : U \rightarrow \mathbb{R}$ qui admet des dérivées partielles sur $U$, continues en $a \in U$. Alors :
+    \[ \frac{\partial^2 f}{\partial x \partial y}(a) = \frac{\partial^2 f}{\partial y \partial x}(a) \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $f : U \rightarrow \mathbb{R}^m$ de classe $\mathcal{C}^p$. Alors les dérivées partielles jusqu'à l'ordre $p$ ne dépendant pas de l'ordre de dérivation.
+  \end{corollary}
+
+  \begin{notation}
+    Soient $f : U \rightarrow \mathbb{R}^m$ de classe $\mathcal{C}^k$ sur $U$ et $n \in \llbracket 1, k \rrbracket$. Par analogie avec
+    \[ \forall (a_1, \dots, a_m) \in \mathbb{R}^m, \, (a_1 + \dots + a_m)^n = \sum_{i_1+\dots+i_m=n} \frac{n!}{i_1! \dots i_m!} a_1^{i_1} \dots a_m^{i_m} \]
+    on note
+    \[ \left( \sum_{i=1}^m h_i \frac{\partial f}{\partial x_i} (a) \right)^{(n)} = \sum_{i_1+\dots+i_m=n} \frac{n!}{i_1! \dots i_m!} h_1^{i_1} \dots h_m^{i_m} \frac{\partial^n}{\partial x_1^{i_1} \dots \partial x_m^{i_m}} f(a) \]
+  \end{notation}
+
+  \begin{theorem}[Formule de Taylor-Lagrange]
+    Soient $f : U \rightarrow \mathbb{R}$ de classe $\mathcal{C}^p$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors, $\exists \theta \in ]0,1[$ tel que
+    \[ f(x+h) = \sum_{j=0}^{p-1} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + \frac{1}{p!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x + \theta h) \right)^{(p)} \]
+  \end{theorem}
+
+  \begin{example}
+    Pour $f : \mathbb{R}^2 \rightarrow \mathbb{R}$ de classe $\mathcal{C}^2$, pour $(h, k) \in \mathbb{R}^2$, il existe $\theta \in ]0,1[$ tel que
+    \begin{align*}
+      f(h,k) &= f(0,0) + h \frac{\partial f}{\partial x}(0,0) + k \frac{\partial f}{\partial y}(0,0) \\
+      &+ \frac{1}{2} \left( h^2 \frac{\partial^2 f}{\partial^2 x} f(\theta h, \theta k) + hk \frac{\partial^2 f}{\partial x \partial y} f(\theta h, \theta k) + k^2 \frac{\partial^2 f}{\partial^2 y} f(\theta h, \theta k) \right) \\
+      &+ o(\Vert (h,k) \Vert^2)
+    \end{align*}
+  \end{example}
+
+  \begin{theorem}[Formule de Taylor avec reste intégral]
+    Soient $f : U \rightarrow \mathbb{R}^p$ de classe $\mathcal{C}^k$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors,
+    \[ f(x+h) = \sum_{j=0}^{k-1} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + \int_0^1 \frac{(1-t)^{k-1}}{(k-1)!} \left( \sum_{i=1}^{n} h_i \frac{\partial f}{\partial x_i} (x+th) \right)^{(k)} \, \mathrm{d}t \]
+  \end{theorem}
+
+  \begin{theorem}[Formule de Taylor-Young]
+    Soient $f : U \rightarrow \mathbb{R}^p$ de classe $\mathcal{C}^k$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors,
+    \[ f(x+h) = \sum_{j=0}^{k} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + o(\Vert h \Vert^k) \]
+  \end{theorem}
+
+  \begin{application}[Lemme d'Hadamard]
+    Soit $f : \mathbb{R}^n \rightarrow \mathbb{R}$ de classe $\mathcal{C}^\infty$. On suppose $f$ différentiable en $0$ avec $\mathrm{d}f_0 = 0$ et $f(0) = 0$. Alors,
+    \[ f(x_1, \dots, x_n) = \sum_{i,j=1}^n x_i x_j h_{i,j}(x_1, \dots, x_n) \]
+    où $\forall i,j \in \llbracket 1, n \rrbracket$, $h_{i,j} : \mathbb{R}^n \rightarrow \mathbb{R}$ est $\mathcal{C}^\infty$.
+  \end{application}
+
+  \subsection{Théorèmes fondamentaux}
+
+  \subsubsection{Inversion locale}
+
+  \reference[ROU]{54}
+
+  \begin{definition}
+    \label{key}
+    Soit $f : U \rightarrow F$. On dit que $f$ est un \textbf{difféomorphisme} de classe $\mathcal{C}^k$ de $U$ sur $V = f(U)$ si $f$ et $f^{-1}$ sont bijectives et de classe $\mathcal{C}^k$ respectivement sur $U$ et $V$.
+  \end{definition}
+
+  \begin{example}
+    $x \mapsto x^3$ est un homéomorphisme de $\mathbb{R}$ sur $\mathbb{R}$, de classe $\mathcal{C}^1$, mais n'est pas un difféomorphisme.
+  \end{example}
+
+  \reference[GOU20]{341}
+
+  \begin{theorem}[Inversion locale]
+    Soit $f : U \rightarrow F$ de classe $\mathcal{C}^1$. On suppose qu'il existe $a \in U$ tel que $\mathrm{d}f_a$ est inversible.
+    \newpar
+    Alors, il existe $V$ voisinage de $a$ et $W$ voisinage de $f(a)$ tels que $f_{|V}$ soit un difféomorphisme de classe $\mathcal{C}^1$ de $V$ sur $W$.
+  \end{theorem}
+
+  \begin{remark}
+    Si $F = \mathbb{R}^n$, $\mathrm{d}f_a$ est inversible si et seulement si le jacobien de $f$ en $a$, $\det \operatorname{Jac}(f)_a$, est non nul.
+  \end{remark}
+
+  \begin{corollary}
+    Soit $f : U \rightarrow \mathbb{R}^q$ de classe $\mathcal{C}^1$. On suppose que pour tout $a \in U$, $\mathrm{d}f_a$ est inversible. Alors $f$ est une application ouverte.
+  \end{corollary}
+
+  \reference{347}
+
+  \begin{example}
+    L'application de $\mathbb{R}^2$ dans $\mathbb{R}^2$ définie par $(x, y) \mapsto (x^2-y^2, xy)$ est un difféomorphisme de classe $\mathcal{C}^\infty$ en tout point de $\mathbb{R}^2 \setminus (0,0)$.
+  \end{example}
+
+  \reference[BMP]{9}
+
+  \begin{application}
+    Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et tout fonction $f$ appartient à $L_1$ si et seulement si $\vert \det \operatorname{Jac}(\varphi)_a \vert f \circ \varphi$ appartient à $L_1$. Dans ce cas,
+    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_a \vert f (\varphi(y)) \, \mathrm{d}y \]
+  \end{application}
+
+  \reference[GOU20]{355}
+
+  \begin{example}
+    En passant en coordonnées polaires,
+    \[ \int_{\mathbb{R}} e^{-x^2} \, \mathrm{d}x = \sqrt{\pi} \]
+  \end{example}
+
+  \reference[BMP]{9}
+
+  \begin{application}
+    Soient $A \in \mathcal{M}_n(\mathbb{R})$ et $k$ un entier. Alors, si $A$ est suffisamment proche de l'identité $I_n$, $A$ est une racine $k$-ième (ie. $\exists B \in \mathcal{M}_n(\mathbb{R})$ telle que $B^k = A$).
+  \end{application}
+
+  \reference[I-P]{396}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item Soit $A \in \mathcal{M}_n(\mathbb{C})$. Alors $\exp(A) \in \mathrm{GL}_n(\mathbb{C})$.
+      \item $\exp$ est différentiable en $0$ et $\mathrm{d}\exp_0 = \operatorname{id}_{\mathcal{M}_n(\mathbb{C})}$.
+      \item Soit $M \in \mathrm{GL}_n(\mathbb{C})$. Alors $M^{-1} \in \mathbb{C}[M]$.
+    \end{enumerate}
+  \end{lemma}
+
+  \dev{surjectivite-de-l-exponentielle}
+
+  \begin{theorem}
+    $\exp : \mathcal{M}_n(\mathbb{C}) \rightarrow \mathrm{GL}_n(\mathbb{C})$ est surjective.
+  \end{theorem}
+
+  \begin{application}
+    $\exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R})^2$, où $\mathrm{GL}_n(\mathbb{R})^2$ désigne les carrés de $\mathrm{GL}_n(\mathbb{R})$.
+  \end{application}
+
+  \subsubsection{Fonctions implicites}
+
+  \reference[GOU20]{344}
+
+  \begin{definition}
+    Soient $E_1, \dots, E_n, F$ des espaces de Banach, $\Omega \subseteq E$ un ouvert où $E = E_1 \times \dots \times E_n$ et $a = (a_1, \dots, a_n) \in E$. Soit $f : \Omega \rightarrow F$. Alors, pour tout $i \in \llbracket 1, n \rrbracket$, $f_i : x \mapsto f(a_1, \dots, a_{i-1}, x, a_{i+1}, \dots, a_n)$ est définie sur un voisinage de $a_i$ dans $E_i$. Si elle est différentiable en $a_i$, on dit que $f$ admet une \textbf{différentielle partielle} d'indice $i$ en $a$, et on note celle-ci $\partial_i f_a$.
+  \end{definition}
+
+  \begin{remark}
+    En reprenant les notations précédentes :
+    \begin{itemize}
+      \item Si pour tout $i \in \llbracket 1, n \rrbracket$, $E_i = \mathbb{R}$ et $F = E = \mathbb{R}^n$, alors $\partial_i f_a = h \frac{\partial f}{\partial x_i} (a)$.
+      \item Si $f$ est différentiable en $a$, alors pour tout $i \in \llbracket 1, n \rrbracket$, $\partial_i f_a$ existe et
+      \[ \forall h = (h_1, \dots, h_n) \in E, \, \mathrm{d}f_a(h) = \sum_{i=1}^{n} \partial_i f_a(h_i) \]
+    \end{itemize}
+  \end{remark}
+
+  \begin{theorem}[des fonctions implicites]
+    Soient $U \times V \subseteq \mathbb{R}^n \times \mathbb{R}^m$ où $U$ et $V$ sont des ouvertes. Soit $f : U \times V \rightarrow F$ de classe $\mathcal{C}^1$. On suppose qu'il existe $(a,b) \in U \times V$ tel que $f(a,b)=0$ et $\partial_2 f_{(a,b)} : \mathbb{R}^m \rightarrow F$ est un isomorphisme. Alors, il existe :
+    \begin{itemize}
+      \item Un voisinage ouvert $U_0$ de $a$ dans $U$.
+      \item Un voisinage ouvert $W$ de $f(a,b)$.
+      \item Un voisinage ouvert $\Omega$ de $(a,b)$ dans $U \times V$.
+      \item Une fonction $\varphi : U_0 \times W \rightarrow V$ de classe $\mathcal{C}^1$.
+    \end{itemize}
+    Vérifiant :
+    \[ \forall x \in U_0, \, \forall z \in W, \, \exists! y \in V \text{ tel que } f(x,y)=z \text{ avec } (x, y) \in \Omega \text{ et } y=\varphi(x,z) \]
+    En particulier,
+    \[ \forall (x,z) \in U_0 \times W, \, f(x, \varphi(x,z)) = z \]
+  \end{theorem}
+
+  \reference[BMP]{11}
+
+  \begin{remark}
+    Avec les notations précédentes, si $E = F = \mathbb{R}$, on peut choisir n'importe quelle variable pour obtenir
+    \[ y = \varphi(x) \text{ si } \frac{\partial f}{\partial y}(a,b) \neq 0 \text{ ou } x = \varphi(y) \text{ si } \frac{\partial f}{\partial y}(a,b) \neq 0 \]
+  \end{remark}
+
+  \reference[ROU]{193}
+
+  \begin{remark}
+    La signification de ce théorème est que la surface définie implicitement par l'équation $f(x,y)=0$ peut, au moins localement, être vue comme le graphe d'une fonction $\varphi$.
+  \end{remark}
+
+  \begin{proposition}
+    Avec les notations précédentes, la différentielle de la fonction implicite $\varphi$ est donnée par :
+    \[ \mathrm{d}\varphi_x = -(\partial_2 f_{(x, \varphi(x)}))^{-1} \circ (\partial_1 f_{(x, \varphi(x))}) \]
+  \end{proposition}
+
+  \begin{example}
+    Pour l'équation $x^2 + y^2 - 1 = 0$, on a $\partial_2 f_{(x,y)} = 2y$. On exclue les points où $y = 0$. En prenant $(0,1)$ et $(0,-1)$ pour points de départ, on a deux fonctions implicites qui correspondent aux demi-cercles supérieur et inférieur :
+    \begin{itemize}
+      \item $y = \varphi_1(x) = \sqrt{1-x^2}$.
+      \item $y = \varphi_2(x) = -\sqrt{1-x^2}$.
+    \end{itemize}
+    De plus, en dérivant par rapport à $x$ : $2x + 2yy' = 0$ et, $y' = \varphi_1'(x) = \frac{-x}{y}$.
+  \end{example}
+
+  \subsection{Application aux fonctions à valeurs dans \texorpdfstring{$\mathbb{R}$}{R}}
+
+  \subsubsection{Gradient, hessienne}
+
+  \reference[GOU20]{324}
+
+  Soit $f : U \rightarrow \mathbb{R}$ une application différentiable en un point $a$ de $U$.
+
+  \begin{definition}
+    $\mathrm{d}f_a$ est une forme linéaire, et le théorème de représentation de Riesz donne l'existence d'un unique vecteur $v$ de $\mathbb{R}^n$ tel que
+    \[ \forall h \in \mathbb{R}^n, \, \mathrm{d}f_a(h) = \langle v, h \rangle \]
+    Le vecteur $v$ s'appelle \textbf{gradient} de $f$, et est noté $\nabla f_a$.
+  \end{definition}
+
+  \begin{proposition}
+    $\frac{\partial f}{\partial x_i}$ existe pour tout $i \in \llbracket 1, n \rrbracket$ et,
+    \[ \nabla f_a = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(a) e_i \]
+    où $(e_1, \dots, e_n)$ est la base canonique de $\mathbb{R}^n$.
+  \end{proposition}
+
+  \reference{336}
+
+  On suppose pour la suite $f$ de classe $\mathcal{C}^2$.
+
+  \begin{definition}
+    La matrice \textbf{hessienne} de $f$ en $a$, notée $\operatorname{Hess}(f)_a$, est définie par
+    \[ \operatorname{Hess}(f)_a = \left( \frac{\partial^2 f}{\partial x_i \partial x_j} \right)_{i,j \in \llbracket 1, n \rrbracket} \]
+  \end{definition}
+
+  \begin{remark}
+    Pour $f$ de classe $\mathcal{C}^2$, $\operatorname{Hess}(f)_a$ est symétrique.
+  \end{remark}
+
+  \begin{theorem}
+    On suppose $\mathrm{d}f_a = 0$ ($a$ est un \textbf{point critique} de $f$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $f$ admet un minimum (resp. maximum) relatif en $a$, $\operatorname{Hess}(f)_a$ est positive (resp. négative).
+      \item Si $\operatorname{Hess}(f)_a$ définit une forme quadratique définie positive (resp. définie négative), $f$ admet un minimum (resp. maximum) relatif en $a$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    On suppose $\mathrm{d}f_a = 0$. On pose $(r,s,t) = \left(  \frac{\partial^2}{\partial x_i \partial x_j} f \right)_{i+j=2}$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $rt-s^2 > 0$ et $r > 0$ (resp. $r < 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
+      \item Si $rt-s^2 < 0$, $f$ n'a pas d'extremum en $a$.
+      \item Si $rt-s^2 = 0$, on ne peut rien conclure.
+    \end{enumerate}
+  \end{example}
+
+  \begin{example}
+    La fonction $(x,y) \mapsto x^4 + y^2 - 2(x-y)^2$ a trois points critiques qui sont des minimum locaux : $(0,0)$, $(\sqrt{2},-\sqrt{2})$ et $(-\sqrt{2},\sqrt{2})$.
+  \end{example}
+
+  \begin{cexample}
+    $x \mapsto x^3$ a sa hessienne positive en $0$, mais n'a pas d'extremum en $0$.
+  \end{cexample}
+
+  \subsubsection{Homéomorphismes}
+
+  \reference[ROU]{209}
+
+  \begin{lemma}
+    Soit $A_0 \in \mathcal{S}_n(\mathbb{R})$ inversible. Alors il existe un voisinage $V$ de $A_0$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ telle que
+    \[ \forall A \in V, \, A = \tr \psi(A) A_0 \psi(A) \]
+  \end{lemma}
+
+  \reference{354}
+  \dev{lemme-de-morse}
+
+  \begin{lemma}[Morse]
+    Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
+    \begin{itemize}
+      \item $\mathrm{d} f_0 = 0$.
+      \item La matrice symétrique $\mathrm{H} (f)_0$ est inversible.
+      \item La signature de $\mathrm{H}(f)_0$ est $(p, n-p)$.
+    \end{itemize}
+    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
+    \[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
+  \end{lemma}
+
+  \reference{334}
+
+  \begin{example}
+    On considère $f : (x,y) \mapsto x^2-y^2+\frac{y^4}{4}$. La courbe d'équation
+    \[ f(x,y) = 0 \]
+    est (au changement près du nom des coordonnées) une projection de l'intersection d'un cylindre et d'une sphère tangents. On a
+    \[ f = u^2 - v^2 \]
+    avec $u : (x,y) \mapsto x$ et $v : (x,y) \mapsto y \sqrt{1-\frac{y^2}{4}}$.
+  \end{example}
+
+  \subsubsection{Optimisation}
+
+  \reference[GOU20]{337}
+
+  \begin{theorem}[Extrema liés]
+    \label{215-1}
+    Soit $U$ un ouvert de $\mathbb{R}^n$ et soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe des uniques $\lambda_1, \dots, \lambda_r$ tels que
+    \[ \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
+  \end{theorem}
+
+  \begin{definition}
+    Les $\lambda_1, \dots, \lambda_r$ du théorème précédent sont appelés appelés \textbf{multiplicateurs de Lagrange}.
+  \end{definition}
+
+  \reference[BMP]{21}
+
+  \begin{remark}
+    La relation finale du \cref{215-1} équivaut à
+    \[ \bigcap_{i=1}^n \ker(\mathrm{d}(g_i)_a) \subseteq \ker(\mathrm{d}f_a) \]
+    et elle exprime que $\mathrm{d}f_a$ est nulle sur l'espace tangent à $\Gamma$ en $a$ (ie. $\nabla f_a$ est orthogonal à l'espace tangent à $\Gamma$ en $a$).
+  \end{remark}
+
+  \begin{cexample}
+    On pose $g : (x,y) \mapsto x^3-y^2$ et on considère $f : (x, y) \mapsto x+y^2$. On cherche à minimiser $f$ sous la contrainte $g(x,y) = 0$.
+    \newpar
+    Alors, le minimum (global) de $f$ sous cette contrainte est atteint en $(0,0)$, la différentielle de $g$ en $(0,0)$ est nulle et la relation finale du \cref{215-1} n'est pas vraie.
+  \end{cexample}
+
+  \begin{application}[Théorème spectral]
+    Tout endomorphisme symétrique d'un espace euclidien se diagonalise dans une base orthonormée.
+  \end{application}
+
+  \reference{35}
+
+  \begin{application}
+    \[ \mathrm{SO}_n(\mathbb{R}) = \left\{ M \in \mathcal{M}_n(\mathbb{R}) \mid \Vert M \Vert^2 = \inf_{P \in \mathrm{SL}_n(\mathbb{R})} \Vert P \Vert^2 \right\} \]
+    où $\Vert . \Vert : M \mapsto \sqrt{\trace(\tr{M}M)}$ (ie. $\mathrm{SO}_n(\mathbb{R})$ est l'ensemble des matrices de $\mathrm{SL}_n(\mathbb{R})$ qui minimisent la norme euclidienne canonique de $\mathcal{M}_n(\mathbb{R})$).
+  \end{application}
+
+  \reference[GOU20]{339}
+
+  \begin{application}[Inégalité arithmético-géométrique]
+    \[ \forall (x_1, \dots, x_n) \in (\mathbb{R}^+)^n, \, \left( \prod_{i=1}^{n} x_i \right)^{\frac{1}{n}} \leq \frac{1}{n} \sum_{i=1}^n x_i \]
+  \end{application}
+
+  \reference[ROU]{409}
+
+  \begin{application}[Inégalité d'Hadamard]
+    \[ \forall (x_1, \dots, x_n) \in \mathbb{R}^n, \, \det(x_1, \dots, x_n) \leq \Vert x_1 \Vert \dots \Vert x_n \Vert \]
+    avec égalité si et seulement si $(x_1, \dots, x_n)$ est une base orthogonale de $\mathbb{R}^n$.
+  \end{application}
+
+  \annexessection
+
+  \reference[BMP]{10}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \draw [thick, fill=teal, fill opacity=0.05]  plot[smooth, tension=.7] coordinates {(-4,2.5) (-3,3) (-2,2.8) (-0.8,2.5) (-0.5,1.5) (0,0) (0,-2) (-1.5,-2.5) (-4,-2) (-5,-0.5) (-5,1) (-4,2.5)};
+        \draw [thick, fill=teal, fill opacity=0.05]  plot[smooth, tension=.9] coordinates {(3,1) (4,2.5) (5,2.8) (6,2) (6.5,0.5) (7,0) (7.5,-1) (6,-2) (4,-2.5) (3.5,-1.5) (3,1)};
+        \begin{scope}[scale=0.5,rotate=80,shift={(-6,5)}]
+          \draw [thick, fill=teal, fill opacity=0.2]  plot[smooth, tension=.9] coordinates {(3,1) (4,2.5) (5,2.8) (6,2) (6.5,0.5) (7,0) (7.5,-1) (6,-2) (4,-2.5) (3.5,-1.5) (3,1)};
+          \draw(4.75, 0.75) node {$\bullet$} node[above]{$a$};
+          \node at (4.75, -1) {$V$};
+        \end{scope}
+        \begin{scope}[scale=0.5,shift={(-1,0)}]
+          \draw [thick, fill=teal, fill opacity=0.2]  plot[smooth, tension=.9] coordinates {(10,0.5) (11,1.5) (12,2) (13,1.5) (13.5,0.5) (14,-0.5) (13.5,-2) (12,-2.5) (10.5,-2) (9,-1.5) (9,0.5) (10,0.5)};
+          \draw(11.75, -0.5) node {$\bullet$} node[above]{$f(a)$};
+          \node at (10, -0.75) {$W$};
+        \end{scope}
+        \draw[->] (-3,2) to [out=45,in=135] (5,2);
+        \draw[<-] (-3,-0.5) to [out=-45,in=-135] (5,-0.5);
+        \node at (1,4) {$f$};
+        \node at (1,-2.5) {$f^{-1}_{|V}$};
+        \node at (-2.5,-2) {$U$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Inversion locale.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}[scale=2]
+        \draw[->] (-3, 0) -- (2.5, 0) node[right] {$x$};
+        \draw[->] (0, -0.5) -- (0, 3.5) node[above] {$y$};
+        \draw [thick, teal] (-1.25,2.02) to[out=-35,in=-140] (-1,2) to[out=45,in=115] (2,2) to[out=-180+115,in=10] (1,0.5) to[out=180+10,in=10] (-1,1) to[out=180+10,in=90] (-2,-0.5);
+        \draw[<->] (-1.25,1) -- (-1.8,0.5);
+        \node[align=left] at (-2.4,0.8) {$x = \psi_1(x) = \varphi_1^{-1}(y)$ \\ $y = \varphi_1(x)$};
+        \draw[<->] (0.45,0.48) -- (1.15,0.48);
+        \node[align=left] at (0.8,0.3) {$y = \varphi_2(x)$};
+        \draw[<->] (2.08,1.3) -- (2.08,2);
+        \node[align=left] at (2.57,1.65) {$x = \psi_2(y)$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Fonctions implicites.}
+  \end{figure}
+  %</content>
+\end{document}

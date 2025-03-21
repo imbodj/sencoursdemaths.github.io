@@ -1,0 +1,95 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra}{trigonalisation-simultanee}{Trigonalisation simultanée}
+
+  \summary{Nous montrons le théorème de trigonalisation simultanée grâce à l'utilisation des applications transposées (et donc, de la dualité).}
+
+  \reference[GOU21]{176}
+
+  Soit $E$ un espace vectoriel de dimension $n$ sur un corps $\mathbb{K}$.
+  
+  \begin{lemma}
+    \label{trigonalisation-simultanee-1}
+    Soit $g \in \mathcal{L}(E)$ un endomorphisme. Soit $F$ un sous-espace vectoriel de $E$ stable par $g$. Alors,
+    \[ \chi_{g_{|F}} \mid \chi_{g} \]
+  \end{lemma}
+  
+  \begin{proof}
+    On note $m$ la dimension de $F$. Considérons $G$, un supplémentaire de $F$ dans $E$. Soient $\mathcal{B}_F$ et $\mathcal{B}_G$ des bases respectives de $F$ et de $G$. Alors, la matrice de $g$ dans la base de $E$ constituée de l'union disjointe de $\mathcal{B}_F$ et $\mathcal{B}_G$ est de la forme
+    \[
+    M =
+    \begin{pmatrix}
+      A & * \\
+      0 & *
+    \end{pmatrix}
+    \]
+    avec $A \in \mathcal{M}_m(\mathbb{K})$, qui est la matrice de l'endomorphisme induit $g_{|F}$. On constate clairement que $\chi_{g_{|F}} = \chi_A \mid \chi_M = \chi_g$.
+  \end{proof}
+
+  \begin{lemma}
+    \label{trigonalisation-simultanee-2}
+    Soit $g \in \mathcal{L}(E)$ un endomorphisme trigonalisable. Soit $F$ un sous-espace vectoriel de $E$ stable par $g$. Alors, $g_{|F}$ est trigonalisable.
+  \end{lemma}
+
+  \begin{proof}
+    $g$ est trigonalisable si et seulement si son polynôme caractéristique est scindé sur $\mathbb{K}$. Dans ce cas, le polynôme caractéristique de sa restriction à $F$ l'est aussi au vu du \cref{trigonalisation-simultanee-1}.
+  \end{proof}
+
+  \begin{lemma}
+    \label{trigonalisation-simultanee-3}
+    Soient $f, g \in \mathcal{L}(E)$. On suppose que $f$ et $g$ sont trigonalisables et commutent. Alors, $f$ et $g$ ont un vecteur propre commun.
+  \end{lemma}
+
+  \begin{proof}
+    $f$ est trigonalisable, donc $f$ admet une valeur propre $\lambda \in \mathbb{K}$ (cf. première colonne de la matrice de $f$ dans une base de trigonalisation). Le sous-espace propre $E_\lambda = \ker(f - \lambda \operatorname{id}_E)$ est alors stable par $g$ :
+    \[ \forall x \in E_\lambda, \, (f - \lambda \operatorname{id}_E)(g(x)) = g((f - \lambda \operatorname{id}_E)(x)) \]
+    car $f$, $g$ et $\lambda \operatorname{id}_E$ commutent. Ainsi,
+    \[ \forall x \in E_\lambda, \, (f - \lambda \operatorname{id}_E)(g(x)) = 0 \]
+    Par le \cref{trigonalisation-simultanee-2}, la restriction de $g$ à $E_\lambda$ est trigonalisable. Donc, $g_{|E_\lambda}$ admet un vecteur propre $x \in E_\lambda$ qui est, par construction, un vecteur propre commun à $f$ et $g$.
+  \end{proof}
+
+  \begin{theorem}[Trigonalisation simultanée]
+    Soient $f, g \in \mathcal{L}(E)$. On suppose que $f$ et $g$ sont trigonalisables et commutent. Alors, il existe une base de trigonalisation commune de $f$ et $g$.
+  \end{theorem}
+
+  \begin{proof}
+    On va procéder par récurrence sur $n$.
+    \begin{itemize}
+      \item \uline{Si $n = 1$ :} c'est évident.
+      \item \uline{Supposons le résultat vrai au rang $n - 1$.} Pour tout $\varphi \in E^*$,
+      \begin{align*}
+        (\tr{f} \circ \tr{g})(\varphi) &= \tr{f} (\varphi \circ g) \\
+        &= \varphi \circ g \circ f \\
+        &= \varphi \circ f \circ g \\
+        &= (\tr{g} \circ \tr{f})(\varphi)
+      \end{align*}
+      ie. $\tr{f} \tr{g} = \tr{f} \tr{g}$. De plus, $\tr{f}$ et $\tr{g}$ sont trigonalisables (car possèdent les mêmes polynômes caractéristiques que $f$ et $g$). Par le \cref{trigonalisation-simultanee-3} appliqué à $\tr{f}$ et $\tr{g}$, il existe un vecteur propre $\psi \in E^*$ commun à ces deux endomorphismes. Le sous-espace vectoriel $\operatorname{Vect}(\psi)$ est ainsi stable par $\tr{f}$ et $\tr{g}$. Notons
+      \[ H = \operatorname{Vect}(\psi)^{\circ} = \{ x \in E \mid \psi (x) = 0 \} = \ker(\psi) \]
+      c'est un hyperplan de $E$ (donc de dimension $n-1$), qui est de plus stable par $f$ et $g$. En effet, en notant $\lambda \in \mathbb{K}$ la valeur propre de $f$ associée à $\psi$, on a :
+      \[ \forall x \in H, \, \psi(f(x)) = \tr{f}(\psi)(x) = \lambda \psi(x) = 0 \]
+      et un même calcul montre la stabilité par $g$. D'après l'hypothèse de récurrence appliquée aux endomorphismes induits $f_{|H}$ et $g_{|H}$, on obtient une base $\mathcal{B}_H$ de $H$ de cotrigonalisation pour $f_{|H}$ et $g_{|H}$. On la complète en une base quelconque $\mathcal{B}$ de $E$, dans laquelle on obtient
+      \[
+        \operatorname{Mat}(f, \mathcal{B}) =
+        \begin{pmatrix}
+          & & & * \\
+          & \operatorname{Mat}(f_{|H}, \mathcal{B}_H) & & \vdots \\
+          & & & * \\
+          0 & \dots & 0 & *
+        \end{pmatrix}
+        \text{ et }
+        \operatorname{Mat}(g, \mathcal{B}) =
+        \begin{pmatrix}
+          & & & * \\
+          & \operatorname{Mat}(g_{|H}, \mathcal{B}_H) & & \vdots \\
+          & & & * \\
+          0 & \dots & 0 & *
+        \end{pmatrix}
+      \]
+      où $\operatorname{Mat}(f_{|H}, \mathcal{B}_H)$ et $\operatorname{Mat}(g_{|H}, \mathcal{B}_H)$ sont triangulaires supérieures d'ordre $n-1$.
+    \end{itemize}
+  \end{proof}
+  %</content>
+\end{document}

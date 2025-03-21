@@ -1,0 +1,83 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{theoreme-des-evenements-rares-de-poisson}{Théorème des événements rares de Poisson}
+
+  \summary{On établit la convergence en loi vers une loi de Poisson d'une suite de variables aléatoires.}
+
+  \reference[G-K]{372}
+
+  \begin{lemma}
+    \label{theoreme-des-evenements-rares-de-poisson-1}
+    Soient $z_1, \dots, z_n, u_1, \dots u_n \in \mathbb{C}$ de module inférieur ou égal à $1$. Alors
+    \[ |z_1 \dots z_n - u_1 \dots u_n| \leq |z_1-u_1| + \dots |z_n - u_n| \]
+  \end{lemma}
+
+  \begin{proof}
+    $|z_1 z_2 - u_1 u_2| = |z_1(z_2 - u_2) + u_2(z_1 - u_1)| \leq |z_1 - u_1| + |z_2 - u_2|$. On procède ensuite par récurrence pour montrer le résultat.
+  \end{proof}
+
+  \reference{390}
+
+  \begin{theorem}[des événements rares de Poisson]
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
+      \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
+    \end{enumerate}
+    Alors, la suite de variables aléatoires $(S_n)$ définie par
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^{N_n} \mathbb{1}_{A_{n,k}} \]
+    converge en loi vers la loi de Poisson de paramètre $\lambda$.
+  \end{theorem}
+
+  \begin{proof}
+    Pour la suite, on note $\forall n \in \mathbb{N}, \, m_n = \max_{k \in \llbracket 1, N_n \rrbracket} p_{n,k}$. On calcule
+    \begin{align*}
+      \phi_{S_n}(t) &= \mathbb{E} \left(e^{itS_n} \right) \\
+      &= \mathbb{E} \left(e^{it \sum_{k=1}^{N_n} \mathbb{1}_{A_{n,k}}} \right) \\
+      &= \mathbb{E} \left(\prod_{k=1}^{N_n} e^{it \mathbb{1}_{A_{n,k}}} \right) \\
+      &= \prod_{k=1}^{N_n} \mathbb{E} \left(e^{it \mathbb{1}_{A_{n,k}}} \right) \text{ par indépendance} \\
+      &= \prod_{k=1}^{N_n} \left( (1 - p_{n,k}) + e^{it} p_{n,k} \right) \\
+      &= \prod_{k=1}^{N_n} \left( p_{n,k}(e^{it}-1) + 1 \right)
+    \end{align*}
+    l'avant-dernière égalité étant justifiée par le fait que
+    \[ \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = e^{it}) = \mathbb{P}(A_{n,k} = 1) = p_{n,k} \text{ et } \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = 1) = \mathbb{P}(A_{n,k} = 0) = 1 - p_{n,k} \]
+    Soient $P_{n,k}$ des variables aléatoires indépendantes suivant les lois de Poisson de paramètres respectifs $p_{n,k}$. On pose
+    \[ S_n' = \sum_{k=1}^{N_n} P_{n,k} \]
+    et on calcule la fonction caractéristique de cette nouvelle variable aléatoire :
+    \begin{align*}
+      \phi_{S_n'}(t) &= \prod_{k=1}^{N_n} \phi_{P_{n,k}} (t) \text{ par indépendance} \\
+      &= \prod_{k=1}^{N_n} \exp ( p_{n,k}(e^{it} - 1 ))) \\
+      &= \exp(s_n(e^{it} - 1))
+    \end{align*}
+    Par différence, on obtient
+    \[ \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert = \left| \prod_{k=1}^{N_n} \left( p_{n,k}(e^{it}-1) + 1 \right) - \prod_{k=1}^{N_n} \exp ( p_{n,k}(e^{it} - 1 ))) \right| \]
+    ce qui, après application du \cref{theoreme-des-evenements-rares-de-poisson-1}, donne l'inégalité
+    \[ \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert \leq \sum_{k=1}^{N_n} g(p_{n,k}(e^{it}-1)) \]
+    avec $g : z \mapsto \vert e^z - 1 - z \vert$. Mais, par développement en série entière :
+    \begin{align*}
+      g(z) &= \left\vert \sum_{k=2}^{+\infty} \frac{z^k}{k!} \right\vert \\
+      &= \left\vert \sum_{k=0}^{+\infty} \frac{z^{k+2}}{(k+2)!} \right\vert  \\
+      &= \left\vert z^2 \sum_{k=0}^{+\infty} \frac{z^k}{k!} \frac{1}{(k+1)(k+2)} \right\vert \\
+      &\leq \vert z \vert^2 \sum_{k=0}^{+\infty} \frac{\vert z \vert^k}{k!} \left| \frac{1}{(k+1)(k+2)} \right| \\
+      &\leq \vert z \vert^2 \frac{e^{\vert z \vert}}{2}
+    \end{align*}
+    Mais, comme $\vert p_{n,k}(e^{it} - 1) \vert \leq 2 p_{n,k} \leq 2$, on a :
+    \begin{align*}
+      \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert &\leq \sum_{k=1}^{N_n} (2p_{n,k})^2 \frac{e^2}{2} \\
+      &= 2e^2 \sum_{k=1}^{N_n} 2p_{n,k}^2 \\
+      &\leq 2e^2 \underbrace{s_n}_{\longrightarrow \lambda} \underbrace{m_n}_{\longrightarrow 0} \\
+      &\longrightarrow 0
+    \end{align*}
+    Enfin,
+    \begin{align*}
+      \vert \phi_{S_n}(t) - \exp(\lambda(e^{it} - 1)) \vert &\leq \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert + \vert \phi_{S_n'}(t) - \exp(\lambda(e^{it} - 1)) \vert \\
+      &\leq \underbrace{\vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert}_{\longrightarrow 0} + \vert \underbrace{\exp(s_n(e^{it} - 1)) - \exp(\lambda(e^{it} - 1)) \vert}_{\longrightarrow 0 \text{ car } s_n \longrightarrow \lambda}
+      &\longrightarrow 0
+    \end{align*}
+    et le théorème de Lévy permet de conclure.
+  \end{proof}
+  %</content>
+\end{document}

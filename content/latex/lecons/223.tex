@@ -1,0 +1,487 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{223}{Suites numériques. Convergence, valeurs d'adhérence. Exemples et applications.}
+
+  Dans toute la suite, $\mathbb{K}$ désignera le corps $\mathbb{R}$ ou $\mathbb{C}$.
+
+  \subsection{Convergence des suites numériques}
+
+  \subsubsection{Limite d'une suite}
+
+  \reference[AMR11]{1}
+
+  \begin{definition}
+    Soit $E$ un ensemble non vide. On appelle \textbf{suite} à valeurs dans $E$ toute application $u: D \rightarrow E$ où $D$ est une partie de $\mathbb{N}$. Lorsque $E$ est une partie de $\mathbb{R}$ (resp. de $\mathbb{C}$), on dit que $u$ est \textbf{réelle} (resp. \textbf{complexe}). Dans ces deux cas, on parle de \textbf{suite numérique}.
+  \end{definition}
+
+  On fixe, pour tout le reste de la leçon, $(u_n)$ une suite numérique à coefficients dans $\mathbb{K}$.
+
+  \reference{12}
+
+  \begin{definition}
+    \label{223-1}
+    \begin{itemize}
+      \item Si $\mathbb{K} = \mathbb{R}$, on dit que $(u_n)$ est \textbf{majorée} (resp. \textbf{minorée}) s'il existe $A \in \mathbb{R}$ tel que $\forall n \in \mathbb{N}$, $u_n \leq A$ (resp. $A \leq u_n$).
+      \item On dit que $(u_n)$ est \textbf{bornée} s'il existe $A \in \mathbb{R}$ tel que $\forall n \in \mathbb{N}$, $\vert u_n \vert \leq A$ (resp. $A \leq u_n$). Dans le cas où $\mathbb{K} = \mathbb{R}$, cela revient à dire que $(u_n)$ est majorée et minorée.
+      \item On dit que $(u_n)$ admet $\ell \in \mathbb{K}$ pour \textbf{limite} (ou \textbf{converge} / \textbf{tend} vers $\ell$) si,
+      \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, \vert u_n - \ell \vert < \epsilon \]
+      On le note $\lim_{n \rightarrow +\infty} u_n = \ell$ ou $u_n \longrightarrow_{n \rightarrow +\infty} \ell$.
+      \item On dit que $(u_n)$ est \textbf{convergente} si elle admet une limite. Sinon, on dit qu'elle est \textbf{divergente}.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    Si $(u_n)$ est définie par
+    \[ \forall n \geq 1, \, u_n = 1 + \frac{(-1)^n}{n} \]
+    alors $(u_n)$ converge vers $1$.
+  \end{example}
+
+  \begin{theorem}
+    On a unicité de la limite dans $\mathbb{K}$.
+  \end{theorem}
+
+  \begin{proposition}
+    Toute suite numérique convergente est bornée.
+  \end{proposition}
+
+  \begin{cexample}
+    $((-1)^n)$ est bornée, non convergente.
+  \end{cexample}
+
+  \begin{proposition}
+    Soit $(v_n)$ une suite numérique bornée. On suppose $\lim_{n \rightarrow +\infty} u_n = 0$. Alors $\lim_{n \rightarrow +\infty} u_n v_n = 0$.
+  \end{proposition}
+
+  \begin{proposition}
+    On suppose $\lim_{n \rightarrow +\infty} u_n = \ell_1 \in \mathbb{K}$. Soit $(v_n)$ une suite numérique qui converge vers $\ell_2 \in \mathbb{K}$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\lim_{n \rightarrow +\infty} u_n + v_n = \ell_1 + \ell_2$.
+      \item $\lim_{n \rightarrow +\infty} \lambda u_n = \lambda \ell_1$ pour tout $\lambda \in \mathbb{K}$.
+      \item $\lim_{n \rightarrow +\infty} u_n v_n = \ell_1 \ell_2$.
+      \item Si $\ell_2 \neq 0$, on a $v_n \neq 0$ à partir d'un certain rang et, $\lim_{n \rightarrow +\infty} \frac{u_n}{v_n} = \frac{\ell_1}{\ell_2}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{20}
+
+  \begin{definition}
+    On suppose $\mathbb{K} = \mathbb{R}$.
+    \begin{itemize}
+      \item On dit que $(u_n)$ \textbf{tend vers $+\infty$} si,
+      \[ \forall A \in \mathbb{R}, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, u_n \geq A \]
+      \item On dit que $(u_n)$ \textbf{tend vers $-\infty$} si $(-u_n)$ tend vers $+\infty$.
+    \end{itemize}
+    On a les mêmes notations qu'à la \cref{223-1}.
+  \end{definition}
+
+  \begin{proposition}
+    On suppose $\lim_{n \rightarrow +\infty} u_n = +\infty$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $(u_n)$ est minorée.
+      \item $(u_n)$ est strictement positive à partir d'un certain rang et $\lim_{n \rightarrow +\infty} \frac{1}{u_n} = 0$.
+      \item Soit $(v_n)$ une suite numérique.
+      \begin{itemize}
+        \item Si $(v_n)$ est convergente ou $\lim_{n \rightarrow +\infty} v_n = +\infty$, on a $\lim_{n \rightarrow +\infty} u_n + v_n = +\infty$.
+        \item Si $\lim_{n \rightarrow +\infty} v_n = +\infty$, on a $\lim_{n \rightarrow +\infty} u_n v_n = +\infty$.
+      \end{itemize}
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{29}
+
+  \begin{example}
+    Soit $\lambda \in \mathbb{R}$. Alors,
+    \[
+    \lim_{n \rightarrow +\infty} \lambda n =
+    \begin{cases}
+      +\infty &\text{si } \lambda > 0 \\
+      -\infty &\text{si } \lambda < 0 \\
+      0 &\text{sinon}
+    \end{cases}
+    \]
+  \end{example}
+
+  \subsubsection{Convergence de suites réelles}
+
+  \reference{20}
+
+  Le résultat suivant justifie de se ramener au cas réel lors de l'étude de la convergence des suites numériques.
+
+  \begin{proposition}
+    Soient $(x_n), (y_n)$ deux suites réelles et $x, y$ deux réels. Alors,
+    \[
+    \lim_{n \rightarrow +\infty} x_n + iy_n = x+iy \iff
+    \begin{cases}
+      \lim_{n \rightarrow +\infty} x_n &= x \\
+      \lim_{n \rightarrow +\infty} y_n &= y
+    \end{cases}
+    \]
+  \end{proposition}
+
+  On se place pour le restant de la sous-section dans le cas où $\mathbb{K} = \mathbb{R}$.
+
+  \begin{theorem}[des gendarmes]
+    Soient $(a_n)$ et $(b_n)$ deux suites réelles de même limite $\ell \in \mathbb{R}$ telles qu'à partir d'un certain rang, on ait $a_n \leq u_n \leq b_n$. Alors, $u_n \longrightarrow_{n \rightarrow +\infty} \ell$.
+  \end{theorem}
+
+  \begin{definition}
+    $(u_n)$ est dite \textbf{croissante} (resp. \textbf{décroissante}) si pour tout entier $n$, on a $u_{n+1} \geq u_n$ (resp. $u_{n+1} \leq u_n$). Elle est dite \textbf{monotone} si elle est croissante ou décroissante.
+  \end{definition}
+
+  \begin{theorem}[de la limite monotone]
+    Si $(u_n)$ est croissante et majorée ou décroissante et minorée, alors elle est convergente.
+  \end{theorem}
+
+  \begin{theorem}[Suites adjacentes]
+    Si deux suites $(u_n)$ et $(v_n)$ sont adjacentes (ie. $(u_n)$ est croissante, $(v_n)$ est décroissante et la suite différence tend vers $0$), alors elles sont convergentes de même limite $\ell$ qui vérifie
+    \[ \forall n \in \mathbb{N}, \, u_n \leq \ell \leq v_n \]
+  \end{theorem}
+
+  \begin{example}
+    Les suites $\left( 1 - \frac{1}{n} \right)$ et $\left( 1 + \frac{1}{n^2} \right)$ sont adjacentes et convergent vers $1$.
+  \end{example}
+
+  \reference{36}
+
+  \begin{corollary}[Segments emboîtés]
+    Soient $(a_n)$ et $(b_n)$ deux suites réelles telles que
+    \[
+      \begin{cases}
+        \forall n \in \mathbb{N}, \, a_n \leq b_n \\
+        \forall n \in \mathbb{N}, \, [a_{n+1}, b_{n+1}] \subseteq [a_n, b_n] \\
+        (b_n - a_n) \longrightarrow 0
+      \end{cases}
+    \]
+    Alors, il existe un nombre réel unique $\ell$ tel que $\bigcap_{n \geq 0} [a_n, b_n] = \{ \ell \}$.
+  \end{corollary}
+
+  \reference{97}
+
+  \begin{application}[Critère de Leibniz]
+    Soit $(a_n)$ une suite à termes positifs, décroissantes, tendant vers $0$. Alors
+    \[ \sum (-1)^n a_n \text{ converge} \quad \text{ et } \quad \forall n \in \mathbb{N}, \, |R_n| = \left| \sum_{k=n+1}^{+\infty} (-1)^k a_k \right| \leq a_{n+1} \]
+    (voir \cref{223-3}.)
+  \end{application}
+
+  \reference{25}
+
+  \begin{definition}
+    Pour cette définition, on ne suppose pas au cas réel.
+    \begin{itemize}
+      \item On dit que $(u_n)$ est \textbf{négligeable} devant une suite réelle positive $(\alpha_n)$ et on note $u_n = o(\alpha_n)$ si,
+      \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N}, \, \text{ tel que } \forall n \geq N, \vert u_n \vert \leq \epsilon \alpha_n  \]
+      \item On dit que $(u_n)$ est \textbf{équivalente} à une suite numérique $(v_n)$ et on note $u_n \sim v_n$, si $(u_n - v_n)$ est négligeable devant $(\vert u_n \vert)$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes,
+    \begin{enumerate}[label=(\roman*)]
+      \item On suppose $(\alpha_n)$ non nulle à partir d'un certain rang. $(u_n)$ est négligeable devant $\alpha_n$ si et seulement si $\frac{u_n}{\alpha_n} \longrightarrow_{n \rightarrow +\infty} 0$.
+      \item On suppose $(v_n)$ non nulle à partir d'un certain rang. $(u_n)$ est équivalente à $v_n$ si et seulement si $\frac{u_n}{\alpha_n} \longrightarrow_{n \rightarrow +\infty} 1$.
+      \item $\sim$ est une relation d'équivalence sur l'ensemble des suites de $\mathbb{K}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{353}
+
+  \begin{example}[Formule de Stirling]
+    \[ n! \sim \sqrt{2n\pi} \left( \frac{n}{e} \right)^n \]
+  \end{example}
+
+  \reference{28}
+
+  \begin{proposition}
+    Deux suites convergentes équivalentes ont la même limite.
+  \end{proposition}
+
+  \subsubsection{Suites de Cauchy}
+
+  \reference{34}
+
+  \begin{definition}
+    On dit que $(u_n)$ est \textbf{de Cauchy} si
+    \[ \forall \epsilon > 0, \exists N \in \mathbb{N} \text{ tel que } \forall p > q \geq N, \vert u_p - u_q \vert < \epsilon \]
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Une suite convergente est de Cauchy.
+      \item Une suite de Cauchy est bornée.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}
+    Toute suite de Cauchy de $\mathbb{K}$ est convergente dans $\mathbb{K}$.
+  \end{theorem}
+
+  \reference[HAU]{312}
+
+  \begin{cexample}
+    La série $\sum \frac{1}{n}$ est une suite de Cauchy de $\mathbb{Q}$ non convergente dans $\mathbb{Q}$.
+  \end{cexample}
+
+  \subsubsection{Convergence au sens de Cesàro}
+
+  \reference[AMR11]{53}
+
+  \begin{definition}
+    À toute suite numérique $(u_n)$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
+    \[ \forall n \in \mathbb{N}, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
+  \end{definition}
+
+  \begin{theorem}
+    \label{223-2}
+    Si $(u_n)$ converge vers $\ell \in \mathbb{K}$, alors sa suite des moyennes de Cesàro converge vers $\ell$. On dit que $(u_n)$ converge \textbf{au sens de Cesàro}.
+  \end{theorem}
+
+  \begin{example}
+    \begin{itemize}
+      \item Soit $(v_n)$ une suite numérique dont aucun terme n'est nul, qui converge vers $\ell \neq 0$. Alors,
+      \[ \frac{1}{n} \frac{1}{\sum_{k=1}^n \frac{1}{v_k}} \longrightarrow_{n \rightarrow +\infty} \frac{1}{\ell} \]
+      converge vers $\frac{1}{\ell}$.
+      \item Soit $(w_n)$ une suite numérique telle que $(w_{n+1} - w_n)$ converge vers $\ell \in \mathbb{K}$. Alors,
+      \[ \frac{w_n}{n} \longrightarrow_{n \rightarrow +\infty} \ell \]
+    \end{itemize}
+  \end{example}
+
+  \begin{remark}
+    La réciproque du \cref{223-2} est fausse.
+  \end{remark}
+
+  \begin{example}
+    $(-1)^n$ converge au sens de Cesàro vers $0$, mais pas au sens usuel.
+  \end{example}
+
+  \subsection{Valeurs d'adhérence}
+
+  \subsubsection{Suites extraites}
+
+  \reference{14}
+
+  \begin{definition}
+    On appelle \textbf{sous-suite} ou \textbf{suite extraite} de $(u_n)$, toute suite $(u_{\varphi(n)})$ où $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ est strictement croissante (on dit que $\varphi$ est une \textbf{extractrice}).
+  \end{definition}
+
+  \begin{proposition}
+    Si une suite converge vers $\ell \in \mathbb{K}$, alors toute suite extraite converge vers $\ell$.
+  \end{proposition}
+
+  \begin{definition}
+    On appelle \textbf{valeur d'adhérence} d'une suite numérique, tout élément de $\mathbb{K}$ limite d'une de ses sous-suites convergentes.
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Toute suite numérique convergente ne possède que sa limite comme valeur d'adhérence.
+      \item Une suite possédant une unique valeur d'adhérence n'est pas nécessairement convergente.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    $((1 - (-1)^n)n)$ ne possède que $0$ comme valeur d'adhérence, mais ne converge pas.
+  \end{example}
+
+  \reference{36}
+
+  \begin{theorem}[Bolzano-Weierstrass]
+    Toute suite numérique bornée possède au moins une sous-suite convergente.
+  \end{theorem}
+
+  \reference[DAN]{73}
+
+  \begin{proposition}
+    Une suite numérique est convergente si et seulement si elle est bornée et n'a qu'une seule valeur d'adhérence.
+  \end{proposition}
+
+  \reference[I-P]{116}
+
+  \begin{application}
+    Soit $(E, d)$ un espace métrique compact. Soit $(v_n)$ une suite de $E$ telle que $d(v_n,v_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(v_n)$ est connexe.
+  \end{application}
+
+  \begin{corollary}[Lemme de la grenouille]
+    Soient $f : [0, 1] \rightarrow [0, 1]$ continue et $(x_n)$ une suite de $[0, 1]$ telle que
+    \[ \begin{cases} x_0 \in [0, 1] \\ x_{n+1} = f(x_n) \end{cases} \]
+    Alors $(x_n)$ converge si et seulement si $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$.
+  \end{corollary}
+
+  \subsubsection{Limites inférieure et supérieure}
+
+  \reference[AMR11]{93}
+
+  On se place dans le cas réel pour toute cette sous-section.
+
+  \begin{lemma}
+    Si $(u_n)$ n'est pas bornée, on peut extraire une sous-suite qui tend vers $\pm \infty$ : $\pm \infty$ est une valeur d'adhérence de $(u_n)$ dans $\overline{\mathbb{R}}$.
+  \end{lemma}
+
+  \begin{definition}
+    On appelle \textbf{limite inférieure} (resp. \textbf{limite supérieure}) de $(u_n)$, notée $\limsup_{n \rightarrow +\infty} u_n$ (resp. $\liminf_{n \rightarrow +\infty} u_n$) la plus grande (resp. plus petite) de ses valeurs d'adhérence.
+  \end{definition}
+
+  \reference[DAN]{77}
+
+  \begin{proposition}
+    $(u_n)$ converge si et seulement si $\liminf_{n \rightarrow +\infty} u_n = \limsup_{n \rightarrow +\infty} u_n$.
+  \end{proposition}
+
+  \subsection{Suites particulières}
+
+  \subsubsection{Suites récurrentes}
+
+  \reference[GOU20]{200}
+
+  \begin{definition}
+    Soit $E \subseteq \mathbb{K}$. On dit que $(u_n)$ est \textbf{récurrente} d'ordre $h \in \mathbb{N}^*$ si on peut écrire
+    \[ \forall n \geq h, \, u_{n+h} = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
+    où $f : E^h \rightarrow E$ et les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant donnés.
+  \end{definition}
+
+  \reference[AMR11]{38}
+
+  \begin{theorem}[Caractérisation séquentielle de la continuité]
+    En reprenant les notations précédentes, une fonction $g : E \rightarrow \mathbb{K}$ est continue si et seulement si pour toute suite numérique convergente $(v_n) \in E^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} \ell$.
+  \end{theorem}
+
+  \begin{corollary}
+    Si une suite récurrente d'ordre $1$ (dont on note $f$ la fonction) converge vers $\ell$, alors $f(\ell) = \ell$.
+  \end{corollary}
+
+  \begin{example}
+    La suite $(u_n)$ définie par $u_0 \in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right]$ et $\forall n \geq 1, \, u_{n+1} = \sin(u_n)$ converge vers $0$.
+  \end{example}
+
+  \reference[ROU]{152}
+  \dev{methode-de-newton}
+
+  \begin{application}[Méthode de Newton]
+    Soit $g : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+    \[ \varphi :
+    \begin{array}{ccc}
+      [c, d] &\rightarrow& \mathbb{R} \\
+      x &\mapsto& x - \frac{g(x)}{g'(x)}
+    \end{array}
+    \]
+    (qui est bien définie car $g' > 0$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\exists! a \in [c, d]$ tel que $g(a) = 0$.
+      \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+      \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+    \end{enumerate}
+  \end{application}
+
+  \begin{corollary}
+    En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $g$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(x_n)$ est strictement décroissante (ou constante).
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{example}
+    \begin{itemize}
+      \item On fixe $y > 0$. En itérant la fonction $F : x \mapsto \frac{1}{2} \left( x + \frac{y}{x} \right)$ pour un nombre de départ compris entre $c$ et $d$ où $0 < c < d$ et $c^2 < 0 < d^2$, on peut obtenir une approximation du nombre $\sqrt{y}$.
+      \item En itérant la fonction $F : x \mapsto \frac{x^2+1}{2x-1}$ pour un nombre de départ supérieur à $2$, on peut obtenir une approximation du nombre d'or $\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Séries numériques}
+
+  \label{223-3}
+
+  \reference[GOU20]{208}
+
+  \begin{definition}
+    \begin{itemize}
+      \item On appelle \textbf{série} de terme général $u_n$ la suite $(S_n)$ définie par
+      \[ \forall n \in \mathbb{N}, \, S_n = u_0 + \dots + u_n \]
+      On note cette série $\sum u_n$.
+      \item $u_n$ s'appelle le \textbf{terme} d'indice $n$.
+      \item $S_n$ s'appelle la \textbf{somme partielle} d'indice $n$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{definition}
+    En reprenant les notations précédentes, on dit que $\sum u_n$ \textbf{converge} si la suite $(S_n)$ converge. Dans ce cas, la limite s'appelle la \textbf{somme} de la série, et on la note $\sum_{n=0}^{+\infty} u_n$.
+  \end{definition}
+
+  \reference[AMR11]{81}
+
+  \begin{proposition}
+    Si $\sum u_n$ converge, alors $\lim_{n \rightarrow +\infty} u_n = 0$.
+  \end{proposition}
+
+  \begin{cexample}
+    La réciproque est fausse, par exemple en considérant la suite $(u_n)$ définie pour tout $n \in \mathbb{N}$ par $u_n = \ln(1 + \frac{1}{n})$, on a $\sum_{k=1}^{n} u_k = \ln(n+1) \longrightarrow_{n \rightarrow +\infty} +\infty$.
+  \end{cexample}
+
+  \begin{proposition}
+    Muni des opérations :
+    \begin{itemize}
+      \item $\forall (u_n), (v_n) \in \mathbb{K}^{\mathbb{N}}, \, \sum u_n + \sum v_n = \sum (u_n + v_n)$,
+      \item $\forall \lambda \in \mathbb{K}, \, \forall (u_n) \in \mathbb{K}^{\mathbb{N}}, \, \lambda \sum u_n = \sum (\lambda u_n)$,
+    \end{itemize}
+    l'ensemble des séries numériques est un espace vectoriel sur $\mathbb{K}$ dont l'ensemble des séries convergentes est un sous-espace vectoriel.
+  \end{proposition}
+
+  \reference[GOU20]{214}
+
+  \begin{proposition}[Règle de d'Alembert]
+    Soit $\sum u_n$ une série à termes strictement positifs telle que
+    \[ \lim_{n \rightarrow +\infty} \frac{u_{n+1}}{u_n} = \lambda \in [0, +\infty] \]
+    Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\lambda < 1$, $\sum u_n$ converge.
+      \item Si $\lambda > 1$, $\sum u_n$ diverge.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[AMR11]{94}
+
+  \begin{example}
+    $\sum \left( 1 - \frac{1}{n} \right)^{n^2}$ converge.
+  \end{example}
+
+  \reference{108}
+
+  \begin{example}
+    $\sum_{k=0}^{10} \frac{1}{n!}$ donne une valeur approchée de $e$ à moins de $3 \times 10^{-8}$ près par défaut.
+  \end{example}
+
+  \reference[GOU20]{214}
+
+  \begin{proposition}[Règle de Cauchy]
+    Soit $\sum u_n$ une série à termes strictement positifs telle que
+    \[ \lim_{n \rightarrow +\infty} \sqrt[n]{u_n} = \lambda \in [0, +\infty] \]
+    Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\lambda < 1$, $\sum u_n$ converge.
+      \item Si $\lambda > 1$, $\sum u_n$ diverge.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[AMR11]{112}
+
+  \begin{example}
+    $\sum \left( \frac{4n+1}{3n+2} \right)^{n}$ converge.
+  \end{example}
+
+  \reference[I-P]{380}
+
+  \begin{lemma}
+    Soit $\alpha > 1$. Lorsque $n$ tend vers $+\infty$, on a
+    \[ \sum_{k=n+1}^{+\infty} \frac{1}{n^\alpha} \sim \frac{1}{\alpha - 1} \frac{1}{n^{\alpha - 1}} \]
+  \end{lemma}
+
+  \dev{developpement-asymptotique-de-la-serie-harmonique}
+
+  \begin{proposition}[Développement asymptotique de la série harmonique]
+    On note $\forall n \in \mathbb{N}^*, \, H_n = \sum_{k=1}^{n} \frac{1}{k}$. Alors, quand $n$ tend vers $+\infty$,
+    \[ H_n = \ln(n) + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + o\left( \frac{1}{n^2} \right) \]
+  \end{proposition}
+  %</content>
+\end{document}

@@ -1,0 +1,61 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra, analysis}{nombres-de-bell}{Nombres de Bell}
+
+  \summary{En utilisant les propriétés des séries entières, nous calculons le nombre de partitions de l'ensemble $\llbracket 1, n \rrbracket$.}
+
+  \reference[GOU21]{314}
+
+  \begin{theorem}[Nombres de Bell]
+    Pour tout $n \in \mathbb{N}^*$, on note $B_n$ le nombre de partitions de $\llbracket 1, n \rrbracket$. Par convention on pose $B_0 = 1$. Alors,
+    \[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
+  \end{theorem}
+
+  \begin{proof}
+    Notons que clairement $B_1 = 1$. Soit $n \in \mathbb{N}^*$, exprimons $B_{n+1}$ en fonction des termes précédents. Pour tout $k \leq n$, on note $E_k$ l'ensemble des partitions $P$ de $\llbracket 1, n+1 \rrbracket$ tel que la partie de $P$ qui contient l'entier $n+1$ est de taille $k+1$. Choisir une partition dans $E_k$, c'est choisir $k$ entiers de $\llbracket 1, n \rrbracket$ (ceux de l'ensemble qui contient $n+1$ dans la partition), puis construire une partition des $n-k$ éléments restants. Donc $|E_k| = \binom{n}{k} B_{n-k}$.
+    \newpar
+    Comme $E_0, \dots, E_n$ forment une partition de l'ensemble des partitions de $\llbracket 1, n+1 \rrbracket$, on obtient :
+    \[ B_{n+1} = \sum_{k=0}^n \binom{n}{k} B_{n-k} = \sum_{k=0}^n \binom{n}{n-k} B_k = \sum_{k=0}^n \binom{n}{k} B_k \tag{$*$} \]
+    À toute partition $P$ de $\llbracket 1, n \rrbracket$, on peut associer une permutation $\sigma_P \in S_n$, qui est le produit des cycles de supports les éléments de $P$. On construit ainsi une application $P \mapsto \sigma_P$ injective. D'où :
+    \[ B_n \leq |S_n| = n! \]
+    On en déduit en particulier que $\frac{B_n}{n!} \leq 1$. En vertu du lemme d'Abel, le rayon de convergence $R$ de la série entière $\sum \frac{B_n}{n!} x^n$ est supérieur ou égal à $1$. On peut donc définir
+    \[
+    B :
+    \begin{array}{ccc}
+      ]-R,R[ &\rightarrow& \mathbb{R} \\
+      x &\mapsto& \sum_{n=0}^{+\infty} \frac{B_n}{n!} x^n
+    \end{array}
+    \]
+    et en dérivant, $\forall x \in ]-R,R[$ :
+    \begin{align*}
+      B'(x) &= \sum_{n=0}^{+\infty} \frac{B_{n+1}}{n!} x^n \\
+      &\overset{(*)}{=} \sum_{n=0}^{+\infty} \frac{1}{n!} \left( \sum_{k=0}^n \binom{n}{k} B_k \right) x^n \\
+      &= \sum_{n=0}^{+\infty} \left( \sum_{k=0}^n \frac{B_k}{k!} \frac{1}{(n-k)!} \right) x^n
+    \end{align*}
+    On reconnaît là le produit de Cauchy suivant :
+    \[ B'(x) = \sum_{n=0}^{+\infty} \left( \sum_{k=0}^n \frac{B_k}{k!} \frac{1}{(n-k)!} \right) x^n = \left( \sum_{n=0}^{+\infty} \frac{B_n}{n!} x^n \right) \left( \sum_{n=0}^{+\infty} \frac{x^n}{n!} \right) = B(x) e^x \]
+    Reste à résoudre cette équation différentielle linéaire homogène d'ordre $1$ :
+    \[ B(x) = \lambda e^{e^x} \]
+    Or, $B(0) = B_0 = 1 = \lambda e^1$. D'où $B(x) = \frac{1}{e} e^{e^x}$.
+    \newpar
+    La série entière définissant l'exponentielle a un rayon de convergence infini. On peut écrire, pour tout $z \in \mathbb{C}$ :
+    \[ e^{e^z} = \sum_{n=0}^{+\infty} \frac{e^{nz}}{n!} = \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} \underbrace{\frac{(nz)^k}{n!k!}}_{u_{n,k}(z)} \]
+    On va appliquer le théorème de Fubini-Lebesgue à $u_{n,k}(z)$ (où $z \in \mathbb{C}$ est fixé) :
+    \[ \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} |u_{n,k}(z)| = \sum_{n=0}^{+\infty} \frac{e^{n|z|}}{n!} = e^{e^{|z|}} < +\infty \]
+    Donc on peut intervertir les signes de sommations. Pour tout $x \in ]-R,R[$,
+    \begin{align*}
+      B(x) &= \frac{1}{e} e^{e^x} \\
+      &= \frac{1}{e} \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} u_{n,k}(x) \\
+      &= \frac{1}{e} \sum_{k=0}^{+\infty} \sum_{n=0}^{+\infty} u_{n,k}(x) \\
+      &= \frac{1}{e} \sum_{k=0}^{+\infty} \left( \sum_{n=0}^{+\infty} \frac{n^k}{n!} \right) \frac{x^k}{k!}
+    \end{align*}
+    Par unicité du développement en série entière d'une fonction, on en déduit, par identification des coefficients :
+    \[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
+  \end{proof}
+
+  La partie sur le dénombrement (au début de la preuve) est un peu technique. N'hésitez pas à passer du temps dessus et à y réfléchir en faisant des exemples.
+  %</content>
+\end{document}

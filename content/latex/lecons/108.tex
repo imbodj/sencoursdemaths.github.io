@@ -1,0 +1,377 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{108}{Exemples de parties génératrices d'un groupe. Applications.}
+
+  \subsection{Généralités}
+
+  Soit $G$ un groupe.
+
+  \subsubsection{Définitions}
+
+  \reference[ROM21]{10}
+
+  \begin{lemma}
+    Une intersection (quelconque) de sous-groupes de $G$ est un sous-groupe de $G$.
+  \end{lemma}
+
+  \begin{definition}
+    Soit $X \subseteq G$. On appelle \textbf{sous-groupe engendré} par $X$, le plus petit sous-groupe (pour l'inclusion) de $G$ contenant $X$. C'est l'intersection des sous-groupes de $G$ contenant $X$. On le note $\langle X \rangle$ ou $\langle x_1, \dots, x_n$ si $X = \{ x_1, \dots, x_n \}$.
+  \end{definition}
+
+  \begin{proposition}
+    Soit $X \subseteq G$. On pose $X^{-1} = \{ x^{-1} \mid x \in X \}$. Alors,
+    \[ \langle X \rangle = \{ x_1 \dots x_n \mid (x_1 \dots x_n) \in X \, \cup \, X^{-1}, \, n \in \mathbb{N}^* \} \]
+  \end{proposition}
+
+  \begin{definition}
+    Une \textbf{partie génératrice} de $G$ est un sous-ensemble $X \subseteq G$ tel que $G = \langle X \rangle$.
+  \end{definition}
+
+  \begin{example}
+    Soit $D_G$ l'ensemble des commutateurs de $G$ (ie. éléments de la forme $ghg^{-1}$ pour $g,h \in G$). On pose $D(G) = \langle D_G \rangle$ : $D(G)$ est le groupe dérivé de $G$, c'est le plus grand sous-groupe tel que $G/D(G)$ est abélien.
+  \end{example}
+
+  \subsubsection{Groupes monogènes}
+
+  \begin{definition}
+    On dit que $G$ est \textbf{monogène} s'il existe $g \in G$ tel que $G = \langle g \rangle$, et on dit que $G$ est cyclique s'il est monogène et fini.
+  \end{definition}
+
+  \begin{example}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathbb{Z}$ est monogène, l'ensemble de ses générateurs est $\mathbb{Z}^\times = \{ \pm 1 \}$.
+      \item $\mathbb{Z}/n\mathbb{Z}$, l'ensemble de ses générateurs est $(\mathbb{Z}/n\mathbb{Z})^\times = \{ k \in \mathbb{Z}/n\mathbb{Z} \mid \operatorname{pgcd}(k,n) = 1 \}$.
+    \end{enumerate}
+  \end{example}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $G$ est monogène infini, alors $G \cong \mathbb{Z}$.
+      \item Si $G$ est cyclique d'ordre $n$, alors $G \cong \mathbb{Z}/n\mathbb{Z}$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    Si $G = \langle g \rangle$ est cyclique d'ordre $n$, alors l'ensemble de ses générateurs est $\{ g^k \mid \operatorname{pgcd}(k,n) = 1 \}$.
+  \end{corollary}
+
+  \reference{6}
+
+  \begin{definition}
+    L'ordre d'un élément $g \in G$ est le cardinal de l'ensemble $\langle g \rangle$.
+  \end{definition}
+
+  \begin{remark}
+    $g \in G$ est d'ordre $n$ si et seulement si $g^n = e_G$ et $g^k \neq e_G$ pour tout $k \in \llbracket 1,n-1 \rrbracket$.
+  \end{remark}
+
+  \reference{14}
+
+  \begin{proposition}
+    Un groupe de cardinal premier est cyclique.
+  \end{proposition}
+
+  \begin{theorem}
+    On suppose $G = \langle g \rangle$ cyclique d'ordre $n$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Les sous-groupes de $G$ sont cycliques d'ordre divisant $n$.
+      \item Pour tout diviseur $d$ de $n$, il existe un unique sous-groupe d'ordre $d$ : $\langle g^{\frac{n}{d}} \rangle$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{remark}
+    Le résultat précédent est en fait caractéristique des groupes cycliques.
+  \end{remark}
+
+  \subsubsection{Structure des groupes abéliens de type fini}
+
+  \reference[ULM21]{105}
+
+  On suppose dans cette sous-section que $G$ est abélien.
+
+  \begin{definition}
+    $G$ est dit de \textbf{type fini} s'il existe une partie génératrice finie de $G$.
+  \end{definition}
+
+  \reference{112}
+
+  \begin{theorem}[Kronecker]
+    On suppose $G$ abélien de type fini. Il existe $r \in \mathbb{N}$ et une suite d'entiers $n_1 \geq 2$, $n_2$ multiple de $n_1$, \dots, $n_k$ multiple de $n_{k-1}$ telle que $G$ est isomorphe au groupe produit
+    \[ \prod_{i=1}^k \mathbb{Z}/n_i\mathbb{Z} \times Z^r \]
+  \end{theorem}
+
+  \begin{example}
+    Si $G = \mathbb{Z}/5\mathbb{Z} \times \mathbb{Z}/5\mathbb{Z} \times \mathbb{Z}/90\mathbb{Z}$. Alors,
+    \begin{align*}
+      G &\cong \mathbb{Z}/5\mathbb{Z} \times \mathbb{Z}/5\mathbb{Z} \times (\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/3^2\mathbb{Z} \times \mathbb{Z}/5\mathbb{Z}) \\
+      &\cong \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/3^2\mathbb{Z} \times (\mathbb{Z}/5\mathbb{Z} \times \mathbb{Z}/5\mathbb{Z} \times \mathbb{Z}/5\mathbb{Z})
+    \end{align*}
+  \end{example}
+
+  \subsection{Exemples de parties génératrices}
+
+  \subsubsection{Groupe symétrique}
+
+  \reference[ROM21]{37}
+
+  \begin{definition}
+    Soit $E$ un ensemble. On appelle \textbf{groupe des permutations} de $E$ le groupe des bijections de $E$ dans lui-même. On le note $S(E)$.
+  \end{definition}
+
+  \begin{notation}
+    Si $E = \llbracket 1, n \rrbracket$, on note $S(E) = S_n$, le groupe symétrique à $n$ éléments.
+  \end{notation}
+
+  \begin{notation}
+    Soit $\sigma \in S_n$. On note :
+    \[
+    \sigma =
+    \begin{pmatrix}
+      1 & 2 & \dots & n \\
+      \sigma(1) & \sigma(2) & \dots & \sigma(n)
+    \end{pmatrix}
+    \]
+    pour signifier que $\sigma$ est la bijection $\sigma : k \mapsto \sigma(k)$.
+  \end{notation}
+
+  \begin{definition}
+    Soient $l \leq n$ et $i_1, \dots, i_l \in \llbracket 1, n \rrbracket$ des éléments distincts. La permutation $\gamma \in S_n$ définie par
+    \[
+    \gamma(j) =
+    \begin{cases}
+      j &\text{si } j \notin \{ i_1, \dots, i_l \} \\
+      i_{k+1} &\text{si } j = i_k \text{ avec } k<l \\
+      i_1 &\text{si } j=i_l
+    \end{cases}
+    \]
+    et notée $\begin{pmatrix} i_1 & \dots & i_l \end{pmatrix}$ est appelée \textbf{cycle} de longueur $l$ et de \textbf{support} $\{ i_1, \dots, i_l \}$. Un cycle de longueur $2$ est une \textbf{transposition}.
+  \end{definition}
+
+  \reference{44}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $S_n$ est engendré par les transpositions. On peut même se limiter aux transpositions de la forme $\begin{pmatrix} 1 & k \end{pmatrix}$ ou encore  $\begin{pmatrix} k & k+1 \end{pmatrix}$ (pour $k \leq n$).
+      \item $S_n$ est engendré par $\begin{pmatrix} 1 & 2 \end{pmatrix}$ et $\begin{pmatrix} 1 & \dots & n \end{pmatrix}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{48}
+
+  \begin{definition}
+    \begin{itemize}
+      \item Soit $\sigma \in S_n$. On appelle \textbf{signature} de $\sigma$, notée $\epsilon(\sigma)$ l'entier $\epsilon(\sigma) = \prod_{i \neq j} \frac{\sigma(i) - \sigma(j)}{i-j}$.
+      \item $\sigma \mapsto \epsilon(\sigma)$ est un morphisme de $S_n$ dans $\{ \pm 1 \}$, on note $A_n$ son noyau.
+    \end{itemize}
+  \end{definition}
+
+  \reference[PER]{15}
+
+  \begin{lemma}
+    Les $3$-cycles sont conjugués dans $A_n$ pour $n \geq 5$.
+  \end{lemma}
+
+  \reference[ROM21]{49}
+
+  \begin{lemma}
+    Le produit de deux transpositions est un produit de $3$-cycles.
+  \end{lemma}
+
+  \begin{proposition}
+    $A_n$ est engendré par les $3$-cycles pour $n \geq 3$.
+  \end{proposition}
+
+  \reference[PER]{28}
+  \dev{simplicite-du-groupe-alterne}
+
+  \begin{theorem}
+    $A_n$ est simple pour $n \geq 5$.
+  \end{theorem}
+
+  \begin{corollary}
+    Le groupe dérivé de $A_n$ est $A_n$ pour $n \geq 5$, et le groupe dérivé de $S_n$ est $A_n$ pour $n \geq 2$.
+  \end{corollary}
+
+  \subsubsection{Groupe diédral}
+
+  \reference[ULM21]{8}
+
+  \begin{definition}
+    Pour un entier $n \geq 1$, le \textbf{groupe diédral} $D_n$ est le sous-groupe, de $\mathrm{GL}_2(\mathbb{R})$ engendré par la symétrie axiale $s$ et la rotation d'angle $\theta = \frac{2\pi}{n}$ définies respectivement par les matrices
+    \[
+    S =
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}
+    \text{ et }
+    R =
+    \begin{pmatrix}
+      \cos(\theta) & -\sin(\theta) \\
+      \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+    \]
+  \end{definition}
+
+  \begin{example}
+    $D_1 = \{ \operatorname{id}, s \}$.
+  \end{example}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item $D_n$ est un groupe d'ordre $2n$.
+      \item $r^n = s^2 = \operatorname{id}$ et $sr = r^{-1}s$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{28}
+
+  \begin{proposition}
+    Un groupe non cyclique d'ordre $4$ est isomorphe à $D_2$.
+  \end{proposition}
+
+  \reference{65}
+
+  \begin{example}
+    $S_2$ est isomorphe à $D_2$.
+  \end{example}
+
+  \reference{28}
+
+  \begin{proposition}
+    Un groupe fini d'ordre $2p$ avec $p$ premier est soit cyclique, soit isomorphe à $D_p$.
+  \end{proposition}
+
+  \begin{example}
+    $S_3$ est isomorphe à $D_3$.
+  \end{example}
+
+  \reference{47}
+
+  \begin{proposition}
+    Les sous-groupes de $D_n$ sont soit cyclique, soit isomorphes à un $D_m$ où $m \mid n$.
+  \end{proposition}
+
+  \subsection{Applications en algèbre linéaire}
+
+  \subsubsection{Groupe linéaire}
+
+  \reference[PER]{97}
+
+  \begin{proposition}
+    Soit $u \in \mathrm{GL}(E) \setminus \{ \operatorname{id}_E \}$. Soit $H$ un hyperplan de $E$ tel que $u_{|H} = \operatorname{id}_H$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\det(u) = 1$.
+      \item $u$ n'est pas diagonalisable.
+      \item $\im(u - \operatorname{id}_E) \subseteq H$.
+      \item Le morphisme induit $\overline{u} : E/H \rightarrow E/H$ est l'identité de $E/H$.
+      \item En notant $H = \ker(f)$ (où $f$ désigne une forme linéaire sur $E$), il existe $a \in H \setminus \{ 0 \}$ tel que
+      \[ u = \operatorname{id}_E + f \cdot a \]
+      \item Dans une base adaptée, la matrice de $u$ s'écrit
+      \[
+      \begin{pmatrix}
+        I_{n-2} & 0 & 0 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+      \end{pmatrix}
+      \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    En reprenant les notations précédentes, on dit que $u$ est une \textbf{transvection} d'hyperplan $H$ et de droite $\operatorname{Vect}(a)$.
+  \end{definition}
+
+  \begin{proposition}
+    Soient $u \in \mathrm{GL}(E)$ et $\tau$ une transvection d'hyperplan $H$ et de droite $D$. Alors, $u \tau u^{-1}$ est une transvection d'hyperplan $u(H)$ et de droite $u(D)$.
+  \end{proposition}
+
+  \begin{theorem}
+    Si $n \geq 2$, les transvections engendrent $\mathrm{SL}(E)$.
+  \end{theorem}
+
+  \begin{proposition}
+    Soit $u \in \mathrm{GL}(E)$. Soit $H$ un hyperplan de $E$ tel que $u_{|H} = \operatorname{id}_H$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\det(u) = \lambda \neq 1$.
+      \item $u$ admet une valeur propre $\lambda \neq 1$.
+      \item $\im(u - \operatorname{id}_E) \not\subseteq H$.
+      \item Dans une base adaptée, la matrice de $u$ s'écrit
+      \[
+      \begin{pmatrix}
+        I_{n-1} & 0 \\
+        0 & \lambda
+      \end{pmatrix}
+      \]
+      avec $\lambda \neq 1$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}
+    Si $n \geq 2$, les transvections et les dilatations engendrent $\mathrm{GL}(E)$.
+  \end{theorem}
+
+  \reference[I-P]{203}
+
+  \begin{notation}
+    Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$.
+  \end{notation}
+
+  \begin{lemma}
+    Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie. Les dilatations engendrent $\mathrm{GL}(V)$.
+  \end{lemma}
+
+  \dev{theoreme-de-frobenius-zolotarev}
+
+  \begin{application}[Théorème de Frobenius-Zolotarev]
+    Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
+    \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
+    où $u$ est vu comme une permutation des éléments de $V$.
+  \end{application}
+
+  \subsubsection{Groupe orthogonal}
+
+  \reference[PER]{123}
+
+  Soit $E$ un espace vectoriel réel de dimension $n$. Soit $\varphi$ une forme bilinéaire, symétrique, non dégénérée sur $E$. On note $q$ la forme quadratique associée.
+
+  \begin{definition}
+    \begin{itemize}
+      \item On appelle \textbf{isométries} de $E$ (relativement à $q$), les endomorphismes $u \in \mathrm{GL}(E)$ qui vérifient :
+      \[ \forall x, y \in E, \, q(x,y) = q(u(x), u(y)) \]
+      \item L'ensemble des isométries de $E$ forme un groupe, appelé \textbf{groupe orthogonal} de $E$, et noté $\mathcal{O}_q(E)$.
+      \item Le sous-groupe des isométries de $E$ de déterminant $1$ est appelé \textbf{groupe spécial orthogonal} de $E$, et est noté $\mathrm{SO}_q(E)$.
+    \end{itemize}
+
+  \end{definition}
+
+  \begin{definition}
+    Soit $u \in \mathrm{SO}_q(E)$ tel que $u^2 = \operatorname{id}_E$.
+    \begin{itemize}
+      \item On dit que $u$ est une \textbf{réflexion} si $\dim(\ker(u+\operatorname{id}_E)) = 1$ (ie. $u$ est une symétrie par rapport à un hyperplan).
+      \item On dit que $u$ est un \textbf{retournement} si $\dim(\ker(u+\operatorname{id}_E)) = 2$ (ie. $u$ est une symétrie par rapport à un plan).
+    \end{itemize}
+  \end{definition}
+
+  On suppose désormais de plus que $\varphi$ est définie positive (ie. $\varphi$ est un produit scalaire).
+
+  \begin{theorem}
+    On suppose $n \geq 3$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathcal{O}_q(E)$ est engendré par les réflexions.
+      \item $\mathrm{SO}_q(E)$ est engendré par les retournements.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{application}
+    On suppose $n \geq 3$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $D(\mathcal{O}_q(E)) = \mathrm{SO}_q(E)$.
+      \item $D(\mathrm{SO}_q(E)) = \mathrm{SO}_q(E)$.
+    \end{enumerate}
+  \end{application}
+  %</content>
+\end{document}

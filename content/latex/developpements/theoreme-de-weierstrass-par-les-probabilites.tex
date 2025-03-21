@@ -1,0 +1,64 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{theoreme-de-weierstrass-par-les-probabilites}{Théorème de Weierstrass (par les probabilités)}
+
+  \summary{On montre le théorème de Weierstrass en faisant un raisonnement sur des variables aléatoires suivant une loi de Bernoulli.}
+
+  \reference[G-K]{195}
+
+  \begin{theorem}[Bernstein]
+    \label{theoreme-de-weierstrass-par-les-probabilites-1}
+    Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
+    \[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
+    le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
+  \end{theorem}
+
+  \begin{proof}
+    Soit $x \in ]0, 1[$. On se place sur un espace probabilité $(\Omega, \mathcal{A}, \mathbb{P})$ et considère $(X_k)$ une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(x)$. On note $\forall n \in \mathbb{N}^*$, $S_n = \sum_{k=1}^n X_k$. Ainsi, $S_n \sim \mathcal{B}(n, x)$ et donc par la formule de transfert,
+    \[ \mathbb{E} \left( f \left( \frac{S_n}{n} \right) \right) = \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} = B_n(f)(x) \]
+    La fonction $f$ est continue sur $[0,1]$ qui est un compact de $\mathbb{R}$, donc par le théorème de Heine; elle y est uniformément continue. Soit donc $\epsilon > 0$,
+    \[ \exists \eta > 0 \text{ tel que } \forall x, y \in [0,1], \, |x-y| < \eta \implies |f(x) - f(y)| < \epsilon \]
+    On a,
+    \begin{align*}
+      |B_n(f)(x) - f(x)| &= \left| \mathbb{E} \left( f \left( \frac{S_n}{n} \right) \right) - f(x) \right| \\
+      &= \left| \mathbb{E} \left( f \left( \frac{S_n}{n} \right) - f(x) \right) \right| \\
+      &\leq \mathbb{E} \left| f \left( \frac{S_n}{n} \right) - f(x) \right| \\
+      &\leq \mathbb{E} \left( \mathbb{1}_{\left \{ \left| \frac{S_n}{n} - x \right| < \eta \right \}} \left| f \left( \frac{S_n}{n} \right) - f(x) \right| \right) + \mathbb{E} \left( \mathbb{1}_{\left \{ \left| \frac{S_n}{n} - x \right| \geq \eta \right \}} \left| f \left( \frac{S_n}{n} \right) - f(x) \right| \right) \\
+      &\leq \mathbb{E} (\epsilon) + 2 \Vert f \Vert_\infty \mathbb{E} \left( \mathbb{1}_{\left \{ \left| \frac{S_n}{n} - x \right| \geq \eta \right \}} \right) \\
+      &= \epsilon + 2 \Vert f \Vert_\infty \mathbb{P} \left( \left| \frac{S_n}{n} - x \right| \geq \eta \right) \tag{$*$}
+    \end{align*}
+    Comme $\mathbb{E} \left( \frac{S_n}{n} \right) = x$, on peut appliquer l'inégalité de Bienaymé-Tchebychev :
+    \[ \mathbb{P} \left( \left| \frac{S_n}{n} - x \right| \geq \eta \right) = \mathbb{P} \left( \left| \frac{S_n}{n} - \mathbb{E} \left( \frac{S_n}{n} \right) \right| \geq \eta \right) \leq \frac{1}{\eta^2} \operatorname{Var} \left( \frac{S_n}{n} \right) \]
+    Comme les $X_k$ sont indépendantes et de même loi :
+    \[ \operatorname{Var} \left( \frac{S_n}{n} \right) = \frac{1}{n^2} \operatorname{Var} (S_n) = \frac{1}{n} \operatorname{Var}(X_1) = \frac{x(1-x)}{n} \leq \frac{1}{n} \]
+    En réinjectant cela dans $(*)$, cela donne
+    \[ |B_n(f)(x) - f(x)| \leq \epsilon + \frac{2 \Vert f \Vert_\infty}{n \eta^2} \]
+    qui est une majoration indépendante de $x$. Comme la fonction $B_n(f) - f$ est continue sur $[0, 1]$, on peut passer à la borne supérieure :
+    \[ \Vert B_n(f) - f \Vert_\infty = \sup_{x \in [0, 1]} |B_n(f)(x) - f(x)| \leq \epsilon + \frac{2 \Vert f \Vert_\infty}{n \eta^2} \]
+    ce qui donne après un passage à la limite supérieure :
+    \begin{align*}
+      &\limsup_{n \rightarrow +\infty} \Vert B_n(f) - f \Vert_\infty \leq \epsilon \\
+      \overset{\epsilon \longrightarrow 0}{\implies} &\limsup_{n \rightarrow +\infty} \Vert B_n(f) - f \Vert_\infty = 0 \\
+      \implies &\lim_{n \rightarrow +\infty} \Vert B_n(f) - f \Vert_\infty = 0
+    \end{align*}
+  \end{proof}
+
+  \begin{theorem}[Weierstrass]
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+  \end{theorem}
+
+  \begin{proof}
+    On va avoir besoin du changement de variable suivant :
+    \[ \varphi :
+    \begin{array}{ccc}
+      [0,1] &\rightarrow& [a, b] \\
+      x &\mapsto& a + (b-a) x
+    \end{array}
+    \]
+    Par le \cref{theoreme-de-weierstrass-par-les-probabilites-1}, la fonction $f \circ \varphi^{-1}$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi)$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi$ est bien une fonction polynômiale car $\varphi$ est affine.
+  \end{proof}
+  %</content>
+\end{document}

@@ -1,0 +1,379 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{224}{Exemples de développements asymptotiques de suites et de fonctions.}
+
+  \subsection{Comparaison de suites et de fonctions}
+
+  \reference[GOU20]{87}
+
+  Soit $E$ un espace vectoriel normé sur $\mathbb{R}$.
+
+  \subsubsection{Relations de comparaison}
+
+  \begin{definition}
+    Soit $X$ un espace métrique. On considère deux applications $f, g : D \rightarrow E$ où $D \subseteq X$. Soit $x_0$ un point d'accumulation de $D$.
+    \begin{itemize}
+      \item On dit que $f$ est \textbf{dominée} par $g$ au voisinage de $x_0$, si
+      \[ \exists C > 0, \, \exists V \text{ voisinage de } x_0 \text{ tels que } \forall x \in V \, \cap \, D, \Vert f(x) \Vert \leq C \Vert g(x) \Vert \]
+      On note alors $f(x) = O(g(x))$ quand $x \rightarrow x_0$.
+      \item On dit que $f$ est \textbf{négligeable} devant $g$ au voisinage de $x_0$, si
+      \[ \forall \epsilon > 0, \, \exists V \text{ voisinage de } x_0 \text{ tels que } \forall x \in V \, \cap \, D, \Vert f(x) \Vert \leq \epsilon \Vert g(x) \Vert \]
+      On note alors $f(x) = o(g(x))$ quand $x \rightarrow x_0$.
+      \item On dit que $f$ et $g$ sont \textbf{équivalentes} au voisinage de $x_0$ si $f(x) - g(x) = o(g(x))$ quand $x \rightarrow x_0$ et on écrit alors $f(x) \sim g(x)$ quand $x \rightarrow x_0$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Dans la pratique, on utilisera souvent cette notation pour des fonction de $\mathbb{R}$ dans $\mathbb{C}$ au voisinage d'un point de $\mathbb{R}$ ou de l'infini, ou pour des suites réelles ou complexes $(u_n)$ quand $n \rightarrow +\infty$.
+  \end{remark}
+
+  \reference[DAN]{132}
+
+  \begin{example}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{R}$. Soit $x_0 \in \overline{\mathbb{R}}$.
+    \begin{itemize}
+      \item $f = O(1)$ si et seulement si $f$ est une application bornée au voisinage de $x_0$.
+      \item $f = o(1)$ si et seulement si $f$ admet $0$ pour limite en $x_0$.
+      \item $f = o \left( \frac{1}{x} \right)$ en $+\infty$ signifie que $x \mapsto xf(x)$ admet pour limite $0$ en $+\infty$.
+    \end{itemize}
+  \end{example}
+
+  \begin{proposition}
+    On considère deux applications $f, g : D \rightarrow \mathbb{R}$ où $D \subseteq \mathbb{R}$. Soit $x_0 \in \overline{\mathbb{R}}$. On suppose qu'il existe un voisinage $V_0$ de $x_0$ tel que $g$ ne s'annule pas. Alors, quand $x \rightarrow x_0$ :
+    \begin{enumerate}[label=(\roman*)]
+      \item $f(x) = o(g(x))$ si et seulement si $\frac{f(x)}{g(x)} \longrightarrow_{x \rightarrow x_0} 0$.
+      \item $f(x) \sim g(x)$ si et seulement si $\frac{f(x)}{g(x)} \longrightarrow_{x \rightarrow x_0} 1$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}
+    La relation $\sim$ est une relation d'équivalence, compatible avec le produit et la puissance. Si deux fonctions $f_1$ et $f_2$ équivalentes au voisinage d'un point admettent des limites $\ell_1$ et $\ell_2$ en ce point, alors $\ell_1 = \ell_2$.
+  \end{proposition}
+
+  \begin{cexample}
+    \begin{itemize}
+      \item $\sim$ n'est pas compatible avec l'addition. Par exemple, quand $x \rightarrow +\infty$,
+      \[ x + \sqrt{x} \sim x, \, -x \sim -x + \ln(x) \text{ mais } \sqrt{x} \nsim \ln(x) \]
+      \item $\sim$ n'est pas compatible avec la composition. Par exemple, quand $x \rightarrow +\infty$,
+      \[ x \sim x + 1 \text{ mais } e^{x} \nsim e^{x+1} \]
+    \end{itemize}
+  \end{cexample}
+
+  \subsubsection{Développement limité}
+
+  Dans cette partie, $I$ désigne un intervalle de $\mathbb{R}$ non réduit à un point. Soit $f : I \rightarrow E$ une application.
+
+  \reference[GOU20]{89}
+
+  On suppose $0 \in I$.
+
+  \begin{definition}
+    On dit que $f$ admet un \textbf{développement limité} à l'ordre $n \in \mathbb{N}^*$ s'il existe $a_0, \dots, a_n \in E$ tels que, au voisinage de $0$,
+    \[ f(x) = \sum_{k=0}^{n} a_k x^k + o(x^n) \]
+  \end{definition}
+
+  \begin{remark}
+    On pourrait de même définir les développements limités au voisinage d'un point $a \in \overline{I}$.
+  \end{remark}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Un développement limité, s'il existe, est unique.
+      \item Si $f$ admet un développement limité en $0$ à l'ordre $n \geq 1$, $f$ est dérivable en $0$ et sa dérivée en $0$ vaut $a_1$.
+      \item Si $f$ est paire (resp. impaire), les coefficients du développement limité d'indice impair (resp. pair) sont nuls.
+      \item Si $f$ est $n$ fois dérivable en $0$, $f'$ admet un développement limité en $0$ : $f'(x) = \sum_{k=1}^{n} a_k x^{k-1} + o(x^{n-1})$.
+      \item Si $f$ est dérivable sur $I$ et $f'$ admet un développement limité en $0$ : $f'(x) = \sum_{k=0}^{n} a_k x^k + o(x^n)$ ; alors, $f$ admet un développement limité en $0$ donné par $f(x) = \sum_{k=0}^{n} \frac{a_k}{(k+1)!} x^{k+1} + o(x^{k+1})$.
+      \item Les règles de somme, produit, quotient et composition obéissent aux mêmes règles que pour les polynômes (sous réserve de bonne définition).
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}[Formule de Taylor-Young]
+    On suppose $f$ de classe $\mathcal{C}^n$ sur $I$ telle que $f^{(n+1)}(x)$ existe pour $x \in I$. Alors, quand $h \longrightarrow 0$, on a
+    \[ f(x+h) = \sum_{k=0}^{n+1} \frac{f^{(k)} (x)}{k!} h^k + o(h^{n+1}) \]
+  \end{theorem}
+
+  \begin{proposition}
+    Si $f$ est $n$ fois dérivable en $0$, alors $f$ admet un développement limité à l'ordre $n$ en $0$ :
+    \[ f(x) = \sum_{k=0}^{n+1} \frac{f^{(k)} (0)}{k!} x^k + o(x^{n+1}) \]
+  \end{proposition}
+
+  \begin{example}
+    En $0$, on a les développements limités usuels suivants.
+    \begin{itemize}
+      \item $e^x = \sum_{k=0}^{n} \frac{x^k}{k!} + o(x^n)$.
+      \item $\sin(x) = \sum_{k=0}^{n} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+2})$.
+      \item $\cos(x) = \sum_{k=0}^{n} (-1)^{k} \frac{x^{2k}}{(2k)!} + o(x^{2n+1})$.
+      \item $\sinh(x) = \sum_{k=0}^{n} \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+2})$.
+      \item $\cosh(x) = \sum_{k=0}^{n} \frac{x^{2k}}{(2k)!} + o(x^{2n+1})$.
+      \item Pour tout $\alpha \in \mathbb{R}$, $(1+x)^\alpha = \sum_{k=0}^n \frac{\alpha(\alpha - 1) \dots (\alpha -k+1)}{k!} + o(x^n)$.
+    \end{itemize}
+  \end{example}
+
+  \begin{application}
+    \[ \lim_{x \rightarrow 0} \frac{\tan(x) - x}{\sin(x) - x} = -2 \]
+  \end{application}
+
+  \subsubsection{Développement asymptotique}
+
+  \begin{definition}
+    Soient $X$ un espace métrique et $x_0 \in X$. On appelle \textbf{échelle de comparaison} un ensemble $\mathcal{E}$ de fonctions définies au voisinage de $x_0$ dans $X$, sauf éventuellement en $x_0$, et vérifiant la propriété suivante : si $f, g \in \mathcal{E}$, alors $f = g$ ou bien $f = o(g)$ ou bien $g = o(f)$.
+  \end{definition}
+
+  \begin{example}
+    Au voisinage de $+\infty$ pour les fonctions de la variable réelle, les fonctions du type $x \mapsto x^\alpha$ pour $\alpha \in \mathbb{R}$ forment une échelle de comparaison.
+  \end{example}
+
+  \begin{definition}
+    Soit $X$ un espace métrique. On considère deux applications $f, g : D \rightarrow E$ où $D \subseteq X$. Soient $x_0$ un point d'accumulation de $D$ et $k \in \mathbb{N}^*$. On appelle \textbf{développement asymptotique} à $k$ termes de $f$ par rapport à une échelle de comparaison $\mathcal{E}$ au voisinage de $x_0$ toute expression de la forme
+    \[ \sum_{i=1}^{k} c_i f_i \]
+    vérifiant
+    \begin{enumerate}[label=(\roman*)]
+      \item $c_1, \dots, c_k \in E$ sont des constantes multiplicatives.
+      \item $f_1, \dots, f_k \in \mathcal{E}$ avec pour tout $i \in \llbracket 1, k \rrbracket$, $f_{i+1}(x) = o(f_i(x))$.
+      \item $f(x) = \sum_{i=1}^{k} c_i f_i + o(f_k(x))$ quand $x \rightarrow x_0$.
+    \end{enumerate}
+    $c_1 f_1$ est appelée \textbf{partie principale} de $f$ au point $x_0$.
+  \end{definition}
+
+  \begin{remark}
+    En reprenant les notations précédentes :
+    \begin{itemize}
+      \item $f(x) \sim c_1 f_1(x)$ quand $x \rightarrow x_0$.
+      \item Un tel développement, s'il existe, est unique.
+    \end{itemize}
+  \end{remark}
+
+  \subsection{Exemples de développements asymptotiques de suites}
+
+  \subsubsection{Séries numériques}
+
+  \reference{212}
+
+  \begin{proposition}[Comparaison série - intégrale]
+    Soit $f : \mathbb{R}^+ \rightarrow \mathbb{R}^+$ une fonction positive, continue par morceaux et décroissante sur $\mathbb{R}^+$. Alors la suite $(U_n)$ définie par
+    \[ \forall n \in \mathbb{N}, \, \sum_{k=0}^n f(k) - \int_0^n f(t) \, \mathrm{d}t \]
+    est convergente. En particulier, la série $\sum f(n)$ et l'intégrale $\int_0^{+\infty} f(t) \, \mathrm{d}t$ sont de même nature.
+  \end{proposition}
+
+  \reference[I-P]{380}
+
+  \begin{lemma}
+    Soit $\alpha > 1$. Lorsque $n$ tend vers $+\infty$, on a
+    \[ \sum_{k=n+1}^{+\infty} \frac{1}{n^\alpha} \sim \frac{1}{\alpha - 1} \frac{1}{n^{\alpha - 1}} \]
+  \end{lemma}
+
+  \dev{developpement-asymptotique-de-la-serie-harmonique}
+
+  \begin{proposition}[Développement asymptotique de la série harmonique]
+    On note $\forall n \in \mathbb{N}^*, \, H_n = \sum_{k=1}^{n} \frac{1}{k}$. Alors, quand $n$ tend vers $+\infty$,
+    \[ H_n = \ln(n) + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + o\left( \frac{1}{n^2} \right) \]
+  \end{proposition}
+
+  \reference[GOU20]{212}
+
+  \begin{application}[Série de Bertrand]
+    La série de Bertrand $\sum \frac{1}{n^\alpha \ln(n)^\beta}$ converge si et seulement si $\alpha > 1$ ou si $\alpha = 1$ et $\beta > 1$.
+  \end{application}
+
+  \subsubsection{Suites récurrentes}
+
+  \reference[AMR11]{53}
+
+  \begin{definition}
+    À toute suite numérique $(u_n)$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
+    \[ \forall n \in \mathbb{N}, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
+  \end{definition}
+
+  \begin{theorem}
+    Si $(u_n)$ converge vers $\ell \in \mathbb{K}$, alors sa suite des moyennes de Cesàro converge vers $\ell$. On dit que $(u_n)$ converge \textbf{au sens de Cesàro}.
+  \end{theorem}
+
+  \reference[FGN3]{142}
+
+  \begin{proposition}
+    Soit $f$ une application continue définie au voisinage de $0^+$ admettant
+    un développement asymptotique en $0$ de la forme $f(x) = x - ax^\alpha + o(x^\alpha)$, où $a > 0$ et $\alpha > 1$. Alors pour $u_0 > 0$ assez petit, la suite $(u_n)$ définie par $u_{n+1} = f(u_n)$ pour $n \in \mathbb{N}$ vérifie
+    \[ u_n \sim \frac{1}{(na(\alpha-1))^{\frac{1}{\alpha-1}}} \]
+  \end{proposition}
+
+  \begin{example}
+    Si $f = \sin$ et $(u_n)$ est définie par $u_0 \in [0, 2\pi]$ et $\forall n \in \mathbb{N}, \, u_{n+1} = f(u_n)$, on a l'équivalent en $+\infty$ :
+    \[ u_n \sim \sqrt{\frac{3}{n}} \]
+  \end{example}
+
+  \reference[GOU20]{228}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, on a, pour $u_0 \in \left] 0, \frac{\pi}{2} \right]$,
+    \[ u_n = \sqrt{\frac{3}{n}} - \frac{3 \sqrt{3}}{10} \frac{\ln(n)}{n\sqrt{n}} + o\left( \frac{\ln(n)}{n\sqrt{n}} \right) \]
+  \end{proposition}
+
+  \reference[FGN3]{148}
+
+  \begin{example}
+    On définit $(u_n)$ par $u_0 \in \mathbb{R}$ et $\forall n \in \mathbb{N}, \, u_{n+1} = u_n + e^{-u_n}$, on a l'équivalent en $+\infty$ :
+    \[ u_n = n + \frac{\ln(n)}{2n} + o\left( \frac{\ln(n)}{n} \right) \]
+  \end{example}
+
+  \reference[ROU]{152}
+  \dev{methode-de-newton}
+
+  \begin{theorem}[Méthode de Newton]
+    Soit $f : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+    \[ \varphi :
+    \begin{array}{ccc}
+      [c, d] &\rightarrow& \mathbb{R} \\
+      x &\mapsto& x - \frac{f(x)}{f'(x)}
+    \end{array}
+    \]
+    (qui est bien définie car $f' > 0$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
+      \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+      \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(x_n)$ est strictement décroissante (ou constante).
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{example}
+    \begin{itemize}
+      \item On fixe $y > 0$. En itérant la fonction $F : x \mapsto \frac{1}{2} \left( x + \frac{y}{x} \right)$ pour un nombre de départ compris entre $c$ et $d$ où $0 < c < d$ et $c^2 < 0 < d^2$, on peut obtenir une approximation du nombre $\sqrt{y}$.
+      \item En itérant la fonction $F : x \mapsto \frac{x^2+1}{2x-1}$ pour un nombre de départ supérieur à $2$, on peut obtenir une approximation du nombre d'or $\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Suites définies implicitement}
+
+  \reference[FGN3]{181}
+
+  \begin{example}
+    Soit $n \in \mathbb{N}$. Soit $a_n$ la plus grande racine réelle de $X^{2n} - 2n X + 1$. Alors,
+    \[ a_n = 1 + \frac{\ln(2n)}{2n} + o\left( \frac{\ln(n)}{n} \right) \]
+  \end{example}
+
+  \begin{example}
+    Soit $(u_n)$ une suite de réels vérifiant $\forall n \in \mathbb{N}, \, u_n^5 + nu_n - 1 = 0$. Alors,
+    \[ u_n = \frac{1}{n} - \frac{1}{n^6} + o \left( \frac{1}{n^6} \right) \]
+  \end{example}
+
+  \begin{example}
+    Soit $c > 0$. On note $x_n$ l'unique racine réelle de $x \mapsto x \sin(x) - c \cos(x)$. Alors,
+    \[ x_n - n\pi \sim \frac{c}{n\pi} \]
+  \end{example}
+
+  \subsection{Exemples de développements asymptotiques de fonctions}
+
+  \subsubsection{Fonctions définies par la somme d'une série}
+
+  \reference[G-K]{307}
+
+  \begin{theorem}[Central limite]
+    Soit $(X_n)$ une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
+    \[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
+  \end{theorem}
+
+  \begin{application}[Théorème de Moivre-Laplace]
+    On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
+    \[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
+  \end{application}
+
+  \reference{180}
+
+  \begin{lemma}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
+  \end{lemma}
+
+  \reference{556}
+
+  \begin{application}[Formule de Stirling]
+    \[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
+  \end{application}
+
+  \reference[GOU20]{159}
+
+  \begin{proposition}
+    Soit $f : \mathbb{R}^+ \rightarrow \mathbb{R}$ une fonction continue par morceaux et décroissante, telle que l'intégrale $\int_0^{+\infty} f(t) \, \mathrm{d}t$ converge et est non nulle. Alors, $\sum_{n=1}^{+\infty} f(nt)$ converge et,
+    \[ \sum_{n=1}^{+\infty} f(nt) \sim \frac{1}{t} \sum_{n=0}^{+\infty} f(t) \, \mathrm{d}t \]
+  \end{proposition}
+
+  \begin{example}
+    \[ \sum_{n=1}^{+\infty} x^{n^2} \sim \frac{c}{\sqrt{-\ln(x)}} \sim \frac{c}{\sqrt{1-x}} \]
+    où $c = \int_0^{+\infty} e^{-u^2} \, \mathrm{d}u = \frac{\sqrt{\pi}}{2}$.
+  \end{example}
+
+  \subsubsection{Fonctions définies par une intégrale}
+
+  \reference{163}
+
+  \begin{theorem}
+    Soient $[a,b[$ un intervalle semi-ouvert de $\mathbb{R}$ (avec $-\infty < a < b \leq +\infty$), $E$ un espace de Banach sur $\mathbb{R}$, $f : [a,b[ \rightarrow E$ et $g : [a,b[ \rightarrow \mathbb{R}^+_*$ deux applications continues par morceaux sur $[a,b[$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\int_a^b g(t) \, \mathrm{d}t$ diverge, alors quand $x \rightarrow b^-$,
+      \begin{itemize}
+        \item Si $f(t) = O(g(t))$, alors $\int_a^x f(t) \, \mathrm{d}t = O\left( \int_a^x g(t) \, \mathrm{d}t \right)$.
+        \item Si $f(t) = o(g(t))$, alors $\int_a^x f(t) \, \mathrm{d}t = o\left( \int_a^x g(t) \, \mathrm{d}t \right)$.
+        \item Si $f(t) \sim g(t)$, alors $\int_a^x f(t) \, \mathrm{d}t \sim \int_a^x g(t) \, \mathrm{d}t$.
+      \end{itemize}
+      \item Si $\int_a^b g(t) \, \mathrm{d}t$ converge, alors quand $x \rightarrow b^-$,
+      \begin{itemize}
+        \item Si $f(t) = O(g(t))$, alors $\int_x^b f(t) \, \mathrm{d}t = O\left( \int_x^b g(t) \, \mathrm{d}t \right)$.
+        \item Si $f(t) = o(g(t))$, alors $\int_x^b f(t) \, \mathrm{d}t = o\left( \int_x^b g(t) \, \mathrm{d}t \right)$.
+        \item Si $f(t) \sim g(t)$, alors $\int_x^b f(t) \, \mathrm{d}t \sim \int_x^b g(t) \, \mathrm{d}t$.
+      \end{itemize}
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    Lorsque $x \rightarrow +\infty$ :
+    \[ \ln x = \int_1^x \frac{1}{t} \, \mathrm{d}t = o \left( \int_1^x t^{\alpha-1} \, \mathrm{d}t \right) = o(x^\alpha) \]
+    pour tout $\alpha > 0$.
+  \end{example}
+
+  \begin{application}
+    Soient $a \in \mathbb{R}$ et $g : [a, +\infty[ \rightarrow \mathbb{R}$ une application de classe $\mathcal{C}^1$. On suppose que $g$ ne s'annule pas au voisinage de $+\infty$ et que lorsque $x \rightarrow +\infty$, on a
+    \[ \frac{g'(x)}{g(x)} \sim \frac{\mu}{x} \]
+    pour $\mu \notin \{ -1, 0 \}$. Alors,
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\mu > -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ diverge et $\int_a^x g(t) \, \mathrm{d}t \sim \frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
+      \item Si $\mu < -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ converge et $\int_x^{+\infty} g(t) \, \mathrm{d}t \sim -\frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
+    \end{enumerate}
+  \end{application}
+
+  \reference{173}
+
+  \begin{example}
+    Lorsque $x \rightarrow +\infty$ :
+    \[ \int_{2}^{x} \frac{\mathrm{d}t}{\ln(t)} = \sum_{i=1}^k \frac{x}{\ln(x)^i} (i-1)! + o \left( \frac{x}{\ln(x)^k} \right) \]
+  \end{example}
+
+  \reference[ROM21]{364}
+
+  \begin{proposition}
+    La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
+      \item $\Gamma(1) = 1$.
+      \item $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
+    \end{enumerate}
+    De plus,
+    \[ \forall x \in ]0, 1], \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} \]
+    (que l'on peut étendre à $\mathbb{R}^+_*$ entier).
+  \end{proposition}
+
+  \reference[GOU20]{166}
+
+  \begin{theorem}[Formule de Stirling généralisée]
+    \[ \Gamma(x) \sim \sqrt{2\pi x} \left( \frac{x}{e} \right)^x \]
+  \end{theorem}
+  %</content>
+\end{document}

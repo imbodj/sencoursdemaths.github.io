@@ -1,0 +1,369 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{141}{Polynômes irréductibles à une indéterminée. Corps de rupture. Exemples et applications.}
+
+  Sauf mention contraire, les corps sont supposés commutatifs.
+
+  \subsection{Irréductibilité de polynômes}
+
+  \subsubsection{Racines et polynômes irréductibles}
+
+  \reference[GOZ]{8}
+
+  \begin{definition}
+    Soit $A$ un anneau. Un polynôme $P$ de $A[X]$ est dit \textbf{irréductible} si $\deg(A) \geq 1$ et ses seuls diviseurs dans $A[X]$ sont les polynômes $uP$ où $u \in A^{\times}$.
+  \end{definition}
+
+  \begin{remark}
+    Soit $\mathbb{K}$ un corps. Alors, $\mathbb{K}[X]$ est euclidien, donc principal, donc factoriel.
+  \end{remark}
+
+  \begin{definition}
+    Soient $\mathbb{L}$ un corps et $\mathbb{K}$ un sous-corps de $\mathbb{L}$. Soit $P \in \mathbb{K}[X]$.
+    \begin{itemize}
+      \item Une \textbf{racine} est un élément $\alpha \in \mathbb{K}$ tel que $P(\alpha) = 0$.
+      \item La \textbf{multiplicité} de $\alpha$ comme racine de $P$ est le plus grand $n \in \mathbb{N}$ tel que $(X-a)^n$ divise $P$ dans $\mathbb{K}[X]$.
+      \item La somme des multiplicités des racines de $P$ dans $\mathbb{K}$ est inférieure ou égale à $\deg(P)$. En cas d'égalité, on dit que $P$ est \textbf{scindé} \textit{sur} $\mathbb{K}$ (ou \textit{dans} $\mathbb{K}[X]$).
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    \label{141-1}
+    \begin{enumerate}[label=(\roman*)]
+      \item Tout polynôme de degré $1$ est irréductible.
+      \item \label{141-2} Tout polynôme irréductible de degré strictement supérieur à $1$ n'a pas de racine dans $\mathbb{K}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{cexample}
+    $(X^2+1)^2$ n'a pas de racine dans $\mathbb{Q}$, mais est réductible dans $\mathbb{Q}[X]$.
+  \end{cexample}
+
+  \begin{proposition}
+    La réciproque de la \cref{141-1} \cref{141-2} est vraie pour les polynômes de degré $2$ ou $3$.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $P = \sum_{k=0}^n a_k X^k \in \mathbb{Z}[X]$ un polynôme de degré $n$ tel que $a_0 \neq 0$. Si $\alpha = \frac{p}{q} \in \mathbb{Q}$ est une racine de $P$, en supposant $\frac{p}{q}$ irréductible, alors $p \mid a_0$ et $q \mid a_n$.
+  \end{proposition}
+
+  \reference{19}
+
+  \begin{example}
+    $X^3 + X + 1$ n'a pas de racine dans $\mathbb{Q}$.
+  \end{example}
+
+  \subsubsection{Quelques critères d'irréductibilité}
+
+  Soit $A$ un anneau factoriel.
+
+  \reference{10}
+
+  \begin{definition}
+    Pour tout polynôme non nul $P \in A[X]$, on appelle \textbf{contenu} de $P$, noté $\gamma(P)$, le PGCD des coefficients de $P$. $P$ est dit \textbf{primitif} si $\gamma(P) = 1$.
+  \end{definition}
+
+  \begin{lemma}[Gauss]
+    \begin{enumerate}[label=(\roman*)]
+      \item Le produit de deux polynômes primitifs est primitif.
+      \item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{theorem}
+    Soient $\mathbb{K}$ le corps des fractions de $A$ et $P \in A[X]$ de degré supérieur ou égal à $1$. Alors, $P$ est irréductible dans $A[X]$ si et seulement si $P$ est irréductible dans $\mathbb{K}[X]$ et $\gamma(P)=1$.
+  \end{theorem}
+
+  \dev{critere-d-eisenstein}
+
+  \begin{theorem}[Critère d'Eisenstein]
+    Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. On suppose qu'il existe $p \in A$ irréductible tel que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
+      \item $p \nmid a_n$.
+      \item $p^2 \nmid a_0$.
+    \end{enumerate}
+    Alors $P$ est irréductible dans $\mathbb{K}[X]$.
+  \end{theorem}
+
+  \begin{example}
+    Soit $p$ un nombre premier. Le polynôme $\Phi_p = \sum_{k=0}^{p-1} X^k$ est irréductible dans $\mathbb{Z}[X]$.
+  \end{example}
+
+  \reference[PER]{67}
+
+  \begin{application}
+    \label{141-3}
+    Soit $n \in \mathbb{N}^*$. Il existe des polynômes irréductibles de degré $n$ sur $\mathbb{Z}$.
+  \end{application}
+
+  \reference[GOZ]{12}
+
+  \begin{theorem}[Critère d'irréductibilité modulo $p$]
+    Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. Soit $I$ un idéal premier de $A$. On pose $B=A/I$ et $\mathbb{L}$ le corps des fractions de $B$. On suppose $a_n \notin I$.
+    \newpar
+    Si $\overline{P}$ est irréductible dans $\mathbb{L}[X]$, alors $P$ est irréductible dans $\mathbb{K}[X]$.
+  \end{theorem}
+
+  \begin{example}
+    Le polynôme $X^3-127X^2+3608X+19$ est irréductible dans $\mathbb{Z}[X]$.
+  \end{example}
+
+  \subsection{Adjonction de racines}
+
+  Soit $\mathbb{K}$ un corps commutatif.
+
+  \subsubsection{Éléments algébriques, transcendants}
+
+  \reference[PER]{66}
+
+  \begin{definition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $\alpha \in \mathbb{L}$. Soit $\operatorname{ev}_\alpha : \mathbb{K}[X] \rightarrow \mathbb{L}$ le morphisme d'évaluation en $\alpha$.
+    \begin{itemize}
+      \item On note $\mathrm{Ann}(\alpha)$ l'idéal des polynômes annulateurs de $\alpha$. Notons qu'on a $\mathrm{Ann}(\alpha) = \ker(\operatorname{ev}_\alpha)$.
+      \item Si $\operatorname{ev}_\alpha$ est injectif, on dit que $\alpha$ est \textbf{transcendant} sur $\mathbb{K}$.
+      \item Sinon, $\alpha$ est dit \textbf{algébrique} sur $\mathbb{K}$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $e$ et $\pi$ sont transcendants sur $\mathbb{Q}$ (théorèmes d'Hermite et de Lindemann).
+      \item $\sqrt{2}$, $i$, ... sont algébriques sur $\mathbb{Q}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{proposition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $\alpha \in \mathbb{L}$. Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item $\alpha$ est algébrique sur $\mathbb{K}$.
+      \item $\mathbb{K}[\alpha] = \mathbb{K}(\alpha)$.
+      \item $[\mathbb{K}[\alpha]:\mathbb{K}] < +\infty$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, si $\alpha$ est transcendant, on a
+    \[ \mathbb{K}[\alpha] \cong \mathbb{K}[X] \text{ et } \mathbb{K}(\alpha) \cong \mathbb{K}(X) \]
+  \end{proposition}
+
+  \begin{definition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $\alpha \in \mathbb{L}$. Si $\alpha$ est algébrique sur $\mathbb{K}$, alors $\mathrm{Ann}(\alpha)$ est un idéal principal non nul. Donc, il existe $P \in \mathbb{K}[X]$ unitaire tel que $\mathrm{Ann}(\alpha) = (P)$. On note $\pi_\alpha$ ce polynôme $P$ : c'est le \textbf{polynôme minimal} de $\alpha$ sur $\mathbb{K}$.
+  \end{definition}
+
+  \begin{example}
+    Sur $\mathbb{Q}$, on a $\pi_{\sqrt{2}} = X^2 - 2$ et $\pi_i = X^2 + 1$.
+  \end{example}
+
+  \reference[GOZ]{31}
+
+  \begin{proposition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $\alpha \in \mathbb{L}$. Soient $P \in \mathbb{K}[X]$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $P = \mu_\alpha$.
+      \item $P \in \mathrm{Ann}(\alpha)$ et est unitaire et $\forall R \in \mathrm{Ann}(\alpha) \setminus \{ 0 \}, \, \deg(P) \leq \deg(R)$.
+      \item $P \in \mathrm{Ann}(\alpha)$ et est unitaire et irréductible dans $\mathbb{K}[X]$.
+    \end{enumerate}
+  \end{proposition}
+
+  \subsubsection{Corps de rupture}
+
+  \reference{57}
+
+  \begin{definition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $P \in \mathbb{K}[X]$ irréductible. On dit que $\mathbb{L}$ est un \textbf{corps de rupture} de $P$ si $\mathbb{L} = \mathbb{K}[\alpha]$ où $\alpha \in \mathbb{L}$ est une racine de $P$.
+  \end{definition}
+
+  \begin{example}
+    En reprenant les notations précédentes, si $\deg(P) = 1$, alors $\mathbb{K}$ est un corps de rupture de $P$.
+  \end{example}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$ un polynôme irréductible sur $\mathbb{K}$.
+    \begin{itemize}
+      \item Il existe un corps de rupture de $P$.
+      \item Si $\mathbb{L} = \mathbb{K}[\alpha]$ et $\mathbb{L}' = \mathbb{K}[\beta]$ sont deux corps de rupture de $P$, alors il existe un unique $\mathbb{K}$-isomorphisme $\varphi : \mathbb{L} \rightarrow \mathbb{L}'$ tel que $\varphi(\alpha) = \beta$.
+    \end{itemize}
+  \end{theorem}
+
+  \begin{application}
+    $X^2 + 1$ est un polynôme irréductible sur $\mathbb{R}$ dont $\mathbb{R}[X]/(X^2+1)$ est un corps de rupture. On pose alors $\mathbb{C} = \mathbb{R}[X]/(X^2+1)$, le corps des nombres complexes, et on note $i$ la classe de $X$ dans l'anneau quotient.
+  \end{application}
+
+  \begin{remark}
+    Si $\mathbb{L}$ est un corps de rupture d'un polynôme $P \in \mathbb{K}[X]$, on a $[\mathbb{L}:\mathbb{K}] = \deg(P)$. Plus précisément, une base de $\mathbb{L}$ en tant que $\mathbb{K}$-espace vectoriel est $(1, \alpha, \dots, \alpha^{\deg(P)-1})$.
+  \end{remark}
+
+  \subsubsection{Corps de décomposition}
+
+  \begin{definition}
+    Soit $P \in \mathbb{K}[X]$ de degré $n \geq 1$. On dit que $\mathbb{L}$ est un \textbf{corps de décomposition} de $P$ si :
+    \begin{itemize}
+      \item Il existe $a \in \mathbb{L}$ et $\alpha_1, \dots, \alpha_n \in \mathbb{L}$ tels que $P = a(X-\alpha_1) \dots (X-\alpha_n)$.
+      \item $\mathbb{L} = \mathbb{K}[\alpha_1, \dots, \alpha_n]$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\mathbb{K}$ est un corps de décomposition de tout polynôme de degré $1$ sur $\mathbb{K}$.
+      \item $\mathbb{C}$ est un corps de décomposition de $X^2+1$ sur $\mathbb{R}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$ un polynôme de degré supérieur ou égal à $1$.
+    \begin{itemize}
+      \item Il existe un corps de décomposition de $P$.
+      \item Deux corps de décomposition de $P$ sont $\mathbb{K}$-isomorphes.
+    \end{itemize}
+  \end{theorem}
+
+  \reference[FGN2]{160}
+
+  \begin{application}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\mathcal{C}(A)$ le commutant de $A$. Alors,
+    \[ \mathbb{K}[A] = \mathcal{C}(A) \iff \pi_A = \chi_A = \det(XI_n - A) \]
+  \end{application}
+
+  \subsubsection{Clôture algébrique}
+
+  \reference[GOZ]{62}
+
+  \begin{proposition}
+    \label{141-4}
+    Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item Tout polynôme de $\mathbb{K}[X]$ de degré supérieur ou égal à $1$ est scindé sur $\mathbb{K}$.
+      \item Tout polynôme de $\mathbb{K}[X]$ de degré supérieur ou égal à $1$ admet au moins une racine dans $\mathbb{K}$.
+      \item Les seuls polynômes irréductibles de $\mathbb{K}[X]$ sont ceux de degré $1$.
+      \item Toute extension algébrique de $\mathbb{K}$ est égale à $\mathbb{K}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Si $\mathbb{K}$ vérifie un des points de la \cref{141-4}, $\mathbb{K}$ est dit \textbf{algébriquement clos}.
+  \end{definition}
+
+  \begin{proposition}
+    Tout corps algébriquement clos est infini.
+  \end{proposition}
+
+  \begin{cexample}
+    $\mathbb{Q}$ et même $\mathbb{R}$ ne sont pas algébriquement clos.
+  \end{cexample}
+
+  \begin{theorem}[D'Alembert-Gauss]
+    $\mathbb{C}$ est algébriquement clos.
+  \end{theorem}
+
+  \begin{definition}
+    On dit que $\mathbb{L}$ est une \textbf{clôture algébrique} de $\mathbb{K}$ si $\mathbb{L}$ est une extension de $\mathbb{K}$ algébriquement close et si
+    \[ \forall x \in \mathbb{L}, \, \exists P \in \mathbb{K}[X] \text{ tel que } P(x) = 0 \]
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\mathbb{C}$ est une clôture algébrique de $\mathbb{R}$.
+      \item $\overline{\mathbb{Q}} = \{ \alpha \in \mathbb{C} \mid \alpha \text{ est algébrique sur } \mathbb{Q} \}$ est une clôture algébrique de $\mathbb{Q}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{theorem}[Steinitz]
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe une clôture algébrique de $\mathbb{K}$.
+      \item Deux clôtures algébriques de $\mathbb{K}$ sont $\mathbb{K}$-isomorphes.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsection{Polynômes cyclotomiques}
+
+  \begin{definition}
+    On appelle \textbf{$m$-ième polynôme cyclotomique} le polynôme
+    \[ \Phi_m = \prod_{\xi \in \mu_m^*} (X - \xi) \]
+  \end{definition}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item $X^m - 1 = \prod_{d \mid m} \Phi_d$.
+      \item $\Phi_m \in \mathbb{Z}[X]$.
+      \item $\Phi_m$ est irréductible sur $\mathbb{Q}$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    Le polynôme minimal sur $\mathbb{Q}$ de tout élément $\xi$ de $\mu_m^*$ est $\Phi_m$. En particulier,
+    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(m) \]
+  \end{corollary}
+
+  \begin{application}[Théorème de Wedderburn]
+    Tout corps fini est commutatif.
+  \end{application}
+
+  \reference[GOU21]{99}
+
+  \begin{lemma}
+    Soient $a \in \mathbb{N}$ et $p$ premier tels que $p \mid \Phi_n(a)$ mais $p \nmid \Phi_d(a)$ pour tout diviseur strict $d$ de $n$. Alors $p \equiv 1 \mod n$.
+  \end{lemma}
+
+  \dev{theoreme-de-dirichlet-faible}
+
+  \begin{application}[Dirichlet faible]
+    Pour tout entier $n$, il existe une infinité de nombres premiers congrus à $1$ modulo $n$.
+  \end{application}
+
+  \subsection{Polynômes irréductibles sur \texorpdfstring{$\mathbb{F}_q$}{Fq}}
+
+  \reference[GOZ]{87}
+
+  Soient $p$ un nombre premier et $n \in \mathbb{N}^*$. On pose $q = p^n$.
+
+  \begin{theorem}
+    \[ \mathbb{F}_q = \mathbb{F}_p[X] / (P) \]
+    où $P \in \mathbb{F}_p[X]$ est un polynôme irréductible de degré $n$ sur $\mathbb{F}_p$.
+  \end{theorem}
+
+  \begin{corollary}
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe des polynômes irréductibles de tout degré dans $\mathbb{F}_p[X]$.
+      \item Si $P \in \mathbb{F}_p[X]$ est un polynôme irréductible sur $\mathbb{F}_p$ de degré $n$, alors $P$ divise $X^q - X$. En particulier, il est scindé sur $\mathbb{F}_q$. Donc son corps de rupture $\mathbb{F}_q = \mathbb{F}_p[X] / (P)$ est aussi son corps de décomposition.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{theorem}
+    Pour tout $j \in \mathbb{N}^*$, on note $I(p,q)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
+    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,q)} Q \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ q = \sum_{d \mid n} d \vert I(p,d) \vert \]
+  \end{corollary}
+
+  \begin{definition}
+    On définit la \textbf{fonction de Möbius}, notée $\mu$, par
+    \[
+      \mu :
+      \begin{array}{ccc}
+        \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+        n &\mapsto& \begin{cases}
+          1 &\text{si } n = 1 \\
+          (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
+          0 &\text{sinon}
+        \end{cases}
+      \end{array}
+    \]
+  \end{definition}
+
+  \begin{theorem}[Formule d'inversion de Möbius]
+    Soient $f$ et $g$ des fonctions de $\mathbb{N}^*$ dans $\mathbb{C}$ telles que $\forall n \in \mathbb{N}^*, \, f(n) = \sum_{d \mid n} g(d)$. Alors,
+    \[ \forall n \in \mathbb{N}^*, \, g(n) = \sum_{d \mid n} \mu(d) f \left( \frac{n}{d} \right) \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,q) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
+  \end{corollary}
+  %</content>
+\end{document}

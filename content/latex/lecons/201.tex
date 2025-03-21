@@ -1,0 +1,421 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{201}{Espaces de fonctions. Exemples et applications.}
+
+  \subsection{Espaces de fonctions continues sur un compact}
+
+  \subsubsection{Continuité et compacité}
+
+  \reference[DAN]{55}
+
+  \begin{proposition}
+    Soient $(E, d)$ et $(E', d')$ deux espaces métriques. On suppose $E$ compact. Si $f : E \rightarrow E'$ est continue, alors $f(E)$ est compact.
+  \end{proposition}
+
+  \begin{cexample}
+    Cela ne marche pas si $f$ n'est pas continue. Par exemple, $\arcsin([-1, 1]) = \mathbb{R}$.
+  \end{cexample}
+
+  \begin{proposition}
+    Sous les mêmes hypothèses et en supposant $f$ bijective, $f^{-1}$ est continue (ie. $f$ est un homéomorphisme).
+  \end{proposition}
+
+  \begin{theorem}[Des bornes]
+    Une application continue sur un compact est bornée et atteint ses bornes.
+  \end{theorem}
+
+  \begin{theorem}[Heine]
+    Une application continue sur un compact y est uniformément continue.
+  \end{theorem}
+
+  \begin{corollary}
+    Toute fonction périodique continue sur $\mathbb{R}$ y est uniformément continue.
+  \end{corollary}
+
+  \subsubsection{Convergences simple et uniforme}
+
+  \reference[GOU20]{231}
+
+  \begin{definition}
+    Soient $(f_n)$ et $f$ respectivement une suite de fonctions et une fonction définies sur un ensemble $X$ à valeurs dans un espace métrique $(E, d)$. On dit que :
+    \begin{itemize}
+      \item $(f_n)$ \textbf{converge simplement} vers $f$ si
+      \[ \forall x \in X, \, \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, d(f_n(x), f(x)) < \epsilon \]
+      \item $(f_n)$ \textbf{converge uniformément} vers $f$ si
+      \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, \forall x \in X, \, d(f_n(x), f(x)) < \epsilon \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    La convergence uniforme entraîne la convergence simple.
+  \end{proposition}
+
+  \begin{cexample}
+    La réciproque est fausse. Il suffit en effet de considérer la suite $(f_n)$ définie pour tout $n \in \mathbb{N}$ et pour tout $x \in [0,1]$ par $f_n(x) = x^n$ converge simplement sur $[0,1]$ mais pas uniformément.
+  \end{cexample}
+
+  \begin{theorem}[Critère de Cauchy uniforme]
+    Soit $(f_n)$ une suite de fonctions définies sur un ensemble $X$ à valeurs dans un espace métrique $(E, d)$. Alors $(f_n)$ converge uniformément si
+    \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N} \text{ tel que } \forall p > q \geq N, \forall x \in X, \, d(f_p(x), f_q(x)) < \epsilon \]
+  \end{theorem}
+
+  \reference{237}
+
+  \begin{corollary}
+    Une limite uniforme sur $\mathbb{R}$ de fonctions polynômiales est une fonction polynômiale.
+  \end{corollary}
+
+  \reference{232}
+
+  \begin{notation}
+    \begin{itemize}
+      \item Pour toute fonction $g$ bornée sur un ensemble $X$ et à valeurs dans un espace vectoriel normé $(E, \Vert . \Vert)$, on note
+      \[ \Vert g \Vert_\infty = \sup_{x \in X} \Vert g(x) \Vert \]
+      \item On note $\mathcal{B}(X,E)$ l'ensemble des applications bornées de $X$ dans $E$.
+    \end{itemize}
+  \end{notation}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, une suite de fonctions $(f_n)$ de $\mathcal{B}(X,E)$ converge uniformément vers $f \in \mathcal{B}(X,E)$ si $\Vert f_n - f \Vert_\infty \longrightarrow_{n \rightarrow +\infty} 0$.
+  \end{proposition}
+
+  \begin{proposition}
+    Si $E$ est de Banach, alors $(\mathcal{B}(X,E), \Vert . \Vert_\infty)$ est de Banach.
+  \end{proposition}
+
+  \reference{238}
+
+  \begin{theorem}[Théorèmes de Dini]
+    \begin{enumerate}[label=(\roman*)]
+      \item Soit $(f_n)$ une suite \textit{croissante} de fonctions réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
+      \item Soit $(f_n)$ une suite de \textit{fonctions croissantes} réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{Densité}
+
+  \reference{304}
+  \dev{theoreme-de-weierstrass-par-la-convolution}
+
+  \begin{theorem}[Weierstrass]
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+  \end{theorem}
+
+  On a une version plus générale de ce théorème.
+
+  \reference[LI]{46}
+
+  \begin{theorem}[Stone-Weierstrass]
+    Soit $K$ un espace compact et $\mathcal{A}$ une sous-algèbre de l'algèbre de Banach réelle $\mathcal{C}(K, \mathbb{R})$. On suppose de plus que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathcal{A}$ sépare les points de $K$ (ie. $\forall x \in K, \exists f \in A \text{ telle que } f(x) \neq f(y)$).
+      \item $\mathcal{A}$ contient les constantes.
+    \end{enumerate}
+    Alors $\mathcal{A}$ est dense dans $\mathcal{C}(K, \mathbb{R})$.
+  \end{theorem}
+
+  \begin{remark}
+    Il existe aussi une version ``complexe'' de ce théorème, où il faut supposer de plus que $\mathcal{A}$ est stable par conjugaison.
+  \end{remark}
+
+  \begin{example}
+    La suite de polynômes réels $(r_n)$ définie par récurrence par
+    \[ r_0 = 0 \text{ et } \forall n \in \mathbb{N}, r_{n+1} : t \mapsto r_n(t) + \frac{1}{2} (t - r_n(t)^2) \]
+    converge vers $\sqrt{.}$ sur $[0,1]$.
+  \end{example}
+
+  \subsection{Espaces \texorpdfstring{$L_p$}{Lp}}
+
+  \reference[G-K]{209}
+
+  Soit $(X, \mathcal{A}, \mu)$ un espace mesuré. Les résultats qui vont suivre sont, par extension, également valable pour les fonctions à valeurs dans $\mathbb{C}$.
+
+  \subsubsection{Espaces \texorpdfstring{$\mathcal{L}_p$}{ℒp}}
+
+  \begin{definition}
+    \begin{itemize}
+      \item Pour $p \in [1, +\infty[$, on note $\mathcal{L}_p(X, \mathcal{A}, \mu))$ (où $\mathcal{L}_p$ en l'absence d'ambiguïté) l'ensemble des applications $f$ mesurables de $(X, \mathcal{A}, \mu)$ dans $(\mathbb{R}, \mathcal{B}(R))$ telles que
+      \[ \int_X \vert f(x) \vert^p \, \mathrm{d}\mu(x) < +\infty \]
+      on note alors $\Vert f \Vert_p = \left(\int_X \vert f(x) \vert^p \, \mathrm{d}\mu(x)\right)^{\frac{1}{p}}$.
+      \item On note de même $\mathcal{L}_\infty$ l'ensemble des applications mesurables de $(X, \mathcal{A}, \mu)$ dans $(\mathbb{R}, \mathcal{B}(R))$ de sup-essentiel borné. On note alors $\Vert f \Vert_\infty$ pour $f \in \mathcal{L}_\infty$.
+    \end{itemize}
+  \end{definition}
+
+  \reference[B-P]{163}
+
+  \begin{example}
+    Si $\mu$ est la mesure de comptage sur $(\mathcal{P}(\mathbb{N}), \mathbb{N})$, alors
+    \[ \mathcal{L}_p = \ell_p = \left\{ (u_n) \in \mathbb{R}^n \mid \sum_{n \geq 0} \vert u_n \vert^p < +\infty \right\} \]
+  \end{example}
+
+  \begin{proposition}
+    $\mathcal{L}_p$ est un sous-espace vectoriel de l'espace vectoriel des fonctions de $X$ dans $\mathbb{R}$.
+  \end{proposition}
+
+  \reference[G-K]{209}
+
+  \begin{theorem}[Inégalité de Hölder]
+    Soient $p, q \in ]1, +\infty[$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, $f \in \mathcal{L}_p$ et $g \in \mathcal{L}_q$. Alors $fg \in \mathcal{L}_1$ et
+    \[ \Vert fg \Vert_1 \leq \Vert f \Vert_p \Vert g \Vert_q \]
+  \end{theorem}
+
+  \begin{remark}
+    C'est encore vrai pour $q = +\infty$ en convenant que $\frac{1}{+\infty} = 0$.
+  \end{remark}
+
+  \begin{application}
+    On considère la fonction $\Gamma$ d'Euler. Alors,
+    \[ \forall \theta \in ]0,1[, \forall x, y > 0, \, \, \Gamma(\Theta x + (1 - \Theta)y) \leq \Gamma(x)^{\theta} \Gamma(y)^{1 - \theta} \]
+    et en particulier, $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
+  \end{application}
+
+  \begin{theorem}[Inégalité de Minkowski]
+    \[ \forall f, g \in \mathcal{L}_p, \, \Vert f + g \Vert_p \leq \Vert f \Vert_p + \Vert g \Vert_p \]
+  \end{theorem}
+
+  L'application $\Vert . \Vert_p$ définit donc une semi-norme sur $\mathcal{L}_p$ pour $p \in [1, +\infty]$. L'idée dans la sous-section suivante sera de construire un espace dans lequel l'axiome de séparation n'est pas pris en défaut.
+
+  \subsubsection{Construction des espaces \texorpdfstring{$L_p$}{Lp}}
+
+  \begin{definition}
+    On définit pour tout $p \in [1, +\infty]$,
+    \[ L_p = \mathcal{L}_p / V \]
+    où $V = \{ v \in \mathcal{L}_p \mid v = 0 \text{ pp.} \}$.
+  \end{definition}
+
+  \begin{proposition}
+    Dans un espace de mesure finie,
+    \[ 1 \leq p < q \leq +\infty \implies L_q \subseteq L_p \]
+  \end{proposition}
+
+  \begin{cexample}
+    La fonction $\mathbb{1}$ est dans $L_\infty(\mathbb{R}, \mathcal{B}(\mathbb{R}), \lambda)$ mais dans aucun $L_p(\mathbb{R}, \mathcal{B}(\mathbb{R}), \lambda)$ pour tout $p \in [1, +\infty[$.
+  \end{cexample}
+
+  \begin{theorem}
+    Pour tout $p \in [1, +\infty]$, $(L_p), \Vert . \Vert_p$ est un espace vectoriel normé.
+  \end{theorem}
+
+  \begin{theorem}[Riesz-Fischer]
+    Pour tout $p \in [1, +\infty]$, $L_p$ est complet pour la norme $\Vert . \Vert_p$.
+  \end{theorem}
+
+  \subsubsection{Convolution et régularisation dans \texorpdfstring{$L_1$}{L₁}}
+
+  \reference[AMR08]{75}
+
+  \begin{definition}
+    Soient $f$ et $g$ deux fonctions de $\mathbb{R}^d$ dans $\mathbb{R}$. On dit que \textbf{la convolée} (ou \textbf{le produit de convolution}) de $f$ et $g$ en $x \in \mathbb{R}$ \textbf{existe} si la fonction
+    \[
+    \begin{array}{ccc}
+      \mathbb{R} &\rightarrow& \mathbb{C} \\
+      t &\mapsto& f(x-t)g(t)
+    \end{array}
+    \]
+    est intégrable sur $\mathbb{R}^d$ pour la mesure de Lebesgue. On pose alors :
+    \[ (f * g)(x) = \int_{\mathbb{R}^d} f(x-t)g(t) \, \mathrm{d}t \]
+  \end{definition}
+
+  \begin{example}
+    Soient $a < b \in \mathbb{R}^+_*$. Alors $\mathbb{1}_{[-a, a]} * \mathbb{1}_{[-b,b]}$ existe pour tout $x \in \mathbb{R}$ et
+    \[ \left( \mathbb{1}_{[-a, a]} * \mathbb{1}_{[-b,b]} \right)(x) =
+    \begin{cases}
+      2a &\text{si } 0 \leq \vert x \vert \leq b-a \\
+      b+a-\vert x \vert &\text{si } b-a \leq \vert x \vert \leq b+a \\
+      0 &\text{sinon}
+    \end{cases}
+    \]
+  \end{example}
+
+  \begin{proposition}
+    Dans $L_1(\mathbb{R}^d)$, dès qu'il a un sens, le produit de convolution de deux fonctions est commutatif, bilinéaire et associatif.
+  \end{proposition}
+
+  \begin{theorem}[Convolution dans $L_1(\mathbb{R}^d)$]
+    Soient $f, g \in L_1(\mathbb{R}^d)$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item pp. en $x \in \mathbb{R}^d$, $t \mapsto f(x-t)g(t)$ est intégrable sur $\mathbb{R}^d$.
+      \item $f * g$ est intégrable sur $\mathbb{R}^d$.
+      \item $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
+      \item L'espace vectoriel normé $(L_1(\mathbb{R}^d), \Vert . \Vert_1)$ muni de $*$ est une algèbre de Banach commutative.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{114}
+
+  \begin{proposition}
+    L'algèbre $(L_1(\mathbb{R}^d), +, *, \cdot)$ n'a pas d'élément unité.
+  \end{proposition}
+
+  \begin{application}
+    \[ f * f = f \iff f = 0 \]
+  \end{application}
+
+  \reference[B-P]{306}
+
+  \begin{definition}
+    On appelle \textbf{approximation de l'identité} toute suite $(\rho_n)$ de fonctions mesurables de $L_1(\mathbb{R}^d)$ telles que
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, \int_{\mathbb{R}^d} \rho_n \, \mathrm{d}\lambda_d = 1$.
+      \item $\sup_{n \geq 1} \Vert \rho_n \Vert < +\infty$.
+      \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R} \setminus B(0, \epsilon)} \rho_n(x) \, \mathrm{d}x = 0$.
+    \end{enumerate}
+  \end{definition}
+
+  \reference[GOU20]{304}
+
+  \begin{example}
+    $\forall n \in \mathbb{N}$, on note :
+    \[ a_n = \int_{-1}^1 (1-t^2)^n \, \mathrm{d}t \text{ et } p_n : t \mapsto \frac{(1-t^2)^n}{a_n} \mathbb{1}_{[-1, 1]}(t) \]
+    Alors, $(p_n)$ est une approximation positive de l'identité.
+  \end{example}
+
+  \reference[AMR08]{96}
+
+  \begin{application}
+    \begin{enumerate}[label=(\roman*)]
+      \item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $\mathcal{C}_K(\mathbb{R}^d)$ pour $\Vert . \Vert_\infty$.
+      \item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $L_p(\mathbb{R}^d)$ pour $\Vert . \Vert_p$ avec $p \in [1, +\infty[$.
+    \end{enumerate}
+  \end{application}
+
+  \subsection{Espace \texorpdfstring{$L_2$}{L₂}}
+
+  \subsubsection{Propriétés hilbertiennes}
+
+  \reference[BMP]{92}
+
+  \begin{definition}
+    On considère la forme bilinéaire suivante sur $L_2$ :
+    \[ \langle ., . \rangle : (f, g) \mapsto \int_X f \overline{g} \, \mathrm{d}\mu \]
+    C'est un produit scalaire hermitien, ce qui confère à $(L_2, \langle ., . \rangle)$ une structure d'espace de Hilbert.
+  \end{definition}
+
+  On peut donc énoncer quelques propriétés dont hérite $L_2$.
+
+  \reference{98}
+
+  \begin{theorem}
+    Pour tout sous-espace vectoriel fermé $F$ de $L_2$,
+    \[ L_2 = F \oplus F^\perp \]
+  \end{theorem}
+
+  \begin{corollary}
+    Un sous-espace vectoriel $F$ de $L_2$ est dense dans $L_2$ si et seulement si $F^\perp = \{ 0 \}$.
+  \end{corollary}
+
+  \begin{theorem}
+    Soit $(e_n)_{n \in I}$ une famille orthonormée dénombrable de $L_2$. Les propriétés suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $H$.
+      \item $\forall f \in L_2, \, f = \sum_{n=0}^{+\infty} \langle f, e_n \rangle e_n$.
+      \item $\forall f \in L_2, \, \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle f, e_n \rangle \vert^2$.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{Polynômes orthogonaux}
+
+  \reference{110}
+
+  Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
+
+  \begin{definition}
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+  \end{definition}
+
+  Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
+
+  \begin{notation}
+    On note $L_2(I, \rho)$ l'espace des fonctions de carré intégrable pour la mesure de densité $\rho$ par rapport à la mesure de Lebesgue.
+  \end{notation}
+
+  \begin{proposition}
+    Muni de
+    \[ \langle ., . \rangle : (f,g) \mapsto \int_I f(x) \overline{g(x)} \rho(x) \, \mathrm{d}x \]
+    $L_2(I, \rho)$ est un espace de Hilbert.
+  \end{proposition}
+
+  \begin{theorem}
+    Il existe une unique famille $(P_n)$ de polynômes unitaires orthogonaux deux-à-deux telle que $\deg(P_n) = n$ pour tout entier $n$. C'est la famille de \textbf{polynômes orthogonaux} associée à $\rho$ sur $I$.
+  \end{theorem}
+
+  \begin{example}[Polynômes de Hermite]
+    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
+  \end{example}
+
+  \reference{140}
+
+  \begin{lemma}
+    On suppose que $\forall n \in \mathbb{N}$, $g_n \in L_1(I, \rho)$ et on considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$. Alors $\forall n \in \mathbb{N}$, $g_n \in L_2(I, \rho)$. En particulier, l'algorithme de Gram-Schmidt a bien du sens et $(P_n)$ est bien définie.
+  \end{lemma}
+
+  \begin{application}
+    On considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$ et on suppose qu'il existe $a > 0$ tel que
+    \[ \int_I e^{a \vert x \vert} \rho(x) \, \mathrm{d}x < +\infty \]
+    alors $(P_n)$ est une base hilbertienne de $L_2(I, \rho)$ pour la norme $\Vert . \Vert_2$.
+  \end{application}
+
+  \begin{cexample}
+    On considère, sur $I = \mathbb{R}^+_*$, la fonction poids $\rho : x \mapsto x^{-\ln(x)}$. Alors, la famille des $g_n$ n'est pas totale. La famille des polynômes orthogonaux associée à ce poids particulier n'est donc pas totale non plus : ce n'est pas une base hilbertienne.
+  \end{cexample}
+
+  \subsection{Dualité}
+
+  \reference[GOU21]{132}
+
+  \begin{definition}
+    On appelle \textbf{forme linéaire} d'un espace vectoriel $E$ sur un corps $\mathbb{K}$ toute application linéaire de $E$ dans $\mathbb{K}$ et on note $E^*$ appelé \textbf{dual} de $E$ l'ensemble des formes linéaires de $E$.
+    \newpar
+    On note $E'$ le \textbf{dual topologique} de $E$, qui est le sous-espace de $E^*$ constitué des formes linéaires continues.
+  \end{definition}
+
+  \reference[BMP]{103}
+
+  \begin{theorem}[de représentation de Riesz]
+    L'application
+    \[
+    \Phi :
+    \begin{array}{ccc}
+      H &\rightarrow& H' \\
+      y &\mapsto& (x \mapsto \langle x, y \rangle)
+    \end{array}
+    \]
+    est une isométrie linéaire bijective de $H$ sur son dual topologique $H'$.
+  \end{theorem}
+
+  \begin{example}
+    Dans le cas $L_2(X, \mu)$,
+    \[ \forall \varphi \in L_2', \, \exists! g \in H, \text{ telle que } \forall f \in L_2, \, \varphi(f) = \int_X f(g) \overline{g(x)} \, \mathrm{d}\mu(x) \]
+  \end{example}
+
+  \reference[Z-Q]{222}
+  \dev{dual-de-lp}
+
+  \begin{theorem}[Dual de $L_p$]
+    On se place dans un espace mesuré de mesure finie. On note $\forall p \in ]1,2[$. L'application
+    \[
+    \varphi :
+    \begin{array}{ll}
+      L_q &\rightarrow (L_p)' \\
+      g &\mapsto \left( \varphi_g : f \mapsto \int_X f g \, \mathrm{d}\mu \right)
+    \end{array}
+    \qquad \text{ où } \frac{1}{p} + \frac{1}{q} = 1
+    \]
+    est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
+  \end{theorem}
+
+  \reference[LI]{140}
+
+  \begin{remark}
+    Plus généralement, si l'on identifie $g$ et $\varphi_g$ :
+    \begin{itemize}
+      \item $L_q$ est le dual topologique de $L_p$ pour $p \in ]1, +\infty[$.
+      \item $L_\infty$ est le dual topologique de $L_1$ si $\mu$ est $\sigma$-finie.
+    \end{itemize}
+  \end{remark}
+  %</content>
+\end{document}

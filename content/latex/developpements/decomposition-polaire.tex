@@ -1,0 +1,92 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{algebra}{decomposition-polaire}{Décomposition polaire}
+
+  \summary{On montre que toute matrice $M \in \mathrm{GL}_n(\mathbb{R})$ peut s'écrire de manière unique $M = OS$ avec $O \in \mathcal{O}_n(\mathbb{R})$ et $S \in \mathcal{S}_n^{++}(\mathbb{R})$, et que l'application $(O, S) \mapsto M$ est un homéomorphisme.}
+
+  \begin{lemma}
+    \label{decomposition-polaire-1}
+    Soit $S \in \mathcal{S}_n(\mathbb{R})$. Alors $S \in \mathcal{S}_n^{++}(\mathbb{R})$ si et seulement si toutes ses valeurs propres sont strictement positives.
+  \end{lemma}
+
+  \begin{proof}
+    Par le théorème spectral, on peut écrire $S = \tr P \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P$ avec $P \in \mathcal{O}_n(\mathbb{R})$. Si on suppose $\lambda_1, \dots, \lambda_n > 0$, on a $\forall x \neq 0$,
+    \[ \tr x S x = \tr (Px) \operatorname{Diag}(\lambda_1, \dots, \lambda_n) (Px) > 0 \text{ car } \operatorname{Diag}(\lambda_1, \dots, \lambda_n) \in \mathcal{S}_n^{++}(\mathbb{R}) \]
+    d'où le résultat.
+    \newpar
+    Réciproquement, on suppose $\forall x \neq 0$, $\tr x S x > 0$. Avec $x = \tr P e_1$ (où $e_1$ désigne le vecteur dont la première coordonnée vaut $1$ et les autres sont nulles),
+    \[ \tr x S x = \tr (Px) \operatorname{Diag}(\lambda_1, \dots, \lambda_n) (Px) = \tr e_1 D e_1 = \lambda_1 > 0 \]
+    Et on peut faire de même pour montrer que $\forall i \in \llbracket 1, n \rrbracket$, $\lambda_i > 0$.
+  \end{proof}
+
+  \begin{lemma}
+    \label{decomposition-polaire-2}
+    $\mathcal{S}_n^+(\mathbb{R})$ est un fermé de $\mathcal{M}_n(\mathbb{R})$ et $\mathrm{GL}_n(\mathbb{R}) \, \cap \, \mathcal{S}_n^{+}(\mathbb{R}) \subseteq \mathcal{S}_n^{++}(\mathbb{R})$.
+  \end{lemma}
+
+  \begin{proof}
+    Pour la première assertion, il suffit de constater que
+    \[ \mathcal{S}_n^+(\mathbb{R}) = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid \tr M = M \} \, \cap \, \left( \bigcap_{x \in \mathbb{R}^n} \{ M \in \mathcal{M}_n(\mathbb{R}) \mid \tr x M x \geq 0 \} \right) \]
+    qui est une intersection de fermés (par image réciproque). Maintenant, si $M \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \mathcal{S}_n^{+}(\mathbb{R})$, alors $M$ est diagonalisable avec des valeurs propres positives ou nulles (par le théorème spectral). Mais comme $\det(M) \neq 0$, toutes les valeurs propres de $M$ sont strictement positives. Donc par le \cref{decomposition-polaire-1}, $M \in \mathcal{S}_n^{++}(\mathbb{R})$.
+  \end{proof}
+
+  \reference[C-G]{376}
+
+  \begin{theorem}[Décomposition polaire]
+    L'application
+    \[ \mu :
+    \begin{array}{ccc}
+      \mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+      (O, S) &\mapsto& OS
+    \end{array}
+    \]
+    est un homéomorphisme.
+  \end{theorem}
+
+  \begin{proof}
+    Montrer qu'une application est un homéomorphisme se fait en $4$ étapes : on montre qu'elle est continue, injective, surjective, et que la réciproque est elle aussi continue.
+    \begin{itemize}
+      \item \uline{L'application est bien définie et continue :} Si $O \in \mathcal{O}_n(\mathbb{R})$ et $S \in \mathcal{S}_n^{++}(\mathbb{R})$, alors $OS \in \mathrm{GL}_n(\mathbb{R})$. De plus, $\mu$ est continue en tant que restriction de la multiplication matricielle.
+      \item \uline{L'application est surjective :} Soit $M \in \mathrm{GL}_n(\mathbb{R})$. Si $x \neq 0$, on a
+      \[ \tr x (\tr M M) x = \tr (Mx) (Mx) = \Vert Mx \Vert_2^2 > 0 \]
+      En particulier, $\tr M M \in \mathcal{S}_n^{++}(\mathbb{R})$. Par le théorème spectral, il existe $P \in \mathcal{O}_n(\mathbb{R})$ et $\lambda_1, \dots, \lambda_n > 0$ tels que $\tr M M = P \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1}$. On pose alors
+      \[ D = \operatorname{Diag} \left(\sqrt{\lambda_1}, \dots, \sqrt{\lambda_n} \right) \text{ et } S = P D P^{-1} \]
+      de sorte que $S^2 = \tr M M$. Mais de plus,
+      \[ \tr S = \tr P^{-1} \tr D \tr P = S \implies S \in \mathcal{S}_n(\mathbb{R}) \]
+      et par le \cref{decomposition-polaire-1},
+      \[ \forall i \in \llbracket 1, n \rrbracket, \, \sqrt{\lambda_i} > 0 \implies S \in \mathcal{S}_n^{++}(\mathbb{R}) \]
+      On pose donc $O = MS^{-1}$ (ie. $M = OS$), et on a
+      \[ \tr O O = \tr (MS^{-1}) MS^{-1} = \tr S^{-1} \tr M M S^{-1} = S^{-1} S^2 S^{-1} = I_n \implies O \in \mathcal{O}_n(\mathbb{R}) \]
+      Donc $\mu(O, S) = M$ et $\mu$ est surjective.
+      \item \uline{L'application est injective :} Soit $M = OS \in \mathrm{GL}_n(\mathbb{R})$ (avec $O$ et $S$ comme précédemment). Soit $M = O'S'$ une autre décomposition polaire de $M$. Alors il vient,
+      \[ S^2 = \tr M M = \tr (O'S') O'S' = \tr S' \tr O' O' S' = S'^{2} \]
+      Soit $Q$ un polynôme tel que $\forall i \in \llbracket 1, n \rrbracket$, $Q(\lambda_i) = \sqrt{\lambda_i}$ (les polynômes d'interpolation de Lagrange conviennent parfaitement). Alors,
+      \[\ S = PD \tr P = PQ \left(D^2 \right) \tr P = Q \left(PD^2 \tr P \right) = Q \left(\tr M M \right) = Q \left(S^2 \right) = Q \left(S'^2 \right) \]
+      Mais $S'$ commute avec $S'^2$, donc avec $S = Q \left(S'^2 \right)$. En particulier, $S$ et $S'$ sont codiagonalisables, il existe $P_0 \in \mathrm{GL}_n(\mathbb{R})$ et $\mu_1, \dots, \mu_n, \mu'_1, \dots, \mu'_n \in \mathbb{R}$ tels que
+      \[ S = P_0 \operatorname{Diag}(\mu_1, \dots, \mu_n) P_0^{-1} \text{ et } S' = P_0 \operatorname{Diag} \left (\mu'_1, \dots, \mu'_n \right) P_0^{-1} \]
+      d'où :
+      \begin{align*}
+        S^2 = S'^2 & \implies P_0 \operatorname{Diag} \left(\mu^2_1, \dots, \mu^2_n \right) P_0^{-1} = P_0 \operatorname{Diag} \left (\mu'^2_1, \dots, \mu'^2_n \right) P_0^{-1} \\
+        & \implies \mu^2_i = \mu'^2_i \qquad \forall i \in \llbracket 1, n \rrbracket \\
+        & \implies \mu_i = \mu'_i \qquad \forall i \in \llbracket 1, n \rrbracket \text{ car } \forall i \in \llbracket 1, n \rrbracket, \, \mu_i > 0 \\
+        & \implies S = S'
+      \end{align*}
+      Ainsi, $O = MS^{-1} = MS'^{-1} = O'$. Donc $\mu$ est injective.
+      \item \uline{L'application inverse est continue :} Soit $(M_p) \in \mathrm{GL}_n(\mathbb{R})^{\mathbb{N}}$ qui converge vers $M \in \mathrm{GL}_n(\mathbb{R})$. Il s'agit de montrer que la suite $\left (\mu^{-1} \left (M_p \right) \right) = (O_p, S_p)$ converge vers $\mu^{-1}(M) = (O, S)$. Comme $\mathcal{O}_n(\mathbb{R})$ est compact, il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que la suite extraite $(O_{\varphi(p)})$ converge vers une valeur d'adhérence $\overline{O} \in \mathcal{O}_n(\mathbb{R})$. Ainsi, la suite $(S_{\varphi(p)})$ converge vers $\overline{S} = \overline{O}^{-1} M$.
+      \newpar
+      Mais, $\overline{S} = \overline{O}^{-1} M \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \overline{\mathcal{S}_n^{++}(\mathbb{R})}$. Donc par le \cref{decomposition-polaire-1},
+      \[ \overline{S} \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \mathcal{S}_n^{+}(\mathbb{R}) \]
+      et par le \cref{decomposition-polaire-2},
+      \[ \overline{S} \in \mathcal{S}_n^{++}(\mathbb{R}) \]
+      On a $M = \overline{O} \overline{S}$, d'où, par unicité de la décomposition polaire, $\overline{O} = O$ et $\overline{S} = S$.
+    \end{itemize}
+  \end{proof}
+
+  \begin{remark}
+    La preuve vaut encore dans le cas complexe (pour le groupe unitaire et les matrices hermitiennes).
+  \end{remark}
+  %</content>
+\end{document}

@@ -1,0 +1,398 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{208}{Espaces vectoriels normés, applications linéaires continues. Exemples.}
+
+  Dans toute la suite, $\mathbb{K}$ désignera le corps $\mathbb{R}$ ou $\mathbb{C}$ et $E$ un espace vectoriel sur $\mathbb{K}$.
+
+  \subsection{Généralités}
+
+  \subsubsection{Normes sur un espace vectoriel}
+
+  \reference[GOU20]{7}
+
+  \begin{definition}
+    Une \textbf{norme} sur $E$ est une application $\Vert . \Vert : E \rightarrow \mathbb{R}^+$ telle que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\Vert x \Vert = 0 \iff x = 0$ (séparabilité).
+      \item $\forall \lambda \in \mathbb{K}, \, \forall x \in E, \, \Vert \lambda x \Vert = \vert \lambda \vert \Vert x \Vert$ (homogénéité).
+      \item $\forall x, y \in E, \, \Vert x + y \Vert \leq \Vert x \Vert + \Vert y \Vert$ (inégalité triangulaire).
+    \end{enumerate}
+  \end{definition}
+
+  \begin{example}
+    \label{208-1}
+    \begin{itemize}
+      \item $x \mapsto \vert x \vert$ est une norme sur $\mathbb{R}$, $z \mapsto \vert z \vert$ est une norme sur $\mathbb{C}$.
+      \item $\forall \alpha \geq 1, \Vert . \Vert_\alpha : (x_1, \dots, x_n) \mapsto \left(\sum_{i=1}^n \vert x_i \vert^\alpha\right)^{\frac{1}{\alpha}}$ est une norme sur $\mathbb{R}^n$.
+    \end{itemize}
+  \end{example}
+
+  \reference{47}
+
+  \begin{definition}
+    $E$ est dit \textbf{normé} s'il est muni d'une norme $\Vert . \Vert$.
+  \end{definition}
+
+  Dans toute la suite, $E$ désignera un espace vectoriel normé muni d'une norme $\Vert . \Vert$.
+
+  \begin{definition}
+    Deux normes $\Vert . \Vert_1$ et $\Vert . \Vert_2$ sur $E$ sont dites \textbf{équivalentes} si
+    \[ \exists a, b > 0 \text{ tels que } \forall x \in E, \, a \Vert x \Vert_1 \leq \Vert x \Vert_2 \leq b \Vert x \Vert_1 \]
+  \end{definition}
+
+  \begin{remark}
+    Deux normes équivalentes définissent des distances équivalentes. Sur un plan topologique et lorsqu'on travaille avec des suites de Cauchy, il est indifférent de prendre l'une ou l'autre de ces normes.
+  \end{remark}
+
+  \subsubsection{Quelques exemples}
+
+  \begin{example}
+    Comme mentionné précédemment, $\mathbb{R}^n$ et $\mathbb{C}^n$ sont des espaces vectoriels normés (munis de $\Vert . \Vert_\alpha$ définie à l'\cref{208-1}).
+  \end{example}
+
+  \reference{8}
+
+  \begin{example}
+    L'ensemble $\mathcal{B}(X,E)$ des applications bornées d'un ensemble $X$ dans $E$ est un espace vectoriel normé muni de la norme $\Vert . \Vert_\infty : f \mapsto \sup_{x \in X} \vert f(x) \vert$.
+  \end{example}
+
+  \reference{53}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\ell_1(\mathbb{R}) = \{ (u_n) \in \mathbb{R}^n \mid \sum_{n=0}^{+\infty} \vert u_n \vert < +\infty \}$ est un espace vectoriel normé muni de la norme $\Vert (u_n) \Vert_1 = \sum_{n=0}^{+\infty} \vert u_n \vert$.
+      \item $\ell_\infty(\mathbb{R}) = \{ (u_n) \in \mathbb{R}^n \mid (u_n) \text{ est bornée} \}$ est un espace vectoriel normé muni de la norme $\Vert (u_n) \Vert_\infty = \sup_{n \in \mathbb{N}} \vert u_n \vert$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Applications linéaires continues}
+
+  \reference{48}
+
+  Soit $(F, \Vert . \Vert_F)$ un espace vectoriel normé sur $\mathbb{K}$. $\Vert . \Vert_E$ désigne la norme sur $E$.
+
+  \begin{notation}
+    On note $L(E,F)$ l'ensemble des applications linéaires de $E$ dans $F$ et $\mathcal{L}(E,F)$ l'ensemble des applications linéaires continues de $E$ dans $F$. Si $E = F$, on note $L(E,F) = L(E)$ et $\mathcal{L}(E,F) = \mathcal{L}(E)$.
+  \end{notation}
+
+  \begin{theorem}
+    Soit $f \in L(E,F)$. Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item $f \in \mathcal{L}(E,F)$.
+      \item $f$ est continue en $0$.
+      \item $f$ est bornée sur $\overline{B}(0,1) \subseteq E$.
+      \item $f$ est bornée sur $S(0,1) \subseteq E$.
+      \item Il existe $M \geq 0$ tel que $\Vert f(x) \Vert_F \leq M \Vert x \Vert_E$.
+      \item $f$ est lipschitzienne.
+      \item $f$ est uniformément continue sur $E$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    L'application $\VERT . \VERT : f \mapsto \sup_{\Vert x \Vert_E = 1} \Vert f(x) \Vert_F = \sup_{x \neq 0} \frac{\Vert f(x) \Vert_F}{\Vert x \Vert_E}$ est correctement définie sur $\mathcal{L}(E,F)$ et définit une norme sur cet espace.
+  \end{corollary}
+
+  \begin{remark}
+    Le réel $\VERT f \VERT$ du corollaire précédent est le plus petit réel positif $M$ tel que $\Vert f(x) \Vert_F \leq M \Vert x \Vert_E$ pour tout $x \in E$. En particulier,
+    \[ \forall x \in E, \, \Vert f(x) \Vert_F \leq \VERT f \VERT \Vert x \Vert_E \]
+  \end{remark}
+
+  \begin{proposition}
+    Soient $(G, \Vert . \Vert_G)$ un espace vectoriel normé, $f \in \mathcal{L}(E,F)$ et $g \in \mathcal{L}(F,G)$. Alors, $\VERT g \circ f \VERT \leq \VERT g \VERT \VERT f \VERT$.
+  \end{proposition}
+
+  \begin{proposition}
+    Si $f \in \mathcal{L}(E,F)$ est inversible, $\VERT f \VERT^{-1} \leq \VERT f^{-1} \VERT$.
+  \end{proposition}
+
+  \begin{proposition}
+    Une forme linéaire sur $E$ (ie. un élément de $L(E, \mathbb{K}) = E^*$) est continue (ie. est un élément de $\mathcal{L}(E, \mathbb{K}) = E'$) si et seulement si son noyau est fermé.
+  \end{proposition}
+
+  \reference[LI]{19}
+
+  \begin{example}
+    L'application
+    \[
+    \delta_0 : \begin{array}{ccc}
+      \mathcal{C}([0,1], \mathbb{K}) &\rightarrow& \mathbb{K} \\
+      f &\mapsto& f(0)
+    \end{array}
+    \]
+    est continue pour $\Vert . \Vert_\infty$ mais pas pour $\Vert . \Vert_1$ (où $\Vert . \Vert_1 = \int_{[0,1]} \vert . \vert \mathrm{d}\mu$ et $\Vert . \Vert_\infty = \sup_{[0,1]}$).
+  \end{example}
+
+  \subsection{Étude en dimension finie}
+
+  On se place ici dans le cas où $E$ est de dimension finie.
+
+  \dev{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz}
+
+  \begin{theorem}
+    Dans un espace vectoriel normé de dimension finie, toutes les normes sont équivalentes.
+  \end{theorem}
+
+  \begin{corollary}
+    Toute application linéaire d'un espace vectoriel normé de dimension finie dans un espace vectoriel normé (quelconque) est continue.
+  \end{corollary}
+
+  \begin{corollary}
+    Tout sous-espace vectoriel d'un espace vectoriel normé de dimension finie est fermé.
+  \end{corollary}
+
+  \begin{corollary}
+    Les parties compactes d'un espace vectoriel normé de dimension finie sont les parties fermées et bornées.
+  \end{corollary}
+
+  \begin{cexample}
+    Munir $\mathbb{R}[X]$ de la norme $\Vert . \Vert_\infty \mapsto \sum_{i} a_i X^i \mapsto \sup_i \vert a_i \vert$ rend l'opérateur de dérivation $P \mapsto P'$ non continu.
+  \end{cexample}
+
+  \reference{56}
+
+  \begin{theorem}[Riesz]
+    La boule unité fermée d'un espace vectoriel normé est compacte si et seulement s'il est dimension finie.
+  \end{theorem}
+
+  \subsection{Complétude}
+
+  \subsubsection{Espaces de Banach}
+
+  \reference[LI]{20}
+
+  \begin{definition}
+    Un espace vectoriel normé complet (ie. dans lequel toute suite de Cauchy converge) est un \textbf{espace de Banach}.
+  \end{definition}
+
+  \reference{50}
+
+  \begin{example}
+    Tout espace vectoriel normé de dimension finie est complet.
+  \end{example}
+
+  \begin{example}
+    Soit $F$ un espace de Banach. Alors $\mathcal{L}(E,F)$ est un espace de Banach.
+  \end{example}
+
+  \reference{21}
+
+  \begin{example}
+    Soient $X$ un ensemble. On suppose que $E$ un espace de Banach. Alors $\mathcal{B}(X,E)$ est un espace de Banach.
+  \end{example}
+
+  \reference{10}
+
+  \begin{example}
+    Pour tout compact $K$ de $\mathbb{R}$, $(\mathcal{C}(K, \mathbb{K}), \Vert . \Vert_\infty)$ est complet. Mais pas $(\mathcal{C}(K, \mathbb{K}), \Vert . \Vert_1)$.
+  \end{example}
+
+  \begin{theorem}[Riesz-Fischer]
+    Pour tout $p \in [1, +\infty]$, $L_p$ est complet pour la norme $\Vert . \Vert_p$.
+  \end{theorem}
+
+  \reference[GOU20]{52}
+
+  \begin{proposition}
+    $E$ est de Banach si et seulement si toute série de $E$ absolument convergente est convergente.
+  \end{proposition}
+
+  \reference[LI]{111}
+
+  \begin{theorem}[Baire]
+    On suppose $E$ complet. Alors toute intersection d'ouvert denses est encore dense dans $E$.
+  \end{theorem}
+
+  \reference[GOU20]{419}
+
+  \begin{application}
+    Un espace vectoriel normé à base dénombrable n'est pas complet.
+  \end{application}
+
+  \reference[LI]{112}
+
+  \begin{application}[Théorème de Banach-Steinhaus]
+    Soient $(E, \Vert . \Vert_E)$ et $(F, \Vert . \Vert_F)$ deux espaces de Banach et $(T_i)_{i \in I}$ des applications linéaires continues telles que
+    \[ \forall x \in E, \, \sup_{i \in I} \Vert T_i(x) \Vert_F < +\infty \]
+    alors,
+    \[ \sup_{i \in I} \VERT T_i \VERT < +\infty \]
+  \end{application}
+
+  \begin{application}[Théorème du graphe fermé]
+    Soient $E$ et $F$ deux espaces de Banach et $T \in L(E,F)$. Si le graphe de $T$ :
+    \[ \{ (x, T(x)) \mid x \in E \} \subseteq E \times F \]
+    est fermé dans $E \times F$, alors $T$ est continue.
+  \end{application}
+
+    \begin{application}[Théorème de l'application ouverte]
+    Soient $E$ et $F$ deux espaces de Banach et $T \in \mathcal{L}(E,F)$ surjective. Alors,
+    \[ \exists c > 0, \, T\left(B_E(0,1)\right) \supseteq B_F(0,c) \]
+  \end{application}
+
+  \begin{corollary}[Théorème des isomorphismes de Banach]
+    Soient $E$ et $F$ deux espaces de Banach et $T \in \mathcal{L}(E,F)$ bijective. Alors $T^{-1}$ est continue.
+  \end{corollary}
+
+  \begin{corollary}
+    On suppose que $E$ est de Banach. Soient $E_1$ et $E_2$ deux supplémentaires algébriques fermés dans $E$. Alors les projections associées sur $E_1$ et $E_2$ sont continues.
+  \end{corollary}
+
+  \subsubsection{Espaces de Hilbert}
+
+  \paragraph{Généralités}
+
+  \reference[LI]{31}
+
+  \begin{definition}
+    Un espace vectoriel $H$ sur le corps $\mathbb{K}$ est un \textbf{espace de Hilbert} s'il est muni d'un produit scalaire $\langle . , . \rangle$ et est complet pour la norme associée $\Vert . \Vert = \sqrt{\langle . , . \rangle}$.
+  \end{definition}
+
+  \begin{example}
+    Tout espace euclidien ou hermitien est un espace de Hilbert.
+  \end{example}
+
+  \begin{example}
+    $L_2(\mu)$ muni de $\langle . , . \rangle : (f,g) \mapsto \int f \overline{g} \, \mathrm{d}\mu$ est un espace de Hilbert.
+  \end{example}
+
+  Pour toute la suite, on fixe $H$ un espace de Hilbert de norme $\Vert . \Vert$ et on note $\langle ., . \rangle$ le produit scalaire associé.
+
+  \begin{lemma}[Identité du parallélogramme]
+    \[ \forall x, y \in H, \, \Vert x + y \Vert^2 + \Vert x - y \Vert^2 = 2(\Vert x \Vert^2 \Vert y \Vert^2) \]
+    et cette identité caractérise les normes issues d'un produit scalaire.
+  \end{lemma}
+
+  \dev{projection-sur-un-convexe-ferme}
+
+  \begin{theorem}[Projection sur un convexe fermé]
+    Soit $C \subseteq H$ un convexe fermé non-vide. Alors :
+    \[ \forall x \in H, \exists! y \in C \text{ tel que } d(x, C) = \inf_{z \in C} \Vert x - z \Vert = d(x, y) \]
+    On peut donc noter $y = P_C(x)$, le \textbf{projeté orthogonal de $x$ sur $C$}. Il s'agit de l'unique point de $C$ vérifiant
+    \[ \forall z \in C, \, \langle x - P_C(x), z - P_C(x) \rangle \leq 0 \]
+  \end{theorem}
+
+  \begin{theorem}
+    Si $F$ est un sous espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $F$ un sous-espace vectoriel de $H$. Alors,
+    \[ \overline{F} = H \iff F^\perp = 0 \]
+  \end{corollary}
+
+  \begin{theorem}[de représentation de Riesz]
+    \[ \forall \varphi \in H', \, \exists! y \in H, \text{ tel que } \forall x \in H, \, \varphi(x) = \langle x, y \rangle \]
+    et de plus, $\VERT \varphi \VERT = \Vert y \Vert$.
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \forall T \in H', \, \exists! U \in H' \text{ tel que } \forall x, y \in H, \, \langle T(x), y \rangle = \langle x, U(y) \rangle \]
+    On note alors $U = T^*$ : c'est \textbf{l'adjoint} de $T$. On a alors $\VERT T \VERT = \VERT T^* \VERT$.
+  \end{corollary}
+
+  \reference{65}
+
+  \begin{example}[Opérateur de Voltera]
+    On définit $T$ sur $H = L_2([0,1])$ par :
+    \[
+    T : \begin{array}{ccc}
+      H &\rightarrow& H \\
+      f &\mapsto& x \mapsto \int_{0}^{x} f(t) \, \mathrm{d}t
+    \end{array}
+    \]
+    $T$ est une application linéaire continue et son adjoint $T^*$ est défini par :
+    \[ T^* : g \mapsto \left(x \mapsto \int_x^1 g(t) \, \mathrm{d}t \right) \]
+  \end{example}
+
+  \reference[Z-Q]{222}
+
+  \begin{application}
+    L'application
+    \[
+    \varphi :
+    \begin{array}{ll}
+      L_q &\rightarrow (L_p)' \\
+      g &\mapsto \left( \varphi_g : f \mapsto \int_X f g \, \mathrm{d}\mu \right)
+    \end{array}
+    \qquad \text{ où } \frac{1}{p} + \frac{1}{q} = 1
+    \]
+    est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
+  \end{application}
+
+  \paragraph{Bases hilbertiennes}
+
+  \reference[LI]{43}
+
+  \begin{definition}
+    On dit que $(e_n) \in H^{\mathbb{N}}$ est une \textbf{base hilbertienne} de $H$ si
+    \begin{itemize}
+      \item $(e_n)$ est orthonormale.
+      \item $(e_n)$ est totale.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    $(t \mapsto e^{2\pi int})_{n \in \mathbb{Z}}$ est une base hilbertienne de $L_2([0,1])$.
+  \end{example}
+
+  \begin{theorem}
+    Soit $(e_n)_{n \in \mathbb{N}}$ une base hilbertienne de $H$. Alors :
+    \[ \forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, e_n \rangle e_n \]
+    On a de plus, pour tout $x, y \in H$, les formules de Parseval :
+    \begin{itemize}
+      \item $\Vert x \Vert^2 = \sum_{n=0}^{+\infty} \vert \langle x, e_n \rangle \vert^2$.
+      \item $\langle x, y \rangle = \sum_{n=0}^{+\infty} \langle x, e_n \rangle \overline{\langle y, e_n \rangle}$.
+    \end{itemize}
+  \end{theorem}
+
+  \reference[GOU20]{272}
+
+  \begin{application}
+    On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
+    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+  \end{application}
+
+  \newpage
+  \section*{Annexes}
+
+  \reference[LI]{32}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \def\a{3}
+        \def\b{1.5}
+        \def\angle{20}
+
+        \coordinate (O) at (0, 0);
+        \coordinate (X) at (5.6, 2.54);
+        \coordinate (Z) at (1.8, -0.8);
+        \coordinate (P) at (\angle:{\a} and {\b});
+        \coordinate (F1) at ({-sqrt(\a*\a-\b*\b)}, 0);
+        \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)}, 0);
+        \tkzDefLine[bisector out](F1,P,F2) \tkzGetPoint{K}
+        \coordinate (A) at ($(K)!+0.5!(P)$);
+        \coordinate (B) at ($(P)!-0.5!(K)$);
+
+        \draw[fill=blue!30, fill opacity=0.3] (O) ellipse ({\a} and {\b});
+
+        \tkzMarkRightAngle[color=red](X,P,K);
+        \tkzMarkAngle[->,size=0.8,color=cyan,mark=none](Z,P,X);
+        \tkzLabelAngle[pos=0,shift={(2,0)}](Z,P,X){\color{cyan} Angle obtus};
+
+        \draw(O) node {$C$};
+        \draw(P) node{$\bullet$} node[left]{$P_C(x)$};
+        \draw(X) node{$\bullet$} node[above right]{$x$};
+        \draw(Z) node{$\bullet$} node[above left]{$z$};
+
+        \draw[dashed] (A) -- (B);
+        \draw[dashed] ($(A)!(X)!(B)$) -- (X);
+        \draw[dashed] (Z) -- (P);
+      \end{tikzpicture}
+    \end{center}
+    \caption{Illustration du théorème de projection sur un convexe fermé.}
+  \end{figure}
+  %</content>
+\end{document}

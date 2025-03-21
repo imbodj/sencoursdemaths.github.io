@@ -1,0 +1,461 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{122}{Anneaux principaux. Exemples et applications.}
+
+  Soit $A$ un anneau unitaire.
+
+  \subsection{Structures algébriques}
+
+  \subsubsection{Idéaux}
+
+  \reference[ULM18]{5}
+  \reference{11}
+
+  \begin{definition}
+    Un sous ensemble $I \subseteq A$ est un \textbf{idéal} de $A$ si :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(I,+)$ est un sous groupe de $(A,+)$.
+      \item Les produits $ai$ et $ia$ appartiennent à $I$ pour tout $a$ dans $A$ et $i \in I$ (propriété d'absorption).
+    \end{enumerate}
+    Si $I$ est un idéal de $A$. Alors,
+    \[ A/I = \{ \overline{a} = a + I \mid a \in A \} \]
+    est un anneau, muni des lois $\overline{a} + \overline{b} = \overline{a+b}$ et $\overline{a} \overline{b} = \overline{ab}$, et est appelé \textbf{anneau quotient} de $A$ par $I$.
+  \end{definition}
+
+  \reference{5}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Un anneau non nul possède toujours les deux idéaux ${0}$ et lui-même.
+      \item Un idéal contenant $1$ est égal à l'anneau entier (à cause de la propriété d'absorption). Par conséquent, un idéal différent de l'anneau ambiant n'est jamais un sous-anneau de celui-ci.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    \label{122-1}
+    Les idéaux de $\mathbb{Z}$ sont les $n\mathbb{Z} = \{ nk \mid k \in \mathbb{Z} \}$ pour $n \in \mathbb{Z}$.
+  \end{example}
+
+  \begin{proposition}
+    Soient $\varphi : A \rightarrow B$ un morphisme d'anneaux et $I \subseteq A$, $J \subseteq B$ deux idéaux.
+    \begin{enumerate}[label=(\roman*)]
+      \item L'ensemble $\varphi^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(\varphi)$ est un idéal de $A$.
+      \item Si $\varphi$ est surjectif, alors $\varphi(I)$ est un idéal de $B$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Soit $S \subseteq A$.
+    \begin{itemize}
+      \item $\bigcap \{ I \text{I \text{ idéal de } A} \mid S \subseteq I \}$ est un idéal de $A$ noté $(S)$ est appelé \textbf{idéal engendré} par $S$.
+      \item On a $(S) = \{ \sum_{i=1}^n a_i s_i b_i \mid a_i, b_i \in A, s_i \in S, n \in \mathbb{N} \}$. Si $A$ est commutatif, $(S) = \{ \sum_{i=1}^n a_i s_i \mid a_i \in A, s_i \in S, n \in \mathbb{N} \}$.
+    \end{itemize}
+  \end{definition}
+
+  \reference{31}
+
+  \begin{definition}
+    Soit $I$ un idéal de $A$.
+    \begin{itemize}
+      \item $I$ est dit \textbf{maximal} si $I \subsetneq A$ et si $A$ et $I$ sont les seuls idéaux de $A$ qui le contiennent.
+      \item On suppose $A$ commutatif. $I$ est dit \textbf{premier} si $I \subsetneq A$ et
+      \[ \forall a, b \in A, \, ab \in I \implies a \in I \text{ ou } b \in I \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    On suppose $A$ commutatif. Soit $I$ un idéal de $A$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $I$ est maximal si et seulement si $A/I$ est un corps.
+      \item $I$ est premier si et seulement si $A/I$ est un anneau intègre.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{corollary}
+    Dans un anneau commutatif, un idéal maximal est premier.
+  \end{corollary}
+
+  \begin{cexample}
+    $\{ 0 \}$ est un idéal premier de $\mathbb{Z}$ mais non maximal.
+  \end{cexample}
+
+  \subsubsection{Anneaux principaux}
+
+  \reference{39}
+
+  \begin{definition}
+    \begin{itemize}
+      \item Un idéal est dit \textbf{principal} s'il est engendré par un seul élément.
+      \item Un anneau est dit \textbf{principal} s'il est intègre (donc commutatif) et si tous ses idéaux sont principaux.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    Comme dit dans l'\cref{122-1}, $\mathbb{Z}$ est un anneau principal.
+  \end{example}
+
+  \reference{45}
+
+  \begin{definition}
+    On suppose $A$ commutatif. Un élément $a$ de $A$ est dit \textbf{irréductible} si
+    \[ a \notin A^\times, a \neq 0 \text{ et } a = bc \implies b \in A^\times \text{ ou } b \in A^\times \]
+    où $A^\times$ désigne le groupe des inversibles de $A$.
+  \end{definition}
+
+  \begin{theorem}
+    On suppose $A$ principal. Soit $a \in A$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $(a)$ est premier si et seulement si $a$ est irréductible.
+      \item En supposant $a \neq 0$, $(a)$ est premier si et seulement si $(a)$ est maximal.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{Anneaux euclidiens}
+
+  \reference{43}
+
+  \begin{definition}
+    \begin{itemize}
+      \item $A$ est dit \textbf{euclidien} s'il est intègre et s'il existe une fonction $\nu : A^* \rightarrow \mathbb{N}$ telle que
+      \[ \forall a, b \in A^*, \, \exists q, r \in A \text{ tels que } a = bq+r \text{ avec } (r = 0 \text{ ou } \nu(r) < \nu(b)) \]
+      \item L'élément $q$ est le \textbf{quotient} et l'élément $r$ est le \textbf{reste} de la division.
+      \item La fonction $\nu$ est appelée \textbf{stathme euclidien} pour $A$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    $\mathbb{Z}$ est un anneau euclidien pour le stathme $\nu : n \mapsto \vert n \vert$.
+  \end{example}
+
+  \begin{proposition}
+    Un anneau euclidien est principal.
+  \end{proposition}
+
+  \reference[PER]{53}
+
+  \begin{cexample}
+    $\mathbb{Z} \left[ \frac{1 + i\sqrt{19}}{2} \right]$ est principal mais n'est pas euclidien.
+  \end{cexample}
+
+  \reference[ULM18]{47}
+
+  \begin{theorem}
+    Si $\mathbb{K}$ est un corps commutatif, alors $\mathbb{K}[X]$ est un anneau euclidien de stathme le degré. De plus, le quotient et le reste sont uniques.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose $A$ commutatif. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $A$ est un corps commutatif.
+      \item $A[X]$ est un anneau euclidien.
+      \item $A[X]$ est un anneau principal.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{corollary}
+    Soient $\mathbb{K}$ un corps commutatif et $f \in \mathbb{K}[X]$. Alors $\mathbb{K}[X]/(f)$ est un corps si et seulement si $P$ est irréductible dans $\mathbb{K}[X]$.
+  \end{corollary}
+
+  \subsection{Arithmétique dans les anneaux}
+
+  On suppose $A$ commutatif dans toute cette section.
+
+  \subsubsection{Divisibilité dans un anneau principal}
+
+  \reference{39}
+
+  \begin{definition}
+    Soient $a, b \in A$.
+    \begin{itemize}
+      \item On dit que $a$ \textbf{divise} $b$ (ou que $b$ est un multiple de $a$), noté $a \mid b$ s'il existe $c \in A$ tel que $b = ac$.
+      \item On dit que $a$ et $b$ sont \textbf{associés}, noté $a \sim b$ si $a \mid b$ et si $b \mid a$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Soient $a, b \in A$.
+    \begin{itemize}
+      \item $a \mid b \iff (b) \subseteq (a)$.
+      \item $a \sim b \iff (b) = (a)$. Ainsi, $\sim$ est une relation d'équivalence sur $A$.
+    \end{itemize}
+  \end{remark}
+
+  \begin{proposition}
+    Soient $a, b \in A$. Alors,
+    \[ a \sim b \iff \exists u \in A^\times \text{ tel que } b = ua \]
+  \end{proposition}
+
+  \begin{definition}
+    Soient $a_1, \dots, a_n \in A^*$.
+    \begin{itemize}
+      \item $d \in A$ est un \textbf{plus grand commun diviseur} ``PGCD'' de $a_1, \dots, a_m$ si $d$ satisfait les deux propriétés suivantes :
+      \begin{enumerate}[label=(\roman*)]
+        \item $d \mid a_i, \forall i \in \llbracket 1, n \rrbracket$.
+        \item Si $\exists d' \in A$ tel que $d' \mid a_i, \forall i \in \llbracket 1, n \rrbracket$, alors $d' \mid d$.
+      \end{enumerate}
+      \item $m \in A$ est un \textbf{plus petit commun multiple} ``PPCM'' de $a_1, \dots, a_n$ si $m$ satisfait les deux propriétés suivantes :
+      \begin{enumerate}[label=(\roman*)]
+        \item $a_i \mid m, \forall i \in \llbracket 1, n \rrbracket$.
+        \item Si $\exists m' \in A$ tel que $a_i \mid m', \forall i \in \llbracket 1, n \rrbracket$, alors $m \mid m'$.
+      \end{enumerate}
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{pgcd}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
+  \end{remark}
+
+  \reference[GOU21]{60}
+
+  \begin{example}
+    Soient $\mathbb{K}$ un corps commutatif. On pose $P_n = X^n - 1 \in \mathbb{K}[X]$ pour $n \in \mathbb{N}^*$. Alors, pour $a, b \in \mathbb{N}^*$, le PGCD unitaire de $P_a$ et $P_b$ est égal à $P_{\operatorname{pgcd}(a,b)}$.
+  \end{example}
+
+  \reference[ULM18]{40}
+
+  \begin{proposition}
+    Soient $a, b \in A^*$. Un élément $c \in A$ est un PPCM de $a$ et $b$ si et seulement si $(a) \, \cap \, (b) = (c)$. En particulier, $a$ et $b$ admettent un PPCM si et seulement si $(a) \, \cap \, (b)$ est un idéal principal.
+  \end{proposition}
+
+  \begin{proposition}
+    Soient $a, b \in A^*$. Soit $d \in A$. Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item $d \mid a$, $d \mid b$ et il existe $u, v \in A$ tels que $d = au + bv$.
+      \item $d \sim \operatorname{pgcd}(a, b)$ et il existe $u, v \in A$ tels que $d = au + bv$.
+      \item $(d) = (a,b)$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}[Décomposition de Bézout]
+    On suppose $A$ principal. Soient $a_1, \dots, a_n \in A^*$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe $d$ un $\operatorname{pgcd}$ de $a_1, \dots, a_n$. $d$ est tel que $(d) = (a_1, \dots, a_n)$. En particulier, $d$ est de la forme $d = b_1 a_1 + \dots + b_n a_n$ avec $\forall i \in \llbracket 1, n \rrbracket, \, b_i \in A$.
+      \item Il existe $m$ un $\operatorname{ppcm}$ de $a_1, \dots, a_n$. $m$ est tel que $(m) = (a_1) \cap \dots \cap (a_n)$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{remark}
+    Une façon d'obtenir ces coefficients si $A$ est euclidien est d'utiliser l'algorithme d'Euclide généralisé.
+  \end{remark}
+
+  \reference{52}
+
+  \begin{example}
+    Dans $\mathbb{F}_2[X]$ :
+    \[ -X(X^3+X^2+1) + (1+X^2)(X^2+X+1) = 1 \]
+  \end{example}
+
+  \begin{application}
+    $\overline{X}^2+1$ est inversible dans $\mathbb{F}_2[X]/(X^3 + X^2 + 1)$ d'inverse $\overline{X}^2+X+1$.
+  \end{application}
+
+  \reference{41}
+
+  \begin{definition}
+    Deux éléments $a$ et $b$ de $A$ sont dits \textbf{premiers entre eux} s'ils admettent un PGCD et $\operatorname{pgcd}(a,b) \sim 1$.
+  \end{definition}
+
+  \begin{example}
+    $2$ et $X$ sont premiers entre eux dans $\mathbb{Z}[X]$.
+  \end{example}
+
+  \begin{lemma}[Gauss]
+    On suppose $A$ principal. Soient $a, b, c \in A$ avec $a$ et $b$ premiers entre eux. Alors,
+    \[ a \mid bc \implies a \mid c \]
+    et
+    \[ a \mid c \text{ et } b \mid c \implies ab \mid c \]
+  \end{lemma}
+
+  \subsubsection{Anneaux factoriels}
+
+  \reference{63}
+
+  \begin{definition}
+    $A$ est dit \textbf{factoriel} s'il est intègre et si, pour tout élément $a \in A^*$ non inversible, les conditions suivantes sont satisfaites :
+    \begin{enumerate}[label=(\roman*)]
+      \item \label{122-2} $a = q_1 q_2 \dots q_s$ avec $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible (existence d'une décomposition en produit d'irréductibles).
+      \item \label{122-3} Si $a = q_1 q_2 \dots q_s = \widetilde{q_1} \widetilde{q_2} \dots \widetilde{q_m}$ avec $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible et $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible, alors $s = m$ et pour toute permutation $\pi$ d'indice, $q_i \widetilde{q_{\pi(i)}}, \, \forall i \in \llbracket 1, s \rrbracket$ (``unicité'' de la décomposition).
+    \end{enumerate}
+  \end{definition}
+
+  \reference[PER]{48}
+
+  \begin{proposition}
+    Si $A$ vérifie le \cref{122-2}, alors les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $A$ vérifie le \cref{122-3}.
+      \item $A$ vérifie le lemme d'Euclide : si $p \in A$ est irréductible, alors $p \mid ab \implies p \mid a \text { ou } p \mid b$.
+      \item Pour tout $p \in A$, $p$ est irréductible si et seulement si $(p)$ premier.
+      \item $A$ vérifie le lemme de Gauss : si $p \in A$ est irréductible, alors $a \mid bc \implies a \mid c$ pour tout $a, b, c \in A$ avec $a$ et $b$ premiers entre eux.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[ULM18]{65}
+
+  \begin{proposition}
+    On suppose $A$ factoriel. Tout élément $a \neq 0$ peut s'écrire de manière unique
+    \[ a = u_a \prod_{p \in \mathcal{S}} p^{v_p(a)} \]
+    où $\mathcal{S}$ est un \textbf{système de représentants d'éléments premiers} de $A$ (pour le relation $\sim$), $u_a$ est inversible et $v_p(a) \in \mathbb{N}$ tous nuls sauf un nombre fini.
+  \end{proposition}
+
+  \begin{example}
+    Dans l'anneau principal (donc factoriel, voir \cref{122-4}) $\mathbb{Z}$, un choix standard pour $\mathcal{S}$ est l'ensemble des nombres premiers positifs.
+  \end{example}
+
+  \begin{proposition}
+    On suppose $A$ factoriel. Soient $a, b \in A^*$. Alors, en reprenant les notations précédentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $a \mid b \iff v_p(a) \leq v_p(b)$ pour tout $p \in \mathcal{S}$.
+      \item $\prod_{p \in \mathcal{S}} p^{\min(v_p(a), v_p(b))}$ est un PGCD de $a$ et de $b$.
+      \item $\prod_{p \in \mathcal{S}} p^{\max(v_p(a), v_p(b))}$ est un PPCM de $a$ et de $b$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}
+    \label{122-4}
+    Tout anneau principal est factoriel.
+  \end{theorem}
+
+  \begin{cexample}
+    $\mathbb{Z}[i\sqrt{5}]$ est principal mais n'est pas factoriel.
+  \end{cexample}
+
+  \reference[GOZ]{10}
+
+  \begin{lemma}[Gauss]
+    On suppose $A$ factoriel. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est associé à $1$).
+      \item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{theorem}[Critère d'Eisenstein]
+    Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. On suppose que $A$ est factoriel et qu'il existe $p \in A$ irréductible tel que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
+      \item $p \nmid a_n$.
+      \item $p^2 \nmid a_0$.
+    \end{enumerate}
+    Alors $P$ est irréductible dans $\mathbb{K}[X]$.
+  \end{theorem}
+
+  \reference[PER]{67}
+
+  \begin{application}
+    Soit $n \in \mathbb{N}^*$. Il existe des polynômes irréductibles de degré $n$ sur $\mathbb{Z}$.
+  \end{application}
+
+  \subsubsection{Théorème chinois}
+
+  \reference[ULM18]{56}
+  \dev{theoreme-chinois}
+
+  \begin{theorem}[Chinois]
+    Soient $I_1, \dots I_n$ des idéaux de $A$ tels que $\forall i \neq j, \, I_i + I_j = A$. Alors,
+    \[
+      \varphi :
+      \begin{array}{ccc}
+        A &\rightarrow& A/I_1 \times \dots \times A/I_n \\
+        a &\mapsto& (a + I_1, \dots, a + I_n)
+      \end{array}
+    \]
+    est un morphisme surjectif de noyau $I = \bigcap_{i=1}^n I_i$. En particulier, $A/I$ est isomorphe à $A/I_1 \times \dots \times A/I_n$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose $A$ principal. Pour tout $\beta_1, \dots, \beta_n \in A$ et $m_1, \dots, m_n \in A$ premiers entre eux deux à deux, le système de congruences
+    \[
+      \begin{cases}
+        u \equiv \beta_1 \mod m_1 \\
+        \vdots \\
+        u \equiv \beta_n \mod m_n
+      \end{cases}
+    \]
+    admet une unique solution $u + (m_1 m_2 \dots m_n)$ dans $A / (m_1 m_2 \dots m_n)$. Il existe donc dans $A$ une unique solution $u$ unique à multiples de $m_1 m_2 \dots m_n$ près.
+  \end{corollary}
+
+  \begin{example}
+    Le système
+    \[
+      \begin{cases}
+        u \equiv 1 \mod 3 \\
+        u \equiv 3 \mod 5 \\
+        u \equiv 0 \mod 7
+      \end{cases}
+    \]
+    admet une unique solution dans $\mathbb{Z}/105\mathbb{Z}$ : $\overline{28}$. Les solutions dans $\mathbb{Z}$ sont donc de la forme $28 + 105k$ avec $k \in \mathbb{Z}$.
+  \end{example}
+
+  \begin{application}[Polynômes d'interpolation de Lagrange]
+    Soit $\mathbb{K}$ un corps commutatif, $\alpha_1, \dots, \alpha_n$ des éléments distincts de $\mathbb{K}$ et $\beta_1, \dots, \beta_n$ des éléments de $\mathbb{K}$. Alors, il existe un unique polynôme $g \in \mathbb{K}[X]$ de degré inférieur ou égal à $n$ tel que $g(\alpha_i) = \beta_i$ pour tout $i \in \llbracket 1, n \rrbracket$.
+  \end{application}
+
+  \subsection{Applications}
+
+  \subsubsection{Équations diophantiennes}
+
+  \reference{69}
+
+  \begin{definition}
+    L'anneau $\mathbb{Z}[i] = \{ a + ib \mid a, b \in \mathbb{Z} \}$ est \textbf{l'anneau des entiers de Gauss}. On définit
+    \[
+      N :
+      \begin{array}{ccc}
+        \mathbb{Z}[i] &\rightarrow& \mathbb{N} \\
+        x+iy &\mapsto& x^2 + y^2
+      \end{array}
+    \]
+  \end{definition}
+
+  \reference[I-P]{137}
+
+  \begin{notation}
+    On note $\Sigma$ l'ensemble des entiers qui sont somme de deux carrés.
+  \end{notation}
+
+  \begin{lemma}
+    Soit $p \geq 3$ un nombre premier. Alors $x \in \mathbb{F}^*_p$ est un carré si et seulement si $x^{\frac{p-1}{2}} = 1$.
+  \end{lemma}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item $N$ est multiplicative.
+      \item $\mathbb{Z}[i]^* = \{ z \in \mathbb{Z}[i] \mid N(z) = 1 \} = \{ \pm 1, \pm i \}$.
+      \item $\mathbb{Z}[i]$ est euclidien de stathme $N$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{lemma}
+    Soit $p$ un nombre premier. Si $p$ n'est pas irréductible dans $\mathbb{Z}[i]$, alors $p \in \Sigma$.
+  \end{lemma}
+
+  \dev{theoreme-des-deux-carres-fermat}
+
+  \begin{theorem}[Deux carrés de Fermat]
+    Soit $n \in \mathbb{N}^*$. Alors $n \in \Sigma$ si et seulement si $v_p(n)$ est pair pour tout $p$ premier tel que $p \equiv 3 \mod 4$ (où $v_p(n)$ désigne la valuation $p$-adique de $n$).
+  \end{theorem}
+
+  \subsubsection{En algèbre linéaire}
+
+  Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$. Soit $f : E \rightarrow E$ un endomorphisme de $E$.
+
+  \reference[GOU21]{186}
+
+  \begin{application}
+    Il existe un unique polynôme de $\mathbb{K}[X]$ unitaire qui engendre l'idéal $\{ P \in \mathbb{K}[X] \mid P(f) = 0 \}$ : c'est le \textbf{polynôme minimal} de $f$, noté $\pi_f$. Il s'agit du polynôme unitaire de plus bas degré annulant $f$. Il divise tous les autres polynômes annulateurs de $f$.
+  \end{application}
+
+  \begin{theorem}[Lemme des noyaux]
+    Soit $P = P_1 \dots P_k \in \mathbb{K}[X]$ où les polynômes $P_1, \dots, P_k$ sont premiers entre eux deux à deux. Alors,
+    \[ \ker(P(f)) = \bigoplus_{i=1}^k \ker(P_i(f)) \]
+  \end{theorem}
+
+  \begin{application}
+    $f$ est diagonalisable si et seulement si $\pi_f$ est scindé à racines simples.
+  \end{application}
+  %</content>
+\end{document}

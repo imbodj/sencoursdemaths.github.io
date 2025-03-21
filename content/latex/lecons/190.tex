@@ -1,0 +1,427 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{190}{Méthodes combinatoires, problèmes de dénombrement.}
+
+  \subsection{Dénombrement}
+
+  \subsubsection{Principes de base}
+
+  \reference[GOU21]{299}
+
+  \begin{definition}
+    On dit qu'un ensemble $E$ est \textbf{fini} s'il est vide ou s'il existe $n \in \mathbb{N}^*$ tel qu'il existe une bijection de $\llbracket 1, n \rrbracket$ dans $E$. Dans ce cas, l'entier $n$ ne dépend pas de la bijection, on l'appelle \textbf{cardinal} de $E$. Il est noté $\vert E \vert$. Si $E$ est vide, on pose $\vert E \vert = 0$.
+  \end{definition}
+
+  \begin{proposition}
+    Soient $E$ et $F$ deux ensembles.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $E$ est fini et s'il existe une injection de $E$ vers $F$, alors $E$ est fini et $\vert E \vert \leq \vert F \vert$.
+      \item Si $E$ est fini et s'il existe une surjection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert \geq \vert F \vert$.
+      \item Si $E$ et s'il existe une bijection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert = \vert F \vert$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{corollary}
+    Soit $B$ un ensemble fini et $A \subseteq B$. Alors $A$ est fini et $\vert A \vert \leq \vert B \vert$. Si $\vert A \vert = \vert B \vert$, alors $A = B$.
+  \end{corollary}
+
+  \begin{corollary}[Principe des tiroirs]
+    Soient $E$ et $F$ deux ensembles finis avec $\vert E \vert > \vert F \vert$. Si $\varphi$ est une application de $E$ vers $F$, alors il existe $y \in F$ ayant au moins deux antécédents par $\varphi$ dans $E$.
+  \end{corollary}
+
+  \begin{remark}[Interprétation]
+    Si on doit ranger $n+1$ chaussettes dans $n$ tiroirs, alors un des tiroirs (au moins) contiendra deux chaussettes ou plus.
+  \end{remark}
+
+  \begin{proposition}
+    Soient $A$ et $B$ deux ensembles finis. Alors,
+    \begin{enumerate}[label=(\roman*)]
+      \item $\vert A \, \cup \, B \vert = \vert A \vert + \vert B \vert - \vert A \, \cap \, B \vert$.
+      \item $\vert A \setminus B \vert = \vert A \vert - \vert A \, \cap \, B \vert$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}[Formule du crible de Poincaré]
+    Soient $A_1, \dots, A_n$ des ensembles finis. Alors,
+    \[ \left\vert \bigcup_{i=1}^n A_i \right\vert = \sum_{k=1}^n (-1)^{k-1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \vert A_{i_1} \, \cap \, \dots \, \cap \, A_{i_k} \]
+  \end{proposition}
+
+  \reference[G-K]{401}
+
+  \begin{example}
+    Pour $n = 3$, on a
+    \[ \vert A_1 \, \cap \, A_2 \, \cap \, A_3 \vert = \vert A_1 \vert + \vert A_2 \vert + \vert A_3 \vert - \vert A_1 \, \cap \, A_2 \vert - \vert A_2 \, \cap \, A_3 \vert - - \vert A_1 \, \cap \, A_3 \vert + \vert A_1 \, \cup \, A_2 \, \cup \, A_3 \vert \]
+  \end{example}
+
+  \begin{lemma}[des bergers]
+    Soient $A$ et $B$ deux ensembles. On suppose $A$ fini. Soit $\varphi : A \rightarrow B$ surjective telle que tout élément de $B$ admet exactement $a$ antécédents par $\varphi$. Alors,
+    \[ \vert A \vert = \frac{\vert B \vert}{a} \]
+  \end{lemma}
+
+  \subsubsection{Combinatoire}
+
+  \paragraph{Listes}
+
+  \reference[GOU21]{301}
+
+  \begin{proposition}
+    Soient $n$ ensembles finis $E_1, \dots, E_n$. Le produit cartésien $E_1 \times \dots \times E_n$ est un ensemble fini et vérifie $\vert E_1 \times \dots \times E_n \vert = \vert E_1 \vert \times \dots \times \vert E_n \vert$. En particulier, pour un ensemble $E$ fini, on a $\vert E^n \vert = \vert E \vert^n$.
+  \end{proposition}
+
+  \begin{definition}
+    Soit $E$ un ensemble et $p \in \mathbb{N}^*$. On appelle \textbf{$p$-liste} (ou \textbf{$p$-uplet}) de $E$, tout élément $(x_1, \dots, x_p)$ de $E^p$.
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Si $E$ est fini, il y a $\vert E \vert^p$ $p$-listes de $E$.
+      \item Dans une liste, l'ordre des éléments importe.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    Dans un jeu de $52$ cartes, le nombre de façons de tirer $10$ cartes avec remise est $52^{10}$.
+  \end{example}
+
+  \paragraph{Arrangements}
+
+  \begin{definition}
+    Soit $E$ un ensemble fini de cardinal $n$. Soit $p$ un entier inférieur à $n$. On appelle \textbf{$p$-arrangement} de $E$ toute $p$-liste de $E$ d'éléments distincts.
+  \end{definition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, le nombre de $p$-arrangements de $E$ est
+    \[ A_n^p = n(n-1) \dots (n-p+1) = \frac{n!}{(n-p)!} \]
+  \end{proposition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Si $p = n$, on trouve que le nombre de $n$-arrangements est $n!$.
+      \item Dans les arrangements, l'ordre des éléments importe, mais ceux-ci sont distincts.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    Dans un jeu de $52$ cartes, le nombre de façons de tirer $10$ cartes sans remise est $A^{10}_{52} = 52 \times \dots \times 43$.
+  \end{example}
+
+  \begin{application}[Nombre d'applications entre deux ensembles finis]
+    Soient $E$ et $F$ deux ensembles finis.
+    \begin{enumerate}[label=(\roman*)]
+      \item L'ensemble des applications de $E$ vers $F$, noté $F^E$ est fini, de cardinal $\vert F \vert^{\vert E \vert}$.
+      \item Lorsque $\vert E \vert \leq \vert F \vert$, l'ensemble des applications injectives de $E$ dans $F$ est fini, de cardinal $A_n^p$.
+      \item L'ensemble des bijections de $E$ vers $E$ appelées permutations de $E$, noté $\mathcal{S}(E)$, est fini et de cardinal $\vert E \vert!$.
+    \end{enumerate}
+  \end{application}
+
+  \begin{corollary}
+    Soit $E$ un ensemble fini. Le nombre total de parties de $E$ est $\vert \mathcal{P}(E) \vert = 2^{\vert E \vert}$.
+  \end{corollary}
+
+  \paragraph{Combinaisons}
+
+  \begin{definition}
+    Soit $E$ un ensemble fini de cardinal $n$. Soit $p \in \mathbb{N}$. On appelle \textbf{$p$-combinaison} de $E$ toute partie de $E$ de cardinal $p$. Ce nombre ne dépend que de $n$ et de $p$, on le note $\binom{n}{p}$.
+  \end{definition}
+
+  \begin{proposition}
+    Soient $n, p \in \mathbb{N}$. Alors,
+    \[
+      \binom{n}{p} =
+      \begin{cases}
+        \frac{n!}{p! (n-p)!} &\text{ si } p \leq n \\
+        0 &\text{ sinon}
+      \end{cases}
+    \]
+  \end{proposition}
+
+  \begin{remark}
+    Dans les combinaisons, l'ordre des éléments n'importe pas, mais ceux-ci sont distincts.
+  \end{remark}
+
+  \begin{example}
+    Dans un jeu de $52$ cartes, le nombre de façons de tirer $10$ cartes simultanément est $\binom{52}{10}$.
+  \end{example}
+
+  \begin{definition}
+    Soit $E$ un ensemble fini de cardinal $n$. Soit $p$ un entier inférieur à $n$. On appelle \textbf{$p$-combinaison avec répétition} les $p$-listes dans lesquelles ont autorise les répétions, mais dans lesquelles l'ordre ne compte pas.
+  \end{definition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, il y a $\binom{n+p-1}{p}$ $p$-combinaisons avec répétition.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $n \in \mathbb{N}$.
+    \begin{enumerate}[label=(\roman*)]
+      \item On a :
+      \[ \sum_{k = 0}^n \binom{n}{k} = 2^n \]
+      \item Soient $a$ et $b$ deux éléments d'une algèbre qui commutent. Alors,
+      \[ (a+b)^n \sum_{k = 0}^n \binom{n}{k} a^k b^{n-k} \]
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{311}
+
+  \begin{application}
+    Soit $(F_n)$ la suite de Fibonacci définie par $F_0 = 0$, $F_1 = 1$ et $\forall n \geq 2$, $F_n = F_{n-1} + F_{n-2}$. Alors,
+    \[ \forall n \in \mathbb{N}, \, F_n = \frac{1}{\sqrt{5}} \left ( \left ( \frac{1 + \sqrt{5}}{2} \right)^n - \left ( \frac{1 - \sqrt{5}}{2} \right)^n \right) = \sum_{k=0}^{\left\lfloor \frac{n}{2} \right\rfloor} \binom{n-k}{k} \]
+  \end{application}
+
+  \subsection{En théorie des groupes}
+
+  Soit $G$ un groupe fini.
+
+  \subsubsection{Actions de groupes}
+
+  \reference[ULM21]{71}
+
+  Soit $X$ un ensemble fini. On considère une action $\cdot$ de $G$ sur $X$.
+
+  \begin{proposition}
+    Soit $x \in X$. Alors :
+    \begin{itemize}
+      \item $|G \cdot x| = (G : \stab_G(x))$.
+      \item $|G| = |\stab_G(x)| |G \cdot x|$.
+      \item $|G \cdot x| = \frac{|G|}{|\stab_G(x)|}$
+    \end{itemize}
+  \end{proposition}
+
+  \begin{theorem}[Formule des classes]
+    Soit $\Omega$ un système de représentants d'orbites de l'action de $G$ sur $X$. Alors,
+    \[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{theorem}
+
+  \begin{definition}
+    On définit :
+    \begin{itemize}
+      \item $X^G = \{ x \in X \mid \forall g \in G, \, g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par tous les éléments de $G$.
+      \item $X^g = \{ x \in X \mid g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par $g \in G$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{theorem}[Formule de Burnside]
+    Le nombre $r$ d'orbites de $X$ sous l'action de $G$ est donné par
+    \[ r = \frac{1}{|G|} \sum_{g \in G} |X^g| \]
+  \end{theorem}
+
+  \reference[I-P]{121}
+
+  \begin{application}
+    Deux colorations des faces d'un cube sont les mêmes si on peut passer de l'une à l'autre par une isométrie du dodécaèdre. Alors, le nombre de colorations distinctes d'un cube avec $c$ couleurs est
+    \[ \frac{c^2}{24} (c^4 + 3^2 + 12c + 8) \]
+  \end{application}
+
+  \subsubsection{\texorpdfstring{$p$}{p}-groupes}
+
+  \reference[ROM21]{22}
+
+  \begin{definition}
+    On dit que $G$ est un \textbf{$p$-groupe} s'il est d'ordre une puissance d'un nombre premier $p$.
+  \end{definition}
+
+  \begin{proposition}
+    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe opérant sur un ensemble $X$, alors,
+    \[ |X^G| \equiv |X| \mod p \]
+    où $X^G$ désigne l'ensemble des points fixes de $X$ sous l'action de $G$.
+  \end{proposition}
+
+  \begin{corollary}
+    On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
+    \begin{align*}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+    \end{align*}
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Le centre d'un $p$-groupe non trivial est non trivial.
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Un groupe d'ordre $p^2$ est toujours abélien.
+  \end{corollary}
+
+  \begin{application}[Théorème de Cauchy]
+    On suppose $G$ non trivial et fini. Soit $p$ un premier divisant l'ordre de $G$. Alors il existe un élément d'ordre $p$ dans $G$.
+  \end{application}
+
+  \reference[GOU21]{44}
+  \dev{theoreme-de-sylow}
+
+  \begin{application}[Premier théorème de Sylow]
+    On suppose $G$ fini d'ordre $n p^\alpha$ avec $n, \alpha \in \mathbb{N}$ et $p$ premier tel que $p \nmid n$. Alors, il existe un sous-groupe de $G$ d’ordre $p^\alpha$.
+  \end{application}
+
+  \subsection{En théorie des corps finis}
+
+  Soit $q = p^n$ avec $p$ premier et $n \geq 2$.
+
+  \subsubsection{Polynômes irréductibles}
+
+  \reference[GOZ]{87}
+
+  \begin{theorem}
+    \[ \mathbb{F}_q = \mathbb{F}_p[X] / (P) \]
+    où $P \in \mathbb{F}_p[X]$ est un polynôme irréductible de degré $n$ sur $\mathbb{F}_p$.
+  \end{theorem}
+
+  \begin{corollary}
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe des polynômes irréductibles de tout degré dans $\mathbb{F}_p[X]$.
+      \item Si $P \in \mathbb{F}_p[X]$ est un polynôme irréductible sur $\mathbb{F}_p$ de degré $n$, alors $P$ divise $X^q - X$. En particulier, il est scindé sur $\mathbb{F}_q$. Donc son corps de rupture $\mathbb{F}_q = \mathbb{F}_p[X] / (P)$ est aussi son corps de décomposition.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{theorem}
+    Pour tout $j \in \mathbb{N}^*$, on note $I(p,q)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
+    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,q)} Q \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ q = \sum_{d \mid n} d \vert I(p,d) \vert \]
+  \end{corollary}
+
+  \begin{definition}
+    On définit la \textbf{fonction de Möbius}, notée $\mu$, par
+    \[
+    \mu :
+    \begin{array}{ccc}
+      \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+      n &\mapsto& \begin{cases}
+        1 &\text{si } n = 1 \\
+        (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
+        0 &\text{sinon}
+      \end{cases}
+    \end{array}
+    \]
+  \end{definition}
+
+  \begin{theorem}[Formule d'inversion de Möbius]
+    Soient $f$ et $g$ des fonctions de $\mathbb{N}^*$ dans $\mathbb{C}$ telles que $\forall n \in \mathbb{N}^*, \, f(n) = \sum_{d \mid n} g(d)$. Alors,
+    \[ \forall n \in \mathbb{N}^*, \, g(n) = \sum_{d \mid n} \mu(d) f \left( \frac{n}{d} \right) \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,q) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
+  \end{corollary}
+
+  \subsubsection{Carrés dans les corps finis}
+
+  \reference{93}
+
+  \begin{proposition}
+    On note $\mathbb{F}_q^2 = \{ x^2 \mid x \in \mathbb{F}_q \}$ et $\mathbb{F}_q^{*2} = \mathbb{F}_q^2 \, \cap \, \mathbb{F}_q^*$. Alors $\mathbb{F}_q^{*2}$ est un sous-groupe de $\mathbb{F}_q^*$.
+  \end{proposition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $p = 2$, $\mathbb{F}_q^2 = \mathbb{F}_q$, donc $\mathbb{F}_q^{*2} = \mathbb{F}_q^*$.
+      \item Si $p > 2$, alors :
+      \begin{itemize}
+        \item $\mathbb{F}_q^{*2}$ est le noyau de l'endomorphisme de $\mathbb{F}_q^*$ défini par $x \mapsto x^{\frac{q-1}{2}}$.
+        \item $\mathbb{F}_q^{*2}$ est un sous-groupe d'indice $2$ de $\mathbb{F}_q^*$.
+        \item $\vert \mathbb{F}_q^{*2} \vert = \frac{q-1}{2}$ et $\vert \mathbb{F}_q^2 \vert = \frac{q+1}{2}$.
+        \item $(-1) \in \mathbb{F}_q^{*2} \iff q \equiv 1 \mod 4$.
+      \end{itemize}
+    \end{enumerate}
+  \end{proposition}
+
+  \subsubsection{Groupe linéaire sur un corps fini}
+
+  \reference[PER]{119}
+
+  Soit $V$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$.
+
+  \begin{definition}
+    \begin{itemize}
+      \item Le \textbf{groupe linéaire} de $V$, $\mathrm{GL}(V)$ est le groupe des applications linéaires de $V$ dans lui-même qui sont inversibles.
+      \item Le \textbf{groupe spécial linéaire} de $V$, $\mathrm{SL}(V)$ est le sous-groupe de $\mathrm{GL}(V)$ constitué des applications de déterminant $1$.
+      \item Les quotients de ces groupes par leur centre sont respectivement notés $\mathrm{PGL}(V)$ et $\mathrm{PSL}(V)$.
+    \end{itemize}
+  \end{definition}
+
+  \reference{124}
+
+  \begin{proposition}
+    On se place dans le cas où $\mathbb{K} = \mathbb{F}_q$. Alors, les groupes précédents sont finis, et :
+    \begin{enumerate}[label=(\roman*)]
+      \item $|\mathrm{GL}(V)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
+      \item $|\mathrm{PGL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{q-1}$.
+      \item $|\mathrm{PSL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \subsection{En analyse}
+
+  \subsubsection{Probabilités sur un ensemble fini}
+
+  \reference[G-K]{137}
+
+  Soit $(\Omega, \mathcal{A}, \mathbb{P})$ un espace probabilisé.
+
+  \begin{definition}
+    Soit $E \subseteq \Omega$ fini. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
+    \[
+    \begin{array}{ccc}
+      \mathcal{P}(\Omega) &\rightarrow& \llbracket 0, 1 \rrbracket \\
+      A &\mapsto& \frac{\vert A \, \cap \, E \vert}{\vert E \vert}
+    \end{array}
+    \]
+  \end{definition}
+
+  \begin{remark}
+    Il s'agit du nombre de cas favorables sur le nombre de cas possibles. Ainsi, $X$ suit la loi uniforme sur $E$ si on a $\forall x \in E, \, \mathbb{P}(X=x) = \frac{1}{\vert E \vert}$ et $\forall x \notin E, \, \mathbb{P}(X=x) = 0$.
+    \newpar
+    C'est, par exemple, la loi suivie par une variable aléatoire représentant le lancer d'un dé non truqué avec $E = \llbracket 1, 6 \rrbracket$.
+  \end{remark}
+
+  \begin{definition}
+    Une variable aléatoire $X$ suit une \textbf{loi de Bernoulli} de paramètre $p \in [0,1]$, notée $\mathcal{B}(p)$, si $\mathbb{P}(X=1) = p$ et $\mathbb{P}(X=0)=1-p$.
+  \end{definition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, $X$ est une loi discrète et on a
+    \[ \mathbb{P}_X = (1-p) \delta_0 + p \delta_1 \]
+  \end{proposition}
+
+  \begin{definition}
+    Une variable aléatoire $X$ suit une \textbf{loi de binomiale} de paramètres $n \in \mathbb{N}$ et $p \in [0,1]$, notée $\mathcal{B}(n, p)$, si $X$ est la somme de $n$ variables aléatoires indépendantes qui suivent des lois de Bernoulli de paramètre $p$.
+  \end{definition}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, $X$ est une loi discrète et on a
+    \[ \forall k \in \mathbb{N}, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+  \end{proposition}
+
+  \begin{remark}
+    Il s'agit du nombre de succès pour $n$ tentatives.
+    \newpar
+    C'est, par exemple, la loi suivie par une variable aléatoire représentant le nombre de ``Pile'' obtenus lors d'un lancer de pièce équilibrée.
+  \end{remark}
+
+  \subsubsection{Utilisation des séries pour dénombrer}
+
+  \reference[GOU21]{312}
+
+  \begin{theorem}[Dérangements]
+    Soit $n \in \mathbb{N}^*$. On note $\mathcal{D}_n$ l'ensemble des permutations de $\llbracket 1, n \rrbracket$ sans point fixe. Alors,
+    \[ \vert \mathcal{D}_n \vert = n! \sum_{k=0}^{n} \frac{(-1)^k}{k!} = \left\lfloor \frac{n!}{e} + \frac{1}{2} \right\rfloor \]
+  \end{theorem}
+
+  \begin{example}
+    $n$ personnes laissent leur chapeau à un vestiaire. En repartant, chaque personne prend un chapeau au hasard. La probabilité que personne ne reprenne son propre chapeau est d'environ $\frac{1}{e}$.
+  \end{example}
+
+  \reference{314}
+  \dev{nombres-de-bell}
+
+  \begin{theorem}[Nombres de Bell]
+    Pour tout $n \in \mathbb{N}^*$, on note $B_n$ le nombre de partitions de $\llbracket 1, n \rrbracket$. Par convention on pose $B_0 = 1$. Alors,
+    \[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
+  \end{theorem}
+  %</content>
+\end{document}

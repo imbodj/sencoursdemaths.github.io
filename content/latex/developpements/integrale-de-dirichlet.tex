@@ -1,0 +1,104 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{integrale-de-dirichlet}{Intégrale de Dirichlet}
+
+  \summary{Il s'agit ici de calculer l'intégrale de Dirichlet en utilisant les théorèmes classiques d'intégration.}
+
+  \begin{lemma}
+    \label{integrale-de-dirichlet-1}
+    \[ \forall y, t \in \mathbb{R}^+, \, |e^{-(y-i)t}| \leq 1 \]
+  \end{lemma}
+
+  \begin{proof}
+    Soient $y, t \in \mathbb{R}^+$. On a :
+    \[ |e^{-(y-i)t}| = |e^{-yt} e^{it}| = |e^{-yt}| |e^{it}| \]
+    Or, $e^{it}$ est un complexe de module $1$ et $yt \geq 0$, donc $e^{-yt} \leq 1$. D'où le résultat.
+  \end{proof}
+
+  \reference[G-K]{107}
+
+  \begin{theorem}[Intégrale de Dirichlet]
+    On pose $\forall x \geq 0$,
+    \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
+    alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
+      \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
+      \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{478}
+
+  \begin{proof}
+    Posons $\forall x \in \mathbb{R}^+$ et $\forall t \in \mathbb{R}^+_*$, $f(x,t) = \frac{\sin(t)}{t} e^{-xt}$ ainsi que $\forall n \geq 1$, $F_n(x) = \int_0^n f(x,t) \, \mathrm{d}t$. On a :
+    \begin{itemize}
+      \item $\forall x \geq 0$, $t \mapsto f(x, t)$ est mesurable.
+      \item Presque partout en $t > 0$, $x \mapsto f(x, t)$ est continue.
+      \item $\forall x \geq 0$ et presque partout en $t > 0$, $|f(x,t)| \leq 1$, et $t \mapsto 1$ est intégrable sur $[0,n]$.
+    \end{itemize}
+    On peut donc appliquer le théorème de continuité sous l'intégrale pour conclure que $F_n$ est continue sur $\mathbb{R}^+$.
+    \newpar
+    Soient $x \geq 0$ et $q \geq p \geq N \geq 0$. On a :
+    \begin{align*}
+      |F_q(x) - F_p(x)| &= \left| \int_p^q f(x,t) \, \mathrm{d}t \right| \\
+      &= \left| \operatorname{Im} \left( \int_p^q e^{-xt} \frac{e^{it}}{t} \, \mathrm{d}t \right) \right| \\
+      &\leq \left| \int_p^q \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| \\
+      &= \frac{1}{|x-i|} \left| \int_p^q (x-i) \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| \\
+      &\leq \left| \int_p^q (x-i) \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| \\
+      &= \left| \int_p^q -(x-i) e^{-(x-i)t} \frac{1}{t} \, \mathrm{d}t \right|
+    \end{align*}
+    Nous allons réaliser une intégration par parties. Pour cela, posons :
+    \begin{itemize}
+      \item $u'(t) = -(x-i) e^{-(x-i)t} \implies u(t) = e^{-(x-i)t}$
+      \item $v(t) = \frac{1}{t} \implies v'(t) = -\frac{1}{t^2}$
+    \end{itemize}
+    Ce qui nous donne :
+    \begin{align*}
+      \left| \int_p^q (x-i) \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| &= \left| \left[ u(t)v(t) \right]_p^q - \int_p^q u(t) v'(t) \, \mathrm{d}t \right| \\
+      &= \left| \frac{e^{-(x-i)q}}{q} - \frac{e^{-(x-i)p}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right|
+    \end{align*}
+    On applique maintenant le \cref{integrale-de-dirichlet-1} :
+    \begin{align*}
+      \left| \frac{e^{-(x-i)q}}{q} - \frac{e^{-(x-i)p}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right| &\leq \frac{1}{p} + \frac{1}{q} + \int_p^q \frac{1}{t^2} \, \mathrm{d}t \\
+      &= \frac{1}{q} + \frac{1}{p} - \left[ \frac{1}{t} \right]^q_p \\
+      &\leq \frac{2}{N}
+    \end{align*}
+    D'où :
+    \[ |F_q(x) - F_p(x)| \leq \frac{2}{N} \]
+    Donc la suite de fonctions continues $(F_n)$ vérifie le critère de Cauchy uniforme, et converge ainsi vers $F$ uniformément. En particulier, $F$ est continue sur $\mathbb{R}^+$.
+    \newpar
+    Soit $a > 0$. $f$ est dérivable par rapport à $x$ et pour tout $x \in ]a, +\infty|$ et $t \in \mathbb{R}^+$ :
+    \[ \left| \frac{\partial f}{\partial x} (x, t) \right| = |-\sin(t) e^{-xt}| \leq e^{-at} \]
+    On applique le théorème de dérivation sous l'intégrale, qui donne :
+    \[ \forall x \in ]a, +\infty[, F'(x) = \int_0^{+\infty} -\sin(t) e^{-xt} \, \mathrm{d}t \]
+    En particulier, c'est vrai sur $\mathbb{R}^+_*$ car la dérivabilité est une propriété locale. Or $\forall A > 0$, on a :
+    \begin{align*}
+      & \int_0^A e^{-(i+x)t} \, \mathrm{d}t = \frac{1-e^{-(i+x)A}}{i+x} \\
+      \implies & \lim_{A \rightarrow +\infty} \int_0^A e^{-(i+x)t} \, \mathrm{d}t = \frac{1}{i+x} = \frac{-i+x}{1 + x^2} \\
+      \implies & \operatorname{Im} \left( \lim_{A \rightarrow +\infty} \int_0^A e^{-(i+x)t} \, \mathrm{d}t \right) = \operatorname{Im} \left( \frac{-i+x}{1 + x^2} \right) = -\frac{1}{1 + x^2}
+    \end{align*}
+    Or,
+    \[ \operatorname{Im} \left( \lim_{A \rightarrow +\infty} \int_0^A e^{-(i+x)t} \, \mathrm{d}t \right) = \lim_{A \rightarrow +\infty} \int_0^A \operatorname{Im} \left( e^{-(i+x)t} \right) \, \mathrm{d}t = \int_0^{+\infty} -\sin(t) e^{-xt} \, \mathrm{d}t = F'(x) \]
+    En recollant les deux morceaux :
+    \[ F'(x) = -\frac{1}{1+x^2} \tag{$*$} \]
+    Soient $x, y \in \mathbb{R}^+_*$. En intégrant $(*)$ entre $x$ et $y$, on obtient :
+    \[ F(x) - F(y) = \arctan(x) - \arctan(y) \]
+    Mais,
+    \begin{align*}
+      |F(y)| &= \left| \int_0^{+\infty} \frac{\sin(t)}{t} e^{-yt} \, \mathrm{d}t \right| \\
+      &\leq \int_0^{+\infty} \left| \frac{\sin(t)}{t} e^{-yt} \right| \, \mathrm{d}t \\
+      &\leq \int_0^{+\infty} e^{-yt} \, \mathrm{d}t \\
+      &= \frac{1}{y} \\
+      &\longrightarrow_{y \rightarrow +\infty} 0
+    \end{align*}
+    Il suffit donc de faire tendre $y$ vers $+\infty$ pour obtenir :
+    \[ \forall x > 0, \, F(x) = \frac{\pi}{2} - \arctan(x) \]
+    Ce qui, en faisant tendre $x$ vers $0$, donne :
+    \[ F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2} \]
+  \end{proof}
+  %</content>
+\end{document}

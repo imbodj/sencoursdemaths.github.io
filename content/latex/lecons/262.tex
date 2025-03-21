@@ -1,0 +1,404 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{262}{Convergences d'une suite de variables aléatoires. Théorèmes limite. Exemples et applications.}
+
+  Soient $(\Omega, \mathcal{A}, \mathbb{P})$ un espace probabilisé et $(X_n)$ une suite de vecteurs aléatoires à valeurs dans $(\mathbb{R}^d, \mathcal{B}(\mathbb{R}^d))$.
+
+  \subsection{Premiers modes de convergence}
+
+  \subsubsection{Convergence presque sûre}
+
+  \reference[G-K]{265}
+
+  \begin{definition}
+    On dit que $(X_n)$ \textbf{converge presque sûrement} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
+    \[ \mathbb{P}(\{ \omega \in \Omega \mid X_n(\omega) \longrightarrow_{n \rightarrow +\infty} X(\omega) \}) = 1 \]
+    On note cela $X_n \overset{(ps.)}{\longrightarrow} X$.
+  \end{definition}
+
+  \begin{remark}
+    La convergence presque sûre d'une suite de vecteurs aléatoires équivaut à la convergence presque sûre de chacune des composantes. Pour cette raison, on peut se limiter à l'étude du cas $d = 1$.
+  \end{remark}
+
+  \reference{285}
+
+  \begin{example}
+    Si $(X_n)$ est telle que $\forall n \geq 1, \, \mathbb{P}(X_n = \pm \sqrt{n}) = \frac{1}{2}$, alors $\frac{1}{n^2} \sum_{k=1}^n X_k^2 \overset{(ps.)}{\longrightarrow} 0$.
+  \end{example}
+
+  \reference{265}
+
+  \begin{proposition}
+    Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $Y_n \overset{(ps.)}{\longrightarrow} Y$, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall a \in \mathbb{R}, \, aX_n \overset{(ps.)}{\longrightarrow} aX$.
+      \item $X_n + Y_n \overset{(ps.)}{\longrightarrow} X + Y$.
+      \item $X_nY_n \overset{(ps.)}{\longrightarrow} XY$.
+    \end{enumerate}
+    Plus généralement, si $\forall n \in \mathbb{N}$, $X_n$ et $X$ sont à valeurs dans $E$, alors $f(X_n) \overset{(ps.)}{\longrightarrow} f(X)$ pour toute $f$ fonction définie et continue sur $E$.
+  \end{proposition}
+
+  \reference{272}
+
+  \begin{theorem}[1\ier{} lemme de Borel-Cantelli]
+    Soit $(A_n)$ une suite d'événements. Si $\sum \mathbb{P}(A_n)$ converge, alors
+    \[ \mathbb{P} \left( \limsup_{n \rightarrow +\infty} A_n \right) = 0 \]
+  \end{theorem}
+
+  \begin{remark}
+    Cela signifie que presque sûrement, seul un nombre fini d'événements $A_n$ se réalisent.
+  \end{remark}
+
+  \begin{corollary}
+    Si $\sum \mathbb{P}(\vert X_n - X \vert > \epsilon)$ converge pour tout $\epsilon > 0$, alors $X_n \overset{(ps.)}{\longrightarrow} X$.
+  \end{corollary}
+
+  \reference{285}
+
+  \begin{example}
+    Si $(X_n)$ est telle que $\forall n \geq 1$, $\mathbb{P}(X_n = n) = \mathbb{P}(X_n = \pm n) = \frac{1}{2n^2}$ et $\mathbb{P}(X_n = 0) = 1 - \frac{1}{2n^2}$, alors la suite $(S_n)$ définie pour tout $n \geq 1$ par $S_n = \sum_{k=1}^n X_k$ est constante à partir d'un certain rang.
+  \end{example}
+
+  \reference{273}
+
+  \begin{theorem}[2\ieme{} lemme de Borel-Cantelli]
+    Soit $(A_n)$ une suite d'événements indépendants. Si $\sum \mathbb{P}(A_n)$ diverge, alors
+    \[ \mathbb{P} \left( \limsup_{n \rightarrow +\infty} A_n \right) = 1 \]
+  \end{theorem}
+
+  \begin{remark}
+    Cela signifie que presque sûrement, un nombre infini d'événements $A_n$ se réalisent.
+  \end{remark}
+
+  \reference{286}
+
+  \begin{example}
+    On fait une infinité de lancers d'une pièce de monnaie équilibrée. Alors, la probabilité de l'événement ``on obtient une infinité de fois deux ``Face'' consécutifs'' est $1$.
+  \end{example}
+
+  \begin{corollary}[Loi du $0$-$1$ de Borel]
+    Soit $(A_n)$ une suite d'événements indépendants, alors
+    \[ \mathbb{P} \left( \limsup_{n \rightarrow +\infty} A_n \right) = 0 \text{ ou } 1 \]
+    et elle vaut $1$ si et seulement si $\sum \mathbb{P}(A_n)$ diverge.
+  \end{corollary}
+
+  \subsubsection{Convergence en probabilité}
+
+  \reference{268}
+
+  \begin{definition}
+    On dit que $(X_n)$ \textbf{converge en probabilité} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
+    \[ \forall \epsilon, \, \mathbb{P}(\vert X_n - X \vert \geq \epsilon) = 0 \]
+    On note cela $X_n \overset{(p)}{\longrightarrow} X$.
+  \end{definition}
+
+  \reference{285}
+
+  \begin{example}
+    \label{262-1}
+    On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes identiquement distribuées telle que $\mathbb{P}(X_1 = 1) = p$ et $\mathbb{P}(X_1 = 0) = 1-p$. On définit la suite $(Y_n)$ par
+    \[
+    \forall n \geq 1, \, Y_n = \begin{cases}
+      0 \text{ si } X_k = X_{k+1} \\
+      1 \text{ sinon}
+    \end{cases}
+    \]
+    et la suite $(S_n)$ par $\forall n \geq 1, \, M_n = \frac{Y_1 + \dots + Y_n}{n}$. On a $M_n - 2p(1-p) \overset{(p)}{\longrightarrow} 0$.
+  \end{example}
+
+  \reference{268}
+
+  \begin{proposition}
+    Si $X_n \overset{(p)}{\longrightarrow} X$ et $Y_n \overset{(p)}{\longrightarrow} Y$, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(X_n, Y_n) \overset{(p)}{\longrightarrow} (X, Y)$.
+      \item $X_n + Y_n \overset{(p)}{\longrightarrow} X + Y$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{theorem}
+    La convergence presque sûre implique la convergence en probabilité.
+  \end{theorem}
+
+  \reference{285}
+
+  \begin{cexample}
+    La suite $(M_n - 2p(1-p))$ de l'\cref{262-1} ne converge pas vers $0$ presque sûrement.
+  \end{cexample}
+
+  \reference{274}
+
+  \begin{theorem}
+    Si $X_n \overset{(p)}{\longrightarrow} X$, alors il existe une sous-suite $(X_{n_k})$ de $(X_n)$ telle que $X_{n_k} \overset{(ps.)}{\longrightarrow} X$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose $X_n \overset{(p)}{\longrightarrow} X$. Si $\forall n \in \mathbb{N}$, $X_n$ et $X$ sont à valeurs dans $E$, alors $f(X_n) \overset{(p)}{\longrightarrow} f(X)$ pour toute $f$ fonction définie et continue sur $E$.
+  \end{corollary}
+
+  \subsubsection{Lois des grands nombres}
+
+  \reference{270}
+
+  \begin{theorem}[Loi faible des grands nombres]
+    Soit $(X_n)$ une suite de variables aléatoires deux à deux indépendantes de même loi et $\mathcal{L}_1$. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
+    \[ M_n \overset{(p)}{\longrightarrow} \mathbb{E}(X_1) \]
+  \end{theorem}
+
+  \reference[Z-Q]{532}
+
+  \begin{theorem}[Loi forte des grands nombres]
+    Soit $(X_n)$ une suite de variables aléatoires mutuellement indépendantes de même loi. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
+    \[ X_1 \in \mathcal{L}_1 \iff M_n \overset{(ps.)}{\longrightarrow} \ell \in \mathbb{R} \]
+    Dans ce cas, on a $\ell = \mathbb{E}(X_1)$.
+  \end{theorem}
+
+  \reference[G-K]{195}
+
+  \begin{application}[Théorème de Bernstein]
+    Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
+    \[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
+    le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
+  \end{application}
+
+  \begin{corollary}[Théorème de Weierstrass]
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+  \end{corollary}
+
+  \subsection{Convergence \texorpdfstring{$L_p$}{Lp}}
+
+  \reference{268}
+
+  \begin{definition}
+    On dit que $(X_n)$ \textbf{converge dans $L_p$} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
+    \[ \forall n \in \mathbb{N}, X_n \in L_p, \, X \in L_p \text{ et } \mathbb{E}(\vert X_n - X \vert^p) \]
+    On note cela $X_n \overset{(L_p)}{\longrightarrow} X$.
+  \end{definition}
+
+  \reference[D-L]{510}
+
+  \begin{proposition}
+    Comme les espaces sont de mesure finie,
+    \[ p \geq q \implies L_p(\Omega, \mathcal{A}, \mathbb{P}) \subseteq L_q(\Omega, \mathcal{A}, \mathbb{P}) \]
+  \end{proposition}
+
+  \begin{corollary}
+    Pour $1 \leq p \leq q$, la convergence dans $L_q$ implique la convergence dans $L_p$ qui implique elle-même la convergence dans $L_1$.
+  \end{corollary}
+
+  \reference[HAU]{365}
+
+  \begin{cexample}
+    Si,
+    \[
+      \forall n \in \mathbb{N}, \, \forall \omega \in \Omega, \, X_n(\omega) = \sqrt{n} \mathbb{1}_{\left[ 0, \frac{1}{n} \right]}
+    \]
+    alors, $(X_n)$ converge dans $L_1$ mais pas dans $L_2$.
+  \end{cexample}
+
+  \reference[G-K]{65}
+
+  \begin{theorem}[Convergence dominée]
+    Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $\exists g \in L_1$ telle que $\Vert X_n \Vert_1 \leq g$, alors $X_n \overset{(L_1)}{\longrightarrow} X$.
+  \end{theorem}
+
+  \reference[HAU]{365}
+
+  \begin{cexample}
+    On se place dans le cas où $(\Omega, \mathcal{A}, \mathbb{P}) = ([0,1[, \mathcal{B}([0,1[), \lambda_{[0,1[})$. Si $\forall n \geq 1, \, X_n = n \mathbb{1}_{\left] 0, \frac{1}{n} \right[}$, alors $(X_n)$ converge vers $0$ presque sûrement, mais pas dans $L_1$.
+  \end{cexample}
+
+  \reference[G-K]{265}
+
+  \begin{proposition}
+    Si $X_n \overset{(L_p)}{\longrightarrow} X$, alors il existe une sous-suite $(X_{n_k})$ de $(X_n)$ telle que $X_{n_k} \overset{(ps.)}{\longrightarrow} X$.
+  \end{proposition}
+
+  \begin{theorem}
+    La convergence dans $L_p$ (pour $p \geq 1$) implique la convergence en probabilité.
+  \end{theorem}
+
+  \begin{example}
+    La convergence en probabilité de l'\cref{262-1} est en fait une convergence dans $L_2$.
+  \end{example}
+
+  \reference{281}
+
+  \begin{cexample}
+    Soit $X$ une variable aléatoire de densité $f : x \mapsto e^{-x} \mathbb{1}_{\mathbb{R}^+}$. On pose $\forall n \geq 1, \, Y_n = X \mathbb{1}_{[0,n[}(X) + e^{2n} \mathbb{1}_{[n,+\infty[}(X)$. Alors $(Y_n)$ converge vers $X$ en probabilité, mais pas dans $L_1$.
+  \end{cexample}
+
+  \subsection{Convergence en loi}
+
+  \subsubsection{Définition et premières propriétés}
+
+  \reference{295}
+
+  \begin{definition}
+    On dit que $(X_n)$ \textbf{converge en loi} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
+    \[ \forall f \in \mathcal{C}_b(\mathbb{R}^d, \mathbb{R}), \, \mathbb{E}(f(X_n)) \longrightarrow_{n \rightarrow +\infty} \mathbb{E}(f(X)) \]
+    On note cela $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{definition}
+
+  \reference{313}
+
+  \begin{example}
+    Si $\forall n \geq 1$, $X_n$ suit une loi uniforme sur $\llbracket 1, n-1 \rrbracket$, alors $\frac{X_n}{n}$ converge en loi vers la loi uniforme sur $[0,1]$.
+  \end{example}
+
+  \reference{295}
+
+  \begin{proposition}
+    Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} Y$, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item La limite $X$ est unique.
+      \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, Y \rangle$.
+    \end{enumerate}
+    Plus généralement, si $\forall n \in \mathbb{N}$, $X_n$ et $X$ sont à valeurs dans $E$, alors $f(X_n) \overset{(d)}{\longrightarrow} f(X)$ pour toute $f$ fonction définie et continue sur $E$.
+  \end{proposition}
+
+  \begin{theorem}[Lemme de Scheffé]
+    On suppose :
+    \begin{itemize}
+      \item $X_n \overset{(ps.)}{\longrightarrow} X$.
+      \item $\lim_{n \rightarrow +\infty} \int_\Omega X_n \, \mathrm{d}\mathbb{P} = \int_\Omega X \, \mathrm{d}\mathbb{P}$.
+    \end{itemize}
+    Alors, $X_n \overset{(L_1)}{\longrightarrow} X$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose :
+    \begin{itemize}
+      \item $\forall n \in \mathbb{N}$, $X_n$ admet une densité $f_n$.
+      \item $(f_n)$ converge presque partout vers une fonction $f$.
+      \item Il existe une variable aléatoire $X$ admettant $f$ pour densité.
+    \end{itemize}
+    Alors, $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{corollary}
+
+  \begin{corollary}
+    Si $X$ et $X_n$ sont des variables aléatoires à valeurs dans un ensemble dénombrable $D$ pour tout $n \in \mathbb{N}$, en supposant
+    \[ \forall k \in D, \, \mathbb{P}(X_n = k) = \mathbb{P}(X = k) \]
+    alors $X_n \overset{(d)}{\longrightarrow} X$.
+  \end{corollary}
+
+  \begin{application}
+    Soit, pour $n \geq 1$, une variable aléatoire $X_n$ suivant la loi binomiale de paramètres $n$ et $p_n$. On suppose que $\lim_{n \rightarrow +\infty} n p_n = \lambda > 0$.
+    Alors,
+    \[ X_n \overset{(d)}{\longrightarrow} X \]
+    où $X$ suit une loi de Poisson de paramètre $\lambda$.
+  \end{application}
+
+  \reference{302}
+
+  \begin{theorem}
+    En notant $F_X$ la fonction de répartition d'une variable aléatoire $X$, on a,
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff F_{X_n}(x) \longrightarrow_{n \rightarrow +\infty} F_X(x) \]
+    en tout point $x$ où $F_X$ est continue.
+  \end{theorem}
+
+  \begin{theorem}
+    Soit $X : \Omega \rightarrow \mathbb{R}^d$ une variable aléatoire.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge en loi vers $X$.
+      \item Si $(X_n)$ converge en loi vers une constante $a$ (ou de manière équivalente, vers une masse de Dirac $\delta_a$), alors $(X_n)$ converge en probabilité vers $a$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference[HAU]{362}
+
+  \begin{cexample}
+    Si $(X_n)$ est une suite de variables aléatoires indépendantes identiquement distribuées de loi $\mathcal{B}(p)$, alors $(X_n)$ converge en loi vers $\mathcal{B}(2p(1-p))$, mais pas en probabilité.
+  \end{cexample}
+
+  \subsubsection{Théorème central limite et applications}
+
+  \reference[G-K]{305}
+
+  \begin{theorem}[Slutsky]
+    Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} c$ où $c$ est un vecteur constant, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $X_n + Y_n \overset{(d)}{\longrightarrow} X + c$.
+      \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, c \rangle$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{notation}
+    Si $X$ est une variable aléatoire réelle, on note $\phi_X$ sa fonction caractéristique.
+  \end{notation}
+
+  \reference[Z-Q]{544}
+
+  \begin{theorem}[Lévy]
+    On suppose que $(X_n)$ est une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
+  \end{theorem}
+
+  \reference[G-K]{307}
+  \dev{theoreme-central-limite}
+
+  \begin{theorem}[Central limite]
+    On suppose que $(X_n)$ est une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
+    \[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
+  \end{theorem}
+
+  \begin{application}[Théorème de Moivre-Laplace]
+    On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
+    \[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
+  \end{application}
+
+  \reference{180}
+
+  \begin{lemma}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
+  \end{lemma}
+
+  \reference{556}
+
+  \begin{application}[Formule de Stirling]
+    \[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
+  \end{application}
+
+  \reference{390}
+  \dev{theoreme-des-evenements-rares-de-poisson}
+
+  \begin{application}[Théorème des événements rares de Poisson]
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
+      \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
+    \end{enumerate}
+    Alors, la suite de variables aléatoires $(S_n)$ définie par
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^n \mathbb{1}_{A_{n,k}} \]
+    converge en loi vers la loi de Poisson de paramètre $\lambda$.
+  \end{application}
+
+  \annexessection
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \node (A) at (0,0) {Convergence presque sûre};
+        \node (B) at ($(A.east)+(4,0)$) {Convergence en probabilité};
+        \node (C) at ($(B.south)+(0,-1)$) {Convergence $L_1$};
+        \node (D) at ($(B.east)+(4,0)$) {Convergence en loi};
+        \node (E) at ($(C.south)+(0,-1)$) {Convergence $L_p$};
+        \draw[-implies,double equal sign distance] (A) -- (B);
+        \draw[-implies,double equal sign distance] (C) -- (B);
+        \draw[-implies,double equal sign distance] (B) -- (D);
+        \draw[-implies,double equal sign distance] (E) -- (C);
+        \draw[-implies,double equal sign distance] (B.north west) to [out=150,in=30] (A.north east);
+        \node at ($(A.north east)!0.5!(B.north west)+(0,0.3)$) [above] {\tiny Sous-suite};
+        \draw[-implies,double equal sign distance] (D.north west) to [out=150,in=30] (B.north east);
+        \node at ($(B.north east)!0.5!(D.north west)+(0,0.3)$) [above] {\tiny Limite constante};
+        \draw[-implies,double equal sign distance] (A.south east) to [out=-30,in=-180] (C.west);
+        \node at ($(A.south east)!0.5!(C.west)+(0,-0.25)$) [below left] {\tiny Domination};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Liens entre les différents modes de convergence.}
+  \end{figure}
+  %</content>
+\end{document}

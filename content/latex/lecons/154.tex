@@ -1,0 +1,323 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{154}{Exemples de décompositions de matrices. Applications.}
+  
+  Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Soit $n \geq 1$.
+
+  \subsection{Décomposition et réduction}
+  
+  \subsubsection{Décomposition de Dunford}
+  
+  \paragraph{Décomposition ``classique''}
+  
+  \reference[GOU21]{203}
+  \dev{decomposition-de-dunford}
+  
+  \begin{theorem}[Décomposition de Dunford]
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On suppose que $\pi_A$ est scindé sur $\mathbb{K}$. Alors il existe un unique couple de matrices $(D, N)$ tels que :
+    \begin{itemize}
+      \item $D$ est diagonalisable et $N$ est nilpotente.
+      \item $A = D + N$.
+      \item $DN = ND$.
+    \end{itemize}
+  \end{theorem}
+  
+  \begin{corollary}
+    Si $A$ vérifie les hypothèse précédentes, pour tout $k \in \mathbb{N}$, $A^k = (D + N)^k = \sum_{i=0}^m \binom{k}{i} D^i N^{k-i}$, avec $m = \min(k, l)$ où $l$ désigne l'indice de nilpotence de $N$.
+  \end{corollary}
+  
+  \begin{remark}
+    On peut montrer de plus que $D$ et $N$ sont des polynômes en $A$.
+  \end{remark}
+  
+  \reference[C-G]{165}
+  
+  \begin{example}
+    On a la décomposition de Dunford suivante :
+    \[ \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} + \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \]
+  \end{example}
+  
+  \begin{cexample}
+    L'égalité suivante n'est pas une décomposition de Dunford :
+    \[ \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix} + \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \]
+    car les deux matrices du membre de droite ne commutent pas.
+  \end{cexample}
+  
+  \reference[ROM21]{761}
+  
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item La série entière $\sum \frac{z^k}{k!}$ a un rayon de convergence infini.
+      \item $\sum \frac{A^k}{k!}$ est convergente pour toute matrice $A \in \mathcal{M}_n(\mathbb{K})$.
+    \end{enumerate}
+  \end{lemma}
+  
+  \begin{definition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On définit \textbf{l'exponentielle} de $A$ par
+    \[ \sum_{k=0}^{+\infty} \frac{A^k}{k!} \]
+    on la note aussi $\exp(A)$ ou $e^A$.
+  \end{definition}
+  
+  \begin{theorem}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $A = \operatorname{Diag}(\lambda_1, \dots, \lambda_n)$, alors $\exp(A) = \operatorname{Diag}(e^\lambda_1, \dots, e^\lambda_n)$.
+      \item Si $B = PAP^{-1}$ pour $P \in \mathrm{GL}_n(\mathbb{K})$, alors $e^B = P^{-1} e^A P$.
+      \item $\det(e^A) = e^{\trace(A)}$.
+      \item $t \mapsto e^{tA}$ est de classe $\mathcal{C}^\infty$, de dérivée $t \mapsto e^{tA}A$.
+    \end{enumerate}
+  \end{theorem}
+  
+  \begin{proposition}
+    Soient $A, B \in \mathcal{M}_n(\mathbb{K})$ qui commutent. Alors,
+    \[ e^A e^B = e^{A+B} = e^B e^A \]
+  \end{proposition}
+  
+  \begin{example}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$ qui admet une décomposition de Dunford $A = D+N$ où $D$ est diagonalisable et $N$ est nilpotente d'indice $q$. Alors,
+    \begin{itemize}
+      \item $e^A = e^D e^N = e^D \sum_{k=0}^{q-1} \frac{N^k}{k!}$.
+      \item La décomposition de Dunford de $e^A$ est $e^A = e^D + e^D(e^N - I_n)$ avec $e^D$ diagonalisable et $e^D(e^N - I_n)$ nilpotente.
+    \end{itemize}
+  \end{example}
+  
+  \reference[GOU20]{380}
+  
+  \begin{application}
+    Une équation différentielle linéaire homogène $(H) : Y' = AY$ (où $A$ est constante en $t$) a ses solutions maximales définies sur $\mathbb{R}$ et le problème de Cauchy
+    \[ \begin{cases} Y' = AY \\ Y(0) = y_0 \end{cases} \]
+    a pour (unique) solution $t \mapsto e^{tA} y_0$.
+  \end{application}
+  
+  \paragraph{Décomposition multiplicative}
+  
+  \reference[ROM21]{687}
+  
+  \begin{definition}
+    On dit qu'une matrice $U \in \mathcal{M}_n(\mathbb{K})$ est \textbf{unipotente} si $U - I_n$ est nilpotente.
+  \end{definition}
+  
+  \begin{theorem}[Décomposition de Dunford multiplicative]
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On suppose que $\pi_A$ est scindé sur $\mathbb{K}$. Alors il existe un unique couple de matrices $(D, U)$ tels que :
+    \begin{itemize}
+      \item $D$ est diagonalisable et $U$ est unipotente.
+      \item $A = DU$.
+      \item $DU = UD$.
+    \end{itemize}
+  \end{theorem}
+    
+  \subsubsection{Décomposition de Jordan}
+  
+  \reference[BMP]{171}
+  
+  \begin{definition}
+    Un \textbf{bloc de Jordan} de taille $m$ associé à $\lambda \in \mathbb{K}$ désigne la matrice $J_m(\lambda)$ suivante :
+    \[ J_m(\lambda) = \begin{pmatrix} \lambda & 1 & \\ & \ddots & \ddots & \\ & & \ddots & 1 \\ & & & \lambda \end{pmatrix} \in \mathcal{M}_m(\mathbb{K}) \]
+  \end{definition}
+  
+  \begin{proposition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. Les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $A$ est semblable à $J_n(0)$.
+      \item $A$ est nilpotente et cyclique (voir \cref{154-1}).
+      \item $A$ est nilpotente d'indice de nilpotence $n$.
+    \end{enumerate}
+  \end{proposition}
+  
+  \begin{theorem}[Réduction de Jordan d'un endomorphisme nilpotent]
+    On suppose que $A$ est nilpotente. Alors il existe des entiers $n_1 \geq \dots \geq n_p$ tels que $A$ est semblable à la matrice
+    \[ \begin{pmatrix} J_{n_1}(0) & & \\ & \ddots & \\ & & J_{n_p}(0) \end{pmatrix} \]
+    De plus, on a unicité dans cette décomposition.
+  \end{theorem}
+  
+  \begin{remark}
+    Comme l'indice de nilpotence d'un bloc de Jordan est égal à sa taille, l'indice de nilpotence de $A$ est la plus grande des tailles des blocs de Jordan de la réduite.
+  \end{remark}
+  
+  \reference[GOU21]{209}
+  
+  \begin{theorem}[Réduction de Jordan d'un endomorphisme]
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On suppose que le polynôme caractéristique de $A$ est scindé sur $\mathbb{K}$ :
+    \[ \chi_A = \prod_{i=1}^p (X - \lambda_i)^{\alpha_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
+    Alors il existe des entiers $n_1 \geq \dots \geq n_p$ tels que $A$ est semblable à la matrice
+    \[ \begin{pmatrix} J_{n_1}(\lambda_1) & & \\ & \ddots & \\ & & J_{n_p}(\lambda_p) \end{pmatrix} \]
+    De plus, on a unicité dans cette décomposition.
+  \end{theorem}
+  
+  \begin{application}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. Alors, $A$ et $2A$ sont semblables si et seulement si $A$ est nilpotente.
+  \end{application}
+  
+  \begin{application}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. Alors, $A$ et $\tr{A}$ sont semblables.
+  \end{application}
+  
+  \subsubsection{Décomposition de Frobenius}
+  
+  \reference{397}
+  
+  Soient $E$ un espace vectoriel de dimension finie $n$ et $u \in \mathcal{L}(E)$.
+  
+  \begin{definition}
+    \label{154-1}
+    On dit que $u$ est \textbf{cyclique} s'il existe $x \in E$ tel que $\{ P(u)(x) \mid P \in \mathbb{K}[X] \} = E$.
+  \end{definition}
+  
+  \begin{proposition}
+    $u$ est cyclique si et seulement si $\deg(\pi_u) = n$.
+  \end{proposition}
+  
+  \begin{definition}
+    Soit $P = X^p + a_{p-1} X^{p-1} + \dots + a_0 \in \mathbb{K}[X]$. On appelle \textbf{matrice compagnon} de $P$ la matrice
+    \[ \mathcal{C}(P) = \begin{pmatrix} 0 & \dots & \dots & 0 & -a_0 \\ 1 & 0 & \ddots & \vdots & -a_1 \\ 0 & 1 & \ddots & \vdots & \vdots \\ \vdots & \ddots & \ddots & 0 & -a_{p-2} \\ 0 & \dots & 0 & 1 & -a_{p-1} \end{pmatrix} \]
+  \end{definition}
+  
+  \begin{proposition}
+    $u$ est cyclique si et seulement s'il existe une base $\mathcal{B}$ de $E$ telle que $\operatorname{Mat}(u, \mathcal{B}) = \mathcal{C}(\pi_u)$.
+  \end{proposition}
+  
+  \begin{theorem}
+    Il existe $F_1, \dots, F_r$ des sous-espaces vectoriels de $E$ tous stables par $u$ tels que :
+    \begin{itemize}
+      \item $E = F_1 \oplus \dots \oplus F_r$.
+      \item $u_i = u_{|F_i}$ est cyclique pour tout $i$.
+      \item Si $P_i = \pi_{u_i}$, on a $P_{i+1} \mid P_i$ pour tout $i$.
+    \end{itemize}
+    La famille de polynômes $P_1, \dots, P_r$ ne dépend que de $u$ et non du choix de la décomposition. On l'appelle \textbf{suite des invariants de similitude} de $u$.
+  \end{theorem}
+  
+  \begin{theorem}[Réduction de Frobenius]
+    Si $P_1, \dots, P_r$ désigne la suite des invariants de $u$, alors il existe une base $\mathcal{B}$ de $E$ telle que :
+    \[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} \mathcal{C}(P_1) & & \\ & \ddots & \\ & & \mathcal{C}(P_r) \end{pmatrix} \]
+    On a d'ailleurs $P_1 = \pi_u$ et $P_1 \dots P_r = \chi_u$.
+  \end{theorem}
+  
+  \begin{corollary}
+    Deux endomorphismes de $E$ sont semblables si et seulement s'ils ont la même suite d'invariants de similitude.
+  \end{corollary}
+  
+  \begin{application}
+    Pour $n = 2$ ou $3$, deux matrices sont semblables si et seulement si elles ont mêmes polynômes minimal et caractéristique.
+  \end{application}
+  
+  \begin{application}
+    Soit $\mathbb{L}$ une extension de $\mathbb{K}$. Alors, si $A, B \in \mathcal{M}_n(\mathbb{K})$ sont semblables dans $\mathcal{M}_n(\mathbb{L})$, elles le sont aussi dans $\mathcal{M}_n(\mathbb{K})$.
+  \end{application}
+  
+  \subsection{Décomposition et résolution de systèmes}
+  
+  \subsubsection{Décomposition LU}
+  
+  \reference[ROM21]{690}
+  
+  \begin{definition}
+    Les \textbf{sous-matrices principales} d'une matrice $(a_{i,j})_{i,j \in \llbracket 1, n \rrbracket} \in \mathcal{M}_n(\mathbb{K})$ sont les matrices $A_k = (a_{i,j})_{i,j \in \llbracket 1, k \rrbracket} \in \mathcal{M}_k(\mathbb{K})$ où $k \in \llbracket 1, n \rrbracket$. Les \textbf{déterminants principaux} sont les déterminants des matrices $A_k$, pour $k \in \llbracket 1, n \rrbracket$.
+  \end{definition}
+  
+  \begin{theorem}[Décomposition lower-upper]
+    \label{154-2}
+    Soit $A \in \mathrm{GL}_n(\mathbb{K})$. Alors, $A$ admet une décomposition
+    \[ A = LU \]
+    (où $L$ est une matrice triangulaire inférieure à diagonale unité et $U$ une matrice triangulaire supérieure) si et seulement si tous les déterminants principaux de $A$ sont non nuls. Dans ce cas, une telle décomposition est unique.
+  \end{theorem}
+  
+  \begin{corollary}
+    Soit $A \in \mathrm{GL}_n(\mathbb{K}) \, \cap \, \mathcal{S}_n(\mathbb{K})$. Alors, on a l'unique décomposition de $A$ :
+    \[ A = LD\tr{L} \]
+    où $L$ est une matrice triangulaire inférieure et $D$ une matrice diagonale.
+  \end{corollary}
+  
+  \begin{application}[Décomposition de Cholesky]
+    Soit $A \in \mathcal{M}_n(\mathbb{R})$. Alors, $A \in \mathcal{S}_n^{++}(\mathbb{R})$ si et seulement s'il existe $B \in \mathrm{GL}_n(\mathbb{R})$ triangulaire inférieure telle que $A = B\tr{B}$. De plus, une telle décomposition est unique si on impose la positivité des coefficients diagonaux de $B$.
+  \end{application}
+  
+  \reference[GRI]{368}
+  
+  \begin{example}
+    On a la décomposition de Cholesky :
+    \[ \begin{pmatrix} 1 & 2 \\ 2 & 5 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} \]
+  \end{example}
+  
+  \reference[C-G]{257}
+  
+  \begin{proposition}
+    Soit $A \in \mathrm{GL}_n(\mathbb{K})$ vérifiant les hypothèses du \cref{154-2}. On définit la suite $(A_k)$ où $A_0 = A$ et $\forall k \in \mathbb{N}$, $A_{k+1}$ est la matrice obtenue à partir de $A_k$ à l'aide du pivot de Gauss sur la $(k+1)$-ième colonne. Alors, $A_{n-1}$ est la matrice $U$ de la décomposition $A = LU$ du \cref{154-2}.
+  \end{proposition}
+  
+  \begin{remark}
+    Pour résoudre un système linéaire $AX = Y$, on se ramène à $A = LU$ en $O \left( \frac{2}{3}n^3 \right)$. Puis, on résout deux systèmes triangulaires ``en cascade'' :
+    \[ LX' = Y \text{ puis } UX = X' \]
+    ceux-ci demandant chacun $O(2n^2)$ opérations.
+  \end{remark}
+  
+  \begin{theorem}[Décomposition PLU]
+    Soit $A \in \mathrm{GL}_n(\mathbb{K})$. Alors, il existe $P \in \mathrm{GL}_n(\mathbb{K})$, matrice de permutations, telle que $P^{-1}A$ admet une décomposition $LU$.
+  \end{theorem}
+  
+  \subsubsection{Décomposition QR}
+  
+  \reference[ROM21]{692}
+  
+  \begin{theorem}[Décomposition QR]
+    Soit $A \in \mathrm{GL}_n(\mathbb{R})$. Alors, $A$ admet une décomposition
+    \[ A = QR \]
+    où $Q$ est une matrice orthogonale et $R$ est une matrice triangulaire supérieure à coefficients diagonaux strictement positifs. On a unicité d'une telle décomposition.
+  \end{theorem}
+  
+  \begin{corollary}[Théorème d'Iwasawa]
+    Soit $A \in \mathrm{GL}_n(\mathbb{R})$. Alors, $A$ admet une décomposition
+    \[ A = QDR \]
+    où $Q$ est une matrice orthogonale, $D$ est une matrice diagonale à coefficients strictement positifs et $R$ est une matrice triangulaire supérieure à coefficients diagonaux égaux à $1$. On a unicité d'une telle décomposition.
+  \end{corollary}
+  
+  \reference[GRI]{272}
+  
+  \begin{example}
+    On a la factorisation QR suivante,
+    \[ \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} = \left( \frac{1}{\sqrt{6}} \begin{pmatrix} 0 & 2 & \sqrt{2} \\ \sqrt{3} & -1 & \sqrt{2} \\ \sqrt{3} & 1 & -\sqrt{2} \end{pmatrix} \right) \left( \frac{1}{\sqrt{6}} \begin{pmatrix} 2\sqrt{3} & \sqrt{3} & 1 \\ 0 & 3 & 1 \\ 0 & 0 & 2\sqrt{2} \end{pmatrix} \right) \]
+    qui peut être obtenue via un procédé de Gram-Schmidt.
+  \end{example}
+  
+  \reference{368}
+  
+  \begin{remark}
+    Pour résoudre un système linéaire $AX = Y$, si l'on a trouvé une telle factorisation $A = QR$, on résout
+    \[ RX = \tr{Q}Y \]
+    c'est-à-dire, un seul système triangulaire (contre deux pour la factorisation LU).
+  \end{remark}
+  
+  \subsection{Décomposition et topologie}
+  
+  \reference[C-G]{376}
+  
+  \begin{lemma}
+    \[ \forall A \in \mathcal{S}_n^{++}(\mathbb{R}) \, \exists! B \in \mathcal{S}_n^{++}(\mathbb{R}) \text{ telle que } B^2 = A \]
+  \end{lemma}
+  
+  \dev{decomposition-polaire}
+  
+  \begin{theorem}[Décomposition polaire]
+    L'application
+    \[ \mu :
+    \begin{array}{ccc}
+      \mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+      (O, S) &\mapsto& OS
+    \end{array}
+    \]
+    est un homéomorphisme.
+  \end{theorem}
+  
+  \begin{corollary}
+    Tout sous-groupe compact de $\mathrm{GL}_n(\mathbb{R})$ qui contient $\mathcal{O}_n(\mathbb{R})$ est $\mathcal{O}_n(\mathbb{R})$.
+  \end{corollary}
+  
+  \reference{401}
+  
+  \begin{corollary}
+    $\mathrm{GL}_n(\mathbb{R})^+$ est connexe.
+  \end{corollary}
+  %</content>
+\end{document}

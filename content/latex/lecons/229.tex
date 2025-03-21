@@ -1,0 +1,367 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{229}{Fonctions monotones. Fonctions convexes. Exemples et applications.}
+
+  \subsection{Fonctions monotones}
+
+  \subsubsection{Définition et première propriétés}
+
+  \reference[R-R]{31}
+
+  \begin{definition}
+    Soient $X$ une partie de $\mathbb{R}$ et $f : X \rightarrow \mathbb{R}$.
+    \begin{itemize}
+      \item On dit que $f$ est \textbf{croissante} si $\forall x, y \in X, \, x \leq y \implies f(x) \leq f(y)$.
+      \item On dit que $f$ est \textbf{décroissante} si $\forall x, y \in X, \, x \leq y \implies f(x) \geq f(y)$.
+      \item On dit que $f$ est \textbf{monotone} si $f$ est croissante ou décroissante.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Les définitions de $f$ \textbf{strictement croissante} et $f$ \textbf{strictement décroissante} s'obtiennent en remplaçant les inégalités larges par des inégalités strictes dans la définition précédente.
+  \end{remark}
+
+  Par conséquent, $f$ est décroissante si et seulement si $-f$ est croissante. Pour cette raison, nous pouvons nous limiter à l'étude des fonctions croissantes.
+
+  \begin{example}
+    $x \mapsto \lfloor x \rfloor$ est une fonction monotone.
+  \end{example}
+
+  \reference[D-L]{405}
+
+  \begin{proposition}
+    L'ensemble des fonctions croissantes est stable par addition, par multiplication par un scalaire positif et par composition.
+  \end{proposition}
+
+  \reference[ROM19-1]{205}
+
+  \begin{proposition}
+    Soient $I \subseteq \mathbb{R}$ un intervalle non réduit à un point et $f : I \rightarrow \mathbb{R}$. On suppose $f$ dérivable sur $\mathring{I}$. Alors $f$ est croissante si et seulement si $f'(x) \geq 0$ pour tout $x \in I$.
+  \end{proposition}
+
+  \subsubsection{Régularité}
+
+  \reference{162}
+
+  Soit $I \subseteq \mathbb{R}$ un intervalle non réduit à un point.
+
+  \begin{definition}
+    On dit que $f : I \rightarrow \mathbb{R}$ a pour \textbf{limite à gauche} (resp. \textbf{à droite}) $\ell$ en $\alpha \in \overline{I}$ si :
+    \[ \forall \epsilon > 0, \, \exists \eta > 0, \, \text{tel que } \forall x \in I \, \cap \, ]\alpha-\eta, \alpha[, \, |f(x) - \ell| < \epsilon \]
+    (resp. $\forall \epsilon > 0, \, \exists \eta > 0, \, \text{tel que } \forall x \in I \, \cap \, ]\alpha, \alpha+\eta[, \, |f(x) - \ell| < \epsilon$).
+  \end{definition}
+
+  \begin{theorem}
+    On suppose que $I$ est un intervalle ouvert. Si $f : I \rightarrow \mathbb{R}$ est une fonction monotone, elle admet alors une limite à gauche et à droite en tout point. Dans le cas où $f$ est croissante, on a
+    \[ \forall x \in I, \quad f(x^-) = \sup_{\substack{t \in I \\ t < x}} f(t) \leq f(x) \leq f(x^+) = \inf_{\substack{t \in I \\ t > x}} f(t) \]
+  \end{theorem}
+
+  \begin{definition}
+    Si $\alpha \in \mathring{I}$, et si $f : I \rightarrow \mathbb{R}$ est discontinue en $\alpha$ avec des limites à gauche et à droite en ce point, on dit que $f$ a une \textbf{discontinuité de première espèce} en $\alpha$.
+  \end{definition}
+
+  \begin{proposition}
+    Une fonction monotone de $I$ dans $\mathbb{R}$ ne peut avoir que des discontinuités de première espèce.
+  \end{proposition}
+
+  \begin{theorem}
+    On suppose que $I$ est un intervalle ouvert. Si $f : I \rightarrow \mathbb{R}$ est une fonction monotone, alors l'ensemble des points de discontinuités de $f$ est dénombrable.
+  \end{theorem}
+
+  \begin{example}
+    La fonction $f$ définie sur $[0,1]$ par $f(0) = 0$ et $f(x) = \frac{1}{\lfloor \frac{1}{x} \rfloor}$ est croissante avec une infinité de points de discontinuité.
+  \end{example}
+
+  \reference{175}
+
+  \begin{proposition}
+    Si $f : I \rightarrow \mathbb{R}$ est une fonction monotone telle que $f(I)$ est un intervalle, elle est alors continue sur $I$.
+  \end{proposition}
+
+  \begin{theorem}[Bijection]
+    Si $f : I \rightarrow \mathbb{R}$ est une application continue et strictement monotone, alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $f(I)$ est un intervalle.
+      \item $f^{-1}$ est continue.
+      \item $f^{-1}$ est strictement monotone de même sens de variation que $f$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    La fonction $\exp : x \mapsto e^x$ est une bijection de $\mathbb{R}$ dans $\mathbb{R}^{+}_{*}$ qui admet donc une bijection réciproque $\ln$ qui est strictement croissante.
+  \end{example}
+
+  \begin{proposition}
+    Soit $f : I \rightarrow \mathbb{R}$. Cette fonction $f$ est injective si et seulement si elle est strictement monotone.
+  \end{proposition}
+
+  \reference[D-L]{405}
+
+  \begin{theorem}[Lebesgue]
+    Une application monotone est dérivable presque partout.
+  \end{theorem}
+
+  \subsubsection{Suites et séries}
+
+  \reference[GOU20]{238}
+
+  \begin{lemma}
+    Une limite simple d'une suite de fonctions croissantes est croissante.
+  \end{lemma}
+
+  \begin{theorem}[Second théorème de Dini]
+    Soit $(f_n)$ une suite de fonctions croissantes réelles continues définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction continue sur $I$, alors la convergence est uniforme.
+  \end{theorem}
+
+  \reference{212}
+
+  \begin{proposition}[Comparaison série - intégrale]
+    Soit $f : \mathbb{R}^+ \rightarrow \mathbb{R}^+$ une fonction positive, continue par morceaux et décroissante sur $\mathbb{R}^+$. Alors la suite $(U_n)$ définie par
+    \[ \forall n \in \mathbb{N}, \, \sum_{k=0}^n f(k) - \int_0^n f(t) \, \mathrm{d}t \]
+    est convergente. En particulier, la série $\sum f(n)$ et l'intégrale $\int_0^{+\infty} f(t) \, \mathrm{d}t$ sont de même nature.
+  \end{proposition}
+
+  \begin{application}[Développement asymptotique de la série harmonique]
+    \[ \sum_{k=1}^n \frac{1}{k} = \ln(n) + \gamma + o (1) \]
+    où $\gamma$ désigne la constante d'Euler.
+  \end{application}
+
+  \subsection{Fonctions convexes}
+
+  Soit $I$ une partie convexe d'un espace vectoriel normé $(E, \Vert . \Vert)$ non réduite à un point.
+
+  \subsubsection{Définitions}
+
+  \reference[ROM19-1]{225}
+
+  \begin{definition}
+    \label{229-1}
+    \begin{itemize}
+      \item $I$ est \textbf{convexe} si $\forall a, b \in I, \, [a,b] \subseteq I$.
+      \item Une fonction $f : I \rightarrow \mathbb{R}$ est \textbf{convexe} si
+      \[ \forall x, y \in I, \, \forall t \in [0,1], \, f((1-t)x + ty) \leq (1-t)f(x) + tf(y) \]
+      \item Une fonction $f : I \rightarrow \mathbb{R}$ est \textbf{concave} si $-f$ est convexe.
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Les définitions de $f$ \textbf{strictement convexe} et $f$ \textbf{strictement concave} s'obtiennent en remplaçant les inégalités larges par des inégalités strictes dans la définition précédente.
+  \end{remark}
+
+  \begin{example}
+    \begin{itemize}
+      \item $x \mapsto \Vert x \Vert$ est convexe sur $E$.
+      \item $\exp$ est convexe sur $\mathbb{R}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{proposition}
+    Une fonction $f : I \rightarrow \mathbb{R}$ est convexe si et seulement si son épigraphe est convexe dans $E \times \mathbb{R}$.
+  \end{proposition}
+
+  \begin{theorem}
+    Une fonction $f : I \rightarrow \mathbb{R}$ est convexe si et seulement si $\forall x, y \in I$, $t \mapsto f((1-t)x + ty)$ est convexe sur $[0,1]$.
+  \end{theorem}
+
+  Ce dernier théorème justifie que l'étude des fonctions convexes se ramène à l'étude des fonctions convexes sur un intervalle réel.
+
+  \begin{proposition}
+    \begin{itemize}
+      \item Une combinaison linéaire à coefficients positifs de fonctions convexes est convexe.
+      \item La composée $\varphi \circ g$ d'une fonction convexe croissante $\varphi : J \rightarrow \mathbb{R}$ avec une fonction fonction convexe $g : I \rightarrow J$ est croissante.
+      \item Une limite simple d'une suite de fonctions convexes est convexe.
+    \end{itemize}
+  \end{proposition}
+
+  À partir de maintenant, on supposera que $I$ est un intervalle réel non réduit à un point.
+
+  \subsubsection{Propriétés sur \texorpdfstring{$\mathbb{R}$}{R}}
+
+  \reference[GOU20]{95}
+
+  \begin{remark}
+    Dans le cadre réel, la \cref{229-1} revient à dire que les cordes $[(a, f(a)), (b, f(b))]$ sont au-dessus du graphe de $f$ pour tout $a, b \in I$ avec $a < b$.
+  \end{remark}
+
+  \begin{proposition}
+    Une fonction $f : I \rightarrow \mathbb{R}$ est convexe si et seulement si $\forall x_0 \in I$, l'application
+    \[
+    \begin{array}{ccc}
+      I \setminus \{ x_0 \} &\rightarrow& \mathbb{R} \\
+      x &\mapsto& \frac{f(x) - f(x_0)}{x - x_0}
+    \end{array}
+    \]
+    est croissante.
+  \end{proposition}
+
+  \begin{corollary}[Inégalité des trois pentes]
+    Soient fonction $f : I \rightarrow \mathbb{R}$ convexe et $a, b, c \in I$ tels que $a < b < c$. Alors,
+    \[ \frac{f(b) - f(a)}{b-a} < \frac{f(c) - f(a)}{c-a} < \frac{f(c) - f(b)}{c-b} \]
+  \end{corollary}
+
+  \reference{71}
+
+  \begin{definition}
+    On dit que $f : I \rightarrow \mathbb{R}$ est \textbf{dérivable à gauche} (resp. \textbf{à droite}) en $\alpha \in I$ si la limite
+    \[ \lim_{\substack{t \rightarrow a^{-} \\ t \in I}} \frac{f(t) - f(a)}{t-a} \]
+    (resp. $\lim_{\substack{t \rightarrow a^{+} \\ t \in I}} \frac{f(t) - f(a)}{t-a}$) existe.
+  \end{definition}
+
+  \reference{96}
+
+  \begin{proposition}
+    Une fonction $f : I \rightarrow \mathbb{R}$ convexe possède en tout point de $\mathring{I}$ une dérivée à droite et une dérivée à gauche. Elle est donc continue sur $\mathring{I}$. De plus les applications dérivées à gauche $f'_g$ et à droite $f'_d$ sont croissantes avec $f'_g(x) \leq f'_d(x)$ pour tout $x \in \mathring{I}$.
+  \end{proposition}
+
+  \begin{theorem}
+    Soit $f : I \rightarrow \mathbb{R}$ une fonction dérivable sur $I$. Alors, les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $f$ est convexe.
+      \item $f'$ est croissante.
+      \item La courbe représentative de $f$ est au-dessus de ses tangentes.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{proposition}
+    Une fonction $f : I \rightarrow \mathbb{R}$ deux fois dérivable est convexe si et seulement si $f''(x) \geq 0$ pour tout $x \in I$.
+  \end{proposition}
+
+  \subsubsection{Fonctions log-convexes}
+
+  \reference[ROM19-1]{228}
+
+  \begin{definition}
+    On dit qu'une fonction $f : I \rightarrow \mathbb{R}^+_*$ est \textbf{log-convexe} si $\ln \circ f$ est convexe sur $I$.
+  \end{definition}
+
+  \begin{proposition}
+    Une fonction log-convexe est convexe.
+  \end{proposition}
+
+  \begin{cexample}
+    $x \mapsto x$ est convexe mais non log-convexe.
+  \end{cexample}
+
+  \begin{theorem}
+    Pour une fonction $f : I \rightarrow \mathbb{R}^+_*$, les assertions suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item $f$ est log-convexe.
+      \item $\forall \alpha > 0, \, x \mapsto \alpha^x f(x)$ est convexe.
+      \item $\forall x, y \in I, \, \forall t \in [0,1], \, f((1-t)x + ty) \leq (f(x))^{1-t} (f(y))^t$.
+      \item $\forall \alpha > 0, \, f^\alpha$ est convexe.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{364}
+
+  \begin{lemma}
+    \label{229-2}
+    La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
+    \begin{enumerate}[label=(\roman*)]
+      \item \label{229-3} $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
+      \item \label{229-4} $\Gamma(1) = 1$.
+      \item \label{229-5} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
+    \end{enumerate}
+  \end{lemma}
+
+  \reference{364}
+  \dev{caracterisation-reelle-de-gamma}
+
+  \begin{theorem}[Bohr-Mollerup]
+    Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{229-3}, \cref{229-4} et \cref{229-5} du \cref{229-2}. Alors $f = \Gamma$.
+  \end{theorem}
+
+  \begin{remark}
+    À la fin de la preuve, on obtient une formule due à Gauss :
+    \[ \forall x \in ]0, 1], \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} \]
+    que l'on peut aisément étendre à $\mathbb{R}^+_*$ entier.
+  \end{remark}
+
+  \subsection{Applications}
+
+  \subsubsection{Inégalités}
+
+  \reference[GOU20]{97}
+
+  \begin{proposition}[Inégalité de Hölder]
+    Soient $p, q > 0$ tels que $\frac{1}{p} + \frac{1}{q} = 1$. Alors,
+    \[ \forall a_1, \dots, a_n, b_1, \dots, b_n \geq 0, \, \sum_{i=1}^n a_i b_i \leq \left( \sum_{i=1}^n a_i^p \right)^{\frac{1}{p}} \left( \sum_{i=1}^n b_i^q \right)^{\frac{1}{q}} \]
+  \end{proposition}
+
+  \begin{proposition}[Inégalité de Minkowski]
+    Soit $p \geq 1$. Alors,
+    \[ \forall x_1, \dots, x_n, y_1, \dots, y_n \geq 0, \, \left( \sum_{i=1}^n |x_i + y_i|^p \right)^{\frac{1}{p}} \leq \left( \sum_{i=1}^n x_i^p \right)^{\frac{1}{p}} \left( \sum_{i=1}^n y_i^p \right)^{\frac{1}{p}} \]
+  \end{proposition}
+
+  \reference[ROM19-1]{241}
+
+  \begin{proposition}[Inégalité de Jensen]
+    Si $f : \mathbb{R} \rightarrow \mathbb{R}$ est convexe, alors pour toute fonction $u$ continue sur un intervalle $[a, b]$, on a :
+    \[ f \left( \frac{1}{b-a} \int_a^b u(t) \, \mathrm{d}t \right) \leq \frac{1}{b-a} \int_a^b f \circ u (t) \, \mathrm{d}t \]
+  \end{proposition}
+
+  \begin{proposition}[Comparaison des moyennes harmonique, géométrique et arithmétique]
+    Pour toute suite finie $x = (x_i)$ de $n$ réels strictement positifs, on a :
+    \[ \frac{n}{\sum_{i=1}^n \frac{1}{x_i}} \leq \left( \prod_{i=1}^n x_i \right)^{\frac{1}{n}} \leq \frac{1}{n} \sum_{i=1}^n x_i \]
+  \end{proposition}
+
+  \subsubsection{Recherche d'extrema}
+
+  \reference{234}
+
+  \begin{proposition}
+    Une fonction $f : \mathbb{R} \rightarrow \mathbb{R}$ est constante si et seulement si elle est convexe et majorée.
+  \end{proposition}
+
+  \begin{cexample}
+    La fonction $f$ définie sur $\mathbb{R}^+$ par $f(x) = \frac{1}{1+x}$ est convexe, majorée, mais non constante.
+  \end{cexample}
+
+  \begin{proposition}
+    Si $f : I \rightarrow \mathbb{R}$ est convexe et est dérivable en un point $\alpha \in \mathring{I}$ tel que $f'(\alpha) = 0$, alors $f$ admet un minimum global en $\alpha$.
+  \end{proposition}
+
+  \begin{proposition}
+    Si $f : I \rightarrow \mathbb{R}$ est convexe et admet un minimum local, alors ce minimum est global.
+  \end{proposition}
+
+  \subsubsection{Méthode de Newton}
+
+  \reference[ROU]{152}
+  \dev{methode-de-newton}
+
+  \begin{theorem}[Méthode de Newton]
+    Soit $f : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+    \[ \varphi :
+    \begin{array}{ccc}
+      [c, d] &\rightarrow& \mathbb{R} \\
+      x &\mapsto& x - \frac{f(x)}{f'(x)}
+    \end{array}
+    \]
+    (qui est bien définie car $f' > 0$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
+      \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+      \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(x_n)$ est strictement décroissante (ou constante).
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{example}
+    \begin{itemize}
+      \item On fixe $y > 0$. En itérant la fonction $F : x \mapsto \frac{1}{2} \left( x + \frac{y}{x} \right)$ pour un nombre de départ compris entre $c$ et $d$ où $0 < c < d$ et $c^2 < 0 < d^2$, on peut obtenir une approximation du nombre $\sqrt{y}$.
+      \item En itérant la fonction $F : x \mapsto \frac{x^2+1}{2x-1}$ pour un nombre de départ supérieur à $2$, on peut obtenir une approximation du nombre d'or $\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{itemize}
+  \end{example}
+  %</content>
+\end{document}

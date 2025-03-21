@@ -1,0 +1,12 @@
+% Bibliographie :
+
+%\addbibresource{\bibliographypath}%
+\defbibheading{bibliography}[\bibname]{\section*{#1}}
+\renewbibmacro*{entryhead:full}{\printfield{labeltitle}}%
+\DeclareFieldFormat{url}{\newline\footnotesize\url{#1}}%
+
+\AtEndDocument{%
+  \newpage%
+  \pagestyle{empty}%
+  \printbibliography%
+}

@@ -1,0 +1,118 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{lemme-de-morse}{Lemme de Morse}
+
+  \summary{En usant (certains diront plutôt ``en abusant'') du théorème d'inversion locale, on montre le lemme de Morse et on l'applique à l'étude de la position d'une surface par rapport à son plan tangent.}
+
+  \begin{notation}
+    Si $f : \mathbb{R}^n \rightarrow \mathbb{R}$ est une application dont toutes les dérivées secondes existent, on note $\mathrm{Hess}(f)_a$ la hessienne de $f$ au point $a$.
+  \end{notation}
+
+  \reference[ROU]{209}
+
+  \begin{lemma}
+    \label{lemme-de-morse-1}
+    Soit $A_0 \in \mathcal{S}_n(\mathbb{R})$ inversible. Alors il existe un voisinage $V$ de $A_0$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ telle que
+    \[ \forall A \in V, \, A = \tr \psi(A) A_0 \psi(A) \]
+  \end{lemma}
+
+  \begin{proof}
+    On définit l'application
+    \[ \varphi :
+    \begin{array}{ccc}
+      \mathcal{M}_n(\mathbb{R}) &\rightarrow& \mathcal{S}_n(\mathbb{R}) \\
+      M &\mapsto& \tr M A_0 M
+    \end{array}
+    \]
+    qui est une application polynômiale en les coefficients de $M$, donc de classe $\mathcal{C}^1$. Soit $H \in \mathcal{M}_n(\mathbb{R})$. On calcule :
+    \begin{align*}
+      \varphi(I_n + H) - \varphi(I_n) &= \tr H A_0 + A_0 H + \tr H A_0 + H \\
+      &= \tr (A_0 H) + A_0 H + o(\Vert H \Vert^2)
+    \end{align*}
+    où ($\Vert . \Vert$ désigne une quelconque norme d'algèbre sur $\mathcal{M}_n(\mathbb{R})$). Ainsi, on a $\mathrm{d} \varphi_{I_n}(H) = \tr(A_0 H) + A_0 H$. D'où
+    \[ \ker(\mathrm{d} \varphi_{I_n}) = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{A}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{A}_n(\mathbb{R}) \]
+    On définit donc
+    \[ F = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{S}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{S}_n(\mathbb{R})  \]
+    et on a $\mathcal{M}_n(\mathbb{R}) = F \oplus \ker(\mathrm{d} \varphi_{I_n})$. Ainsi, la différentielle $\mathrm{d} (\varphi_{|F})_{I_n}$ est bijective (car $\ker(\mathrm{d} (\varphi_{|F})_{I_n}) = \ker(\mathrm{d} \varphi_{I_n}) \, \cap \, F = \{ 0 \}$).
+    \newpar
+    On peut donc appliquer le théorème d'inversion locale à $\varphi_{|F}$ : il existe $U$ un voisinage ouvert de $I_n$ dans $F$ tel que $(\varphi_{|U})$ soit $\mathcal{C}^1$-difféomorphisme de $U$ sur $V = \varphi(U)$. De plus, on peut supposer $U \subseteq \mathrm{GL}_n(\mathbb{R})$ (quitte à considérer $U \, \cap \, U'$ où $U'$ est un voisinage ouvert de $I_n$ dans $\mathrm{GL}_n(\mathbb{R})$ ; qui existe par continuité de $\det$).
+    \newpar
+    Ainsi, $V$ est un voisinage ouvert de $A_0 = \varphi(I_n)$ dans $\mathcal{S}_n(\mathbb{R})$ vérifiant :
+    \[ \forall A \in V, \, A = \tr (\varphi_{|U})^{-1}(A) A_0 (\varphi_{|U})^{-1}(A) \]
+    Il suffit alors de poser $\psi = (\varphi_{|U})^{-1}$ (qui est bien une application de classe $\mathcal{C}^1$) pour avoir le résultat demandé.
+  \end{proof}
+
+  \reference{354}
+
+  \begin{lemma}[Morse]
+    \label{lemme-de-morse-2}
+    Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
+    \begin{itemize}
+      \item $\mathrm{d} f_0 = 0$.
+      \item La matrice symétrique $\mathrm{Hess} (f)_0$ est inversible.
+      \item La signature de $\mathrm{Hess}(f)_0$ est $(p, n-p)$.
+    \end{itemize}
+    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
+    \[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
+  \end{lemma}
+
+  \begin{proof}
+    On écrit la formule de Taylor à l'ordre $1$ avec reste intégral au voisinage de $0$, qui donne :
+    \begin{align*}
+      &f(x) = f(0) + \mathrm{d} f_0(x) + \int_0^1 (1-t) \mathrm{d}^2 f_{tx} (x, x) \, \mathrm{d}t \\
+      \iff& f(x) - f(0) = \tr x Q(x) x \tag{$*$}
+    \end{align*}
+    où $Q(x)$ est la matrice symétrique définie par $Q(x) = \int_0^1 (1-t) \mathrm{Hess} f_{tx} \, \mathrm{d}t$ (qui est une application $\mathcal{C}^1$ sur $U$ car $f$ est $\mathcal{C}^3$ sur $U$).
+    \newpar
+    Par hypothèse, $Q(0) = \frac{\mathrm{Hess} (f)_0}{2}$ est une matrice symétrique inversible, donc en vertu du \cref{lemme-de-morse-1}, il existe un voisinage $V_1$ de $Q(0)$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V_1 \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ tels que :
+    \[ \forall A \in V_1, \, A = \tr{\psi(A)} Q(0) \psi(A) \]
+    Mais, l'application $x \mapsto Q(x)$ est continue sur $U$ (puisque $f$ est de classe $\mathcal{C}^3$ sur $U$), donc il existe $V_2$ voisinage de $0$ dans $U$ tel que $\forall x \in V_2$, $Q(x) \in V_1$. On peut donc définir l'application $M = \psi \circ Q_{|V_2}$, qui nous permet d'écrire
+    \[ \forall x \in V_2, \, Q(x) = \tr M (x) Q(0) M (x) \tag{$**$} \]
+    Or, $Q(0)$ est de signature $(p, n-p)$, donc d'après la loi d'inertie de Sylvester, il existe $P \in \mathrm{GL}_n(\mathbb{R})$ telle que
+    \[ Q(0) = \tr P \underbrace{\begin{pmatrix} I_p & \\ & - I_{n-p} \end{pmatrix}}_{= D} P \tag{$***$} \]
+    Finalement en combinant $(*)$ avec $(**)$ et $(***)$, cela donne
+    \begin{align*}
+      &\forall x \in V_2, \, f(x) - f(0) = \tr (P M(x) x) D (P M(x) x) \\
+      \overset{\varphi(x) = P M(x) x}{\iff}& \forall x \in V_2, \, f(x) - f(0) = \tr \varphi(x) D \varphi(x)
+    \end{align*}
+    ce qui est bien l'expression voulue.
+    \newpar
+    Il reste à montrer que $\varphi$ définit bien un difféomorphisme de classe $\mathcal{C}^1$ entre deux voisinages de l'origine. Notons déjà que $\varphi$ est de classe $\mathcal{C}^1$ car $M$ l'est. Calculons la différentielle en $0$ de $\varphi$. Soit $h \in V_2$ ;
+    \begin{align*}
+      \varphi(h) - \varphi(0) &= P M(h) h \\
+      &= P( M(0) + \mathrm{d} M_0 (h) + o(\Vert h \Vert))h \\
+      &= P M(0) h + o(\Vert h \Vert)
+    \end{align*}
+    d'où $\mathrm{d} \varphi_0 (h) = P M(0) h$. Or, $P M(0)$ est inversible, donc en particulier, $\mathrm{d} \varphi_0$ l'est aussi. On peut appliquer le théorème d'inversion locale à $\varphi$, qui donne l'existence de deux ouverts $V$ et $W$ contenant l'origine (car $\varphi(0) = 0$) tel que $\phi = \varphi_{|V}$ soit un $\mathcal{C}^1$-difféomorphisme de $V$ sur $W$.
+  \end{proof}
+
+  \reference{341}
+
+  \begin{application}
+    Soit $S$ la surface d'équation $z = f(x, y)$ où $f$ est de classe $\mathcal{C}^3$ au voisinage de l'origine. On suppose la forme quadratique $\mathrm{d}^2 f_0$ non dégénérée. Alors, en notant $P$ le plan tangent à $S$ en $0$ :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\mathrm{d}^2 f_0$ est de signature $(2, 0)$, alors $S$ est au-dessus de $P$ au voisinage de $0$.
+      \item Si $\mathrm{d}^2 f_0$ est de signature $(0, 2)$, alors $S$ est en-dessous de $P$ au voisinage de $0$.
+      \item Si $\mathrm{d}^2 f_0$ est de signature $(1, 1)$, alors $S$ traverse $P$ selon une courbe admettant un point double en $(0, f(0))$.
+    \end{enumerate}
+  \end{application}
+
+  \begin{proof}
+    Une équation cartésienne de $P$ est donnée par
+    \[ z - 0 = f(0) + \mathrm{d} f_0(x, y) \]
+    La différence d'altitude entre la surface $S$ et le plan tangent $P$ au point $h \in \mathbb{R}^2$ est donc donnée par
+    \[ \delta(h) = f(h) - (f(0) + \mathrm{d}f_0(h)) \]
+    et le \cref{lemme-de-morse-2} permet d'écrire
+    \[ \delta(h) = \alpha \phi_1(h)^2 + \beta \phi_2(h)^2 \]
+    où $(\alpha, \beta)$ désigne la signature de $\mathrm{d}^2 f_0$ et $\phi = (\phi_1, \phi_2)$ est un $\mathcal{C}^1$-difféomorphisme entre deux voisinages de l'origine dans $\mathbb{R}^2$. En particulier, $\phi_1$ et $\phi_2$ ne s'annulent simultanément qu'en $0$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\mathrm{d}^2 f_a$ est de signature $(2, 0)$, on a $\delta(h) > 0$ pour $h$ voisin de $0$ et $h \neq 0$.
+      \item Si $\mathrm{d}^2 f_a$ est de signature $(0, 2)$, on a $\delta(h) < 0$ pour $h$ voisin de $0$ et $h \neq 0$.
+      \item Si $\mathrm{d}^2 f_a$ est de signature $(1, 1)$, on a $\delta(h) = \phi_1(h)^2 - \phi_2(h)^2$ et $S$ traverse $P$ selon une courbe admettant un point double en $(0, f(0))$.
+    \end{enumerate}
+  \end{proof}
+  %</content>
+\end{document}

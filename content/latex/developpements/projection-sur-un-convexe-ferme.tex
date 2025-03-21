@@ -1,0 +1,164 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{projection-sur-un-convexe-ferme}{Projection sur un convexe fermé}
+
+  \summary{On montre le théorème de projection sur un convexe fermé dans un espace de Hilbert réel en utilisant les suites de Cauchy et des propriétés du produit scalaire.}
+
+  Soit $H$ un espace de Hilbert réel de norme $\Vert . \Vert$ et dont on note $\langle ., . \rangle$ le produit scalaire associé.
+
+  \reference[LI]{32}
+
+  \begin{lemma}[Identité du parallélogramme]
+    \label{projection-sur-un-convexe-ferme-1}
+    Soient $x, y \in H$. Alors :
+    \[ \Vert x + y \Vert^2 + \Vert x - y \Vert^2 = 2(\Vert x \Vert^2 + \Vert y \Vert^2) \]
+  \end{lemma}
+
+  \begin{proof}
+    D'une part,
+    \[ \Vert x + y \Vert^2 = \langle x + y, x + y \rangle = \Vert x \Vert^2 + \Vert y \Vert^2 + 2 \langle x, y \rangle \]
+    D'autre part,
+    \[ \Vert x - y \Vert^2 = \langle x - y, x - y \rangle = \Vert x \Vert^2 + \Vert y \Vert^2 - 2 \langle x, y \rangle \]
+    En additionnant les deux lignes, on obtient bien l'égalité voulue.
+  \end{proof}
+
+  \begin{remark}
+    L'interprétation géométrique de cette égalité est que dans le parallélogramme formé par les vecteurs $x$ et $y$, la somme des carrés des diagonales est égale à la somme des carrés des côtés.
+    \begin{center}
+      \begin{tikzpicture}
+        \coordinate (O) at (0, 0);
+        \coordinate (X) at (4, 0);
+        \coordinate (Y) at (1, 2);
+        \coordinate (A) at (5, 2);
+
+        \draw[->, color=red] (O) -- (X) node[below]{$x$};
+        \draw[->, color=red] (O) -- (Y) node[left]{$y$};
+        \draw[dashed] (X) -- (A);
+        \draw[dashed] (Y) -- (A);
+        \draw[->, color=cyan] (O) -- (A) node[shift={(-1.6,-0.3)}]{$x+y$};
+        \draw[->, color=teal] (Y) -- (X) node[shift={(-1.2,0.25)}]{$x-y$};
+      \end{tikzpicture}
+    \end{center}
+  \end{remark}
+
+  \reference[GOU20]{427}
+
+  \begin{theorem}[Projection sur un convexe fermé]
+    \label{projection-sur-un-convexe-ferme-2}
+    Soit $C \subseteq H$ un convexe fermé non-vide. Alors :
+    \[ \forall x \in H, \exists! y \in C \text{ tel que } d(x, C) = \inf_{z \in C} \Vert x - z \Vert = d(x, y) \]
+    On peut donc noter $y = P_C(x)$, le \textbf{projeté orthogonal de $x$ sur $C$}. Il s'agit de l'unique point de $C$ vérifiant
+    \[ \forall z \in C, \, \langle x - P_C(x), z - P_C(x) \rangle \leq 0 \tag{$*$} \]
+    \begin{center}
+      \begin{tikzpicture}
+        \def\a{3}
+        \def\b{1.5}
+        \def\angle{20}
+
+        \coordinate (O) at (0, 0);
+        \coordinate (X) at (5.6, 2.54);
+        \coordinate (Z) at (1.8, -0.8);
+        \coordinate (P) at (\angle:{\a} and {\b});
+        \coordinate (F1) at ({-sqrt(\a*\a-\b*\b)}, 0);
+        \coordinate (F2) at ({+sqrt(\a*\a-\b*\b)}, 0);
+        \tkzDefLine[bisector out](F1,P,F2) \tkzGetPoint{K}
+        \coordinate (A) at ($(K)!+0.5!(P)$);
+        \coordinate (B) at ($(P)!-0.5!(K)$);
+
+        \draw[fill=blue!30, fill opacity=0.3] (O) ellipse ({\a} and {\b});
+
+        \tkzMarkRightAngle[color=red](X,P,K);
+        \tkzMarkAngle[->,size=0.8,color=cyan,mark=none](Z,P,X);
+        \tkzLabelAngle[pos=0,shift={(2,0)}](Z,P,X){\color{cyan} Angle obtus};
+
+        \draw(O) node {$C$};
+        \draw(P) node{$\bullet$} node[left]{$P_C(x)$};
+        \draw(X) node{$\bullet$} node[above right]{$x$};
+        \draw(Z) node{$\bullet$} node[above left]{$z$};
+
+        \draw[dashed] (A) -- (B);
+        \draw[dashed] ($(A)!(X)!(B)$) -- (X);
+        \draw[dashed] (Z) -- (P);
+      \end{tikzpicture}
+    \end{center}
+  \end{theorem}
+
+  \begin{proof}
+    Soit $x \in H$. Posons $\delta = d(x, C)$. Par la caractérisation séquentielle de la borne inférieure, il existe $(y_n)$ une suite de $C$ telle que $\Vert x - y_n \Vert \longrightarrow \delta$. Montrons que $(y_n)$ est une suite de Cauchy. On applique le \cref{projection-sur-un-convexe-ferme-1} :
+    \[ \forall p, q \in \mathbb{N}, \, \Vert (x - y_p) + (x - y_q) \Vert^2 + \Vert y_p - y_q \Vert^2 = 2(\Vert x - y_p \Vert^2 + \Vert x - y_q \Vert^2) \tag{$**$} \]
+    Or, $C$ est convexe. Donc $\forall p, q \in \mathbb{N}$, $\frac{y_p + y_q}{2} \in C$.
+    Par définition,
+    \begin{align*}
+      & \left\Vert x - \frac{y_p + y_q}{2} \right\Vert \geq \delta \\
+      \iff& \frac{1}{2} \Vert (x - y_p) + (x - y_q) \Vert \geq \delta \\
+      \iff& \Vert (x - y_p) + (x - y_q) \Vert^2 \geq 4 \delta^2
+    \end{align*}
+    Par $(**)$, quand $p, q \longrightarrow +\infty$ :
+    \[ \Vert y_p - y_q \Vert \leq 2((\underbrace{\Vert x - y_p \Vert^2}_{\longrightarrow \delta^2} - \delta^2) + (\underbrace{\Vert x - y_q \Vert^2}_{\longrightarrow \delta^2} - \delta^2)) \longrightarrow 0 \]
+    Ainsi $(y_n)$ est une suite de Cauchy de $H$ qui est complet, donc $(y_n)$ converge vers $y \in H$. Mais, $C$ est fermé et $(y_n)$ est une suite de $C$, donc $y \in C$.
+    \newpar
+    Montrons maintenant que $y$ est unique. Soit $z \in C$ tel que $\delta = \Vert x - z \Vert$. On définit la suite $(z_n)$ par
+    \[ \forall n \in \mathbb{N}, \, z_n =
+    \begin{cases}
+      y &\text{si } n \text{ est pair} \\
+      z &\text{si } n \text{ est impair} \\
+    \end{cases}
+    \]
+    Cette suite vérifie $\forall n \in \mathbb{N}$, $\Vert x - z_n \Vert = \delta$ donc en particulier $\Vert x - z_n \Vert \longrightarrow \delta$, et on peut tout-à-fait refaire le raisonnement précédent pour montrer que $(z_n)$ converge (vers $y = z$, donc). Ainsi, on a bien existence et unicité du projeté.
+    \newpar
+    Soit $y \in C$ vérifiant $(*)$. Montrons que $y = P_C(x)$. $\forall z \in C$,
+    \begin{align*}
+      \Vert z - x \Vert^2 &= \Vert (z - y) - (x - y) \Vert^2 \\
+      &= \Vert z - y \Vert^2 + \Vert x - y \Vert^2 - 2 \langle z - y, x - y \rangle \\
+      &\geq \Vert z - y \Vert^2 + \Vert x - y \Vert^2 \\
+      &\geq \Vert x - y \Vert^2
+    \end{align*}
+    ie. $\Vert z - x \Vert \geq \Vert x - y \Vert$. De plus, $y \in C$, donc $d(y, C) = d(x, C)$. D'où $y = P_C(x)$.
+    \newpar
+    Montrons maintenant que $P_C(x)$ vérifie bien $(*)$. $\forall z \in C$, on a
+    \[ \Vert x - z \Vert^2 \geq \Vert x - P_C(x) \Vert^2 \]
+    Or, en développant :
+    \begin{align*}
+      \Vert x - z \Vert^2 &= \Vert (x - P_C(x)) - (z - P_C(x)) \Vert^2 \\
+      &= \Vert x - P_C(x) \Vert^2 + \Vert z - P_C(x) \Vert^2 - 2 \langle x - P_C(x), z - P_C(x) \rangle \\
+      &\geq \Vert x - P_C(x) \Vert^2
+    \end{align*}
+    D'où, par la dernière inégalité,
+    \[ \Vert z - P_C(x) \Vert^2 - 2 \langle x - P_C(x), z - P_C(x) \rangle \geq 0 \tag{$***$} \]
+    Soit maintenant $z_0 \in C$. On va appliquer $(***)$ à $z = \lambda z_0 + (1 - \lambda) z_0 \in C$ pour $\lambda \in ]0, 1]$ :
+    \begin{align*}
+      & \lambda^2 \Vert z_0 + P_C(x) \Vert^2 -2 \lambda \langle x - P_C(x), z_0 - P_C(x) \rangle \geq 0 \\
+      \implies& \lambda \Vert z_0 + P_C(x) \Vert^2 -2 \langle x - P_C(x), z_0 - P_C(x) \rangle \geq 0 \\
+      \overset{\lambda \longrightarrow 0}{\implies}& -2 \langle x - P_C(x), z_0 - P_C(x) \rangle \geq 0
+    \end{align*}
+    ce que l'on voulait.
+  \end{proof}
+
+  \begin{remark}
+    $(*)$ traduit le fait géométrique que l'angle du vecteur $\overrightarrow{P_C(x)x}$ avec $\overrightarrow{P_C(x)z}$ est obtus pour tout $z \in C$. En effet, en notant cet angle $\theta$, on a pour $z \in C$ :
+    \[ \langle x - P_C(x), z - P_C(x) \rangle = \Vert x - P_C(x) \Vert \Vert z - P_C(x) \Vert \cos (\theta) \]
+    et si $\theta$ est obtus, on a bien $\cos (\theta) \leq 0$.
+  \end{remark}
+
+  \begin{corollary}
+    Soit $F$ un sous-espace vectoriel fermé de $H$. Alors $F \oplus F^\perp = H$.
+  \end{corollary}
+
+  \begin{proof}
+    Si $x \in F \, \cap \, F^\perp$, alors $\Vert x \Vert = \langle x, x \rangle = 0$, et donc $x = 0$. Montrons maintenant que $F + F^\perp = H$. Soit $x \in H$. Comme $F$ est un convexe fermé de $H$ (en tant que sous-espace vectoriel fermé), on peut appliquer le \cref{projection-sur-un-convexe-ferme-2}. Ainsi, il existe un unique $P_F(x) \in F$ tel que $d(x, F) = d(x, P_F(x))$ et
+    \[ \forall z \in F, \, \langle x - P_F(x), z - P_F(x) \rangle \leq 0 \tag{$*$} \]
+    Soit $z_0 \in F$. on peut appliquer $(*)$ à $z = z_0$ :
+    \[ \langle x - P_F(x), z_0 - P_F(x) \rangle \leq 0 \]
+    On va également appliquer $(*)$ à $z = -z_0 + 2P_F(x) \in F$ :
+    \[ \langle x - P_F(x), -z_0 + P_F(x) \rangle \leq 0 \iff \langle x - P_F(x), z_0 - P_F(x) \rangle \geq 0 \]
+    Ce qui montre que l'inégalité de $(*)$ est en fait une égalité. On en tire :
+    \[ \forall z \in F, \, \langle x - P_F(x), z \rangle = \langle x - P_F(x), z - P_F(x) \rangle - \langle x - P_F(x), 0 - P_F(x) \rangle = 0 \]
+    donc $x - P_F(x) \in F^\perp$. En conclusion, on a :
+    \[ x = \underbrace{P_F(x)}_{\in F} + \underbrace{x - P_F(x)}_{\in F^\perp} \in F + F^\perp \]
+    et on a donc bien la somme directe $H = F \oplus F^\perp$.
+  \end{proof}
+  %</content>
+\end{document}

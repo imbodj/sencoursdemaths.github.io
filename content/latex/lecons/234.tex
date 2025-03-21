@@ -1,0 +1,578 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{234}{Fonctions et espaces de fonctions Lebesgue-intégrables.}
+
+  On se place dans un espace mesuré $(X, \mathcal{A}, \mu)$. Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$, que l'on munit de sa tribu borélienne $\mathcal{B}(\mathbb{K})$.
+
+  \subsection{L'intégrale de Lebesgue}
+
+  \subsubsection{Définition abstraite}
+
+  \reference[B-P]{120}
+
+  \begin{definition}
+    Soit $f$ une fonction étagée positive sur $(X, \mathcal{A})$. \textbf{L'intégrale} de $f$ sur $X$ par rapport à la mesure $\mu$ est définie par
+    \[ \int_X f \, \mathrm{d}\mu = \sum_{\alpha \in f(X)} \alpha \mu(\{ f = \alpha \}) \in \overline{\mathbb{R}^+} \]
+  \end{definition}
+
+  \begin{proposition}
+    Soit $f$ une fonction étagée. Pour toute décomposition de la forme $f = \sum_{i \in I} \alpha_i \mathbb{1}_{A_i}$ (où $(A_i)_{i \in I}$ désigne une partition $\mathcal{A}$-mesurable finie de $X$), on a :
+    \[ \int_X f \, \mathrm{d}\mu = \sum_{i \in I} \alpha_i \mu(A_i) \]
+  \end{proposition}
+
+  \begin{example}
+    Soit $f : X \rightarrow \mathbb{R}^+$ une fonction ne prenant qu'un nombre fini de valeurs.
+    \begin{itemize}
+      \item On se place dans le cas où $\mu = \delta_a$, la mesure de Dirac en un point $a \in X$. Alors,
+      \[ \int_X f \, \mathrm{d}\mu = f(a) \]
+      \item On se place dans le cas où $\mu = m$, la mesure de comptage sur $(X, \mathcal{P}(X))$. Alors,
+      \[ \int_X f \, \mathrm{d}m = \sum_{\alpha \in f(X)} \alpha |\{ f = \alpha \}| \]
+    \end{itemize}
+  \end{example}
+
+  \begin{definition}
+    Soit $f$ une fonction mesurable positive (finie ou non) sur $(X, \mathcal{A})$. On pose
+    \[ \int_X f \, \mathrm{d}\mu = \sup \left\{ \int_X \varphi \, \mathrm{d}\mu \mid \varphi \text{ étagée positive telle que } \varphi \leq f \right\} \]
+    on dit que $f$ est \textbf{$\mu$-intégrable} si $\int_X f \, \mathrm{d}\mu < +\infty$.
+  \end{definition}
+
+  \subsubsection{Propriétés}
+
+  \begin{theorem}[Convergence monotone]
+    Soit $(f_n)$ une suite croissante de fonctions mesurables positives. Alors, la limite $f$ de cette suite est mesurable positive, et,
+    \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soient $f$, $g$ deux fonctions mesurables positives.
+    \begin{enumerate}[label=(\roman*)]
+      \item $f \leq g \implies \int_X f \, \mathrm{d}\mu \leq \int_X g \, \mathrm{d}\mu$ (l'intégrale est croissante).
+      \item $\int_X (f+g) \, \mathrm{d}\mu = \int_X f \, \mathrm{d}\mu + \int_X g \, \mathrm{d}\mu$ (l'intégrale est additive).
+      \item $\forall \lambda \geq 0, \, \int_X \lambda f \, \mathrm{d}\mu = \lambda \int_X f \, \mathrm{d}\mu$ (l'intégrale est positivement homogène).
+      \item Si $f = g$ pp., alors $\int_X f \, \mathrm{d}\mu = \int_X g \, \mathrm{d}\mu$.
+    \end{enumerate}
+  \end{corollary}
+
+  Au vu de la linéarité de l'intégrale, on peut maintenant donner la définition suivante.
+
+  \reference{128}
+
+  \begin{definition}
+    Soit $f : X \rightarrow \mathbb{K}$ mesurable.
+    \begin{itemize}
+      \item $f$ est dite \textbf{$\mu$-intégrable} si $\vert f \vert$ est $\mu$-intégrable.
+      \item Dans ce cas, si $\mathbb{K} = \mathbb{R}$, en notant $f^+$ et $f^-$ les parties positives et négatives de $f$, on définit
+      \[ \int_X f \, \mathrm{d}\mu = \int_X f^+ \, \mathrm{d}\mu - \int_X f^- \, \mathrm{d}\mu \]
+      \item Si $\mathbb{K} = \mathbb{C}$, en reprenant le point précédent, on définit
+      \[ \int_X f \, \mathrm{d}\mu = \int_X \operatorname{Re}(f) \, \mathrm{d}\mu + i \int_X \operatorname{Im}(f)  \, \mathrm{d}\mu \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    Soit $f : X \rightarrow \mathbb{K}$ intégrable. Alors,
+    \[ \left\vert \int_X f \, \mathrm{d}\mu \right\vert \leq \int_X \vert f \vert \, \mathrm{d}\mu \]
+    avec égalité,
+    \begin{itemize}
+      \item si $\mathbb{K} = \mathbb{R}$, si $f$ est de signe constant pp.
+      \item si $\mathbb{K} = \mathbb{C}$, si $f = \alpha \vert f \vert$ pp. pour $\alpha \in C(0,1)$.
+    \end{itemize}
+  \end{proposition}
+
+  \subsubsection{Lien avec l'intégrale de Riemann}
+
+  \begin{proposition}
+    Soit $[a,b]$ un intervalle de $\mathbb{R}$. Soit $f$ une fonction intégrable au sens de Riemann sur $[a,b]$.
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe une fonction $g$ $\lambda$-intégrable sur $[a,b]$ telle que $f = g$ pp. De plus,
+      \[ \int_a^b f = \int_{[a,b]} g \, \mathrm{d}\lambda \]
+      \item En particulier, si $f$ est borélienne,
+      \[ \int_a^b f = \int_{[a,b]} f \, \mathrm{d}\lambda \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{cexample}
+    La réciproque est fausse. Par exemple, $\mathbb{1}_{\mathbb{Q} \, \cap \, [0,1]}$ est intégrable au sens de Lebesgue, mais pas au sens de Riemann.
+  \end{cexample}
+
+  \subsection{Construction des espaces \texorpdfstring{$L_p$}{Lₚ}}
+
+  \subsubsection{L'espace vectoriel \texorpdfstring{$\mathcal{L}_1$}{L₁}}
+
+  \begin{definition}
+    \label{234-1}
+    On note
+    \[ \mathcal{L}_1(X, \mathcal{A}, \mu) = \left\{ f : X \rightarrow \mathbb{K} \mid f \text{ est } \mu\text{-intégrable} \right\} \]
+    l'ensemble des fonctions $\mu$-intégrables. En l'absence d'ambiguïté, on notera simplement $\mathcal{L}_1(\mu)$ ou $\mathcal{L}_1$. Cette définition s'étend aux ensembles de fonctions intégrables à valeurs dans $\mathbb{R}^+$, $\overline{\mathbb{R}}$, etc.
+  \end{definition}
+
+  \begin{example}
+    Si $\mu$ est la mesure de comptage sur $(\mathcal{P}(\mathbb{N}), \mathbb{N})$, alors
+    \[ \mathcal{L}_1 = \ell_1 = \left\{ (u_n) \in \mathbb{R}^n \mid \sum_{n \geq 0} \vert u_n \vert < +\infty \right\} \]
+  \end{example}
+
+  \begin{theorem}
+    \begin{enumerate}[label=(\roman*)]
+      \item $f \mapsto \int_X f \, \mathrm{d}\mu$ est une forme linéaire positive (au sens où $f \geq 0 \implies \int_X f \, \mathrm{d}\mu \geq 0$) et croissante sur $\mathcal{L}_1$.
+      \item $\mathcal{L}_1$ est un espace vectoriel sur $\mathbb{K}$.
+      \item $\Vert . \Vert_1 : f \mapsto \int_X \vert f \vert \, \mathrm{d}\mu$ est une semi-norme sur $\mathcal{L}_1$.
+    \end{enumerate}
+  \end{theorem}
+
+  \reference{137}
+
+  \begin{theorem}[Lemme de Fatou]
+    Soit $(f_n)$ une suite de fonctions mesurables positives. Alors,
+    \[ 0 \leq \int_X \liminf f_n \, \mathrm{d}\mu \leq \liminf \int_X f_n \, \mathrm{d}\mu \leq +\infty \]
+  \end{theorem}
+
+  \begin{example}
+    \label{234-2}
+    Soit $f$ croissante sur $[0,1]$, continue en $0$ et dérivable en $1$ et dérivable pp. dans $[0,1]$. Alors,
+    \[ \int_{0}^{1} f'(x) \, \mathrm{d}x \leq f(1) - f(0) \]
+  \end{example}
+
+  \begin{theorem}[Convergence dominée]
+    Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
+    \begin{enumerate}[label=(\roman*)]
+      \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
+      \item $\exists g \in \mathcal{L}_1$ positive telle que
+      \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
+      Alors,
+      \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \text{ et } \lim_{n \rightarrow +\infty} \int_X \vert f_n - f \vert \, \mathrm{d}\mu = 0 \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    \begin{itemize}
+      \item On reprend l'\cref{234-2} et on suppose $f$ partout dérivable sur $[0,1]$ de dérivée bornée. Alors l'inégalité est une égalité.
+      \item Soit $\alpha > 1$. On pose $\forall n \geq 1, \, I_n(\alpha) = \int_0^n \left( 1 + \frac{x}{n} \right)^n e^{-\alpha x} \, \mathrm{d}x$. Alors,
+      \[ \lim_{n \rightarrow +\infty} I_n(\alpha) = \int_0^{+\infty} e^{(1-\alpha)x} \, \mathrm{d}x = \frac{1}{\alpha - 1} \]
+    \end{itemize}
+  \end{example}
+
+  \begin{application}[Lemme de Borel-Cantelli]
+    Soit $(A_n)$ une famille de parties de $\mathcal{A}$. Alors,
+    \[ \sum_{n=1}^{+\infty} \mu(A_n) < +\infty \implies \mu \left( \limsup_{n \rightarrow +\infty} A_n \right) = 0 \]
+  \end{application}
+
+  \subsubsection{Les espaces vectoriels \texorpdfstring{$\mathcal{L}_p$}{Lₚ}}
+
+  \reference{163}
+
+  \begin{definition}
+    Pour tout réel $p > 0$, on définit
+    \[ \mathcal{L}_p(X, \mathcal{A}, \mu) = \left\{ f : X \rightarrow \mathbb{K} \mid |f|^p \in \mathcal{L}_1(X, \mathcal{A}, \mu) \right\} \]
+    on a les mêmes remarques qu'à la \cref{234-1}.
+  \end{definition}
+
+  \begin{proposition}
+    $\mathcal{L}_p$ est un espace vectoriel.
+  \end{proposition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\mu(X) < +\infty$, alors
+      \[ 0 < p \leq q \implies \mathcal{L}_q \subseteq \mathcal{L}_p \]
+      \item Si $\mu = m$ est la mesure de comptage sur $\mathbb{N}$, alors
+      \[ 0 < p \leq q \implies \underbrace{\mathcal{L}_p(m)}_{\ell_p} \subseteq \underbrace{\mathcal{L}_q(m)}_{\ell_q} \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Pour tout $p > 0$, on définit
+    \[ \Vert . \Vert_p : f \mapsto \left( \int_X \vert f \vert^p \, \mathrm{d}\mu \right)^{\frac{1}{p}} \]
+  \end{definition}
+
+  \begin{theorem}[Inégalité de Hölder]
+    Soient $p, q \in ]1, +\infty[$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, $f \in \mathcal{L}_p$ et $g \in \mathcal{L}_q$. Alors $fg \in \mathcal{L}_1$ et
+    \[ \Vert fg \Vert_1 \leq \Vert f \Vert_p \Vert g \Vert_q \]
+  \end{theorem}
+
+  \begin{theorem}[Inégalité de Minkowski]
+    \[ \forall f, g \in \mathcal{L}_p, \, \Vert f + g \Vert_p \leq \Vert f \Vert_p + \Vert g \Vert_p \]
+  \end{theorem}
+
+  \subsubsection{Les espaces vectoriels normés \texorpdfstring{$L_p$}{Lₚ}}
+
+  \reference{171}
+
+  \begin{definition}
+    On définit pour tout $p > 0$,
+    \[ L_p = \mathcal{L}_p / V \]
+    où $V = \{ v \in \mathcal{L}_p \mid v = 0 \text{ pp.} \}$.
+  \end{definition}
+
+  \begin{theorem}
+    Pour tout $p \in [1, +\infty]$, $(L_p), \Vert . \Vert_p$ est un espace vectoriel normé.
+  \end{theorem}
+
+  \begin{theorem}[Riesz-Fischer]
+    Pour tout $p \in [1, +\infty]$, $L_p$ est complet pour la norme $\Vert . \Vert_p$.
+  \end{theorem}
+
+  \begin{theorem}
+    Soit $(f_n)$ une suite d'éléments de $L_p$ qui converge vers $f$ pour la norme $\Vert . \Vert_p$. Alors, il existe une sous-suite de $(f_n)$ qui converge pp. vers $f$.
+  \end{theorem}
+
+  \reference{176}
+
+  \begin{proposition}
+    Pour tout $p \in [1, +\infty[$, l'ensemble des fonctions étagées intégrables est dense dans $L_p$.
+  \end{proposition}
+
+  \begin{theorem}
+    On se place sur $(\mathbb{R}, \mathcal{B}(\mathbb{R}), \lambda)$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item L'ensemble des fonctions en escalier à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
+      \item L'ensemble des fonctions continues à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsubsection{L'espace \texorpdfstring{$L_\infty$}{L∞}}
+
+  \reference{180}
+
+  \begin{definition}
+    \begin{itemize}
+      \item Soit $f : X \rightarrow \mathbb{K}$. On définit $\Vert f \Vert_\infty$  comme le supremum essentiel de la fonction $\vert f \vert$ et $\mathcal{L}_\infty(\mu)$ (noté $\mathcal{L}_\infty$ en l'absence d'ambiguïté) l'ensemble des fonctions $\mu$-essentiellement bornées.
+      \item On définit
+      \[ L_\infty = \mathcal{L}_\infty / V \]
+      où $V = \{ v \in \mathcal{L}_\infty \mid v = 0 \text{ pp.} \}$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{theorem}
+    $L_\infty$, muni de $\Vert . \Vert_\infty$, est un espace vectoriel normé complet.
+  \end{theorem}
+
+  \begin{remark}
+    L'inégalité de Hölder est encore vraie pour $q = +\infty$.
+  \end{remark}
+
+  \subsection{Grands théorèmes d'intégration}
+
+  \subsubsection{Régularité sous l'intégrale}
+
+  \reference[Z-Q]{312}
+
+  Soit $f : E \times X \rightarrow \mathbb{C}$ où $(E, d)$ est un espace métrique. On pose $F : t \mapsto \int_X f(t, x) \, \mathrm{d}\mu(x)$.
+
+  \paragraph{Continuité}
+
+  \begin{theorem}[Continuité sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
+      \item $\exists g \in L_1(X)$ positive telle que
+      \[ |f(t,x)| \leq g(x) \quad \forall t \in E, \text{pp. en } x \in X \]
+    \end{enumerate}
+    Alors $F$ est continue en $t_0$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
+      \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
+      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $F$ est continue sur $E$.
+  \end{corollary}
+
+  \reference{318}
+
+  \begin{example}
+    \label{234-3}
+    La fonction
+    \[ \Gamma :
+    \begin{array}{ccc}
+      \mathbb{R}^+_* &\rightarrow& \mathbb{R}^+_* \\
+      t &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
+    \end{array}
+    \]
+    est bien définie et continue sur $\mathbb{R}^+_*$.
+  \end{example}
+
+  \reference[G-K]{104}
+
+  \begin{example}
+    Soit $f : \mathbb{R}^+ \rightarrow \mathbb{C}$ intégrable. Alors,
+    \[ \lambda \mapsto \int_0^{+\infty} e^{-\lambda t} f(t) \, \mathrm{d}t \]
+    est bien définie et est continue sur $\mathbb{R}^+$.
+  \end{example}
+
+  \paragraph{Dérivabilité}
+
+  \reference[Z-Q]{313}
+
+  On suppose ici que $E$ est un intervalle $I$ ouvert de $\mathbb{R}$.
+
+  \begin{theorem}[Dérivation sous le signe intégral]
+    \label{234-4}
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
+      \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
+      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+  \end{theorem}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Si dans le \cref{234-4}, hypothèse (i), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
+      \item On a un résultat analogue pour les dérivées d'ordre supérieur.
+    \end{itemize}
+  \end{remark}
+
+  \begin{theorem}[$k$-ième dérivée sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
+      \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
+      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
+    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
+  \end{theorem}
+
+  \reference{318}
+
+  \begin{example}
+    La fonction $\Gamma$ de l'\cref{234-3} est $\mathcal{C}^\infty$ sur $\mathbb{R}^+_*$.
+  \end{example}
+
+  \reference[B-P]{149}
+
+  \begin{example}
+    On se place dans l'espace mesuré $(\mathbb{N}, \mathcal{P}(\mathbb{N}), \operatorname{card})$ et on considère $(f_n)$ une suite de fonctions dérivables sur $I$ telle que
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{x \in I} |f'_n(t)| < +\infty \]
+    Alors $x \mapsto \sum_{n \in \mathbb{N}} f_n(x)$ est dérivable sur $I$ de dérivée $x \mapsto \sum_{n \in \mathbb{N}} f'_n(x)$.
+  \end{example}
+
+  \reference[GOU20]{169}
+
+  \begin{application}[Transformée de Fourier d'une Gaussienne]
+    En résolvant une équation différentielle linéaire, on a
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+  \end{application}
+
+  \reference[G-K]{107}
+
+  \begin{application}[Intégrale de Dirichlet]
+    On pose $\forall x \geq 0$,
+    \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
+    alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
+      \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
+      \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
+    \end{enumerate}
+  \end{application}
+
+  \paragraph{Holomorphie}
+
+  \reference[Z-Q]{314}
+
+  On suppose ici que $E$ est un ouvert $\Omega$ de $\mathbb{C}$.
+
+  \begin{theorem}[Holomorphie sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
+      \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
+      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $F$ est holomorphe dans $\Omega$ avec
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+  \end{theorem}
+
+  \reference{318}
+
+  \begin{example}
+    La fonction $\Gamma$ de l'\cref{234-3} est holomorphe dans l'ouvert $\{ z \in \mathbb{C} \mid \operatorname{Re}(z) > 0 \}$.
+  \end{example}
+
+  \subsubsection{Intégration sur un espace produit}
+
+  \reference[B-P]{237}
+
+  \begin{theorem}[Fubini-Tonelli]
+    Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
+      \item Dans $\overline{\mathbb{R}^+}$,
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{theorem}[Fubini-Lebesgue]
+    Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
+      \item On a :
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{cexample}
+    On considère $f : (x,y) \mapsto 2e^{-2xy} - e^{-xy}$. Alors, $\int_{[0,1]} \left( \int_{\mathbb{R}^+} f(x,y) \, \mathrm{d}x \right) \mathrm{d}y = 0$, mais $\int_{\mathbb{R}^+} \left( \int_{[0,1]} f(x,y) \, \mathrm{d}y \right) \mathrm{d}x = \ln(2)$.
+  \end{cexample}
+
+  \reference[GOU20]{359}
+
+  \begin{example}
+    Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
+    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+  \end{example}
+
+  \subsection{L'espace \texorpdfstring{$L_2$}{L₂}}
+
+  \subsubsection{Aspect hilbertien}
+
+  \reference[B-P]{185}
+
+  \begin{definition}
+    L'application
+    \[ \langle ., . \rangle : (f,g) \mapsto \int_X f \overline{g} \, \mathrm{d}\mu \]
+    définit un produit scalaire hermitien sur $L_2$. Muni de ce produit scalaire précédent, $L_2$ est un espace de Hilbert.
+  \end{definition}
+
+  \paragraph{Conséquences}
+
+  \begin{theorem}[Projection orthogonale]
+    Soit $F$ un sous-espace vectoriel fermé de $L_2$. Alors,
+    \[ L_2 = F \oplus F^\perp \]
+  \end{theorem}
+
+  \begin{corollary}[Théorème de représentation de Riesz]
+    Soit $\varphi \in L_2'$ une forme linéaire continue. Alors,
+    \[ \exists! g \in L_2 \text{ telle que } \forall f \in L_2, \, \varphi(f) = \int_X f \overline{g} \, \mathrm{d}\mu \]
+  \end{corollary}
+
+  \reference[Z-Q]{222}
+  \dev{dual-de-lp}
+
+  \begin{application}[Dual de $L_p$]
+    Soit $(X, \mathcal{A}, \mu)$ un espace mesuré de mesure finie. On note $\forall p \in ]1,2[$, $L_p = L_p(X, \mathcal{A}, \mu)$. L'application
+    \[
+    \varphi :
+    \begin{array}{ll}
+      L_q &\rightarrow (L_p)' \\
+      g &\mapsto \left( \varphi_g : f \mapsto \int_X f g \, \mathrm{d}\mu \right)
+    \end{array}
+    \qquad \text{ où } \frac{1}{p} + \frac{1}{q} = 1
+    \]
+    est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
+  \end{application}
+
+  \reference[LI]{140}
+
+  \begin{remark}
+    Plus généralement, si l'on identifie $g$ et $\varphi_g$ :
+    \begin{itemize}
+      \item $L_q$ est le dual topologique de $L_p$ pour $p \in ]1, +\infty[$.
+      \item $L_\infty$ est le dual topologique de $L_1$ si $\mu$ est $\sigma$-finie.
+    \end{itemize}
+  \end{remark}
+
+  \paragraph{Base hilbertienne de \texorpdfstring{$L_2$}{L₂}}
+
+  \reference[BMP]{110}
+
+  Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
+
+  \begin{definition}
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+  \end{definition}
+
+  Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
+
+  \begin{notation}
+    On note $L_2(I, \rho)$ l'espace des fonctions de carré intégrable pour la mesure de densité $\rho$ par rapport à la mesure de Lebesgue.
+  \end{notation}
+
+  \begin{proposition}
+    Muni de
+    \[ \langle ., . \rangle : (f,g) \mapsto \int_I f(x) \overline{g(x)} \rho(x) \, \mathrm{d}x \]
+    $L_2(I, \rho)$ est un espace de Hilbert.
+  \end{proposition}
+
+  \begin{theorem}
+    Il existe une unique famille $(P_n)$ de polynômes unitaires orthogonaux deux-à-deux telle que $\deg(P_n) = n$ pour tout entier $n$. C'est la famille de \textbf{polynômes orthogonaux} associée à $\rho$ sur $I$.
+  \end{theorem}
+
+  \begin{example}[Polynômes de Hermite]
+    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
+  \end{example}
+
+  \reference{140}
+
+  \begin{lemma}
+    On suppose que $\forall n \in \mathbb{N}$, $g_n \in L_1(I, \rho)$ et on considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$. Alors $\forall n \in \mathbb{N}$, $g_n \in L_2(I, \rho)$. En particulier, l'algorithme de Gram-Schmidt a bien du sens et $(P_n)$ est bien définie.
+  \end{lemma}
+
+  \dev{densite-des-polygones-orthogonaux}
+
+  \begin{application}
+    On considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$ et on suppose qu'il existe $a > 0$ tel que
+    \[ \int_I e^{a \vert x \vert} \rho(x) \, \mathrm{d}x < +\infty \]
+    alors $(P_n)$ est une base hilbertienne de $L_2(I, \rho)$ pour la norme $\Vert . \Vert_2$.
+  \end{application}
+
+  \begin{cexample}
+    On considère, sur $I = \mathbb{R}^+_*$, la fonction poids $\rho : x \mapsto x^{-\ln(x)}$. Alors, la famille des $g_n$ n'est pas totale. La famille des polynômes orthogonaux associée à ce poids particulier n'est donc pas totale non plus : ce n'est pas une base hilbertienne.
+  \end{cexample}
+
+  \subsubsection{Application aux séries de Fourier}
+
+  \reference[Z-Q]{73}
+
+  \begin{notation}
+    \begin{itemize}
+      \item Pour tout $p \in [1, +\infty]$, on note $L_p^{2\pi}$ l'espace des fonctions $f : \mathbb{R} \rightarrow \mathbb{C}$, $2\pi$-périodiques et mesurables, telles que $\Vert f \Vert_p < +\infty$.
+      \item Pour tout $n \in \mathbb{Z}$, on note $e_n$ la fonction $2\pi$-périodique définie pour tout $t \in \mathbb{R}$ par $e_n(t) = e^{int}$.
+    \end{itemize}
+  \end{notation}
+
+  \begin{proposition}
+    $L_2^{2\pi}$ est un espace de Hilbert pour le produit scalaire
+    \[ \langle ., . \rangle : (f, g) \mapsto \frac{1}{2 \pi} \int_0^{2\pi} f(t) \overline{g(t)} \, \mathrm{d}t \]
+  \end{proposition}
+
+  \reference[BMP]{123}
+
+  \begin{theorem}
+    La famille $(e_n)_{n \in \mathbb{Z}}$ est une base hilbertienne de $L_2^{2 \pi}$.
+  \end{theorem}
+
+  \begin{corollary}[Égalité de Parseval]
+    \label{234-5}
+    \[ \forall f \in L_2^{2 \pi}, \, f = \sum_{n = -\infty}^{+\infty} \langle f, e_n \rangle e_n \]
+  \end{corollary}
+
+  \reference[GOU20]{272}
+
+  \begin{example}
+    On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
+    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+  \end{example}
+
+  \reference[BMP]{124}
+
+  \begin{remark}
+    L'égalité du \cref{234-5} est valable dans $L_2^{2\pi}$, elle signifie donc que
+    \[ \left\Vert \sum_{n = -N}^{N} \langle f, e_n \rangle e_n - f \right\Vert_2 \longrightarrow_{N \rightarrow +\infty} 0 \]
+  \end{remark}
+  %</content>
+\end{document}

@@ -1,0 +1,380 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{246}{Séries de Fourier. Exemples et applications.}
+
+  \subsection{Coefficients de Fourier}
+
+  \subsubsection{Définitions}
+
+  \reference[Z-Q]{73}
+
+  \begin{notation}
+    \begin{itemize}
+      \item Pour tout $p \in [1, +\infty]$, on note $L_p^{2\pi}$ l'espace des fonctions $f : \mathbb{R} \rightarrow \mathbb{C}$, $2\pi$-périodiques et mesurables, telles que $\Vert f \Vert_p < +\infty$.
+      \item Pour tout $n \in \mathbb{Z}$, on note $e_n$ la fonction $2\pi$-périodique définie pour tout $t \in \mathbb{R}$ par $e_n(t) = e^{int}$.
+    \end{itemize}
+  \end{notation}
+
+  \begin{remark}
+    \[ 1 \leq p < q \leq +\infty \implies L_q^{2\pi} \subseteq L_p^{2\pi} \text{ et } \Vert . \Vert_p \leq \Vert . \Vert_q \]
+  \end{remark}
+
+  \begin{proposition}
+    $L_2^{2\pi}$ est un espace de Hilbert pour le produit scalaire
+    \[ \langle ., . \rangle : (f, g) \mapsto \frac{1}{2 \pi} \int_0^{2\pi} f(t) \overline{g(t)} \, \mathrm{d}t \]
+  \end{proposition}
+
+  \reference[GOU20]{268}
+
+  \begin{definition}
+    Soit $f \in L_1^{2\pi}$. On appelle :
+    \begin{itemize}
+      \item \textbf{Coefficients de Fourier complexes}, les complexes définis par
+      \[ \forall n \in \mathbb{Z}, \, c_n(f) = \frac{1}{2 \pi} \int_0^{2\pi} f(t) e^{-int} \, \mathrm{d}t = \langle f, e_n \rangle \]
+      \item \textbf{Coefficients de Fourier réels}, les complexes définis par
+      \[ \forall n \in \mathbb{N}, \, a_n(f) = \frac{1}{\pi} \int_0^{2\pi} f(t) \cos(nt) \, \mathrm{d}t \text{ et } \forall n \in \mathbb{N}^*, \, b_n(f) = \frac{1}{\pi} \int_0^{2\pi} f(t) \sin(nt) \, \mathrm{d}t \]
+    \end{itemize}
+  \end{definition}
+
+  \begin{remark}
+    Soit $f \in L_1^{2\pi}$.
+    \begin{itemize}
+      \item On utilise en général les coefficients réels lorsque $f$ est à valeurs réelles.
+      \item Si $f$ est paire (resp. impaire), les coefficients $b_n(f)$ (resp. $a_n(f)$) sont nuls.
+      \item $\forall n \in \mathbb{N}, a_n(f) = c_n(f) + c_{-n}(f)$ et $\forall n \in \mathbb{N}^*, b_n(f) = i(c_n(f) + c_{-n}(f))$.
+      \item On pourrait plus généralement définir les coefficients de Fourier d'une fonction $T$-périodique pour toute période $T > 0$.
+    \end{itemize}
+  \end{remark}
+
+  \reference{273}
+
+  \begin{example}
+    On définit $\forall \alpha \in \mathbb{R} \setminus \mathbb{Z}, \, f_\alpha : t \mapsto \cos(\alpha t)$. Alors,
+    \[ \forall n \in \mathbb{N}, \, a_n(f_\alpha) = (-1)^n \frac{2 \alpha \sin(\alpha \pi)}{\pi (\alpha^2 - n^2)} \text{ et } \forall n \in \mathbb{N}^*, \, b_n(f_\alpha) = 0 \]
+  \end{example}
+
+  \subsubsection{Propriétés structurelles des espaces \texorpdfstring{$L_p^{2 \pi}$}{Lₚ²ᵖⁱ}}
+
+  \paragraph{L'algèbre \texorpdfstring{$L_1^{2 \pi}$}{L₁²ᵖⁱ}}
+
+  \reference[BMP]{125}
+
+  \begin{proposition}
+    Tout comme sur $L_1(\mathbb{R})$, on a un opérateur de convolution sur $L_1^{2 \pi}$ :
+    \[ \forall f, g \in L_1^{2 \pi}, \, \forall x \in \mathbb{R}, \, f*g(x) = \frac{1}{2 \pi} \int_0^{2\pi} f(y) g(x - y) \, \mathrm{d}y \]
+    qui munit $L_1^{2 \pi}$ d'une structure d'algèbre normée.
+  \end{proposition}
+
+  \reference[AMR08]{174}
+
+  \begin{proposition}
+    Soient $f \in L_1^{2 \pi}$, $a \in \mathbb{R}$ et $k, n \in \mathbb{Z}$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $f * e_n = c_n(f) e_n$.
+      \item $\vert c_n(f) \vert \leq \Vert f \Vert_1$.
+      \item $c_{-n}(f) = c_n(x \mapsto f(-x))$.
+      \item $c_n(\overline{f}) = \overline{c_{-n}(f)}$.
+      \item $c_n(x \mapsto f(x-a)) = e_n(a) c_n(f)$.
+      \item $c_n(e_k f) = c_{n-k}(f) e_n$.
+      \item $c_n(f') = in c_n(f)$ si $f$ est continue et $\mathcal{C}^1$ par morceaux.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference[BMP]{126}
+
+  \begin{lemma}[Riemann-Lebesgue]
+    Soit $f \in L_1^{2 \pi}$. Alors $(c_n(f))$ tend vers $0$ lorsque $n$ tend vers $\pm \infty$.
+  \end{lemma}
+
+  \begin{theorem}
+    \label{246-1}
+    Soit $c_0$ l'espace des suites de complexes qui convergent vers $0$ en $-\infty$ et $+\infty$. L'application
+    \[
+    \mathcal{F} :
+    \begin{array}{ccc}
+      L_1^{2\pi} &\rightarrow& c_0 \\
+      f &\mapsto& (c_n(f))_{n \in \mathbb{Z}}
+    \end{array}
+    \]
+    est un morphisme d'algèbres de $(L_1^{2\pi}, +, *, \Vert . \Vert_1)$ dans $(c_0, +, \cdot, \Vert . \Vert_\infty)$ continu, de norme $1$.
+  \end{theorem}
+
+  \paragraph{Propriétés hilbertiennes de \texorpdfstring{$L_2^{2 \pi}$}{L₂²ᵖⁱ}}
+
+  \reference{109}
+
+  \begin{theorem}
+    \label{246-2}
+    Soit $H$ un espace de Hilbert et $(\epsilon_n)_{n \in I}$ une famille orthonormée dénombrable de $H$. Les propriétés suivantes sont équivalentes :
+    \begin{enumerate}[label=(\roman*)]
+      \item La famille orthonormée $(\epsilon_n)_{n \in I}$ est une base hilbertienne de $H$.
+      \item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, \epsilon_n \rangle \epsilon_n$.
+      \item \label{246-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{remark}
+    L'égalité du \cref{246-2} \cref{246-3} est appelée \textbf{égalité de Parseval}.
+  \end{remark}
+
+  \reference{123}
+
+  \begin{theorem}
+    La famille $(e_n)_{n \in \mathbb{Z}}$ est une base hilbertienne de $L_2^{2 \pi}$.
+  \end{theorem}
+
+  \begin{corollary}
+    \label{246-4}
+    \[ \forall f \in L_2^{2 \pi}, \, f = \sum_{n = -\infty}^{+\infty} c_n(f) e_n \]
+  \end{corollary}
+
+  \reference[GOU20]{272}
+
+  \begin{example}
+    \label{246-5}
+    On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
+    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+  \end{example}
+
+  \reference[BMP]{124}
+
+  \begin{remark}
+    L'égalité du \cref{246-4} est valable dans $L_2^{2\pi}$, elle signifie donc que
+    \[ \left\Vert \sum_{n = -N}^{N} c_n(f) e_n - f \right\Vert_2 \longrightarrow_{N \rightarrow +\infty} 0 \]
+  \end{remark}
+
+  \subsubsection{Séries de Fourier}
+
+  \reference[GOU20]{269}
+
+  \begin{definition}
+    Soit $f \in L_1^{2\pi}$. On appelle \textbf{série de Fourier} associée à $f$ la série $(S_N(f))$ définie par
+    \[ \forall N \in \mathbb{N}, \, S_N(f) = \sum_{n=-N}^{N} c_n(f) e_n \overset{(*)}{=} \frac{a_0(f)}{2} + \sum_{n = 1}^N (a_n(f) \cos(nx) + b_n(f) \sin(nx)) \]
+  \end{definition}
+
+  \begin{remark}
+    L'égalité $(*)$ de la définition précédente est justifiée car,
+    \[ \forall n \in \mathbb{N}^*, \, \forall x \in \mathbb{R}, \, c_n(f) e^{inx} + c_{-n}(f) e^{-inx} = a_n(f) \cos(nx) + b_n(f) \sin(nx) \]
+  \end{remark}
+
+  \subsection{Divers modes de convergence}
+
+  \reference[AMR08]{178}
+
+  Nous avons vu que pour $f \in L_2^{2\pi}$, il y a convergence dans $L_2^{2\pi}$ de $(S_N(f))$ vers $f$. Cette section est dédiée à l'étude d'autres modes de convergence. En particulier, nous allons nous poser plusieurs questions :
+
+  \begin{itemize}
+    \item Pour quelles fonctions $f$ y a-t-il convergence de $(S_N(f))$ ?
+    \item Y a-t-il convergence vers $f$ ?
+    \item De quel type de convergence s'agit-il ?
+  \end{itemize}
+
+  \subsubsection{Convergence au sens de Cesàro}
+
+  \reference{184}
+
+  \begin{definition}
+    Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_N$ est appelé \textbf{noyau de Dirichlet} d'ordre $N$.
+  \end{definition}
+
+  \begin{proposition}
+    Soit $N \in \mathbb{N}$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $D_N$ est une fonction paire, $2\pi$-périodique, et de norme $1$.
+      \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, D_N(x) = \frac{\sin \left(\left( N + \frac{1}{2} \right) x \right)}{\sin \left( \frac{x}{2} \right)} \]
+      \item Pour tout $f \in L_1^{2 \pi}, \, S_N(f) = f * D_N$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Pour tout $N \in \mathbb{N}$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
+  \end{definition}
+
+  \begin{notation}
+    Pour tout $N \in \mathbb{N}^*$, on note $\sigma_N = \frac{1}{N} \sum_{k=0}^{N-1} S_n(f)$ la somme de Cesàro d'ordre $N$ de la série de Fourier d'une fonction $f \in L_1^{2 \pi}$.
+  \end{notation}
+
+  \begin{proposition}
+    Soient $N \in \mathbb{N}^*$ et $f \in L_1^{2 \pi}$.
+    \begin{enumerate}[label=(\roman*)]
+      \item $K_N$ est une fonction positive et de norme $1$.
+      \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, K_N(x) = \frac{1}{N} \left(\frac{\sin \left( \frac{Nx}{2} \right)}{\sin \left( \frac{x}{2} \right)}\right)^2 \]
+      \item $K_N = \sum_{n=-N}^{N} \left(1 - \frac{\vert n \vert}{N}\right) e_n$.
+      \item $\sigma_N(f) = f * K_N$.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{190}
+  \dev{theoreme-de-fejer}
+
+  \begin{theorem}[Fejér]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2\pi$-périodique.
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $f$ est continue, alors $\Vert \sigma_N(f) \Vert_\infty \leq \Vert f \Vert_\infty$ et $(\sigma_N(f))$ converge uniformément vers $f$.
+      \item Si $f \in L_p^{2\pi}$ pour $p \in [1,+\infty[$, alors $\Vert \sigma_N(f) \Vert_p \leq \Vert f \Vert_p$ et $(\sigma_N(f))$ converge vers $f$ pour $\Vert . \Vert_p$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonction continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
+  \end{corollary}
+
+  \reference[BMP]{128}
+
+  \begin{application}
+    L'application $\mathcal{F}$ du \cref{246-1} est injective.
+  \end{application}
+
+  \reference[AMR08]{192}
+
+  \begin{application}[Théorème de Weierstrass]
+    Toute fonction continue sur un intervalle compact $[a,b]$ est limite uniforme sur $[a,b]$ d'une suite de polynômes.
+  \end{application}
+
+  \subsubsection{Convergence ponctuelle}
+
+  \reference[GOU20]{271}
+
+  \begin{theorem}[Dirichlet]
+    Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, continue par morceaux sur $\mathbb{R}$ et $t_0 \in \mathbb{R}$ tels que la fonction
+    \[ h \mapsto \frac{f(t_0 + h) + f(t_0 - h) - f(t_0^+) - f(t_0^-)}{h} \]
+    est bornée au voisinage de $0$. Alors,
+    \[ S_N(f)(t_0) \longrightarrow_{N \rightarrow +\infty} \frac{f(t_0^+) + f(t_0^-)}{2} \]
+  \end{theorem}
+
+  \begin{cexample}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ paire, $2\pi$-périodique telle que :
+    \[ \forall x \in [0, \pi], f(x) = \sum_{p=1}^{+\infty} \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{x}{2} \right)
+    \]
+    Alors $f$ est bien définie et continue sur $\mathbb{R}$. Cependant, sa série de Fourier diverge en $0$.
+  \end{cexample}
+
+  \begin{corollary}
+    Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors,
+    \[ \forall x \in \mathbb{R}, \, S_N(f)(x) \longrightarrow_{N \rightarrow +\infty} \frac{f(x^+) + f(x^-)}{2} \]
+    En particulier, si $f$ est continue en $x$, la série de Fourier de $f$ converge vers $f(x)$.
+  \end{corollary}
+
+  \begin{example}
+    \label{246-6}
+    En reprenant la fonction de l'\cref{246-5},
+    \[ \forall x \in [-\pi, \pi], \, f(x) = \frac{2}{3} - \frac{4}{\pi^2} \sum_{n=1}^{+\infty} (-1)^n \frac{\cos(nx)}{n^2} \]
+  \end{example}
+
+  \subsubsection{Convergence normale}
+
+  \reference[BMP]{128}
+
+  \begin{proposition}
+    Soit $f \in L_1^{2\pi}$ et telle que sa série de Fourier converge normalement. Alors, la somme $g : x \mapsto \sum_{n=-\infty}^{+\infty} c_n(f) e_n(x)$ est une fonction continue $2\pi$-périodique presque partout égale à $f$. De plus, si $f$ est continue, l'égalité $f(x) = g(x)$ est vraie pour tout $x$.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique continue et $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors $(S_N(f))$ converge normalement vers $f$.
+  \end{proposition}
+
+  \reference[AMR08]{211}
+
+  \begin{application}[Développement eulérien de la cotangente]
+    \[ \forall u \in \mathbb{R} \setminus \pi \mathbb{Z}, \, \operatorname{cotan}(u) = \frac{1}{u} + \sum_{n=1}^{+\infty} \frac{2u}{u^2 - n^2 \pi^2} \]
+  \end{application}
+
+  \subsection{Applications}
+
+  \subsubsection{Calcul de sommes, de produits et d'intégrales}
+
+  \reference[GOU20]{272}
+
+  \begin{application}
+    En utilisant l'\cref{246-6}, avec $x = \pi$, on retrouve
+    \[ \sum_{n = 1}^{+\infty} \frac{1}{n^2} = \frac{\pi^2}{6} \]
+  \end{application}
+
+  \begin{application}
+    \[ \forall t \in ]-\pi, \pi[, \, \sin(t) = t \prod_{n=1}^{+\infty} \left( 1 - \frac{t^2}{n^2\pi^2} \right) \]
+  \end{application}
+
+  \reference[AMR08]{221}
+
+  \begin{application}[Sommes de Gauss]
+    \[ \forall m \in \mathbb{N}^*, \, \sum_{n=0}^{m-1} e^{\frac{2i\pi n^2}{m}} = \frac{1+i^{-m}}{1+i^{-1}} \]
+  \end{application}
+
+  \begin{application}[Intégrales de Fresnel]
+    \[ \int_{-\infty}^{+\infty} \cos(2 \pi u^2) \, \mathrm{d}u = \int_{-\infty}^{+\infty} \sin(2 \pi u^2) \, \mathrm{d}u = \frac{1}{2} \]
+  \end{application}
+
+  \reference[AMR11]{325}
+
+  \begin{application}
+    Soit $a > 0$. En considérant la fonction $t \mapsto \frac{1}{\cosh(a) + \cos(t)}$, on en déduit que
+    \[ \forall n \in \mathbb{N}, \, \int_{0}^{\pi} \frac{\cos(nt)}{\cosh(a) + \cos(t)} \, \mathrm{d}t = (-1)^n \frac{\pi e^{-na}}{\sinh(a)} \]
+  \end{application}
+
+  \subsubsection{Équations fonctionnelles}
+
+  \reference[GOU20]{284}
+  \dev{formule-sommatoire-de-poisson}
+
+  \begin{theorem}[Formule sommatoire de Poisson]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction de classe $\mathcal{C}^1$ telle que $f(x) = O \left( \frac{1}{x^2} \right)$ et $f'(x) = O \left( \frac{1}{x^2} \right)$ quand $|x| \longrightarrow +\infty$. Alors :
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{Z}} f(x+n) = \sum_{n \in \mathbb{Z}} \widehat{f}(2 \pi n) e^{2 i \pi n x} \]
+    où $\widehat{f}$ désigne la transformée de Fourier de $f$.
+  \end{theorem}
+
+  \begin{application}[Identité de Jacobi]
+    \[ \forall s > 0, \, \sum_{n=-\infty}^{+\infty} e^{-\pi n^2 s} = \frac{1}{\sqrt{s}} \sum_{n=-\infty}^{+\infty} e^{-\frac{\pi n^2}{s}} \]
+  \end{application}
+
+  \subsubsection{Inégalités remarquables}
+
+  \reference[AMR08]{215}
+
+  \begin{application}[Inégalité isopérimétrique]
+    Soit $\gamma : [0,1] \rightarrow \mathbb{R}^2$ une courbe de Jordan (ie. $\gamma(0) = \gamma(1)$, $\gamma$ est injective sur $]0,1[$ et $\gamma' \neq 0$) de classe $\mathcal{C}^1$ de longueur $L$ et enfermant une surface $S$. Alors,
+    \[ S \leq \frac{L^2}{4 \pi} \]
+    avec égalité si et seulement si $\gamma$ définit un cercle.
+  \end{application}
+
+  \begin{application}[Inégalité de Wirtinger]
+    Soit $f : [a,b] \rightarrow \mathbb{C}$ de classe $\mathcal{C}^1$ telle que $f(a) = f(b) = 0$. Alors,
+    \[ \int_a^b \vert f(x) \vert^2 \, \mathrm{d}x \leq \frac{(b-a)^2}{\pi}^2 \int_a^b \vert f'(x) \vert^2 \, \mathrm{d}x \]
+    De plus, la constante $\frac{(b-a)^2}{\pi}^2$ est optimale.
+  \end{application}
+
+  \reference[Z-Q]{106}
+
+  \begin{application}[Inégalité de Bernstein]
+    Soient $\lambda > 0$ et $\lambda_1, \dots, \lambda_n \in \mathbb{R}$ distincts et tels que $\max_{j \in \llbracket 1, n \rrbracket} \vert \lambda_j \vert < \lambda$. On définit
+    \[ h : t \mapsto \sum_{j=1}^n a_j e^{i \lambda_j t} \text{ où } a_1, \dots, a_n \in \mathbb{C} \]
+    Alors $h$ et sa dérivée $h'$ sont bornées et on a :
+    \[ \Vert h' \Vert_\infty \leq \lambda \Vert h \Vert_\infty \]
+  \end{application}
+
+  \annexessection
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{whitetabularx}{|X|X|}
+        \hline
+        \textbf{Hypothèses sur $f$} & \textbf{Convergence de sa série de Fourier $(S_N(f))$} \\
+        \hline
+        $f \in L_2^{2\pi}$ & Convergence pour $\Vert . \Vert_2$. \\
+        \hline
+        $f$ continue & Convergence uniforme au sens de Cesàro. \\
+        \hline
+        $f \in L_p^{2\pi}$ ($p \in L_p[1,+\infty[$) & Convergence pour $\Vert . \Vert_p$ au sens de Cesàro. \\
+        \hline
+        $f$ $\mathcal{C}^1$ par morceaux & Convergence ponctuelle vers une valeur moyenne. \\
+        \hline
+        $f$ continue et $\mathcal{C}^1$ par morceaux & Convergence normale. \\
+        \hline
+      \end{whitetabularx}
+    \end{center}
+    \caption{Convergence d'une série de Fourier selon les hypothèses sur la fonction de départ.}
+  \end{figure}
+  %</content>
+\end{document}

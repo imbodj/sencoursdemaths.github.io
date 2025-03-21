@@ -1,0 +1,338 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{144}{Racines d'un polynôme. Fonctions symétriques élémentaires. Exemples et applications.}
+
+  Soient $\mathbb{K}$ un corps commutatif et $\mathcal{A}$ une algèbre sur $\mathbb{K}$. À tout polynôme $P = \sum_{i=0}^{n} a_i X^i$ de $\mathcal{K}[X]$, on associe l'application
+
+  \[
+    \widetilde{P} :
+    \begin{array}{ccc}
+      \mathcal{A} &\rightarrow& \mathcal{A} \\
+      x &\mapsto& \sum_{i=0}^{n} a_i x^i
+    \end{array}
+  \]
+
+  L'application $P \mapsto \widetilde{P}$ est un morphisme d'algèbres. On notera abusivement $P = \widetilde{P}$ par la suite s'il n'y a pas d'ambiguïté.
+
+  \subsection{Polynômes}
+
+  \subsubsection{Racines}
+
+  \reference[GOU21]{63}
+
+  Soit $P \in \mathbb{K}[X]$.
+
+  \begin{definition}
+    Soit $\mathbb{L}$ une extension de $\mathbb{K}$ (cf. \cref{144-1}). On dit que $a \in \mathbb{L}$ est une \textbf{racine} de $P$ si $P(a) = 0$.
+  \end{definition}
+
+  \begin{proposition}
+    $a \in \mathbb{K}$ est racine de $P$ si et seulement si $X - a \mid P$.
+  \end{proposition}
+
+  \begin{application}[Polynômes d'interpolation de Lagrange]
+    Soient $a_1, \dots, a_n \in \mathbb{K}$ deux à deux distincts et $b_1, \dots b_n \in \mathbb{K}$. Alors
+    \[ \exists! L \in \mathbb{K}[X] \text{ tel que } \forall i \in \llbracket 1, n \rrbracket, \, L(a_i) = b_i \]
+  \end{application}
+
+  \begin{definition}
+    Soient $a \in \mathbb{K}$ et $h \in \mathbb{N}^*$. On dit que $a$ est \textbf{racine de $P$ d'ordre $h$} si $(X-a)^h \mid P$ mais $(X-a)^{h+1} \nmid P$.
+  \end{definition}
+
+  \begin{proposition}
+    Soient $a_1, \dots, a_r \in \mathbb{K}$ des racines de $P$ distinctes deux à deux et d'ordre $h_1, \dots, h_r$. Alors, $\exists Q \in \mathbb{K}[X]$ tel que
+    \[ P = (X-a_1)^{h_1} \dots (X-a_r)^{h_r} Q(X) \quad \text{ et } \quad Q(a_i) \neq 0 \, \forall i \in \llbracket 1, n \rrbracket \]
+  \end{proposition}
+
+  \begin{corollary}
+    Si $P \in \mathbb{K}[X]$ est de degré $n \geq 1$, alors $P$ a au plus $n$ racines (comptées avec leur ordre de multiplicité).
+  \end{corollary}
+
+  \begin{cexample}
+    C'est faux en général dans un anneau. Par exemple, si $P = \overline{4}X \in \mathbb{Z}/8\mathbb{Z}[X]$, alors $P$ a trois racines : $\overline{0}$, $\overline{1}$ et $\overline{4}$, mais $\deg(P) = 1$.
+  \end{cexample}
+
+  \begin{proposition}
+    Si $\mathbb{K}$ est infini et $P(x) = 0$ pour tout $x \in \mathbb{K}$, alors $P = 0$.
+  \end{proposition}
+
+  \begin{cexample}
+    Si $\mathbb{K} = \{ a_1, \dots, a_n \}$, le polynôme $(X-a_1) \dots (X-a_n)$ est non nul, mais son évaluation en tout élément de $\mathbb{K}$ vaut $0$.
+  \end{cexample}
+
+  \begin{definition}
+    $P$ est dit \textbf{scindé sur $\mathbb{K}$} si on peut écrire
+    \[ P = \lambda (X-a_1)^{h_1} \dots (X-a_r)^{h_r} \]
+    avec $\lambda \in \mathbb{K}$ et pour tout $i \in \llbracket 1, n \rrbracket$, $a_i \in \mathbb{K}$ et $h_i \in \mathbb{N}^*$.
+  \end{definition}
+
+  \begin{definition}
+    On appelle \textbf{polynôme dérivé} de $P$ le polynôme
+    \[ P' = a_1 + 2a_2 X + \dots + na_n X^{n-1} \]
+  \end{definition}
+
+  \begin{remark}
+    L'application $P \rightarrow P'$ est linéaire, et les règles de dérivation coïncident avec les règles usuelles.
+  \end{remark}
+
+  \begin{theorem}[Formule de Taylor]
+    On suppose $\mathbb{K}$ de caractéristique nulle. Alors tout polynôme $F$ de degré inférieur ou égal à $n$ vérifie
+    \[ \forall a \in \mathbb{K}, \, F(X) = \sum_{i=0}^{n} \frac{(X-a)^i}{i!} F^{(i)}(a) \]
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose $\mathbb{K}$ de caractéristique nulle et $P \neq 0$. Alors $a \in \mathbb{K}$ est racine d'ordre $h$ de $P$ si et seulement si
+    \[ \forall i \in \llbracket 1, h-1 \rrbracket, P^{(i)}(a) = 0 \quad \text{ et } \quad P^{(h)}(a) \neq 0 \]
+  \end{corollary}
+
+  \begin{example}
+    Le polynôme $P_n = \sum_{i=0}^{n} \frac{1}{i!} X^{i}$ n'a que des racines simples dans $\mathbb{C}$.
+  \end{example}
+
+  \begin{remark}
+    C'est encore vrai en caractéristique non nulle pour $h = 1$.
+  \end{remark}
+
+  \subsubsection{Polynômes symétriques}
+
+  Soit $A$ un anneau commutatif unitaire.
+
+  \reference{83}
+
+  \begin{definition}
+    Soit $P \in A[X_1, \dots, X_n]$. On dit que $P$ est \textbf{symétrique} si
+    \[ \forall \sigma \in S_n, \, P(X_{\sigma(1)}, \dots, X_{\sigma(n)}) = P(X_1, \dots, X_n) \]
+  \end{definition}
+
+  \begin{example}
+    Dans $\mathbb{R}[X]$, le polynôme $XY + YZ + ZX$ est symétrique.
+  \end{example}
+
+  \begin{definition}
+    On appelle \textbf{polynômes symétriques élémentaires} de $A[X_1, \dots, X_n]$ les polynômes noté $\Sigma_p$ où $p \in \llbracket 1, n \rrbracket$ définis par
+    \[ \Sigma_p = \sum_{1 \leq i_1 < \dots < i_p \leq n} X_{i_1} \dots X_{i_p} \]
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\Sigma_1 = X_1 + \dots + X_n$.
+      \item $\Sigma_2 = \sum_{1 \leq i < j \leq n} X_i X_j$.
+      \item $\Sigma_n = X_1 \dots X_n$.
+    \end{itemize}
+  \end{example}
+
+  \begin{remark}
+    Si $P \in A[X_1, \dots, X_n]$, alors $P(\Sigma_1(X_1, \dots, X_n), \dots, \Sigma_n(X_1, \dots, X_n))$ est symétrique. Et la réciproque est vraie.
+  \end{remark}
+
+  \begin{theorem}[Théorème fondamental des polynômes symétriques]
+    Soit $P \in A[X_1, \dots, X_n]$ un polynôme symétrique. Alors,
+    \[ \exists! \Phi \in A[X_1, \dots, X_n] \text{ tel que } \Phi(\Sigma_1, \dots, \Sigma_n) \]
+  \end{theorem}
+
+  \begin{example}
+    $P = X^3 + Y^3 + Z^3$ s'écrit $P = \Sigma_1^3 - 3 \Sigma_1 \Sigma_2 + 3 \Sigma_3$.
+  \end{example}
+
+  \reference{64}
+
+  \begin{application}[Relations coefficients - racines]
+    Soit $P = a_0X^n + \dots + a_n \in \mathbb{K}[X]$ avec $a_0 \neq 0$ scindé sur $\mathbb{K}$, dont les racines (comptées avec leur ordre de multiplicité) sont $x_1, \dots, x_n$. Alors
+    \[ \forall p \in \llbracket 1, n \rrbracket, \, \Sigma_p(x_1, \dots, x_n) = (-1)^p \frac{a_p}{a_0} \]
+    En particulier,
+    \begin{itemize}
+      \item $\Sigma_1(x_1, \dots, x_n) = \sum_{i=1}^n x_i = -\frac{a_1}{a_0}$.
+      \item $\Sigma_n(x_1, \dots, x_n) = \prod_{i=1}^n x_i = (-1)^n \frac{a_n}{a_0}$.
+    \end{itemize}
+  \end{application}
+
+  \reference[I-P]{279}
+  \dev{theoreme-de-kronecker}
+
+  \begin{application}[Théorème de Kronecker]
+    Soit $P \in \mathbb{Z}[X]$ unitaire tel que toutes ses racines complexes appartiennent au disque unité épointé en l'origine (que l'on note $D$). Alors toutes ses racines sont des racines de l'unité.
+  \end{application}
+
+  \begin{corollary}
+    Soit $P \in \mathbb{Z}[X]$ unitaire et irréductible sur $\mathbb{Q}$ tel que toutes ses racines complexes soient de module inférieur ou égal à $1$. Alors $P = X$ ou $P$ est un polynôme cyclotomique.
+  \end{corollary}
+
+  \reference[GOU21]{86}
+
+  \begin{definition}
+    On appelle \textbf{identités de Newton} les polynômes
+    \[ S_p = \sum_{i=1}^n X_i^p \in \mathbb{R}[X] \]
+  \end{definition}
+
+  \begin{proposition}
+    \begin{itemize}
+      \item $\forall k \in \llbracket 1, n-1 \rrbracket, \, S_k = (-1)^{k+1} k \Sigma_k + \sum_{i=1}^{k-1} (-1)^{i+1} \Sigma_i S_{n-k+i}$.
+      \item $\forall p \in \mathbb{N}, \, S_{p+n} = \sum_{i=1}^n \Sigma_i S_{p+n-i}$.
+    \end{itemize}
+  \end{proposition}
+
+  \reference[C-G]{356}
+  \dev{formes-de-hankel}
+
+  \begin{application}[Formes de Hankel]
+    On suppose $\mathbb{K} = \mathbb{R}$ et on note $x_1, \dots, x_t$ les racines complexes de $P$ de multiplicités respectives $m_1, \dots, m_t$. On pose
+    \[ s_0 = n \text{ et } \forall k \geq 1, \, s_k = \sum_{i=1}^t m_i x_i^k \]
+    Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sigma = \sum_{i, j \in \llbracket 0, n-1 \rrbracket} s_{i+j} X_i X_j$ définit une forme quadratique sur $\mathbb{C}^n$ ainsi qu'une forme quadratique $\sigma_{\mathbb{R}}$ sur $\mathbb{R}^n$.
+      \item Si on note $(p,q)$ la signature de $\sigma_{\mathbb{R}}$, on a :
+      \begin{itemize}
+        \item $t = p + q$.
+        \item Le nombre de racines réelles distinctes de $P$ est $p-q$.
+      \end{itemize}
+    \end{enumerate}
+  \end{application}
+
+  \subsection{Adjonction de racines}
+  \label{144-1}
+
+  \reference[GOZ]{21}
+
+  \begin{definition}
+    On appelle \textbf{extension} de $\mathbb{K}$ tout corps $\mathbb{L}$ tel qu'il existe un morphisme de corps de $\mathbb{K}$ dans $\mathbb{L}$. On notera $\mathbb{L} / \mathbb{K}$ pour signifier que $\mathbb{L}$ est une extension de $\mathbb{K}$ par la suite.
+  \end{definition}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Si $\mathbb{K}$ est un sous-corps de $\mathbb{L}$, alors $\mathbb{L}$ est une extension de $\mathbb{K}$.
+      \item Un morphisme de corps est forcément injectif, donc on peut identifier $\mathbb{K}$ à son image et dire que $\mathbb{K} \subseteq \mathbb{L}$ de manière abusive.
+    \end{itemize}
+  \end{remark}
+
+  \begin{example}
+    $\mathbb{C}$ est une extension de $\mathbb{R}$.
+  \end{example}
+
+  L'idée dans la suite va être de chercher comment ``rajouter'' des racines à des polynômes pourtant irréductibles sur un corps.
+
+  \subsubsection{Corps de rupture}
+
+  \reference{57}
+
+  \begin{definition}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $P \in \mathbb{K}[X]$ irréductible. On dit que $\mathbb{L}$ est un \textbf{corps de rupture} de $P$ si $\mathbb{L} = \mathbb{K}[\alpha]$ où $\alpha \in \mathbb{L}$ est une racine de $P$.
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item Avec les notations précédentes, si $\deg(P) = 1$, $\mathbb{K}$ est un corps de rupture de $P$.
+      \item $\mathbb{C}$ est un corps de rupture de $X^2+1$ sur $\mathbb{R}$.
+      \item $\mathbb{F}_4$ est un corps de rupture de $X^2+X+1$ sur $\mathbb{F}_2$.
+    \end{itemize}
+  \end{example}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$ un polynôme irréductible sur $\mathbb{K}$.
+    \begin{itemize}
+      \item Il existe un corps de rupture de $P$.
+      \item Si $\mathbb{L} = \mathbb{K}[\alpha]$ et $\mathbb{L}' = \mathbb{K}[\beta]$ sont deux corps de rupture de $P$, alors il existe un unique $\mathbb{K}$-isomorphisme $\varphi : \mathbb{L} \rightarrow \mathbb{L}'$ tel que $\varphi(\alpha) = \beta$.
+    \end{itemize}
+  \end{theorem}
+
+  \subsubsection{Corps de décomposition}
+
+  \begin{definition}
+    Soit $P \in \mathbb{K}[X]$ de degré $n \geq 1$. On dit que $\mathbb{L}$ est un \textbf{corps de décomposition} de $P$ si :
+    \begin{itemize}
+      \item Il existe $a \in \mathbb{L}$ et $\alpha_1, \dots, \alpha_n \in \mathbb{L}$ tels que $P = a(X-\alpha_1) \dots (X-\alpha_n)$.
+      \item $\mathbb{L} = \mathbb{K}[\alpha_1, \dots, \alpha_n]$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\mathbb{K}$ est un corps de décomposition de tout polynôme de degré $1$ sur $\mathbb{K}$.
+      \item $\mathbb{C}$ est un corps de décomposition de $X^2+1$ sur $\mathbb{R}$.
+      \item Soit $\xi \in \mu_n^*$, alors $\mathbb{Q}[\xi]$ est un corps de décomposition de $\Phi_n$ (le $n$-ième polynôme cyclotomique) sur $\mathbb{Q}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{theorem}
+    Soit $P \in \mathbb{K}[X]$ un polynôme de degré supérieur ou égal à $1$.
+    \begin{itemize}
+      \item Il existe un corps de décomposition de $P$.
+      \item Deux corps de décomposition de $P$ sont $\mathbb{K}$-isomorphes.
+    \end{itemize}
+  \end{theorem}
+
+  \subsubsection{Clôture algébrique}
+
+  \begin{definition}
+    $\mathbb{K}$ est \textbf{algébriquement clos} si tout polynôme de $\mathbb{K}[X]$ de degré supérieur ou égal à $1$ admet au moins une racine dans $\mathbb{K}$.
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\mathbb{Q}$ n'est pas algébriquement clos.
+      \item $\mathbb{R}$ non plus.
+    \end{itemize}
+  \end{example}
+
+  \begin{proposition}
+    Tout corps algébriquement clos est infini.
+  \end{proposition}
+
+  \begin{theorem}[D'Alembert-Gauss]
+    $\mathbb{C}$ est algébriquement clos.
+  \end{theorem}
+
+  \begin{definition}
+    On dit que $\mathbb{L}$ est une \textbf{clôture algébrique} de $\mathbb{K}$ si $\mathbb{L}$ est une extension de $\mathbb{K}$ algébriquement close et si
+    \[ \forall x \in \mathbb{L}, \, \exists P \in \mathbb{K}[X] \text{ tel que } P(x) = 0 \]
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\mathbb{C}$ est une clôture algébrique de $\mathbb{R}$.
+      \item $\overline{\mathbb{Q}} = \{ \alpha \in \mathbb{C} \mid \exists P \in \mathbb{Q}[X] \setminus \{ 0 \} \text{ tel que } P(\alpha) = 0 \}$ est une clôture algébrique de $\mathbb{Q}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{theorem}[Steinitz]
+    \begin{enumerate}[label=(\roman*)]
+      \item Il existe une clôture algébrique de $\mathbb{K}$.
+      \item Deux clôtures algébriques de $\mathbb{K}$ sont $\mathbb{K}$-isomorphes.
+    \end{enumerate}
+  \end{theorem}
+
+  \subsection{Application en algèbre linéaire}
+
+  \reference[GOU21]{171}
+  \reference{186}
+
+  \begin{definition}
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On appelle :
+    \begin{itemize}
+      \item \textbf{Polynôme caractéristique} de $A$ le polynôme $\chi_A = \det(A - XI_n)$.
+      \item \textbf{Polynôme minimal} de $A$ l'unique polynôme unitaire $\pi_A$ qui engendre l'idéal $\mathrm{Ann}(A) = \{ Q \in \mathbb{K}[X] \mid Q(A) = 0 \}$.
+    \end{itemize}
+  \end{definition}
+
+  \reference{172}
+
+  \begin{proposition}
+    \[ \lambda \text{ est valeur propre de } A \iff \chi_A(\lambda) = 0 \iff \pi_A(\lambda) = 0 \]
+  \end{proposition}
+
+  \reference{185}
+
+  \begin{proposition}
+    \begin{itemize}
+      \item $A$ est trigonalisable si et seulement si $\chi_A$ est scindé sur $\mathbb{K}$.
+      \item $A$ est diagonalisable si et seulement si $\pi_A$ est scindé à racines simples sur $\mathbb{K}$.
+    \end{itemize}
+  \end{proposition}
+
+  \begin{corollary}
+    Si $\mathbb{K} = \mathbb{F}_q$, $A$ est diagonalisable si et seulement si $A^q = A$.
+  \end{corollary}
+  %</content>
+\end{document}

@@ -1,0 +1,464 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{103}{Conjugaison dans un groupe. Exemples de sous-groupes distingués et de groupes quotients. Applications.}
+
+  Soit $G$ un groupe.
+
+  \subsection{Conjugaison dans un groupe}
+
+  \subsubsection{Action de conjugaison}
+
+  \reference[ROM21]{19}
+
+  \begin{lemma}
+    On a une action de $G$ sur lui-même :
+    \[ \forall g, h \in G, \, g \cdot h = ghg^{-1} \]
+  \end{lemma}
+
+  \begin{definition}
+    L'action précédente est appelée \textbf{action de conjugaison}. Le morphisme structurel de $G$ dans $S(G)$ est noté $\operatorname{Int}$ :
+    \[ \forall g, h \in G, \, \operatorname{Int}(g)(h) = ghg^{-1} \]
+    L'image de $G$ par ce morphisme $\operatorname{Int}(G)$ est le groupe des \textbf{automorphismes intérieurs} de $G$.
+  \end{definition}
+
+  \reference[ULM21]{20}
+
+  \begin{example}
+    Le groupe additif d'un espace vectoriel est un groupe abélien dont le seul automorphisme intérieur est l'identité.
+  \end{example}
+
+  \reference[GOU21]{21}
+
+  \begin{proposition}
+    Muni de la composition, l'ensemble des automorphismes intérieurs de $G$ est un groupe.
+  \end{proposition}
+
+  \subsubsection{Orbites et stabilisateurs}
+
+  \reference[PER]{15}
+
+  \begin{definition}
+    On considère l'action de conjugaison de $G$.
+    \begin{itemize}
+      \item Ses orbites sont les \textbf{classes de conjugaison} de $G$.
+      \item Le stabilisateur d'un élément est le \textbf{centralisateur} de celui-ci.
+      \item Deux éléments sont dits \textbf{conjugués} s'ils appartiennent à la même classe de conjugaison.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    Les cycles de même ordre sont conjugués dans $S_n$.
+  \end{example}
+
+  \reference{12}
+
+  \begin{definition}
+    On définit le \textbf{centre} de $G$ noté $Z(G)$ par
+    \[ Z(G) = \{ g \in G \mid \forall h \in H, \, gh=hg \} \]
+    Autrement dit, $Z(G)$ est l'intersection des centralisateurs des éléments de $G$.
+  \end{definition}
+
+  \begin{example}
+    Si $G$ est abélien, alors $Z(G) = G$.
+  \end{example}
+
+  \reference[ULM21]{36}
+
+  \begin{proposition}
+    Soit $g \in G$. Alors, $g \in Z(G)$ si et seulement si sa classe de conjugaison est réduite à un élément.
+    \newpar
+    Ainsi, $Z(G)$ est l'union des classes de conjugaison de taille $1$.
+  \end{proposition}
+
+  \subsection{Sous-groupes distingués et groupes quotients}
+
+  \subsubsection{Classes à gauche et à droite}
+
+  \reference{24}
+
+  \begin{proposition}
+    \label{103-1}
+    Soit $H < G$. On définit la relation $\sim_H$ sur $G$ par $g_1 \sim_H g_2 \iff g_1^{-1} g_2 \in H$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sim_H$ est une relation d'équivalence.
+      \item La classe d'équivalence d'un élément $g \in G$ pour $\sim_H$ est $\overline{g} = gH = \{ gh \mid h \in H \}$ appelée \textbf{classe à gauche} de $g$ modulo $H$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{remark}
+    On définit de la même manière la \textbf{classe à droite} d'un élément $g \in G$ modulo $H$ que l'on note $Hg$.
+  \end{remark}
+
+  \begin{example}
+    Soit $n > 2$. On considère $\mathcal{D}_n = \langle r, s \rangle$ le groupe diédral d'ordre $2n$. Alors,
+    \[ r \langle s \rangle = \{ r, rs \} \neq \{ r, sr \} = \langle s \rangle r \]
+  \end{example}
+
+  \begin{proposition}
+    Soit $H < G$. Alors,
+    \[ \forall g \in G, \vert hG \vert = \vert Gh \vert = \vert H \vert \]
+  \end{proposition}
+
+  \subsubsection{Sous-groupes distingués}
+
+  \reference[ROM21]{3}
+
+  \begin{definition}
+    Soit $H < G$. On dit que $H$ est \textbf{distingué} dans $G$ si,
+    \[ \forall g \in G, \, gH = Hg \]
+    On note cela $H \lhd G$.
+  \end{definition}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\{ e_G \} \lhd G, G \lhd G \text{ et } Z(G) \lhd G$.
+      \item L'intersection de deux sous-groupes distingués dans $G$ est distinguée dans $G$.
+      \item Si $G$ est abélien, tout sous-groupe de $G$ est distingué dans $G$.
+    \end{itemize}
+  \end{example}
+
+  \reference[GOU21]{20}
+
+  \begin{remark}
+    Le symbole $\lhd$ n'est pas transitif.
+  \end{remark}
+
+  \begin{proposition}
+    \[ H \lhd G \iff \forall g \in G, \, gHg^{-1} \subseteq H \]
+  \end{proposition}
+
+  \reference[ULM21]{16}
+
+  \begin{proposition}
+    Soient $G_1$ et $G_2$ deux groupes, et soient $H_1$ et $H_2$ deux sous-groupes respectivement de $G_1$ et de $G_2$. Soit $\varphi : G_1 \rightarrow G_2$ un morphisme. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $H_1 \lhd G_1$, alors $\varphi(H_1) \lhd \varphi(G_1)$.
+      \item Si $H_2 \lhd G_2$, alors $\varphi^{-1}(H_2) \lhd G_1$.
+    \end{enumerate}
+    En particulier, $\ker(\varphi) \lhd G_1$.
+  \end{proposition}
+
+  \reference{43}
+
+  \begin{proposition}
+    Soient $K < H < G$ une suite de sous-groupes. Alors,
+    \[ K \lhd G \implies K \lhd H \]
+  \end{proposition}
+
+  \reference{25}
+
+  \begin{proposition}
+    Soit $H < G$. Si $(G:H) = 2$ (voir sous-section suivante), alors $H \lhd G$.
+  \end{proposition}
+
+  \subsubsection{Groupes quotients}
+
+  \begin{definition}
+    Soit $H < G$.
+    \begin{itemize}
+      \item On appelle \textbf{ensemble quotient} de $G$ par la relation d'équivalence $\sim_H$ de la \cref{103-1}, et on note $G/H$, l'ensemble des classes à gauche de $G$ modulo $H$.
+      \item On appelle \textbf{indice} de $G$ dans $H$, et on note $(G:H)$, le cardinal de $G/H$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    Soit $H < G$. L'ensemble des classes à droite de $G$ modulo $H$ est aussi de cardinal égal à $(G:H)$.
+  \end{proposition}
+
+  \reference{44}
+
+  \begin{theorem}
+    Un sous-groupe $H$ de $G$ est distingué si et seulement si $*$ définit une loi de groupe sur $G/H$ par :
+    \[ \forall g_1, g_2 \in G, \, g_1 H * g_2 H = (g_1 g_2) H \]
+    telle que la surjection canonique
+    \[
+      \pi_H :
+      \begin{array}{ccc}
+        G &\rightarrow& G/H \\
+        g &\mapsto& gH
+      \end{array}
+    \]
+    soit un morphisme de groupes. Dans ce cas, $\pi_H$ est un morphisme surjectif de noyau $H$.
+  \end{theorem}
+
+  \begin{definition}
+    Soit $H \lhd G$. On appelle \textbf{groupe quotient} le groupe $(G/H, *)$ définit dans le théorème précédent.
+  \end{definition}
+
+  \begin{example}
+    Soit $m \in \mathbb{N}^*$. $m \mathbb{Z}$ est un sous-groupe du groupe abélien $\mathbb{Z}$. On peut définir le groupe quotient $\mathbb{Z}/m\mathbb{Z}$ : c'est un groupe cyclique d'ordre $m$.
+  \end{example}
+
+  \subsubsection{Théorèmes d'isomorphisme}
+
+  \reference[ULM21]{51}
+
+  \begin{theorem}[Premier théorème d'isomorphisme]
+    Soient $G_1$ et $G_2$ deux groupes et soit $\varphi : G_1 \rightarrow G_2$ un morphisme. Alors $\varphi$ induit un isomorphisme
+    \[
+      \overline{\varphi} :
+      \begin{array}{ccc}
+        G_1 / \ker(\varphi) &\rightarrow& \varphi(G_1) \\
+        g\ker(\varphi) &\mapsto& \varphi(g)
+      \end{array}
+    \]
+  \end{theorem}
+
+  \begin{example}
+    \begin{itemize}
+      \item Tout groupe cyclique d'ordre $n$ est isomorphe à $\mathbb{Z}/n\mathbb{Z}$.
+      \item $G/Z(G) \cong \operatorname{Int}(G)$.
+    \end{itemize}
+  \end{example}
+
+  \reference{80}
+
+  \begin{theorem}[Deuxième théorème d'isomorphisme]
+    Soient $H < G$ et $K \lhd G$. On pose $N = H \, \cap \, K$. Alors,
+    \[ N \lhd H \text{ et } H/N \cong HK/K \]
+  \end{theorem}
+
+  \begin{example}
+    On note $V$ le sous-groupe de $S_4$ d'ordre $4$ isomorphe au groupe de Klein. Alors,
+    \[ V/S_4 \cong S_3 \]
+  \end{example}
+
+  \reference{51}
+
+  \begin{theorem}[Troisième théorème d'isomorphisme]
+    Soient $H, K \lhd G$ tels que $H \subset K$. Alors,
+    \[ K/H \lhd G/H \text{ et } (G/H)/(K/H) \cong G/K \]
+  \end{theorem}
+
+  \begin{example}
+    \[ (\mathbb{Z}/10\mathbb{Z})/(2\mathbb{Z}/10\mathbb{Z}) \cong \mathbb{Z}/2\mathbb{Z} \]
+  \end{example}
+
+  \subsection{Applications}
+
+  \subsubsection{Application aux \texorpdfstring{$p$}{p}-groupes}
+
+  \reference[ROM21]{22}
+
+  Soit $G$ un groupe fini opérant sur un ensemble fini $X$.
+
+  \begin{definition}
+    On dit que $G$ est un \textbf{$p$-groupe} s'il est d'ordre une puissance d'un nombre premier $p$.
+  \end{definition}
+
+  \begin{theorem}[Formule des classes]
+    Soit $\Omega$ un système de représentants des orbites de l'action de $G$ sur $X$. Alors,
+    \[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe opérant sur $X$, alors,
+    \[ |X^G| \equiv |X| \mod p \]
+    où $X^G$ désigne l'ensemble des points fixes de $X$ sous l'action de $G$.
+  \end{corollary}
+
+  \begin{corollary}
+    On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
+    \begin{align*}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+    \end{align*}
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Le centre d'un $p$-groupe non trivial est non trivial.
+  \end{corollary}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Un groupe d'ordre $p^2$ est toujours abélien.
+  \end{corollary}
+
+  \begin{application}[Théorème de Cauchy]
+    On suppose $G$ non trivial et fini. Soit $p$ un premier divisant l'ordre de $G$. Alors il existe un élément d'ordre $p$ dans $G$.
+  \end{application}
+
+  \reference[GOU21]{44}
+  \dev{theoreme-de-sylow}
+
+  \begin{application}[Premier théorème de Sylow]
+    On suppose $G$ fini d'ordre $n p^\alpha$ avec $n, \alpha \in \mathbb{N}$ et $p$ premier tel que $p \nmid n$. Alors, il existe un sous-groupe de $G$ d’ordre $p^\alpha$.
+  \end{application}
+
+  \subsubsection{Application au groupe symétrique}
+
+  \reference[PER]{15}
+
+  \begin{lemma}
+    Les $3$-cycles sont conjugués dans $A_n$ pour $n \geq 5$.
+  \end{lemma}
+
+  \reference[ROM21]{49}
+
+  \begin{lemma}
+    Le produit de deux transpositions est un produit de $3$-cycles.
+  \end{lemma}
+
+  \begin{proposition}
+    $A_n$ est engendré par les $3$-cycles pour $n \geq 3$.
+  \end{proposition}
+
+  \reference[PER]{28}
+  \dev{simplicite-du-groupe-alterne}
+
+  \begin{theorem}
+    $A_n$ est simple pour $n \geq 5$.
+  \end{theorem}
+
+  \begin{corollary}
+    Pour $n \geq 5$, les sous-groupes distingués de $S_n$ sont $S_n$, $A_n$ et $\{\operatorname{id}\}$.
+  \end{corollary}
+
+  \reference[ULM21]{92}
+
+  \begin{application}
+    $A_5$ est le seul groupe simple d'ordre $60$ à isomorphisme près.
+  \end{application}
+
+  \subsubsection{Application au groupe linéaire d'un espace vectoriel}
+
+  Dans cette partie, $E$ désignera un espace vectoriel sur un corps $\mathbb{K}$ de dimension finie $n$.
+
+  \paragraph{Centre}
+
+  \reference[PER]{97}
+
+  \begin{definition}
+    Soit $H$ un hyperplan de $E$ et soit $u \in \mathrm{SL}(E) \setminus \{ \operatorname{id}_E \}$. Posons $D = \mathrm{Im}(u - \operatorname{id}_E)$. On dit que $u$ est une \textbf{transvection} d'hyperplan $H$ et de droite $D$ si $u_{|H} = \operatorname{id}_H$ (et dans ce cas, $D \subset H$).
+  \end{definition}
+
+  \begin{proposition}
+    $u \in \mathrm{GL}(E)$ est une transvection de droite $D$ si et seulement si $u_{|D} = \operatorname{id}_D$ et le morphisme induit $\overline{u} : E/D \rightarrow E/D$ est l'identité.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $\tau$ une transvection de droite $D$ et d'hyperplan $H$ et soit $u \in \mathrm{GL}(E)$. Alors $u \tau u^{-1}$ est une transvection de droite $u(D)$ et d'hyperplan $u(H)$.
+  \end{proposition}
+
+  \begin{corollary}
+    \begin{enumerate}[label=(\roman*)]
+      \item $Z(\mathrm{GL}(E)) = \{ \lambda \operatorname{id}_E \mid \lambda \in \mathbb{K}^* \}$.
+      \item $Z(\mathrm{SL}(E)) = Z(\mathrm{GL}(E)) \, \cap \, \mathrm{SL}(E) \cong \mu_n(\mathbb{K})$.
+    \end{enumerate}
+  \end{corollary}
+
+  \paragraph{Conjugaison}
+
+  \begin{definition}
+    Soit $H$ un hyperplan de $E$ et soit $u \in \mathrm{GL}(E) \setminus \mathrm{SL}(E)$. Posons $D = \mathrm{Im}(u - \operatorname{id}_E)$. On dit que $u$ est une \textbf{dilatation de droite $D$ et d'hyperplan $H$} si $u_{|H} = \operatorname{id}_H$.
+
+    \medskip
+    Le \textbf{rapport} de cette dilatation est le scalaire $\det(u)$.
+  \end{definition}
+
+  \begin{proposition}
+    Deux dilatations sont conjuguées dans $\mathrm{GL}(E)$ si et seulement si elles ont le même rapport.
+  \end{proposition}
+
+  \begin{proposition}
+    Deux transvections sont toujours conjuguées dans $\mathrm{GL}(E)$. Si $n \geq 3$, elles le sont aussi dans $\mathrm{SL}(E)$.
+  \end{proposition}
+
+  \paragraph{Groupe projectif}
+
+  \begin{definition}
+    Le quotient de $\mathrm{GL}(E)$ par son centre est appelé \textbf{groupe projectif linéaire} et est noté $\mathrm{PGL}(E)$. De même, le quotient de $\mathrm{SL}(E)$ par son centre est noté $\mathrm{PSL}(E)$.
+  \end{definition}
+
+  \begin{remark}
+    Soit $h_\lambda : x \mapsto \lambda x$, on a $\det h_\lambda = \lambda^n$, de sorte qu'on a une suite exacte :
+    \[ \{ \overline{\operatorname{id}_E} \} \rightarrow \mathrm{PSL}(E) \rightarrow \mathrm{PGL}(E) \xrightarrow{\overline{\det}} \mathbb{K}^*/\mathbb{K}^{*n} \rightarrow \{ \overline{\operatorname{id}_E} \} \]
+    où on a posé $\mathbb{K}^{*n} = \{ \lambda \in \mathbb{K}^* \mid \exists \mu \in \mathbb{K}^*, \, \lambda = \mu^n \}$. En particulier, si $\mathbb{K}$ est algébriquement clos, $\mathrm{PSL}(E) \cong \mathrm{PGL}(E)$.
+  \end{remark}
+
+  \begin{theorem}
+    Le groupe $\mathrm{PSL}(E)$ est simple sauf si $n = 2$ et $\mathbb{K} = \mathbb{F}_2$ ou $\mathbb{F}_3$.
+  \end{theorem}
+
+  \subsubsection{Représentations linéaires de groupes finis}
+
+  \reference[ULM21]{144}
+
+  Dans cette partie, on suppose que $G$ est d'ordre fini.
+
+  \begin{definition}
+    \begin{itemize}
+      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace-vectoriel de dimension finie $n$ sur $\mathbb{C}$.
+      \item On dit que $n$ est le \textbf{degré} de $\rho$.
+      \item On dit que $\rho$ est \textbf{irréductible} si $V \neq \{ 0 \}$ et si aucun sous-espace vectoriel de $V$ n'est stable par $\rho(g)$ pour tout $g \in G$, hormis $\{ 0 \}$ et $V$.
+    \end{itemize}
+  \end{definition}
+
+  \begin{example}
+    Soit $\varphi : G \rightarrow S_n$ le morphisme structurel d'une action de $G$ sur un ensemble de cardinal $n$. On obtient une représentation de $G$ sur $\mathbb{C}^n = \{ e_1, \dots, e_n \}$ en posant
+    \[ \rho(g)(e_i) = e_{\varphi(g)(i)} \]
+    c'est la représentation par permutations de $G$ associé à l'action. Elle est de degré $n$.
+  \end{example}
+
+  \begin{definition}
+    La représentation par permutations de $G$ associée à l'action par translation à gauche de $G$ sur lui-même est la \textbf{représentation régulière} de $G$, on la note $\rho_G$.
+  \end{definition}
+
+  \reference{150}
+
+  \begin{definition}
+    On peut associer à toute représentation linéaire $\rho$, son \textbf{caractère} $\chi = \operatorname{trace} \circ \rho$. On dit que $\chi$ est \textbf{irréductible} si $\rho$ est irréductible.
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Les caractères sont des fonctions constantes sur les classes de conjugaison.
+      \item Il y a autant de caractères irréductibles que de classes de conjugaisons.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{definition}
+    Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
+  \end{definition}
+
+  \begin{theorem}[Maschke]
+    Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
+  \end{theorem}
+
+  \reference[PEY]{231}
+
+  \begin{theorem}
+    Les sous-groupes distingués de $G$ sont exactement les
+    \[ \bigcap_{i \in I} \ker(\rho_i) \text{ où } I \in \mathcal{P}(\llbracket 1, r \rrbracket) \]
+  \end{theorem}
+
+  \begin{corollary}
+    $G$ est simple si et seulement si $\forall i \neq 1$, $\forall g \neq e_G$, $\chi_i(g) \neq \chi_i(e_G)$.
+  \end{corollary}
+
+  \annexessection
+
+  \reference[ULM21]{51}
+
+  \begin{figure}[h]
+    \begin{center}
+      \begin{tikzpicture}
+        \node (A) at (0,0) {$G_1$};
+        \node (B) at ($(A.east)+(4,0)$) {$\varphi(G_1)$};
+        \node (C) at ($(B.east)+(4,0)$) {$G_2$};
+        \node (D) at ($0.5*(A)+0.5*(B)-(0,2)$) {$G_1/\ker(\varphi)$};
+        \draw[->] (A) -- (B);
+        \node at ($(A.north east)!0.5!(B.north west)$) {$\varphi$};
+        \draw[->>] (A.south) to [out=-90,in=180] (D.west);
+        \node at ($(A.south)!0.5!(D.north)-(2,0)$) {$\pi_{G_1/\ker(\varphi)}$};
+        \draw[dashed,->] (D.east) to [out=0,in=-90] (B.south);
+        \node at ($(D.east)!0.5!(B.south)+(1,0)$) {$\overline{\varphi}$};
+        \draw[right hook->] (B) -- (C);
+      \end{tikzpicture}
+    \end{center}
+    \caption{Illustration du premier théorème d'isomorphisme par un diagramme.}
+  \end{figure}
+  %</content>
+\end{document}

@@ -1,0 +1,383 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{243}{Séries entières, propriétés de la somme. Exemples et applications.}
+
+  \subsection{Séries entières et rayons de convergence}
+
+  \subsubsection{Définitions}
+
+  \reference[GOU20]{247}
+
+  \begin{definition}
+    On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
+  \end{definition}
+
+  \begin{example}
+    $\sum \frac{z^n}{n!}$ est une série entière.
+  \end{example}
+
+  \begin{lemma}[Abel]
+    Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
+      \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{definition}
+    Soit $\sum a_n z^n$ une série entière. Le nombre
+    \[ R = \sup \{ r \geq 0 \mid (|a_n|r^n) \text{ est bornée} \} \]
+    est le \textbf{rayon de convergence} de $\sum a_n z^n$. On a :
+    \begin{itemize}
+      \item $\forall z \in \mathbb{C}$ tel que $|z| < R$, $\sum a_n z^n$ converge absolument.
+      \item $\forall z \in \mathbb{C}$ tel que $|z| > R$, $\sum a_n z^n$ diverge.
+      \item $\forall r \in [0,R[$, $\sum a_n z^n$ converge normalement sur $\overline{D}(0,r)$.
+    \end{itemize}
+    Le disque $D(0,R)$ est le \textbf{disque de convergence} de la série, le cercle $C(0,R)$ est le \textbf{cercle d'incertitude}.
+  \end{definition}
+
+  \subsubsection{Comparaison de rayons de convergence}
+
+  \reference[AMR11]{234}
+
+  Soient $\sum a_n z^n$ et $\sum b_n z^n$ deux séries entières dont on note $R_a$ et $R_b$ les rayons de convergence respectifs.
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $\forall n \in \mathbb{N}$, on a $|a_n| \leq |b_n|$, alors $R_a \geq R_b$.
+      \item Si $a_n = O(b_n)$, alors $R_a \geq R_b$.
+      \item Si $a_n \sim b_n$, alors $R_a = R_b$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    La série entière $\sum e^{\cos(n)} z^n$ a un rayon de convergence égal à $1$.
+  \end{example}
+
+  \subsubsection{Calcul du rayon de convergence}
+
+  \reference{233}
+
+  \begin{proposition}[Règle de d'Alembert]
+    Soit $\sum a_n z^n$ une série entière. Si $\lim_{n \rightarrow +\infty} \left| \frac{a_{n+1}}{a_n} \right| = \lambda$ avec $\lambda \in [0, +\infty]$, alors le rayon de convergence de $\sum a_n z^n$ est égal à $\frac{1}{\lambda}$.
+  \end{proposition}
+
+  \begin{example}
+    La série entière $\sum \frac{z^n}{n!}$ a un rayon de convergence infini.
+  \end{example}
+
+  \begin{proposition}[Formule d'Hadamard]
+    Le rayon de convergence d'une série entière $\sum a_n z^n$ est donné par $\frac{1}{\rho}$ où
+    \[ \rho = \limsup_{n \rightarrow +\infty} |a_n|^{\frac{1}{n}} \]
+  \end{proposition}
+
+  \begin{example}
+    La série entière $\sum 2^n z^{2n}$ a un rayon de convergence égal à $\frac{1}{\sqrt{2}}$.
+  \end{example}
+
+  \begin{corollary}[Règle de Cauchy]
+    Soit $\sum a_n z^n$ une série entière. Si $\lim_{n \rightarrow +\infty} \left| a_n \right|^{\frac{1}{n}} = \lambda$ avec $\lambda \in [0, +\infty]$, alors le rayon de convergence de $\sum a_n z^n$ est égal à $\frac{1}{\lambda}$.
+  \end{corollary}
+
+  \begin{example}
+    La série entière $\sum \frac{n}{2^n} z^n$ a un rayon de convergence égal à $2$.
+  \end{example}
+
+  \subsubsection{Étude sur le cercle d'incertitude}
+
+  \reference{231}
+
+  \begin{example}
+    Le comportement d'une série entière peut varier sur le cercle d'incertitude suivant ses coefficients :
+    \begin{itemize}
+      \item $\sum z^n$ dont le rayon de convergence est égal à $1$ diverge en tout point de $C(0,1)$.
+      \item $\sum \frac{1}{n^2} z^n$ dont le rayon de convergence est égal à $1$ converge en tout point de $C(0,1)$.
+      \item $\sum \frac{z^n}{n} z^n$ dont le rayon de convergence est égal à $1$ converge en $1$ mais diverge en tout autre point de $C(0,1)$.
+    \end{itemize}
+  \end{example}
+
+  \reference[GOU20]{263}
+  \dev{theoreme-d-abel-angulaire}
+
+  \begin{theorem}[Abel angulaire]
+    \label{243-1}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ telle que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+    \newpar
+    Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
+  \end{theorem}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
+  \end{application}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+  \end{application}
+
+  \begin{cexample}
+    La réciproque est fausse :
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+  \end{cexample}
+
+  \begin{theorem}[Taubérien faible]
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
+    \[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
+    Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
+  \end{theorem}
+
+  \begin{remark}
+    Ce dernier résultat est une réciproque partielle du \cref{243-1}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
+  \end{remark}
+
+  \subsection{Propriétés}
+
+  \subsubsection{Opérations sur les séries entières}
+
+  \reference[AMR11]{235}
+
+  Soient $\sum a_n z^n$ et $\sum b_n z^n$ deux séries entières dont on note $R_a$ et $R_b$ les rayons de convergence respectifs.
+
+  \begin{proposition}
+    En multipliant $\sum a_n z^n$ par un scalaire, on ne change pas le rayon de convergence de la série initiale.
+  \end{proposition}
+
+  \begin{definition}
+    On appelle \textbf{série entière somme} la série entière $\sum (a_n + b_n) z^n$.
+  \end{definition}
+
+  \begin{proposition}
+    On note $R_{a+b}$ le rayon de convergence de la série somme. Alors $R_{a+b} \geq \min \{R_a, R_b\}$ avec égalité si $R_a \neq R_b$.
+  \end{proposition}
+
+  \reference[GOU20]{248}
+
+  \begin{example}
+    Les séries entières $\sum z^n$ et $\sum -z^n$ ont leur rayon de convergence égal à $1$ et la série somme un rayon de convergence infini.
+  \end{example}
+
+  \reference[AMR11]{235}
+
+  \begin{definition}
+    On appelle \textbf{produit de Cauchy} la série entière $\sum c_n z^n$ où
+    \[ \forall n \in \mathbb{N}, \, c_n = \sum_{k=0}^n a_k b_{n-k} \]
+  \end{definition}
+
+  \begin{proposition}
+    On note $R_{c}$ le rayon de convergence du produit de Cauchy $\sum c_n z^n$. Alors,
+    \begin{enumerate}[label=(\roman*)]
+      \item $R_c \geq \min \{R_a, R_b\}$.
+      \item $\forall z \in D(0, \min \{R_a, R_b\}), \, \sum_{n = 0}^{+\infty} c_n z^n = (\sum_{n = 0}^{+\infty} a_n z^n) (\sum_{n = 0}^{+\infty} b_n z^n)$.
+    \end{enumerate}
+  \end{proposition}
+
+  \subsubsection{Propriétés de la somme}
+
+  \reference[AMR11]{239}
+
+  Dans toute cette sous-partie, $\sum a_n z^n$ désigne une série entière de rayon de convergence $R > 0$. On note $S$ sa somme sur $D(0,R)$.
+
+  \begin{proposition}
+    $S$ est continue sur $D(0,R)$.
+  \end{proposition}
+
+  \begin{example}
+    La série entière $\sum \frac{z^n}{n!}$ est continue sur $\mathbb{C}$.
+  \end{example}
+
+  \begin{corollary}
+    $\forall p \in \mathbb{N}$, $S$ admet un développement limité à l'ordre $p$ au voisinage de l'origine, dont la partie régulière est donnée par $a_0 + a_1z + \dots + a_pz^p$.
+  \end{corollary}
+
+  \begin{proposition}
+    Soit $[a, b] \subseteq ]-R, R[$, alors
+    \[ \int_{a}^{b} S(x) \, \mathrm{d}x = \sum_{n=0}^{+\infty} a_n \int_{a}^{b} x^n \, \mathrm{d}x \]
+  \end{proposition}
+
+  \begin{corollary}
+    Les primitives de $S$ sont de la forme $\sum_{n=0}^{+\infty} \frac{a_n}{n+1} x^{n+1} + \alpha$ avec $\alpha \in \mathbb{C}$.
+  \end{corollary}
+
+  \begin{proposition}
+    $S$ est de classe $\mathcal{C}^\infty$ sur $]-R,R[$ et
+    \[ \forall k \in \mathbb{N}, \, \forall x \in ]-R,R[, \, S^{(k)}(x) = \sum_{k = 0}^{+\infty} \frac{k!}{(n-k)!} a_n x^{n-k} \]
+  \end{proposition}
+
+  \begin{remark}
+    En particulier, $\forall k \in \mathbb{N}$, $a_k = \frac{S^{(k)}(0)}{k!}$.
+  \end{remark}
+
+  \begin{example}
+    \[ \forall x \in ]-1, 1[, \, \sum_{n=0}^{+\infty} (n+1)x^n = \frac{1}{(1-x)^2} \]
+  \end{example}
+
+  \subsubsection{Développement en série entière}
+
+  \reference[BMP]{46}
+
+  \begin{definition}
+    Soient $U \subseteq \mathbb{C}$ un ouvert et $f : U \rightarrow \mathbb{C}$. On dit que $f$ est \textbf{développable en série entière en $a \in U$} s'il existe $r > 0$ et $(a_n) \in \mathbb{C}^{\mathbb{N}}$ tels que $D(a, r) \subseteq U$ et
+    \[ \forall z \in D(a, r), \, f(z) = \sum_{n=0}^{+\infty} a_n (z-a)^n \]
+  \end{definition}
+
+  \reference[AMR11]{241}
+
+  \begin{example}
+    Tout polynôme est développable en série entière en tout point de $\mathbb{R}$.
+  \end{example}
+
+  \begin{proposition}
+    Soient $f : x \mapsto \sum_{n=0}^{+\infty} a_n x^n$ et $g : x \mapsto \sum_{n=0}^{+\infty} b_n x^n$ deux fonctions développables en séries entières en $0$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall \lambda \in \mathbb{C}$, $\lambda f + g$ est développable en série entière et son développement est
+      \[ \sum_{n=0}^{+\infty} (\lambda a_n + b_n) x^n \]
+      \item $fg$ est développable en série entière et son développement est le produit de Cauchy des deux séries entières.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $f : x \mapsto \sum_{n=0}^{+\infty} a_n x^n$ une fonction développable en série entière en $0$. Alors $\exists I \subseteq \mathbb{R}$ avec $0 \in I$ tel que :
+    \begin{enumerate}[label=(\roman*)]
+      \item $f'$ est développable en série entière en $0$ son développement est
+      \[ \sum_{n=0}^{+\infty} (n+1) a_{n+1} x^n \]
+      \item $f$ est donc $\mathcal{C}^\infty$.
+      \item $f$ est continue et si $F$ est une primitive de $f$ sur $I$, $F$ est développable en série entière en $0$ son développement est
+      \[ F(0) + \sum_{n=0}^{+\infty} \frac{a_n}{n+1} x^{n+1} \]
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    Voici quelques développements en série entière usuels :
+    \begin{itemize}
+      \item $\forall x \in \mathbb{R}$, $e^x = \sum_{n=0}^{+\infty} \frac{x^n}{n!}$.
+      \item $\forall x \in \mathbb{R}$, $\cos(x) = \sum_{n=0}^{+\infty} \frac{(-1)^n x^{2n}}{(2n)!}$ et $\sin(x) = \sum_{n=0}^{+\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!}$.
+      \item $\forall \alpha > 0$, $\forall x \in ]-1,1[$, $(1 + x)^\alpha = \sum_{n=0}^{+\infty} \frac{\alpha(\alpha - 1) \dots (\alpha - n + 1)}{n!} x^n$.
+    \end{itemize}
+  \end{example}
+
+  \reference[BMP]{55}
+
+  \begin{cexample}
+    La fonction
+    \[
+    x \mapsto \begin{cases}
+      e^{-\frac{1}{x^2}} \text{ si } x > 0 \\
+      0 \text{ sinon}
+    \end{cases}
+    \]
+    est $\mathcal{C}^\infty$ mais n'est pas développable en série entière en $0$.
+  \end{cexample}
+
+  \subsection{Applications}
+
+  \subsubsection{Analyse complexe}
+
+  \reference{46}
+
+  \begin{definition}
+    Soient $U \subseteq \mathbb{C}$ un ouvert et $f : U \rightarrow \mathbb{C}$. On dit que $f$ est \textbf{analytique sur $U$} si $f$ est développable en série entière en tout point de $U$.
+  \end{definition}
+
+  \begin{theorem}
+    Soient $\sum a_n z^n$ une série entière de rayon de convergence $R > 0$ et $z_0 \in D(0,R)$. On note $f : z \mapsto \sum_{n=0}^{+\infty} a_n z^n$.
+    Alors $f$ est holomorphe en $z_0$ et $f'(z_0) = \sum_{n=0}^{+\infty} n a_n z_0^{n-1}$.
+  \end{theorem}
+
+  \begin{theorem}[Zéros isolés]
+    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$. Si $f$ est une fonction analytique si $f$ n'est pas identiquement nulle, alors l'ensemble des zéros de $f$ n'admet pas de point d'accumulation dans $U$.
+  \end{theorem}
+
+  \begin{corollary}
+    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$. Alors $f$ admet un nombre fini de zéros dans tout compact de $U$.
+  \end{corollary}
+
+  \reference[GOU20]{250}
+
+  \begin{corollary}
+    Deux séries entières dont les sommes coïncident sur un voisinage de $0$ dans $\mathbb{R}$ sont égales.
+  \end{corollary}
+
+  \reference[BMP]{63}
+
+  \begin{theorem}
+    Soit $f$ une fonction holomorphe sur un disque ouvert de rayon $\rho$ centré en un point $a$. Alors $f$ est analytique sur ce disque.
+    De plus, on a convergence normale sur tout compact du disque.
+  \end{theorem}
+
+  \subsubsection{Dénombrement}
+
+  \reference[GOU20]{314}
+  \dev{nombres-de-bell}
+
+  \begin{application}[Nombres de Bell]
+    Pour tout $n \in \mathbb{N}^*$, on note $B_n$ le nombre de partitions de $\llbracket 1, n \rrbracket$. Par convention on pose $B_0 = 1$. Alors,
+    \[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
+  \end{application}
+
+  \reference[DAN]{336}
+
+  \begin{application}
+    Soit $n \in \mathbb{N}^*$. $\sigma \in S_n$ est un \textbf{dérangement de $S_n$} si $\forall k \in \llbracket 1, n \rrbracket$, $\sigma(k) \neq k$.
+    Alors,
+    \[ d_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!} \]
+  \end{application}
+
+  \subsubsection{Équations différentielles}
+
+  \reference[AMR11]{246}
+
+  \begin{proposition}
+    Pour résoudre une équation différentielle linéaire $(L)$ à l'aide des séries entières :
+    \begin{enumerate}[label=(\roman*)]
+      \item On suppose que $\varphi(x) = \sum_{n=0}^{+\infty} a_n x^n$ est solution de $(L)$ et on l'introduit dans $(L)$.
+      \item On se ramène à $\sum_{n=0}^{+\infty} b_nx^n = 0$ où les $b_n$ dépendent des $a_n$.
+      \item On trouve une relation liant les $a_n$ et on vérifie que la série $\sum_{n=0}^{+\infty} a_n x^n$ a un rayon de convergence non-nul.
+    \end{enumerate}
+  \end{proposition}
+
+  \reference{273}
+
+  \begin{example}
+    Les solutions de $t^2 (1-t) y'' - t (1+t) y' + y = 0$ sont les fonctions $t \mapsto \lambda \frac{x}{1-x}$ (où $\lambda \in \mathbb{R}$).
+  \end{example}
+
+  \newpage
+  \section*{Annexes}
+
+  \reference[GOU20]{263}
+
+  \begin{figure}[H]
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->] (-3, 0) -- (3, 0) node[right] {$x$};
+        \draw[->] (0, -3) -- (0, 3) node[above] {$y$};
+        \draw (0,2) node {$\bullet$} node[above right]{$1$};
+        \draw (2,0) node {$\bullet$} node[below right]{$1$};
+        \draw (0,0) circle (2);
+        \coordinate (A) at (130:3.5);
+        \coordinate (B) at (230:3.5);
+        \coordinate (C) at (2,0);
+        \begin{scope}
+          \path[clip] circle (2);
+          \path[clip] (A) -- (B) -- (C) -- cycle;
+          \draw [transparent, fill=blue!30, fill opacity=0.3] (C) circle (9);
+        \end{scope}
+        \begin{scope}
+          \path[clip] (A) -- (180:3.5) -- (C) -- cycle;
+          \draw (C) circle (1);
+        \end{scope}
+        \draw (0.7,0.35) node {$\theta_0$};
+        \draw (C) -- (A);
+        \draw (C) -- (B);
+        \coordinate (S) at (210:3.5);
+        \coordinate (E) at (-0.5,-0.5);
+        \draw [->] (S) to [out=50] (E);
+        \draw (212:3.7) node {$\Delta_{\theta_0}$};
+      \end{tikzpicture}
+    \end{center}
+    \caption{Illustration du théorème d'Abel angulaire.}
+  \end{figure}
+  %</content>
+\end{document}

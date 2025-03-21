@@ -1,0 +1,114 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{transformee-de-fourier-d-une-gaussienne}{Transformée de Fourier d'une gaussienne}
+
+  \summary{On calcule la transformée de Fourier d'une fonction de type gaussienne $x \mapsto e^{-ax^2}$ à l'aide du théorème intégral de Cauchy.}
+
+  \reference[AMR08]{156}
+
+  \begin{proposition}
+    On définit $\forall a \in \mathbb{R}^+_*$,
+    \[ \gamma_a :
+    \begin{array}{ccc}
+      \mathbb{R} &\rightarrow& \mathbb{R} \\
+      x &\mapsto& e^{-ax^2}
+    \end{array}
+    \]
+    Alors,
+    \[ \forall \xi \in \mathbb{R}, \, \widehat{\gamma_a}(\xi) = \sqrt{\frac{\pi}{a}} e^{\frac{- \xi^2}{4a}} \]
+  \end{proposition}
+
+  \begin{proof}
+    Soit $a \in \mathbb{R}^+_*$. On a
+    \[ \forall \xi \in \mathbb{R}, \, \widehat{\gamma_a}(\xi) = \int_{-\infty}^{+\infty} e^{-ax^2} e^{-ix\xi} \, \mathrm{d}x \]
+    et en écrivant
+    \[ ax^2 + ix\xi = a \left( x^2 + i \frac{x \xi}{a} \right) = a \left( \left( x + i \frac{\xi}{2a} \right)^2 + \frac{\xi^2}{4a^2} \right) \]
+    on en déduit que
+    \[ \forall \xi \in \mathbb{R}, \, \widehat{\gamma_a}(\xi) = e^{-\frac{\xi^2}{4a}} \int_{-\infty}^{+\infty} e^{-a \left( x + i \frac{\xi}{2a} \right)^2} \, \mathrm{d}x \tag{$*$} \]
+    On va considérer la fonction
+    \[
+    \begin{array}{ccc}
+      \mathbb{C} &\rightarrow& \mathbb{C} \\
+      z &\mapsto& e^{-az^2}
+    \end{array}
+    \]
+    Pour $R > 0$ et $\xi \in \mathbb{R}$, on note $\Gamma(R)$ le rectangle de sommets $-R, R, R + i\frac{\xi}{2a}, -R + i\frac{\xi}{2a}$ parcouru dans le sens direct :
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->] (-4,0) -- (4,0) node[right] {$\operatorname{Re}$};
+        \draw[->] (0,-1) -- (0,3) node[above] {$\operatorname{Im}$};
+        \draw[color=magenta] (-3,0) -- (3,0) -- (3,2) -- (-3, 2) -- cycle;
+        \draw[->, color=magenta] (-3,0) -- (2,0);
+        \draw[->, color=magenta] (3,0) -- (3,1.5);
+        \draw[->, color=magenta] (3,2) -- (-2,2);
+        \draw[->, color=magenta] (-3,2) -- (-3,0.5);
+        \draw(3,1) node[right] {$\color{magenta}\Gamma(R)$};
+        \draw(3,0) node {$\bullet$};
+        \draw(3,0) node[below right]{$R$};
+        \draw(3,2) node {$\bullet$};
+        \draw(3,2) node[above right]{$R + i\frac{\xi}{2a}$};
+        \draw(-3,2) node {$\bullet$};
+        \draw(-3,2) node[above left]{$-R + i\frac{\xi}{2a}$};
+        \draw(-3,0) node {$\bullet$};
+        \draw(-3,0) node[below left]{$-R$};
+        \draw(0,2) node {$\bullet$};
+        \draw(0,2) node[above right]{$i\frac{\xi}{2a}$};
+      \end{tikzpicture}
+    \end{center}
+    On a,
+    \[ \underbrace{\int_{\Gamma(R)} e^{-az^2} \, \mathrm{d}z}_{= I(R)} = \underbrace{\int_{-R}^R e^{-az^2} \, \mathrm{d}z}_{= I_1(R)} + \underbrace{\int_R^{R + i\frac{\xi}{2a}} e^{-az^2} \, \mathrm{d}z}_{= I_2(R)} + \underbrace{\int_{R + i\frac{\xi}{2a}}^{-R + i\frac{\xi}{2a}} e^{-az^2} \, \mathrm{d}z}_{= I_3(R)} + \underbrace{\int_{-R + i\frac{\xi}{2a}}^{-R} e^{-az^2} \, \mathrm{d}z}_{= I_4(R)} \]
+    Nous allons traiter les intégrales séparément.
+    \begin{itemize}
+      \item \uline{Pour $I_1(R)$ :} On a affaire à une intégrale sur l'axe réel. Or, on connait la valeur de l'intégrale de Gauss :
+      \[ \int_{-\infty}^{+\infty} e^{-y^2} \, \mathrm{d}y = \sqrt{\pi} \]
+      Donc en faisant le changement de variable $y = \sqrt{a}x$, on obtient :
+      \[ \sqrt{a} \int_{-\infty}^{+\infty} e^{-ax^2} \, \mathrm{d}x = \sqrt{\pi} \iff \int_{-\infty}^{+\infty} e^{-ax^2} \, \mathrm{d}x = \sqrt{\frac{\pi}{a}} \]
+      D'où :
+      \[ I_1(R) \longrightarrow \sqrt{\frac{\pi}{a}} \]
+      quand $R \longrightarrow +\infty$.
+      \item \uline{Pour $I_2(R)$ :} On a :
+      \begin{align*}
+        &\forall z \in \left[ R, R + i \frac{\xi}{2a} \right], \, z = R + it \text{ avec $t \in \left[ 0, \frac{\xi}{2a} \right]$} \\
+        \implies& \mathrm{d}z = i\mathrm{d}t
+      \end{align*}
+      D'où :
+      \[ I_2(R) = i \int_0^{\frac{\xi}{2a}} e^{-a (R+it)^2} \, \mathrm{d}t \]
+      On en déduit,
+      \begin{align*}
+        |I_2(R)| &\leq \int_0^{\frac{\xi}{2a}} \left| e^{-a (R+it)^2} \right| \, \mathrm{d}t \\
+        &= \int_0^{\frac{\xi}{2a}} \left| e^{-a(R^2 - t^2)} \right| \underbrace{\left| e^{i 2aRt} \right|}_{= 1} \, \mathrm{d}t \\
+        &= \int_0^{\frac{\xi}{2a}} e^{-a(R^2 - t^2)} \, \mathrm{d}t \\
+        &= e^{-aR^2} \int_0^{\frac{\xi}{2a}} e^{at^2} \, \mathrm{d}t \\
+        &\longrightarrow 0
+      \end{align*}
+      quand $R \longrightarrow +\infty$.
+      \item \uline{Pour $I_3(R)$ :} On a :
+      \begin{align*}
+        &\forall z \in \left[ R + i \frac{\xi}{2a}, -R + i \frac{\xi}{2a} \right], \, z = t + i\frac{\xi}{2a} \text{ avec $t \in \left[ R, -R \right]$} \\
+        \implies& \mathrm{d}z = \mathrm{d}t
+      \end{align*}
+      D'où :
+      \[ I_3(R) = \int_R^{-R} e^{-a \left(t + i \frac{\xi}{2a} \right)^2} \, \mathrm{d}t = - \int_{-R}^R e^{-a \left(t + i \frac{\xi}{2a} \right)^2} \, \mathrm{d}t = - e^{\frac{\xi^2}{4a}} \int_{-R}^R e^{-a \left( t + i \frac{\xi}{2a} \right)^2} \, \mathrm{d}t \]
+      qui est une intégrale généralisée absolument convergente. Ainsi par $(*)$,
+      \[ I_3(R) \longrightarrow - e^{\frac{\xi^2}{4a}} \widehat{\gamma_a}(\xi) \]
+      quand $R \longrightarrow +\infty$.
+      \item \uline{Pour $I_4(R)$ :} Ce cas-ci se traite exactement comme $I_2(R)$. On a :
+      \begin{align*}
+        &\forall z \in \left[ -R + i \frac{\xi}{2a}, -R \right], \, z = -R + it \text{ avec $t \in \left[ \frac{\xi}{2a}, 0 \right]$} \\
+        \implies& \mathrm{d}z = i\mathrm{d}t
+      \end{align*}
+      D'où :
+      \[ I_4(R) = i \int_{\frac{\xi}{2a}}^0 e^{-a (-R+it)^2} \, \mathrm{d}t = -i \int_0^{\frac{\xi}{2a}} e^{-a (-R+it)^2} \, \mathrm{d}t \]
+      On en déduit,
+      \[ |I_4(R)| \leq \int_0^{\frac{\xi}{2a}} \left| e^{-a (-R+it)^2} \right| \, \mathrm{d}t = e^{-aR^2} \int_0^{\frac{\xi}{2a}} e^{at^2} \, \mathrm{d}t \longrightarrow 0 \]
+      quand $R \longrightarrow +\infty$.
+      \item \uline{Pour $I(R)$ :} La fonction $z \mapsto e^{-az^2}$ est holomorphe et le contour $\Gamma(R)$ est fermé. Donc $I(R) = 0$ en vertu du théorème intégral de Cauchy.
+    \end{itemize}
+    En passant à la limite, on obtient ainsi :
+    \[ 0 = \sqrt{\frac{\pi}{a}} + 0 - e^{\frac{\xi^2}{4a}} \widehat{\gamma_a}(\xi) + 0 \iff \widehat{\gamma_a}(\xi) = \sqrt{\frac{\pi}{a}} e^{\frac{- \xi^2}{4a}} \]
+  \end{proof}
+  %</content>
+\end{document}

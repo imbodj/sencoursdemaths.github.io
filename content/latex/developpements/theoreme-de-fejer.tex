@@ -1,0 +1,82 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \development{analysis}{theoreme-de-fejer}{Théorème de Fejér}
+
+  \summary{Dans ce développement, on montre le théorème de Fejér, qui assure la convergence de la série de Fourier d'une fonction au sens de Cesàro.}
+
+  \begin{lemma}
+    \label{theoreme-de-fejer-1}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction continue et $T$-périodique. Alors $f$ est uniformément continue sur $\mathbb{R}$.
+  \end{lemma}
+
+  \begin{proof}
+    Le théorème de Heine implique la continuité uniforme de $f$ sur $[-T, 2T]$, ce qui s'écrit :
+    \[ \forall \epsilon > 0, \exists \eta > 0 \text{ tel que } \forall x, y \in [-T, 2T], \, \vert x - y \vert < \eta \implies \vert f(x) - f(y) \vert < \epsilon \tag{$*$} \]
+    Soit $\epsilon > 0$ et soit le $\eta > 0$ correspondant donné par $(*)$, que l'on peut supposer strictement inférieur à $T$. Soient $x, y \in \mathbb{R}$ tels que $\vert x - y \vert < \eta$. Il existe $k \in \mathbb{Z}$ tel que $x' = x + kT \in [0,T]$. Alors,
+    \[ y' = y + kT \in [x'-\eta, x'+\eta] \subseteq [-T, 2T] \]
+    Comme $\vert x' - y' \vert < \eta$, on en déduit
+    \[ \vert f(x) - f(y) \vert = \vert f(x') - f(y') \vert < \epsilon \]
+    ce qu'il fallait démontrer.
+  \end{proof}
+
+  \reference[GOU21]{306}
+
+  \begin{notation}
+    On note $\forall n \in \mathbb{Z}$, $e_n : x \mapsto e^{inx}$ et, pour toute fonction $f$ continue et $2\pi$-périodique, $c_n(f)$ son $n$-ième coefficient de Fourier.
+  \end{notation}
+
+  \begin{theorem}[Fejér]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction continue et $2\pi$-périodique. On note pour tout $n \in \mathbb{N}$, $S_n$ le $n$-ième terme de sa série de Fourier et
+    \[ C_n = \frac{1}{n+1} \sum_{k=0}^{n} S_k \]
+    la suite des moyennes de Cesàro correspondante. Alors $(C_n)$ converge uniformément vers $f$ sur $\mathbb{R}$.
+  \end{theorem}
+
+  \begin{proof}
+    On commence par noter, pour tout $n \in \mathbb{N}$, $D_n = \sum_{k=-n}^n e_k$ et $F_n = \frac{1}{n+1} \sum_{k=0}^{n} D_k$ les noyaux de Dirichlet et de Fejér. Comme, pour tout $k \in \mathbb{Z}^*$, $\int_{-\pi}^{\pi} e_n(t) \, \mathrm{d}t = 0$, on a pour tout $n \in \mathbb{N}$,
+    \[ \frac{1}{2\pi} \int_{-\pi}^{\pi} D_n(t) \, \mathrm{d}t = \frac{1}{2\pi} \int_{-\pi}^{\pi} e_0(t) \, \mathrm{d}t = 1 \]
+    et donc,
+    \[ \frac{1}{2\pi} \int_{-\pi}^{\pi} F_n(t) \, \mathrm{d}t = \frac{1}{n+1} \left( \sum_{k=0}^n \frac{1}{2\pi} \int_{-\pi}^{\pi} D_n(t) \, \mathrm{d}t \right) = 1 \tag{$*$} \]
+    Calculons le noyau de Dirichlet. Soit $x \in \mathbb{R}\setminus 2\pi\mathbb{Z}$. On a pour tout $N \in \mathbb{N}$,
+    \begin{align*}
+      D_N(x) &= e^{-iNx} \sum_{n=0}^{2N} e^{inx} \\
+      &= e^{-iNx} \frac{e^{(2N+1)ix} - 1}{e^{ix} - 1} \\
+      &= e^{-iNx} \frac{e^{(2N+1) i\frac{x}{2}} \left ( e^{(2N+1) i\frac{x}{2}} - e^{-(2N+1) i\frac{x}{2}} \right )}{e^{i\frac{x}{2}} \left( e^{i\frac{x}{2}} - e^{-i \frac{x}{2}} \right)} \\
+      &= \frac{2i \sin \left( \left( N + \frac{1}{2} \right) x \right)}{2i \sin \left ( \frac{x}{2} \right)} \\
+      &= \frac{\sin \left( \left( N + \frac{1}{2} \right) x \right)}{\sin \left ( \frac{x}{2} \right)}
+    \end{align*}
+    D'où, pour tout $N \in \mathbb{N}^*$ :
+    \begin{align*}
+      NF_{N-1}&=\sum_{n=0}^{N-1}{D_n} \\
+      &=\sum_{n=0}^{N}{\frac{\sin \left( \left( n + \frac{1}{2} \right) x \right)}{\sin \left ( \frac{x}{2} \right)}} \\
+      &=\frac{1}{\sin \left ( \frac{x}{2} \right)}\operatorname{Im} \left( \sum_{n=0}^{N-1}{e^{i(n+\frac{1}{2})x}} \right) \\
+      &=\frac{1}{\sin \left ( \frac{x}{2} \right)}\operatorname{Im} \left ( e^{\frac{ix}{2}}\frac{e^{iNx-1}}{e^{ix}-1} \right) \\
+      &=\frac{1}{\sin \left ( \frac{x}{2} \right)} \operatorname{Im} \left ( e^{\frac{ix}{2}}\frac{e^{\frac{iNx}{2}}2i\sin \left( \frac{Nx}{2} \right)}{e^{\frac{ix}{2}}2i \sin \left ( \frac{x}{2} \right)} \right ) \\
+      &=\frac{\sin \left( \frac{Nx}{2} \right)}{\sin \left ( \frac{x}{2} \right)^2}\operatorname{Im} \left(e^{\frac{iNx}{2}} \right) \\
+      &=\frac{\sin \left( \frac{Nx}{2} \right)^2}{\sin \left ( \frac{x}{2} \right)^2} \tag{$**$}
+    \end{align*}
+    Maintenant, on remarque que pour tout $n \in \mathbb{N}$ et pour tout $x \in \mathbb{R}$,
+    \[ S_n(x) = \frac{1}{2\pi} \sum_{k=0}^n \left( \int_{-\pi}^{\pi} f(t) e^{-ikt} \, \mathrm{d}t \right) e^{ikx} = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) D_n(x-t) \, \mathrm{d}t = f * D_n \]
+    donc $C_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) F_n(x-t) \, \mathrm{d}t = f * F_n = F_n * f$ par commutativité du produit de convolution. Soit $\epsilon > 0$. Le \cref{theoreme-de-fejer-1} assure l'existence de $\eta \in ]0, \pi[$ tel que
+    \[ \forall x, y \in \mathbb{R}, \, \vert x - y \vert < \eta \implies \vert f(x) - f(y) \vert < \epsilon \]
+    De plus, $\vert f \vert$ est continue sur tous les compacts de la forme $[2k\pi, 2(k+1)\pi]$, on peut donc la majorer par un réel $M > 0$. Alors, pour tout $x \in \mathbb{R}$,
+    \begin{align*}
+      \vert f(x) - C_n(x) \vert &= \left\vert \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) F_n(t) \, \mathrm{d}t - f(x) \times \underbrace{\frac{1}{2\pi} \int_{-\pi}^{\pi} F_n(t) \, \mathrm{d}t}_{= 1 \text{ par } (*)} \right\vert \\
+      &= \left\vert \frac{1}{2\pi} \int_{-\pi}^{\pi} (f(x-t) - f(x)) F_n(t) \, \mathrm{d}t \right\vert \\
+      &\leq \frac{1}{2\pi} \int_{\eta \leq \vert t \vert \leq \pi} 2MF_n(t) \, \mathrm{d}t + \frac{1}{2\pi} \int_{-\eta}^{\eta} \epsilon F_n(t) \, \mathrm{d}t \\
+      &\leq \frac{2M}{2\pi} \int_{\eta \leq \vert t \vert \leq \pi} F_n(t) \, \mathrm{d}t + \epsilon
+    \end{align*}
+    Or, $(**)$ montre que
+    \[ \forall n \in \mathbb{N}, \, \forall x \in [-\pi, \pi] \text{ tel que } \vert x \vert > \eta, \text{ on a } \vert F_n(x) \vert \leq \frac{1}{(n+1) \sin\left( \frac{\eta}{2} \right)^2} \]
+    donc $(F_n)$ converge uniformément vers $0$ sur $[-\pi, \pi] \setminus [-\eta, \eta]$. Il existe ainsi $N \in \mathbb{N}$ tel que
+    \[ \forall n \geq N, \, \int_{\eta \leq \vert t \vert \leq \pi} F_n(t) \, \mathrm{d}t < \epsilon \]
+    de sorte que
+    \[ \forall n \geq N, \, \forall x \in \mathbb{R}, \, \vert f(x) - C_n(x) \vert \leq \left(\frac{M}{\pi} + 1\right) \epsilon \]
+    D'où le résultat.
+  \end{proof}
+
+  Je préfère la preuve de \cite{[GOU21]}, qui est plus ``clés en main''. Il est possible de passer les calculs des noyaux de Dirichlet et de Fejér dans un premier temps, puis de les montrer à la fin selon le temps restant.
+  %</content>
+\end{document}

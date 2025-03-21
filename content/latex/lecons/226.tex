@@ -1,0 +1,432 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{226}{Suites vectorielles et réelles définies par une relation de récurrence \texorpdfstring{$u_{n+1} = f(u_n)$}{un+1=f(un)}. Exemples. Applications à la résolution approchée d'équations.}
+
+  \subsection{Suites récurrentes}
+
+  \subsubsection{Définition et premières propriétés}
+
+  \reference[DAN]{145}
+
+  \begin{definition}
+    Soit $E$ un ensemble. On dit qu'une suite $(u_n)$ d'éléments de $E$ est \textbf{récurrente} d'ordre $h \in \mathbb{N}^*$ si on peut écrire
+    \[ \forall n \geq h, \, u_{n+h} = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
+    où $f : E^h \rightarrow E$ et les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant donnés.
+  \end{definition}
+
+  \begin{example}
+    On considère la suite numérique $(u_n)$ définie par
+    \[
+      \begin{cases}
+        u_0 = 0 \\
+        u_1 = -1 \\
+        \forall n \in \mathbb{N}, \, u_{n+2} = 5u_{n+1} - 6u_n
+      \end{cases}
+    \]
+    et on a,
+    \[ \forall n \in \mathbb{N}, \, u_n = 2^n - 3^n \]
+  \end{example}
+
+  \reference[GOU20]{206}
+
+  \begin{example}
+    On considère les suite numérique $(u_n)$ et $(v_n)$ définies par
+    \[
+      \begin{cases}
+        u_0 \geq 0 \\
+        \forall n \in \mathbb{N}, \, u_{n+1} = \sqrt{\frac{1+u_n}{2}}
+      \end{cases}
+      \text{ et }
+      \forall n \in \mathbb{N}, \, v_n = \prod_{k=0}^{n} u_k
+    \]
+    Alors, pour $u_0 = \cos(\theta)$, on a
+    \[ \forall n \in \mathbb{N}, \, v_n = \prod_{k=1}^n \cos \left( \frac{\theta}{2^k} \right) = \frac{\sin(\theta)}{2^n \sin \left( \frac{\theta}{2^n} \right)} \]
+    donc
+    \[ \lim_{n \rightarrow +\infty} v_n = \frac{\sin(\theta)}{\theta} \]
+  \end{example}
+
+  \begin{application}[Formule de Viète]
+    \[ \frac{2}{\pi} = \sqrt{\frac{1}{2}} \times \sqrt{\frac{1}{2} + \frac{1}{2} \sqrt{\frac{1}{2}}} \times \dots \]
+  \end{application}
+
+  \reference[FGN3]{160}
+
+  \begin{example}
+    La suite de fonctions polynômiales $(P_n)$ définie par récurrence par :
+    \[ P_0 : z \mapsto 1, \, P_1 : z \mapsto z, \text{ et } \forall n \geq 1, \, zP_n : z \mapsto P_{n-1}(z)-P_{n+1}(z) \]
+    est une suite bornée si et seulement si $z = \pm 1$.
+  \end{example}
+
+  \reference[I-P]{116}
+
+  \begin{theorem}
+    Soit $(E, d)$ un espace métrique compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
+  \end{theorem}
+
+  \begin{corollary}[Lemme de la grenouille]
+    Soient $f : [0, 1] \rightarrow [0, 1]$ continue et $(x_n)$ une suite de $[0, 1]$ telle que
+    \[ \begin{cases} x_0 \in [0, 1] \\ x_{n+1} = f(x_n) \end{cases} \]
+    Alors $(x_n)$ converge si et seulement si $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$.
+  \end{corollary}
+
+  \subsubsection{Récurrences classiques}
+
+  \reference[GOU20]{201}
+
+  Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. On fixe $(u_n)$ une suite récurrente d'ordre $1$ définie par $u_{n+1} = f(u_n)$ où $f : \mathbb{K} \rightarrow \mathbb{K}$.
+
+  \begin{definition}
+    \begin{itemize}
+      \item Si $f$ est une translation (ie. $f$ est de la forme $f : x \mapsto x + b$ où $b \in \mathbb{K}$), alors $(u_n)$ est une suite \textbf{arithmétique} de raison $b$.
+      \item Si $f$ est linéaire (ie. $f$ est de la forme $f : x \mapsto ax$ où $a \in \mathbb{K}$), alors $(u_n)$ est une suite \textbf{géométrique} de raison $a$.
+      \item Si $f$ est affine (ie. $f$ est de la forme $f : x \mapsto ax + b$ où $a, b \in \mathbb{K}$), alors $(u_n)$ est une suite \textbf{arithmético-géométrique}.
+      \item Si $f$ est homographique (ie. $f$ est de la forme $f : x \mapsto \frac{ax + b}{cx + d}$ où $a$, $b$, $c$, $d \in E$ et $ad - bc \neq 0$), alors $(u_n)$ vérifie une \textbf{récurrence homographique}.
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $(u_n)$ est arithmétique de raison $b$, alors $\forall n \in \mathbb{N}$, $u_n = u_0 + n b$.
+      \item Si $(u_n)$ est géométrique de raison $a$, alors $\forall n \in \mathbb{N}$, $u_n = a^n u_0$.
+      \item Si $(u_n)$ est arithmético-géométrique et si $1 - a \neq 0$, en posant $r = (1 - a)^{-1} b$, on a $\forall n \in \mathbb{N}$, $u_n = a^n (u_0 - r) + r$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proposition}
+    Supposons que $(u_n)$ vérifie une récurrence homographique. On considère l'équation
+    \[ f(x) = x \iff cx^2 - (a-d)x - b = 0 \tag{$E$} \]
+    Alors :
+    \begin{enumerate}
+      \item Si $(E)$ admet deux racines distinctes $r_1$ et $r_2$, on a
+      $\forall n \in \mathbb{N}$, $\frac{u_n - r_1}{u_n - r_2} = k^n \frac{u_0 - r_1}{u_0 - r_2}$ où $k = \frac{a - r_1 c}{a - r_2 c}$.
+      \item Si $(E)$ admet une racine double $r$, on a $\forall n \in \mathbb{N}$, $\frac{1}{u_n - r} = \frac{1}{u_0 - r} + kn$ où $k = \frac{c}{a - r c}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{remark}
+    Ces formules permettent de décider s'il existe un rang $n$ tel que le dénominateur de $f$ s'annule, auquel cas les termes ultérieurs de la suite ne sont pas définis.
+  \end{remark}
+
+  \begin{example}
+    Pour la relation $u_{n+1} = \frac{2u_n + 1}{u_n + 2}$, l'équation $(E)$ admet $\pm 1$ pour solutions, donc $\frac{u_n + 1}{u_n - 1} = 3^n \frac{u_0 + 1}{u_0 - 1}$.
+  \end{example}
+
+  \subsubsection{Suites récurrentes vectorielles}
+
+  \reference[GOU21]{153}
+
+  \begin{proposition}[Déterminant circulant]
+    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
+    où $P = \sum_{k=0}^{n-1} a_k X^k$.
+  \end{proposition}
+
+  \reference[I-P]{389}
+  \dev{suite-de-polygones}
+
+  \begin{application}[Suite de polygones]
+    Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
+    \newpar
+    Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
+  \end{application}
+
+  \subsection{Outils pour étudier les suites récurrentes}
+
+  \subsubsection{Stabilité de l'intervalle et continuité}
+
+  \reference[AMR11]{38}
+
+  Soient $I \subseteq \mathbb{R}$ un intervalle de $\mathbb{R}$. On fixe $(u_n)$ une suite récurrente d'ordre $1$ définie par $u_{n+1} = f(u_n)$ où $f : I \rightarrow \mathbb{R}$.
+
+  \begin{theorem}[Caractérisation séquentielle de la continuité]
+    En reprenant les notations précédentes, une fonction $g : I \rightarrow \mathbb{R}$ est continue si et seulement si pour toute suite réelle convergente $(v_n) \in I^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} \ell$.
+  \end{theorem}
+
+  \begin{corollary}
+    Si une suite récurrente d'ordre $1$ (dont on note $f$ la fonction) converge vers $\ell$, alors $f(\ell) = \ell$.
+  \end{corollary}
+
+  \begin{example}
+    La suite $(u_n)$ définie par $u_0 \in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right]$ et $\forall n \geq 1, \, u_{n+1} = \sin(u_n)$ converge vers $0$.
+  \end{example}
+
+  \reference[GOU20]{200}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $f$ est croissante, alors $(u_n)$ est monotone et son sens de monotonie est donnée par le signe de $u_1 - u_0$.
+      \item Si $f$ est décroissante, alors $(u_{2n})$ et $(u_{2n+1})$ sont monotones et leur sens de monotonie est opposé.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    La suite réelle $(u_n)$ définie par récurrence par :
+    \[ u_0 \in [0, 1[ \text{ et } \forall n \geq 0, \, u_{n+1} = \frac{1}{2 - \sqrt{u_n}} \]
+    est une suite qui converge vers $1$.
+  \end{example}
+
+  \subsubsection{Équation caractéristique}
+
+  \begin{definition}
+    Une suite $(u_n)$ à valeurs dans $\mathbb{C}$ vérifie une \textbf{récurrence linéaire homogène} d'ordre $h$ si
+    \[ \forall n \in \mathbb{N}, \quad u_{n+h} = a_{h-1} u_{n+h-1} + \dots + a_0 u_0 \tag{$*$} \]
+    où $a_1, \dots, a_h \in \mathbb{C}$.
+  \end{definition}
+
+  \begin{proposition}
+    Si on note $r_1, \dots, r_q$ les racines du polynôme caractéristique de $(*)$ (de multiplicités respectives $\alpha_1, \dots, \alpha_q$), alors l'ensemble des suites vérifiant $(*)$ est l'ensemble des suites $(u_n)$ telles que :
+    \[ u_n = P_1(n) r_1^n + \dots + P_q(n) r_q^n \]
+    où $\forall i \in \llbracket 1, q \rrbracket$, $P_i$ est un polynôme de degré strictement inférieur à $\alpha_i$.
+  \end{proposition}
+
+  \begin{example}
+    Soit $(u_n)$ la suite définie par $\forall n \in \mathbb{N}, \, u_n = a u_{n-1} + b u_{n-2}$. Son polynôme caractéristique est $P = X^2 - aX - b$.
+    \begin{enumerate}
+      \item Si $P$ a deux racines distinctes $r_1$ et $r_2$, alors $\forall n \in \mathbb{N}, \, u_n = \lambda r_1^n + \mu r_2^n$ où $\lambda$ et $\mu$ sont tels que $u_0 = \lambda + \mu$ et $u_1 = \lambda r_1 + \mu r_2$.
+      \item Si $P$ a une racine double $r$, alors $\forall n \in \mathbb{N}, \, u_n = (\lambda n + \mu) r^n$ où $\lambda$ et $\mu$ sont tels que $u_0 = \mu$ et $u_1 = (\lambda + \mu) r$.
+    \end{enumerate}
+  \end{example}
+
+  \reference[AMR11]{47}
+
+  \begin{example}
+    Soit $(F_n)$ la suite de Fibonacci définie par $F_0 = 0$, $F_1 = 1$ et $\forall n \geq 2$, $F_n = F_{n-1} + F_{n-2}$. Alors,
+    \[ \forall n \in \mathbb{N}, \, F_n = \frac{1}{\sqrt{5}} \left ( \left ( \frac{1 + \sqrt{5}}{2} \right)^n - \left ( \frac{1 - \sqrt{5}}{2} \right)^n \right) \]
+  \end{example}
+
+  \begin{example}
+    La suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+2} = u_n - u_{n+1}$ est à termes positifs si et seulement si $u_1 = \frac{1 - \sqrt{5}}{2}$.
+  \end{example}
+
+  \subsubsection{Développement asymptotique}
+
+  \reference{53}
+
+  \begin{definition}
+    À toute suite numérique $(u_n)$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
+    \[ \forall n \in \mathbb{N}, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
+  \end{definition}
+
+  \begin{theorem}
+    Si $(u_n)$ converge vers $\ell \in \mathbb{K}$, alors sa suite des moyennes de Cesàro converge vers $\ell$. On dit que $(u_n)$ converge \textbf{au sens de Cesàro}.
+  \end{theorem}
+
+  \reference[FGN3]{142}
+
+  \begin{proposition}
+    Soit $f$ une application continue définie au voisinage de $0^+$ admettant
+    un développement asymptotique en $0$ de la forme $f(x) = x - ax^\alpha + o(x^\alpha)$, où $a > 0$ et $\alpha > 1$. Alors pour $u_0 > 0$ assez petit, la suite $(u_n)$ définie par $u_{n+1} = f(u_n)$ pour $n \in \mathbb{N}$ vérifie
+    \[ u_n \sim \frac{1}{(na(\alpha-1))^{\frac{1}{\alpha-1}}} \]
+  \end{proposition}
+
+  \begin{example}
+    Si $f = \sin$ et $(u_n)$ est définie par $u_0 \in [0, 2\pi]$ et $\forall n \in \mathbb{N}, \, u_{n+1} = f(u_n)$, on a l'équivalent en $+\infty$ :
+    \[ u_n \sim \sqrt{\frac{3}{n}} \]
+  \end{example}
+
+  \reference[GOU20]{228}
+
+  \begin{proposition}
+    En reprenant les notations précédentes, on a, pour $u_0 \in \left] 0, \frac{\pi}{2} \right]$,
+    \[ u_n = \sqrt{\frac{3}{n}} - \frac{3 \sqrt{3}}{10} \frac{\ln(n)}{n\sqrt{n}} + o\left( \frac{\ln(n)}{n\sqrt{n}} \right) \]
+  \end{proposition}
+
+  \reference[FGN3]{148}
+
+  \begin{example}
+    On définit $(u_n)$ par $u_0 \in \mathbb{R}$ et $\forall n \in \mathbb{N}, \, u_{n+1} = u_n + e^{-u_n}$, on a l'équivalent en $+\infty$ :
+    \[ u_n = n + \frac{\ln(n)}{2n} + o\left( \frac{\ln(n)}{n} \right) \]
+  \end{example}
+
+  \subsection{Applications à la résolution approchée d'équations}
+
+  \subsubsection{Point fixe et itération}
+
+  \reference[DAN]{146}
+
+  \begin{theorem}[Point fixe de Banach]
+    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractant (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
+    \[ \exists! x \in E \text{ tel que } f(x) = x \]
+    De plus la suite des itérés définie par $x_0 \in E$ et $\forall n \in \mathbb{N}, x_{n+1} = f(x_n)$ converge vers $x$.
+  \end{theorem}
+
+  \begin{theorem}[Point fixe dans un compact]
+    Soit $(E,d)$ un espace métrique compact et $f : E \rightarrow E$ telle que
+    \[ \forall x, y \in E, \, x \neq y \implies d(f(x), f(y)) < d(x,y) \]
+    alors $f$ admet un unique point fixe et pour tout $x_0 \in E$, la suite des itérés
+    \[ x_{n+1} = f(x_n) \]
+    converge vers ce point fixe.
+  \end{theorem}
+
+  \reference[DEM]{95}
+
+  \begin{application}
+    Soient $a, b \in \mathbb{R}$ et $f : [a, b] \rightarrow \mathbb{R}$ dérivable, strictement croissante et telle que $f(a) < 0$, $f(b) > 0$ et $0 < m \leq f'(x) \leq M$ sur $[a, b]$. On pose $\varphi : x \mapsto x - \frac{1}{M} f(x)$. On considère l'équation :
+    \[ f(x) = 0 \iff \varphi(x) = x \tag{$E$} \]
+    Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(E)$ admet une unique solution $x$ et pour tout point initial $x_0 \in [a, b]$, la suite des itérés $(x_n)$ définie par $\forall n \in \mathbb{N}, \, x_{n+1} = \varphi(x_n)$ converge vers $x$.
+      \item La vitesse de convergence est estimée par la suite géométrique $\left( 1 - \frac{m}{M} \right)$ : il faut que les bornes $m$ et $M$ soient proches.
+    \end{enumerate}
+  \end{application}
+
+  \begin{remark}
+    Cela marche aussi dans le cas où $f(a) > 0$, $f(b) < 0$ et $-M \leq f'(x) \leq -m < 0$ (il suffit alors de changer $f$ en $-f$).
+  \end{remark}
+
+  \begin{definition}
+    Soient $I$ un intervalle fermé de $\mathbb{R}$ et $\varphi : I \rightarrow I$ une application de classe $\mathcal{C}^1$. Soit $a \in I$ un point fixe de $\varphi$.
+    \begin{itemize}
+      \item Si $|\varphi'(a)| < 1$, on dit que $a$ est \textbf{attractif}. Si de plus $\varphi'(a) = 0$, $a$ est \textbf{superattractif}.
+      \item Si $|\varphi'(a)| > 1$, on dit que $a$ est \textbf{répulsif}.
+    \end{itemize}
+  \end{definition}
+
+  \begin{proposition}
+    On reprend les notations précédentes et on considère la suite des itérés $(x_n)$ (avec $x_0 \in I$ et $\forall n \in \mathbb{N}, \, x_{n+1} = \varphi(x_n)$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $a$ est attractif, $(x_n)$ converge à une vitesse géométrique :
+      \[ |x_n - a| \leq k^n |x_0 - a| \]
+      \item Si $a$ est superattractif et $\varphi$ est $\mathcal{C}^2$ telle que $|\varphi''| < M$ sur $I$, alors la vitesse de convergence est hypergéométrique :
+      \[ |x_n - a| \leq \frac{2}{M} 10^{-2^n} \]
+      \item Si $a$ est répulsif, il existe $h > 0$ tel que $\varphi_{|[a-h, a+h]}$ admette une application réciproque $\varphi^{-1}$ définie sur $\varphi([a-h, a+h])$ et le point $a$ est attractif pour $\varphi^{-1}$.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{example}
+    Soit $f : x \mapsto x^3 - 4x + 1$. On pose $\varphi : x \mapsto \frac{1}{4} (x^3 + 1)$ et on considère
+    \[ f(x) = 0 \iff \varphi(x) = x \tag{$E$} \]
+    Alors $(E)$ possède trois solutions réelles $a_1 < a_2 < a_3$ telles que :
+    \begin{itemize}
+      \item $a_1 \in ]-2,5; -2[$.
+      \item $a_2 \in ]0; 0,5[$ et $a_2$ est attractif.
+      \item $a_3 \in ]1,5; 2[$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Méthode de Newton}
+
+  \reference[ROU]{152}
+  \dev{methode-de-newton}
+
+  \begin{theorem}[Méthode de Newton]
+    Soit $f : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+    \[ \varphi :
+    \begin{array}{ccc}
+      [c, d] &\rightarrow& \mathbb{R} \\
+      x &\mapsto& x - \frac{f(x)}{f'(x)}
+    \end{array}
+    \]
+    (qui est bien définie car $f' > 0$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
+      \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+      \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(x_n)$ est strictement décroissante (ou constante).
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{example}
+    \begin{itemize}
+      \item On fixe $y > 0$. En itérant la fonction $F : x \mapsto \frac{1}{2} \left( x + \frac{y}{x} \right)$ pour un nombre de départ compris entre $c$ et $d$ où $0 < c < d$ et $c^2 < 0 < d^2$, on peut obtenir une approximation du nombre $\sqrt{y}$.
+      \item En itérant la fonction $F : x \mapsto \frac{x^2+1}{2x-1}$ pour un nombre de départ supérieur à $2$, on peut obtenir une approximation du nombre d'or $\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{itemize}
+  \end{example}
+
+  \reference[DEM]{102}
+
+  \begin{example}
+    La méthode de Newton appliquée à la fonction $x \mapsto x^3 - 4x + 1$ dans le but d'approximer ses zéros donne :
+    \begin{center}
+      \begin{whitetabularx}{|X|l|l|l|}
+        \hline
+        $x_0$ & $-2$ & $0$ & $2$ \\
+        \hline
+        $x_1$ & $-2,125$ & $0,25$ & $1,875$ \\
+        \hline
+        $x_2$ & $-2,114975450$ & $0,254098361$ & $1,860978520$ \\
+        \hline
+        $x_3$ & $-2,114907545$ & $0,254101688$ & $1,860805877$ \\
+        \hline
+        $x_4$ & $-2,114907541$ & $= x_3$ & $1,860805853$ \\
+        \hline
+        $x_5$ & $= x_4$ & & $= x_4$ \\
+        \hline
+      \end{whitetabularx}
+    \end{center}
+  \end{example}
+
+  \subsubsection{Généralisation à $\mathbb{R}^m$}
+
+  \reference{110}
+
+  \begin{theorem}[Méthode de Newton-Raphson]
+    Soit $f : \Omega \rightarrow \mathbb{R}^m$ (où $\Omega \subset \mathbb{R}^m$ est un ouvert) de classe $\mathcal{C}^1$ telle que $f(a) = 0$. On suppose que $\mathrm{d}f_a$ est inversible. Alors il existe un voisinage $U$ de $a$ dans $\Omega$ tel que $\varphi : x \mapsto x - (\mathrm{d}f_x)^{-1}(f(x))$ soit bien définie sur $U$ et la suite des itérés $x_{n+1} = \varphi(x_n)$ converge quadratiquement vers $a$.
+  \end{theorem}
+
+  \begin{example}
+    On considère le système
+    \[ \begin{cases} x^2 + xy - 2y^2 = 4 \\ xe^x + ye^y = 0 \end{cases} \tag{$S$} \]
+    On pose $X_0 = \begin{pmatrix} -2 \\ 0,2 \end{pmatrix}$ et $\Delta(x,y) = (2x+y)(y+1)e^y - (x-4y)(x+1)e^x$ ainsi que :
+    \[ \varphi \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix} - \frac{1}{\Delta(x,y)} \begin{pmatrix} (y+1)e^y & -x+4y \\ -(x+1)e^x & 2x+y \end{pmatrix} \begin{pmatrix} x^2 + xy - 2y^2 - 4 \\ xe^x + ye^y \end{pmatrix} \]
+    Alors la suite des itérés $(X_n) = \begin{pmatrix} x_n \\ y_n \end{pmatrix}$ converge vers l'unique solution de $(S)$ et on a :
+    \begin{center}
+      \begin{whitetabularx}{|l|X|X|}
+        \hline
+        $n$ & $x_n$ & $y_n$ \\
+        \hline
+        $0$ & $-2$ & $0,2$ \\
+        \hline
+        $1$ & $-2,130690999$ & $0,205937784$ \\
+        \hline
+        $2$ & $-2,126935837$ & $0,206277868$ \\
+        \hline
+        $3$ & $-2,126932304$ & $0,206278156$ \\
+        \hline
+      \end{whitetabularx}
+    \end{center}
+  \end{example}
+
+  \annexessection
+
+  \reference[I-P]{389}
+
+  \begin{figure}[h]
+    \begin{center}
+      \begin{tikzpicture}
+        \coordinate (A) at (0:3);
+        \coordinate (B) at (72:3);
+        \coordinate (C) at (2*72:3);
+        \coordinate (D) at (3*72:3);
+        \coordinate (E) at (4*72:3);
+        \coordinate (F) at (A);
+        \foreach \i in {0,...,10} {
+          \draw(A) node {$\bullet$};
+          \draw(B) node {$\bullet$};
+          \draw(C) node {$\bullet$};
+          \draw(D) node {$\bullet$};
+          \draw(E) node {$\bullet$};
+          \draw[fill=cyan!60, fill opacity=0.2](A) -- (B) -- (C) -- (D) -- (E) -- (A);
+          \coordinate (A) at ($(A)!0.5!(B)$);
+          \coordinate (B) at ($(B)!0.5!(C)$);
+          \coordinate (C) at ($(C)!0.5!(D)$);
+          \coordinate (D) at ($(D)!0.5!(E)$);
+          \coordinate (E) at ($(E)!0.5!(F)$);
+          \coordinate (F) at (A);
+        }
+      \end{tikzpicture}
+    \end{center}
+    \caption{La suite de polygones.}
+  \end{figure}
+  %</content>
+\end{document}

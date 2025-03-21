@@ -1,0 +1,403 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{218}{Formules de Taylor. Exemples et applications.}
+
+  \subsection{Énoncés des formules de Taylor}
+
+  \subsubsection{En dimension \texorpdfstring{$1$}{1}}
+
+  \reference[GOU20]{73}
+
+  Dans cette partie, $I$ désigne un segment $[a,b]$ de $\mathbb{R}$ non réduit à un point et $E$ un espace de Banach sur $\mathbb{R}$. Soit $f : I \rightarrow E$ une application.
+
+  Dans un premier temps, supposons $E = \mathbb{R}$.
+
+  \begin{theorem}[Rolle]
+    \label{218-1}
+    On suppose $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ et telle que $f(a) = f(b)$. Alors,
+    \[ \exists c \in ]a,b[ \text{ tel que } f'(c) = 0 \]
+  \end{theorem}
+
+  \begin{theorem}[Formule de Taylor-Lagrange]
+    On suppose $f$ de classe $\mathcal{C}^n$ sur $[a,b]$ telle que $f^{(n+1)}$ existe sur $]a,b[$. Alors,
+    \[ \exists c \in ]a,b[ \text{ tel que } f(b) = \sum_{k=0}^{n} \frac{f^{(k)} (a)}{k!} (b-a)^k + \frac{f^{(n+1)}(c)}{(n+1)!} (b-a)^{n+1} \]
+  \end{theorem}
+
+  \begin{application}
+    \begin{itemize}
+      \item $\forall x \in \mathbb{R}^+, \, x - \frac{x^2}{2} \leq \ln(1+x) \leq x - \frac{x^2}{2} + \frac{x^3}{3}$.
+      \item $\forall x \in \mathbb{R}^+, \, x - \frac{x^3}{6} \leq \sin(x) \leq x - \frac{x^3}{6} + \frac{x^5}{120}$.
+      \item $\forall x \in \mathbb{R}, \, 1 - \frac{x^2}{2} \leq \cos(x) \leq 1 - \frac{x^2}{2} + \frac{x^4}{24}$.
+    \end{itemize}
+  \end{application}
+
+  On ne suppose plus $E = \mathbb{R}$. Le \cref{218-1} n'est plus forcément vrai, mais on a tout de même le résultat suivant.
+
+  \begin{theorem}[Inégalité des accroissements finis]
+    Soit $g : I \rightarrow \mathbb{R}$. On suppose $f$ et $g$ continues sur $[a,b]$ et dérivables sur $]a,b[$. Si pour tout $t \in ]a,b[$ on a $\Vert f'(t) \Vert \leq g'(t)$. Alors,
+    \[ \Vert f(b) - f(a) \Vert \leq (g(b) - g(a)) \]
+  \end{theorem}
+
+  \begin{corollary}[Inégalité de Taylor-Lagrange]
+    On suppose $f$ de classe $\mathcal{C}^n$ sur $[a,b]$ telle que $f^{(n+1)}$ existe sur $]a,b[$. On suppose qu'il existe $M > 0$ tel que $\forall t \in ]a,b[, \, \Vert f^{(n+1)}(t) \Vert \leq M$. Alors,
+    \[ \left\Vert f(b) - f(a) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(b-a)^k \right\Vert \leq M \frac{(b-a)^{n+1}}{(n+1)!} \]
+  \end{corollary}
+
+  \begin{theorem}[Formule de Taylor-Young]
+    \label{218-2}
+    On suppose $f$ de classe $\mathcal{C}^n$ sur $I$ telle que $f^{(n+1)}(x)$ existe pour $x \in I$. Alors, quand $h \longrightarrow 0$, on a
+    \[ f(x+h) = \sum_{k=0}^{n+1} \frac{f^{(k)} (x)}{k!} h^k + o(h^{n+1}) \]
+  \end{theorem}
+
+  \reference{80}
+
+  \begin{application}[Théorème de Darboux]
+    On suppose $f$ dérivable sur $I$. Alors $f'(I)$ est un intervalle.
+  \end{application}
+
+  \reference{77}
+
+  \begin{theorem}[Formule de Taylor avec reste intégral]
+    On suppose $f$ de classe $\mathcal{C}^{n+1}$ sur $I$. Alors,
+    \[ f(b) = \sum_{k=0}^{n} \frac{f^{(k)} (a)}{k!} (b-a)^k + \int_a^b \frac{(b-t)^n}{n!} f^{(n+1)}(t) \, \mathrm{d}t \]
+  \end{theorem}
+
+  \subsubsection{En dimension supérieure}
+
+  \reference{328}
+
+  Soit $U \subseteq \mathbb{R}^n$ un ouvert.
+
+  \begin{notation}
+    Soient $f : U \rightarrow \mathbb{R}^m$ de classe $\mathcal{C}^k$ sur $U$ et $n \in \llbracket 1, k \rrbracket$. Par analogie avec
+    \[ \forall (a_1, \dots, a_m) \in \mathbb{R}^m, \, (a_1 + \dots + a_m)^n = \sum_{i_1+\dots+i_m=n} \frac{n!}{i_1! \dots i_m!} a_1^{i_1} \dots a_m^{i_m} \]
+    on note
+    \[ \left( \sum_{i=1}^m h_i \frac{\partial f}{\partial x_i} (a) \right)^{(n)} = \sum_{i_1+\dots+i_m=n} \frac{n!}{i_1! \dots i_m!} h_1^{i_1} \dots h_m^{i_m} \frac{\partial^n}{\partial x_1^{i_1} \dots \partial x_m^{i_m}} f(a) \]
+  \end{notation}
+
+  \begin{theorem}[Formule de Taylor-Lagrange]
+    Soient $f : U \rightarrow \mathbb{R}$ de classe $\mathcal{C}^p$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors, $\exists \theta \in ]0,1[$ tel que
+    \[ f(x+h) = \sum_{j=0}^{p-1} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + \frac{1}{p!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x + \theta h) \right)^{(p)} \]
+  \end{theorem}
+
+  \begin{example}
+    Pour $f : \mathbb{R}^2 \rightarrow \mathbb{R}$ de classe $\mathcal{C}^2$, pour $(h, k) \in \mathbb{R}^2$, il existe $\theta \in ]0,1[$ tel que
+    \begin{align*}
+      f(h,k) &= f(0,0) + h \frac{\partial f}{\partial x}(0,0) + k \frac{\partial f}{\partial y}(0,0) \\
+      &+ \frac{1}{2} \left( h^2 \frac{\partial^2 f}{\partial^2 x} f(\theta h, \theta k) + hk \frac{\partial^2 f}{\partial x \partial y} f(\theta h, \theta k) + k^2 \frac{\partial^2 f}{\partial^2 y} f(\theta h, \theta k) \right) \\
+      &+ o(\Vert (h,k) \Vert^2)
+    \end{align*}
+  \end{example}
+
+  \begin{theorem}[Formule de Taylor avec reste intégral]
+    Soient $f : U \rightarrow \mathbb{R}^p$ de classe $\mathcal{C}^k$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors,
+    \[ f(x+h) = \sum_{j=0}^{k-1} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + \int_0^1 \frac{(1-t)^{k-1}}{(k-1)!} \left( \sum_{i=1}^{n} h_i \frac{\partial f}{\partial x_i} (x+th) \right)^{(k)} \, \mathrm{d}t \]
+  \end{theorem}
+
+  \begin{theorem}[Formule de Taylor-Young]
+    Soient $f : U \rightarrow \mathbb{R}^p$ de classe $\mathcal{C}^k$ sur $U$, $x \in \mathbb{R}^n$, $h = (h_1, \dots, h_n) \in \mathbb{R}^n$ tels que $[x,x+h] \subseteq U$. Alors,
+    \[ f(x+h) = \sum_{j=0}^{k} \frac{1}{i!} \left( \sum_{i=1}^n h_i \frac{\partial f}{\partial x_i} (x) \right)^{(j)} + o(\Vert h \Vert^k) \]
+  \end{theorem}
+
+  \begin{application}[Lemme d'Hadamard]
+    Soit $f : \mathbb{R}^n \rightarrow \mathbb{R}$ de classe $\mathcal{C}^\infty$. On suppose $f$ différentiable en $0$ avec $\mathrm{d}f_0 = 0$ et $f(0) = 0$. Alors,
+    \[ f(x_1, \dots, x_n) = \sum_{i,j=1}^n x_i x_j h_{i,j}(x_1, \dots, x_n) \]
+    où $\forall i,j \in \llbracket 1, n \rrbracket$, $h_{i,j} : \mathbb{R}^n \rightarrow \mathbb{R}$ est $\mathcal{C}^\infty$.
+  \end{application}
+
+  \subsection{Applications en analyse réelle}
+
+  Dans cette partie, $I$ désigne un intervalle de $\mathbb{R}$ non réduit à un point et $E$ un espace de Banach sur $\mathbb{R}$. Soit $f : I \rightarrow E$ une application.
+
+  \subsubsection{Étude asymptotique de fonctions}
+
+  \reference{89}
+
+  On suppose $0 \in I$.
+
+  \begin{definition}
+    On dit que $f$ admet un \textbf{développement limité} à l'ordre $n \in \mathbb{N}^*$ s'il existe $a_0, \dots, a_n \in E$ tels que, au voisinage de $0$,
+    \[ f(x) = \sum_{k=0}^{n} a_k x^k + o(x^n) \]
+  \end{definition}
+
+  \begin{remark}
+    On pourrait de même définir les développements limités au voisinage d'un point $a \in \overline{I}$.
+  \end{remark}
+
+  \begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+      \item Un développement limité, s'il existe, est unique.
+      \item Si $f$ admet un développement limité en $0$ à l'ordre $n \geq 1$, $f$ est dérivable en $0$ et sa dérivée en $0$ vaut $a_1$.
+      \item Si $f$ est paire (resp. impaire), les coefficients du développement limité d'indice impair (resp. pair) sont nuls.
+      \item Si $f$ est $n$ fois dérivable en $0$, $f'$ admet un développement limité en $0$ : $f'(x) = \sum_{k=1}^{n} a_k x^{k-1} + o(x^{n-1})$.
+      \item Si $f$ est dérivable sur $I$ et $f'$ admet un développement limité en $0$ : $f'(x) = \sum_{k=0}^{n} a_k x^k + o(x^n)$ ; alors, $f$ admet un développement limité en $0$ donné par $f(x) = \sum_{k=0}^{n} \frac{a_k}{(k+1)!} x^{k+1} + o(x^{k+1})$.
+      \item Les règles de somme, produit, quotient et composition obéissent aux mêmes règles que pour les polynômes (sous réserve de bonne définition).
+    \end{enumerate}
+  \end{proposition}
+
+  On déduit du \cref{218-2} le résultat suivant.
+
+  \begin{proposition}
+    Si $f$ est $n$ fois dérivable en $0$, alors $f$ admet un développement limité à l'ordre $n$ en $0$ :
+    \[ f(x) = \sum_{k=0}^{n+1} \frac{f^{(k)} (0)}{k!} x^k + o(x^{n+1}) \]
+  \end{proposition}
+
+  \begin{example}
+    En $0$, on a les développements limités usuels suivants.
+    \begin{itemize}
+      \item $e^x = \sum_{k=0}^{n} \frac{x^k}{k!} + o(x^n)$.
+      \item $\sin(x) = \sum_{k=0}^{n} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+2})$.
+      \item $\cos(x) = \sum_{k=0}^{n} (-1)^{k} \frac{x^{2k}}{(2k)!} + o(x^{2n+1})$.
+      \item $\sinh(x) = \sum_{k=0}^{n} \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+2})$.
+      \item $\cosh(x) = \sum_{k=0}^{n} \frac{x^{2k}}{(2k)!} + o(x^{2n+1})$.
+      \item Pour tout $\alpha \in \mathbb{R}$, $(1+x)^\alpha = \sum_{k=0}^n \frac{\alpha(\alpha - 1) \dots (\alpha -k+1)}{k!} + o(x^n)$.
+    \end{itemize}
+  \end{example}
+
+  \begin{application}
+    \[ \lim_{x \rightarrow 0} \frac{\tan(x) - x}{\sin(x) - x} = -2 \]
+  \end{application}
+
+  \reference[I-P]{380}
+
+  \begin{application}[Développement asymptotique de la série harmonique]
+    On note $\forall n \in \mathbb{N}^*, \, H_n = \sum_{k=1}^{n} \frac{1}{k}$. Alors, quand $n$ tend vers $+\infty$,
+    \[ H_n = \ln(n) + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + o\left( \frac{1}{n^2} \right) \]
+  \end{application}
+
+  \subsubsection{Développements en série entière}
+
+  \reference[BMP]{46}
+
+  \begin{definition}
+    Soient $U \subseteq \mathbb{C}$ un ouvert et $f : U \rightarrow \mathbb{C}$. On dit que $f$ est \textbf{développable en série entière en $a \in U$} s'il existe $r > 0$ et $(a_n) \in \mathbb{C}^{\mathbb{N}}$ tels que $D(a, r) \subseteq U$ et
+    \[ \forall z \in D(a, r), \, f(z) = \sum_{n=0}^{+\infty} a_n (z-a)^n \]
+  \end{definition}
+
+  \reference[GOU20]{251}
+
+  \begin{example}
+    Soit $z_0 \in \mathbb{C}$. Alors,
+    \[ \forall z \in D(0,\vert z_0 \vert), \, \frac{1}{z-z_0} = -\frac{1}{z_0 \sum_{n=0}^{+\infty}} \left( \frac{z}{z_0} \right)^n \]
+  \end{example}
+
+  Nous nous limiterons ici aux fonctions réelles.
+
+  \begin{proposition}
+    Soit $I \subseteq \mathbb{R}$ un intervalle contenant un voisinage de $0$. Une fonction $f : I \rightarrow \mathbb{R}$ de classe $\mathcal{C}^\infty$ est développable en série entière si et seulement s'il existe $\alpha > 0$ tel que la suite de fonctions $(R_n)$ définie par
+    \[ R_n(x) = f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!} x^k \]
+    tende simplement vers $0$ sur $]-\alpha, \alpha[$. La série entière $\sum \frac{f^{(n)}(0)}{n!} z^n$ a alors un rayon de convergence supérieur ou égal à $\alpha$ et $f$ est égale à la somme de cette série entière sur $]-\alpha,\alpha[$.
+  \end{proposition}
+
+  \begin{remark}
+    Dans la pratique, pour montrer que le $(R_n)$ précédent tend simplement vers $0$, on peut l'exprimer comme un reste de Taylor (Lagrange ou intégral).
+  \end{remark}
+
+  \begin{example}
+    On a les développements en série entière usuels suivants.
+    \begin{itemize}
+      \item Pour tout $x \in \mathbb{R}$, $e^x = \sum_{k=0}^{+\infty} \frac{x^k}{k!}$.
+      \item Pour tout $x \in \mathbb{R}$, $\sin(x) = \sum_{k=0}^{+\infty} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!}$.
+      \item Pour tout $x \in \mathbb{R}$, $\cos(x) = \sum_{k=0}^{+\infty} (-1)^{k} \frac{x^{2k}}{(2k)!}$.
+      \item Pour tout $x \in \mathbb{R}$, $\sinh(x) = \sum_{k=0}^{+\infty} \frac{x^{2k+1}}{(2k+1)!}$.
+      \item Pour tout $x \in \mathbb{R}$, $\cosh(x) = \sum_{k=0}^{+\infty} \frac{x^{2k}}{(2k)!}$.
+      \item Pour tout $\alpha \in \mathbb{R}$, Pour tout $x \in ]-1,1[$, $(1+x)^\alpha = \sum_{k=0}^{+\infty} \frac{\alpha(\alpha - 1) \dots (\alpha -k+1)}{k!}$.
+    \end{itemize}
+  \end{example}
+
+  \begin{cexample}
+    La fonction
+    \[
+    f : x \mapsto \begin{cases}
+      e^{-\frac{1}{x}} \text{ si } x > 0 \\
+      0 \text{ sinon}
+    \end{cases}
+    \]
+    est $\mathcal{C}^\infty$, vérifie $f^{(n)}(0) = 0$ pour tout entier $n$, mais ne coïncide pas avec la somme de $\sum \frac{f^{(n)}(0)}{n!} z^n$ sur $]-\alpha,\alpha[$ pour tout $\alpha > 0$.
+  \end{cexample}
+
+  \begin{cexample}
+    On considère fonction définie sur $\mathbb{R}^+$ par
+    \[ g : x \mapsto \int_0^{+\infty} \frac{e^{-t}}{1+xt} \, \mathrm{d}t \]
+    Alors $g$ est $\mathcal{C}^\infty$, vérifie $g^{(n)}(0) = 0$ pour tout entier $n$, et $\sum \frac{g^{(n)}(0)}{n!} z^n$ a un rayon de convergence nul.
+  \end{cexample}
+
+  \reference[ROM18]{302}
+
+  \begin{theorem}[Bernstein]
+    Soient $a > 0$ et $f : ]-a,a[ \rightarrow \mathbb{R}$ de classe $\mathcal{C}^\infty$. On suppose les dérivées de $f$ positives sur $]-a,a[$. Alors $f$ est développable en série entière sur $]-a,a[$.
+  \end{theorem}
+
+  \subsubsection{Méthode de Newton}
+
+  \reference[ROU]{152}
+  \dev{methode-de-newton}
+
+  \begin{theorem}[Méthode de Newton]
+    Soit $f : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+    \[ \varphi :
+    \begin{array}{ccc}
+      [c, d] &\rightarrow& \mathbb{R} \\
+      x &\mapsto& x - \frac{f(x)}{f'(x)}
+    \end{array}
+    \]
+    (qui est bien définie car $f' > 0$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
+      \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+      \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{corollary}
+    En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(x_n)$ est strictement décroissante (ou constante).
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+    \end{enumerate}
+  \end{corollary}
+
+  \begin{example}
+    \begin{itemize}
+      \item On fixe $y > 0$. En itérant la fonction $F : x \mapsto \frac{1}{2} \left( x + \frac{y}{x} \right)$ pour un nombre de départ compris entre $c$ et $d$ où $0 < c < d$ et $c^2 < 0 < d^2$, on peut obtenir une approximation du nombre $\sqrt{y}$.
+      \item En itérant la fonction $F : x \mapsto \frac{x^2+1}{2x-1}$ pour un nombre de départ supérieur à $2$, on peut obtenir une approximation du nombre d'or $\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{itemize}
+  \end{example}
+
+  \subsubsection{Majoration d'une erreur d'approximation}
+
+  \reference[DEM]{21}
+
+  Soit $f$ une fonction réelle continue sur un intervalle $[a,b]$. On se donne $n+1$ points $x_0, \dots, x_n \in [a,b]$ distincts deux-à-deux.
+
+  \begin{definition}
+    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_1, \dots, x_n$ par
+    \[ \ell_i : x \mapsto \prod_{\substack{j=0\\j \neq i}}^n \frac{x-x_j}{x_i-x_j} \]
+  \end{definition}
+
+  \begin{theorem}
+    Il existe une unique fonction polynômiale $p_n$ de degré $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
+    \[ p_n = \sum_{i=0}^n f(x_i) \ell_i \]
+  \end{theorem}
+
+  \begin{theorem}
+    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_i),\max(x,x_i)[$ tel que
+    \[ f(x)-p_n(x) = \frac{\pi_{n+1}(x)}{(n+1)!} f^{(n+1)}(\xi_x) \]
+  \end{theorem}
+
+  \begin{corollary}
+    \[ \Vert f - p_n \Vert_\infty \leq \frac{1}{(n+1)!} \Vert \pi_{n+1} \Vert_\infty \Vert f^{(n+1)} \Vert_\infty \]
+  \end{corollary}
+
+  \reference[DAN]{506}
+
+  \begin{application}[Calculs approchés d'intégrales]
+    On note $I(f) = \int_a^b f(t) \, \mathrm{d}t$. L'objectif est d'approximer $I(f)$ par une expression $P(f)$ et de majorer l'erreur d'approximation $E(f) = \vert I(f) - P(f) \vert$.
+    \begin{enumerate}[label=(\roman*)]
+      \item \uline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
+      \item \uline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode de Simpson.} On suppose $f$ de classe $\mathcal{C}^4$. Avec $P(f) = \frac{b-a}{6} \left(f(a) + f(b) + 4f \left( \frac{a+b}{2} \right)\right)$, on a $E(f) \leq \frac{(b-a)^3}{2880} \Vert f^{(4)} \Vert_\infty$.
+    \end{enumerate}
+  \end{application}
+
+  \subsection{Application aux fonctions de plusieurs variables}
+
+  Soit $U \subseteq \mathbb{R}^n$ un ouvert.
+
+  \subsubsection{Homéomorphismes}
+
+  \reference[ROU]{209}
+
+  \begin{lemma}
+    Soit $A_0 \in \mathcal{S}_n(\mathbb{R})$ inversible. Alors il existe un voisinage $V$ de $A_0$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ telle que
+    \[ \forall A \in V, \, A = \tr \psi(A) A_0 \psi(A) \]
+  \end{lemma}
+
+  \reference{354}
+  \dev{lemme-de-morse}
+
+  \begin{lemma}[Morse]
+    Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
+    \begin{itemize}
+      \item $\mathrm{d} f_0 = 0$.
+      \item La matrice symétrique $\mathrm{H} (f)_0$ est inversible.
+      \item La signature de $\mathrm{H}(f)_0$ est $(p, n-p)$.
+    \end{itemize}
+    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
+    \[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
+  \end{lemma}
+
+  \reference{334}
+
+  \begin{example}
+    On considère $f : (x,y) \mapsto x^2-y^2+\frac{y^4}{4}$. La courbe d'équation
+    \[ f(x,y) = 0 \]
+    est (au changement près du nom des coordonnées) une projection de l'intersection d'un cylindre et d'une sphère tangents. On a
+    \[ f = u^2 - v^2 \]
+    avec $u : (x,y) \mapsto x$ et $v : (x,y) \mapsto y \sqrt{1-\frac{y^2}{4}}$.
+  \end{example}
+
+  \subsubsection{Conditions d'extrema}
+
+  Soit $f : U \rightarrow \mathbb{R}$ de classe $\mathcal{C}^2$ sur $U$.
+
+  \reference[GOU20]{336}
+
+  \begin{theorem}
+    On suppose $\mathrm{d}f_a = 0$ ($a$ est un \textbf{point critique} de $f$). Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $f$ admet un minimum (resp. maximum) relatif en $a$, $\operatorname{Hess}(f)_a$ est positive (resp. négative).
+      \item Si $\operatorname{Hess}(f)_a$ définit une forme quadratique définie positive (resp. définie négative), $f$ admet un minimum (resp. maximum) relatif en $a$.
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    On suppose $\mathrm{d}f_a = 0$. On pose $(r,s,t) = \left(  \frac{\partial^2}{\partial x_i \partial x_j} f \right)_{i+j=2}$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Si $rt-s^2 > 0$ et $r > 0$ (resp. $r < 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
+      \item Si $rt-s^2 < 0$, $f$ n'a pas d'extremum en $a$.
+      \item Si $rt-s^2 = 0$, on ne peut rien conclure.
+    \end{enumerate}
+  \end{example}
+
+  \begin{example}
+    La fonction $(x,y) \mapsto x^4 + y^2 - 2(x-y)^2$ a trois points critiques qui sont des minimum locaux : $(0,0)$, $(\sqrt{2},-\sqrt{2})$ et $(-\sqrt{2},\sqrt{2})$.
+  \end{example}
+
+  \begin{cexample}
+    $x \mapsto x^3$ a sa hessienne positive en $0$, mais n'a pas d'extremum en $0$.
+  \end{cexample}
+
+  \subsection{Application en probabilités}
+
+  \reference[Z-Q]{544}
+
+  \begin{theorem}[Lévy]
+    Soient $(X_n)$ une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
+    \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
+    où $\phi_Y$ désigne la fonction caractéristique d'une variable aléatoire réelle $Y$.
+  \end{theorem}
+
+  \reference[G-K]{307}
+
+  \begin{theorem}[Central limite]
+    Soit $(X_n)$ une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
+    \[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
+  \end{theorem}
+
+  \begin{application}[Théorème de Moivre-Laplace]
+    On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
+    \[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
+  \end{application}
+
+  \reference{556}
+
+  \begin{application}[Formule de Stirling]
+    \[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
+  \end{application}
+  %</content>
+\end{document}

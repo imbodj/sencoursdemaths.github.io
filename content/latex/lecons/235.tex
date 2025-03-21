@@ -1,0 +1,546 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{235}{Problèmes d'interversion de symboles en analyse.}
+
+  \subsection{Problèmes d'interversion avec les suites et séries de fonctions}
+
+  \subsubsection{Utilisation de la convergence uniforme}
+
+  \reference[AMR11]{146}
+
+  \begin{theorem}[de la double limite]
+    Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(f_n)$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite quand $x$ tend vers $a$.
+    \end{enumerate}
+    Alors,
+    \[ \lim_{n \rightarrow +\infty} \left( \lim_{x \rightarrow a} f_n(x) \right) = \lim_{x \rightarrow a} \left( \lim_{n \rightarrow +\infty} f_n(x) \right) \]
+  \end{theorem}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $(f_n)$ converge uniformément sur $X$ vers $f$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ est continue en $a$.
+    \end{enumerate}
+    Alors $f$ est continue en $a$.
+  \end{theorem}
+
+  \begin{example}
+    La suite $(f_n)$ définie sur $\mathbb{R}^+$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto e^{-nx}$ converge vers
+    \[
+      f :
+      \begin{array}{ccc}
+        \mathbb{R}^+ &\rightarrow& \mathbb{R}^+ \\
+        x &\mapsto& \begin{cases}
+          1 &\text{si } x = 0 \\
+          0 &\text{sinon}
+        \end{cases}
+      \end{array}
+    \]
+    Les fonctions $f_n$ sont continues, mais $f$ ne l'est pas : on n'a pas convergence uniforme sur $\mathbb{R}^+$.
+  \end{example}
+
+  \begin{theorem}
+    Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace vectoriel normé et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
+      \item $(f_n)$ converge simplement sur $I$ vers $f$.
+      \item $(f_n')$ converge uniformément sur $I$.
+    \end{enumerate}
+    Alors $f$ est dérivable sur $I$ et $\forall x \in I$, $f'(x) = \lim_{n \rightarrow +\infty} f_n'(x)$.
+  \end{theorem}
+
+  \begin{cexample}
+    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
+  \end{cexample}
+
+  \begin{theorem}
+    Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est de classe $\mathcal{C}^1$ sur $I$.
+      \item Il existe $x_0 \in I$ tel que $(f_n(x_0))$ converge.
+      \item $(f_n')$ converge uniformément sur $I$ vers $g$.
+    \end{enumerate}
+    Alors $(f_n)$ converge uniformément sur $I$ vers $f$ de classe $\mathcal{C}^1$ sur $I$ et $f' = g$.
+  \end{theorem}
+
+  \subsubsection{Séries de fonctions et limites}
+
+  \reference{195}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sum f_n$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite $\ell_n$ quand $x$ tend vers $a$.
+    \end{enumerate}
+    Alors, $\sum \ell_n$ converge dans $E$ et,
+    \[ \lim_{x \rightarrow a} \sum_{n=0}^{+\infty} f_n(x) = \sum_{n=0}^{+\infty} \lim_{x \rightarrow a} f_n(x) = \sum_{n=0}^{+\infty} \ell_n \]
+  \end{theorem}
+
+  \begin{theorem}
+    Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\sum f_n$ converge uniformément sur $X$.
+      \item $\forall n \in \mathbb{N}, \, f_n$ est continue en $a$.
+    \end{enumerate}
+    Alors, $\sum_{n=0}^{+\infty} f_n$ est continue en $a$.
+  \end{theorem}
+
+  \begin{example}
+    La fonction $x \mapsto \sum_{n=0}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
+  \end{example}
+
+  \begin{theorem}
+    Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace de Banach et $\sum f_n$ une série de fonctions de $I$ dans $E$. On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
+      \item Il existe $x_0 \in I$ tel que $\sum f_n(x_0)$ converge.
+      \item $\sum f_n'$ converge uniformément sur $I$.
+    \end{enumerate}
+    Alors $\sum f_n$ converge simplement sur $I$ uniformément sur tout compact de $I$, et,
+    \[ \left( \sum_{n=0}^{+\infty} f_n \right)' = \sum_{n=0}^{+\infty} f_n' \]
+  \end{theorem}
+
+  \begin{example}
+    La fonction $\zeta : s \mapsto \sum_{n=1}^{+\infty} \frac{1}{n^s}$ est $\mathcal{C}^\infty$ sur $]1, +\infty[$ et,
+    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(s))^k}{n^s} \]
+  \end{example}
+
+  \subsubsection{Le cas des séries entières}
+
+  \reference[GOU20]{247}
+
+  \begin{definition}
+    On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
+  \end{definition}
+
+  \begin{lemma}[Abel]
+    Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
+      \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{definition}
+    En reprenant les notations précédentes, le nombre
+    \[ R = \sup \{ r \geq 0 \mid (|a_n|r^n) \text{ est bornée} \} \]
+    est le \textbf{rayon de convergence} de $\sum a_n z^n$.
+  \end{definition}
+
+  \reference{255}
+
+  \begin{example}
+    \begin{itemize}
+      \item $\sum n^2 z^n$ a un rayon de convergence égal à $1$.
+      \item $\sum \frac{z^n}{n!}$ a un rayon de convergence infini. On note $z \mapsto e^z$ la fonction somme.
+    \end{itemize}
+  \end{example}
+
+  \reference[QUE]{57}
+
+  \begin{proposition}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{H}(D(0, r))$ et,
+    \[ S'(z) = \sum_{n=0}^{+\infty} n a_n z^{n-1} \]
+    pour tout $z \in D(0, r)$.
+    \newpar
+    Plus précisément, pour tout $k \in \mathbb{N}$, $S$ est $k$ fois dérivable avec
+    \[ S^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
+  \end{proposition}
+
+  \reference[GOU20]{263}
+  \dev{theoreme-d-abel-angulaire}
+
+  \begin{theorem}[Abel angulaire]
+    \label{235-1}
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ telle que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+    \newpar
+    Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
+  \end{theorem}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
+  \end{application}
+
+  \begin{application}
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+  \end{application}
+
+  \begin{cexample}
+    La réciproque est fausse :
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+  \end{cexample}
+
+  \begin{theorem}[Taubérien faible]
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
+    \[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
+    Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
+  \end{theorem}
+
+  \begin{remark}
+    Ce dernier résultat est une réciproque partielle du \cref{235-1}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
+  \end{remark}
+
+  \subsection{Problèmes d'interversion en intégration}
+
+  On se place dans un espace mesuré $(X, \mathcal{A}, \mu)$.
+
+  \subsubsection{Intégrale d'une suite de fonctions}
+
+  \reference[B-P]{124}
+
+  \begin{theorem}[Convergence monotone]
+    Soit $(f_n)$ une suite croissante de fonctions mesurables positives. Alors, la limite $f$ de cette suite est mesurable positive, et,
+    \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \]
+  \end{theorem}
+
+  \begin{application}
+    Soient $f$, $g$ deux fonctions mesurables positives.
+    \begin{enumerate}[label=(\roman*)]
+      \item $f \leq g \implies \int_X f \, \mathrm{d}\mu \leq \int_X g \, \mathrm{d}\mu$ (l'intégrale est croissante).
+      \item $\int_X (f+g) \, \mathrm{d}\mu = \int_X f \, \mathrm{d}\mu + \int_X g \, \mathrm{d}\mu$ (l'intégrale est additive).
+      \item $\forall \lambda \geq 0, \, \int_X \lambda f \, \mathrm{d}\mu = \lambda \int_X f \, \mathrm{d}\mu$ (l'intégrale est positivement homogène).
+      \item Si $f = g$ pp., alors $\int_X f \, \mathrm{d}\mu = \int_X g \, \mathrm{d}\mu$.
+    \end{enumerate}
+  \end{application}
+
+  \reference{137}
+
+  \begin{theorem}[Lemme de Fatou]
+    Soit $(f_n)$ une suite de fonctions mesurables positives. Alors,
+    \[ 0 \leq \int_X \liminf f_n \, \mathrm{d}\mu \leq \liminf \int_X f_n \, \mathrm{d}\mu \leq +\infty \]
+  \end{theorem}
+
+  \begin{example}
+    \label{235-2}
+    Soit $f$ croissante sur $[0,1]$, continue en $0$ et dérivable en $1$ et dérivable pp. dans $[0,1]$. Alors,
+    \[ \int_{0}^{1} f'(x) \, \mathrm{d}x \leq f(1) - f(0) \]
+  \end{example}
+
+  \begin{theorem}[Convergence dominée]
+    Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
+    \begin{enumerate}[label=(\roman*)]
+      \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
+      \item $\exists g \in \mathcal{L}_1$ positive telle que
+      \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
+      Alors,
+      \[ \int_X f \, \mathrm{d}\mu = \lim_{n \rightarrow +\infty} \int_X f_n \, \mathrm{d}\mu \text{ et } \lim_{n \rightarrow +\infty} \int_X \vert f_n - f \vert \, \mathrm{d}\mu = 0 \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{example}
+    \begin{itemize}
+      \item On reprend l'\cref{235-2} et on suppose $f$ partout dérivable sur $[0,1]$ de dérivée bornée. Alors l'inégalité est une égalité.
+      \item Soit $\alpha > 1$. On pose $\forall n \geq 1, \, I_n(\alpha) = \int_0^n \left( 1 + \frac{x}{n} \right)^n e^{-\alpha x} \, \mathrm{d}x$. Alors,
+      \[ \lim_{n \rightarrow +\infty} I_n(\alpha) = \int_0^{+\infty} e^{(1-\alpha)x} \, \mathrm{d}x = \frac{1}{\alpha - 1} \]
+    \end{itemize}
+  \end{example}
+
+  \reference[AMR11]{156}
+
+  \begin{example}
+    \[ \lim_{n \rightarrow +\infty} \int_{0}^{+\infty} \frac{x^n}{x^{2n} + 1} \, \mathrm{d}x = 0 \]
+  \end{example}
+
+  \reference[B-P]{144}
+
+  \begin{application}[Lemme de Borel-Cantelli]
+    Soit $(A_n)$ une famille de parties de $\mathcal{A}$. Alors,
+    \[ \sum_{n=1}^{+\infty} \mu(A_n) < +\infty \implies \mu \left( \limsup_{n \rightarrow +\infty} A_n \right) = 0 \]
+  \end{application}
+
+  \subsubsection{Intégrale à paramètre}
+
+  \reference[Z-Q]{312}
+
+  Soit $f : E \times X \rightarrow \mathbb{C}$ où $(E, d)$ est un espace métrique. On pose $F : t \mapsto \int_X f(t, x) \, \mathrm{d}\mu(x)$.
+
+  \paragraph{Continuité}
+
+  \begin{theorem}[Continuité sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
+      \item $\exists g \in L_1(X)$ positive telle que
+      \[ |f(t,x)| \leq g(x) \quad \forall t \in E, \text{pp. en } x \in X \]
+    \end{enumerate}
+    Alors $F$ est continue en $t_0$.
+  \end{theorem}
+
+  \begin{corollary}
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
+      \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
+      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $F$ est continue sur $E$.
+  \end{corollary}
+
+  \reference{318}
+
+  \begin{example}
+    \label{235-3}
+    La fonction
+    \[ \Gamma :
+    \begin{array}{ccc}
+      \mathbb{R}^+_* &\rightarrow& \mathbb{R}^+_* \\
+      t &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
+    \end{array}
+    \]
+    est bien définie et continue sur $\mathbb{R}^+_*$.
+  \end{example}
+
+  \reference[G-K]{104}
+
+  \begin{example}
+    Soit $f : \mathbb{R}^+ \rightarrow \mathbb{C}$ intégrable. Alors,
+    \[ \lambda \mapsto \int_0^{+\infty} e^{-\lambda t} f(t) \, \mathrm{d}t \]
+    est bien définie et est continue sur $\mathbb{R}^+$.
+  \end{example}
+
+  \paragraph{Dérivabilité}
+
+  \reference[Z-Q]{313}
+
+  On suppose ici que $E$ est un intervalle $I$ ouvert de $\mathbb{R}$.
+
+  \begin{theorem}[Dérivation sous le signe intégral]
+    \label{235-4}
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
+      \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
+      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+  \end{theorem}
+
+  \begin{remark}
+    \begin{itemize}
+      \item Si dans le \cref{235-4}, hypothèse (i), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
+      \item On a un résultat analogue pour les dérivées d'ordre supérieur.
+    \end{itemize}
+  \end{remark}
+
+  \begin{theorem}[$k$-ième dérivée sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
+      \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
+      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
+    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
+  \end{theorem}
+
+  \reference{318}
+
+  \begin{example}
+    La fonction $\Gamma$ de l'\cref{235-3} est $\mathcal{C}^\infty$ sur $\mathbb{R}^+_*$.
+  \end{example}
+
+  \reference[B-P]{149}
+
+  \begin{example}
+    On se place dans l'espace mesuré $(\mathbb{N}, \mathcal{P}(\mathbb{N}), \operatorname{card})$ et on considère $(f_n)$ une suite de fonctions dérivables sur $I$ telle que
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{x \in I} |f'_n(t)| < +\infty \]
+    Alors $x \mapsto \sum_{n \in \mathbb{N}} f_n(x)$ est dérivable sur $I$ de dérivée $x \mapsto \sum_{n \in \mathbb{N}} f'_n(x)$.
+  \end{example}
+
+  \reference[GOU20]{169}
+
+  \begin{application}[Transformée de Fourier d'une Gaussienne]
+    En résolvant une équation différentielle linéaire, on a
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+  \end{application}
+
+  \reference[G-K]{107}
+  \dev{integrale-de-dirichlet}
+
+  \begin{application}[Intégrale de Dirichlet]
+    On pose $\forall x \geq 0$,
+    \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
+    alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
+      \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
+      \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
+    \end{enumerate}
+  \end{application}
+
+  \paragraph{Holomorphie}
+
+  \reference[Z-Q]{314}
+
+  On suppose ici que $E$ est un ouvert $\Omega$ de $\mathbb{C}$.
+
+  \begin{theorem}[Holomorphie sous le signe intégral]
+    On suppose :
+    \begin{enumerate}[label=(\roman*)]
+      \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
+      \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
+      \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
+      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+    \end{enumerate}
+    Alors $F$ est holomorphe dans $\Omega$ avec
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+  \end{theorem}
+
+  \reference{318}
+
+  \begin{example}
+    La fonction $\Gamma$ de l'\cref{235-3} est holomorphe dans l'ouvert $\{ z \in \mathbb{C} \mid \operatorname{Re}(z) > 0 \}$.
+  \end{example}
+
+  \subsubsection{Intégrale sur un espace produit}
+
+  \reference[B-P]{237}
+
+  \begin{theorem}[Fubini-Tonelli]
+    Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
+      \item Dans $\overline{\mathbb{R}^+}$,
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{theorem}[Fubini-Lebesgue]
+    Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
+    \begin{enumerate}[label=(\roman*)]
+      \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
+      \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
+      \item On a :
+      \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{cexample}
+    On considère $f : (x,y) \mapsto 2e^{-2xy} - e^{-xy}$. Alors, $\int_{[0,1]} \left( \int_{\mathbb{R}^+} f(x,y) \, \mathrm{d}x \right) \mathrm{d}y = 0$, mais $\int_{\mathbb{R}^+} \left( \int_{[0,1]} f(x,y) \, \mathrm{d}y \right) \mathrm{d}x = \ln(2)$.
+  \end{cexample}
+
+  \reference[GOU20]{359}
+
+  \begin{example}
+    Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
+    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+  \end{example}
+
+  \subsection{Problèmes d'interversion en analyse de Fourier}
+
+  \subsubsection{Séries de Fourier}
+
+  \reference{267}
+
+  \begin{definition}
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. On appelle \textbf{coefficients de Fourier} de $f$ les nombres complexes définis par
+    \[ \forall n \in \mathbb{Z}, \, c_n(f) = \int_{0}^{2\pi} f(t) e^{-int} \, \mathrm{d}t \]
+    La \textbf{série de Fourier} associée à $f$ est
+    \[ \sum_{n \in \mathbb{Z}} c_n(f)e^{inx} \]
+  \end{definition}
+
+  \begin{theorem}[Parseval]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. Alors la série de Fourier de $f$ est convergente et,
+    \[ \sum_{n=-\infty}^{+\infty} |c_n(f)|^2 = \frac{1}{2\pi} \int_0^{2\pi} |f(t)| \, \mathrm{d}t \]
+  \end{theorem}
+
+  \begin{example}
+    Avec $f : x \mapsto 1 - \frac{x^2}{\pi^2}$, on obtient $\sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90}$.
+  \end{example}
+
+  \begin{theorem}[Jordan-Dirichlet]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors la série de Fourier de $f$ est convergente en tout point $x \in \mathbb{R}$ et sa somme en ce point vaut
+    \[ \frac{f(x^+) + f(x^-)}{2} \]
+  \end{theorem}
+
+  \begin{example}
+    Toujours avec $f : x \mapsto 1 - \frac{x^2}{\pi^2}$, on obtient $\sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$.
+  \end{example}
+
+  \subsubsection{Transformée de Fourier}
+
+  \reference[AMR08]{109}
+
+  \begin{definition}
+    Soit $f : \mathbb{R}^d \rightarrow \mathbb{C}$ une fonction mesurable. On définit, lorsque cela a un sens, sa \textbf{transformée de Fourier}, notée $\widehat{f}$ par
+    \[
+    \widehat{f} :
+    \begin{array}{ccc}
+      \mathbb{R}^d &\rightarrow& \mathbb{C} \\
+      \xi &\mapsto& \int_{\mathbb{R}^d} f(x) e^{-i \langle x, \xi \rangle} \, \mathrm{d}x
+    \end{array}
+    \]
+  \end{definition}
+
+  \begin{example}[Densité de Poisson]
+    On pose $\forall x \in \mathbb{R}$, $p(x) = \frac{1}{2} e^{-|x|}$. Alors $p \in L_1(\mathbb{R})$ et, $\forall \xi \in \mathbb{R}$, $\widehat{p}(\xi) = \frac{1}{1+\xi^2}$.
+  \end{example}
+
+  \begin{lemma}[Riemann-Lebesgue]
+    Soit $f \in L_1(\mathbb{R}^d)$, $\widehat{f}$ existe et
+    \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) \]
+  \end{lemma}
+
+  \begin{theorem}
+    $\forall f \in L_1(\mathbb{R}^d)$, $\widehat{f}$ est continue, bornée par $\Vert f \Vert_1$. Donc la \textbf{transformation de Fourier}
+    \[
+    \mathcal{F} :
+    \begin{array}{ccc}
+      L_1(\mathbb{R}^d) &\rightarrow& \mathcal{C}_0(\mathbb{R}^d) \\
+      f &\mapsto& \widehat{f}
+    \end{array}
+    \]
+    est bien définie.
+  \end{theorem}
+
+  \begin{corollary}
+    La transformation de Fourier $\mathcal{F} : L_1(\mathbb{R}^d) \rightarrow \mathcal{C}_0(\mathbb{R}^d)$ est une application linéaire continue.
+  \end{corollary}
+
+  \begin{example}
+    \[
+    \forall \xi \in \mathbb{R}, \, \widehat{\mathbb{1}_{[-1,1]}}(\xi) =
+    \begin{cases}
+      \frac{2 \sin(\xi)}{\xi} \text{ si } \xi \neq 0 \\
+      2 \text{ sinon}
+    \end{cases}
+    \]
+    Remarquons ici que la transformée de Fourier n'est pas intégrable.
+  \end{example}
+
+  \begin{theorem}[Formule de dualité]
+    \[ \forall f, g \in L_1(\mathbb{R}^d), \int_{\mathbb{R}^d} f(t) \widehat{g}(t) \, \mathrm{d}t = \int_{\mathbb{R}^d} \widehat{f}(t) g(t) \, \mathrm{d}t \]
+  \end{theorem}
+
+  \begin{corollary}
+    La transformation de Fourier $\mathcal{F} : L_1(\mathbb{R}^d) \rightarrow \mathcal{C}_0(\mathbb{R}^d)$ est une application injective.
+  \end{corollary}
+
+  \begin{theorem}[Formule d'inversion de Fourier]
+    Si $f \in L_1(\mathbb{R}^d)$ est telle que $\widehat{f} \in L_1(\mathbb{R}^d)$, alors
+    \[ \widehat{\widehat{f}}(x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
+  \end{theorem}
+
+  \reference[GOU20]{284}
+
+  \begin{theorem}[Formule sommatoire de Poisson]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction de classe $\mathcal{C}^1$ telle que $f(x) = O \left( \frac{1}{x^2} \right)$ et $f'(x) = O \left( \frac{1}{x^2} \right)$ quand $|x| \longrightarrow +\infty$. Alors :
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{Z}} f(x+n) = \sum_{n \in \mathbb{Z}} \widehat{f}(2 \pi n) e^{2 i \pi n x} \]
+  \end{theorem}
+
+  \begin{application}[Identité de Jacobi]
+    \[ \forall s > 0, \, \sum_{n=-\infty}^{+\infty} e^{-\pi n^2 s} = \frac{1}{\sqrt{s}} \sum_{n=-\infty}^{+\infty} e^{-\frac{\pi n^2}{s}} \]
+  \end{application}
+  %</content>
+\end{document}
