@@ -16,15 +16,13 @@ import { siteMeta } from '~/site/meta'
         >
           <h2>Copyright</h2>
           <p>
-            Copyright &copy; 2021 - <a href="https://skyost.eu">Hugo Delaunay</a>. Tous droits réservés.
+            Copyright &copy; 2025 - <a href="https://sencoursdemaths.vercel.app/">Ismaila Mbodji</a>. Tous droits réservés.
             <current-commit-sha />
           </p>
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.
-            Le site en lui-même est totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/main/LICENSE`">open-source</a>,
-            vous pouvez aller voir ça sur <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`">Github</a>.
-          </p>
+           </p>
           <ul class="logos">
             <li>
               <a href="https://www.latex-project.org/">
@@ -89,16 +87,7 @@ import { siteMeta } from '~/site/meta'
           </ul>
         </b-col>
       </b-row>
-      <div class="text-center mt-4">
-        <a href="https://discord.gg/pcpUC6Jbc3">
-          <img
-            class="discord"
-            src="/images/social/discord.svg"
-            alt="Discord"
-            title="Rejoins notre Discord !"
-          >
-        </a>
-      </div>
+      
     </b-container>
   </footer>
 </template>
