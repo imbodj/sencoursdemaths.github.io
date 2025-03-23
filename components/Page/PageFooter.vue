@@ -34,7 +34,7 @@ import { siteMeta } from '~/site/meta'
               </a>
             </li>
             <li>
-              <a href="https://github.com/Skyost/ThatLatexLib">
+              <a href="https://github.com/imbodj/ThatLatexLib">
                 <img
                   src="/images/technologies/thatlatexlib.svg"
                   alt="ThatLatexLib"

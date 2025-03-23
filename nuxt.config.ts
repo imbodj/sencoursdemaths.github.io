@@ -118,4 +118,7 @@ export default defineNuxtConfig({
   robots: {
     disallow: ['/historique/*'],
   },
+  nitro: {
+    preset: 'vercel',  // Ajout de cette ligne pour le preset Vercel
+  },
 })

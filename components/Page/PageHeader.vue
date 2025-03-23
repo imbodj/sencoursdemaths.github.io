@@ -4,7 +4,7 @@
       <h1>Sen Cours De Maths</h1>
       <hr>
       <p class="mb-0">
-        Petit site contenant une flopée de ressources  de mathématiques pour le lycée : plans, exercices,évaluations, ...
+        Petit site contenant des ressources  de mathématiques pour le lycée.
       </p>
     </b-container>
   </header>
