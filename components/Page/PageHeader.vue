@@ -4,7 +4,7 @@
       <h1>Sen Cours De Maths</h1>
       <hr>
       <p class="mb-0">
-        Site web pour partager des documents de mathématiques pour le secondaire.
+        Petit site contenant une flopée de ressources  de mathématiques pour le lycée : plans, exercices,évaluations, ...
       </p>
     </b-container>
   </header>
