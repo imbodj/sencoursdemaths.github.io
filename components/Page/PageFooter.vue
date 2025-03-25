@@ -61,7 +61,7 @@ import { siteMeta } from '~/site/meta'
               </a>
             </li>
             <li>
-              <a href="https://github.com">
+              <a href="https://github.com/imbodj/SenCoursDeMaths">
                 <img
                   src="/images/technologies/github.svg"
                   alt="Github"
