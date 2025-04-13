@@ -9,7 +9,7 @@
 
   \reference[ROM19-1]{364}
 
-  \begin{lemma}
+  \begin{exercice}
     \label{caracterisation-reelle-de-gamma-1}
     La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
     \begin{enumerate}[label=(\roman*)]
@@ -17,7 +17,7 @@
       \item \label{caracterisation-reelle-de-gamma-3} $\Gamma(1) = 1$.
       \item \label{caracterisation-reelle-de-gamma-4} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
     \end{enumerate}
-  \end{lemma}
+  \end{exercice}
 
   \begin{proof}
     \begin{enumerate}[label=(\roman*)]
@@ -40,9 +40,9 @@
     \end{enumerate}
   \end{proof}
 
-  \begin{theorem}[Bohr-Mollerup]
+  \begin{exercice}[Bohr-Mollerup]
     Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{caracterisation-reelle-de-gamma-2}, le \cref{caracterisation-reelle-de-gamma-3} et le \cref{caracterisation-reelle-de-gamma-4} du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
-  \end{theorem}
+  \end{exercice}
 
   \begin{proof}
     Par récurrence, on a d'après le \cref{caracterisation-reelle-de-gamma-2} :
@@ -87,11 +87,11 @@
     ie. $f$ et $\Gamma$ coïncident bien sur $]0, 1]$.
   \end{proof}
 
-  \begin{remark}
+  \begin{exercice}
     À la fin de la preuve, on obtient une formule due à Gauss :
     \[ \forall x \in ]0, 1], \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} \]
     que l'on peut aisément étendre à $\mathbb{R}^+_*$ entier.
-  \end{remark}
+  \end{exercice}
 
   La preuve, telle qu'elle est écrite ici, est issue d'un livre de Walter Rudin. Elle est également disponible (sous une forme un peu différente) comme l'indique la référence, dans \cite{[ROM19-1]}.
   %</content>

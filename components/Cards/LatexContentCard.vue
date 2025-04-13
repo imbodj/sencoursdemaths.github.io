@@ -24,6 +24,7 @@ defineProps<{
       </b-button>
       <b-button
         :href="`/pdf/${linkPrefix}/${object.slug}.pdf`"
+        download="true"
         variant="secondary"
       >
         <icon name="bi:file-text" /> Télécharger le PDF

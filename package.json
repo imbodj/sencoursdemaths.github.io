@@ -1,6 +1,6 @@
 {
   "name": "sencoursdemaths",
-  "version": "2.2.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "npx nuxi dev",
@@ -10,7 +10,9 @@
     "clean": "npx nuxi clean",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
-    "lint": "npm run lint:js && npm run lint:style"
+    "lint": "npm run lint:js && npm run lint:style",
+    "compile-latex": "find content -name '*.tex' -exec latexmk -pdf -output-directory=output {} \\;"
+
   },
   "devDependencies": {
     "@bootstrap-vue-next/nuxt": "^0.28.0",
