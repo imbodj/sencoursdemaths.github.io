@@ -3,19 +3,9 @@ import fs from 'fs'
 import { addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 import { filename, storageKey } from './common'
 
-/**
- * The name of the commit SHA file generator module.
- */
 const name = 'commit-sha-file-generator'
-
-/**
- * The logger instance.
- */
 const logger = useLogger(name)
 
-/**
- * Nuxt module to generate a file containing the latest commit hash information.
- */
 export default defineNuxtModule({
   meta: {
     name,
@@ -27,18 +17,22 @@ export default defineNuxtModule({
     const resolver = createResolver(import.meta.url)
     const srcDir = nuxt.options.srcDir
 
-    // Retrieve commit hash information.
-    const long = execSync('git rev-parse HEAD', { cwd: srcDir }).toString().trim()
-    const short = execSync('git rev-parse --short HEAD', { cwd: srcDir }).toString().trim()
+    let long = 'unknown'
+    let short = 'unknown'
 
-    // Write commit information to file.
+    try {
+      long = execSync('git rev-parse HEAD', { cwd: srcDir }).toString().trim()
+      short = execSync('git rev-parse --short HEAD', { cwd: srcDir }).toString().trim()
+      logger.success(`Wrote latest commit info for ${long}.`)
+    } catch (err) {
+      logger.warn('⚠️ Impossible de récupérer les infos du commit (hors repo Git ?)')
+    }
+
     const destinationDirectoryPath = resolver.resolve(nuxt.options.srcDir, 'node_modules', `.${name}`)
     const filePath = resolver.resolve(destinationDirectoryPath, filename)
     fs.mkdirSync(destinationDirectoryPath, { recursive: true })
     fs.writeFileSync(filePath, JSON.stringify({ long, short }))
-    logger.success(`Wrote latest commit info for ${long}.`)
 
-    // Update Nitro config.
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: '/_api/latest-commit/',
