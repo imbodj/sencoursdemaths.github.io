@@ -24,6 +24,13 @@ export default defineNuxtConfig({
 
   ssr: true,
 
+  nitro: {
+    preset: 'vercel',
+    prerender: {
+      routes: ['/pdf/**', '/**/*.html']
+    }
+  },
+
   app: {
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,

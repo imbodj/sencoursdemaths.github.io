@@ -60,7 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // And generate all PDFs !
     const ignore = options.ignore.map(file => resolver.resolve(srcDir, file))
-    const destinationDirectoryPath = resolver.resolve(srcDir, 'node_modules', `.${name}`, options.destinationDirectory)
+    const destinationDirectoryPath = resolver.resolve(srcDir, 'public', options.destinationDirectory)
     generatePdf(
       resolver,
       path.relative(resolver.resolve(srcDir, 'content'), latexDirectoryPath),

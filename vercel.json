@@ -1,0 +1,9 @@
+{
+    "buildCommand": "npm run generate",
+    "outputDirectory": ".output/public",
+    "routes": [
+      { "src": "/pdf/(.*)", "dest": "/pdf/$1" },
+      { "src": "/(.*).html", "dest": "/$1.html" }
+    ],
+    "trailingSlash": true
+  }
