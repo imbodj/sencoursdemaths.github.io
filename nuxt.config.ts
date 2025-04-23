@@ -24,17 +24,6 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  nitro: {
-    preset: 'vercel',
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-        '/lecons',
-      ],
-    }
-  },
-
   app: {
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
