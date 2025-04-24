@@ -24,7 +24,15 @@ export default defineNuxtConfig({
 
   ssr: true,
 
+  // Important pour GitHub Pages
+  nitro: {
+    preset: 'static'
+  },
+
   app: {
+    // Ce baseURL est crucial si ton dépôt s'appelle par exemple `SenCoursDeMaths`
+    baseURL: '/SenCoursDeMaths/',
+
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {

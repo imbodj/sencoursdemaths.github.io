@@ -2,14 +2,14 @@
 
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant les mathématiques au lycée. Vous trouverez donc sur ce site :
 
-* Mes [plans](https://sencoursdemaths.vercel.app/lecons/) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence, j'ai fait l'impasse sur  certaines leçons.
-* Mon choix de [developpements](https://sencoursdemaths.vercel.app/developpements/).
-* Quelques [fiches](https://sencoursdemaths.vercel.app/fiches/) de révision.
-* Ma [bibliographie](https://sencoursdemaths.vercel.app/bibliographie/) personnelle.
-* Une liste personnelle de [conseils généraux](https://sencoursdemaths.vercel.app/fiches/conseils-generaux/).
+* Mes [plans](https://imbodj.github.io/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence, j'ai fait l'impasse sur  certaines leçons.
+* Mon choix de [developpements](https://imbodj.github.io/SenCoursDeMaths/developpements/).
+* Quelques [fiches](https://imbodj.github.io/SenCoursDeMaths/fiches/) de révision.
+* Ma [bibliographie](https://imbodj.github.io/SenCoursDeMaths/bibliographie/) personnelle.
+* Une liste personnelle de [conseils généraux](https://imbodj.github.io/SenCoursDeMaths/fiches/conseils-generaux/).
 
 En espérant que le contenu de ce site vous aide dans vos études en mathématiques; si vous avez une quelconque remarque
-/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://sencoursdemaths.vercel.app/#contact) présent sur mon site.
+/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://imbodj.github.io/SenCoursDeMaths/#contact) présent sur mon site.
 
 ## Liens utiles
 
