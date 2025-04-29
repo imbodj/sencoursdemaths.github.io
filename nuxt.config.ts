@@ -24,9 +24,10 @@ export default defineNuxtConfig({
 
   ssr: true,
   nitro: {
-    preset: 'vercel',
+    preset: 'static'
   },
   app: {
+    baseURL: '/SenCoursDeMaths/', // très important pour GitHub Pages
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
