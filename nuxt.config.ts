@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
   ],
 
-  ssr: true,
+  ssr: false,
   nitro: {
     preset: 'static'
   },
