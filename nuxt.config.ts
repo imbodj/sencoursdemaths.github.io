@@ -23,7 +23,9 @@ export default defineNuxtConfig({
   ],
 
   ssr: true,
-
+  nitro: {
+    preset: 'vercel',
+  },
   app: {
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
