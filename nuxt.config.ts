@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   app: {
-    baseURL: '/SenCoursDeMaths/', // très important pour GitHub Pages
+   // baseURL: '/SenCoursDeMaths/', // très important pour GitHub Pages
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
