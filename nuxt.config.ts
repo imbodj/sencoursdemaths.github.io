@@ -22,7 +22,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
   ],
 
-  ssr: true,
+  ssr: false,
+  nitro: {
+    preset: 'static'
+  },
 
   app: {
     baseURL: '/SenCoursDeMaths/', // très important pour GitHub Pages
