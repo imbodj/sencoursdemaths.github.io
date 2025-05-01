@@ -42,9 +42,9 @@ interface SiteMeta {
  * The metadata for the site.
  */
 export const siteMeta: SiteMeta = {
-  title: 'sencoursdemaths.vercel.app',
+  title: 'SenCoursDeMaths',
   description:  'Petit site contenant une flopée de ressources  de mathématiques pour le lycée : plans, exercices,évaluations, ...',
-  url: 'https://sencoursdemaths.vercel.app',
+  url: 'https://imbodj.github.io/SenCoursDeMaths',
   github: {
     username: 'imbodj',
     repository: 'SenCoursDeMaths',

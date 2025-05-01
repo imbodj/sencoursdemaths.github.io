@@ -46,6 +46,6 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: .output/public
+        folder: dist
         branch: gh-pages
         single-commit: true

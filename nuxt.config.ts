@@ -3,8 +3,6 @@ import StylelintPlugin from 'vite-plugin-stylelint'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -22,13 +20,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
   ],
 
-  ssr: false,
-  nitro: {
-    preset: 'static'
-  },
+  ssr: true,
 
   app: {
-    baseURL: '/SenCoursDeMaths/', // très important pour GitHub Pages
+
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -44,6 +39,16 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    preset: 'static',
+    output: {
+      dir: 'dist',
+    },
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+    }
+  },
   css: [
     '~/assets/app.scss',
     '~/node_modules/katex/dist/katex.min.css',
