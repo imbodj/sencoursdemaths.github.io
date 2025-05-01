@@ -47,6 +47,13 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
+      routes: [
+        '/',              // accueil
+        '/lecons/',
+        '/fiches/',
+        '/developpements/',
+        // ajoute d'autres routes manuellement si besoin
+      ]
     }
   },
   css: [
