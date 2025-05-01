@@ -125,6 +125,7 @@ export default defineNuxtConfig({
   },
 
   robots: {
+    robotsTxt: false,
     disallow: ['/historique/*'],
   },
 })
