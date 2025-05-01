@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   app: {
-
+  
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
