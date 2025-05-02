@@ -48,12 +48,7 @@ const searchValue = ref(route.query.requete?.toString())
         >
           <icon name="bi:backpack-fill" /> Fiches
         </b-nav-item>
-        <b-nav-item
-          to="/bibliographie/"
-          :active="$route.path.startsWith('/bibliographie')"
-        >
-          <icon name="bi:book-fill" /> Bibliographie
-        </b-nav-item>
+       
         <b-nav-item
           class="d-none"
           to="/recherche/"

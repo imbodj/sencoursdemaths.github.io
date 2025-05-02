@@ -6,7 +6,6 @@ import { siteMeta } from './site/meta'
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '~/modules/books-cover-fetcher',
     'nuxt-cname-generator',
     '~/modules/readme-md-to-content',
     '~/modules/commit-sha-file-generator',
@@ -23,7 +22,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   app: {
-    baseURL: '/SenCoursDeMaths/',
+   
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -39,17 +38,7 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: {
-    preset: 'static',
-    output: {
-      dir: 'dist',
-    },
-    prerender: {
-      crawlLinks: true,
-      failOnError: false,
-      
-    }
-  },
+
   css: [
     '~/assets/app.scss',
     '~/node_modules/katex/dist/katex.min.css',
@@ -126,7 +115,6 @@ export default defineNuxtConfig({
   },
 
   robots: {
-    robotsTxt: false,
     disallow: ['/historique/*'],
   },
 })

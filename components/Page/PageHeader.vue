@@ -16,7 +16,7 @@
   position: relative;
   color: white;
   text-align: center;
-  background-image: url('/SenCoursDeMaths/images/header.png');
+  background-image: url('/images/header.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
