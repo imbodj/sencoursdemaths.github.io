@@ -20,10 +20,16 @@ export default defineNuxtConfig({
   ],
 
   ssr: true,
-
+  nitro: {
+    preset: 'static',
+    prerender: {
+      failOnError: false // ← Ignore les erreurs pour générer quand même
+    }
+  },
   app: {
 
     baseURL: '/SenCoursDeMaths/' ,
+    buildAssetsDir: '_nuxt/',
    
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,

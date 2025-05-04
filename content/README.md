@@ -5,7 +5,6 @@ Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concer
 * Mes [plans](https://imbodj.github.io/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence, j'ai fait l'impasse sur  certaines leçons.
 * Mon choix de [developpements](https://imbodj.github.io/SenCoursDeMaths/developpements/).
 * Quelques [fiches](https://imbodj.github.io/SenCoursDeMaths/fiches/) de révision.
-* Ma [bibliographie](https://imbodj.github.io/SenCoursDeMaths/bibliographie/) personnelle.
 * Une liste personnelle de [conseils généraux](https://imbodj.github.io/SenCoursDeMaths/fiches/conseils-generaux/).
 
 En espérant que le contenu de ce site vous aide dans vos études en mathématiques; si vous avez une quelconque remarque
@@ -15,7 +14,7 @@ En espérant que le contenu de ce site vous aide dans vos études en mathématiq
 
 Je me permets de glisser quelques liens vers des sites que j'utilise régulièrement dans ma préparation :
 
-* Le [sunudaara](https://www.sunudaara.com/). Vous y trouverez des cours, des exercices, 
+*  [sunudaara](https://www.sunudaara.com/). Vous y trouverez des cours, des exercices, 
   des évaluations, ... Bref, à consulter régulièrement !
 * [sujetexam](https://sujetexa.com/). Un super site qui contient plein de cours, d'exercices, d'évaluations
   et d'outils en tout genre pour réussir les maths au lycée. 
