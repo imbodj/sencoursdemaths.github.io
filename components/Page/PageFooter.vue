@@ -81,9 +81,9 @@ import { siteMeta } from '~/site/meta'
             par conséquent téléchargeables au format PDF.
           </p>
           <ul class="mb-0">
-            <li><a href="/pdf/lecons.pdf">Plans de leçons</a></li>
-            <li><a href="/pdf/developpements.pdf">Développements</a></li>
-            <li><a href="/pdf/lecons-developpements.pdf">Plans de leçons &amp; développements</a></li>
+            <li><a href="/SenCoursDeMaths/pdf/lecons.pdf">Plans de leçons</a></li>
+            <li><a href="/SenCoursDeMaths/pdf/developpements.pdf">Développements</a></li>
+            <li><a href="/SenCoursDeMaths/pdf/lecons-developpements.pdf">Plans de leçons &amp; développements</a></li>
           </ul>
         </b-col>
       </b-row>
