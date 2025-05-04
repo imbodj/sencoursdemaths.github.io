@@ -50,19 +50,6 @@ const setupDocument = () => {
     }
   }
 
-  const references = root.value!.querySelectorAll<HTMLElement>('.bookref')
-  let rightColumnWidth = 0
-  for (const reference of references) {
-    const element: HTMLElement = reference.firstElementChild! as HTMLElement
-    rightColumnWidth = Math.max(rightColumnWidth, element.offsetWidth)
-  }
-  const paddingRight = `${rightColumnWidth + 15}px`
-  root.value!.style.paddingRight = paddingRight
-  for (const reference of references) {
-    const element: HTMLElement = reference.firstElementChild! as HTMLElement
-    element.style.right = paddingRight
-  }
-
   const router = useRouter()
   const devLinks = root.value!.querySelectorAll<HTMLElement>('.devlink')
   for (const devLink of devLinks) {
@@ -274,28 +261,6 @@ onUnmounted(() => {
           min-width: 2rem;
         }
       }
-    }
-  }
-
-  :deep(.bookref) {
-    // position: relative;
-
-    > *:first-child {
-      @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
-
-      position: absolute;
-      // right: 0;
-      text-align: center;
-      padding: 7.5px;
-      margin-left: 10px;
-      font-size: 0.75em;
-      text-decoration: none !important;
-      color: black;
-      transform: translateX(calc(100% + 15px));
-    }
-
-    p {
-      margin-bottom: 0;
     }
   }
 

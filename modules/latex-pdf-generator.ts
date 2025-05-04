@@ -258,14 +258,6 @@ const generatePdf = (
             new LatexIncludeCommand('inputcontent'),
             new LatexIncludeCommand('inputcontent\\*'),
             new LatexIncludeCommand(
-              'setbibliographypath',
-              {
-                extensions: ['.bib'],
-                hasIncludes: false,
-                targetIsDirectory: true,
-              },
-            ),
-            new LatexIncludeCommand(
               'inputalgorithm',
               {
                 extensions: ['.py'],

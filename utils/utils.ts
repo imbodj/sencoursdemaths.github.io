@@ -1,34 +1,5 @@
 import path from 'path'
 import crypto from 'crypto'
-import { parse } from '@retorquere/bibtex-parser'
-import type { Book, Category } from '../types'
-
-/**
- * Parses the content of a BibTeX file and extracts relevant information to create a Book object.
- *
- * @param bibContent Content of the BibTeX file.
- * @returns Parsed Book object.
- */
-export const parseBib = (bibContent: string): Book => {
-  const data = parse(bibContent)
-  const fields = data.entries[0].fields
-  return {
-    title: fields.title,
-    subtitle: 'subtitle' in fields ? fields.subtitle : undefined,
-    edition: 'edition' in fields ? parseInt(fields.edition) : undefined,
-    short: fields.short,
-    authors: fields.author?.map(author => author.firstName + ' ' + author.lastName) ?? [],
-    date: fields.date,
-    publisher: fields.publisher![0],
-    categories: fields.categories.split(', ') as Category[],
-    isbn10: fields.isbn10,
-    isbn13: fields.isbn13,
-    buy: fields.buy,
-    website: fields.url,
-    comment: fields.comment,
-    altcover: 'altcover' in fields ? fields.altcover : undefined,
-  }
-}
 
 /**
  * Removes a trailing slash from a string if it exists.
