@@ -1,19 +1,18 @@
 \input{../common}
-\input{../bibliography}
 
 \begin{document}
   %<*content>
   \development{algebra, analysis}{equation-de-sylvester}{Équation de Sylvester}
-  
+
   \summary{On montre que l'équation $AX+XB=C$ d'inconnue $X$ admet une unique solution pour tout $C \in \mathcal{M}_n(\mathbb{C})$ et pour tout $A, B \in \mathcal{M}_n(\mathbb{C})$ dont les valeurs propres sont de partie réelle strictement négative.}
-  
+
   \reference[GOU21]{200}
-  
+
   \begin{lemma}
     \label{equation-de-sylvester-1}
     Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
   \end{lemma}
-  
+
   \begin{proof}
     On fait la décomposition de Dunford de $A$ : $A = D+N$. Comme $D$ et $N$ commutent, on a $e^{tA} = e^{tD} e^{tN}$. Soient $P$ la matrice de passage donnée par la base de diagonalisation de $D$ et $\lambda_1, \dots, \lambda_n$ ses valeurs propres. En notant $\VERT . \VERT$ la norme subordonnée à $\Vert . \Vert_\infty$ sur $\mathbb{C}^n$, on a $\forall t \geq 0$,
     \begin{align*}
@@ -31,13 +30,13 @@
       & \leq e^{- \lambda t} \underbrace{\sum_{k=0}^{r-1} \beta \frac{\Vert N \Vert^k t^k}{k}}_{= P(t)}
     \end{align*}
   \end{proof}
-  
+
   \reference[I-P]{177}
-  
+
   \begin{theorem}[Équation de Sylvester]
     Soient $A$ et $B \in \mathcal{M}_n(\mathbb{C})$ deux matrices dont les valeurs propres sont de partie réelle strictement négative. Alors pour tout $C \in \mathcal{M}_n(\mathbb{C})$, l'équation $AX + XB = C$ admet une unique solution $X$ dans $\mathcal{M}_n(\mathbb{C})$.
   \end{theorem}
-  
+
   \begin{proof}
     Comme l'application $\varphi : X \mapsto AX + XB$ est un endomorphisme de $\mathcal{M}_n(\mathbb{C})$, qui est un espace vectoriel de dimension finie, il suffit de montrer qu'elle est surjective pour obtenir l'injectivité (et donc l'unicité de la solution). Soit $C \in \mathcal{M}_n(\mathbb{C})$. On considère le problème de Cauchy suivant d'inconnue $Y : \mathbb{R} \rightarrow \mathcal{M}_n(\mathbb{C})$ :
     \[ \begin{cases} Y' = AY + YB \\ Y(0) = C \end{cases} \tag{$E$} \]
@@ -55,13 +54,13 @@
     \[ -C = A \times \int_{0}^{+\infty} Y(s) \, \mathrm{d}s + \int_{0}^{+\infty} Y(s) \, \mathrm{d}s \times B \]
     Donc $\varphi(X) = C$ : $\varphi$ est surjective et $X$ est bien la solution de l'équation de Sylvester.
   \end{proof}
-  
+
   \reference[GOU21]{189}
-  
+
   \begin{remark}
     Pour dire que toute matrice $M$ commute avec $\exp(M)$, on aurait simplement pu dire que $\exp(M)$ est un polynôme en $M$ ie. $\forall M \in \mathcal{M}_n(\mathbb{C})$, $\exists P \in \mathbb{C}[X]$ tel que $\exp(M) = P(M)$.
   \end{remark}
-  
+
   \begin{proof}
     Soit $M \in \mathcal{M}_n(\mathbb{C})$. L'ensemble $\mathbb{C}[M] = \{ P(M) \mid P \in \mathbb{C}[X] \}$ est un sous-espace vectoriel de $\mathcal{M}_n(\mathbb{C})$ qui est de dimension finie, donc $\mathbb{C}[M]$ l'est aussi et est en particulier fermé.
     \newpar

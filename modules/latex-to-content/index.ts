@@ -11,9 +11,9 @@ import {
 } from '@nuxt/kit'
 import type { HTMLElement } from 'node-html-parser'
 import { KatexRenderer, LatexImageExtractor, PandocCommand, PandocTransformer, SvgGenerator } from 'that-latex-lib'
-import { latexStorageKey, bibStorageKey } from './common'
+import { latexStorageKey } from './common'
 import { latexOptions, type LatexTransformOptions } from '~/site/latex'
-import type { Book, LatexContentObjectWithBody } from '~/types'
+import type { LatexContentObjectWithBody } from '~/types'
 import { debug } from '~/site/debug'
 import { getFilename, parseBib, normalizeString } from '~/utils/utils.ts'
 
@@ -84,24 +84,6 @@ export default defineNuxtModule<LatexTransformOptions>({
       handler: resolver.resolve(`./handler.ts`),
     })
     logger.success(`Pointing "/_api/latex/" to "${latexDestinationPath}".`)
-
-    // Transforms .bib files into content for Nuxt.
-    const bibDestinationPath = resolver.resolve(sourceDirectoryPath, options.bibDestinationDirectory)
-    processBibFiles(resolver, sourceDirectoryPath, latexDirectoryPath, bibDestinationPath, options)
-    nuxt.options.nitro.publicAssets.push({
-      baseURL: `/_api/bibliography/`,
-      dir: bibDestinationPath,
-      fallthrough: true,
-    })
-    nuxt.options.nitro.serverAssets.push({
-      baseName: bibStorageKey,
-      dir: bibDestinationPath,
-    })
-    addServerHandler({
-      route: `/_api/bibliography`,
-      handler: resolver.resolve(`./handler.ts`),
-    })
-    logger.success(`Pointing "/_api/bibliography/" to "${bibDestinationPath}".`)
   },
 })
 
@@ -275,9 +257,6 @@ const processLatexFile = (
     // Handle proofs in the HTML content.
     handleProofs(root)
 
-    // Handle references in the HTML content.
-    handleReferences(root)
-
     // Return the parsed content object.
     logger.success(`Successfully processed ${filePath} !`)
     return {
@@ -288,75 +267,6 @@ const processLatexFile = (
   else {
     logger.error(`Failed to process ${filePath}.`)
   }
-}
-
-/**
- * Process all Latex bibliography files of a given directory.
- *
- * @param resolver The Nuxt resolver.
- * @param sourceDirectoryPath The Nuxt source directory path.
- * @param directoryPath The directory where the Latex files are stored.
- * @param targetDirectoryPath Where to put the processed files.
- * @param options The module option.
- */
-const processBibFiles = (
-  resolver: Resolver,
-  sourceDirectoryPath: string,
-  directoryPath: string,
-  targetDirectoryPath: string,
-  options: LatexTransformOptions,
-) => {
-  const ignore = options.ignore.map(file => resolver.resolve(sourceDirectoryPath, file))
-  const books = parseBibFiles(resolver, directoryPath, ignore)
-  fs.mkdirSync(targetDirectoryPath, { recursive: true })
-  fs.writeFileSync(
-    resolver.resolve(targetDirectoryPath, `index.json`),
-    JSON.stringify(books),
-  )
-}
-
-/**
- * Process all Latex bibliography files of a given directory.
- *
- * @param resolver The Nuxt resolver.
- * @param directoryPath The directory where the Latex bibliography files are stored.
- * @param ignore The ignored files.
- *
- * @returns The parsed books.
- */
-const parseBibFiles = (
-  resolver: Resolver,
-  directoryPath: string,
-  ignore: string[],
-): Book[] => {
-  const parsedFiles: Book[] = []
-  // Get the list of files in the directory.
-  const files = fs.readdirSync(directoryPath)
-
-  // Iterate through each file in the directory.
-  for (const file of files) {
-    const filePath = resolver.resolve(directoryPath, file)
-
-    // Ignore specified files and directories.
-    if (ignore.includes(filePath) || !fs.existsSync(filePath)) {
-      logger.info(`Ignored ${filePath}.`)
-      continue
-    }
-
-    // If the file is a directory, recursively process its assets.
-    if (fs.lstatSync(filePath).isDirectory()) {
-      parsedFiles.push(...parseBibFiles(resolver, filePath, ignore))
-      continue
-    }
-
-    if (file.endsWith('.bib')) {
-      const result = parseBib(fs.readFileSync(filePath, { encoding: 'utf8' }))
-      if (result) {
-        parsedFiles.push(result)
-      }
-    }
-  }
-  return parsedFiles
 }
 
 /**
@@ -409,58 +319,6 @@ const handleProofs = (root: HTMLElement) => {
     // Replace 'Proof.' with 'Démonstration.' if found in the first emphasis element.
     if (firstEmphasis) {
       firstEmphasis.replaceWith(firstEmphasis.outerHTML.replace('Proof.', 'Démonstration.'))
-    }
-  }
-}
-
-/**
- * Handle references in the HTML by formatting and linking to the bibliography.
- *
- * @param root The root HTML element.
- */
-const handleReferences = (root: HTMLElement) => {
-  const bookReferences = root.querySelectorAll('.bookref')
-  let previousReference
-  for (const bookReference of bookReferences) {
-    const short = bookReference.querySelector('.bookrefshort')!.text.trim()
-    let html = bookReference.querySelector('.bookrefpage')!.text.trim()
-    // If 'short' is not empty, format the HTML with the short reference.
-    if (short.length > 0) {
-      previousReference = short
-      html = `<strong>[${short}]</strong><br>${html}`
-    }
-    // If there's a previous reference, link to the bibliography.
-    if (previousReference) {
-      bookReference.innerHTML = `<a href="/bibliographie/#${previousReference}">${html}</a>`
-    }
-  }
-  const references = root.querySelectorAll('a[data-reference-type="ref+label"]')
-  for (const reference of references) {
-    const href = reference.getAttribute('href')
-    if (!href) {
-      continue
-    }
-    const target = root.getElementById(href.substring(1))
-    if (!target) {
-      continue
-    }
-    const name = findRefName(target)
-    if (name) {
-      reference.innerHTML = name
-    }
-  }
-  const citations = root.querySelectorAll('.citation')
-  for (const citation of citations) {
-    const cite = citation.getAttribute('data-cites')
-    if (cite) {
-      let short = cite
-      if (short.startsWith('[')) {
-        short = short.substring(1)
-      }
-      if (short.endsWith(']')) {
-        short = short.substring(0, short.length - 1)
-      }
-      citation.innerHTML = `<a href="/bibliographie/#${short}">${cite}</a>`
     }
   }
 }

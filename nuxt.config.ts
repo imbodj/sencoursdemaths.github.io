@@ -3,10 +3,10 @@ import StylelintPlugin from 'vite-plugin-stylelint'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    'nuxt-cname-generator',
     '~/modules/readme-md-to-content',
     '~/modules/commit-sha-file-generator',
     '~/modules/latex-pdf-generator',
@@ -20,17 +20,8 @@ export default defineNuxtConfig({
   ],
 
   ssr: true,
-  nitro: {
-    preset: 'static',
-    prerender: {
-      failOnError: false // ← Ignore les erreurs pour générer quand même
-    }
-  },
   app: {
-
-    baseURL: '/SenCoursDeMaths/' ,
-   
-   
+    baseURL: '/SenCoursDeMaths/',
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -45,7 +36,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-
 
   css: [
     '~/assets/app.scss',
@@ -67,6 +57,12 @@ export default defineNuxtConfig({
     inlineRouteRules: true,
   },
   compatibilityDate: '2024-07-01',
+  nitro: {
+    preset: 'static',
+    prerender: {
+      failOnError: false, // ← Ignore les erreurs pour générer quand même
+    },
+  },
 
   vite: {
     plugins: [
@@ -86,10 +82,6 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
-
-  cname: {
-    host: siteMeta.url,
   },
 
   eslint: {

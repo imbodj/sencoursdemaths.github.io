@@ -9,7 +9,6 @@ const cacheDirectory = 'node_modules/.cache/latex'
  * Ignored files.
  */
 const ignore = [
-  'content/latex/bibliography.tex',
   'content/latex/common.tex',
   'content/latex/gathering.tex',
   'content/latex/pandoc.tex',
@@ -107,7 +106,6 @@ const latexTransformOptions: LatexTransformOptions = {
   latexContentDirectory: 'latex',
   assetsDestinationDirectory: 'node_modules/.latex-to-content/assets/',
   latexDestinationDirectory: 'node_modules/.latex-to-content/latex/',
-  bibDestinationDirectory: 'node_modules/.latex-to-content/bibliography/',
   tikzPictureTemplate: 'content/latex/templates/tikzpicture.tex',
   pandocRedefinitions: 'content/latex/pandoc.tex',
 }

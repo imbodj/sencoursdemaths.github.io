@@ -1,13 +1,6 @@
 import { latexStorageKey, bibStorageKey } from './common.ts'
 
 export default defineEventHandler(async (event) => {
-  if (event.path.startsWith('/_api/bibliography')) {
-    const json = await useStorage(`assets:${bibStorageKey}`).getItem('index.json')
-    if (!json) {
-      throw createError({ status: 404 })
-    }
-    return json
-  }
   const params = event.context.params
   if (!params?.type) {
     throw createError({ status: 404 })

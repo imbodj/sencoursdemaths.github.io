@@ -1,12 +1,11 @@
 \input{../common}
-\input{../bibliography}
 
 \begin{document}
   %<*content>
   \lesson{algebra}{153}{Valeurs propres, vecteurs propres. Calculs exacts ou approchés d'éléments propres. Applications.}
 
   \subsection{Spectre d'un endomorphisme}
-  
+
   Soit $E$ un espace vectoriel sur un corps $\mathbb{K}$ de dimension finie $n$. Soit $u \in \mathcal{L}(E)$ un endomorphisme de $E$.
 
   \subsubsection{Valeurs propres, vecteurs propres}
@@ -84,19 +83,19 @@
       \item Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\chi_A = \sum_{k=0}^n a_k X^k$. Alors, $a_0 = \det(A)$ et $a_{n-1} = \trace(A)$ (à un signe près).
     \end{enumerate}
   \end{proposition}
-  
+
   \reference{153}
-  
+
   \begin{lemma}[Déterminant circulant]
     \label{suite-de-polygones-1}
     Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{lemma}
-  
+
   \reference[I-P]{389}
   \dev{suite-de-polygones}
-  
+
   \begin{application}[Suite de polygones]
     Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
     \newpar
@@ -158,13 +157,13 @@
   \end{corollary}
 
   \subsection{Localisation}
-  
+
   Soit $A = (a_{i,j})_{i, j \in \llbracket 1, n \rrbracket} \in \mathcal{M}_n(\mathbb{C})$.
-  
+
   \subsubsection{Disques de Gerschgörin}
-  
+
   \reference{650}
-  
+
   \begin{notation}
     On note :
     \begin{itemize}
@@ -172,22 +171,22 @@
       \item Pour tout $j \in \llbracket 1, n \rrbracket$, $C_j = \sum_{\substack{i=1 \\ i \neq j}}^n \vert a_{i,j} \vert$ et $C = \max_{j \in \llbracket 1, n \rrbracket} \{ C_j + \vert a_{j,j} \vert \}$.
     \end{itemize}
   \end{notation}
-  
+
   \begin{theorem}[Gerschgörin-Hadamard]
     \label{153-1}
     Soit $\lambda \in \mathbb{C}$ une valeur propre de $A$. Alors, il existe $i \in \llbracket 1, n \rrbracket$ tel que $\vert \lambda - a_{i,i} \vert \leq L_i$.
   \end{theorem}
-  
+
   \reference[FGN2]{189}
-  
+
   \begin{remark}
     Ainsi,
     \[ \operatorname{Sp}(A) \subseteq \bigcup_{i=1}^n \{ z \in \mathbb{C} \mid \vert z - a_{i,i} \vert \leq L_i \} \]
     Les disques de cette réunion sont appelés disques de Gerschgörin.
   \end{remark}
-  
+
   \reference[ROM21]{672}
-  
+
   \begin{example}
     Soient $a, b \in \mathbb{R}^2$. On pose
     \[
@@ -203,7 +202,7 @@
      Alors,
      \[ \operatorname{Sp}(A(a,b)) = \left\{ a + 2b \cos \left( \frac{k \pi}{n+1} \right) \mid k \in \llbracket 1, n \rrbracket \right\} \]
   \end{example}
-  
+
   \begin{example}
     Soit
     \[
@@ -219,60 +218,60 @@
     Alors,
     \[ \operatorname{Sp}(\tr{A}A) = \left\{ 4 \sin \left( \frac{k \pi}{n} \right)^2 \mid k \in \llbracket 0, n-1 \rrbracket \right\} \]
   \end{example}
-  
+
   \reference{651}
-  
+
   \begin{corollary}
     Pour toute valeur propre $\lambda \in \mathbb{C}$ de $A$, on a
     \[ \lambda \leq \min(L,C) \]
   \end{corollary}
-  
+
   \begin{corollary}
     On suppose $A$ à diagonale strictement dominante (ie. $\forall i \in \llbracket 1, n \rrbracket$, $\vert a_{i,i} \vert > \sum_{\substack{j=1 \\ j \neq i}}^n \vert a_{i,j} \vert$). Alors, $A$ est inversible.
   \end{corollary}
-  
+
   \begin{theorem}[Ostrowski]
     Pour tout $\alpha \in [0,1]$ et toute valeur propre $\lambda \in \mathbb{C}$ de $A$, il existe $i \in \llbracket 1, n \rrbracket$ tel que
     \[ \vert \lambda - a_{i,i} \vert \leq L_i^{\alpha} C_i^{1-\alpha} \]
   \end{theorem}
-  
+
   \begin{remark}
     C'est une généralisation du \cref{153-1} : pour $\alpha = 1$, on retrouve l'énoncé correspondant.
   \end{remark}
-  
+
   \begin{corollary}
     Pour toute valeur propre $\lambda \in \mathbb{C}$ de $A$, il existe $i \in \llbracket 1, n \rrbracket$ tel que
     \[ \vert \lambda \vert^2 \leq (L_i + \vert a_{i,i} \vert) (C_i + \vert a_{i,i} \vert) \]
   \end{corollary}
-  
+
   \subsubsection{Utilisation du rayon spectral}
-  
+
   \begin{notation}
     À toute norme $\Vert . \Vert$ sur $\mathbb{C}^n$, on associe la norme matricielle
     \[ \VERT . \VERT : M \mapsto \sup_{x \in \mathbb{C}^n \setminus \{ 0 \}} \frac{\Vert Mx \Vert}{\Vert x \Vert} \]
   \end{notation}
-  
+
   \begin{definition}
     Le \textbf{rayon spectral} de $A$, noté $\rho(A)$ est défini par
     \[ \rho(A) = \max_{\lambda \in \operatorname{Sp}(A)} \vert \lambda \vert \]
   \end{definition}
-  
+
   \begin{theorem}
     On a
     \[ \VERT A \VERT_2 = \sqrt{\VERT A^* A \VERT_2} = \sqrt{\rho(A^* A)} \]
     où $\VERT . \VERT_2$ est la norme matricielle associée à la norme euclidienne sur $\mathbb{C}^n$ et $A^*$ est la transconjuguée de $A$.
   \end{theorem}
-  
+
   \begin{theorem}
     \begin{enumerate}[label=(\roman*)]
       \item On a $\rho(A) \leq \VERT A \VERT$ pour toute norme matricielle $\VERT . \VERT$ induite par une norme vectorielle.
       \item $\rho(A) = \inf_{\VERT . \VERT \in \mathcal{N}} \VERT A \VERT$ où $\mathcal{N}$ désigne l'ensemble de toutes les normes matricielles induites par une norme vectorielle.
     \end{enumerate}
   \end{theorem}
-  
+
   \reference[GOU21]{203}
   \dev{decomposition-de-dunford}
-  
+
   \begin{theorem}[Décomposition de Dunford]
     Soit $f \in \mathcal{E}$ un endomorphisme tel que son polynôme minimal $\pi_f$ soit scindé sur $\mathbb{K}$. Alors il existe un unique couple d'endomorphismes $(d, n)$ tel que :
     \begin{itemize}
@@ -281,14 +280,14 @@
       \item $d \circ n = n \circ d$.
     \end{itemize}
   \end{theorem}
-  
+
   \reference[ROM21]{660}
-  
+
   \begin{corollary}[Théorème de Gelfand]
     Soit $\Vert . \Vert$ une norme sur $\mathcal{M}_n(\mathbb{C})$. Alors,
     \[ \rho(A) = \lim_{k \rightarrow +\infty} \Vert A^k \Vert^{\frac{1}{k}} \]
   \end{corollary}
-  
+
   \begin{proposition}
     Les conditions suivantes sont équivalentes.
     \begin{enumerate}[label=(\roman*)]
@@ -298,20 +297,20 @@
       \item Il existe au moins une norme matricielle $\VERT . \VERT$ induite par une norme vectorielle telle que $\VERT A \VERT < 1$.
     \end{enumerate}
   \end{proposition}
-  
+
   \subsection{Approximation}
-  
+
   Soit $A = (a_{i,j})_{i, j \in \llbracket 1, n \rrbracket} \in \mathcal{M}_n(\mathbb{R})$.
-  
+
   \reference[ROM19-2]{210}
-  
+
   \begin{theorem}
     On suppose que la valeur propre de $A$ de module maximum est unique. On la note $\lambda_1$. Elle est alors réelle est simple, l'espace propre associé est une droite vectorielle et on a
     \[ \mathbb{R}^n = \ker(A-\lambda_1 I_n) \oplus \im(A-\lambda_1 I_n) \]
   \end{theorem}
-  
+
   On suppose pour la suite que la valeur propre de $A$ de module maximum est unique. On la note $\lambda_1$.
-  
+
   \begin{notation}
     On note et on définit :
     \begin{itemize}
@@ -321,7 +320,7 @@
       \item Pour tout $j \in \llbracket 1,n \rrbracket$, on note $e_{1,j}$ la $j$-ième composante du vecteur $e_1$, $x_{k,j}$ celle de $x_k$ et $(Ax_k)_j$ celle de $Ax_k$.
     \end{itemize}
   \end{notation}
-  
+
   \begin{theorem}[Méthode la puissance itérée]
     On a :
     \begin{enumerate}[label=(\roman*)]
@@ -332,19 +331,19 @@
       \[ \lim_{k \rightarrow +\infty} \frac{(A x_k)_j}{x_{k,j}} = \lambda_1 \]
     \end{enumerate}
   \end{theorem}
-  
+
   \begin{remark}
     \begin{itemize}
       \item Si $A$ est inversible, la méthode précédente appliquée à $A^{-1}$ permet de calculer la valeur propre de plus petit module de $A$ (quand cette dernière est unique).
       \item En notant $e_1$ un vecteur propre de $A$ associé à la valeur propre $\lambda_1$ de norme euclidienne égale à $1$, les valeurs propres de la matrice $B = A - \lambda_1 e_1 \tr{e_1}$ sont $0, \lambda_2, \dots, \lambda_n$. On pourra alors appliquer la méthode à $B$.
     \end{itemize}
   \end{remark}
-  
+
   \newpage
   \section*{Annexes}
-  
+
   \reference[I-P]{389}
-  
+
   \begin{figure}[h]
     \begin{center}
       \begin{tikzpicture}
