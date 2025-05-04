@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   app: {
 
     baseURL: '/SenCoursDeMaths/' ,
-    buildAssetsDir: '_nuxt/',
+   
    
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
