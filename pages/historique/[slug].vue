@@ -6,7 +6,8 @@ const route = useRoute()
 const { data: ranking, status, error } = await useFetch<RankingContent>(`/_api/latex/historique/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
-usePdfBanner(`/pdf${path}.pdf`)
+const config = useRuntimeConfig()
+usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
 useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/main/content/latex${path}.tex`)
 
 usePageHead({ title: 'Affichage d\'un classement' })

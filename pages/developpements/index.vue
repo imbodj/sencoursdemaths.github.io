@@ -6,7 +6,8 @@ const { data: developments, status, error } = await useFetch<Development[]>('/_a
 
 const route = useRoute()
 const path = removeTrailingSlashIfPossible(route.path)
-usePdfBanner(`/pdf${path}.pdf`)
+const config = useRuntimeConfig()
+usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
 
 usePageHead({ title: 'Liste des développements' })
 </script>
