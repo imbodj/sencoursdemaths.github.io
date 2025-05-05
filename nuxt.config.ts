@@ -4,6 +4,8 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
+const baseUrl = 'SenCoursDeMaths'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
 
   ssr: true,
   app: {
-    baseURL: '/SenCoursDeMaths/',
+    baseURL: `/${baseUrl}/`,
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -46,6 +48,12 @@ export default defineNuxtConfig({
     url: siteMeta.url,
     name: siteMeta.title,
     trailingSlash: true,
+  },
+
+  runtimeConfig: {
+    public: {
+      baseUrl,
+    },
   },
 
   experimental: {
@@ -111,6 +119,7 @@ export default defineNuxtConfig({
     skipInspections: [
       'link-text',
       'no-uppercase-chars',
+      'redirects',
     ],
   },
 

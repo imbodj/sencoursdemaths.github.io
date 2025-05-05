@@ -6,7 +6,8 @@ const { data: rankings, status, error } = await useFetch<Ranking[]>('/_api/latex
 
 const route = useRoute()
 const path = removeTrailingSlashIfPossible(route.path)
-usePdfBanner(`/pdf${path}.pdf`)
+const config = useRuntimeConfig()
+usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
 
 usePageHead({ title: 'Historique des admissions' })
 
