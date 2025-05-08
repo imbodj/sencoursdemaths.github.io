@@ -212,10 +212,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
     },
     {
       data: [
-        {
-          directory: 'historique',
-          title: 'Historique des admis à l\'agrégation externe',
-        },
+        
       ],
     },
     {

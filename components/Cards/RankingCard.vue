@@ -6,9 +6,12 @@ defineProps<{ ranking: Ranking }>()
 </script>
 
 <template>
-  <latex-content-card
-    btn-check="Consulter l'entrée"
-    link-prefix="historique"
-    :object="ranking"
-  />
-</template>
+    <!--
+    <latex-content-card
+      btn-check="Consulter l'entrée"
+      link-prefix="historique"
+      :object="ranking"
+    />
+    -->
+  </template>
+  
