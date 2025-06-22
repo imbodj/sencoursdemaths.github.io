@@ -7,7 +7,7 @@ defineProps<{ development: Development }>()
 
 <template>
   <latex-content-card
-    btn-check="Consulter le développement"
+    btn-check="Consulter les exercices"
     link-prefix="developpements"
     :object="development"
   >

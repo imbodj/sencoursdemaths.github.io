@@ -40,7 +40,7 @@ const searchValue = ref(route.query.requete?.toString())
           to="/developpements/"
           :active="$route.path.startsWith('/developpements')"
         >
-          <icon name="bi:pencil-fill" /> Développements
+          <icon name="bi:pencil-fill" /> Exercices
         </b-nav-item>
         <b-nav-item
           to="/fiches/"

@@ -9,7 +9,7 @@ const path = removeTrailingSlashIfPossible(route.path)
 const config = useRuntimeConfig()
 usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
 
-usePageHead({ title: 'Liste des développements' })
+usePageHead({ title: 'Liste des exercices' })
 </script>
 
 <template>
@@ -18,7 +18,7 @@ usePageHead({ title: 'Liste des développements' })
       <spinner />
     </div>
     <div v-else-if="developments">
-      <h1>Liste des développements</h1>
+      <h1>Liste des exercices</h1>
       <cards
         input-id="development-search-field"
         :items="developments"

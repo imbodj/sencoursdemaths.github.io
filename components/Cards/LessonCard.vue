@@ -7,7 +7,7 @@ defineProps<{ lesson: Lesson }>()
 
 <template>
   <latex-content-card
-    btn-check="Consulter le plan"
+    btn-check="Consulter la leçon"
     link-prefix="lecons"
     :object="lesson"
   />
