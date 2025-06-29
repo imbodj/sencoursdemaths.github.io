@@ -1,0 +1,45 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{algebra}{101}{                                                       Fonctions numériques. Rappels et compléments}
+
+
+\section{Limites}
+Nous conseillons de lire le cours de première sur les limites avant de lire ce paragraphe.
+
+\textsl{Lorsque nous écrivons $ \infty $ cela signifie que c'est valable pour $ +\infty$ comme pour $-\infty $ }
+
+ Il existe quatre cas d'indétermination dans les opérations sur les limites:
+\[ \text{<<} \pinf \minf \text{>>};\quad\text{<<} \frac{\infty}{\infty} \text{>>};\quad\text{<<} \frac{0}{0}\text{>>};\quad \text{<<} 0\times \infty \text{>>} \]
+\subsection{Limites usuelles}
+ $ n\in\Nne $
+\begin{itemize}
+\item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}x^{n}= \pinf$ 
+\item[$ \bullet $] $\displaystyle\lim_{x \to \minf}x^{n}= \begin{cases}
+\pinf & \text{si n pair} \\
+\minf & \text{si  n impair}
+\end{cases}$ 
+\item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}\sqrt{x}=\pinf$ 
+\item[$ \bullet $] $\displaystyle \lim_{x \to \infty} \frac{1}{x^{n}}=0$ 
+\item[$ \bullet $] $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$ 
+\item[$ \bullet $] $ \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x^{2}}= \frac{1}{2}$ 
+
+\end{itemize}
+\begin{remark}
+Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
+\end{remark}
+\subsection{Limite de la composée de deux fonctions}
+ Soient $f $  et $g$ deux fonctions, $a $, $b$  et  $c$ trois réels pouvant éventuellement être $ +\infty $ ou $ -\infty $. 
+\[\text{Si} \lim_{x \to a} f(x) = b \quad \text{et} \quad  \lim_{x \to b} f(x) = c \quad \text{alors} \quad  \lim_{x \to a} g[f(x)] = c \]
+  
+\begin{example}
+ Calculons $\displaystyle \lim_{x \to +\infty} \cos\paren{\frac{x+1}{x^{2}-2}}$ 
+ 
+ $\displaystyle \lim_{x \to +\infty} \frac{x+1}{x^{2}-2} = 0 $ et $ \displaystyle \lim_{x \to 0} \cos x = \cos0=1 $ donc $  \displaystyle\lim_{x \to +\infty}\cos\paren{\frac{x+1}{x^{2}-2}}=1 $
+
+\end{example}  
+
+ 
+  %</content>
+\end{document}

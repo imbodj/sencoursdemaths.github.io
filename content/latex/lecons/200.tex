@@ -1,0 +1,63 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{200}{Composition  de  deux applications.}
+  
+   \begin{lemma}
+    On considère les deux applications suivantes: $ f(x)=2x+1 $  et  $ g(x)=\sqrt{x} $.
+  \begin{itemize}
+\item  Précise leurs ensembles de définitions.
+ \item Calcule $ f(4) $  puis $ g(9) $.
+ \item Calcule $ f(40) $  puis $ g(81) $.
+ \item Calcule $ f(0) $  puis $ g(1) $.
+ \item Calcule $ f(3) $  puis $ g(7) $.
+ \item Calcule $ f(a) $  puis $ g(f(a)) $  avec $ a $ un nombre positif.
+ \item Calcule $ f(-5) $  peux-tu calculer $ g(-9)$.
+ \end{itemize}
+ \end{lemma}
+\section{Définition - Notation - Exemples}
+
+  \begin{definition}
+  Soit $f $ et $g$  deux applications.
+ 
+ On appelle composée de $ f $ suivie de $ g $ , la fonction notée $ g\circ f $ définie par:
+  \[\paren{g\circ f}(x)=g\croch{f(x)}\]
+ \end{definition}
+  \begin{example}
+  Soit $ f(x)= 2x+1 $  et $ g(x)=\sqrt{x} $
+
+ 
+ On a $ \paren{g\circ f}(x)=g\croch{f(x)}= g\paren{2x+1}=\sqrt{2x+1} $
+ 
+
+
+  On a aussi $ \paren{f\circ g}(x)=f\croch{g(x)}= f\croch{\sqrt{x}}=2\sqrt{x}+1 $
+  \end{example}
+
+  \begin{example}
+ 
+ Soit $ f(x)= x-5 $  et $ g(x)=x^{2} $
+ 
+ 
+ On a $ \paren{g\circ f}(x)=g\croch{f(x)}= g\paren{x-5}=\paren{x-5}^{2} $
+ 
+
+
+  On a aussi $ \paren{f\circ g}(x)=f\croch{g(x)}= f\croch{x^{2}}=x^{2}-5 $
+ \end{example}
+
+ 
+ \begin{example}
+ 
+ Soit $ f(x)= \dfrac{x+4}{x} $  et $ g(x)=\sqrt{x} $
+
+Alors \;  $ \paren{g\circ f}(x)=g\croch{f(x)}= \sqrt{\dfrac{x+4}{x}} $
+  \end{example}
+ 
+ \begin{remark}
+  En général $ \paren{g\circ f} \neq  \paren{f\circ g}$
+ \end{remark}
+ 
+  %</content>
+\end{document}

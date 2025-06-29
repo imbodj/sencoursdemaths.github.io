@@ -48,6 +48,7 @@
 \usepackage{luacode}
 \usepackage{float}
 \usepackage{needspace}
+\everymath{\displaystyle}
 
 % Police :
 
@@ -101,7 +102,7 @@
 
 % Nouvelles commandes :
 
-\newcommand{\website}{https://agreg.skyost.eu}
+\newcommand{\website}{https://github.com/imbodj/SenCoursDeMaths}
 
 \newcommand{\tr}[1]{\mathstrut ^t #1}
 \newcommand{\im}{\mathrm{Im}}
@@ -109,6 +110,37 @@
 \newcommand{\trace}{\operatorname{trace}}
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\stab}{\operatorname{Stab}}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\croch}[1]{\left[ #1 \right]}
+\newcommand{\Grdcroch}[1]{\Bigl[ #1 \Bigr]}
+\newcommand{\grdcroch}[1]{\bigl[ #1 \bigr]}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\limi}[3]{\lim_{#1\to #2}#3}
+\newcommand{\pinf}{+\infty}
+\newcommand{\minf}{-\infty}
+%%%%%%%%%%%%%% ENSEMBLES %%%%%%%%%%%%%%%%%
+\newcommand{\ensemblenombre}[1]{\mathbb{#1}}
+\newcommand{\Nn}{\ensemblenombre{N}}
+\newcommand{\Zz}{\ensemblenombre{Z}}
+\newcommand{\Qq}{\ensemblenombre{Q}}
+\newcommand{\Qqp}{\Qq^+}
+\newcommand{\Rr}{\ensemblenombre{R}}
+\newcommand{\Cc}{\ensemblenombre{C}}
+\newcommand{\Nne}{\Nn^*}
+\newcommand{\Zze}{\Zz^*}
+\newcommand{\Zzn}{\Zz^-}
+\newcommand{\Qqe}{\Qq^*}
+\newcommand{\Rre}{\Rr^*}
+\newcommand{\Rrp}{\Rr_+}
+\newcommand{\Rrm}{\Rr_-}
+\newcommand{\Rrep}{\Rr_+^*}
+\newcommand{\Rrem}{\Rr_-^*}
+\newcommand{\Cce}{\Cc^*}
+%%%%%%%%%%%%%%  INTERVALLES %%%%%%%%%%%%%%%%%
+\newcommand{\intff}[2]{\left[#1\;,\; #2\right]  }
+\newcommand{\intof}[2]{\left]#1 \;, \;#2\right]  }
+\newcommand{\intfo}[2]{\left[#1 \;,\; #2\right[  }
+\newcommand{\intoo}[2]{\left]#1 \;,\; #2\right[  }
 
 \providecommand{\newpar}{\\[\medskipamount]}
 
@@ -135,10 +167,10 @@
 \providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
 
 \providecommand{\ranking}[1]{%
-  \title{Agrégation externe #1}%
-  \hypersetup{pdftitle={Agrégation externe #1}}%
-  \section*{Agrégation externe #1}%
-  \fancyhead[R]{\truncate{0.73\textwidth}{Agrégation externe #1}}%
+  \title{Terminale #1}%
+  \hypersetup{pdftitle={Terminale #1}}%
+  \section*{Terminale #1}%
+  \fancyhead[R]{\truncate{0.73\textwidth}{Terminale #1}}%
 }
 
 \providecommand{\summary}[1]{%
@@ -183,7 +215,7 @@
 
 \pagestyle{fancy}
 \fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
-\fancyfoot[C]{\scriptsize \href{\website}{\texttt{agreg.skyost.eu}}}
+\fancyfoot[C]{\scriptsize \href{\website}{\texttt{https://github.com/imbodj/SenCoursDeMaths}}}
 
 % Couleurs :
 
@@ -209,8 +241,8 @@
 
 \newtheorem{property}[theorem]{Propriété}
 \newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemme}
-\newtheorem{corollary}[theorem]{Corollaire}
+\newtheorem{lemma}[theorem]{Activité d'introduction}
+\newtheorem{corollary}[theorem]{Conséquence}
 
 \newtheorem{definition}[theorem]{Définition}
 \newtheorem{notation}[theorem]{Notation}
