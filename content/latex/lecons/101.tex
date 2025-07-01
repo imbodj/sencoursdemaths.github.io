@@ -40,6 +40,94 @@ Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
 
 \end{example}  
 
+ \subsection{Comparaisons de limites}
+
+Soient $f $, $g$ et $h$ trois fonctions et $ l\in\Rr$ ou $ l= +\infty $ ou $ l=-\infty $.
+
+
+%\renewcommand{\arraystretch}{2.3}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{ Hypothèse 1}  & \textbf{Hypothèse 2} & \textbf{ Conclusion }\\
+\hline
+$ f\leq g $  & $ \displaystyle \lim_{x \to a}f(x)=+\infty $ & $\displaystyle \lim_{x \to a}g(x)=+\infty $ \\
+ \hline
+ $ f\leq g $  & $\displaystyle \lim_{x \to a}g(x)=-\infty $ & $ \displaystyle \lim_{x \to a}f(x)=-\infty $    \\
+\hline
+$ \abs{f(x)-l }\leq g(x) $ & $\displaystyle \lim_{x \to a}g(x)=0$ & $ \displaystyle \lim_{x \to a}f(x)=l  $ \\
+\hline
+$ g \leq f \leq h $ & $ \displaystyle \lim_{x \to a}g(x)=l $ et $ \displaystyle \lim_{x \to a}h(x)=l $ & $ \displaystyle \lim_{x \to a}f(x)=l $    \\
+\hline
+\end{tabularx}
+
+
+\begin{remark}
  
+La dernière propriété est parfois appelée << le théorème des gendarmes >>.
+ \end{remark}
+
+\begin{example}
+$\triangleright $ Soit $ f(x)= x+ 3\cos x $.\\
+Pour tout $x\in\Rr$: \quad $ x-3\leq f(x)\leq x+3 $ \\
+$ \centerdot $ $ x-3\leq f(x)$ et $\displaystyle \lim_{x \to +\infty}x-3=+\infty  $ donc $ \displaystyle \lim_{x \to +\infty}f(x)=+\infty $\\
+$ \centerdot $ $  f(x)\leq x+3$ et $\displaystyle \lim_{x \to -\infty}x-3=-\infty  $ donc $ \displaystyle \lim_{x \to -\infty}f(x)=-\infty $ \\
+
+$ \triangleright $ Calculons $\displaystyle\lim_{x \to +\infty}\frac{\sin x}{x} $.\\
+
+Pour tout $ x\geq 1 $: $ -1\leq\sin x \leq 1 $ \\
+En multipliant par $ \frac{1}{x} $: on a $ -\frac{1}{x}\leq \frac{\sin x}{x} \leq\frac{1}{x} $\\
+Or $\displaystyle\lim_{x \to +\infty}(-\frac{1}{x})= \displaystyle\lim_{x \to +\infty}\frac{1}{x}=0$ donc $\displaystyle\lim_{x \to +\infty}\frac{\sin x}{x}=0 $
+\end{example}
+
+
+\subsection{Limites et nombre dérivé}
+
+\begin{theorem}
+Soit $ f $ une fonction dérivable .
+Si $\displaystyle \lim_{x \to a}f^{'}(x)=l$,\;  ( $l$ réel fini ou pas) alors $\displaystyle\lim_{x \to a} \frac{f(x)-f(a)}{x-a}=l$
+\end{theorem}
+
+\begin{example}
+Calculons $\displaystyle\lim_{x \to 0}\frac{\sin x}{x} $\\
+
+Posons $ f(x)=\sin x $\\
+On a $ f(0)=0 $ et  $ f^{'}(x)=\cos x$\\
+ $ \displaystyle\lim_{x \to 0}f^{'}(x)=\lim_{x \to 0}\cos x=1 $ donc $\displaystyle \lim_{x \to 0} \frac{f(x)-f(0)}{x-0}=\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$
+\end{example}
+
+\section{Branches infinies d'une courbe}
+
+\subsection{Asymptotes}
+\subsubsection{Asymptote verticale}
+Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite infinie en un réel $a$.
+
+On a alors :
+
+\begin{definition}
+Si  une fonction $f$ admet une limite infinie à gauche ou à droite de $a$, réel, on dit alors que la droite d'équation $x=a$ est une asymptote verticale (ou parallèle à l'axe des ordonnées)  à la courbe de $f$.
+
+$\lim_{x \to a^{+}}f(x)=\infty$  ou 
+$\lim_{x \to a^{-}}f(x)=\infty\quad \text{ssi}\quad x=a \quad\text{asymptote verticale à }\mathcal{C} $
+\end{definition}
+
+
+
+\subsubsection{Asymptote horizontale}
+Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite finie en l'infini.
+
+On a alors :
+
+\begin{definition}
+Si $f$ une fonction admet une limite finie $b$ en l'infini, on dit alors que la droite d'équation $y=b$ est une asymptote horizontale (ou parallèle à l'axe des abscisses) à la courbe de $f$ en l'infini.
+
+$ \lim_{x \to \infty}f(x)=b \quad\textrm{ssi}\quad y=b \text{ asymptote horizontale à }\mathcal{C} \text{ en l'infini}$
+\end{definition}
+
+\begin{example}
+Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $ dont la courbe est représentée ci dessous,
+la droite d'équation   $y = 3 $ est asymptote horizontale à la courbe de $f$
+et la droite d'équation $x = 1$ est asymptote verticale à la courbe de $f.$
+
+\end{example}
   %</content>
 \end{document}
