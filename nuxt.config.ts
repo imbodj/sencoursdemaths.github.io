@@ -4,7 +4,7 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
-const baseUrl = 'SenCoursDeMaths'
+const baseUrl = 'sencoursdemaths'
 
 export default defineNuxtConfig({
   modules: [
