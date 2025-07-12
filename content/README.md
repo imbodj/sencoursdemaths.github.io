@@ -3,12 +3,12 @@
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant les mathématiques au lycée. Vous trouverez donc sur ce site :
 
 * Mes [plans](/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence, j'ai fait l'impasse sur  certaines leçons.
-* Mon choix de [developpements](https://imbodj.github.io/SenCoursDeMaths/developpements/).
-* Quelques [fiches](https://imbodj.github.io/SenCoursDeMaths/fiches/) de révision.
-* Une liste personnelle de [conseils généraux](https://imbodj.github.io/SenCoursDeMaths/fiches/conseils-generaux/).
+* Mon choix de [developpements](https://sencoursdemaths.github.io/developpements/).
+* Quelques [fiches](https://sencoursdemaths.github.io/fiches/) de révision.
+* Une liste personnelle de [conseils généraux](https://sencoursdemaths.github.io/fiches/conseils-generaux/).
 
 En espérant que le contenu de ce site vous aide dans vos études en mathématiques; si vous avez une quelconque remarque
-/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://imbodj.github.io/SenCoursDeMaths/#contact) présent sur mon site.
+/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://sencoursdemaths.github.io/#contact) présent sur mon site.
 
 ## Liens utiles
 
