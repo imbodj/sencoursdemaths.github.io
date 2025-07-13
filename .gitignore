@@ -109,3 +109,7 @@ content/latex/fiches.tex
 content/latex/lecons-developpements.tex
 content/**/*.pdf
 
+.local/
+.nuxtrc
+.yarnrc
+texmf/
