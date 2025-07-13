@@ -5,9 +5,6 @@ import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
 const baseUrl = 'SenCoursDeMaths'
-// Configuration dynamique selon l'environnement
-const isDev = process.env.NODE_ENV === 'development'
-const baseURL = isDev ? '/' : `/${baseUrl}/`
 
 export default defineNuxtConfig({
   modules: [
@@ -23,9 +20,10 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxt/icon',
   ],
+
   ssr: true,
   app: {
-    baseURL: baseURL,
+    baseURL: `/${baseUrl}/`,
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -36,24 +34,28 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#343a40' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: `${baseURL}favicon.ico` },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
     },
   },
+
   css: [
     '~/assets/app.scss',
     '~/node_modules/katex/dist/katex.min.css',
   ],
+
   site: {
     url: siteMeta.url,
     name: siteMeta.title,
     trailingSlash: true,
   },
+
   runtimeConfig: {
     public: {
-      baseUrl: isDev ? '' : baseUrl,
+      baseUrl,
     },
   },
+
   experimental: {
     defaults: {
       nuxtLink: {
@@ -69,6 +71,7 @@ export default defineNuxtConfig({
       failOnError: false, // ← Ignore les erreurs pour générer quand même
     },
   },
+
   vite: {
     plugins: [
       StylelintPlugin(),
@@ -88,11 +91,13 @@ export default defineNuxtConfig({
       },
     },
   },
+
   eslint: {
     config: {
       stylistic: true,
     },
   },
+
   googleFonts: {
     display: 'swap',
     families: {
@@ -100,10 +105,12 @@ export default defineNuxtConfig({
       'Noto Sans JP': true,
     },
   },
+
   icon: {
     provider: 'iconify',
     class: 'vue-icon',
   },
+
   linkChecker: {
     failOnError: false,
     excludeLinks: [
@@ -115,6 +122,7 @@ export default defineNuxtConfig({
       'redirects',
     ],
   },
+
   robots: {
     robotsTxt: false,
    
