@@ -2,7 +2,7 @@
 
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant les mathématiques au lycée. Vous trouverez donc sur ce site :
 
-* Mes [plans de leçons](/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
+* Mes [plans de leçons](https://imbodj.github.io/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
 * Mon choix des [exercices](/SenCoursDeMaths/developpements/).
 * Quelques [fiches](/SenCoursDeMaths/fiches/) de révision.
 * Une liste personnelle de [conseils généraux](/SenCoursDeMaths/fiches/conseils-generaux/).
