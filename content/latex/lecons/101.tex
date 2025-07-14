@@ -31,7 +31,7 @@ Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
 \end{remark}
 \subsection{Limite de la composée de deux fonctions}
  Soient $f $  et $g$ deux fonctions, $a $, $b$  et  $c$ trois réels pouvant éventuellement être $ +\infty $ ou $ -\infty $. 
-\[\text{Si} \lim_{x \to a} f(x) = b \quad \text{et} \quad  \lim_{x \to b} f(x) = c \quad \text{alors} \quad  \lim_{x \to a} g[f(x)] = c \]
+\[\text{Si}\displaystyle \lim_{x \to a} f(x) = b \quad \text{et} \quad \displaystyle \lim_{x \to b} f(x) = c \quad \text{alors} \quad \displaystyle \lim_{x \to a} g[f(x)] = c \]
   
 \begin{example}
  Calculons $\displaystyle \lim_{x \to +\infty} \cos\paren{\frac{x+1}{x^{2}-2}}$ 
@@ -92,7 +92,7 @@ Calculons $\displaystyle\lim_{x \to 0}\frac{\sin x}{x} $\\
 
 Posons $ f(x)=\sin x $\\
 On a $ f(0)=0 $ et  $ f^{'}(x)=\cos x$\\
- $ \displaystyle\lim_{x \to 0}f^{'}(x)=\lim_{x \to 0}\cos x=1 $ donc $\displaystyle \lim_{x \to 0} \frac{f(x)-f(0)}{x-0}=\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$
+ $ \displaystyle\lim_{x \to 0}f^{'}(x)=\displaystyle\lim_{x \to 0}\cos x=1 $ donc $\displaystyle \lim_{x \to 0} \frac{f(x)-f(0)}{x-0}=\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$
 \end{example}
 
 \section{Branches infinies d'une courbe}
@@ -106,8 +106,8 @@ On a alors :
 \begin{definition}
 Si  une fonction $f$ admet une limite infinie à gauche ou à droite de $a$, réel, on dit alors que la droite d'équation $x=a$ est une asymptote verticale (ou parallèle à l'axe des ordonnées)  à la courbe de $f$.
 
-$\lim_{x \to a^{+}}f(x)=\infty$  ou 
-$\lim_{x \to a^{-}}f(x)=\infty\quad \text{ssi}\quad x=a \quad\text{asymptote verticale à }\mathcal{C} $
+$\displaystyle\lim_{x \to a^{+}}f(x)=\infty$  ou 
+$\displaystyle\lim_{x \to a^{-}}f(x)=\infty\quad \text{ssi}\quad x=a \quad\text{asymptote verticale à }\mathcal{C} $
 \end{definition}
 
 
@@ -120,14 +120,50 @@ On a alors :
 \begin{definition}
 Si $f$ une fonction admet une limite finie $b$ en l'infini, on dit alors que la droite d'équation $y=b$ est une asymptote horizontale (ou parallèle à l'axe des abscisses) à la courbe de $f$ en l'infini.
 
-$ \lim_{x \to \infty}f(x)=b \quad\textrm{ssi}\quad y=b \text{ asymptote horizontale à }\mathcal{C} \text{ en l'infini}$
+$\displaystyle \lim_{x \to \infty}f(x)=b \quad\textrm{ssi}\quad y=b \text{ asymptote horizontale à }\mathcal{C} \text{ en l'infini}$
 \end{definition}
 
 \begin{example}
-Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $ dont la courbe est représentée ci dessous,
+Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $ 
 la droite d'équation   $y = 3 $ est asymptote horizontale à la courbe de $f$
 et la droite d'équation $x = 1$ est asymptote verticale à la courbe de $f.$
 
 \end{example}
+\subsubsection{Asymptote oblique}
+Elle traduit, graphiquement, le fait que la fonction $f$ se comporte de plus en plus comme une fonction affine.
+
+On a alors :
+
+\begin{definition}
+
+$\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0 \quad\text{ssi}\quad y=mx+p \text{ asymptote oblique  à}\quad \mathcal{C}\text{ à l'infini}$
+\end{definition}
+\begin{example}
+Pour la fonction $f : x\mapsto 2x-1- \frac{2}{x-1} $
+la droite d'équation   $y = 2x-1 $ est asymptote oblique à sa courbe en $ \infty $.
+
+\end{example}
+
+\begin{remark}
+Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle\lim_{x \to \infty}g(x)=0 $  alors la droite $ y=ax+b $ est une asymptote à  $ \mathcal{C}_{f} $ en $ \infty. $
+\end{remark}
+
+\subsection{Position relative d'une courbe et son asymptote}
+Pour étudier la position relative d'une courbe $\mathcal{C}$  et de son asymptote $\Delta : y=ax+b $  on étudie le signe de leur différence $ f(x)-ax-b)$.
+
+ Si $ f(x)-ax-b> 0$} alors la courbe  $ \mathcal{C} $ est  située  au-dessus de l'asymptote $ \Delta. $  
+ 
+ Si $ f(x)-ax-b< 0$ alors la courbe de $ \mathcal{C} $ est  située  en-dessous de l'asymptote $ \Delta. $ 
+
+
+\subsection{Recherche de branches infinies}
+Lorsque  $\lim_{x \to \infty}f(x)=\infty  $, la courbe présente une branche infinie qu'il faut étudier.
+
+Calculer $\quad \lim_{x \to \infty}\frac{f(x)}{x}$\\
+
+$\color{red}\bullet $   Si $\lim_{x \to \infty}\frac{f(x)}{x}=0  $  alors la courbe $ \mathcal{C} $ présente une branche parabolique de direction asymptotique l'axe des abscisses.\\ Nous donnons ici les différents cas de figure.
+
+
+
   %</content>
 \end{document}
