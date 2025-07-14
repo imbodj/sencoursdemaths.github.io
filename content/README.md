@@ -5,7 +5,7 @@ Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concer
 * Mes [plans de leçons](/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
 * Mon choix des [exercices](/SenCoursDeMaths/developpements/).
 * Quelques [fiches](https://imbodj.github.io/SenCoursDeMaths/fiches/) de révision.
-* Une liste personnelle de [conseils généraux](fiches/conseils-generaux/).
+* Une liste personnelle de [conseils généraux](/fiches/conseils-generaux/).
 
 En espérant que le contenu de ce site vous aide dans vos études en mathématiques; si vous avez une quelconque remarque
 / idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](/SenCoursDeMaths/#contact) présent sur mon site.
