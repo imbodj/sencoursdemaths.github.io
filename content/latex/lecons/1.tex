@@ -2,7 +2,7 @@
 
 \begin{document}
   %<*content>
-  \lesson{algebra}{101}{Fonctions numériques. Rappels et compléments}
+  \lesson{algebra}{1}{Fonctions numériques. Rappels et compléments}
 
 
 \subsection{Limites}
@@ -104,7 +104,7 @@ Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite infini
 
 \begin{definition}
 $\displaystyle\lim_{x \to a^{+}}f(x)=\infty$  ou 
-$\displaystyle\lim_{x \to a^{-}}f(x)=\infty \text{ssi}\quad x=a \text{asymptote verticale à }\mathcal{C} $
+$\displaystyle\lim_{x \to a^{-}}f(x)=\infty$ si et seulement si la droite  $x=a$ est une asymptote verticale à    ç la courbe $\mathcal{C} $.
 \end{definition}
 
 
@@ -127,17 +127,45 @@ la droite d'équation   $y = 3 $ est asymptote horizontale  la droite d'équatio
 \subsubsection*{Asymptote oblique}
 \begin{definition}
 Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=mx+p$.
-\[\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0 \quad\text{ssi} \quad y=mx+p \text{est une  asymptote oblique  à la courbe de }\; f \text{en} \infty \]
+
+$\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0$   si et seulement si    $y=mx+p$  est une  asymptote oblique  à la courbe de $f$ en  $\infty$.
 \end{definition}
 
+\begin{remark} 
+Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=c $  alors la droite $ y=ax+b+c $ est une asymptote à  $ \mathcal{C} $ en $ \infty. $
+\end{remark}
 \begin{example}
 Pour la fonction $f : x\mapsto 2x-5- \frac{2}{x-1} $ 
-la droite d'équation   $y = 2x-5 $ est asymptote oblique à sa courbe de $f$.
+la droite d'équation   $y = 2x-5 $ est asymptote oblique à sa courbe de $f$ car  $\displaystyle \lim_{x \to \infty}\frac{2}{x-1}=0$.
 \end{example}
-\begin{remark} 
-Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=c $  alors la droite $ y=ax+b+c $ est une asymptote à  $ \mathcal{C}_{f} $ en $ \infty. $
+\subsubsection*{Position relative d'une courbe et son asymptote}
+Pour étudier la position relative de la  courbe $\mathcal{C} $ d'une fonction $ f $ et  de  son asymptote $ \Delta : y=mx+p $, on étudie le signe de la différence $ f(x)-mx-p$.
+\begin{itemize}
+\item  Si $ f(x)-mx-p > 0$ alors  $ \mathcal{C}  $ est  située  au-dessus de la courbe de $ \Delta $ 
+\item  Si $ f(x)-mx-p< 0$ alors la courbe de $\mathcal{C}$ est  située  en-dessous de la courbe de $\Delta$ 
+\end{itemize}
+On tiendra compte de l'ensemble sur lequel on doit étudier la position relative des deux courbes: ainsi, la position relative d'une courbe et de son asymptote peut être étudiée sur l'ensemble de définition complet de la fonction ou simplement au voisinage de l'infini. 
+\subsubsection{Recherche de branches infinies}
+Lorsque  $\lim_{x \to \infty}f(x)=\infty  $, la courbe présente une branche infinie qu'il faut étudier.
+\begin{itemize}
+\item    Si $\displaystyle \lim_{x \to \infty}\frac{f(x)}{x}=0  $  alors la courbe $ \mathcal{C} $ présente une branche parabolique dans la direction  de  l'axe des abscisses.
+\item    Si $\displaystyle \lim_{x \to \infty}\frac{f(x)}{x}=\infty$  alors la courbe $ \mathcal{C} $ présente une branche parabolique dans la direction  de  l'axe des ordonnées.
+\item  Si  $\lim_{x \to \infty}\frac{f(x)}{x}=a  $  réel  non nul alors on calcule $\lim_{x \to \infty}(f(x)-ax )  $ 
 
+ $ \bullet $ Si  $\displaystyle \lim_{x \to \infty}(f(x)-ax) = b $  réel alors la droite $(D)$ d'équation : $y = a x  + b $ est asymptote à la courbe $ \mathcal{C} $ .
 
-\end{remark}
+ $ \bullet $ Si $\displaystyle \lim_{x \to \infty}(f(x)-ax) = \infty $     alors la courbe admet une branche parabolique de direction asymptotique la droite d'équation $ y =  a x $.
+\end{itemize}
+\begin{exercice}
+On considère la fonction $ f $ définie par :
+
+$ f (x)=\left\{\begin{array}{l} \sqrt{x +4}\quad \text{si} \quad x\geq 2 \\ x+3-\frac{2}{x-1}\quad \text{si}\quad x< 2  \end{array} \right.$
+
+\begin{enumerate}
+\item Déterminer  les limites aux bornes de $ D_{f} $.
+\item Déterminer toutes les branches infinies de $ \mathcal{C} $.
+\item Etudier la position relative de la courbe par rapport à son asymptote oblique.
+\end{enumerate}
+\end{exercice}
   %</content>
 \end{document}
