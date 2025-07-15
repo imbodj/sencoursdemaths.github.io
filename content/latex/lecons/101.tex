@@ -5,14 +5,14 @@
   \lesson{algebra}{101}{Fonctions numériques. Rappels et compléments}
 
 
-\section{Limites}
+\subsection{Limites}
 Nous conseillons de lire le cours de première sur les limites avant de lire ce paragraphe.
 
 \textsl{Lorsque nous écrivons $ \infty $ cela signifie que c'est valable pour $ +\infty$ comme pour $-\infty $ }
 
  Il existe quatre cas d'indétermination dans les opérations sur les limites:
 \[ \text{<<} \pinf \minf \text{>>};\quad\text{<<} \frac{\infty}{\infty} \text{>>};\quad\text{<<} \frac{0}{0}\text{>>};\quad \text{<<} 0\times \infty \text{>>} \]
-\subsection{Limites usuelles}
+\subsubsection{Limites usuelles}
  $ n\in\Nne $
 \begin{itemize}
 \item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}x^{n}= \pinf$ 
@@ -29,7 +29,7 @@ Nous conseillons de lire le cours de première sur les limites avant de lire ce 
 \begin{remark}
 Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
 \end{remark}
-\subsection{Limite de la composée de deux fonctions}
+\subsubsection{Limite de la composée de deux fonctions}
  Soient $f $  et $g$ deux fonctions, $a $, $b$  et  $c$ trois réels pouvant éventuellement être $ +\infty $ ou $ -\infty $. 
 \[\text{Si}\displaystyle \lim_{x \to a} f(x) = b \quad \text{et} \quad \displaystyle \lim_{x \to b} f(x) = c \quad \text{alors} \quad \displaystyle \lim_{x \to a} g[f(x)] = c \]
   
@@ -40,7 +40,7 @@ Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
 
 \end{example}  
 
- \subsection{Comparaisons de limites}
+ \subsubsection{Comparaisons de limites}
 
 Soient $f $, $g$ et $h$ trois fonctions et $ l\in\Rr$ ou $ l= +\infty $ ou $ l=-\infty $.
 
@@ -80,7 +80,7 @@ Or $\displaystyle\lim_{x \to +\infty}(-\frac{1}{x})= \displaystyle\lim_{x \to +\
 \end{example}
 
 
-\subsection{Limites et nombre dérivé}
+\subsubsection{Limites et nombre dérivé}
 
 \begin{theorem}
 Soit $ f $ une fonction dérivable .
@@ -95,39 +95,49 @@ On a $ f(0)=0 $ et  $ f^{'}(x)=\cos x$\\
  $ \displaystyle\lim_{x \to 0}f^{'}(x)=\displaystyle\lim_{x \to 0}\cos x=1 $ donc $\displaystyle \lim_{x \to 0} \frac{f(x)-f(0)}{x-0}=\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$
 \end{example}
 
-\section{Branches infinies d'une courbe}
-
-\subsection{Asymptotes}
-\subsubsection{Asymptote verticale}
+\subsection{Branches infinies d'une courbe}
+Soit une fonction numérique $ f $ et $ \mathcal{C} $ sa courbe représentative dans un repère orthogonal du plan.
+\subsubsection{Asymptotes}
+\subsubsection*{Asymptote verticale}
 Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite infinie en un réel $a$.
 
-On a alors :
 
 \begin{definition}
-Si  une fonction $f$ admet une limite infinie à gauche ou à droite de $a$, réel, on dit alors que la droite d'équation $x=a$ est une asymptote verticale (ou parallèle à l'axe des ordonnées)  à la courbe de $f$.
-
 $\displaystyle\lim_{x \to a^{+}}f(x)=\infty$  ou 
-$\displaystyle\lim_{x \to a^{-}}f(x)=\infty\quad \text{ssi}\quad x=a \quad\text{asymptote verticale à }\mathcal{C} $
+$\displaystyle\lim_{x \to a^{-}}f(x)=\infty \text{ssi}\quad x=a \text{asymptote verticale à }\mathcal{C} $
 \end{definition}
 
 
 
-\subsubsection{Asymptote horizontale}
+\subsubsection*{Asymptote horizontale}
 Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite finie en l'infini.
 
-On a alors :
+
 
 \begin{definition}
-Si $f$ une fonction admet une limite finie $b$ en l'infini, on dit alors que la droite d'équation $y=b$ est une asymptote horizontale (ou parallèle à l'axe des abscisses) à la courbe de $f$ en l'infini.
-
-$\displaystyle \lim_{x \to \infty}f(x)=b \quad\text{ssi}\quad y=b \text{ asymptote horizontale à }\mathcal{C} \text{ à l'infini}$
+$\displaystyle \lim_{x \to \infty}f(x)=b \quad \text{ssi} \quad y = b \;  \text{est une  asymptote horizontale à  la courbe de }\; f \text{ en}  \infty$.
 \end{definition}
 
 \begin{example}
 Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $ 
-la droite d'équation   $y = 3 $ est asymptote horizontale à la courbe de $f$
-et la droite d'équation $x = 1$ est asymptote verticale à la courbe de $f.$
+la droite d'équation   $y = 3 $ est asymptote horizontale  la droite d'équation $x = 1$ est asymptote verticale à la courbe de $f.$
 
 \end{example}
+
+\subsubsection*{Asymptote oblique}
+\begin{definition}
+Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=mx+p$.
+\[\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0 \quad\text{ssi} \quad y=mx+p \text{est une  asymptote oblique  à la courbe de }\; f \text{en} \infty \]
+\end{definition}
+
+\begin{example}
+Pour la fonction $f : x\mapsto 2x-5- \frac{2}{x-1} $ 
+la droite d'équation   $y = 2x-5 $ est asymptote oblique à sa courbe de $f$.
+\end{example}
+\begin{remark} 
+Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=c $  alors la droite $ y=ax+b+c $ est une asymptote à  $ \mathcal{C}_{f} $ en $ \infty. $
+
+
+\end{remark}
   %</content>
 \end{document}
