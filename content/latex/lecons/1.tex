@@ -1,50 +1,51 @@
 \input{../common}
-
+\everymath{\displaystyle}
 \begin{document}
   %<*content>
   \lesson{algebra}{1}{Fonctions numériques. Rappels et compléments}
 
 
 \subsection{Limites}
-Nous conseillons de lire le cours de première sur les limites avant de lire ce paragraphe.
+
 
 \textsl{Lorsque nous écrivons $ \infty $ cela signifie que c'est valable pour $ +\infty$ comme pour $-\infty $ }
 
  Il existe quatre cas d'indétermination dans les opérations sur les limites:
-\[ \text{<<} \pinf \minf \text{>>};\quad\text{<<} \frac{\infty}{\infty} \text{>>};\quad\text{<<} \frac{0}{0}\text{>>};\quad \text{<<} 0\times \infty \text{>>} \]
-\subsubsection{Limites usuelles}
+\[ <<\pinf \minf>>;\quad <<\frac{\infty}{\infty}>>;\quad << \frac{0}{0}>>;\quad <<0\times \infty >> \]
+\subsubsection*{Limites usuelles}
  $ n\in\Nne $
 \begin{itemize}
-\item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}x^{n}= \pinf$ 
+\item[$ \bullet $] $ \lim_{x \to \pinf}x^{n}= \pinf$ 
 \item[$ \bullet $] $\displaystyle\lim_{x \to \minf}x^{n}= \begin{cases}
 \pinf & \text{si n pair} \\
 \minf & \text{si  n impair}
 \end{cases}$ 
 \item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}\sqrt{x}=\pinf$ 
 \item[$ \bullet $] $\displaystyle \lim_{x \to \infty} \frac{1}{x^{n}}=0$ 
-\item[$ \bullet $] $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$ 
-\item[$ \bullet $] $ \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x^{2}}= \frac{1}{2}$ 
+\item[$ \bullet $] $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$\quad  $\displaystyle \lim_{x \to 0}\frac{\tan x}{x}=1$ 
+\item[$ \bullet $] $ \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x^{2}}= \frac{1}{2}$ $\quad  \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x}= 0$ 
 
 \end{itemize}
 \begin{remark}
 Les fonctions cosinus et sinus n'ont pas de limites à l'infini.
 \end{remark}
-\subsubsection{Limite de la composée de deux fonctions}
+\subsubsection*{Limite de la composée de deux fonctions}
+\begin{property}
  Soient $f $  et $g$ deux fonctions, $a $, $b$  et  $c$ trois réels pouvant éventuellement être $ +\infty $ ou $ -\infty $. 
 \[\text{Si}\displaystyle \lim_{x \to a} f(x) = b \quad \text{et} \quad \displaystyle \lim_{x \to b} f(x) = c \quad \text{alors} \quad \displaystyle \lim_{x \to a} g[f(x)] = c \]
-  
+  \end{property}
 \begin{example}
  Calculons $\displaystyle \lim_{x \to +\infty} \cos\paren{\frac{x+1}{x^{2}-2}}$ 
  
- $\displaystyle \lim_{x \to +\infty} \frac{x+1}{x^{2}-2} = 0 $ et $ \displaystyle \lim_{x \to 0} \cos x = \cos0=1 $ donc $  \displaystyle\lim_{x \to +\infty}\cos\paren{\frac{x+1}{x^{2}-2}}=1 $
+ $\displaystyle \lim_{x \to +\infty} \frac{x+1}{x^{2}-2} = 0 $ et $ \displaystyle \lim_{x \to 0} \cos x = \cos0=1 $ donc  par composée $  \displaystyle\lim_{x \to +\infty}\cos\paren{\frac{x+1}{x^{2}-2}}=1 $
 
 \end{example}  
 
- \subsubsection{Comparaisons de limites}
+ \subsubsection*{Comparaisons de limites}
 
 Soient $f $, $g$ et $h$ trois fonctions et $ l\in\Rr$ ou $ l= +\infty $ ou $ l=-\infty $.
 
-
+\medskip
 %\renewcommand{\arraystretch}{2.3}
 \begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
@@ -62,7 +63,6 @@ $ g \leq f \leq h $ & $ \displaystyle \lim_{x \to a}g(x)=l $ et $ \displaystyle 
 
 
 \begin{remark}
- 
 La dernière propriété est parfois appelée << le théorème des gendarmes >>.
  \end{remark}
 
@@ -80,7 +80,7 @@ Or $\displaystyle\lim_{x \to +\infty}(-\frac{1}{x})= \displaystyle\lim_{x \to +\
 \end{example}
 
 
-\subsubsection{Limites et nombre dérivé}
+\subsubsection*{Limites et nombre dérivé}
 
 \begin{theorem}
 Soit $ f $ une fonction dérivable .
@@ -104,18 +104,18 @@ Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite infini
 
 \begin{definition}
 $\displaystyle\lim_{x \to a^{+}}f(x)=\infty$  ou 
-$\displaystyle\lim_{x \to a^{-}}f(x)=\infty$ si et seulement si la droite  $x=a$ est une asymptote verticale à    ç la courbe $\mathcal{C} $.
+$\displaystyle\lim_{x \to a^{-}}f(x)=\infty$ si et seulement si la droite  $x=a$ est une asymptote verticale à     la courbe $\mathcal{C} $.
 \end{definition}
 
 
 
 \subsubsection*{Asymptote horizontale}
-Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite finie en l'infini.
+Elle traduit, graphiquement, le fait que la fonction $f$ admet une limite finie à l'infini.
 
 
 
 \begin{definition}
-$\displaystyle \lim_{x \to \infty}f(x)=b \quad \text{ssi} \quad y = b \;  \text{est une  asymptote horizontale à  la courbe de }\; f \text{ en}  \infty$.
+$\displaystyle \lim_{x \to \infty}f(x)=b \; (\text{réel})\quad \text{si et seulement si la droite } \quad y = b \;  \text{est une  asymptote horizontale à  la courbe de }\; f \text{ en} \;  \infty$.
 \end{definition}
 
 \begin{example}
@@ -128,15 +128,15 @@ la droite d'équation   $y = 3 $ est asymptote horizontale  la droite d'équatio
 \begin{definition}
 Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=mx+p$.
 
-$\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0$   si et seulement si    $y=mx+p$  est une  asymptote oblique  à la courbe de $f$ en  $\infty$.
+$\displaystyle \lim_{x \to \infty}\left(f(x)-(mx+p)\right)=0$   si et seulement si la droite   $y=mx+p$  est une  asymptote oblique  à la courbe de $f$ en  $\infty$.
 \end{definition}
 
 \begin{remark} 
-Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=c $  alors la droite $ y=ax+b+c $ est une asymptote à  $ \mathcal{C} $ en $ \infty. $
+Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=l\; (\text{réel} $  alors la droite $ y=ax+b+l $ est une asymptote à  $ \mathcal{C} $ en $ \infty. $
 \end{remark}
 \begin{example}
-Pour la fonction $f : x\mapsto 2x-5- \frac{2}{x-1} $ 
-la droite d'équation   $y = 2x-5 $ est asymptote oblique à sa courbe de $f$ car  $\displaystyle \lim_{x \to \infty}\frac{2}{x-1}=0$.
+Pour la fonction $f : x\mapsto 2x+5- \frac{2x}{x-1} $ 
+la droite d'équation   $y = 2x+3 $ est asymptote oblique à sa courbe en $ \infty$ car  $ \lim_{x \to \infty}\frac{2x}{x-1}=2$.
 \end{example}
 \subsubsection*{Position relative d'une courbe et son asymptote}
 Pour étudier la position relative de la  courbe $\mathcal{C} $ d'une fonction $ f $ et  de  son asymptote $ \Delta : y=mx+p $, on étudie le signe de la différence $ f(x)-mx-p$.
@@ -144,7 +144,7 @@ Pour étudier la position relative de la  courbe $\mathcal{C} $ d'une fonction $
 \item  Si $ f(x)-mx-p > 0$ alors  $ \mathcal{C}  $ est  située  au-dessus de la courbe de $ \Delta $ 
 \item  Si $ f(x)-mx-p< 0$ alors la courbe de $\mathcal{C}$ est  située  en-dessous de la courbe de $\Delta$ 
 \end{itemize}
-On tiendra compte de l'ensemble sur lequel on doit étudier la position relative des deux courbes: ainsi, la position relative d'une courbe et de son asymptote peut être étudiée sur l'ensemble de définition complet de la fonction ou simplement au voisinage de l'infini. 
+On tiendra compte de l'ensemble sur lequel on doit étudier la position relative des deux courbes.
 \subsubsection{Recherche de branches infinies}
 Lorsque  $\lim_{x \to \infty}f(x)=\infty  $, la courbe présente une branche infinie qu'il faut étudier.
 \begin{itemize}
@@ -152,7 +152,7 @@ Lorsque  $\lim_{x \to \infty}f(x)=\infty  $, la courbe présente une branche inf
 \item    Si $\displaystyle \lim_{x \to \infty}\frac{f(x)}{x}=\infty$  alors la courbe $ \mathcal{C} $ présente une branche parabolique dans la direction  de  l'axe des ordonnées.
 \item  Si  $\lim_{x \to \infty}\frac{f(x)}{x}=a  $  réel  non nul alors on calcule $\lim_{x \to \infty}(f(x)-ax )  $ 
 
- $ \bullet $ Si  $\displaystyle \lim_{x \to \infty}(f(x)-ax) = b $  réel alors la droite $(D)$ d'équation : $y = a x  + b $ est asymptote à la courbe $ \mathcal{C} $ .
+ $ \bullet $ Si  $ \lim_{x \to \infty}(f(x)-ax) = b $  réel alors la droite $(D)$ d'équation : $y = a x  + b $ est asymptote à la courbe $ \mathcal{C} $ .
 
  $ \bullet $ Si $\displaystyle \lim_{x \to \infty}(f(x)-ax) = \infty $     alors la courbe admet une branche parabolique de direction asymptotique la droite d'équation $ y =  a x $.
 \end{itemize}
@@ -167,5 +167,723 @@ $ f (x)=\left\{\begin{array}{l} \sqrt{x +4}\quad \text{si} \quad x\geq 2 \\ x+3-
 \item Etudier la position relative de la courbe par rapport à son asymptote oblique.
 \end{enumerate}
 \end{exercice}
+\begin{proof}
+\begin{enumerate}
+\item $ f(x) $ existe ssi $ \begin{cases} x+4 \geq 0 \\ x\geq 2\end{cases}$  ou $ \begin{cases} x-1 \neq 0 \\ x< 2\end{cases}$
+
+ $ f(x) $ existe ssi $ \begin{cases} x \geq -4 \\ x\geq 2\end{cases}$  ou $ \begin{cases} x\neq -1 \\ x< 2\end{cases}$
+ 
+ $ f(x) $ existe ssi  $ x \geq 2 $\quad  ou $ x\in \intoo{\minf}{-1}\cup \intoo{-1}{2} $ \\ donc $ f(x) $ existe ssi $ x\in\intoo{\minf}{-1}\cup \intoo{-1}{2} \cup\intfo{2}{\pinf}$ 
+
+ D'où $ D_{f}=\intoo{\minf}{-1}\cup \intoo{-1}{\pinf}$
+ 
+ Limites aux bornes de $D_{f}  $
+ $\displaystyle\lim_{x \to \pinf }x+4= \pinf $  par composée $\displaystyle\lim_{x \to \pinf}\sqrt{x+4}=\pinf  $ d'où $\displaystyle\lim_{x \to \pinf}f(x)=\pinf  $\\
+ $\displaystyle\lim_{x \to \minf}x+3-\frac{2}{x-1}=\displaystyle \lim_{x \to \minf}x+3-\displaystyle\lim_{x \to \minf}\frac{2}{x-1}=\minf  $ d'où $\displaystyle\lim_{x \to \pinf}f(x)=\minf  $\\
+ L'étude de la limite en $ 1 $ se fait uniquement sur la restriction $ x \mapsto x+3-\frac{2}{x-1} $\\
+$ \begin{cases}\lim_{x \to 1^{+}}x+3=4  \\ \displaystyle\lim_{x \to 1^{+}}-\frac{2}{x-1}=\minf\end{cases}$  donc $\displaystyle\lim_{x \to 1^{+}}f(x)=\minf  $\\
+$ \begin{cases}\displaystyle\lim_{x \to 1^{-}}x+3=4  \\ \displaystyle\lim_{x \to 1^{-}}-\frac{2}{x-1}=\pinf\end{cases}$  donc $\displaystyle\lim_{x \to 1^{-}}f(x)=\pinf  $
+\item Puisque $\displaystyle\lim_{x \to 1^{+}}f(x)=\minf  $ et $\displaystyle\lim_{x \to 1^{-}}f(x)=\pinf  $ donc la droite d'équation $ x=1 $ est une asymptote verticale à la courbe de $ f. $\\
+Puisque la restriction de $ f $ sur $ \intoo{\minf}{2} $ s'écrit sous la forme $ x \mapsto x+3-\frac{2}{x-1} $ et que $ \displaystyle\lim_{x \to \minf}\frac{2}{x-1}= 0 $ donc la droite $ \Delta $ d'équation $ y=x+3 $ est une asymptote oblique à la courbe de $ f. $\\
+D'autre part  $\displaystyle\lim_{x \to \pinf}f(x)=\pinf  $ doc $ \mathcal{C_{f}} $ présente une branche infinie en $ \pinf. $\\ Calculons $\displaystyle \lim_{x \to \pinf}\frac{f(x)}{x} $\\
+$\displaystyle \lim_{x \to \pinf}\frac{\sqrt{x+3}}{x} = \displaystyle\lim_{x \to \pinf} \frac{x+3}{x\sqrt{x+3}}=\displaystyle\lim_{x \to \pinf} \frac{x+3}{x} \times \displaystyle\lim_{x \to \pinf}\frac{1}{\sqrt{x+3}}= 1 \times 0 =0 $ d'où $ \mathcal{C_{f}} $ admet un branche  parabolique d'axe (Ox).
+\item Etudions la position relative de $ \Delta $ et $ \mathcal{C_{f}} $.\\
+Pour cela étudions le signe de $ f(x)-(x+3) = -\frac{2}{x-1} $ pour $ x < 2 $  
+
+  \[\begin{array}{|c|ccccc|}
+\hline
+x & \minf & & 1 & & 2\\ \hline
+\text{signe de }-\frac{2}{x-1}  & & +\qquad &|  & \quad - & \\
+\hline
+\end{array}\]
+ 
+  Sur $ \intoo{\minf}{1} $ $-\frac{2}{x-1} > 0  $ donc $ \mathcal{C_{f}} $ est au dessus de $ \Delta. $\\
+   Sur $ \intoo{\minf}{1} $ $-\frac{2}{x-1} < 0  $ donc $ \mathcal{C_{f}} $ est au dessous de $ \Delta. $
+\end{enumerate}
+\end{proof}
+\subsection{Continuité}
+\subsubsection*{Continuité en un point}
+
+\begin{definition}
+Une fonction $ f $ est continue en un réel $ a $ ssi $ a\in D_{f} $ et $\displaystyle \lim_{x \to a}f(x)=f(a) $.
+\end{definition}
+
+
+\begin{example}
+Soit $ f (x)=\left\{\begin{array}{l} \frac{\sqrt{x}-1}{x-1}\quad \textrm{si} \quad x\neq 1 \\ \frac{1}{2}\quad \quad\textrm{si}\quad x= 1  \end{array} \right.$
+
+
+Etudions la continuité   de $ f $ en 1.\\
+ Pour $x\neq 1  $, $ f(x) $ existe si et seulement, si $ x\geq 0 $\quad et $x-1 \neq 0 $
+ 
+si et seulement, si \quad $x\geq 0$ \quad   et $x\neq 1$
+
+si et seulement, si $x\in \intfo{0}{1}\cup\intoo{1}{\pinf}$
+
+Or $ f(1)= \frac{1}{2}$  d'où $ f(x) $ existe si et seulement, si  $x\in \intfo{0}{\pinf}  $ \\
+$ \displaystyle\lim_{x \to 1}f(x)=\displaystyle\lim_{x \to 1}\frac{\sqrt{x}-1}{x-1}= \displaystyle\lim_{x \to 1}\frac{1}{\sqrt{x}+1}= \frac{1}{2}$ \\donc $\displaystyle \lim_{x \to 1}f(x)=f(1)=\frac{1}{2}$\quad d'où $ f $ est continue en $ 1. $
+\end{example}
+
+\subsubsection*{Propriété:  Continuité à droite - continuité à gauche}
+\begin{property}
+$ f $ est continue en $ a $ si et seulement, si  $\displaystyle \lim_{x \to a^{+}}f(x)=\displaystyle\lim_{x \to a^{-}}f(x)=f(a) $. 
+\end{property}
+\subsubsection*{Prolongement par continuité}
+\begin{definition}
+Soit $ f $ une fonction  \textbf{non}  définie en $ a $ et $ l $ un nombre réel tel que $ \displaystyle\lim_{x \to a}f(x)=l. $\\
+On appelle \textbf{prolongement par continuité } de $ f $ en $ a $, la fonction $ g $ définie par :
+\[ g (x)=\left\{\begin{array}{l} f(x)\quad \textrm{si} \quad x\neq a \\ l                      \quad \quad \textrm{si}\quad x= a  \end{array} \right.\]
+\textbf{NB:} La fonction $ g $ est définie et continue en $ a $.
+\end{definition}
+\begin{example}
+Montrons que la fonction $ f: x \mapsto \frac{x^{2}-x-2}{x-2} $   est prolongeable par continuité en 2 et trouvons son prolongement par continuité.
+\end{example}
+
+\textsl{Réponse:}\\
+$ f(x) $ existe si et seulement, si $ x\neq 2 $.\\  $\displaystyle\lim_{x \to 2 }\frac{x^{2}-x-2}{x-2}=\displaystyle\lim_{x \to 2 }\frac{(x-2)(x+1)}{x-2}= \displaystyle\lim_{x \to 2 }(x+1)=3 $   finie donc $ f $ est prolongeable par continuité en $ 2. $\\
+Son prolongement par continuité en $ 2$ est la fonction $ g $ définie par : 
+\[ g (x)=\left\{\begin{array}{l} \frac{x^{2}-x-2}{x-2} \quad \textrm{si} \quad x\neq 2 \\ 3\quad \quad \qquad \quad  \textrm{si}\quad x= 2  \end{array} \right.\]
+
+\subsection{Dérivabilité}
+
+\begin{definition}
+Soit $ f $ une fonction définie sur un intervalle $ I$ et $a\in I $.\\
+$ f $ est dérivable en $ a $ s'il existe un nombre réel $ l $ tel que $ \displaystyle\lim_{x \to a} \frac{f(x)-f(a)}{x-a}=l $ \\
+$ l $ est le  \textbf{nombre dérivé} de $ f $ en $ a. $ On le note             $f^{'}(a)$.
+\end{definition}
+
+\textbf{Autre formulation de la définition}\\
+On fait le changement de variable suivant $ h=x-a $ \\
+$ f $ est dérivable en $ a $ s'il existe un nombre réel $ l $ tel que $\displaystyle \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}=l $ 
+
+\begin{example}
+Soit $ f (x)=\left\{\begin{array}{l} \frac{\sqrt{x}-1}{x-1}\quad \textrm{si} \quad x\neq 1 \\ \frac{1}{2}\quad \textrm{si}\quad x= 1  \end{array} \right.$\\
+Etudions  la dérivabilité  de $ f $ en 1.
+\end{example}
+\textsl{Réponse:}\\
+On avait trouvé que $D_{f}=\intfo{0}{\pinf}  $ \\
+$\displaystyle \lim_{x \to 1 } \frac{f(x)-f(1)}{x-1}=\displaystyle \lim_{x \to 1 }\frac{\frac{\sqrt{x}-1}{x-1}-\frac{1}{2}}{x-1}= \lim_{x \to 1 }\frac{2\sqrt{x}-(x+1)}{2(x-1)^{2}}=\lim_{x \to 1 } \frac{-x^{2}+2x-1}{2(x-1)^{2}(2\sqrt{x}+x+1)}=\displaystyle \lim_{x \to 1 }\frac{-1}{2(2\sqrt{x}+x+1}=-\frac{1}{8}$  \\ Donc $ f $ est dérivable en $ 1 $ et de nombre dérivé $ f'(1)= -\frac{1}{8}$.
+\subsubsection*{Propriété}
+\begin{property}
+Si $ f $ est dérivable en a, alors $ f $ est continue en a.\\
+\textbf{Attention}: La réciproque de cette propriété est fausse.\\
+La fonction $ x\mapsto \abs{x} $ est continue en 0 mais elle n'est pas dérivable en $ 0 $.
+\end{property}
+  \subsubsection*{Propriété : Dérivabilité à droite - dérivabilité à gauche}
+  \begin{property}
+$ f $ est dérivable en $ a $ si et seulement, si :\[  \displaystyle\lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\displaystyle\lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=l \quad \text{réel}\]
+\[f^{'}_{d}(a)=f^{'}_{g}(a)\]
+\[\textrm{Le nombre dérivé de} \  f \ \textrm{ à droite en $ a$ = Le nombre dérivé de}\  f \ \textrm{à gauche en $a $ }\]
+\end{property}
+\begin{notation}
+Les notations \;   $f^{'}_{d}(a)$ et $f^{'}_{g}(a)$ s'utilisent que lorsque la limite du taux de variation est un réel.
+\end{notation}
+\subsubsection*{Cas de non dérivabilité}
+$ \centerdot $ Si $\displaystyle \lim_{x \to a } \frac{f(x)-f(a)}{x-a}=\pinf$ ou $\minf $ alors $ f $ n'est pas dérivable en $ a $.\\
+$ \centerdot $ Si $ f^{'}_{d}(a) \neq f^{'}_{g}(a) $ alors $ f $ n'est pas dérivable en $ a $.
+\subsubsection*{Interprétation graphique de la dérivabilité}
+\begin{enumerate}
+\item Si $ f $ est dérivable en $ a $ alors sa courbe $ \mathcal{C} $ admet au point d'abscisse  $ a $  c-à-d le point $A(a,f(a))$ une \textbf{ tangente} de coefficient directeur ( ou pente) $  f^{'}(a)$ d'équation:  
+
+ $ y=f^{'}(a)(x-a)+ f(a) $.
+
+
+\begin{remark}
+ $  f'(a)=0$  si et seulement si $ \mathcal{C} $ admet au point d'abscisse  $ a $ une tangente horizontale d'équation $ y=f(a). $ \\ Dans ce cas, le point $A(a,f(a))$  est  soit un \textbf{extremum} ( maximum ou minimum) soit un \textbf{point d'inflexion}.
+ \end{remark}
+ \item Si $ f $ est dérivable  à droite et à gauche  de $ a $ telle que $ f^{'}_{d}(a)\neq f'_{g}(a) $ alors $ \mathcal{C} $ admet au  point $A(a,f(a))$ deux demi-tangentes de pentes respectives  $ f'_{d}(a)$ et $ f'_{g}(a) $: le point $A$ est un point \textbf{anguleux}.
+ \item Détaillons les cas de l'infini.
+
+\medskip
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline 
+Si $ \displaystyle\lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\pinf $ alors
+la courbe de $f$ admet au point
+$A (a, f (a))$ une demi-tangente
+verticale dirigée vers le haut.
+ & Si $\displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $ alors 
+la courbe de $f$ admet au point
+$A (a, f (a))$ une demi-tangente
+verticale dirigée vers le bas.  \\
+\hline
+Si $ \displaystyle\lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\minf $ alors
+la courbe de $f$ admet au point
+$A (a, f (a))$ une demi-tangente
+verticale dirigée vers le bas. 
+& Si  $ \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\minf $ alors
+la courbe de $f$ admet au point
+$A (a, f (a))$ une demi-tangente
+verticale dirigée vers le haut. \\
+ \hline
+\end{tabularx}
+\item Si $\displaystyle \lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\pinf $   et $ \displaystyle\lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\minf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales  dirigées vers le haut  d'équation $ x=a $.  A est un \textbf{point de rebroussement}.
+\item Si $\displaystyle \lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\minf $   et $\displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales  dirigées vers le bas  d'équation $ x=a $.  A est un point de rebroussement.
+\item Si $ \displaystyle\lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\pinf $   et $ \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales de même équation $ x=a $ l'une dirigée vers le haut et l'autre vers le bas.  A est un point d'inflexion.
+\item Si $ \displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $   et $ \displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\minf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales de même équation $ x=a $ l'une dirigée vers le haut et l'autre vers le bas.  A est un point d'inflexion à tangente verticale.
+\end{enumerate}
+\subsection{Continuité et dérivabilité globale}
+\begin{definition}
+ $ \centerdot $  $ f $ est continue  ( resp. dérivable ) sur l'intervalle  $ I $ si elle est continue ( resp. dérivable ) en tout réel  $x \in I. $\\
+  $ \centerdot $	La fonction qui à tout réel $ x $  de $ I $ associe le nombre dérivé de $ f $ en $ x $ s'appelle \textbf{\color{magenta} fonction dérivée  ou dérivée} de $ f $ et est notée $ f': x\mapsto f'(x) $. \\
+  L'ensemble des réels $ x $ pour lesquels $f'(x) $ existe est appelé \textbf{ ensemble ou domaine de dérivabilité de $f$}: c'est le domaine de définition de $ f'. $
+\end{definition}
+
+Rappelons  ci-dessous les fonctions dérivées de certaines fonctions usuelles.
+\medskip
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Fonction $f$ définie par:}  & \textbf{Dérivable sur} &\textbf{ Fonction dérivée $ f'(x) $ }  \\
+\hline
+$ f(x)=k$, avec $k$ réel  & $\Rr$ & 0 \\
+\hline
+$f(x)= x^{n} $  avec $n\in \Qq$ &  $\Rr$  & $ nx^{n-1} $   \\
+\hline
+$f(x)= \frac{1}{x} $ &  $\Rrep$ ou $\Rrem$ & $ -\frac{1}{x^{2}} $\\
+\hline
+$f(x)= \sqrt{x} $ &  $\Rrep$ &  $ \frac{1}{2\sqrt{x}} $\\
+\hline
+$f(x)= \cos x $  &  $\Rr$  & $ -\sin x $ \\
+\hline
+$f(x)= \sin x $   &  $\Rr$  & $ \cos x $\\
+\hline
+$f(x)= \tan x $  &  voir ci- dessous  & $\small  1+\tan^{2}x $ ou $\frac{1}{\cos^{2} x} $ \\
+\hline
+\end{tabularx}
+
+
+\begin{property}
+Soient $f $ et  $ g$ deux fonctions continues (resp. dérivables) sur un intervalle $ I. $
+
+\begin{itemize}
+\item les fonctions $ f+g $ et $ fg $ sont continues ( resp. dérivables ) sur   $ I. $
+\item  Si de plus $ g\neq0 $ sur  $ I $ alors les fonctions $\frac{1}{g} $ et  $\frac{f}{g} $ sont continues (resp. dérivables) sur $ I. $
+\end{itemize}
+\end{property}
+
+\textbf{Cas particuliers}
+\begin{itemize}
+\item Les fonctions polynômes sont continues et dérivables sur $ \Rr. $ 
+\item Les fonctions rationnelles sont continues et dérivables sur tout intervalle de leur ensemble de définition.
+\item Les fonctions $x\mapsto\cos x $ et  $x\mapsto\sin x $ sont continues et dérivables sur $ \Rr. $
+\item La fonction $x\mapsto\tan x $ est continue et dérivable sur tout intervalle du type $\intoo{(2k-1)\frac{\pi}{2}}{(2k+1)\frac{\pi}{2}}$, $ k\in\Zz $.
+
+\end{itemize}
+\subsubsection*{Image d'un intervalle par une fonction continue}
+Nous admettons le théorème suivant.
+\begin{theorem}
+Si $ f $ est une fonction \emph{continue} sur  un intervalle $ I $ alors $ f(I) $ est un intervalle .
+\end{theorem}
+\textbf{Cas particuliers}\\
+Le tableau suivant donne les images de quelques intervalles simples par une fonction \textbf{continue et strictement monotone }.  $ a$ et $b $ peuvent être éventuellement $\pinf $ ou $\minf .$ 
+
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\cline{1-3}
+\multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{$ f(I) $} \\
+\cline{2-3}
+\multicolumn{1}{|c|}{$I$ intervalle} & $f$ continue et strictement croissante sur $ I $ &  $ f $ continue et strictement décroissante sur $ I $ \\
+\hline
+ $\intff{a}{b}$ & $\intff{f(a)}{f(b)}$ & $\intff{f(b)}{f(a)}$ \\
+\hline
+$ \intfo{a}{b}$ & $\small \intfo{f(a)}{ \lim_{x \to b^{-}}f(x)}$ & $\small\intof{\lim_{x \to b^{-}}f(x) }{f(a)}$ \\
+\hline
+$ \intof{a}{b}$ & $\small\intof{\lim_{x \to a^{+}}f(x)}{f(b)}$ & $\small\intfo{f(b)}{\lim_{x \to a^{+}}f(x)}$ \\
+\hline
+$ \intoo{a}{b}$ & $\small\intoo{\lim_{x \to a^{+}}f(x)}{\lim_{x \to b^{-}}f(x)}$ & $\small\intoo{\lim_{x \to b^{-}}f(x)}{\lim_{x \to a^{+}}f(x)}$ \\
+\hline
+\end{tabularx}
+
+\subsubsection*{Continuité et dérivabilité de la composée de deux fonctions}
+\begin{property}
+$ \centerdot $ Si $ f $ est continue sur l'intervalle $ I $ et $ g $ continue sur l'intervalle $ f(I) $ alors la fonction $ g\circ f $ est continue sur  $ I $.\\
+$ \centerdot $ Si $ f $ est dérivable sur l'intervalle $ I $ et $ g $ dérivable sur l'intervalle $ f(I) $ alors la fonction $ g\circ f $ est dérivable sur $ I $ et pour tout $ x\in I $, on a:
+\[\paren{g\circ f(x)}'= f'(x)\times g'[f(x)] \]
+\end{property}
+\begin{example} 
+Soit $h(x)= \cos \frac{1}{x}$. Calculons  $h'(x) $.
+
+On a   $D_{h}= \intoo{\minf}{0}\cup \intoo{0}{\pinf} $
+
+\textbf{\color{red}{Attention}}:  Avant de dériver une fonction, il est recommandé de justifier sa dérivabilité même si la question ne le précise pas.\\
+La fonction rationnelle $ x\mapsto \frac{1}{x} $ est  définie sur $ \Rre $ donc dérivable sur chacun des intervalles $\intoo{\minf}{0} $ et $\intoo{0}{\pinf}. $\\
+La fonction $ x\mapsto \cos x $ est dérivable sur $ \Rr $; en particulier sur chacun des intervalles $\intoo{\minf}{0} $ et $\intoo{0}{\pinf} $\\ D' où par  composée $ h $ est dérivable  sur chacun des intervalles $\intoo{\minf}{0} $ et $\intoo{0}{\pinf} $.\\
+Pour tout   $ x\neq 0 $  \quad :    $h'(x)=\frac{1}{x^{2}}\sin \frac{1}{x} $ 
+
+\end{example}
+\begin{corollary}
+$ \centerdot $ Si $ f $ est dérivable  (resp. continue) sur $ I $  et $ g $ dérivable sur $ \Rr $  alors $ g \circ f $ est dérivable (resp. continue) sur $ I. $\\
+$ \centerdot $ Si $ f $ est \textbf{\color{magenta} continue et positive} sur $ I $ alors $ \sqrt{f} $ est continue sur $ I $.\\
+$ \centerdot $ Si $ f $ est \textbf{\color{magenta} dérivable et strictement positive } sur $ I $ alors $ \sqrt{f} $ est dérivable sur $ I $.
+\end{corollary}
+\colorbox{yellow!60!}{ D'ailleurs la fonction $ \sqrt{f} $ n'est jamais dérivable aux zéros de $ f. $}
+
+\subsubsection*{Formules de dérivations}
+Soient $u $ et $v $ deux fonctions dérivables, $ r\in\Zze $ et $ k\in\Rr $\\
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}
+\hline 
+\textbf{\color{magenta}Fonction }& $ ku $ &$ u+v $ & $ uv $ & $\frac{u}{v}$ & $\frac{1}{v} $ & $ \sqrt{u} $ &  $ u^{r} $ \\     
+\hline 
+\textbf{\color{magenta}Dérivée} & $ ku' $ & $ u'+v' $ & $u'v+ v'u  $ & $ \frac{u'v- v'u }{v^{2}} $ &  $- \frac{v'}{v^{2}} $ & $ \frac{u'}{2\sqrt{u}} $ & $ ru'u^{r-1} $  \\    
+\hline
+\end{tabularx}
+
+\medskip
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+  $ v\circ u $ & $ \sin u $ & $ \cos u $ & $ \tan u $\\
+\hline
+$ u'\times (v'\circ u) $  & $ u'\cos u $ & $-u'\sin u$ & $u'( 1+\tan^{2}u) \quad \textrm{ou}\quad \tfrac{u'}{\cos^{2}u}$  \\     
+ \hline
+\end{tabularx}
+
+
+
+\begin{exercice}
+Soit $ f (x)=\frac{(x+1)\sqrt{x-2}}{x-1}.$
+ \begin{enumerate}
+\item Etudier la continuité  de $ f $ sur son $D_{f}$.
+\item Etudier  la dérivabilité de $ f $ sur son $D_{f}$.
+\item Calculer $ f'(x). $
+\end{enumerate}
+\end{exercice}
+\begin{proof}
+\begin{enumerate}
+\item $ f(x) $ existe si et seulement, si $ x \geq 2 $ et  $ x\neq 1 $ donc $ D_{f}=\intfo{2}{\pinf} $ \\ \textbf{ 1\iere{} méthode } \\ La fonction $ x \mapsto \frac{x+1}{x-1} $ est une fonction rationnelle définie sur $\intfo{2}{\pinf}  $ donc continue  sur $\intfo{2}{\pinf}  $ \\ La fonction $ x \mapsto x-2$ est continue et positive sur $\intfo{2}{\pinf}  $  donc la fonction $ x \mapsto \sqrt{x-2} $ est continue sur $\intfo{2}{\pinf}  $  par composée.\\ On en déduit que $ f $ est continue sur $  D_{f}$ comme produit et composée de  fonctions continues. \\
+\textbf{ 2\iere{} méthode } \\  La fonction $ x \mapsto x+1 $ est  continue  sur $\intfo{2}{\pinf} $, \\ La fonction $ x \mapsto x-1 $ est  continue et non nulle  sur  $\intfo{2}{\pinf} $,   \\ La fonction $ x \mapsto x-2$ est continue et positive sur $\intfo{2}{\pinf}$  donc la fonction $ x \mapsto \sqrt{x-2} $ est continue sur $\intfo{2}{\pinf} $  par composée.\\ On en déduit que $ f $ est continue sur $  D_{f}$ comme produit, quotient et composée de  fonctions continues.\\
+
+\item  \textbf{ 1\iere{} méthode } \\ La fonction $ x \mapsto \frac{x+1}{x-1} $ est une fonction rationnelle définie sur $\intfo{2}{\pinf}  $ donc  dérivable sur $\intfo{2}{\pinf}  $ \\ La fonction $ x \mapsto x-2$ est dérivable et strictement positive sur $\intoo{2}{\pinf}$ donc la fonction $ x \mapsto \sqrt{x-2} $ est  dérivable sur $\intoo{2}{\pinf}$. par composée.\\ On en déduit que $ f $ est dérivable  sur $\intoo{2}{\pinf}$ comme produit et composée de  fonctions dérivables. \\
+
+\textbf{ 2\iere{} méthode } \\  La fonction $ x \mapsto x+1 $ est  dérivable sur $\intfo{2}{\pinf} $ \\ La fonction $ x \mapsto x-1 $ est  dérivable et non nulle  sur sur $\intoo{2}{\pinf} $   \\ La fonction $ x \mapsto x-2$ est  dérivable et strictement positive sur $\intoo{2}{\pinf}$ donc la fonction $ x \mapsto \sqrt{x-2} $ est   dérivable sur $\intoo{2}{\pinf}$ par composée.\\ On en déduit que $ f $ est dérivable  sur $\intoo{2}{\pinf}$ comme produit, quotient et composée de  fonctions dérivables. 
+
+ \item $ \forall x > 2  $, $ f'(x)= \frac{-2}{(x-1)^{2}}\times \sqrt{x-2}+ \frac{1}{2\sqrt{x-2}}\times \dfrac{x+1}{x-1} $\\
+Soit  $ f'(x)=\frac{x^{2}-4x+7}{2(x-1)^{2}\sqrt{x-2}} $
+\end{enumerate}
+\end{proof}
+\subsubsection*{Dérivée et sens de variations}
+\begin{theorem}
+Soit $ f $ une fonction dérivable sur un intervalle $ I. $
+\begin{itemize}
+\item[\textbullet] $f$ est strictement croissante sur $I$ si et seulement si : $ ∀ x\in I$, $f '(x) ≥ 0 $ \\et $f'$ ne s'annule qu'en un nombre fini de points de $I$. 
+\item[\textbullet] $f$ est strictement décroissante sur $I$ si et seulement si : $ ∀ x\in I$, $f '(x)  \leq 0 $ \\ et $f'$ ne s'annule qu'en un nombre fini de points de $I$.
+\item[\textbullet] $f$ est  croissante sur $I$ si et seulement si : $ ∀ x\in I$, $f '(x) ≥ 0 $. 
+\item[\textbullet] $f$ est  décroissante sur $I$ si et seulement si : $ ∀ x\in I$, $f '(x) \leq 0 $ .  
+\end{itemize}
+\end{theorem}
+ \subsubsection*{Signe d'une fonction à partir de ses variations}
+
+ Les cas classiques:
+
+\begin{multicols}{2}
+
+\begin{variations}
+x &  &  \alpha & &  &    \\
+\filet
+f’(x) & - & \z & + &    & \\
+\filet
+\m{f(x)}   & \d & + & \c   & \\
+\end{variations}
+
+Si $ f(x) $ admet un \textbf{\color{magenta}minimum positif }\\
+sur $ I $ alors $ f $ est \textbf{\color{magenta} positive} sur $ I.$
+
+\begin{variations}
+x   & & \alpha  &  &   & \\
+\filet
+f’(x) & + & \z & - &    & \\
+\filet
+\m{f(x)}   & \c & \h{-} & \d   & \\
+\end{variations}
+
+Si $ f(x) $ admet un \textbf{\color{magenta}maximum négatif }\\
+sur $ I $ alors $ f $ est \textbf{\color{magenta} négative} sur $ I. $
+
+\begin{variations}
+x &  & &  & & \alpha & &  & \\
+\filet
+f’(x) & &  &  & \dr+ &  &  \\
+\filet
+\m{f(x)} &  &  &  & \cb & \m{0} & \ch &  &  \\
+\end{variations}
+
+$ f(x) $ est \textbf{\color{magenta} positif} si \textbf{\color{magenta}$ x \geq \alpha $. } \\
+$ f(x) $ est \textbf{\color{magenta}négatif} si \textbf{\color{magenta}$ x \leq \alpha $}.  
+
+\begin{variations}
+x &  &  & & & \alpha &  & &  \\
+\filet
+f’(x) & & & &   & -&   \\
+\filet
+\m{f(x)} &  & & & \dh & \m{0} & \db    &  \\
+\end{variations}
+
+$ f(x) $ est \textbf{\color{magenta} négatif} si \textbf{\color{magenta}$ x \geq \alpha $.} \\
+$ f(x)$ est\textbf{\color{magenta}positif} si \textbf{\color{magenta} $ x\leq\alpha $}.  
+
+\end{multicols}
+
+
+
+ \subsubsection*{Dérivées successives}
+
+ \begin{definition}
+ Soit $ f $ une fonction dérivable sur $ I $, sa fonction  dérivée $ f' $ est appelée                            
+  \emph{fonction dérivée première} et est notée $ f^{(1)}.$ \\
+ Si $ f'$ est dérivable sur $ I $, on dit que $ f $ est deux fois dérivable alors dans ce cas la fonction  dérivée  de $ f' $ c'est à dire $ (f')' $ est  appelée \emph{fonction dérivée seconde} de $ f $ et est notée $ f'' $ ou $ f^{(2)} .$ \\ 
+  Si $ f''$  est à son tour  dérivable sur $ I $, alors sa fonction  dérivée   est  appelée \emph{fonction dérivée troisième} de $ f $ et est notée $ f''' $ ou $ f^{(3)} .$ \\ 
+ Par itération si la dérivée n-ième de $ f $ existe, on la note $ f^{(n)} .$   
+ \end{definition}
+ 
+  \begin{example}
+ $ f(x)= x\sin x $ \\
+ $ f'(x)=\sin x+x\cos x $, $ f''(x)=2\cos x+x\sin x $, $ f^{(3)}(x)=-3\sin x+x\cos x $, etc.
+  \end{example}
+   \begin{remark}
+ $ \centerdot $ $ f^{(n)}$ est aussi appelée \emph{dérivée d'ordre n de $ f. $} \\
+  $ \centerdot $ En \textbf{\color{magenta}Physique} $f' $, $ f'', $ $\cdots$, $ f^{(n)}$ sont notées respectivement $\frac{df}{dx} $, $ \frac{d^{2}f}{dx^{2}} $, $\cdots$, $ \frac{d^{n}f}{dv^{n}}$.
+ \end{remark}
+\subsubsection*{Notion de différentielle}
+Une petite variation $ \Delta x $ de la variable $ x $ provoque une petite variation  $ \Delta y = f(x+ \Delta x)-f(x) $ des images.\\ Lorsque $ \Delta x $ est voisin de $ 0 $, on assimile $ dx=\Delta x $ et on peut écrire: $ \frac{dy}{dx} =f'(x)$ ou $ dy=f'(x)dx $ ou $ dy=f'(x)\Delta x $.
+\begin{example}
+ Pour la fonction $ y=2x^2-x $ avec $x=1 $  et $\Delta x= 0,01 $ \\ Vérifier que la différentielle $dy=0,03  $ et l'accroissement $ \Delta y= 0,0302 $
+\end{example}
+\subsubsection*{Position d'une courbe par rapport à sa tangente}
+  Nous admettons le résultat suivant:\\ Si $ f $ est une fonction deux fois dérivable sur $ I $ et si $ f'' $ est négative sur $ I, $ alors la courbe $\mathcal{C} $ de $ f$ est en dessous de toutes ses tangentes. On dit  que  $\mathcal{C} $ est \textbf{\color{magenta} concave.}\\
+   Si $ f $ est une fonction deux fois dérivable sur $ I $ et si $ f'' $ est positive sur $ I, $ alors la courbe $\mathcal{C} $ de $ f$ est en dessus de toutes ses tangentes. On dit  que  $\mathcal{C} $ est \textbf{\color{magenta} convexe.}
+  \subsubsection*{Point d'inflexion}
+  \begin{definition}
+  On dit que la courbe de $ f $ admet un point d'inflexion d'abscisse $ x_{0} $ si la courbe y traverse sa tangente.
+  \end{definition}
+  
+   \begin{theorem}
+   Si $ f $ est deux fois dérivable sur  un intervalle ouvert $ I $ contenant $ x_0 $  et si $ f'' $  \emph{ s'annule en changeant de signe  en $ x_0 $} alors le point de la courbe d'abscisse $ x_0 $  est un \textbf{\color{magenta} un point  d'inflexion}.
+   \end{theorem}
+   
+   \begin{example}
+   Reprenons l'exemple précédent $ f: x\mapsto x^{3}-3x^{2} $\\ 
+   $ f $ est dérivable sur $ \Rr $ car fonction polynôme.\\
+   On a $ f'(x)= 6x^2-6x$ et $ f''(x)= 6x-6 $\\
+   $ f''(x)=0 \Longleftrightarrow x=1 $
+   \renewcommand{\arraystretch}{1.5}
+
+ \[\begin{array}{|c|ccccc|}
+\hline
+x & \minf & & 1 & & +\infty\\ \hline
+\text{signe de } f''(x) & & +\qquad &\quad 0  & \quad - & \\
+\hline
+\end{array}\]
+
+D'après le tableau de signes,  $ f'' $ s'annule en  $ 1 $ en changeant de signe; donc le point $ (1,-2) $ est un point d'inflexion de la courbe.
+   \end{example}
+   
+  \subsubsection*{Inégalité des accroissements finis}
+  Nous admettons le théorème de l'inégalité des accroissements finis et nous donnons ici les deux formes.\\
+\textbf{\color{magenta}Première forme} \\
+ Soit $ f $ une fonction dérivable sur un intervalle $ I $. On suppose qu'il existe deux réels $m $ et $ M$ tels que :\colorbox{green!20!}{ $ m\leq f'(x) \leq M $} \quad pour tout $ x\in I $. \\ Alors pour tous $a $ et $ b$ de $ I $  $(b < a)  $ on a :\colorbox{green!20!} {$ m(b-a)\leq f(b)-f(a) \leq M(b-a) $}  \\
+ 
+ \textbf{\color{magenta}Deuxième forme} \\
+ Soit $ f $ une fonction dérivable sur un intervalle $ I $. On suppose qu'il existe un réel $ M$ tel que :\colorbox{green!20!}{ $ \abs{ f'(x)} \leq M $} \quad pour tout $ x\in I $. \\ Alors pour tous $a $ et $ b$ de $ I $   on a :\colorbox{green!20!} {$ \abs{ f(b)-f(a)}\leq M \abs{b-a}$}
+ 
+\begin{exercice}
+ Soit $ f $ la fonction définie sur $ \intff{0}{\frac{\pi}{4}} $ par $ f(x)= \sin x $\\
+ Démontrer que $ \forall x \in \intff{0}{\frac{\pi}{4}} $ on a: $ \frac{\sqrt{2}}{2}x \leq \sin x \leq x $\\
+\end{exercice}
+\begin{proof}
+ La fonction $ f $ est dérivable sur $ I=\intff{0}{\frac{\pi}{4}} $  et $ \forall \in I $ on a: $ f'(x)=\cos x $ \\ Or $ \forall x \in \intff{0}{\frac{\pi}{4}} $ on a $ \frac{\sqrt{2}}{2} \leq \cos x \leq 1 $ donc pour $ a=0 $ et $ b=x\in I $,\\ le T.I.A.F donne: $-1\times \frac{\sqrt{2}}{2}(x-0) \leq \sin x -\sin 0 \leq 1\times (x-0) $\\ d'où   $ \frac{\sqrt{2}}{2}x \leq \sin x \leq x $.
+ \end{proof}
+ \subsection{ Théorème des valeurs intermédiaires}
+ \begin{theorem}[T.V.I]
+ Soit $ f $ une fonction \textbf{\color{magenta}continue} sur un intervalle $ \intff{a}{b} $. \\
+ Pour tout nombre réel $ \beta $ compris entre $f(a) $ et $f(b) $, il existe \textbf{\color{magenta} au moins} un réel $ \alpha \in \intff{a}{b} $ tel que $ f(\alpha)= \beta. $
+ \end{theorem}
+ 
+ \subsubsection*{Conséquence 1}
+  Si $ f $ une fonction \textbf{\color{magenta}continue et strictement monotone} sur  l'intervalle $ \intff{a}{b} $ alors pour tout nombre réel $ \beta $ compris entre $f(a) $ et $f(b) $, il existe  \textbf{\color{magenta}un unique} un réel $ \alpha \in \intff{a}{b} $ tel que $ f(\alpha)= \beta. $
+ \subsubsection*{Conséquence 2}
+ $ a$, $b$,  $c $  et $ d$ désignent soit des réels, soit $ \pinf $, soit $ \minf. $\\
+  Soit $ f $ une fonction \textbf{\color{magenta}continue et strictement monotone} sur  l'intervalle $ \intoo{a}{b} $ telle que :
+   \[\displaystyle \lim_{x \to a}f(x)=c \quad \textrm{et}\quad \displaystyle\lim_{x \to b}f(x)=d\]
+Alors pour tout nombre réel $ \beta $ compris entre $c $ et $d $, l'équation $ f(x)=\beta $ admet une solution  unique $ \alpha \in \intoo{a}{b} $.\\
+
+\begin{exercice}
+Soit $ f $ la fonction définie par $ f(x)= x^{3}+x+1 $.
+ \begin{enumerate}
+\item Etudier les variations  de $ f $.
+\item Montrer que  l'équation $ f(x)=0 $ admet une seule solution $ \alpha$ dans $\Rr $.\\ En déduire que $ \alpha\in\intoo{-1}{0} $
+\item  Déterminer un encadrement de $ \alpha $ d'amplitude $ 0,01 $.
+\end{enumerate}
+\end{exercice}
+\begin{proof}
+ \begin{enumerate}
+\item $ f $ est définie, continue et dérivable sur $ \Rr. $\\
+$ f'(x) = 3x^{2}+1 > 0$  $\forall x\in \Rr $ Donc $ f $ est strictement croissante  sur $ \Rr $ \\
+$ \lim_{x \to \pinf}f(x)= \lim_{x \to \pinf}x^{3}+x+1=\lim_{x \to \pinf}x^{3}=\pinf$\\
+$ \lim_{x \to \minf}f(x)= \lim_{x \to \minf}x^{3}+x+1=\lim_{x \to \minf}x^{3}=\minf$
+
+
+\begin{variations}
+x      &\minf   &    &  \pinf & \\
+\filet
+f'(x) &        &       +      &           & \\
+\filet
+\m{f(x)} & \minf  & \c &   \h{\pinf} &  \\
+\end{variations}
+
+\item $ f $ est continue et strictement croissante sur $ \Rr$ à valeurs dans sur $ \Rr. $ Or $ 0\in \Rr $ donc d'après la conséquence  du T.V.I il existe un unique réel $ \alpha $ tel que $ f(\alpha)=0 $.\\ De plus $ f(-1)f(0)=-1\times 1 < 0$ donc $$  f(-1)<0<f(0) $$ $$ \Leftrightarrow f(-1)<f(\alpha)<f(0) $$ $$ \Leftrightarrow -1<\alpha< 0 \quad \textrm{car $ f $ est strictement croissante. }$$
+\item Encadrement de $ \alpha $ d'amplitude $ 0,01 $ par \textbf{la méthode du balayage }.\\
+$ \color{red}\centerdot $ Recherchons d"abord un encadrement de $ \alpha $ par deux décimaux consécutifs d'ordre $ 1. $\\
+Calculons de proche en proche les images par $ f $  des nombres décimaux d'ordre $ 1 $ de l'intervalle $ \intfo{-1}{0} $ jusqu'à ce qu'on observe un changement de signe.
+
+
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|*{10}{c|}}
+\hline 
+x &-0,9  &-0,8 & -0,7 &- 0,6 & -0,5 & -0,4 &-0,3 &-0,2& -0,1  \\
+\hline
+f(x) &-  & -  & \textbf{\color{red} -} & \textbf{\color{red} +}  & \color{green} &  &  &  &  \\
+\hline
+\end{tabular}
+\vspace{0.5cm}   On obtient $-0,7<\alpha< - 0,6  $
+
+
+$ \color{red}\centerdot $ Recherchons ensuite  un encadrement de $ \alpha $ par deux décimaux consécutifs d'ordre $ 2. $\\
+Calculons de proche en proche les images par $ f $  des nombres décimaux d'ordre $ 2 $ de l'intervalle $ \intoo{-0,7}{-0,6} $ jusqu'à ce qu'on observe un changement de signe.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|X|X|}
+\hline 
+x &-0,69  &-0,68 & -0,67 &- 0,66 & -0,65 & -0,64 &-0,63 &-0,62& -0,61  \\
+\hline
+f(x) &\textbf{\color{red} -} & \textbf{\color{red} +}  &  &   & \color{green} &  &  &  &  \\
+\hline
+\end{tabularx}
+
+\vspace{0.5cm}   On obtient $-0,69<\alpha< - 0,68  $
+
+\end{center}
+\end{enumerate}
+  \end{proof}
+  \subsubsection*{Conséquence 3}
+  
+ Si $ f $ est \textbf{\color{magenta}continue et strictement monotone} sur  l'intervalle $ \intff{a}{b} $ et si \colorbox{green!20!}{$ f(a)f(b) < 0 $ }\\
+Alors l'équation $ f(x)=0 $ admet une  unique  solution $ \alpha \in \intff{a}{b} $.
+
+\begin{remark}
+Pour montrer que l'équation $ f(x)=x $ admet une  unique  solution dans l'intervalle $I$; on pose $ g(x)=f(x)-x $ et on applique le T.V.I à la fonction $ g $ sur l'intervalle $I$.
+\end{remark}
+
+\begin{example}
+Montrons  que l'équation $ \cos x= x $ admet une unique solution $ \alpha$ telle que \\   $ \frac{\pi}{6} \leq \alpha \leq\frac{\pi}{4}.$ \\
+\emph{Réponse}\\
+Remarquons que  $ \cos x= x  \Leftrightarrow \cos x- x=0$\\
+Posons la fonction $ f(x)= \cos x- x$ pour $ x\in \intff{\frac{\pi}{6}}{\frac{\pi}{4}} $.\\
+$ f $ est dérivable sur $\intff{\frac{\pi}{6}}{\frac{\pi}{4}} $ comme somme de deux fonctions dérivables. \\
+Pour $ x\in \intff{\frac{\pi}{6}}{\frac{\pi}{4}} $, $ f'(x)=-\sin x-1< 0 $; donc $ f $ est strictement décroissante.\\
+De plus $ f(\frac{\pi}{6})=\frac{\sqrt{3}}{2} -\frac{\pi}{6 }> 0$  et $ f(\frac{\pi}{4})=\frac{\sqrt{2}}{2} -\frac{\pi}{4 }< 0$.\\
+ Donc $ f $ est continue et strictement décroissante sur  l'intervalle $ \intff{\frac{\pi}{6 }}{\frac{\pi}{4}} $ \\et $ f(\frac{\pi}{6})f(\frac{\pi}{4}) < 0 $ 
+d'où l'équation $ f(x)=0 $ admet une  unique  solution $ \alpha \in \intff{\frac{\pi}{6}}{\frac{\pi}{4}} $.
+
+
+\end{example}
+
+\subsubsection*{Fonction réciproque d'une fonction continue et strictement monotone} 
+
+\begin{theorem}[Théorème de la bijection ]
+Soit $ f $ une fonction continue et strictement monotone  sur  l'intervalle $I$; alors $ f $ réalise une bijection de $ I $ vers l'intervalle $ f(I)$.\\
+En plus sa bijection réciproque $ f^{-1} $ est continue et strictement monotone  sur  l'intervalle $f(I)$ et a le même sens de variation que $ f. $\\
+Les courbes représentatives de $f $  et $f^{-1} $, dans un repère orthonormé sont symétriques par rapport  à la droite d'équation $ y=x $ (la première  bissectrice  du repère).
+\end{theorem}
+
+
+$ \centerdot $ Si de plus $ f $ est dérivable sur $ I $ et \textbf{\color{magenta} $ f'$ ne s'annule pas} sur  $ I $ alors $ f^{-1} $ dérivable sur $ f(I) $ et
+ \[ (f^{-1})'(y)=\frac{1}{f'(f^{-1}(y))}\quad \forall y\in f(I)\]
+\begin{remark}
+Posons $ f(a)=b $ \\
+Si $ f $ est dérivable en $ a $ et $ f'(a)\neq 0 $ alors $ f^{-1} $ est dérivable en $ b $ et $(f^{-1})'(b)=\frac{1}{f'(a)}.  $\\
+\textbf{\color{red}Attention}\\
+Si $ f $ est dérivable en $ a $ et \colorbox{magenta!20!} {$ f'(a)= 0 $ ou n'existe pas} alors $ f^{-1} $ n'est pas  dérivable en $ b. $
+\end{remark}
+
+\begin{exercice}
+Soit $ f $ la fonction définie par $ f(x)=4x^{2}+4x+2  $.
+ \begin{enumerate}
+\item Etablir  le tableau de variations   de $ f $. 
+\item
+\begin{enumerate}
+\item Soit $ g $ la restriction de $ f $ à l'intervalle  $ \intfo{-\frac{1}{2}}{\pinf} $.
+ Montrer que  $ g $  réalise une bijection  de $ \intfo{-\frac{1}{2}}{\pinf} $ vers un intervalle  $ J $ à préciser.
+\item Justifier que $ g^{-1} $ est dérivable en 2 puis  calculer $(g^{-1})'(2) $.
+\end{enumerate}
+\end{enumerate}
+
+\end{exercice}
+\begin{proof}
+\begin{enumerate}
+\item $ f $ est définie, continue et dérivable sur $ \Rr. $\\
+$ f'(x) = 8x+4$  $\forall x\in \Rr $\\
+$ \lim_{x \to \pinf}f(x)= \lim_{x \to \pinf}4x^{2}+4x+2=\lim_{x \to \pinf}4x^{2}=\pinf$\\
+$ \lim_{x \to \minf}f(x)= \lim_{x \to \minf}4x^{2}+4x+2=\lim_{x \to \minf}4x^{2}=\pinf$
+\begin{center}
+\begin{variations}
+x      &\minf   &  &-\frac{1}{2}&  &  \pinf & \\
+\filet
+f'(x) &        &     -& \z & +       &          & \\
+\filet
+\m{f(x)} & \h{\pinf}  & \d & 1 & \c   &\h{ \pinf} &  \\
+\end{variations}
+\end{center}
+\item 
+\begin{enumerate}
+\item $ g $ est continue et strictement croissante  sur  $ \intfo{-\frac{1}{2}}{\pinf} $ donc réalise une bijection $ \intfo{-\frac{1}{2}}{\pinf} $ de vers  $g( \intfo{-\frac{1}{2}}{\pinf})$ \\Or  $g( \intfo{-\frac{1}{2}}{\pinf})=\intfo{g(-\frac{1}{2})}{\lim_{x \to \pinf}g(x)}=\intfo{1}{\pinf} $ \\ D'où \underline{$J= \intfo{1}{\pinf} $ }.
+\item Pour répondre à cette question, il  faut calculer  l' antécédent de $ 2 $ par $ g. $\\ $ g(x)=2\Leftrightarrow 4x^{2}+4x+2=2\Leftrightarrow 4x^{2}+4x=0\Leftrightarrow x= 0 \ ou\  x= -1$\\ Le seul antécédent dans $ \intfo{-\frac{1}{2}}{\pinf} $ est  0.\\
+Or $ g $ est dérivable en 0 et $ g'(0)=f'(0)=4 \neq 0 $ donc  $ g^{-1} $  est dérivable en 2.\\
+On a $(g^{-1})'(2)=\frac{1}{g'(0)}=\frac{1}{4}.  $
+\end{enumerate}
+
+\end{enumerate}
+\end{proof}
+\subsection{Fonction puissance d'exposant rationnel}
+
+\textbf{\color{blue}Théorème et définition }\\
+$ n\in \Nne $\\
+La fonction $x\mapsto x^{n} $ est bijective de $ \Rrp $ vers $ \Rrp $ et admet une bijection réciproque appelée \emph{fonction racine n-ième} et notée $ x\mapsto \sqrt[n]{x} $ ou $x\mapsto x^{\frac{1}{n}} $.
+\begin{example}
+$ \sqrt[1]{x}=x $,\quad $ \sqrt[2]{x}=\sqrt{x}=x^{\frac{1}{2}}$\; (racine carrée) ,\quad $ \sqrt[3]{x} =x^{\frac{1}{3}}$  appelée la racine cubique de $ x. $
+\end{example}
+
+\textbf{\color{blue}{NB}}:
+\[\sqrt[n]{x^{p}}= (x^{p})^{\frac{1}{n}}= x^{\frac{p}{n}}\]
+ \colorbox{red!20!}{Résolution de l'équation $ x^{n}=a $}
+\begin{itemize}
+\item[\textbullet] si $ n $ est pair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$ ou $ x= -\sqrt[n]{a}$
+\item[\textbullet] si $ n $ est impair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$
+\item[\textbullet] si $ n $ est pair  et  $ a < 0 $ alors pas de solution. 
+\item[\textbullet] si $ n $ est impair  et  $ a\leq 0 $ alors  $ x= -\sqrt[n]{-a}$
+\end{itemize}
+
+\begin{example}
+\begin{itemize}
+\item $ x^3=8 \Longleftrightarrow x=\sqrt[3]{8}= 8^{\frac{1}{3}} = (2^3)^{\frac{1}{3}}=2$
+\item $ x^3+1=0\Longleftrightarrow x^3=-1 \Longleftrightarrow x=-\sqrt[3]{1}= -1$
+\item $ x^4= 3 \Longleftrightarrow x= \sqrt[4]{3}$ ou $ x= -\sqrt[4]{3} $  
+ \end{itemize}
+\end{example}
+\textbf{\color{blue}Fonction puissance d'exposant rationnel}
+\begin{definition}
+$ r $ étant un nombre rationnel non nul, on appelle \emph{fonction puissance d'exposant r,} la fonction : 
+\renewcommand{\arraystretch}{1}
+\[\begin{array}{lrcl}
+    &  \Rrp  & \longrightarrow & \Rrp \\ 
+  &  x & \longmapsto & x^{r}
+   \end{array}\]
+\end{definition}
+\textbf{\color{blue}Quelques propriétés  }
+\begin{itemize}
+\item $ r$ et $r' $ étant des nombres rationnels non nuls, $x $ et $ y$ des réels strictement positifs.\\ 
+
+\hspace{2cm} \colorbox{green!20!} {$ x^{r}\times y^{r}= (xy)^{r} $ \qquad \qquad  $ (x^{r})^{r'}=x^{rr'} $} \\
+
+\hspace{2cm}  \colorbox{green!20!}{$ \frac{x^{r}}{y^{r}}=(\frac{x}{y})^{r} $\qquad \qquad  $ x^{r}\times x^{r'}=x^{r+r'} $}\\
+
+\item La fonction $x  \longmapsto x^{r}  $ est dérivable sur $ \Rrep $ et $( x^{r})'=rx^{r-1}$.
+\item La fonction $ u^{r} $ est définie ssi $ u\geq 0. $
+  \item   Si $ u $ est dérivable et strictement positive sur $ I $ alors la fonction  $ u^{r} $ est dérivable sur $ I $ et $ (u^{r})'=ru'u^{r-1} $.
+ \end{itemize}
+ \begin{example}
+ $ f(x)= \sqrt[3]{2x+1} $\\
+ $ f(x) $  existe $ \Leftrightarrow 2x+1 \Leftrightarrow x \geq -\frac{1}{2} $ donc $ f $ est dérivable sur $ \intoo{-\frac{1}{2}}{\pinf} $\\
+  $ f(x)= \sqrt[3]{2x+1}=(2x+1)^{\frac{1}{3}}\Longrightarrow f'(x)=\frac{2}{3}(2x+1)^{-\frac{2}{3}}=\frac{2}{3\sqrt[3]{(2x+1)^2}} $
+ \end{example}
+
+\subsection{ Eléments de symétrie d'une courbe}
+Soit $ f $ une fonction numérique et $ \mathcal{C} $ sa courbe représentative dans un repère orthogonal.
+
+\subsection{Axe de symétrie}
+Pour montrer que la droite $ \Delta $ d'équation $ x=a $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes: 
+\begin{itemize}
+\item Démontrer que : $ \forall x\in D_{f}$  on a   $ 2a-x\in D_{f}$ et $ f(a-x)=f(x) $
+\item Démontrer que : $ \forall x\in D_{f}$  on a  $ a-x\in D_{f}$, $ a+x\in D_{f}$ et $ f(2a-x)=f(a+x) $
+\item Démontrer que : la fonction $ g(x)=f(a-x) $ est paire.
+\end{itemize}
+Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à la droite $ \Delta $.
+
+\subsection{Centre de symétrie}
+Pour montrer que le point $ I(a, b) $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes : 
+\begin{itemize}
+\item Démontrer que : $ \forall x\in D_{f}$  on a  $ 2a-x\in D_{f}$ et $ f(2a-x)+f(x)=2b $
+\item Démontrer que : $ \forall x\in D_{f}$  on a   $ a-x\in D_{f}$,  $ a+x\in D_{f}$ et $ f(a-x)+f(a+x)=2b $
+\item Démontrer que : la fonction $ g(x)=f(a-x)+b$ est impaire.
+\end{itemize}
+Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à $ I. $
+
+\subsection{Fonction périodique}
+\begin{definition}
+ Une fonction $ f $ est dite
+\textbf{\color{magenta} périodique de période $ t $} (ou t- périodique) ssi :\\
+ $ \centerdot $ t est non nul, \\
+$ \centerdot $  pour tout $x\in D_{f} $, \   $  x+t$ et $ x-t$   sont dans $ D_{f} $           et  $f(x+t)=f(x) $.\\
+On dit que \textbf{\color{magenta} $t$ est une période de $f$}, et la plus petite période strictement positive est  \textbf{\color{magenta} la période de $f$}.  En général la période est notée $ T $. \\
+Pour tout $x$ de $ D_{f} $ et tout \textbf{\color{magenta} entier relatif } $ k $, \colorbox{gray!20!}{$ f(x+kT) = f(x) $. }
+\end{definition}
+
+\textbf{\color{blue}Conséquences}
+
+Pour représenter graphiquement une fonction $ f $ de période $ T $, il suffit de :
+\begin{itemize}
+\item choisir un intervalle $ I $ de longueur $ T $ inclus dans $ D_{f} $;
+\item tracer (en rouge )la partie $ \mathcal{C} $ de la courbe de $ f $ restreinte à cet intervalle $ I: $
+\item translater la partie $ \mathcal{C} $ par les translations de vecteurs $ (kT)\overrightarrow{i} $ avec $ k $ entier relatif.
+\end{itemize}
+
+
+\textbf{\color{blue}Cas des fonctions trigonométriques}\\
+$ - $ Les fonctions $x\mapsto\cos x $ et $x\mapsto\sin x $ sont périodiques de période $ 2\pi $  c'est à dire: \colorbox{green!20!}{ $ \cos (x+2\pi)=\cos x $ et  $ \sin (x+2\pi)=\sin x $ }\\
+
+$ - $ La fonction $x\mapsto\tan x $ est périodique de période $ \pi $ c'est à dire:       \colorbox{green!20!} {$ \tan (x+\pi)=\tan x $}\\
+
+\colorbox{magenta!20!}{Cas général }: \\
+Les fonctions $x \mapsto \cos (ax+b) $ et $x \mapsto \sin (ax+b) $ ont pour période $ T=\frac{2\pi}{\abs{a}}$ \\
+La fonction $x \mapsto \tan (ax+b) $ a pour période $ T=\frac{\pi}{\abs{a}}$ 
+
+\subsubsection*{Réduction de domaine d'étude}
+
+\begin{itemize}
+\item[\textbullet] Si $ f $ est T-périodique alors on peut restreindre le domaine d'étude à tout domaine du type $ \intff{a}{a+T}\cap D_{f} $ pour tout réel $ a, $ ainsi on obtient la courbe complète de $ f. $
+\item[\textbullet] Si $ f $ est T-périodique   et paire ( resp. impaire ) alors on peut restreindre le domaine d'étude au domaine  $ \intff{0}{\frac{T}{2}}\cap D_{f} $  ainsi on obtient la courbe complète sur $ \intff{-\frac{T}{2}}{\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe des ordonnées (resp. par symétrie par rapport à O origine du repère ).
+\item[\textbullet] Si $ f $ est T-périodique   et $ \mathcal{C} $  admet un axe de symétrie $ \Delta $ ( resp. un centre de symétrie $ I $ ) alors on peut restreindre le domaine d'étude au domaine \\ $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ ou au domaine  $ \intff{a-\frac{T}{2}}{a}\cap D_{f} $ ainsi on obtient la courbe complète sur $ \intff{a-\frac{T}{2}}{a+\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe $ \Delta $  (resp. par symétrie par rapport un point $ I $ ).
+\end{itemize}
+
+ \begin{exercice}
+On considère  la fonction $ f $ définie par: $ f(x)= \frac{\sin x }{\sin x+\cos x} $ 
+\begin{enumerate}
+\item Déterminer $ D_{f} $ et  puis montrer que  $ f$ est de période  $ \pi. $
+\item Montrer que le point  $ A(-\frac{\pi}{4}; \frac{1}{2}) $ est un centre de symétrie de $ \mathcal{C}_{f} $. En déduire un domaine simple pour l'étude de $ f $ 
+\end{enumerate}
+ \end{exercice}
+
+\textbf{\color{blue}Solution}
+\begin{enumerate}
+\item $ f(x) $ existe    $\Leftrightarrow \sin x+\cos x \neq 0  $\\
+ $\Leftrightarrow \sin x \neq -\cos x $\\
+ $\Leftrightarrow \sin x \neq \sin (x- \frac{\pi}{2}) $\\
+ $ \Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi , k\in \Zz$\\
+ Montrons que $ \pi $ est la période de $ f. $\\
+ $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x+\pi\neq \frac{7\pi}{4}+ k\pi \Leftrightarrow x+\pi\in D_{f}.$\\
+  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x-\pi\neq -\frac{\pi}{4}+ k\pi \Leftrightarrow x-\pi\in D_{f}.$\\
+ $ f(x+\pi)=\frac{\sin (x+\pi) }{\sin (x+\pi)+\cos (x+\pi)}= \frac{-\sin x }{-\sin x-\cos x}=\frac{\sin x }{\sin x+\cos x}=f(x)$
+ \item $ 2a-x=-\frac{\pi}{2}-x $\\
+  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x \neq -\frac{7\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x\in D_{f} \\\Leftrightarrow 2a-x\in D_{f}$
+ $$ f(2a-x)+f(x)= \frac{\sin (-\frac{\pi}{2}-x ) }{\sin (-\frac{\pi}{2}-x )+\cos (-\frac{\pi}{2}-x )}+\frac{\sin x }{\sin x+\cos x} $$
+ $$ f(2a-x)+f(x)= \frac{\cos x }{\cos x +\sin x }+\frac{\sin x }{\sin x+\cos x}=1 $$
+ Donc le point $ A $ est bien un centre de symétrie de $ \mathcal{C}_{f} $.\\
+ Proposons un d'étude   de $f. $\\
+$ f $ est de période $ T= \pi$ et l'abscisse  du centre de symétrie est $ a=-\frac{\pi}{4}  $ , on peut appliquer la formule $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ \\
+$ \intff{-\frac{\pi}{4}}{-\frac{\pi}{4}+\frac{\pi}{2}}\cap D_{f} =\intff{-\frac{\pi}{4}}{\frac{\pi}{4}}\cap D_{f}=\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$\\
+\underline{Conclusion }: on peut étudier $ f $ sur $\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$ puis obtenir la courbe complète par symétrie par rapport à $ A $ sur $ \intfo{-\frac{3\pi}{4}}{-\frac{\pi}{4}}\cup \intof{-\frac{\pi}{4}}{\frac{\pi}{4}} $.
+ 
+ 
+\end{enumerate}
+
+
   %</content>
 \end{document}

@@ -1,0 +1,64 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \sheet{analysis}{limites}{Limites}
+ \summary{}
+     
+    \subsection{Limite d\'une fonction composée'}
+      Soient $a$ , $b$
+        et  $c$ dés réels ou  $+\infty $ ou $-\infty $.
+        
+    Si\;  $\lim_{x \to a}f(x)=b \;\; \text{et}  \;\;  \lim_{x \to b}g(x)=c \;\; \text{alors} \;\;  \lim_{x \to a}(f(x))=c$
+       \begin{example}
+      $\text{Calculer}\; \lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)$
+      
+       $ \text{La fonction} \; x \mapsto \cos\left(\frac{\pi x}{2x+1}\right)$ est la composée $ g\circ f\; $  où $\; f: x\mapsto\frac{\pi x}{2x+1}$  et $g: x \mapsto \cos x $
+       
+        $\lim_{x \to +\infty} \frac{\pi x}{2x+1}= \lim_{x \to +\infty} \frac{\pi x}{2x }=\frac{\pi }{2} \;\; \text{et }\;\; \lim_{x \to \frac{\pi }{2}} \cos x=0$
+        
+      $\text{Donc}\; \lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)=0$
+   \end{example}
+     \begin{remark}
+       En pratique pour calculer $\lim_{x \to a}g\left(f(x)\right) $ on peut faire  un changement de variable en posant par exemple   $X=f(x) $  et la limite devient  $\lim_{X \to b}g(X)$.
+       
+      L’objectif du changement de variable dans un calcul de limites lorsqu’on est en présence d’une forme indéterminée(FI), est de se ramener à une limite connue (limite usuelle ou limite déjà calculée)
+     \end{remark}
+\begin{example}
+ $\text{Pour calculer }\; \lim_{x \to +\infty} x\sin \left(\frac{\pi}{x}\right)$
+ 
+      $ \text{On peut poser } \; X=\frac{\pi }{x}$  et la limite devient :
+      
+      $\lim_{X\to 0} \pi\frac{\sin X }{X}=\pi $
+      
+       $\text{Donc}\; \lim_{x \to +\infty} x\sin \left(\frac{\pi}{x}\right)=\pi$
+   \end{example}
+      \subsection{Théorèmes de comparaison}
+\subsubsection*{Théorème 1}
+     \begin{theorem}
+           Soit $\;f \;$ et $\;g \;$  deux fonctions telles que $\;   f(x)\leq g(x) $.
+        \begin{itemize}           
+         \item  $  \text{Si}\; \; \lim_{x \to a}{f(x)} =+\infty \;\; \text{ alors} \;\; \lim_{x \to a}{g(x)} =+\infty$
+          
+          
+        \item   $ \text{Si}\;\;  \lim_{x \to a}{g(x)} =-\infty \;\; \text{ alors }\;\; \lim_{x \to a}{f(x)} =-\infty$
+          \end{itemize}
+       \end{theorem}
+     
+      \subsubsection*{Théorème 2 (ou théorème  des gendarmes}
+          \begin{theorem}
+            Soient  $\; f  , \; g  \; $  et  $ \; h \;$  trois fonctions et  $\;l \;$ un réel telles que  $ \; h(x)\leq f(x) \leq g(x).$
+            
+           $ \text{Si}\;  \; \lim_{x \to a}{h(x)} =\lim_{x \to a}{g(x)}=l  \;\; \text{alors} \;\; \lim_{x \to a}{f(x)} =l$ 
+       \end{theorem}
+     \subsubsection*{Théorème 3}
+      \begin{theorem} Soit $\;  f \; $ et $\; g \;$  deux fonctions et $\; l  \; $  un réel telles que $\;\left|f(x)-l\right| \leq g(x).$
+      
+     $ \text{Si }\; \;\lim_{x \to a}{g(x)} =0 \;\; \text{ alors}\; \; \lim_{x \to a}{f(x)} =l$
+     \end{theorem}
+      \subsubsection*{Utilisation de la dérivée}
+     \begin{theorem}
+           $ \text{Si} \;\lim_{x \to a}{f^{\prime}(x)} =l\; \text{ (fini ou infini)}\;$   alors $  \; \lim_{x \to a}{\frac{f(x)-f(a)}{x-a}} =l$
+            \end{theorem}
+  %</content>
+\end{document}

@@ -1,0 +1,104 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \development{analysis}{limites-de-fonctions-composees}{Limites de fonctions composées}
+
+  \summary{}
+ \hspace*{5cm}\textbf{ Limite de fonctions composées} 
+\medskip
+
+$a $ , $b $ \; et \; $ c $ désignent soit un réel soit $ \pm\infty $.
+
+\medskip
+ \hspace*{5cm}\fbox{Si  $ \lim_{x \to a}f(x)=b $\; et \;  $ \lim_{x \to b}g(x)=c $\; alors \;  $ \lim_{x \to a}g\paren{f(x)}=c $}
+ \medskip
+ 
+\begin{exercice}
+  Justifier  les limites suivantes.
+\begin{enumerate}
+\item  $ \lim_{x \to 0}\paren{\frac{3x-1}{x^2}}^{4}=\pinf$
+\item   $\lim_{x \to \minf}  \sqrt{4+\frac{1}{x}}=2$ 
+ \item  $\lim_{x \to \pinf}\cos\paren{\frac{\pi x-2}{x-4}} =-1$
+ \end{enumerate}
+\end{exercice}
+\bigskip
+
+
+\begin{exercice}
+Etudier   les limites suivantes.
+\medskip
+
+\begin{enumerate}
+\item $ \lim_{x \to \pinf}\sqrt{x^2-x-3}$
+\item   $\lim_{x \to -2^{-}}  \sqrt{\frac{1+x}{4-x^2}}$  
+\item    $\lim_{x \to \minf}\sin\paren{\frac{\pi x-2}{6x-4}}$
+\item   $\lim_{x \to \pinf}\paren{\sqrt{x}-x}^5$
+\end{enumerate}
+\end{exercice}
+\bigskip
+
+
+\begin{exercice}
+Une fonction $ f $ définie sur $\mathbb{R}\setminus\{-1\} $ tel que: $ \lim_{x \to -\infty}f(x)=0 $,  $ \lim_{x \to +\infty}f(x)=1$,  $ \lim_{x \to -1^{-}}f(x)=+\infty $  et  $ \lim_{x \to -1^{+}}f(x)=-\infty $. 
+\begin{enumerate}
+\item Interpréter graphiquement ces  limites.
+\item Déterminer les limites suivantes.
+\begin{itemize}
+\item $ \lim_{x \to+\infty}\; f\paren{\sqrt{x}}$
+\item $ \lim_{x \to \pinf}\;\;f\paren{-1+\frac{1}{x}}$
+\item $ \lim_{x \to \minf}\;\;f\paren{-1+\frac{1}{x}}$
+
+\item $ \lim_{x \to 0^{-}}\;\;f\paren{\frac{1}{x}}$
+\item $ \lim_{x \to \pinf}\;\;f\paren{\frac{x^2+1}{2x-1}}$
+\item $ \lim_{x \to \minf}\;\;f\paren{\frac{2-x^2}{2+x^2}}$
+\end{itemize}
+
+\end{enumerate}
+\end{exercice}
+\begin{exercice}
+Une fonction $ f $ a pour tableau de variations celui donné ci-dessous.
+\begin{center}
+\begin{variations}
+x 			&\mI		&	&	&$ -1 $ 	&		&		&2	&		&\pI 		\\ \filet
+\m f\m(\m x\m)			&\h	0	&\d	&\mI	&\bb	&\h \pI	&\d		&0	&\c		&\h1		\\ \filet
+\end{variations}
+\end{center}
+
+
+ Donner en utilisant ce tableau les limites suivantes.
+\begin{enumerate}
+\item $ \lim_{x \to \pinf}f(-x+1)$\item $ \lim_{x \to \pinf}f\paren{2+\frac{2}{x}}$ \item $ \lim_{x \to -1^-}\frac{x-2}{f(x)}$  \item $ \lim_{x \to \minf}\frac{f(x)+x}{f(|x|)-1}$ 
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}
+
+ Soit $ f $ une  fonction  définie et dérivable sur\;  $\mathbb{R} $ \;  tel que $ f(1)=0 $ \;  et  \; $ f'(1)=-1 $.
+ 
+
+ 
+  $ \mathcal{C}_{f} $ admet  une asymptote d'équation $ y=3 $  en $ \minf $  et une asymptote d'équation $ y=x+4 $  en $ \pinf $.
+
+\begin{enumerate}
+\item Calculer les limites suivantes.
+
+\begin{itemize}
+\item $ \lim_{x \to 0}\; f\paren{\frac{x-1}{x^2}}$
+\item $ \lim_{x \to +\infty}\;\;\frac{f(x)}{ x+f(x)}$
+\item $ \lim_{x \to +\infty}\; \frac{1}{f(x)-x+3}$
+\end{itemize}
+
+
+\item On considère  la limite  suivante  $ \lim_{x \to +\infty}\; xf\paren{1+\frac{1}{x}}$.
+\begin{enumerate}
+\item Justifier qu'il y a une présence de forme indéterminée.
+\item En posant $ X=1+\frac{1}{x} $,   calculer cette limite.
+\end{enumerate}
+\end{enumerate}
+
+
+\end{exercice}
+  %</content>
+\end{document}

@@ -55,7 +55,7 @@ const setupDocument = () => {
   for (const devLink of devLinks) {
     const linkA = document.createElement('a')
     const href = `/developpements/${devLink.textContent!.trim()}/`
-    linkA.innerText = 'Développement'
+    linkA.innerText = 'Exercices'
     linkA.setAttribute('href', href)
     linkA.onclick = (event) => {
       event.preventDefault()
@@ -78,7 +78,7 @@ const setupDocument = () => {
     proof.remove()
     const summary = document.createElement('summary')
     summary.classList.add('proof-label')
-    summary.innerText = 'Preuve'
+    summary.innerText = 'Solution'
     details.insertBefore(summary, details.firstChild)
   }
 

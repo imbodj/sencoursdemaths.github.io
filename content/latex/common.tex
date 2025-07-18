@@ -28,6 +28,7 @@
 \usepackage[fit, breakall]{truncate}
 \usepackage[top=2.5cm, right=2cm, bottom=2.5cm, left=2cm]{geometry}
 \usepackage{enumitem}
+\usepackage{tablists} %Pour faire 1)  2) 3)
 \usepackage{tocloft}
 \usepackage{microtype}
 %\usepackage{mdframed}
@@ -39,6 +40,9 @@
 \usepackage[subpreambles=true]{standalone}
 \usepackage{environ}
 \usepackage[normalem]{ulem}
+\usepackage{multicol}
+ \usepackage{variations}
+\usepackage{array}% Pour faire des tableaux
 \usepackage{etoolbox}
 \usepackage{setspace}
 \usepackage[bibstyle=reading, citestyle=draft]{biblatex}
@@ -48,7 +52,7 @@
 \usepackage{luacode}
 \usepackage{float}
 \usepackage{needspace}
-\everymath{\displaystyle}
+
 
 % Police :
 
@@ -141,6 +145,8 @@
 \newcommand{\intof}[2]{\left]#1 \;, \;#2\right]  }
 \newcommand{\intfo}[2]{\left[#1 \;,\; #2\right[  }
 \newcommand{\intoo}[2]{\left]#1 \;,\; #2\right[  }
+
+
 
 \providecommand{\newpar}{\\[\medskipamount]}
 
