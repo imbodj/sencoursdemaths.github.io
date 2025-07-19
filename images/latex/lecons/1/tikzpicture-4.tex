@@ -1,0 +1,53 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{fourier-otf}
+\usepackage{fontspec}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{3d}
+
+\tikzset{
+  every picture/.append style={scale=2, every node/.style={scale=2}}
+}
+
+
+
+\begin{document}
+  \begin{tikzpicture}[scale=0.4]
+    % Définition des limites
+    \def\xmin{-1}
+    \def\xmax{8}
+    \def\ymin{-5}
+    \def\ymax{2}
+    
+    % Axes
+    \draw[->] (\xmin,0) -- (\xmax,0);
+    \draw[->] (0,\ymin) -- (0,\ymax);
+    
+    % Graduations sur les axes
+    \foreach \x in {\xmin,...,\xmax} {
+        \ifnum\x\neq0
+            \draw (\x,0) -- (\x,0.1);
+        \fi
+    }
+    \foreach \y in {\ymin,...,\ymax} {
+        \ifnum\y\neq0
+            \draw (0,\y) -- (0.1,\y);
+        \fi
+    }
+    
+    % Origine
+    \node[below left] at (0,0) {$O$};
+    
+    % Vecteurs unitaires
+    \draw[thick, ->] (0,0) -- (1,0);
+    \node[below] at (0.5,0) {\small $\vec{\imath}$};
+    \draw[thick, ->] (0,0) -- (0,1);
+    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
+    
+    % Fonction y = -√x pour x ≥ 1
+    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {-sqrt(\x)});
+\end{tikzpicture}
+\end{document}

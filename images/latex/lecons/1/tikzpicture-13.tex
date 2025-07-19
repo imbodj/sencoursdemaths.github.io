@@ -1,0 +1,62 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{fourier-otf}
+\usepackage{fontspec}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{3d}
+
+\tikzset{
+  every picture/.append style={scale=2, every node/.style={scale=2}}
+}
+
+
+
+\begin{document}
+  \begin{tikzpicture}[scale=0.375]
+    % Configuration des limites
+    \def\xmin{-8}
+    \def\xmax{9}
+    \def\ymin{-6}
+    \def\ymax{8}
+    
+    % Axes avec flèches
+    \draw[thick,->] (\xmin,0) -- (\xmax,0);
+    \draw[thick,->] (0,\ymin) -- (0,\ymax);
+    
+    % Graduations sur les axes
+    \foreach \x in {\xmin,...,-1,1,2,...,\xmax} {
+        \draw (\x,0.1) -- (\x,-0.1);
+    }
+    \foreach \y in {\ymin,...,-1,1,2,...,\ymax} {
+        \draw (0.1,\y) -- (-0.1,\y);
+    }
+    
+    % Vecteurs unitaires
+    \draw[thick,->] (0,0) -- (1,0);
+    \node[below] at (0.5,0) {$\vec{\imath}$};
+    \draw[thick,->] (0,0) -- (0,1);
+    \node[left] at (0,0.5) {$\vec{\jmath}$};
+    
+    % Fonction f(x) = -1 + e^x (en rouge)
+    \draw[red, thick, domain=\xmin:\xmax, samples=200, smooth] 
+        plot (\x, {-1 + exp(\x)});
+    
+    % Fonction réciproque f^(-1)(x) = ln(x+1) (en vert)
+    % Domaine: x > -1
+    \draw[green, thick, domain=-0.99:\xmax, samples=200, smooth] 
+        plot (\x, {ln(\x + 1)});
+    
+    % Bissectrice y = x (en bleu)
+    \draw[blue, thick, domain=-5:8] 
+        plot (\x, \x);
+    
+    % Étiquettes
+    \node[below left] at (6,1.945) {$\mathcal{C}_{f}$};
+    \node[below left] at (5,8) {$\mathcal{C}_{f^{-1}}$};
+    \node[above right, rotate=45] at (6,6) {$y=x$};
+        
+\end{tikzpicture}
+\end{document}
