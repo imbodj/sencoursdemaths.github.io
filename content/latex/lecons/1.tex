@@ -15,15 +15,15 @@
 \subsubsection*{Limites usuelles}
  $ n\in\Nne $
 \begin{itemize}
-\item[$ \bullet $] $ \displaystyle\lim_{x \to \pinf}x^{n}= \pinf$ 
-\item[$ \bullet $] $\displaystyle\lim_{x \to \minf}x^{n}= \begin{cases}
+\item $ \displaystyle\lim_{x \to \pinf}x^{n}= \pinf$ 
+\item $\displaystyle\lim_{x \to \minf}x^{n}= \begin{cases}
 \pinf & \text{si n pair} \\
 \minf & \text{si  n impair}
 \end{cases}$ 
-\item[$ \bullet $] $\displaystyle \lim_{x \to \pinf}\sqrt{x}=\pinf$ 
-\item[$ \bullet $] $\displaystyle \lim_{x \to \infty} \frac{1}{x^{n}}=0$ 
-\item[$ \bullet $] $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$  $\qquad \displaystyle \lim_{x \to 0}\frac{\tan x}{x}=1$ 
-\item[$ \bullet $] $ \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x^{2}}= \frac{1}{2}$ $\qquad  \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x}= 0$ 
+\item $\displaystyle \lim_{x \to \pinf}\sqrt{x}=\pinf$ 
+\item $\displaystyle \lim_{x \to \infty} \frac{1}{x^{n}}=0$ 
+\item $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$  $\qquad \displaystyle \lim_{x \to 0}\frac{\tan x}{x}=1$ 
+\item $ \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x^{2}}= \frac{1}{2}$ $\qquad  \displaystyle\lim_{x \to 0}\frac{1-\cos x}{x}= 0$ 
 
 \end{itemize}
 \begin{remark}
@@ -80,6 +80,7 @@ En multipliant par $ \frac{1}{x} $: on a $ -\frac{1}{x}\leq \frac{\sin x}{x} \le
 Or $\displaystyle\lim_{x \to +\infty}(-\frac{1}{x})= \displaystyle\lim_{x \to +\infty}\frac{1}{x}=0$ donc $\displaystyle\lim_{x \to +\infty}\frac{\sin x}{x}=0 $
 \end{itemize}
 
+\end{example}
 
 \subsubsection*{Limites et nombre dérivé}
 
@@ -129,58 +130,6 @@ Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $
 \end{itemize}
 \end{example}
 
-
-\begin{tikzpicture}[scale=0.375]
-    % Définition des limites
-    \def\xmin{-11}
-    \def\xmax{10}
-    \def\ymin{-5}
-    \def\ymax{8}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1) node[below, font=\tiny] {};
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y) node[left, font=\tiny] {};
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Asymptotes
-    \draw[blue] (\xmin,3) -- (\xmax,3); % asymptote horizontale y=3
-    \draw[blue] (1,\ymin) -- (1,\ymax); % asymptote verticale x=1
-    
-    % Étiquettes des asymptotes
-    \node[above] at (-5,3) {$y=3$};
-    \node[right, rotate=90] at (1,-3) {$x=1$};
-    \node[above left] at (0,3) {$3$};
-    
-    % Fonction f(x) = 3 + 5/(x-1)
-    % Partie gauche de la fonction (x < 1)
-    \draw[red, thick, domain=\xmin:0.99, samples=200] plot (\x, {3 + 5/(\x-1)});
-    
-    % Partie droite de la fonction (x > 1)
-    \draw[red, thick, domain=1.01:\xmax, samples=200] plot (\x, {3 + 5/(\x-1)});
-    
-\end{tikzpicture}
-
-
 \subsubsection*{Asymptote oblique}
 \begin{definition}
 Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=mx+p$.
@@ -192,57 +141,6 @@ Pour la fonction $f : x\mapsto x+ \frac{2}{x-1} $ dont la courbe est représent�
 la droite d'équation   $y = x $ est asymptote oblique à la courbe de $f$.
 
 \end{example}
-
-\begin{tikzpicture}[scale=0.375]
-    % Définition des limites
-    \def\xmin{-9}
-    \def\xmax{12}
-    \def\ymin{-5}
-    \def\ymax{8}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1) node[below, font=\tiny] {};
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y) node[left, font=\tiny] {};
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Asymptotes
-    \draw[blue] (-11,-11) -- (9,9); % asymptote oblique y=x
-    \draw[blue] (1,\ymin) -- (1,\ymax); % asymptote verticale x=1
-    
-    % Étiquettes des asymptotes
-    \node[right, rotate=90] at (1,-3) {$x=1$};
-    \node[right, rotate=45] at (6,6) {$y=x$};
-    
-    % Fonction f(x) = x + 2/(x-1)
-    % Partie gauche de la fonction (x < 1) - tracée deux fois comme dans l'original
-    \draw[red, thick, domain=\xmin:-0.0001, samples=200] plot (\x, {\x + 2/(\x-1)});
-    \draw[red, thick, domain=\xmin:\xmax, samples=200] plot (\x, {\x + 2/(\x-1)});
-    
-    % Note: La fonction est tracée en continu sauf à la discontinuité x=1
-    
-\end{tikzpicture}
-
-
 
 \begin{remark} 
 Si $ f $ s'écrit sous la forme $ f(x)= ax+b + g(x) $ et si $ \displaystyle \lim_{x \to \infty}g(x)=l\; (\text{réel} )$   alors la droite $ y=ax+b+l $ est une asymptote à  $ \mathcal{C} $ en $ \infty. $
@@ -264,374 +162,13 @@ Lorsque  $\displaystyle \lim_{x \to \infty}f(x)=\infty  $, la courbe $ \mathcal{
 \begin{itemize}
 \item    Si $\displaystyle \lim_{x \to \infty}\frac{f(x)}{x}=0  $  alors la courbe $ \mathcal{C} $ présente une branche parabolique dans la direction  de  l'axe des abscisses.
 
-
-% Premier graphique : y = √x pour x ≥ 1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-1}
-    \def\xmax{8}
-    \def\ymin{-2}
-    \def\ymax{5}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = √x pour x ≥ 1
-    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {sqrt(\x)});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Deuxième graphique : y = -√x pour x ≥ 1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-1}
-    \def\xmax{8}
-    \def\ymin{-5}
-    \def\ymax{2}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = -√x pour x ≥ 1
-    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {-sqrt(\x)});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Troisième graphique : y = √(-x) pour x ≤ -1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-8}
-    \def\xmax{1}
-    \def\ymin{-2}
-    \def\ymax{5}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = √(-x) pour x ≤ -1
-    \draw[red, thick, domain=\xmin:-1, samples=200] plot (\x, {sqrt(-\x)});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Quatrième graphique : y = -√(-x) pour x ≤ -1.2
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-8}
-    \def\xmax{1}
-    \def\ymin{-5}
-    \def\ymax{2}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = -√(-x) pour x ≤ -1.2
-    \draw[red, thick, domain=\xmin:-1.2, samples=200] plot (\x, {-sqrt(-\x)});
-\end{tikzpicture}
-
-
 \item    Si $\displaystyle \lim_{x \to \infty}\frac{f(x)}{x}=\infty$  alors la courbe $ \mathcal{C} $ présente une branche parabolique dans la direction  de  l'axe des ordonnées.
-
-
-
-
-% Premier graphique : y = x² pour x ≥ 1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-4}
-    \def\xmax{5}
-    \def\ymin{-2}
-    \def\ymax{8}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = x² pour x ≥ 1
-    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {\x*\x});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Deuxième graphique : y = -x² pour x ≥ 1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-4}
-    \def\xmax{5}
-    \def\ymin{-8}
-    \def\ymax{2}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = -x² pour x ≥ 1
-    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {-\x*\x});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Troisième graphique : y = x² pour x ≤ -1
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-4}
-    \def\xmax{5}
-    \def\ymin{-2}
-    \def\ymax{8}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = x² pour x ≤ -1
-    \draw[red, thick, domain=\xmin:-1, samples=200] plot (\x, {\x*\x});
-\end{tikzpicture}
-
-\vspace{1cm}
-
-% Quatrième graphique : y = -x² pour x ≤ -1.2
-\begin{tikzpicture}[scale=0.4]
-    % Définition des limites
-    \def\xmin{-3}
-    \def\xmax{4}
-    \def\ymin{-8}
-    \def\ymax{2}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Fonction y = -x² pour x ≤ -1.2
-    \draw[red, thick, domain=\xmin:-1.2, samples=200] plot (\x, {-\x*\x});
-\end{tikzpicture}
-
 \item  Si  $\displaystyle\lim_{x \to \infty}\frac{f(x)}{x}=a  $  réel  non nul alors on calcule $\lim_{x \to \infty}(f(x)-ax )  $ 
 
  $ \bullet $ Si  $\displaystyle \lim_{x \to \infty}(f(x)-ax) = b \; $  (réel) alors la droite $(D)$ d'équation : $y = a x  + b $ est asymptote à la courbe $ \mathcal{C} $ .
 
  $ \bullet $ Si $\displaystyle \lim_{x \to \infty}(f(x)-ax) = \infty $     alors la courbe admet une branche parabolique de direction asymptotique la droite d'équation $ y =  a x $.
 \end{itemize}
-
-
-
-
-\begin{tikzpicture}[scale=0.375]
-    % Définition des limites
-    \def\xmin{-4}
-    \def\xmax{10}
-    \def\ymin{-4}
-    \def\ymax{10}
-    
-    % Axes
-    \draw[->] (\xmin,0) -- (\xmax,0);
-    \draw[->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,\xmax} {
-        \ifnum\x\neq0
-            \draw (\x,0) -- (\x,0.1);
-        \fi
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \ifnum\y\neq0
-            \draw (0,\y) -- (0.1,\y);
-        \fi
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick, ->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {\small $\vec{\imath}$};
-    \draw[thick, ->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {\small $\vec{\jmath}$};
-    
-    % Asymptote oblique y = x
-    \draw[blue] (-11,-11) -- (9,9);
-    
-    % Étiquette de l'asymptote
-    \node[right, rotate=45] at (6,6) {$y = x$};
-    
-    % Fonction f(x) = x + ln(x) pour x ≥ 1
-    \draw[red, thick, domain=1:\xmax, samples=200] plot (\x, {\x + ln(\x)});
-    
-\end{tikzpicture}
-
 
 
 \begin{exercice}
@@ -906,12 +443,12 @@ Soient $u $ et $v $ deux fonctions dérivables, $ r\in\Zze $ et $ k\in\Rr $\\
 \hline
 \end{tabularx}
 
-\medskip
+\bigskip
 \begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
   $ v\circ u $ & $ \sin u $ & $ \cos u $ & $ \tan u $\\
 \hline
-$ u'\times (v'\circ u) $  & $ u'\cos u $ & $-u'\sin u$ & $u'( 1+\tan^{2}u) \quad \textrm{ou}\quad \tfrac{u'}{\cos^{2}u}$  \\     
+$ u'\times (v'\circ u) $  & $ u'\cos u $ & $-u'\sin u$ & $ \frac{u'}{\cos^{2}u}$  \\     
  \hline
 \end{tabularx}
 
@@ -950,61 +487,59 @@ Soit $ f $ une fonction dérivable sur un intervalle $ I. $
 \end{theorem}
  \subsubsection*{Signe d'une fonction à partir de ses variations}
 
-```katex
+
 \text{Les cas classiques:}
 
-\begin{array}{|c|c|c|c|c|c|}
+$\begin{array}{c|ccccc}
+x &        &  &       &       \\
 \hline
-x & & \alpha & & & \\
+f'(x) & - & 0       & +     &       \\
 \hline
-f'(x) & - & 0 & + & & \\
-\hline
-f(x) & \searrow & + & \nearrow & & \\
-\hline
+f(x) & \searrow & \text{+min} & \nearrow & \\
 \end{array}
+$
 
-\text{Si } f(x) \text{ admet un } \textbf{\color{magenta}\text{minimum positif }} \\
-\text{sur } I \text{ alors } f \text{ est } \textbf{\color{magenta} \text{positive}} \text{ sur } I.
+Si  $f(x)$  admet un minimum positif  
+sur  I  alors  $f$  est positive sur  I.
+\bigskip
 
-\begin{array}{|c|c|c|c|c|c|}
+
+$\begin{array}{c|ccccc}
+x &        &  &       &       \\
 \hline
-x & & \alpha & & & \\
+f'(x) & + & 0       & -     &       \\
 \hline
-f'(x) & + & 0 & - & & \\
-\hline
-f(x) & \nearrow & - & \searrow & & \\
-\hline
+f(x) & \nearrow & \text{max} & \searrow & \\
 \end{array}
+$
 
-\text{Si } f(x) \text{ admet un } \textbf{\color{magenta}\text{maximum négatif }} \\
-\text{sur } I \text{ alors } f \text{ est } \textbf{\color{magenta} \text{négative}} \text{ sur } I.
+Si  $f(x)$ admet un maximum négatif 
+sur  I  alors $ f$  est  négative sur  I.
 
-\begin{array}{|c|c|c|c|c|c|c|c|c|}
+$\begin{array}{c|ccccccc}
+x &        &        &        & \alpha &        &        &        \\
 \hline
-x & & & & & \alpha & & & \\
+f'(x) &     &        & -      &        &   -     &        &        \\
 \hline
-f'(x) & & & & + & 0 & + & & \\
-\hline
-f(x) & & & & \nearrow & 0 & \nearrow & & \\
-\hline
+f(x)  &     &        & \searrow & 0      & \searrow &        &        \\
 \end{array}
+$
 
-f(x) \text{ est } \textbf{\color{magenta} \text{positif}} \text{ si } \textbf{\color{magenta}x \geq \alpha}. \\
-f(x) \text{ est } \textbf{\color{magenta}\text{négatif}} \text{ si } \textbf{\color{magenta}x \leq \alpha}.
+$f(x)$  est positif si $x \leq \alpha$. \\
+$f(x)$  est négatif si $x \geq \alpha$.
 
-\begin{array}{|c|c|c|c|c|c|c|c|c|}
+$\begin{array}{c|ccccccc}
+x &        &        &        & \alpha &        &        &        \\
 \hline
-x & & & & & \alpha & & & \\
+f'(x) &     &        & +      &        & +      &        &        \\
 \hline
-f'(x) & & & & - & 0 & - & & \\
-\hline
-f(x) & & & & \searrow & 0 & \searrow & & \\
-\hline
+f(x)  &     &        & \nearrow & 0      & \nearrow &        &        \\
 \end{array}
+$
 
-f(x) \text{ est } \textbf{\color{magenta} \text{négatif}} \text{ si } \textbf{\color{magenta}x \geq \alpha}. \\
-f(x) \text{ est } \textbf{\color{magenta}\text{positif}} \text{ si } \textbf{\color{magenta} x\leq\alpha}.
-```}
+$f(x)$  est négatif si $x \leq \alpha$. \\
+$f(x)$  est positif si  $ x \geq\alpha$.
+
 
 
 
@@ -1038,44 +573,7 @@ Une petite variation $ \Delta x $ de la variable $ x $ provoque une petite varia
   \begin{definition}
   On dit que la courbe de $ f $ admet un point d'inflexion d'abscisse $ x_{0} $ si la courbe y traverse sa tangente.
   \end{definition}
-  
-  \begin{tikzpicture}[scale=0.5]
-    % Configuration des limites
-    \def\xmin{-5}
-    \def\xmax{8}
-    \def\ymin{-5}
-    \def\ymax{5}
-    
-    % Axes avec flèches
-    \draw[thick,->] (\xmin,0) -- (\xmax,0);
-    \draw[thick,->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,-1,1,2,...,\xmax} {
-        \draw (\x,0.1) -- (\x,-0.1);
-    }
-    \foreach \y in {\ymin,...,-1,1,2,...,\ymax} {
-        \draw (0.1,\y) -- (-0.1,\y);
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick,->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {$\vec{\imath}$};
-    \draw[thick,->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {$\vec{\jmath}$};
-    
-    % Fonction f(x) = x³ - 3x²
-    \draw[red, thick, domain=\xmin:\xmax, samples=200, smooth] 
-        plot (\x, {\x*\x*\x - 3*\x*\x});
-    
-    % Tangente y = -3x + 1
-    \draw[blue, thick, domain=-2.5:2.5] 
-        plot (\x, {-3*\x + 1});
-        
-\end{tikzpicture}
+
    \begin{theorem}
    Si $ f $ est deux fois dérivable sur  un intervalle ouvert $ I $ contenant $ x_0 $  et si $ f'' $  \emph{ s'annule en changeant de signe  en $ x_0 $} alors le point de la courbe d'abscisse $ x_0 $  est un \textbf{\color{magenta} un point  d'inflexion}.
    \end{theorem}
@@ -1142,7 +640,7 @@ $ \displaystyle\lim_{x \to \pinf}f(x)=\displaystyle \lim_{x \to \pinf}x^{3}+x+1=
 $\displaystyle \lim_{x \to \minf}f(x)=\displaystyle \lim_{x \to \minf}x^{3}+x+1=\displaystyle\lim_{x \to \minf}x^{3}=\minf$
 
 $$
-\begin{array}{|c|c|c|c|c|}
+\begin{array}{|c|cccc}
 \hline
 x & -\infty & & +\infty & \\
 \hline
@@ -1167,6 +665,7 @@ x &-0,9  &-0,8 & -0,7 &- 0,6 & -0,5 & -0,4 &-0,3 &-0,2& -0,1  \\
 f(x) &-  & -  & \textbf{\color{red} -} & \textbf{\color{red} +}  & \color{green} &  &  &  &  \\
 \hline
 \end{tabular}
+
 \vspace{0.5cm}   On obtient $-0,7<\alpha< - 0,6  $
 
 
@@ -1218,50 +717,6 @@ En plus sa bijection réciproque $ f^{-1} $ est continue et strictement monotone
 Les courbes représentatives de $f $  et $f^{-1} $, dans un repère orthonormé sont symétriques par rapport  à la droite d'équation $ y=x $ (la première  bissectrice  du repère).
 \end{theorem}
 
-\begin{tikzpicture}[scale=0.375]
-    % Configuration des limites
-    \def\xmin{-8}
-    \def\xmax{9}
-    \def\ymin{-6}
-    \def\ymax{8}
-    
-    % Axes avec flèches
-    \draw[thick,->] (\xmin,0) -- (\xmax,0);
-    \draw[thick,->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,-1,1,2,...,\xmax} {
-        \draw (\x,0.1) -- (\x,-0.1);
-    }
-    \foreach \y in {\ymin,...,-1,1,2,...,\ymax} {
-        \draw (0.1,\y) -- (-0.1,\y);
-    }
-    
-    % Vecteurs unitaires
-    \draw[thick,->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {$\vec{\imath}$};
-    \draw[thick,->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {$\vec{\jmath}$};
-    
-    % Fonction f(x) = -1 + e^x (en rouge)
-    \draw[red, thick, domain=\xmin:\xmax, samples=200, smooth] 
-        plot (\x, {-1 + exp(\x)});
-    
-    % Fonction réciproque f^(-1)(x) = ln(x+1) (en vert)
-    % Domaine: x > -1
-    \draw[green, thick, domain=-0.99:\xmax, samples=200, smooth] 
-        plot (\x, {ln(\x + 1)});
-    
-    % Bissectrice y = x (en bleu)
-    \draw[blue, thick, domain=-5:8] 
-        plot (\x, \x);
-    
-    % Étiquettes
-    \node[below left] at (6,1.945) {$\mathcal{C}_{f}$};
-    \node[below left] at (5,8) {$\mathcal{C}_{f^{-1}}$};
-    \node[above right, rotate=45] at (6,6) {$y=x$};
-        
-\end{tikzpicture}
 
 
 $ \centerdot $ Si de plus $ f $ est dérivable sur $ I $ et \textbf{\color{magenta} $ f'$ ne s'annule pas} sur  $ I $ alors $ f^{-1} $ dérivable sur $ f(I) $ et
@@ -1293,7 +748,7 @@ $ f'(x) = 8x+4$  $\forall x\in \Rr $\\
 $\displaystyle \lim_{x \to \pinf}f(x)= \displaystyle\lim_{x \to \pinf}4x^{2}+4x+2=\displaystyle\lim_{x \to \pinf}4x^{2}=\pinf$\\
 $\displaystyle \lim_{x \to \minf}f(x)=\displaystyle \lim_{x \to \minf}4x^{2}+4x+2=\displaystyle\lim_{x \to \minf}4x^{2}=\pinf$
 $$
-\begin{array}{|c|c|c|c|c|c|c|}
+\begin{array}{|c|cccccc}
 \hline
 x & -\infty & & -\frac{1}{2} & & +\infty & \\
 \hline
@@ -1313,188 +768,6 @@ On a $(g^{-1})'(2)=\frac{1}{g'(0)}=\frac{1}{4}.  $
 
 \end{enumerate}
 \end{proof}
-\subsection{Fonction puissance d'exposant rationnel}
-
-\textbf{\color{blue}Théorème et définition }\\
-$ n\in \Nne $\\
-La fonction $x\mapsto x^{n} $ est bijective de $ \Rrp $ vers $ \Rrp $ et admet une bijection réciproque appelée \emph{fonction racine n-ième} et notée $ x\mapsto \sqrt[n]{x} $ ou $x\mapsto x^{\frac{1}{n}} $.
-\begin{example}
-$ \sqrt[1]{x}=x $,\quad $ \sqrt[2]{x}=\sqrt{x}=x^{\frac{1}{2}}$\; (racine carrée) ,\quad $ \sqrt[3]{x} =x^{\frac{1}{3}}$  appelée la racine cubique de $ x. $
-\end{example}
-
-\textbf{\color{blue}{NB}}:
-\[\sqrt[n]{x^{p}}= (x^{p})^{\frac{1}{n}}= x^{\frac{p}{n}}\]
- \colorbox{red!20!}{Résolution de l'équation $ x^{n}=a $}
-\begin{itemize}
-\item[\textbullet] si $ n $ est pair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$ ou $ x= -\sqrt[n]{a}$
-\item[\textbullet] si $ n $ est impair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$
-\item[\textbullet] si $ n $ est pair  et  $ a < 0 $ alors pas de solution. 
-\item[\textbullet] si $ n $ est impair  et  $ a\leq 0 $ alors  $ x= -\sqrt[n]{-a}$
-\end{itemize}
-
-\begin{example}
-\begin{itemize}
-\item $ x^3=8 \Longleftrightarrow x=\sqrt[3]{8}= 8^{\frac{1}{3}} = (2^3)^{\frac{1}{3}}=2$
-\item $ x^3+1=0\Longleftrightarrow x^3=-1 \Longleftrightarrow x=-\sqrt[3]{1}= -1$
-\item $ x^4= 3 \Longleftrightarrow x= \sqrt[4]{3}$ ou $ x= -\sqrt[4]{3} $  
- \end{itemize}
-\end{example}
-\textbf{\color{blue}Fonction puissance d'exposant rationnel}
-\begin{definition}
-$ r $ étant un nombre rationnel non nul, on appelle \emph{fonction puissance d'exposant r,} la fonction : 
-\renewcommand{\arraystretch}{1}
-\[\begin{array}{lrcl}
-    &  \Rrp  & \longrightarrow & \Rrp \\ 
-  &  x & \longmapsto & x^{r}
-   \end{array}\]
-\end{definition}
-\textbf{\color{blue}Quelques propriétés  }
-\begin{itemize}
-\item $ r$ et $r' $ étant des nombres rationnels non nuls, $x $ et $ y$ des réels strictement positifs.\\ 
-
-\hspace{2cm} \colorbox{green!20!} {$ x^{r}\times y^{r}= (xy)^{r} $ \qquad \qquad  $ (x^{r})^{r'}=x^{rr'} $} \\
-
-\hspace{2cm}  \colorbox{green!20!}{$ \frac{x^{r}}{y^{r}}=(\frac{x}{y})^{r} $\qquad \qquad  $ x^{r}\times x^{r'}=x^{r+r'} $}\\
-
-\item La fonction $x  \longmapsto x^{r}  $ est dérivable sur $ \Rrep $ et $( x^{r})'=rx^{r-1}$.
-\item La fonction $ u^{r} $ est définie ssi $ u\geq 0. $
-  \item   Si $ u $ est dérivable et strictement positive sur $ I $ alors la fonction  $ u^{r} $ est dérivable sur $ I $ et $ (u^{r})'=ru'u^{r-1} $.
- \end{itemize}
- \begin{example}
- $ f(x)= \sqrt[3]{2x+1} $\\
- $ f(x) $  existe $ \Leftrightarrow 2x+1 \Leftrightarrow x \geq -\frac{1}{2} $ donc $ f $ est dérivable sur $ \intoo{-\frac{1}{2}}{\pinf} $\\
-  $ f(x)= \sqrt[3]{2x+1}=(2x+1)^{\frac{1}{3}}\Longrightarrow f'(x)=\frac{2}{3}(2x+1)^{-\frac{2}{3}}=\frac{2}{3\sqrt[3]{(2x+1)^2}} $
- \end{example}
-
-\subsection{ Eléments de symétrie d'une courbe}
-Soit $ f $ une fonction numérique et $ \mathcal{C} $ sa courbe représentative dans un repère orthogonal.
-
-\subsection{Axe de symétrie}
-Pour montrer que la droite $ \Delta $ d'équation $ x=a $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes: 
-\begin{itemize}
-\item Démontrer que : $ \forall x\in D_{f}$  on a   $ 2a-x\in D_{f}$ et $ f(a-x)=f(x) $
-\item Démontrer que : $ \forall x\in D_{f}$  on a  $ a-x\in D_{f}$, $ a+x\in D_{f}$ et $ f(2a-x)=f(a+x) $
-\item Démontrer que : la fonction $ g(x)=f(a-x) $ est paire.
-\end{itemize}
-Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à la droite $ \Delta $.
-
-\subsection{Centre de symétrie}
-Pour montrer que le point $ I(a, b) $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes : 
-\begin{itemize}
-\item Démontrer que : $ \forall x\in D_{f}$  on a  $ 2a-x\in D_{f}$ et $ f(2a-x)+f(x)=2b $
-\item Démontrer que : $ \forall x\in D_{f}$  on a   $ a-x\in D_{f}$,  $ a+x\in D_{f}$ et $ f(a-x)+f(a+x)=2b $
-\item Démontrer que : la fonction $ g(x)=f(a-x)+b$ est impaire.
-\end{itemize}
-Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à $ I. $
-
-\subsection{Fonction périodique}
-\begin{definition}
- Une fonction $ f $ est dite
-\textbf{\color{magenta} périodique de période $ t $} (ou t- périodique) ssi :\\
- $ \centerdot $ t est non nul, \\
-$ \centerdot $  pour tout $x\in D_{f} $, \   $  x+t$ et $ x-t$   sont dans $ D_{f} $           et  $f(x+t)=f(x) $.\\
-On dit que \textbf{\color{magenta} $t$ est une période de $f$}, et la plus petite période strictement positive est  \textbf{\color{magenta} la période de $f$}.  En général la période est notée $ T $. \\
-Pour tout $x$ de $ D_{f} $ et tout \textbf{\color{magenta} entier relatif } $ k $, \colorbox{gray!20!}{$ f(x+kT) = f(x) $. }
-\end{definition}
-
-\textbf{\color{blue}Conséquences}
-
-Pour représenter graphiquement une fonction $ f $ de période $ T $, il suffit de :
-\begin{itemize}
-\item choisir un intervalle $ I $ de longueur $ T $ inclus dans $ D_{f} $;
-\item tracer (en rouge )la partie $ \mathcal{C} $ de la courbe de $ f $ restreinte à cet intervalle $ I: $
-\item translater la partie $ \mathcal{C} $ par les translations de vecteurs $ (kT)\overrightarrow{i} $ avec $ k $ entier relatif.
-\end{itemize}
-\begin{tikzpicture}[scale=0.375]
-    % Configuration des limites
-    \def\xmin{-15}
-    \def\xmax{15}
-    \def\ymin{-3}
-    \def\ymax{3}
-    
-    % Axes avec flèches
-    \draw[thick,->] (\xmin,0) -- (\xmax,0);
-    \draw[thick,->] (0,\ymin) -- (0,\ymax);
-    
-    % Graduations sur les axes
-    \foreach \x in {\xmin,...,-1,1,2,...,\xmax} {
-        \draw (\x,0.1) -- (\x,-0.1);
-    }
-    \foreach \y in {\ymin,...,-1,1,2,...,\ymax} {
-        \draw (0.1,\y) -- (-0.1,\y);
-    }
-    
-    % Origine
-    \node[below left] at (0,0) {$O$};
-    
-    % Vecteurs unitaires
-    \draw[thick,->] (0,0) -- (1,0);
-    \node[below] at (0.5,0) {$\vec{\imath}$};
-    \draw[thick,->] (0,0) -- (0,1);
-    \node[left] at (0,0.5) {$\vec{\jmath}$};
-    
-    % Fonction sin(x) sur [-π, π] en rouge
-    \draw[red, thick, domain=-3.14159:3.14159, samples=200, smooth] 
-        plot (\x, {sin(\x r)});
-    
-    % Fonction sin(x) sur [π, xmax] en noir
-    \draw[black, thick, domain=3.14159:\xmax, samples=200, smooth] 
-        plot (\x, {sin(\x r)});
-    
-    % Fonction sin(x) sur [xmin, -π] en noir
-    \draw[black, thick, domain=\xmin:-3.14159, samples=200, smooth] 
-        plot (\x, {sin(\x r)});
-        
-\end{tikzpicture}
-
-
-\textbf{\color{blue}Cas des fonctions trigonométriques}\\
-$ - $ Les fonctions $x\mapsto\cos x $ et $x\mapsto\sin x $ sont périodiques de période $ 2\pi $  c'est à dire: \colorbox{green!20!}{ $ \cos (x+2\pi)=\cos x $ et  $ \sin (x+2\pi)=\sin x $ }\\
-
-$ - $ La fonction $x\mapsto\tan x $ est périodique de période $ \pi $ c'est à dire:       \colorbox{green!20!} {$ \tan (x+\pi)=\tan x $}\\
-
-\colorbox{magenta!20!}{Cas général }: \\
-Les fonctions $x \mapsto \cos (ax+b) $ et $x \mapsto \sin (ax+b) $ ont pour période $ T=\frac{2\pi}{\abs{a}}$ \\
-La fonction $x \mapsto \tan (ax+b) $ a pour période $ T=\frac{\pi}{\abs{a}}$ 
-
-\subsubsection*{Réduction de domaine d'étude}
-
-\begin{itemize}
-\item[\textbullet] Si $ f $ est T-périodique alors on peut restreindre le domaine d'étude à tout domaine du type $ \intff{a}{a+T}\cap D_{f} $ pour tout réel $ a, $ ainsi on obtient la courbe complète de $ f. $
-\item[\textbullet] Si $ f $ est T-périodique   et paire ( resp. impaire ) alors on peut restreindre le domaine d'étude au domaine  $ \intff{0}{\frac{T}{2}}\cap D_{f} $  ainsi on obtient la courbe complète sur $ \intff{-\frac{T}{2}}{\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe des ordonnées (resp. par symétrie par rapport à O origine du repère ).
-\item[\textbullet] Si $ f $ est T-périodique   et $ \mathcal{C} $  admet un axe de symétrie $ \Delta $ ( resp. un centre de symétrie $ I $ ) alors on peut restreindre le domaine d'étude au domaine \\ $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ ou au domaine  $ \intff{a-\frac{T}{2}}{a}\cap D_{f} $ ainsi on obtient la courbe complète sur $ \intff{a-\frac{T}{2}}{a+\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe $ \Delta $  (resp. par symétrie par rapport un point $ I $ ).
-\end{itemize}
-
- \begin{exercice}
-On considère  la fonction $ f $ définie par: $ f(x)= \frac{\sin x }{\sin x+\cos x} $ 
-\begin{enumerate}
-\item Déterminer $ D_{f} $ et  puis montrer que  $ f$ est de période  $ \pi. $
-\item Montrer que le point  $ A(-\frac{\pi}{4}; \frac{1}{2}) $ est un centre de symétrie de $ \mathcal{C}_{f} $. En déduire un domaine simple pour l'étude de $ f $ 
-\end{enumerate}
- \end{exercice}
-
-\textbf{\color{blue}Solution}
-\begin{enumerate}
-\item $ f(x) $ existe    $\Leftrightarrow \sin x+\cos x \neq 0  $\\
- $\Leftrightarrow \sin x \neq -\cos x $\\
- $\Leftrightarrow \sin x \neq \sin (x- \frac{\pi}{2}) $\\
- $ \Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi , k\in \Zz$\\
- Montrons que $ \pi $ est la période de $ f. $\\
- $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x+\pi\neq \frac{7\pi}{4}+ k\pi \Leftrightarrow x+\pi\in D_{f}.$\\
-  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x-\pi\neq -\frac{\pi}{4}+ k\pi \Leftrightarrow x-\pi\in D_{f}.$\\
- $ f(x+\pi)=\frac{\sin (x+\pi) }{\sin (x+\pi)+\cos (x+\pi)}= \frac{-\sin x }{-\sin x-\cos x}=\frac{\sin x }{\sin x+\cos x}=f(x)$
- \item $ 2a-x=-\frac{\pi}{2}-x $\\
-  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x \neq -\frac{7\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x\in D_{f} \\\Leftrightarrow 2a-x\in D_{f}$
- $$ f(2a-x)+f(x)= \frac{\sin (-\frac{\pi}{2}-x ) }{\sin (-\frac{\pi}{2}-x )+\cos (-\frac{\pi}{2}-x )}+\frac{\sin x }{\sin x+\cos x} $$
- $$ f(2a-x)+f(x)= \frac{\cos x }{\cos x +\sin x }+\frac{\sin x }{\sin x+\cos x}=1 $$
- Donc le point $ A $ est bien un centre de symétrie de $ \mathcal{C}_{f} $.\\
- Proposons un d'étude   de $f. $\\
-$ f $ est de période $ T= \pi$ et l'abscisse  du centre de symétrie est $ a=-\frac{\pi}{4}  $ , on peut appliquer la formule $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ \\
-$ \intff{-\frac{\pi}{4}}{-\frac{\pi}{4}+\frac{\pi}{2}}\cap D_{f} =\intff{-\frac{\pi}{4}}{\frac{\pi}{4}}\cap D_{f}=\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$\\
-\underline{Conclusion }: on peut étudier $ f $ sur $\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$ puis obtenir la courbe complète par symétrie par rapport à $ A $ sur $ \intfo{-\frac{3\pi}{4}}{-\frac{\pi}{4}}\cup \intof{-\frac{\pi}{4}}{\frac{\pi}{4}} $.
- 
- 
-\end{enumerate}
 
 
   %</content>

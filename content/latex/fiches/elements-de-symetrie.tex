@@ -1,0 +1,139 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \sheet{analysis}{elements-de-symetrie}{Éléments de symétrie d'une courbe}
+ \summary{}
+     
+   
+Soit $ f $ une fonction numérique et $ \mathcal{C} $ sa courbe représentative dans un repère orthogonal.
+
+\subsection{Axe de symétrie}
+Pour montrer que la droite $ \Delta $ d'équation $ x=a $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes: 
+\begin{itemize}
+\item Démontrer que : $ \forall x\in D_{f}$  on a   $ 2a-x\in D_{f}$ et $ f(a-x)=f(x) $
+\item Démontrer que : $ \forall x\in D_{f}$  on a  $ a-x\in D_{f}$, $ a+x\in D_{f}$ et $ f(2a-x)=f(a+x) $
+\item Démontrer que : la fonction $ g(x)=f(a-x) $ est paire.
+\end{itemize}
+Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à la droite $ \Delta $.
+
+\subsection{Centre de symétrie}
+Pour montrer que le point $ I(a, b) $ est un axe de symétrie de la courbe $ \mathcal{C} $,  on peut utiliser l'une des méthodes suivantes : 
+\begin{itemize}
+\item Démontrer que : $ \forall x\in D_{f}$  on a  $ 2a-x\in D_{f}$ et $ f(2a-x)+f(x)=2b $
+\item Démontrer que : $ \forall x\in D_{f}$  on a   $ a-x\in D_{f}$,  $ a+x\in D_{f}$ et $ f(a-x)+f(a+x)=2b $
+\item Démontrer que : la fonction $ g(x)=f(a-x)+b$ est impaire.
+\end{itemize}
+Dans ce cas on peut restreindre l'étude de $ f $ à $ \intfo{a}{\pinf}\cap D_{f}$ et on obtient la courbe complète par symétrie par rapport à $ I. $
+
+\subsection{Fonction périodique}
+\begin{definition}
+ Une fonction $ f $ est dite
+\textbf{\color{magenta} périodique de période $ t $} (ou t- périodique) ssi :\\
+ $ \centerdot $ t est non nul, \\
+$ \centerdot $  pour tout $x\in D_{f} $, \   $  x+t$ et $ x-t$   sont dans $ D_{f} $           et  $f(x+t)=f(x) $.\\
+On dit que \textbf{\color{magenta} $t$ est une période de $f$}, et la plus petite période strictement positive est  \textbf{\color{magenta} la période de $f$}.  En général la période est notée $ T $. \\
+Pour tout $x$ de $ D_{f} $ et tout \textbf{\color{magenta} entier relatif } $ k $, \colorbox{gray!20!}{$ f(x+kT) = f(x) $. }
+\end{definition}
+
+\textbf{\color{blue}Conséquences}
+
+Pour représenter graphiquement une fonction $ f $ de période $ T $, il suffit de :
+\begin{itemize}
+\item choisir un intervalle $ I $ de longueur $ T $ inclus dans $ D_{f} $;
+\item tracer (en rouge )la partie $ \mathcal{C} $ de la courbe de $ f $ restreinte à cet intervalle $ I: $
+\item translater la partie $ \mathcal{C} $ par les translations de vecteurs $ (kT)\overrightarrow{i} $ avec $ k $ entier relatif.
+\end{itemize}
+\begin{tikzpicture}[scale=0.375]
+    % Configuration des limites
+    \def\xmin{-15}
+    \def\xmax{15}
+    \def\ymin{-3}
+    \def\ymax{3}
+    
+    % Axes avec flèches
+    \draw[thick,->] (\xmin,0) -- (\xmax,0);
+    \draw[thick,->] (0,\ymin) -- (0,\ymax);
+    
+    % Graduations sur les axes
+    \foreach \x in {\xmin,...,-1,1,2,...,\xmax} {
+        \draw (\x,0.1) -- (\x,-0.1);
+    }
+    \foreach \y in {\ymin,...,-1,1,2,...,\ymax} {
+        \draw (0.1,\y) -- (-0.1,\y);
+    }
+    
+    % Origine
+    \node[below left] at (0,0) {$O$};
+    
+    % Vecteurs unitaires
+    \draw[thick,->] (0,0) -- (1,0);
+    \node[below] at (0.5,0) {$\vec{\imath}$};
+    \draw[thick,->] (0,0) -- (0,1);
+    \node[left] at (0,0.5) {$\vec{\jmath}$};
+    
+    % Fonction sin(x) sur [-π, π] en rouge
+    \draw[red, thick, domain=-3.14159:3.14159, samples=200, smooth] 
+        plot (\x, {sin(\x r)});
+    
+    % Fonction sin(x) sur [π, xmax] en noir
+    \draw[black, thick, domain=3.14159:\xmax, samples=200, smooth] 
+        plot (\x, {sin(\x r)});
+    
+    % Fonction sin(x) sur [xmin, -π] en noir
+    \draw[black, thick, domain=\xmin:-3.14159, samples=200, smooth] 
+        plot (\x, {sin(\x r)});
+        
+\end{tikzpicture}
+
+
+\textbf{\color{blue}Cas des fonctions trigonométriques}\\
+$ - $ Les fonctions $x\mapsto\cos x $ et $x\mapsto\sin x $ sont périodiques de période $ 2\pi $  c'est à dire: \colorbox{green!20!}{ $ \cos (x+2\pi)=\cos x $ et  $ \sin (x+2\pi)=\sin x $ }\\
+
+$ - $ La fonction $x\mapsto\tan x $ est périodique de période $ \pi $ c'est à dire:       \colorbox{green!20!} {$ \tan (x+\pi)=\tan x $}\\
+
+\colorbox{magenta!20!}{Cas général }: \\
+Les fonctions $x \mapsto \cos (ax+b) $ et $x \mapsto \sin (ax+b) $ ont pour période $ T=\frac{2\pi}{\abs{a}}$ \\
+La fonction $x \mapsto \tan (ax+b) $ a pour période $ T=\frac{\pi}{\abs{a}}$ 
+
+\subsubsection*{Réduction de domaine d'étude}
+
+\begin{itemize}
+\item[\textbullet] Si $ f $ est T-périodique alors on peut restreindre le domaine d'étude à tout domaine du type $ \intff{a}{a+T}\cap D_{f} $ pour tout réel $ a, $ ainsi on obtient la courbe complète de $ f. $
+\item[\textbullet] Si $ f $ est T-périodique   et paire ( resp. impaire ) alors on peut restreindre le domaine d'étude au domaine  $ \intff{0}{\frac{T}{2}}\cap D_{f} $  ainsi on obtient la courbe complète sur $ \intff{-\frac{T}{2}}{\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe des ordonnées (resp. par symétrie par rapport à O origine du repère ).
+\item[\textbullet] Si $ f $ est T-périodique   et $ \mathcal{C} $  admet un axe de symétrie $ \Delta $ ( resp. un centre de symétrie $ I $ ) alors on peut restreindre le domaine d'étude au domaine \\ $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ ou au domaine  $ \intff{a-\frac{T}{2}}{a}\cap D_{f} $ ainsi on obtient la courbe complète sur $ \intff{a-\frac{T}{2}}{a+\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe $ \Delta $  (resp. par symétrie par rapport un point $ I $ ).
+\end{itemize}
+
+ \begin{exercice}
+On considère  la fonction $ f $ définie par: $ f(x)= \frac{\sin x }{\sin x+\cos x} $ 
+\begin{enumerate}
+\item Déterminer $ D_{f} $ et  puis montrer que  $ f$ est de période  $ \pi. $
+\item Montrer que le point  $ A(-\frac{\pi}{4}; \frac{1}{2}) $ est un centre de symétrie de $ \mathcal{C}_{f} $. En déduire un domaine simple pour l'étude de $ f $ 
+\end{enumerate}
+ \end{exercice}
+
+\textbf{\color{blue}Solution}
+\begin{enumerate}
+\item $ f(x) $ existe    $\Leftrightarrow \sin x+\cos x \neq 0  $\\
+ $\Leftrightarrow \sin x \neq -\cos x $\\
+ $\Leftrightarrow \sin x \neq \sin (x- \frac{\pi}{2}) $\\
+ $ \Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi , k\in \Zz$\\
+ Montrons que $ \pi $ est la période de $ f. $\\
+ $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x+\pi\neq \frac{7\pi}{4}+ k\pi \Leftrightarrow x+\pi\in D_{f}.$\\
+  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow x-\pi\neq -\frac{\pi}{4}+ k\pi \Leftrightarrow x-\pi\in D_{f}.$\\
+ $ f(x+\pi)=\frac{\sin (x+\pi) }{\sin (x+\pi)+\cos (x+\pi)}= \frac{-\sin x }{-\sin x-\cos x}=\frac{\sin x }{\sin x+\cos x}=f(x)$
+ \item $ 2a-x=-\frac{\pi}{2}-x $\\
+  $ x \in D_{f}\Leftrightarrow x\neq \frac{3\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x \neq -\frac{7\pi}{4}+ k\pi \Leftrightarrow -\frac{\pi}{2}-x\in D_{f} \\\Leftrightarrow 2a-x\in D_{f}$
+ $$ f(2a-x)+f(x)= \frac{\sin (-\frac{\pi}{2}-x ) }{\sin (-\frac{\pi}{2}-x )+\cos (-\frac{\pi}{2}-x )}+\frac{\sin x }{\sin x+\cos x} $$
+ $$ f(2a-x)+f(x)= \frac{\cos x }{\cos x +\sin x }+\frac{\sin x }{\sin x+\cos x}=1 $$
+ Donc le point $ A $ est bien un centre de symétrie de $ \mathcal{C}_{f} $.\\
+ Proposons un d'étude   de $f. $\\
+$ f $ est de période $ T= \pi$ et l'abscisse  du centre de symétrie est $ a=-\frac{\pi}{4}  $ , on peut appliquer la formule $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ \\
+$ \intff{-\frac{\pi}{4}}{-\frac{\pi}{4}+\frac{\pi}{2}}\cap D_{f} =\intff{-\frac{\pi}{4}}{\frac{\pi}{4}}\cap D_{f}=\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$\\
+\underline{Conclusion }: on peut étudier $ f $ sur $\intof{-\frac{\pi}{4}}{\frac{\pi}{4}}$ puis obtenir la courbe complète par symétrie par rapport à $ A $ sur $ \intfo{-\frac{3\pi}{4}}{-\frac{\pi}{4}}\cup \intof{-\frac{\pi}{4}}{\frac{\pi}{4}} $.
+ 
+ 
+\end{enumerate}
+
+  %</content>
+\end{document}

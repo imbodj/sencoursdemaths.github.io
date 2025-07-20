@@ -10,14 +10,13 @@
         et  $c$ des réels ou  $+\infty $ ou $-\infty $.
         
    \medskip
-\begin{tabularx}{\textwidth}{|X|}
-\hline
-Si  $ \displaystyle\lim_{x \to a}f(x)=b $\; et \;  $ \displaystyle\lim_{x \to b}g(x)=c $\; alors \;  $ \displaystyle\lim_{x \to a}g\paren{f(x)}=c $\\
-\hline
-\end{tabularx}
+\begin{property}
+Si  $ \displaystyle\lim_{x \to a}f(x)=b \;$ et $\;   \displaystyle\lim_{x \to b}g(x)=c \;$ alors $ \;   \displaystyle\lim_{x \to a}g\paren{f(x)}=c $\\
+\end{property}
+
  \medskip
        \begin{example}
-      $\text{Calculer}\; \displaystyle\lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)$
+      $\text{Calculons}\; \displaystyle\lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)$
       
        $ \text{La fonction} \; x \mapsto \cos\left(\frac{\pi x}{2x+1}\right)$ est la composée $ g\circ f\; $  où $\; f: x\mapsto\frac{\pi x}{2x+1}$  et $g: x \mapsto \cos x $
        
@@ -37,7 +36,7 @@ Pour calculer $\;\displaystyle \lim_{x \to +\infty} x\sin \left(\dfrac{\pi}{x}\r
       
       $\displaystyle\lim_{X\to 0} \pi\dfrac{\sin X }{X}=\pi $
       
-       $\text{Donc}\; \lim_{x \to +\infty} x\sin \left(\frac{\pi}{x}\right)=\pi$
+       $\text{Donc}\; \displaystyle\lim_{x \to +\infty} x\sin \left(\frac{\pi}{x}\right)=\pi$
    \end{example}
       \subsection{Théorèmes de comparaison}
 \subsubsection*{Théorème 1 ( Minoration et  majoration)}
@@ -53,7 +52,7 @@ Pour calculer $\;\displaystyle \lim_{x \to +\infty} x\sin \left(\dfrac{\pi}{x}\r
      
       \subsubsection*{Théorème 2 (ou théorème  des gendarmes}
           \begin{theorem}
-            Soient  $\; f  , \; g  \; $  et  $ \; h \;$  trois fonctions et  $\;l \;$ un réel telles que  $ \; h(x)\leq f(x) \leq g(x).$
+            Soient  $\; f  , \; g  \; $  et  $ \; h \;$  trois fonctions et  $\;l \;$ un réel tels que  $ \; h(x)\leq f(x) \leq g(x).$
             
            $ \text{Si}\;  \; \displaystyle\lim_{x \to a}{h(x)} =\displaystyle\lim_{x \to a}{g(x)}=l  \;\; \text{alors} \;\; \lim_{x \to a}{f(x)} =l$ 
        \end{theorem}

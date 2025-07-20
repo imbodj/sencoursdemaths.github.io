@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 %\usepackage{amssymb}
+\renewcommand{\proofname}{Solution}
 \usepackage{stmaryrd}
 \usepackage{tikz}
 \usepackage{tkz-euclide}
@@ -237,7 +238,7 @@
 \definecolor{application}{HTML}{009688}
 \definecolor{remark}{HTML}{3f51b5}
 \definecolor{algorithm}{HTML}{607d8b}
-%\definecolor{proof}{HTML}{e1f5fe}
+\definecolor{proof}{HTML}{e1f5fe}
 \definecolor{exercice}{HTML}{e1f5fe}
 
 % Théorèmes :
@@ -262,6 +263,9 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remarque}
+
+
+
 
 \counterwithin*{theorem}{section}
 
@@ -361,5 +365,6 @@
     \lstinputlisting{\codedirectory#1}%
   \end{algorithm}%
 }
+
 
 

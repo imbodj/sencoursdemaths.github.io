@@ -1,0 +1,59 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \sheet{analysis}{fonction-racine-nieme}{Fonction racine n-ième}
+ \summary{}
+    \textbf{\color{blue}Théorème et définition }\\
+$ n\in \Nne $\\
+La fonction $x\mapsto x^{n} $  est continue et strictement croissante sur $ \Rrp $  donc elle est bijective de $ \Rrp $ vers $ \Rrp $ et admet une bijection réciproque appelée \emph{fonction racine n-ième} et notée $ x\mapsto \sqrt[n]{x} $ ou $x\mapsto x^{\frac{1}{n}} $.
+\begin{example}
+$ \sqrt[1]{x}=x $,\quad $ \sqrt[2]{x}=\sqrt{x}=x^{\frac{1}{2}}$\; (racine carrée) ,\quad $ \sqrt[3]{x} =x^{\frac{1}{3}}$  appelée la racine cubique de $ x. $
+\end{example}
+
+\textbf{\color{blue}{NB}}:
+\[\sqrt[n]{x^{p}}= (x^{p})^{\frac{1}{n}}= x^{\frac{p}{n}}\]
+ \colorbox{red!20!}{Résolution de l'équation $ x^{n}=a $}
+\begin{itemize}
+\item[\textbullet] si $ n $ est pair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$ ou $ x= -\sqrt[n]{a}$
+\item[\textbullet] si $ n $ est impair  et  $ a\geq 0 $ alors $ x= \sqrt[n]{a}$
+\item[\textbullet] si $ n $ est pair  et  $ a < 0 $ alors pas de solution. 
+\item[\textbullet] si $ n $ est impair  et  $ a\leq 0 $ alors  $ x= -\sqrt[n]{-a}$
+\end{itemize}
+
+\begin{example}
+\begin{itemize}
+\item $ x^3=8 \Longleftrightarrow x=\sqrt[3]{8}= 8^{\frac{1}{3}} = (2^3)^{\frac{1}{3}}=2$
+\item $ x^3+1=0\Longleftrightarrow x^3=-1 \Longleftrightarrow x=-\sqrt[3]{1}= -1$
+\item $ x^4= 3 \Longleftrightarrow x= \sqrt[4]{3}$ ou $ x= -\sqrt[4]{3} $  
+ \end{itemize}
+\end{example}
+\textbf{\color{blue}Fonction puissance d'exposant rationnel}
+\begin{definition}
+$ r $ étant un nombre rationnel non nul, on appelle \emph{fonction puissance d'exposant r,} la fonction : 
+\renewcommand{\arraystretch}{1}
+\[\begin{array}{lrcl}
+    &  \Rrp  & \longrightarrow & \Rrp \\ 
+  &  x & \longmapsto & x^{r}
+   \end{array}\]
+\end{definition}
+\textbf{\color{blue}Quelques propriétés  }
+\begin{itemize}
+\item $ r$ et $r' $ étant des nombres rationnels non nuls, $x $ et $ y$ des réels strictement positifs.\\ 
+
+\hspace{2cm} \colorbox{green!20!} {$ x^{r}\times y^{r}= (xy)^{r} $ \qquad \qquad  $ (x^{r})^{r'}=x^{rr'} $} \\
+
+\hspace{2cm}  \colorbox{green!20!}{$ \frac{x^{r}}{y^{r}}=(\frac{x}{y})^{r} $\qquad \qquad  $ x^{r}\times x^{r'}=x^{r+r'} $}\\
+
+\item La fonction $x  \longmapsto x^{r}  $ est dérivable sur $ \Rrep $ et $( x^{r})'=rx^{r-1}$.
+\item La fonction $ u^{r} $ est définie ssi $ u\geq 0. $
+  \item   Si $ u $ est dérivable et strictement positive sur $ I $ alors la fonction  $ u^{r} $ est dérivable sur $ I $ et $ (u^{r})'=ru'u^{r-1} $.
+ \end{itemize}
+ \begin{example}
+ $ f(x)= \sqrt[3]{2x+1} $\\
+ $ f(x) $  existe $ \Leftrightarrow 2x+1 \Leftrightarrow x \geq -\frac{1}{2} $ donc $ f $ est dérivable sur $ \intoo{-\frac{1}{2}}{\pinf} $\\
+  $ f(x)= \sqrt[3]{2x+1}=(2x+1)^{\frac{1}{3}}\Longrightarrow f'(x)=\frac{2}{3}(2x+1)^{-\frac{2}{3}}=\frac{2}{3\sqrt[3]{(2x+1)^2}} $
+ \end{example}
+
+  %</content>
+\end{document}
