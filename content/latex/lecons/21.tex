@@ -148,20 +148,25 @@ x   &\minf~~~~~~~~~~~~\qquad   \qquad ~~~~\pinf\\
 \end{array}\]
 	\item[$ \bullet $] Si $ \Delta =0 $ alors $ax^2+bx+c$ est  du signe de $a$ pour tout $x\neq-\dfrac{b}{2a}$ et s'annule en $-\dfrac{b}{2a}$.
 	
-	\begin{tikzpicture}
-\tkzTabInit{$x$/0.5,$ ax^{2}+bx+c$/0.5}{$\minf$,  $-\tfrac{b}{2a}$,$\pinf$}
-\tkzTabLine{,\text{signe\ de} \ $ a $,z,\text{signe\ de}\ $ a $}
-\end{tikzpicture}
+	$$\begin{array}{c|ccc}
+x & -\infty & & +\infty \\
+\hline
+& & -\frac{b}{2a} & \\
+\hline
+ax^2 + bx + c & \text{signe de } a & 0 & \text{signe de } a \\
+\end{array}$$
 	\item[$ \bullet $] Si $ \Delta  > 0 $ alors  $ax^2+bx+c$ est :
 \begin{itemize}
 	\item  du signe de $a$ quand $x\in ]\minf;x_1[\cup]x_2;\pinf[$ \; (on suppose $ x_{1} < x_{2})$;
 	\item du signe opposé de $a$ quand $x\in]x_1;x_2[$ ;
 	\item s'annule en $x_1$ et en $x_2$.
 \end{itemize}
-\begin{tikzpicture}
-\tkzTabInit{$x$/0.5,$ ax^{2}+bx+c$/0.5}{$\minf$, $ x_{1} $, $x_{2}$,$\pinf$}
-\tkzTabLine{,\text{signe\ de} \ $ a $,z, \text{signe\ de} \ $ -a $,z,\text{signe\ de}\ $ a $}
-\end{tikzpicture}
+$$\begin{array}{c|ccccccc}
+x & -\infty & & x_1 & & x_2 & & +\infty \\
+\hline
+& & & \mid & & \mid & & \\
+ax^2 + bx + c & \text{signe de } a & & 0 & \text{signe de } (-a) & 0 & & \text{signe de } a \\
+\end{array}$$
 \end{itemize}
 \end{property}
 
@@ -179,10 +184,15 @@ Résolvons  dans $ \Rr $  les inéquations suivantes.
  
   $ \textbf{1.} \; 4x^{2}-x+2 \leq 0 $\qquad On a:\; $ \Delta=(-1)^{2}-4\times4\times2=1-32=-31 $ 
 
-\begin{tikzpicture}[scale=0.8]
-\tkzTabInit{$x$/0.5,$4x^{2}-x+2 $/0.5}{$\minf$,$\pinf$}
-\tkzTabLine{,+,}
-\end{tikzpicture}
+$$\begin{array}{c|ccc}
+\hline
+x & -\infty & & +\infty \\
+\hline
+& & & \\
+4x^2 - x + 2 & & + & \\
+& & & \\
+\hline
+\end{array}$$
 
 $ S=\varnothing $
 
@@ -190,10 +200,15 @@ $ S=\varnothing $
 $ \textbf{2.}\; -x^{2}+x+2 >0$ \qquad On a:\; $ \Delta=1^{2}-4\times(-1)\times2=1+8=9 $\\ 
 On trouve $x_1= \dfrac{-1-3}{-2}=2$ \;et\; $x_2=\dfrac{-1+3}{-2}=-1 $
 
-\begin{tikzpicture}[scale=0.8]
-\tkzTabInit{$x$/0.5,$ -x^{2}+x+2$/0.5}{$\minf$, $ -1 $,$2$,$\pinf$}
-\tkzTabLine{,-,z,+,z,-}
-\end{tikzpicture}
+$$\begin{array}{c|ccccccc}
+\hline
+x & -\infty & & -1 & & 2 & & +\infty \\
+\hline
+& & & \mid & & \mid & & \\
+-x^2 + x + 2 & - & & 0 & + & 0 & & - \\
+& & & & & & & \\
+\hline
+\end{array}$$
 
 $ S=\intoo{-1}{2} $
 
@@ -202,11 +217,15 @@ $ S=\intoo{-1}{2} $
 $ \textbf{3.}\;  x^{2}-\sqrt{28}x+7 > 0$ \qquad On a:\; $ \Delta=(-\sqrt{28})^{2}-4\times 1\times7=28-28=0 $\\
 Donc \; $ x_{0}=\dfrac{\sqrt{28}}{2} =\dfrac{2\sqrt{7}}{2}=\sqrt{7}$
 
-\begin{tikzpicture}[scale=1.5]
-\tkzTabInit{$x$/0.5,$\scriptsize{x^{2}-\sqrt{28}x+7}$/0.5}{$\minf$,$\sqrt{7}$, $\pinf$}
-\tkzTabLine{,+,z,+,}
-\end{tikzpicture}
-
+$$\begin{array}{c|ccccc}
+\hline
+x & -\infty & & \sqrt{7} & & +\infty \\
+\hline
+& & & \mid & & \\
+x^2 - \sqrt{28}x + 7 & + & & 0 & & + \\
+& & & & & \\
+\hline
+\end{array}$$
 \vspace*{0.3cm}
 $ S=\intoo{\minf}{\sqrt{7}}\cup \intoo{\sqrt{7}}{\pinf}$
 
@@ -299,7 +318,7 @@ On pourrait aussi vous demander  d'étudier le signe  $ P(x) $ à l'aide d'un ta
 
 \begin{remark}
 
- On pourrait aussi utliser les méthodes vues en classe de première : la division ou l'identification des coefficients.
+ On pourrait aussi utiliser les méthodes vues en classe de première : la division ou l'identification des coefficients.
 \end{remark}
  
   %</content>
