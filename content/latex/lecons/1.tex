@@ -132,7 +132,7 @@ Pour la fonction $f : x\mapsto 3+ \frac{5}{x-1} $
 
 \subsubsection*{Asymptote oblique}
 \begin{definition}
-Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=mx+p$.
+Soit $f$ une fonction et $ \Delta $ la droite d'équation  $y=ax+b$.
 
 Si $\displaystyle \lim_{x \to \infty}\left(f(x)-(ax+b)\right)=0$  alors  la droite  d'équation  $y=ax+b$  est une  asymptote oblique  à la courbe de $f$ en  $\infty$.
 \end{definition}
@@ -150,11 +150,11 @@ Pour la fonction $f : x\mapsto 2x+5- \frac{2x}{x-1} $
 la droite d'équation   $y = 2x+3 $ est asymptote oblique à sa courbe en $ \infty$ car  $\displaystyle \lim_{x \to \infty}\frac{2x}{x-1}=2$.
 \end{example}
 \subsubsection*{Position relative d'une courbe et son asymptote}
-Pour étudier la position relative de la  courbe $\mathcal{C} $ d'une fonction $ f $ et  de  son asymptote $ \Delta : y=ax+b $, on étudie le signe de la différence $ f(x)-ax-b$.
+Pour étudier la position relative de la  courbe $\mathcal{C} $ d'une fonction $ f $ par rapport à son asymptote $ \Delta : y=ax+b $, on étudie le signe de la différence $ f(x)-ax-b$.
 \begin{itemize}
 \item  Si $ f(x)-ax-b > 0$ alors  $ \mathcal{C}  $ est  située  au-dessus de la courbe de $ \Delta $ 
 \item  Si $ f(x)-ax-b< 0$ alors la courbe de $\mathcal{C}$ est  située  en-dessous de la courbe de $\Delta$ 
-\item  Si $ f(x)-ax-b< 0$ alors la courbe de $\mathcal{C}$ et  $\Delta$  sont sécantes.
+\item  Si $ f(x)-ax-b= 0$ alors la courbe de $\mathcal{C}$ et  $\Delta$  sont sécantes.
 \end{itemize}
 On tiendra compte de l'ensemble sur lequel on doit étudier la position relative des deux courbes.
 \subsubsection{Recherche de branches infinies}
@@ -238,7 +238,7 @@ Or $ f(1)= \frac{1}{2}$  d'où $ f(x) $ existe si et seulement, si  $x\in \intfo
 $ \displaystyle\lim_{x \to 1}f(x)=\displaystyle\lim_{x \to 1}\frac{\sqrt{x}-1}{x-1}= \displaystyle\lim_{x \to 1}\frac{1}{\sqrt{x}+1}= \frac{1}{2}$ \\donc $\displaystyle \lim_{x \to 1}f(x)=f(1)=\frac{1}{2}$\quad d'où $ f $ est continue en $ 1. $
 \end{example}
 
-\subsubsection*{Propriété:  Continuité à droite - continuité à gauche}
+\subsubsection*{ Continuité à droite $=$ continuité à gauche}
 \begin{property}
 $ f $ est continue en $ a $ si et seulement, si  $\displaystyle \lim_{x \to a^{+}}f(x)=\displaystyle\lim_{x \to a^{-}}f(x)=f(a) $. 
 \end{property}
@@ -301,9 +301,10 @@ $ \centerdot $ Si $ f^{'}_{d}(a) \neq f^{'}_{g}(a) $ alors $ f $ n'est pas déri
 $ y=f^{'}(a)(x-a)+ f(a) $.
 
 
-\begin{remark}
+\textbf{NB}
+
  $  f'(a)=0$  si et seulement si $ \mathcal{C} $ admet au point d'abscisse  $ a $ une tangente horizontale d'équation $ y=f(a). $ \\ Dans ce cas, le point $A(a,f(a))$  est  soit un \textbf{extremum} ( maximum ou minimum) soit un \textbf{point d'inflexion}.
- \end{remark}
+
  \item Si $ f $ est dérivable  à droite et à gauche  de $ a $ telle que $ f^{'}_{d}(a)\neq f'_{g}(a) $ alors $ \mathcal{C} $ admet au  point $A(a,f(a))$ deux demi-tangentes de pentes respectives  $ f'_{d}(a)$ et $ f'_{g}(a) $: le point $A$ est un point \textbf{anguleux}.
  \item Détaillons les cas de l'infini.
 
@@ -334,11 +335,11 @@ verticale dirigée vers le haut. \\
 \item Si $ \displaystyle\lim_{x \to a^{+}} \frac{f(x)-f(a)}{x-a}=\pinf $   et $ \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales de même équation $ x=a $ l'une dirigée vers le haut et l'autre vers le bas.  A est un point d'inflexion.
 \item Si $ \displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\pinf $   et $ \displaystyle \lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a}=\minf $ alors la courbe de $ f $ admet  au  point $ A (a, f (a)) $ deux demi-tangentes verticales de même équation $ x=a $ l'une dirigée vers le haut et l'autre vers le bas.  A est un point d'inflexion à tangente verticale.
 \end{enumerate}
-\subsection{Continuité et dérivabilité globale}
+\subsection{Continuité et dérivabilité sur un intervalle}
 \begin{definition}
 \begin{itemize}
 \item  $ f $ est continue  ( resp. dérivable ) sur l'intervalle  $ I $ si elle est continue ( resp. dérivable ) en tout réel  $x \in I. $
-\item 	La fonction qui à tout réel $ x $  de $ I $ associe le nombre dérivé de $ f $ en $ x $ s'appelle \textbf{\color{magenta} fonction dérivée  ou dérivée} de $ f $ et est notée $ f': x\mapsto f'(x) $. \\
+\item 	La fonction qui à tout réel $ x $  de $ I $ associe le nombre dérivé de $ f $ en $ x $ s'appelle \textbf{ fonction dérivée  ou dérivée} de $ f $ et est notée $ f': x\mapsto f'(x) $. \\
   L'ensemble des réels $ x $ pour lesquels $f'(x) $ existe est appelé \textbf{ ensemble ou domaine de dérivabilité de $f$}: c'est le domaine de définition de $ f'. $
   \end{itemize}
 \end{definition}
@@ -427,19 +428,19 @@ Pour tout   $ x\neq 0 $  \quad :    $h'(x)=\frac{1}{x^{2}}\sin \frac{1}{x} $
 \end{example}
 \begin{corollary}
 $ \centerdot $ Si $ f $ est dérivable  (resp. continue) sur $ I $  et $ g $ dérivable sur $ \Rr $  alors $ g \circ f $ est dérivable (resp. continue) sur $ I. $\\
-$ \centerdot $ Si $ f $ est \textbf{\color{magenta} continue et positive} sur $ I $ alors $ \sqrt{f} $ est continue sur $ I $.\\
-$ \centerdot $ Si $ f $ est \textbf{\color{magenta} dérivable et strictement positive } sur $ I $ alors $ \sqrt{f} $ est dérivable sur $ I $.
+$ \centerdot $ Si $ f $ est \textbf{ continue et positive} sur $ I $ alors $ \sqrt{f} $ est continue sur $ I $.\\
+$ \centerdot $ Si $ f $ est \textbf{ dérivable et strictement positive } sur $ I $ alors $ \sqrt{f} $ est dérivable sur $ I $.
 \end{corollary}
-\colorbox{yellow!60!}{ D'ailleurs la fonction $ \sqrt{f} $ n'est jamais dérivable aux zéros de $ f. $}
+
 
 \subsubsection*{Formules de dérivations}
 Soient $u $ et $v $ deux fonctions dérivables, $ r\in\Zze $ et $ k\in\Rr $\\
 
 \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}
 \hline 
-\textbf{\color{magenta}Fonction }& $ ku $ &$ u+v $ & $ uv $ & $\frac{u}{v}$ & $\frac{1}{v} $ & $ \sqrt{u} $ &  $ u^{r} $ \\     
+\textbf{Fonction }& $ ku $ &$ u+v $ & $ uv $ & $\frac{u}{v}$ & $\frac{1}{v} $ & $ \sqrt{u} $ &  $ u^{r} $ \\     
 \hline 
-\textbf{\color{magenta}Dérivée} & $ ku' $ & $ u'+v' $ & $u'v+ v'u  $ & $ \frac{u'v- v'u }{v^{2}} $ &  $- \frac{v'}{v^{2}} $ & $ \frac{u'}{2\sqrt{u}} $ & $ ru'u^{r-1} $  \\    
+\textbf{Dérivée} & $ ku' $ & $ u'+v' $ & $u'v+ v'u  $ & $ \frac{u'v- v'u }{v^{2}} $ &  $- \frac{v'}{v^{2}} $ & $ \frac{u'}{2\sqrt{u}} $ & $ ru'u^{r-1} $  \\    
 \hline
 \end{tabularx}
 

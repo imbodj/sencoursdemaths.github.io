@@ -1,0 +1,306 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{21}{Factorisation des polynômes.}
+  
+  \subsection{Rappels sur le trinôme du second degré}
+\subsubsection*{Equations du second degré }
+\begin{definition} 
+ On appelle équation du second degré toute équation pouvant se ramener sous la forme: $ ax^{2}+bx+c=0  \quad $ avec  $ a\neq0 $.
+\end{definition}
+
+Nous  rappelons la méthode de résolution vue en classe de  seconde.
+
+Soit l'équation (E) suivante :$ \; ax^{2}+bx+c=0$.
+
+On utilise le discriminant $\; \Delta=b^{2}-4ac $.
+
+\begin{enumerate}
+\item Si $ \Delta < 0 $ alors l'équation (E) n'a  pas de  solutions et  $ ax^{2}+bx+c $ n'est pas factorisable.
+   \item Si $ \Delta = 0 $ alors l'équation (E) a  une seule  solution $x_{0}=-\dfrac{b}{2a}$    et   $ ax^{2}+bx+c= a\paren{x-x_{0}}^{2}$ 
+\item Si $ \Delta > 0 $ alors l'équation (E) a deux solutions (ou racines) distinctes:
+
+
+$ x_{1}=\dfrac{-b-\sqrt{\Delta}}{2a}$  ;  $x_{2}=\dfrac{-b+\sqrt{\Delta}}{2a}\quad$ et  $ ax^{2}+bx+c= a\paren{x-x_{1}}\paren{x-x_{2}}$ 
+\end{enumerate}
+
+
+\begin{remark}
+
+ Si l'équation du  second degré est incomplète du type  $ax^{2}+bx=0 $  ou    $ ax^{2}+c=0$ alors il est inutile de calculer $ \Delta $ : on peut faire une factorisation pour trouver les racines.
+\end{remark}
+
+\begin{example}
+
+Résolvons dans $ \Rr $  les équations suivantes puis factoriser le trinôme figurant au 1{\ier} membre.
+\begin{multicols}{3}
+\begin{enumerate}
+\item $ 3x^{2}-2x-16=0 $
+ \item $ -5x^{2}+x-1=0 $
+ \item $ -4x^{2}+20x-25=0 $
+   \item $ 2x^{2}+3x-1=0 $
+    \item $ 7x^{2}+3x=0 $
+\end{enumerate}
+\end{multicols}
+ \end{example}
+ 
+
+  \begin{enumerate}
+\item $ 3x^{2}-2x-16=0 $
+
+On a : $ \Delta=(-2)^{2}-4\times3 (-16)=4-4(-48) =4+192=196$.
+
+Donc $ \Delta>0 $ \; et \; $\sqrt{\Delta}=14$.
+
+$ x_{1} =\dfrac{2-14}{6}=\dfrac{-12}{6}=-2$ \;  et\;  $ x_{2} =\dfrac{2+14}{6}=\dfrac{16}{6}=\dfrac{8}{3}$  \; ainsi :\; $ S=\accol{-2,\dfrac{8}{3} }$
+
+Factorisation:\; $ 3x^{2}-2x-16=3\paren{x-\dfrac{8}{3}}\paren{x+2} =\paren{3x-8}\paren{x+2}$
+ \item $ -5x^{2}+x-1=0 $
+ 
+ On a : $ \Delta=(1)^{2}-4\times(-5)(-1)=1-20 =-19$
+ 
+ Donc $ \Delta<0 $ \; ainsi\;  $ S=\emptyset $ et on ne peut  pas factoriser $ -5x^{2}+x-1 $
+ \item $ -4x^{2}+20x-25=0 $
+ 
+  On a : $ \Delta=(20)^{2}-4\times (-4)(-25)=400-400 =0$
+  
+Donc $ \Delta=0 $:\;  il y a une seule solution $ x_{0}=\dfrac{-20}{-8}=\dfrac{5}{2}$ \; ainsi \;$ S=\accol{\dfrac{5}{2} }$
+
+Factorisation:\; $ -4x^{2}+20x-25=-4\paren{x-\dfrac{5}{2}}^{2}$
+    \item $ 7x^{2}+3x=0 $.
+    
+    Ici, il est inutile de calculer $ \Delta $.
+    
+   On a:\;   $ 7x^{2}+3x=x\paren{7x+3}=0 $
+   
+   Donc \; $ x=0$ \; ou \; $7x+3=0 $\; (produit de facteurs nul)
+   
+   soit $ x=0 $\; ou \; $ x=-\dfrac{3}{7} $ \; et\; $ S=\accol{0,-\dfrac{3}{7} }$
+   
+   Factorisation:\;   déjà faite \;$ 7x^{2}+3x=x\paren{7x+3}.$
+\end{enumerate}
+
+ 
+
+\subsection*{Somme et produit des racines}
+\begin{property}
+\begin{itemize}
+\item  Si l'équation $ax^2+bx+c=0$ \;a deux racines distinctes ou confondues (c'est-à-dire  $ \Delta  \geq 0  $),\; alors leur somme \; :  $ x_1+x_2=-\dfrac{b}{a} $ \;et\; leur produit \; : $ x_1 \times x_2=\dfrac{c}{a} $.
+
+\item  Réciproquement, si deux nombres ont pour somme S et pour produit P, alors ils sont les solutions de l'équation du second degré : $ X^{2} - SX + P = 0 $    ou  du système  $ \begin{cases} x+y=S \\ xy=P \end{cases} $.
+  \end{itemize}
+\end{property}
+\begin{example}
+
+Résolvons dans $ \Rr^{2} $ le système suivant:\; $ \begin{cases} x+y=5 \\ xy=6 \end{cases} $.
+ \end{example}
+
+ On a:\; $ S=5 $ et $ P=6 $
+ 
+   Résoudre un tel système, revient à résoudre l'équation $X^{2} - 5X + 6 = 0   $.
+   
+On trouve  $\Delta= 25- 24=1~~~\text{et} ~~ x_{1}=3~,~~x_{2}=2$.\; (faire les calculs).
+
+Les solutions du système  sont les couples $(2,3) $ et $(3,2) $.
+
+
+\subsection*{Equations bicarrées}
+
+\begin{definition}
+
+On appelle équation bicarrée, toute équation (E) pouvant se ramener sous la forme:      $ ax^{4}+bx^{2} +c=0$. 
+\end{definition}
+
+\medskip
+Pour résoudre une telle équation, on procède par un changement d'inconnue en posant $ X=x^{2} $ qui mène à l'équation du  second degré  (E'): $ aX^{2}+bX +c=0$, ensuite on résout si possible les équations d'inconnue $ x $ suivantes ; $ x^{2}=X_{1} $   et $ x^{2}=X_{2} $ où $X_{1} $ et $ X_{2}$ sont les solutions possibles (E').
+
+\begin{example}
+
+Soit à résoudre l'équation: $ x^{4}-4x^{2}+3=0 $
+\end{example}
+
+En posant $ X=x^{2} $ ,\;l'équation devient  $ X^{2}-4X+3=0 $.\\Après calcul, on trouve comme solutions:\;  $ X_{1} =1$\;  et\;  $ X_{2}=3 $.
+\medskip
+
+On a  $ x^{2}=1 $ soit $ x=1 $ ou $ x=-1 $
+
+\medskip
+On a  $ x^{2}=3 $ soit $ x=\sqrt{3} $ ou $ x=-\sqrt{3} $ 
+
+\medskip
+D'où  $ S=\accol{-\sqrt{3},\;\sqrt{3},\;-1,\;1} $
+
+
+\subsubsection*{Signe du trinôme $ax^2+bx+c$}
+\begin{property}
+
+Soit $ax^2+bx+c$ un trinôme  du second degré.
+\begin{itemize}
+	\item[$ \bullet $] Si $ \Delta <0 $ alors $ax^2+bx+c$ est  du signe de $a$ pour tout $x\in\Rr$.
+	\renewcommand{\arraystretch}{1}
+  \[\begin{array}{|c|c|}
+\hline
+x   &\minf~~~~~~~~~~~~\qquad   \qquad ~~~~\pinf\\ 
+\hline
+ ax^{2}+bx+c &   \text{signe\ de\ a }\\
+\hline
+\end{array}\]
+	\item[$ \bullet $] Si $ \Delta =0 $ alors $ax^2+bx+c$ est  du signe de $a$ pour tout $x\neq-\dfrac{b}{2a}$ et s'annule en $-\dfrac{b}{2a}$.
+	
+	\begin{tikzpicture}
+\tkzTabInit{$x$/0.5,$ ax^{2}+bx+c$/0.5}{$\minf$,  $-\tfrac{b}{2a}$,$\pinf$}
+\tkzTabLine{,\text{signe\ de} \ $ a $,z,\text{signe\ de}\ $ a $}
+\end{tikzpicture}
+	\item[$ \bullet $] Si $ \Delta  > 0 $ alors  $ax^2+bx+c$ est :
+\begin{itemize}
+	\item  du signe de $a$ quand $x\in ]\minf;x_1[\cup]x_2;\pinf[$ \; (on suppose $ x_{1} < x_{2})$;
+	\item du signe opposé de $a$ quand $x\in]x_1;x_2[$ ;
+	\item s'annule en $x_1$ et en $x_2$.
+\end{itemize}
+\begin{tikzpicture}
+\tkzTabInit{$x$/0.5,$ ax^{2}+bx+c$/0.5}{$\minf$, $ x_{1} $, $x_{2}$,$\pinf$}
+\tkzTabLine{,\text{signe\ de} \ $ a $,z, \text{signe\ de} \ $ -a $,z,\text{signe\ de}\ $ a $}
+\end{tikzpicture}
+\end{itemize}
+\end{property}
+
+\begin{example}
+Résolvons  dans $ \Rr $  les inéquations suivantes.
+\begin{multicols}{3}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item  $ 4x^{2}-x+2 \leq 0 $
+\item  $ -x^{2}+x+2 >0 $
+\item  $ x^{2}-\sqrt{28}x+7 > 0 $
+  \end{enumerate}
+\end{multicols}
+ \end{example}
+ 
+  $ \textbf{1.} \; 4x^{2}-x+2 \leq 0 $\qquad On a:\; $ \Delta=(-1)^{2}-4\times4\times2=1-32=-31 $ 
+
+\begin{tikzpicture}[scale=0.8]
+\tkzTabInit{$x$/0.5,$4x^{2}-x+2 $/0.5}{$\minf$,$\pinf$}
+\tkzTabLine{,+,}
+\end{tikzpicture}
+
+$ S=\varnothing $
+
+\vspace*{0.5cm}
+$ \textbf{2.}\; -x^{2}+x+2 >0$ \qquad On a:\; $ \Delta=1^{2}-4\times(-1)\times2=1+8=9 $\\ 
+On trouve $x_1= \dfrac{-1-3}{-2}=2$ \;et\; $x_2=\dfrac{-1+3}{-2}=-1 $
+
+\begin{tikzpicture}[scale=0.8]
+\tkzTabInit{$x$/0.5,$ -x^{2}+x+2$/0.5}{$\minf$, $ -1 $,$2$,$\pinf$}
+\tkzTabLine{,-,z,+,z,-}
+\end{tikzpicture}
+
+$ S=\intoo{-1}{2} $
+
+
+\vspace*{0.5cm}
+$ \textbf{3.}\;  x^{2}-\sqrt{28}x+7 > 0$ \qquad On a:\; $ \Delta=(-\sqrt{28})^{2}-4\times 1\times7=28-28=0 $\\
+Donc \; $ x_{0}=\dfrac{\sqrt{28}}{2} =\dfrac{2\sqrt{7}}{2}=\sqrt{7}$
+
+\begin{tikzpicture}[scale=1.5]
+\tkzTabInit{$x$/0.5,$\scriptsize{x^{2}-\sqrt{28}x+7}$/0.5}{$\minf$,$\sqrt{7}$, $\pinf$}
+\tkzTabLine{,+,z,+,}
+\end{tikzpicture}
+
+\vspace*{0.3cm}
+$ S=\intoo{\minf}{\sqrt{7}}\cup \intoo{\sqrt{7}}{\pinf}$
+
+\subsection{Factorisation d'un polynôme}
+\begin{definition}
+
+Dire que le réel  $ \alpha $   est une  \textbf{racine}  ou un  \textbf{zéro} d'un polynôme  $ P(x) $,  signifie   que : $ P(\alpha)=0 $ .
+\end{definition}
+
+\begin{remark}
+
+ Déterminer les racines d'un polynôme $ P(x) $, c'est résoudre l'équation $ P(x)=0 $. 
+\end{remark}
+
+Nous admettons le théorème  suivant.
+
+\begin{theorem}
+
+Soit $ P(x) $  un polynôme  et $ \alpha $  un réel.
+
+$ \alpha $  est une racine de $ P(x) $  si et seulement si $ P(x) $  est factorisable par $ \paren{x-\alpha}$.\\ Dans ce cas il existe un polynôme $ Q(x) $ tel que : $  P(x)=\paren{x-\alpha}Q(x) $.
+
+$ Q(x) $  est le quotient de  $ P(x) $ par $ \paren{x-\alpha}$  et $ d^{\circ}Q=d^{\circ}P-1 $.
+
+\end{theorem}
+\begin{remark}
+
+ Si $\alpha $ et $\beta $ sont deux racines de  $ P(x) $  alors  $ P(x) $ est factorisable par $ \paren{x-\alpha} \paren{x-\beta} $ et dans ce cas il existe un polynôme $ Q(x)$  tel que $  P(x)=\paren{x-\alpha}\paren{x-\beta}Q(x) $  et $ d^{\circ}Q=d^{\circ}P-2 $.
+\end{remark}
+\begin{example}
+
+Considérons le polynôme suivant:\;$ P(x)=  2x^{3}-5x^{2}-6x+9 $
+
+ Montrons que $ P(x) $  est factorisable par $ (x-3) $.
+ 
+ Ensuite déterminons le polynôme quotient $ Q(x) $ tel que: $  P(x)=\paren{x-3}Q(x) $ puis factorisons $ P(x) $ .
+\end{example}
+
+\begin{itemize}
+\item  On a $ P(3)=  2\times 3^{3}-5\times 3^{2}-6\times 3+9 = 54-45 -18 +9=9-9=0$
+
+Donc 3 est une racine de $ P(x) $  c'est-à-dire que $ P(x) $  est factorisable par $ \paren{x-3}.$ \\D'après le théorème précédent, il existe un polynôme $ Q(x) $ tel que :                         $  P(x)=\paren{x-3}Q(x) $.
+
+
+ \item  Or  $ P(x) $  est de degré trois donc $ Q(x) $ sera de degré  deux. Par conséquent nous devons déterminer trois réels $ a$, $ b $  et $ c$ tels que 
+$  P(x)=\paren{x-3}\paren{ax^{2} +bx +c} $ 
+\end{itemize}
+ Nous proposons ici la  méthode  Hörner\footnote{William George Hörner mathématicien allemand(1819-1845}  pour  déterminer de $ Q(x) $.
+ \bigskip
+ 
+$ \blacktriangleright $ \textbf{ Méthode de   Hörner}
+ 
+
+On utilise la disposition suivante appelée méthode de Hörner:
+\renewcommand{\arraystretch}{1.3}
+\[\begin{array}{|c|c|c|c|c|}
+\hline   & 2 & -5 &  -6 &  9  \\
+\hline
+3  & \boxtimes   & 6 & 3 & -9   \\
+\hline
+ & 2 & 1 & -3 & 0 \\
+\hline
+\end{array}\]
+Les valeurs $ 2 $, $ 1 $ et $ -3 $ figurant dans la dernière ligne, correspondent respectivement à celles des coefficients   $a ,$ $ b $ et  $c $ de \; $ Q(x). $  Soit \; $ Q(x)=2x^{2}+x-3 $.
+
+$ P(\alpha) $  correspond à la valeur  $ 0 $ figurant dans la dernière case de la dernière ligne du tableau de Hörner. Cette valeur n'est pas nécessairement nulle.\\ Ce tableau permet donc de calculer $ P(\alpha) $ et de trouver en même temps les coefficients du polynôme 
+$ Q(x). $ 
+\bigskip
+
+\textbf{Factorisation de $ P(x) $ }
+
+Maintenant factorisons au mieux $ P(x) $.
+
+On a : $  P(x)=\paren{x-3}\paren{2x^{2}+x-3} $ \; (attention ceci n'est pas la factorisation demandée  !)
+
+On va  continuer la factorisation  \textbf{si possible} dans\; $2x^{2}+x-3$.
+
+$ \Delta=1-4\times2(-3)=25 $\; et $ x_{1}=\dfrac{-1-5}{4}=-\dfrac{3}{2} $,\; $ x_{2}=\dfrac{-1+5}{4}=1 $.\\Donc \;$2x^{2}+x-3=2\paren{x+\dfrac{3}{2}}\paren{x-1}=\paren{2x+3}\paren{x-1}$. \; (attention ceci n'est pas la factorisation demandée  !)\\
+
+On remplace $ \paren{2x^{2}+x-3} $  par $ \paren{2x+3}\paren{x-1} $ dans $  P(x) $.\\
+Finalement \; $ P(x)=\paren{x-3}\paren{2x+3}\paren{x-1} $\; cette expression est la factorisation de $ P(x) $.
+
+\bigskip
+
+\begin{remark}
+ Dans la démarche précédente, on a trouvé  toutes les racines du polynôme $ P(x) $.  C'est-à-dire:\; $ 3$,  $ -\dfrac{3}{2} $ et $1 $.
+ 
+On pourrait aussi vous demander  d'étudier le signe  $ P(x) $ à l'aide d'un tableau de signes puis de résoudre une inéquation comme nous le verrons dans les exercices.
+\end{remark}
+
+\begin{remark}
+
+ On pourrait aussi utliser les méthodes vues en classe de première : la division ou l'identification des coefficients.
+\end{remark}
+ 
+  %</content>
+\end{document}

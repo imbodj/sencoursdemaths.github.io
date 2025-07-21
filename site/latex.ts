@@ -206,7 +206,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
       data: [
         {
           directory: 'developpements',
-          title: 'Développements',
+          title: 'Exercices',
         },
       ],
     },
@@ -223,7 +223,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
         },
         {
           directory: 'developpements',
-          title: 'Développements',
+          title: 'Exercices',
         },
       ],
       header: `\\renewcommand{\\dev}[1]{%

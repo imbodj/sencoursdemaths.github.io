@@ -45,20 +45,7 @@ export const clearBanners = () => {
 export const useBanner = (banner: Banner) => {
   const banners = useBanners()
   banners.value.push(banner)
-}
-
-/**
- * Adds a PDF-related banner to the list.
- * @param url - The URL to the PDF.
- */
-
-
-  export const usePdfBanner = (url: string) => useBanner({
-   type: BannerType.pdf,
-   message: `Le contenu de cette page est disponible en version PDF.
-   Vous pouvez le télécharger <a href="${url}">ici</a>.`,
-})
-
+ }
 /**
  * Adds a caveats-related banner to the list.
  * @param url - The URL for reporting issues or suggesting improvements.
