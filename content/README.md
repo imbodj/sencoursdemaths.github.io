@@ -2,13 +2,13 @@
 
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant les mathématiques au lycée. Vous trouverez donc sur ce site :
 
-* Mes [plans de leçons](https://imbodj.github.io/SenCoursDeMaths/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
-* Mon choix des [exercices](https://imbodj.github.io/SenCoursDeMaths/developpements/).
-* Quelques [fiches](https://imbodj.github.io/SenCoursDeMaths/fiches/) de révision.
-* Une liste personnelle de [conseils généraux](https://imbodj.github.io/SenCoursDeMaths/fiches/conseils-generaux/).
+* Mes [plans de leçons](http://sencoursdemaths.com/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
+* Mon choix des [exercices](http://sencoursdemaths.com/developpements/).
+* Quelques [fiches](http://sencoursdemaths.com/fiches/) de révision.
+* Une liste personnelle de [conseils généraux](http://sencoursdemaths.com/fiches/conseils-generaux/).
 
-En espérant que le contenu de ce site vous aide dans vos études en mathématiques; si vous avez une quelconque remarque
-/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://imbodj.github.io/#contact) présent sur mon site.
+En espérant que le contenu de ce site puisse être utile aussi bien aux élèves qu’aux enseignants dans l’étude et l’enseignement des mathématiques. Si vous avez une remarque, une suggestion ou une correction à me proposer, n’hésitez pas à me contacter via [le formulaire](http://sencoursdemaths.com/#contact) disponible sur le site.
+
 
 ## Liens utiles
 

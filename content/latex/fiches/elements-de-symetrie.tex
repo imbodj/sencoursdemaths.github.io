@@ -83,9 +83,7 @@ Pour représenter graphiquement une fonction $ f $ de période $ T $, il suffit 
     % Fonction sin(x) sur [xmin, -π] en noir
     \draw[black, thick, domain=\xmin:-3.14159, samples=200, smooth] 
         plot (\x, {sin(\x r)});
-        
 \end{tikzpicture}
-
 
 \textbf{\color{blue}Cas des fonctions trigonométriques}\\
 $ - $ Les fonctions $x\mapsto\cos x $ et $x\mapsto\sin x $ sont périodiques de période $ 2\pi $  c'est à dire: \colorbox{green!20!}{ $ \cos (x+2\pi)=\cos x $ et  $ \sin (x+2\pi)=\sin x $ }\\
@@ -93,26 +91,26 @@ $ - $ Les fonctions $x\mapsto\cos x $ et $x\mapsto\sin x $ sont périodiques de 
 $ - $ La fonction $x\mapsto\tan x $ est périodique de période $ \pi $ c'est à dire:       \colorbox{green!20!} {$ \tan (x+\pi)=\tan x $}\\
 
 \colorbox{magenta!20!}{Cas général }: \\
-Les fonctions $x \mapsto \cos (ax+b) $ et $x \mapsto \sin (ax+b) $ ont pour période $ T=\frac{2\pi}{\abs{a}}$ \\
-La fonction $x \mapsto \tan (ax+b) $ a pour période $ T=\frac{\pi}{\abs{a}}$ 
+Les fonctions $x \mapsto \cos (ax+b) $ et $x \mapsto \sin (ax+b) $ ont pour période $ T=\dfrac{2\pi}{\abs{a}}$ \\
+La fonction $x \mapsto \tan (ax+b) $ a pour période $ T=\dfrac{\pi}{\abs{a}}$ 
 
 \subsubsection*{Réduction de domaine d'étude}
 
 \begin{itemize}
-\item[\textbullet] Si $ f $ est T-périodique alors on peut restreindre le domaine d'étude à tout domaine du type $ \intff{a}{a+T}\cap D_{f} $ pour tout réel $ a, $ ainsi on obtient la courbe complète de $ f. $
+\item[\textbullet] Si $ f $ est T-périodique alors on peut restreindre le domaine d'étude à tout domaine du type $ \intff{a}{a+T}\cap D_{f} $ pour tout réel $ a, $ ainsi on obtient la courbe complète de $ f$ sur ce domaine.
 \item[\textbullet] Si $ f $ est T-périodique   et paire ( resp. impaire ) alors on peut restreindre le domaine d'étude au domaine  $ \intff{0}{\frac{T}{2}}\cap D_{f} $  ainsi on obtient la courbe complète sur $ \intff{-\frac{T}{2}}{\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe des ordonnées (resp. par symétrie par rapport à O origine du repère ).
 \item[\textbullet] Si $ f $ est T-périodique   et $ \mathcal{C} $  admet un axe de symétrie $ \Delta $ ( resp. un centre de symétrie $ I $ ) alors on peut restreindre le domaine d'étude au domaine \\ $ \intff{a}{a+\frac{T}{2}}\cap D_{f} $ ou au domaine  $ \intff{a-\frac{T}{2}}{a}\cap D_{f} $ ainsi on obtient la courbe complète sur $ \intff{a-\frac{T}{2}}{a+\frac{T}{2}}\cap D_{f} $ par symétrie par rapport à l'axe $ \Delta $  (resp. par symétrie par rapport un point $ I $ ).
 \end{itemize}
 
  \begin{exercice}
-On considère  la fonction $ f $ définie par: $ f(x)= \frac{\sin x }{\sin x+\cos x} $ 
+On considère  la fonction $ f $ définie par: $ f(x)= \dfrac{\sin x }{\sin x+\cos x} $ 
 \begin{enumerate}
 \item Déterminer $ D_{f} $ et  puis montrer que  $ f$ est de période  $ \pi. $
 \item Montrer que le point  $ A(-\frac{\pi}{4}; \frac{1}{2}) $ est un centre de symétrie de $ \mathcal{C}_{f} $. En déduire un domaine simple pour l'étude de $ f $ 
 \end{enumerate}
  \end{exercice}
 
-\textbf{\color{blue}Solution}
+\begin{proof}
 \begin{enumerate}
 \item $ f(x) $ existe    $\Leftrightarrow \sin x+\cos x \neq 0  $\\
  $\Leftrightarrow \sin x \neq -\cos x $\\
@@ -134,6 +132,6 @@ $ \intff{-\frac{\pi}{4}}{-\frac{\pi}{4}+\frac{\pi}{2}}\cap D_{f} =\intff{-\frac{
  
  
 \end{enumerate}
-
+\end{proof}
   %</content>
 \end{document}

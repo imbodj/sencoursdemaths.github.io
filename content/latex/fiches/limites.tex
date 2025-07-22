@@ -2,7 +2,7 @@
 \everymath{\displaystyle}
 \begin{document}
   %<*content>
-  \sheet{algebra}{limites}{Limites}
+  \sheet{algebra}{limites}{Limites }
  \summary{}
      
     \subsection{Limite d'une fonction composée}
@@ -11,18 +11,18 @@
         
    \medskip
 \begin{property}
-Si  $ \displaystyle\lim_{x \to a}f(x)=b \;$ et $\;   \displaystyle\lim_{x \to b}g(x)=c \;$ alors $ \;   \displaystyle\lim_{x \to a}g\paren{f(x)}=c $\\
+Si  $ \displaystyle\lim_{x \to a}f(x)=b \;$ et $\;   \displaystyle\lim_{x \to b}g(x)=c \;$ alors $ \;   \displaystyle\lim_{x \to a}g\paren{f(x)}=c $
 \end{property}
 
  \medskip
        \begin{example}
-      $\text{Calculons}\; \displaystyle\lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)$
+      $\text{Calculons}\; \displaystyle\lim_{x \to +\infty} \cos\left(\dfrac{\pi x}{2x+1}\right)$
       
-       $ \text{La fonction} \; x \mapsto \cos\left(\frac{\pi x}{2x+1}\right)$ est la composée $ g\circ f\; $  où $\; f: x\mapsto\frac{\pi x}{2x+1}$  et $g: x \mapsto \cos x $
+       $ \text{La fonction} \; x \mapsto \cos\left(\dfrac{\pi x}{2x+1}\right)$ est la composée $ g\circ f\; $  où $\; f: x\mapsto\dfrac{\pi x}{2x+1}$  et $g: x \mapsto \cos x $
        
-        $\displaystyle\lim_{x \to +\infty} \frac{\pi x}{2x+1}= \displaystyle\lim_{x \to +\infty} \frac{\pi x}{2x }=\frac{\pi }{2} \;\; \text{et }\;\; \displaystyle\lim_{x \to \frac{\pi }{2}} \cos x=0$
+        $\displaystyle\lim_{x \to +\infty} \dfrac{\pi x}{2x+1}= \displaystyle\lim_{x \to +\infty} \dfrac{\pi x}{2x }=\dfrac{\pi }{2} \;\; \text{et }\;\; \displaystyle\lim_{x \to \dfrac{\pi }{2}} \cos x=0$
         
-      $\text{Donc}\; \displaystyle\lim_{x \to +\infty} \cos\left(\frac{\pi x}{2x+1}\right)=0$
+      $\text{Donc}\; \displaystyle\lim_{x \to +\infty} \cos\left(\dfrac{\pi x}{2x+1}\right)=0$
    \end{example}
      \begin{remark}
        En pratique pour calculer $\displaystyle\lim_{x \to a}g\left(f(x)\right) $ on peut faire  un changement de variable en posant par exemple   $X=f(x) $  et la limite devient  $\displaystyle\lim_{X \to b}g(X)$.
@@ -65,5 +65,9 @@ Pour calculer $\;\displaystyle \lim_{x \to +\infty} x\sin \left(\dfrac{\pi}{x}\r
      \begin{theorem}
            $ \text{Si} \;\displaystyle\lim_{x \to a}{f^{\prime}(x)} =l\; \text{ (fini ou infini)}\;$   alors $  \; \displaystyle\lim_{x \to a}{\frac{f(x)-f(a)}{x-a}} =l$
             \end{theorem}
+            \begin{example}
+            Pour calculer   $  \;\displaystyle\lim_{x \to 1}{\dfrac{x^5+\cos(2\pi x) -2}{x-1}} $, on peut procéder comme suit:
+            \[\displaystyle\lim_{x \to 1}{\dfrac{x^5+\cos(2\pi x) -2}{x-1}}=\displaystyle\lim_{x \to 1}{\paren{x^5+\cos(2\pi x)}^{\prime}}=\displaystyle\lim_{x \to 1}{5x^{4}-2\pi\sin(2\pi x)}=5\]
+            \end{example}
   %</content>
 \end{document}

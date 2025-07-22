@@ -1,0 +1,529 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \lesson{algebra}{3}{Suites numériques (TS2)}
+
+\subsection{Généralités}
+
+\begin{definition}
+On appelle \textbf{ suite numérique} toute fonction $ u $ de  $\Nn  $  vers $ \Rr $ ou $ \Cc $.
+
+  \[ \begin{array}{lrcl}
+   u  : & \Nn  &   \longrightarrow & \Rr \\ 
+  &  n & \longmapsto & u(n)
+\end{array}\]
+ \subsection*{Notation et vocabulaire} 
+  \begin{itemize}
+  \item[\textbullet] $ u(n) $ est notée $ u_{n} $ (lire u indice $ n $) est appelé le terme d'indice $ n $ ou le terme de rang $ n $ ou terme général de la suite $ u $.
+  \item [\textbullet] La suite $ u $ est notée $ (u_{n})_{n\in\Nn}$ ou $ (u_{n})$.
+  \item [\textbullet] La suite est dite \textbf{\color{magenta} positive} (respectivement \textbf{\color{magenta}négative}) lorsque tous ses termes sont positifs (respectivement négatifs).
+  \item [\textbullet] Lorsque la suite est à valeurs dans l'ensemble $ \Cc $  ;  elle est appelée suite numérique complexe .\\
+Sauf mention contraire, nous entendons par <<  suite >> dans ce cours une suite réelle.
+ \end{itemize}
+ \end{definition} 
+
+\textbf{\color{red}Attention :} \\  
+  $(u_{n} ) $ désigne la suite alors que $ u_{n} $ désigne la valeur du terme de rang $ n $.
+ 
+ \begin{remark}
+Si les indices de la suite commencent à   partir d'un entier naturel $ k $ alors on dit que la suite est définie  à  partir du rang $ k $ ou que le domaine de définition  de la suite est l'ensemble $ I $ des entiers naturels  $ n $ tels que $ n\geq k $ .\\
+ Dans ce cas on notera la suite par $ (u_{n})_{n\geq k}$ ou  par  $ (u_{n})_{n\in I}$.
+ \end{remark}
+
+\subsection*{Modes de définition d'une suite} 
+ On distingue deux modes de définition usuels:
+ \begin{enumerate}
+  \item {\textbf{\color{blue} Suite définie par une formule explicite} }\\ 
+Une suite explicite est une suite dont le terme général s'exprime en fonction \\de $n $. Elle est du type $ u_{n} = f (n) $ où $f$ est une fonction définie sur  $ \Rrp $.
+
+\begin{example}
+Soit $ (u_{n}) $ la suite définie par :  $ u_{n} = 2n + 4 $ \\
+ Calculons les quatre premiers termes de la suite ainsi que $ u_{10} $ .
+ \end{example}
+ \textsl{Réponse} :
+ $ u_{0}=  4 $ ,\quad $ u_{1} =  6 $ ,\quad $ u_{2} =  8 $ ,\quad  $ u_{3}=  10 $\quad et \quad $ u_{10} =  44 $
+  
+
+ \item { \textbf{\color{blue} Suite définie  par une relation de récurrence }}\\ 
+ Une suite récurrente est définie par la donnée des premiers termes et la relation liant des termes consécutifs de la suite en général du type :\\$ u_{n+1} = f(u_{n}) $ ou $ u_{n} = f(u_{n-1}) $
+     
+     \begin{example}
+     
+      Soit la suite $ (u_{n})$ définie par $ u_{1}=-2 $ et $ u_{n+1} = 2u_{n}+4 $\\
+Calculons les quatre premiers termes de la suite ainsi que $ u_{10} $ .
+ \end{example}
+  \textsl{Réponse }: \\
+  $ u_{1}=  -2 $,\quad  $ u_{2}= 2u_{1}+4= -4+4=0 $,\quad $ u_{3} =  0+4= 4 $ \quad $ u_{4} =  12 $ \\
+  Pour calculer  $ u_{10} $ cette fois-ci , il faut connaître $ u_{9} $ car $ u_{10}=2u_{9}+4 $ puis pour calculer $ u_{9} $ ,il faut connaître $ u_{8} $ ... ainsi de suite pour calculer un terme il faut connaître le précédent : on dit que la suite  $ (u_{n})$ est définie par récurrence ou qu'elle est héréditaire. On ne peut calculer directement la valeur de  $ u_{10} $ contrairement à l'exemple précédent.
+ 
+\begin{remark}
+ $ \ast $ Une suite récurrente peut aussi être définie par la donnée de $u_{0}$ et $u_{1}$ et une relation de récurrence du type $u_{n+2}=f(u_{n+1} ; u_{n})$  ou $u_{n}=f(u_{n-1} ; u_{n-2}).$
+  \end{remark}
+\begin{example} 
+ La suite $ (u_{n})$ définie par : \\ $u_{0}=3 $ , $u_{1}= -1$  et  $ u_{n+2}= 2u_{n+1}-5u_{n} $
+ \end{example}
+ $ \ast $ L'objet de certains exercices est de transformer une suite  donnée par une relation de récurrence  en une suite écrite par une formule explicite pour pouvoir calculer directement la valeur d'un terme de rang donné. Pour cela on utilise une autre suite appelée suite auxiliaire qui soit arithmétique ou géométrique (qu'on verra ultérieurement). 
+  
+ 
+  \end{enumerate} 
+
+ \subsection*{Représentation graphique d'une suite récurrente}
+\textbf{\color{blue}Méthode}\\
+ On  représente les premiers termes sur un axe (celui des abscisses par exemple) en s'appuyant sur la courbe représentative de la fonction  $ f $ définissant la relation de récurrence.\\
+On procède alors ainsi :\\
+\begin{itemize}
+\item On trace les représentations graphiques de $ f$ et de la première bissectrice d'équation $ y = x $ ;
+\item On place le premier terme  $ u_{0} $ sur l'axe des abscisses;
+\item On utilise $\mathscr{C}_{f}$ pour construire $u_{1} = f (u_{0}) $ sur l'axe des ordonnées ;
+\item On reporte  $u_{1}$ sur l'axe des abscisses à l'aide de la première bissectrice, 
+\item On utilise $\mathscr{C}_{f}$  pour construire $u_{2} = f (u_{1}) $ sur l'axe des ordonnées ;
+\item  etc.\\
+\end{itemize}
+
+On obtient  un diagramme en  << escalier>> ou en << escargot >>. On peut alors faire des conjectures en termes de variation, de convergence , etc.
+ \begin{example} 
+ Prenons comme exemple la suite $(u_{n})$ définie par : \\               $u_{0} = −1$ et  $u_{n+1} = \sqrt{3u_{n}+4 }$ \quad pour tout $ n$ de $ \Nne$. \\                    Le terme général de cette suite est définie par la relation de récurrence $ u_{n+1} =  f(u_{n} )$ où $ f : x \mapsto \sqrt{3x+4}  $. 
+
+Plaçons sur l'axe des abscisses les quatre premiers termes de la suite sans les calculer.
+
+Ici la suite semble être croissante et, plus $ n$ devient grand, plus ses termes semblent se rapprocher de 4.
+\end{example}
+
+\subsection*{Suites monotones}
+Une suite est une fonction particulière, on retrouve donc naturellement la notion de sens de variation pour une suite.
+
+\begin{definition} Soit $(u_{n})$ une suite, $ k $ un entier naturel. On dit que :
+\begin{itemize}
+\item[\textbullet] la suite $(u_{n})$   est  \textbf{\color{magenta} croissante}  à partir du rang $ k $ si, pour tout entier  $ n \geq k $ : $  u_{n+1}\geq u_{n} $ ;
+\item[\textbullet]la suite $(u_{n})$   est   \textbf{\color{magenta} décroissante} à partir du rang $ k $ si, pour tout entier  $ n \geq  k $ : $ u_{n+1}\leq u_{n}$ ;
+\item[\textbullet]la suite $(u_{n})$  est   \textbf{\color{magenta}constante} à partir du rang $ k $  si, pour tout entier $ n\geq k $ : $ u_{n+1}= u_{n}$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+$ \ast $ On dit que $(u_{n})$ est  \textbf{monotone}  si son sens
+de variation ne change pas (elle reste croissante  ou décroissante  à partir d'un rang ).\\
+Étudier la monotonie d'une suite c'est donc étudier ses variations.\\
+ $ \ast$ On obtient les définitions de strictement croissante, décroissante ou monotone en remplaçant les inégalités larges par des inégalités strictes.
+\end{remark}
+
+\textbf{Méthodes}\\
+\textbf{Signe de la différence de }  $ u_{n+1}- u_{n} $ \\
+ Pour étudier le sens de variation d'une suite, on peut étudier le signe de la différence   $  u_{n+1}- u_{n} $.
+
+Si $ u_{n+1}- u_{n}\geq 0 $ alors $(u_{n})$ est croissante.
+
+Si $ u_{n+1}- u_{n}\leq 0 $ alors $(u_{n})$ est décroissante.
+
+Si $ u_{n+1}- u_{n}=0 $ alors $(u_{n})$ est constante.
+\begin{example} 
+ Soit $(u_{n})$ la suite définie, pour tout $ n\in\Nn $ par $ u_{n} = n^{2} -n $.  \\              On a, pour tout $ n\in\Nn $ :
+
+ $ u_{n+1}- u_{n} = (n +1)^{2} -(n +1)-n^{2} +n = n^{2} +2n +1-n -1-n^{2} +n = 2n. $
+Pour tout $ n\in\Nn $, $2n \geq 0  $ donc $ u_{n+1}- u_{n}\geq 0 $ donc $ u_{n+1}\geq u_{n} $. 
+La suite  $(u_{n})$  est croissante.
+\end{example}
+\textbf{Comparaison de } $ \dfrac{u_{n+1}}{u_{n}} $ à 1 \\
+ Pour étudier le sens de variation d'une suite à \emph{termes strictement positifs } , on peut comparer $ \dfrac{u_{n+1}}{u_{n}} $   à 1.
+
+Si $ \dfrac{u_{n+1}}{u_{n}}>1 $ alors $(u_{n})$ est croissante.
+
+Si $ \dfrac{u_{n+1}}{u_{n}}<1 $ alors $(u_{n})$ est décroissante.
+
+Si $ \dfrac{u_{n+1}}{u_{n}}=1 $ alors $(u_{n})$ est constante.
+
+\begin{example}
+Soit $(u_{n})$ la suite définie, pour tout $n\in \Nne $, par $ u_{n}=2^{-n} $.\\ La suite $(u_{n})$ est à termes strictement positifs .\\
+On a :$ \dfrac{u_{n+1}}{u_{n}}=\dfrac{2^{-n-1}}{2^{-n}}=2^{-1}=\dfrac{1}{2}<1 $.
+ La suite  $(u_{n})$  est donc décroissante.
+\end{example}
+
+\textbf{Cas d'une suite en mode explicite }\\
+Soit $(u_{n})$ une suite définie par $ u_{n} = f (n) $ où $f$ est une fonction définie sur $ \Rrp $.
+\begin{itemize}
+\item[\textbullet] Si $ f $ est croissante alors $(u_{n})$ est croissante.
+ \item[\textbullet] Si $ f $ est décroissante alors $(u_{n})$ est décroissante.
+\end{itemize}
+\textbf{Cas d'une suite définie  par récurrence}\\
+On  démontre par récurrence que  $u_{n+1}\leq u_{n}$ (suite croissante ) ou $ u_{n}\geq u_{n+1} $ (suite décroissante).
+\subsection*{Suites bornées}
+\begin{definition}
+Une suite $(u_{n})$ est dite : 
+\begin{itemize}
+\item[\textbullet]  \textbf{\color{magenta} majorée} s'il existe un réel $ M $ tel que pour tout entier naturel $ n $, $ u_{n}\leq M $.\\ $ M $ est dit majorant de la suite.
+\item[\textbullet] \textbf{\color{magenta} minorée} s'il existe un réel $ m $ tel que pour tout entier naturel $ n $, $ u_{n}\geq m $.\\ $ m $ est dit minorant de la suite.
+\item[\textbullet] \textbf{\color{magenta} bornée} si elle est majorée et minorée.
+\end{itemize}
+\end{definition}
+\begin{remark}
+$ \ast $ Une suite $(u_{n})$ est bornée si et seulement si il existe un réel $ k $ positif tel que $ \abs{u_{n}} \leq k$.\\
+$ \ast $ Une suite positive est minorée par $ 0 $ et une suite négative est majorée par $ 0 $.\\
+$ \ast $ Une suite croissante est minorée par son premier terme et une suite décroissante est majorée par son  premier terme .
+\end{remark}
+\subsection*{Suites périodiques}
+\begin{definition}
+Une suite $(u_{n})$ est dite  \textbf{périodique} s'il existe un entier naturel non nul $ p $ tel pour tout entier naturel $ n $ :\[u_{n+p}=u_{n}\]
+On dit $ p $ est une période de la suite $(u_{n})$.
+\end{definition} 
+\begin{example}
+$ u_{n}= \cos\frac{2n\pi}{5} $ , $ n\geq 0 $.\\
+On a : $ u_{n+5}=\cos(\frac{2(n+5)\pi}{5})=\cos(\frac{2n\pi}{5}+2\pi) $ donc
+$ u_{n+5}=u_{n}$ \\
+Il en résulte que $(u_{n})$ est périodique et 5 est une période.
+\end{example}
+\subsection{Le raisonnement par récurrence}
+Pour montrer qu'une propriété $ P_{n} $ est vraie pour tout entier $ n $ supérieure ou égal à un entier naturel $ n_{0} $ donné , on utilise un raisonnement de type particulier, appelé raisonnement par récurrence .\\
+\textbf{Principe}
+\begin{enumerate} 
+\item  Montrer que $ P_{n_{0}} $  est vraie.
+\item  Montrer que si $ P_{n} $ est vraie  alors $ P_{n+1} $ l'est aussi .
+ \end{enumerate}
+\begin{example}
+Montrons que pour tout entier $ n\geq 1 $  \[1+2+ ...+ n = \frac{n(n+1)}{2}\]
+\textbf{Réponse} 
+  $$ \textrm{Posons } \quad P_{n}: 1+2+ ...+ n = \frac{n(n+1)}{2} $$
+1\up{o}) $ P_{1} $ s'écrit $ 1= \frac{1(1+1)}{2} $  égalité qui est vérifiée, donc $  P_{1} $  est vraie . \\
+2\up{o}) Supposons la propriété vérifiée pour un certain $ n\geq 1 $ c'est à dire :
+$$ P_{n}: 1+2+ ...+ n = \frac{n(n+1)}{2} \quad \textrm{(H)}  $$
+Montrons que $ P_{n+1} $  est vérifiée c'est à dire :
+$$  1+2+ ...+ (n+1 )= \frac{(n+1)(n+2)}{2} $$
+ $$  1+2+ ...+ n + (n+1)=( 1+2+ ...+ n )+ (n+1)$$
+  $$  1+2+ ...+ n + (n+1)= \frac{n(n+1)}{2}+ (n+1)\quad  \textrm{en utilisant (H)}$$
+  $$1+2+ ...+ n + (n+1)= \frac{n(n+1)+2(n+1)}{2}$$   $$\textrm{donc}$$
+  $$1+2+ ...+ (n+1 )= \frac{(n+1)(n+2)}{2}$$
+  ce qui prouve $ P_{n+1} $ que est vraie .
+  \end{example}
+  Le principe du raisonnement par récurrence permet d'affirmer que $ P_{n} $ est vérifiée pour tout $ n\geq 1 $, c'est à dire: 
+  $ 1+2+ ...+ n = \frac{n(n+1)}{2}$ .
+   \begin{remark}
+   
+  $ \ast $ Pour comprendre le mécanisme de ce raisonnement, il suffit de se rappeler que d'après 1\up{o}) $ P_{1} $ est vérifiée et que d'après 2\up{o}) puisque $P_{1}$ est vraie, alors $ P_{2} $ est vraie.\\
+Toujours d'après 2\up{o}) puisque $ P_{2} $ est vraie alors $ P_{3} $ est vraie, etc.\\
+On comprend ainsi que $ P_{n} $ puisse être  vérifiée quel que soit l'entier $n\geq 1$.\\ Dans ce cas la propriété $ P_{n}$ est   \textbf{héréditaire }.\\
+$ \ast $ Lorsqu'on vérifie que  $ P_{n_{0}} $  est vraie ; on  \textbf{initialise} la récurrence . \\
+La supposition  (H) est  appelée hypothèse de récurrence. 
+\end{remark}   
+\begin{exercice}
+ Soit $(u_{n})$ la suite définie par $u_{0}=0$ et $ u_{n+1}= \frac{u_{n}+1}{u_{n}+2}$.\\
+Montrer que pour tout $ n\in\Nn $ , $ u_{n}\in\intff{0}{1} $ 
+\end{exercice}
+\textbf{Solution :}\\
+ Nous allons procéder à un raisonnement par récurrence \\
+$u_{0}=0 \in\intff{0}{1} $ donc la propriété  est vraie pour $ n=0 $ .\\
+Supposons que pour un certain  entier $ n$ , $ u_{n}\in\intff{0}{1} $.\\
+Or pour tout réel $ x\in\intff{0}{1} $ , $\frac{x+1}{x+2}\in\intff{0}{1} $ et puisque $ u_{n}\in\intff{0}{1}$  par hypothèse donc \\
+$ \frac{u_{n}+1}{u_{n}+2}\in\intff{0}{1}$ c'est à dire $ u_{n+1}\in\intff{0}{1}$. \\
+\emph{Conclusion} : Pour tout $ n\in\Nn $ , $ u_{n}\in\intff{-1}{1} $
+\begin{exercice}
+ On considère la suite $(u_{n})$, définie pour tout  $ n\in\Nn $ par : $ 
+\left\{\begin{array}{l}
+u_{0}=0 \\
+u_{n+1}=2u_{n}+1
+\end{array}\right.$ \\
+Prouver que pour tout $ n\in\Nn $  , $ u_{n}=2^{n}-1 $
+\end{exercice}
+\textbf{Solution}:\\
+ $2^{0}-1 = 1-1=0= u_{0}$ donc la propriété est vérifiée pour $ n=0 $.\\
+Supposons que pour un certain  entier $ n$ c'est à dire $ u_{n}=2^{n}-1 $.\\
+Alors, on a $ u_{n+1}=2u_{n}+1= 2(2^{n}-1)+1 $ \\
+
+\emph{Conclusion} : Pour tout $ n\in\Nn $, $ u_{n}=2^{n}-1 $
+\subsection{Suites arithmétiques}
+\begin{definition}{Définition par récurrence}
+Une suite $(u_{n})$ est dite   \textbf{suite arithmétique} s'il existe un réel $ r $ tel que   pour tout entier naturel $n$ on ait :  \[  u_{n+1}=u_{n}+r \]
+$r$ est appelé  \textbf{la raison} de la suite arithmétique.
+\end{definition}
+\begin{remark}
+La raison d'une suite arithmétique est un réel indépendant de $ n. $ On passe d'un terme au terme de rang suivant en ajoutant toujours $ r$.
+\end{remark} 
+\begin{example}
+$ \ast $ La suite des entiers naturels est une suite arithmétique  de premier terme 0 et de raison 1. \\
+$ \ast $ La suite des entiers naturels  pairs est une suite arithmétique de premier terme 0 et de raison 2.
+
+\end{example}
+\textbf {Méthode}
+\begin{itemize}
+\item [\textbullet] Pour montrer qu'une suite est arithmétique, on peut montrer que la différence $ u_{n+1}-u_{n} $   ( ou $ u_{n}-u_{n-1} $ ) est constante.
+\begin{example} Soit la suite $(u_{n})$ définie, pour tout $ n\in\Nn $ , par $ u_{n}=-6n+1 $. Montrons que cette suite est arithmétique: \\
+ $ u_{n+1}-u_{n}= -6(n+1)+6n-1=-6n-6+6n+1=-6 $.  De plus $ u_{0}= -6\times0+1=1 $\\
+ La suite $(u_{n})$ est arithmétique de premier terme 1 et de raison $ -6 $.
+ \end{example}
+ \item [\textbullet] Pour montrer qu'une suite est arithmétique, on peut aussi  exprimer $ u_{n+1} $ en fonction de  $ u_{n}$ et vérifier que  $ u_{n+1} $ se met sous la forme   $ u_{n+1}=u_{n}+r $. \\
+ (C'est la même chose d'exprimer $ u_{n} $ en fonction de  $ u_{n-1}$ et vérifier que  $ u_{n} $ se met sous la forme   $ u_{n}=u_{n-1}+r $ ). 
+ \end{itemize}
+\subsection*{Expression du terme général en fonction de n}
+  \begin{theorem} Soit $(u_{n})$ une  suite est arithmétique  de premier terme $u_{0} $ et de raison $ r $. Alors pour tout $ n\in\Nn $  , $$ u_{n}= u_{0}+nr  $$ 
+  \end{theorem}
+ \textbf{Démonstration} \quad On a :  \[   u_{1}=u_{0}+r\]\[u_{2}=u_{1}+r\]\[\vdots \qquad \vdots\] \[u_{n-1}=u_{n-2}+r\]\[u_{n}=u_{n-1}+r\] En additionnant membre à membre ces $ n $ égalités, on obtient :\[u_{1}+u_{2}+ \cdots +u_{n-1}+u_{n}= u_{0}+u_{1}+ \cdots +u_{n-1}+nr\] après  simplification on obtient :  $u_{n}= u_{0}+nr $.
+\begin{example}  Soit $(u_{n})$ la suite  arithmétique  de premier terme $u_{0}=2 $ et de raison $ r=3$, d'après le théorème $ 1.1 $ pour tout $n $ de $\Nn $, $ u_{n}=u_{0}+nr=2-3nr $. On peut alors directement calculer n'importe quel terme à partir de son rang.\\ Par exemple $ u_{5}=2-3\times5=-13 $.
+\end{example}
+\begin{remark}
+Toute suite $(u_{n})$ de terme général $ u_{n}=an+b $ où $a $ et $ b $ sont deux réels, est une suite arithmétique de premier terme $u_{0}= b $ et de raison $ a $. 
+\end{remark} 
+ \begin{theorem}
+  Soit $(u_{n})$ une  suite est arithmétique  de premier terme $u_{0} $ et de raison $ r $. Alors pour tous $ p $ et  $ n$ de $\Nn $, $$u_{n}= u_{P}+ (n-p)r  $$
+  \end{theorem}
+   \textbf{Démonstration}\\ Pour tous $ p $ et  $ n$ de $\Nn $  , $ u_{n}= u_{0}+ nr$ et $ u_{p}= u_{0}+ pr$.\\ On en tire $ u_{n}-u_{p}=u_{0}+ nr -(u_{0}+ pr)= (n-p)r$ d'où $ u_{n}= u_{P}+ (n-p)r $ 
+\begin{example} Soit  $(u_{n})$ une  suite est arithmétique telle que  $u_{27}=6 $ et $u_{39}=10 $,  on se propose de calculer  $u_{27} $. Pour cela, on commence par calculer la raison $ r $ de la suite . \\On a $ u_{27}=u_{39}+(27-39)r $, \quad soit   $u_{27}-u_{39}=(27-39)r$ d'où: \[-4=-12r\quad \textrm{soit}\quad r=\dfrac{1}{3} \]
+  On en tire : $ u_{75}=u_{39}+(75-39)r= 10+36\times\dfrac{1}{3}=22 $
+  \end{example}
+\subsection*{Sens de variation}
+ \begin{theorem}  Soit $(u_{n})$ une  suite est arithmétique  de raison $ r $.
+  \begin{itemize}
+  \item si $ r>0 $ alors la suite  $(u_{n})$ est strictement croissante;
+   \item si $ r=0 $ alors la suite  $(u_{n})$ est strictement constante;
+    \item si $ r<0 $ alors la suite  $(u_{n})$ est strictement décroissante.
+  \end{itemize}
+  \end{theorem}
+  \subsubsection*{Moyenne arithmétique}
+  Trois réels $ a$, $ b$  et $ c$ sont les terme consécutifs d'une suite arithmétique si, et seulement si $ b=\frac{a+b}{2} $.  On dit que $ a$, $ b$ , $ c$ sont en progression arithmétique et que, $ b$ est la moyenne arithmétique de $ a $ et $ c$.
+  \subsection*{Somme de termes consécutifs}
+  \subsubsection{Nombre de termes d'une somme}
+  Soit $(u_{n})$ une  suite. $p\in\Nn $ , $q\in\Nn $ tels que $ p\leq q $. On retiendra le  résultat suivant :\\
+La somme $u_{p}+u_{p+1}+ \cdots + u_{q} $ comporte $q-p+1$ termes .
+ \begin{example} La somme $ u_{0}+u_{1}+ \cdots + u_{10} $ contient $ 10-0+1=11 $ termes.
+ \end{example}
+ \subsubsection*{Somme de termes consécutifs d'une suite est arithmétique}
+   \begin{theorem} Soit $S$ la somme  de $ N $ termes consécutifs d'une  suite  arithmétique  de raison $ r $,  $ a $ le premier terme de cette somme  et $ b $ le dernier terme. On a  :     \[  S =N\dfrac{a+b}{2}\]
+   \end{theorem}
+ \textbf{\color{blue}Démonstration}  \\
+  Ecrivons $ S $ de deux façons différentes :
+  \[S= a+(a+r)+(a+2r)+ (a+3r)+ \cdots +[a+(N-1)r] \]
+   \[S= b+(b-r)+(b-2r)+ (b-3r)+ \cdots +[b-(N-1)r] \]
+   En additionnant membre à membre ces deux égalités ,on obtient: 
+   \[2S=\underbrace{(a+b)+(a+b)+(a+b)+ \cdots +(a+b)}_{ N \text{fois}} \]
+   \[2S=N(a+b)\]On en déduit que :\[S =N\dfrac{a+b}{2}\]
+   \textbf{A retenir}\\ 
+   Cette formule peut se retenir de la façon suivante :\\La somme de termes consécutifs d'une suite arithmétique est égale au produit du nombre de termes  par la demi somme des termes extrêmes.
+   \[ S=\text{nombre  de termes}\times\dfrac{\text{premier terme}+\text{dernier terme} }{2} \]
+   \textbf{Cas particulier}	\\
+   La somme des $ n$ premiers nombres entiers naturels non nuls est:  $ \frac{n(n+1)}{2} $. \\En d'autres termes:
+   \[1+2+3 + \cdots + n=\dfrac{n(n+1)}{n} \]
+ \begin{example}
+   \[1+2+3+\cdots + 10=\dfrac{10\times 11}{2}=55\]
+   \end{example}
+  
+   \subsection{Suites géométriques}
+  \begin{definition}
+ \textsl{(Définition par récurrence)}\\
+Une suite $(u_{n})$ est dite   \textbf{suite géométrique} s'il existe un réel $ q $ tel que   pour tout entier naturel $n$ on ait :  \[u_{n+1}=qu_{n} \]
+$q$ est appelé  \textbf{la raison} de la suite géométrique.
+\end{definition}
+\begin{remark}
+La raison d'une suite géométrique est un réel indépendant de $ n. $ On passe d'un terme au terme de rang suivant en multipliant toujours  par $ q. $ 
+\end{remark}
+\begin{example}
+
+$ \ast $ La suite des  puissances entières de 3 $ (1;3;9;27;81...etc) $ est la suite géométrique  de premier terme 1 et de raison 3 .\\
+$ \ast $ La suite définie  par  $ u_{0}=0,5 $ et $ u_{n}=-3u_{n-1} $ est la suite géométrique  de premier terme $0,5   $ et de raison $ -3 $ .
+\item La suite de terme général $ v_{n}=10^{-n} $ est une suite géométrique de premier terme $1$ et de raison $ 10^{-1} $ .\\
+$ \ast $ La suite $ v_{n} $  définie par $ v_{n}= n3^{n} $ n'est pas une suite géométrique  car $ v_{0}=0$, $v_{1}=3 $ , $v_{2}=18 $, $v_{3}=81 $.\\                                    On ne passe pas d'un terme au terme de rang suivant en multipliant toujours  par une  même constante.
+
+\end{example}
+\textbf{Méthode} 
+\begin{itemize}
+\item [\textbullet] Pour montrer qu'une suite de termes non nuls est géométrique, on peut  montrer que le quotient $ \dfrac{u_{n+1}}{u_{n}} $  (ou $ \dfrac{u_{n}}{u_{n-1}} $ ) est constant.
+\begin{example}
+ Soit la suite $(u_{n})$ définie, pour tout $ n\in\Nn $ , par $ u_{n}=\dfrac{3}{5^{n}} $. Montrons que cette suite est géométrique .\\
+ $ \dfrac{u_{n+1}}{u_{n}}=\dfrac{\frac{3}{5^{n+1}}}{\frac{3}{5^{n}}}=\dfrac{5^{n}}{5^{n+1}}=\dfrac{1}{5} $ .\quad De plus $ u_{0}=\dfrac{3}{5^{0}}=3 $\\
+ La suite $(u_{n})$ est géométrique de premier terme 3 et de raison $ \dfrac{1}{5} $.
+ \end{example}
+ \item [\textbullet] Pour montrer qu'une suite est géométrique, on peut  exprimer $ u_{n+1} $ en fonction de  $ u_{n}$ et vérifier que  $ u_{n+1} $ se met sous la forme $ u_{n+1}=qu_{n} $. \\
+(C'est la même chose d'exprimer $ u_{n} $ en fonction de  $ u_{n-1}$ et vérifier que  $ u_{n} $ se met sous la forme   $ u_{n}=qu_{n-1} $ ). 
+ \end{itemize}
+\subsection*{Expression du terme général en fonction de n}
+\begin{theorem} Soit $(u_{n})$ une  suite est géométrique de premier terme $u_{0} $ et de raison $ q\neq 0 $. Alors pour tout $ n\in\Nn $  , $$  u_{n}= u_{0}q^{n}$$
+\end{theorem}
+\textbf{Démonstration } On a :\[u_{1}=u_{0}q\]\[u_{2}=u_{1}q\]\[\vdots \qquad \vdots\] \[u_{n-1}=u_{n-2}q\]\[u_{n}=u_{n-1}q\]En multipliant membre à membre ces $ n $ égalités, on obtient :\[u_{1}\times u_{2} \times \cdots \times u_{n-1}\times u_{n}= u_{0}q \times u_{1}q  \times \cdots \times u_{n-1}q\] après  simplification on obtient :\[u_{n}= u_{0}q^{n}\] 
+\begin{example} 
+
+Soit $(u_{n})$ la  suite est géométrique  de premier terme $u_{0}=-1 $ et de raison $ q=2$, d'après le théorème $ 1.5 $ pour tout $n $ de $\Nn $ , $ u_{n}=u_{0}q^{n}=-1\times 2^{n} $. On peut alors directement calculer n'importe quel terme à partir de son rang. \\Par exemple $ u_{5}=-1\times2^{5}=-32 $.
+\end{example}
+\begin{remark}
+Toute suite $(u_{n})$ dont le  terme général  est de la forme $ u_{n}=aq^{n} $  où $a $ et $ q $ sont deux réels, est une suite géométrique de premier terme $u_{0}= a $ et de raison $ q $. 
+\end{remark}
+ 
+ \begin{theorem} 
+ Soit $(u_{n})$ une  suite  géométrique  de premier terme $u_{0} $ et de raison $ q $.\\   Alors pour tous $ p $ et  $ n$ de $\Nn $, $$u_{n}= u_{p}q^{n-p}$$
+ \end{theorem}
+ \textbf{Démonstration} \\ Pour tous $ p $ et  $ n$ de $\Nn $, $ u_{n}= u_{0}q^{n}$ et $ u_{p}= u_{0}q^{p}$.  \\On en tire \quad $ u_{n}=u_{0}q^{n-p+p}= u_{0}q^{p}q^{n-p}$ \quad d'où \quad $ u_{n}= u_{P}q^{n-p}$.
+\begin{example}
+ Soit  $(u_{n})$ la  suite  géométrique  telle que  $q=3 $ et $u_{11}=729 $.\\ On se propose de calculer  $u_{1} $. \\On a $ u_{1}=u_{11}q^{1-11}=729\times 3^{-10}=\frac{1}{81} $
+ \end{example}
+  \subsection*{Sens de variation}
+
+\begin{theorem} 
+
+Soit $(u_{n})$ une  suite est géométrique  de raison $ q $  et de premier terme $u_{0} $  strictement positif.
+  \begin{itemize}
+  \item si $ q>0 $ alors la suite  $(u_{n})$ est strictement croissante;
+   \item si $ q=1 $ alors la suite  $(u_{n})$ est strictement constante;
+    \item si $ 0<q<1 $ alors la suite  $(u_{n})$ est strictement décroissante.
+  \end{itemize}
+  \end{theorem}
+   \subsubsection*{Moyenne géométrique}
+  Trois réels $ a$, $ b$  et $ c$ sont les termes consécutifs d'une suite géométrique si, et seulement si $ b^{2}=ac $ . On dit que $ a$, $ b$ , $ c$ sont en progression géométrique et que, $ b$ est la moyenne géométrique de $ a $ et $ c$.
+  \subsection*{Somme de termes consécutifs}
+ \subsubsection*{Somme de termes consécutifs d'une suite géométrique}
+ \begin{theorem}
+  Soit $S$ la somme  de $ N $ termes consécutifs d'une  suite  géométrique  de raison $q $ et $ a $ le premier terme de cette somme. On a  : \[  S = a \dfrac{1-q^{N}}{1-q} \quad \text{si}\quad q\neq 1\]
+  \end{theorem}
+ 
+\textbf{Démonstration} On a :
+  \[S= a+aq+ aq^{2}+ aq^{3}+ \cdots + aq^{N-2}+aq^{N-1}\]
+  Multiplions les deux membres de cette égalité par $ q $ ; on obtient
+   \[qS= aq+ aq^{2}+ aq^{3}+ \cdots + aq^{N-1}+aq^{N} \] 
+   En soustrayant  membre à membre ces deux égalités ,on obtient:
+   \[S(1-q)=a-aq^{N}=a(1-q^{N})\] On en déduit que :
+   
+  \[ \textrm{si}\quad  q\neq 1\quad \textrm{on a} \quad S = a\dfrac{1-q^{N}}{1-q} \]
+ \begin{remark}
+$ \ast $ si $ q = 1 $ alors $ S=Na $
+ 
+ $ \ast $  $ S = a\dfrac{1-q^{N}}{1-q}= a\dfrac{q^{N}-1}{q-1} $
+   
+    \end{remark}
+   \textbf{A retenir} \\
+ Somme  $ S $ de termes consécutifs d'une suite géométrique :  
+   \[  S=\text{premier terme}\times\dfrac{1-\text{raison}^{\text{nombre de termes}}}{1-\text{raison}}\]
+\begin{example}
+ Soit $(u_{n})$ la  suite est géométrique  de premier terme $u_{4}= 2$ et de raison $ q= \frac{1}{2}$.\\ On se propose de calculer la somme  $ S=u_{4}+u_{5}+\cdots +u_{14}$. \\
+ Elle comporte $ 14-4+1 =11$ termes  . D'après le théorème $ 1.8 $ on a :
+$$ S=u_{4}\dfrac{1-q^{11}}{1-q} =u_{4}\dfrac{1-(\frac{1}{2})^{11}}{1-\frac{1}{2}}= 4[1-(\frac{1}{2})^{11}]= -8188$$
+\end{example}
+ \textbf{\color{blue}Cas particulier} \\Pour tout réel $ q\neq 1 $	on a :
+ \[ 1+q+q^{2}+\cdots+ q^{n-1}=\dfrac{1-q^{n}}{1-q}\]
+
+\subsection{Convergence d'une suite}
+ \begin{definition}
+  Une suite $(u_{n})$  est dite  \textbf{ convergente} si elle admet une limite finie $ l $ lorsque $ n $ tend vers  $ \pinf $. \\
+  On dit la suite $(u_{n})$  converge vers $ l $.\\
+  Dans le cas contraire, la suite est dite divergente.
+  \end{definition}
+\begin{example}
+ Soit $ u_{n}=5+\frac{1}{n} $ \quad $ n\in\Nne $ \\
+ $ \displaystyle \lim_{n \to  +\infty} u_{n}=5$ \quad donc la suite $(u_{n})$  converge vers $ 5 $.
+ \end{example}
+ \begin{remark}  Dire qu'une suite est divergente peut signifier qu'elle n'a pas de limite, par exemple $ u_{n}=(-1)^{n} $ou que sa limite est $+\infty $ ou $-\infty $ par exemple $ u_{n}=3^{n} $
+ \end{remark}
+ \subsection*{Cas d'une suite géométrique} 
+ Soit $(u_{n})$ suite est géométrique de raison $ q $.
+ \begin{itemize}
+ \item si $ q\in\intoo{-1}{1} $ alors la suite $(u_{n})$ est convergente et converge vers $ 0 $.
+ \item si $ q< -1  $ , $u_{n}$ n'a pas de limite ,  alors la suite $(u_{n})$ est divergente.
+ \item si $ q >1  $ $  $on a $ \displaystyle \lim_{n \to  +\infty} u_{n}= \pm\infty $, alors la suite $(u_{n})$ est divergente.
+\item si $ q=1  $ alors $(u_{n})$  est une suite constante et converge vers $u_{0}$.
+ \end{itemize}
+\begin{exercice}
+Soit $(u_{n})$ est la définie par : $ u_{n}=3+(-\frac{1}{2})^{n} $, $ \forall n\in\Nn $
+ \begin{enumerate}
+ \item Etudier la convergence de la suite $(u_{n})$.
+ \item Soit $(v_{n})$ la suite définie par $ v_{n}=u_{n}-u_{n-1} $.
+ \begin{enumerate}
+ \item Exprimer $v_{n+1}$ en fonction de $ v_{n} $. En déduire la nature de la suite  $(v_{n})$.
+ \item La suite  $(v_{n})$ est -elle convergents ?
+ \end{enumerate}
+ \end{enumerate}
+ \end{exercice}
+ \textbf{Solution}
+ \begin{enumerate}
+ \item Calculons $ \displaystyle \lim_{n \to  +\infty} u_{n} $.\\
+ On a $ -1< -\frac{1}{2}< 1 $ , donc $\displaystyle \lim_{n \to  +\infty}(-\frac{1}{2})^{n}=0$ d'où $ \displaystyle \lim_{n \to  +\infty} u_{n}=3 $ , la suite $(u_{n})$ converge vers $3.$
+ \item 
+ \begin{enumerate}
+ \item $ v_{n}= 3-(-\frac{1}{2})^{n}-3-(-\frac{1}{2})^{n-1}= (-\frac{1}{2})^{n}-(-\frac{1}{2})^{n-1} = (-\frac{1}{2})^{n-1}(-\frac{1}{2}-1) =3\times(-\frac{1}{2})^{n}$ 
+ la suite $ (v_{n}) $ est donc une suite géométrique de raison $ q=-\frac{1}{2} $.
+ \item Or $ -1< -\frac{1}{2}< 1 $ on a donc $ \displaystyle \lim_{n \to  +\infty} v_{n}=0 $ \\
+ Donc la suite $ (v_{n}) $ converge vers $ 0. $
+ \end{enumerate}
+ \end{enumerate}
+ \textbf{NB}
+ \begin{itemize}
+ \item Si $ |q|<1 $  alors $ \displaystyle \lim_{n \to  +\infty} q^{n}= 0 $
+ \item Si $ q>1 $  alors $ \displaystyle \lim_{n \to  +\infty} q^{n}= +\infty $
+ \item Soient $(u_{n})$ et $(v_{n})$ deux suites telles que : $ |u_{n}-\alpha|< v_{n}$  \\           si $ \displaystyle \lim_{n \to  +\infty}v_{n} = 0 $ alors $ \displaystyle \lim_{n \to  +\infty}u_{n} = \alpha .$ 
+ \end{itemize}
+ \subsection*{Théorèmes de convergence}
+ On admettra les théorèmes suivants :
+ \begin{theorem}
+ \begin{itemize}
+ \item   Toute suite croissante majorée est convergente \item  Toute suite décroissante minorée est convergente 
+ \end{itemize}
+ \end{theorem}
+
+ \begin{remark}
+ 
+ $ \ast $ Ce théorème particulièrement important, permet de savoir si une suite converge ou pas. Mais s'il donne l'existence de la limite de la suite, il ne donne pas la valeur de la limite.\\ 
+ $ \ast $ Il ne faut pas confondre majorant ( ou minorant) et limite: une suite peut être croissante et majorée par $ 2 $ sans que sa limite soit égale à $ 2. $\\
+ $ \ast $ Si une suite positive converge alors sa limite est positive.
+ 
+\end{remark}
+ \begin{theorem}
+ Si $(u_{n})$ converge vers $ l $ et si $ f $ est une fonction continue en $ l $ alors la suite  $ (f(u_{n})) $ converge vers $ f(l) $.
+ \end{theorem}
+
+ \begin{theorem}
+  Soit $(u_{n})$ une suite définie par la relation  $ u_{n+1}=f(u_{n}) $. \\
+   Si $(u_{n})$ converge vers $ l $ et si $ f $ est une fonction continue en $ l $ alors $ l $ est solution de l'équation  $ f(x)=x $.
+   \end{theorem}
+   \begin{remark}
+   On commence donc par  montrer que la suite $(u_{n})$ converge, puis on résout l'équation $ f(x)=x $.
+   \end{remark}
+   \begin{exercice}
+ Soit la suite $(u_{n})$ définie par : \\
+ $ u_{0} = 1 \quad \textrm{et}  \quad u_{n+1} = \sqrt{u_{n}+2 }  \quad \textrm{pour tout} \quad  n\in \Nn .$ 
+ \begin{enumerate}
+ \item Démontrer que la suite  est croissante .
+ \item Démontrer que la suite est majorée par 2. \\
+ En déduire la convergence de la suite .
+ \item On se propose de calculer la limite de cette suite par deux méthodes .
+ \begin{enumerate}
+ \item  En utilisant le théorème $ 1.11 $, calculer la limite $ l $ de la suite .
+ \item Montrer que pour tout $ n$ de $ \Nn $ on a: \[\abs{ u_{n+1} -2}
+ \leq \frac{1}{2}\abs{u_{n}-2} \quad \textrm{ puis que }\abs{u_{n}-2}
+\leq\frac{1}{2^{n}}\] En déduire la limite $ l $ de la suite .
+ \end{enumerate}
+\end{enumerate}
+\end{exercice}
+\textbf{Solution}
+\begin{enumerate}
+\item Pour étudier la monotonie de cette suite, au lieu d'étudier le rapport $ \frac{u_{n+1}}{u_{n}} $ , étudions la différence $ u_{n+1}-u_{n} $.\\
+Démontrons par récurrence que : $ \forall n\in\Nn\quad u_{n+1}-u_{n}>0 $. 
+\[  \textrm{On a:} \quad u_{1}-u_{0}>0\]
+Supposons que pour un certain entier naturel $ n $, $u_{n+1}-u_{n}>0 $ alors:
+\[u_{n+2}-u_{n-1}=\sqrt{2+u_{n+1}}-u_{n+1}= \sqrt{2+u_{n+1}}-\sqrt{2+u_{n}}=\frac{u_{n+1}-u_{n}}{ \sqrt{2+u_{n+1}}-\sqrt{2+u_{n}}}\]
+Donc $ \forall n\in\Nn:\quad u_{n+1}-u_{n}>0 $. La suite est croissante.
+\item Démontrons par récurrence que la suite est majorée par 2.\\
+On a $ u_{0}=1<2 $\\
+Supposons que pour un certain entier naturel $ n $, $u_{n}<2 $ alors:\\
+$ u_{n}+2<4 $ puis $ \sqrt{u_{n}+2}<\sqrt{4} $ donc $ \sqrt{u_{n}+2}<2 $ c'est à dire $ u_{n+1}<2 $\\
+Donc $ \forall n\in\Nn:\quad u_{n}<2 $. La suite est majorée par 2.\\
+La suite $ (u_{n}) $ étant croissante et majorée par 2 donc converge.
+\item
+\begin{enumerate}
+\item La suite $ (u_{n}) $ étant croissante et majorée par 2, admet une limite $ l $ qui est positive car la suite est à termes positifs.\\
+La fonction $ x\mapsto \sqrt{x+2}$ est continue sur $ \intoo{-2}{\pinf}$ donc au point $l$\\
+D'où d'après le théorème 1.11 on a; $ l=\sqrt{l+2}  $ c'est à dire $ l^{2}-l-2 =0 $\\
+On trouve $ l=2 $ , la limite de la suite est 2.
+\item On peut écrire pour tout $ n $ de $ \Nn $ :
+\[u_{n+1} -2=\sqrt{u_{n}+2}-2=\frac{(\sqrt{u_{n}+2}-2)(\sqrt{u_{n}+2}+2)}{\sqrt{u_{n}+2}+2}=\frac{u_{n}-2}{\sqrt{u_{n}+2}+2}\]
+\[  \abs{u_{n+1} -2}=\frac{\abs{u_{n}-2}}{\sqrt{u_{n}+2}+2}\]
+\[\textrm{Or} \quad \sqrt{u_{n}+2}+2\geq 2 \]
+\[ \textrm{Donc} \quad\abs{u_{n+1} -2}\leq\frac{\abs{u_{n}-2}}{2}\]
+Ecrivons l'inégalité précédente  pour l'indice variant de $ n$ à $1 $
+\[ \abs{u_{n} -2}\leq\frac{1}{2}\abs{u_{n-1}-2}\]
+\[ \abs{u_{n-1} -2}\leq\frac{1}{2}\abs{u_{n-2}-2}\]
+\[\cdots\cdots\cdots\cdots\cdots\cdots\cdots \]
+\[ \abs{u_{2} -2}\leq\frac{1}{2}\abs{u_{1}-2}\]
+\[\abs{u_{1} -2}\leq\frac{1}{2}\abs{u_{0}-2}\]
+Par produit membre à membre et après simplification , on obtient : 
+\[ \abs{u_{n} -2}\leq\frac{1}{2^{n}}\abs{u_{0}-2}\]
+Or $ \abs{u_{0}-2}=1 $ donc $ \abs{u_{n} -2}\leq\frac{1}{2^{n}} $\\
+Et puisque $\lim_{n \to  +\infty} \frac{1}{2^{n}}= 0$ on en déduit que $\lim_{n \to  +\infty} \abs{u_{n}-2}=0$ \\
+ d'où $\lim_{n \to  +\infty}u_{n}=2$.
+
+\end{enumerate}
+\end{enumerate}
+  %</content>
+\end{document}

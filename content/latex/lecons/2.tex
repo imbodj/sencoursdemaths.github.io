@@ -1,0 +1,470 @@
+\input{../common}
+\everymath{\displaystyle}
+\begin{document}
+  %<*content>
+  \lesson{algebra}{2}{Dénombrement (TS2)}
+
+
+\subsection{Ensemble fini - Cardinal}
+\begin{definition}
+Soit $ n\in\Nn. $\\
+Lorsqu'un ensemble $ E $ a $ n $ éléments, on dit que $ E $ est un ensemble  fini et son cardinal est $ n. $ On note alors  cardE = $n$. 
+\end{definition}
+\begin{example}
+\begin{itemize}
+\item  $ E= \accol {a, b, c}$ est un ensemble fini et cardE = $3.$
+\item  Si $ E =\varnothing $, il comporte zéro élément et  card$ \varnothing =0$
+\item  certains ensembles ne sont pas finis tels que $ \Nn $, $ \Rr $, $ \intff{0}{1} $
+\end{itemize}
+\end{example}
+\begin{remark}
+Résoudre un problème de dénombrement consiste généralement à déterminer le cardinal d'un ensemble fini.
+\end{remark} 
+\subsection*{Parties d'un ensemble fini}
+\begin{itemize}
+\item $ A $ est une partie ou sous-ensemble de $ E $ si tout élément de $ A $ est élément de $ E. $\\ On note $ A \subset E $ (lire $ A$ inclus dans $E $). Donc  cardA$ \leq $ cardE.
+\item L'ensemble constitué par toutes les parties de $ E $ se note  $ \mathscr{P}(E) $
+\end{itemize}
+\begin{remark}
+L'ensemble $ E $ est une partie de lui-même et l'ensemble vide $ \varnothing $ est une partie de tout ensemble ( c'est une convention!)\\
+$ E $ est la partie pleine et $ \varnothing $ la partie vide.
+\end{remark}
+\begin{theorem}{Admis}
+Le nombre de parties d'un ensemble à $ n $ éléments est $ 2^{n}. $
+\end{theorem}
+\begin{example}
+$ E= \accol {a, b, c}$ \\
+$ \mathscr{P}(E)= \accol { \accol {a, b};\accol {a,c};\accol {b,c}                            ;\accol {a};\accol {b};\accol {c}; E ; \varnothing }$\\
+Donc nous avons recensé ( dénombré)  8  éléments pour $ \mathscr{P}(E) $. \\ La formule du théorème est vérifiée car $ 8= 2^{3} $, d'où card$ \mathscr{P}(E)=8 $
+\end{example}
+\begin{exercice}
+On dispose de quatre pièces de monnaie: une de 100F, une de 200F, une de 250F et une de 500F.
+\end{exercice}
+\textbf{Réponse}\\ Soit $ E $ l'ensemble des quatre pièces;\\
+$ E = \accol{250; 100; 500; 200}$\\
+A chaque partie de $ E $ correspond une somme d'argent égale à la somme des éléments de cette partie. Il y a donc autant de sommes que de parties de $ E. $\\
+Or  card$ \mathscr{P}(E)=2^{4}=16 $\\
+Donc il y a en tout 16 sommes ( théoriques) possibles.
+\subsection*{Intersection et réunion}
+Soient $A $ et $ B $ deux parties de  $E. $
+\begin{itemize}
+\item[\textbullet] L'ensemble des éléments communs à  $A $ et $ B $ est appelé intersection de $A $ et $ B $ ; noté $ A\cap B $  ( lire A inter B).
+\item[\textbullet] L'ensemble des éléments qui appartiennent  à  $A $ ou à $ B $ est appelé réunion de $A $ et $ B $ ; noté $ A\cup  B $  ( lire A union B).
+\end{itemize}
+
+
+\begin{remark}
+$ \centerdot $ $A\cup B$ est l'ensemble des éléments qui appartiennent  au moins à A ou B.\\
+$ \centerdot $ Lorsque $ A$ ou  $ B$ n'ont aucun élément en commun, on dit qu'ils sont disjoints. Dans cas  $A\cup B$  est l'ensemble des éléments qui appartiennent à A ou bien à B.
+\end{remark}
+\begin{theorem}
+                 \[\textrm{card}(A\cup B)= \textrm{card}A  + \textrm{card}B- \textrm{card}(A\cap B) \]
+                  \[ \textrm{Si}  A\cap B=\varnothing  \textrm{alors}\quad \textrm{card}(A\cup B)= \textrm{card}A  + \textrm{card}B   \]
+\end{theorem}
+\begin{exercice}
+Dans une classe de 30 élèves, 19 font espagnol, 18 font arabe comme deuxième langue facultative. Sachant que tous les élèves étudient au moins l'une  deux  langues. Déterminer le nombre d'élèves qui étudient les deux langues à la fois.
+\end{exercice}
+\textbf{Réponse}\\
+Soit $ A $ l'ensemble des élèves qui étudient l'espagnol et $ B $ celui de ceux qui font arabe. l'ensemble des élèves qui étudient les deux langues à la fois est $A\cap B  $ soit $ x $ son cardinal. 
+\[\textrm{card}(A\cup B)= 19+18-x=30  \]Donc on trouve $ x=7 $
+\subsection*{Complémentaire}
+Soit  $ A $ une partie de $ E $\\
+ Le  complémentaire de $ A $ dans $ E $,  noté  $ \overline{A} $, est l'ensemble des éléments  de $ E $ qui ne sont pas dans $ A. $
+\begin{example}
+$$ E=\accol{0;1;2; \cdots ; 2014} $$
+Si $ A=\accol{n\in E \diagup n\geq 4} $ alors  $ \overline{A}=\accol{n\in E \diagup n \leq 3} $ 
+\end{example}
+\begin{remark}
+\begin{itemize}
+\item  Soit $ A $ l'ensemble << $\cdots$ obtenir au moins $k$ éléments $ \cdots $ >>  alors  $ \overline{A} $ est l'ensemble << $\cdots$ obtenir au plus $k-1$ éléments $ \cdots $ >>
+\item  Si $ A $ l'ensemble << $\cdots$ avoir au moins un  $ \cdots $ >>  alors   $ \overline{A} $ est l'ensemble << n'avoir aucun >>
+\end{itemize}
+\end{remark}
+\textbf{Cardinal du complémentaire}
+\[ \textrm{card} \overline{A} = \textrm{card}E - \textrm{card}A \]
+
+ Soient $ A$ et $B $ deux parties  non disjointes de $ E $.\\
+On note $\overline{A} $ et  $\overline{B} $ respectivement les complémentaires de $ A$ et $B $.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabularx}{\textwidth}{|l|X|X|r|}
+\cline{2-4}
+\multicolumn{1}{c|}{} & A & $ \overline{A}$ & Totaux \\
+\hline
+B & card$( A\cap  B )$ & card$( \overline{A}  \cap B)$& card$ B $\\
+\hline
+$ \overline{B} $&  card$( A\cap \overline{B})$  & card$( \overline{A}\cap  \overline{B} )$  & card$\overline{B}$\\
+\hline 
+Totaux &card$ A$&card$\overline{A}$& card$ E $\\
+\hline
+\end{tabularx}
+\end{center}
+\begin{exercice}
+Dans un camp de vacances hébergeant 80 personnes. 50 font la natation, 33 pratiquent le tennis, 14 pratiquent les deux sports à la fois. Calculer:
+\begin{enumerate}
+\item Le nombre de personnes qui pratiquent uniquement la natation;
+\item Le nombre de personnes qui ne pratiquent aucun sport.
+\item Le nombre de personnes qui pratiquent au moins l'un des deux sports.
+\item  Le nombre de personnes qui pratiquent la natation ou bien le tennis.
+\end{enumerate}
+\end{exercice}
+\textbf{Réponse}\\
+$ N$ et $T $ sont respectivement ensembles de ceux qui font natation et tennis.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|l|X|X|X|}
+\cline{2-4}
+\multicolumn{1}{c|}{} & N & $ \overline{N}$ & Totaux \\
+\hline
+T & 14 & 19& 33\\
+\hline
+$ \overline{T} $&  36 &  11 & 47 \\
+\hline 
+Totaux & 50&  30 &   80\\
+\hline
+\end{tabularx}
+
+Une fois le tableau réussi, on obtient les réponses suivantes:
+\begin{enumerate}
+\item card$ N\cap \overline{T} =36$
+\item card$ \overline{N} \cap \overline{T}=11 $
+\item card$ N \cup T =$ card$ N + $ card$ T -$ card$ N \cap T = 50+13-14=49$
+\item card$ N\cap \overline{T} +$ card$ \overline{N}\cap T= 36+19=55 $
+\end{enumerate}
+
+\subsection*{Propriétés classiques}
+Soient $A $, $ B $ et  $ C$ trois parties d'un ensemble finis $ E $.
+
+ \[A \cup B= B \cup A \quad \textrm{et} \quad A\cap B = B \cap A \]
+\[ A\cap (B\cup C)=(A\cap B)\cup (A \cap C)  \]
+\[  A\cup(B\cap C)=(A\cup B)\cap(A \cup C) \]
+\[ \overline{A\cup B}= \overline{A} \cap \overline{B} \quad \textrm{et} \quad \overline{A\cap B} = \overline{A}\cup \overline{B}\quad \textrm{Lois de  Morgan} \]
+\[  A= (A\cap B) \cup (A\cap \overline{B}) \]
+\[ A \cup \overline{A}= E \quad \textrm{et}\quad A\cap \overline{A} =\varnothing\]
+\subsection*{Produit cartésien}
+\begin{definition}[Cas de deux ensembles]
+Soient $A $ et  $B $ deux ensembles finis non vides.\\
+On appelle produit cartésien $ A$ par $B $, noté $A\times B$, l'ensemble des couples $ \paren{x, y} $ où $x\in A $ et $y\in B. $
+\end{definition}
+\begin{example}
+Prenons $ A=\accol{a, b} $ et $ B= \accol{1; 2; 3} $\\
+$ A\times B=\accol{(a, 1); (a, 2);(a,3);(b,1);(b,2);(b,3)  } $
+\end{example}
+
+\subsubsection*{Cardinal du produit cartésien }
+Il y a 2 choix possibles $ a$ ou  $ b$ pour écrire le premier terme du couple. 
+
+
+Maintenant pour chacun de ces choix, il y a 3 choix possibles pour écrire le deuxième terme du couple.
+
+
+
+On en conclut qu'il y a $ 2 \times 3 $ couples possibles; c'est à dire  card$ A$.  card$ B $ soit 8.
+\begin{theorem}
+\[\textrm{card} A\times B = \textrm{card}A \centerdot \textrm{card}B  \]
+\end{theorem}
+\begin{remark}
+$ A \times B \neq B \times A $ mais card $ A\times B =$ card $ B\times A $
+\end{remark}
+
+\subsubsection*{Généralisation}
+\begin{itemize}
+ \item[\textbullet]  Cette définition s'étend à un nombre quelconque d'ensembles finis:  le produit cartésien des ensembles $ E_{1}, E_{2}, E_{3}, \cdots ,E_{p} $ est  l'ensemble noté\\ $ E_{1}\times E_{2}\times E_{3}\times \cdots \times E_{p} $.
+ \item[\textbullet] Le produit cartésien $\underbrace{  E\times E \times \cdots \times E}_{p fois} $   est noté $ E^{p} $.
+ \item[\textbullet] Les éléments du  produit cartésien  de deux ensembles sont appelés couples; les éléments du  produit cartésien  de trois ensembles sont appelés triplets; les éléments du  produit cartésien $ E_{1}\times E_{2}\times E_{3}\times \cdots \times E_{p} $  sont appelés p-uplets.
+ \item[\textbullet] card$ E_{1}\times E_{2}\times E_{3}\times \cdots \times E_{p}= $ card$ E_{1}\centerdot $card$ E_{2}\centerdot $card$ E_{3}\centerdot \cdots \centerdot $card$ E_{p} $
+ \item[\textbullet] Pour tout ensemble $ E $ a $ n $ éléments  card$E^{p}=n^{p}$.
+\end{itemize}
+
+\begin{exercice}
+\begin{enumerate}
+\item On lance  simultanément un jeton de 10F ( ses  faces sont notées Pile et  Face) et  un dé  à quatre faces numérotées de 1  à 4. Quels sont les résultats possibles? Combien sont-ils?
+\item Combien de mots de quatre lettres distinctes ou non peut-on constituer avec l'alphabet?
+\end{enumerate}
+\end{exercice}
+\textbf{Réponse}\\
+\begin{enumerate}
+\item Posons $ A=\accol{P, F} $ et $ B= \accol{1; 2; 3; 4} $\\
+A l'apparition de la face Pile (P) il y aura 4 numéros possibles à lui associer et à l' apparition de la face Face (F) il y aura 4 numéros possibles à lui associer
+Les résultats possibles sont: $ (P,1); (P,2)(P,3); (P,4);(F,1); (F,2)(F,3); (F,4) $ ce sont donc les éléments du produit cartésien $ A \times B $.\\
+D'où il y a card$ A \times B=2 \times4=8 $ résultats possibles.
+
+\item Notons $ E $ l'ensemble des 26 lettres de l'alphabet.\\
+La  1\up{ière} lettre est un élément de $ E$ ; la  2\up{ième} lettre est un élément de $ E$ ; la  3\up{ième} lettre est un élément de $ E$ et la  4\up{ième} lettre est un élément de $ E$  donc un mot est un 4-uplet d'éléments de $ E $: donc il y a  card$ E^{4} =26^{4}$mots possibles.
+\end{enumerate}
+\begin{corollary}{ le principe multiplicatif}
+Si une situation comporte $ p $  étapes successives offrant chacune $ n_{i} $ possibilité( ou choix) alors le nombre total de possibilités est:
+\[n_{1}\times n_{2} \times \cdots \times n_{p} \]
+\end{corollary}
+\begin{example}
+Un homme pour se rendre à un  mariage  doit choisir une chemise, un pantalon et une veste.  Sachant qu'il possède 5 chemises, 2 vestes et 4 pantalons, de combien de façons peut-il effectuer son choix?
+\end{example}
+\textbf{Réponse}\\
+Il a 5 possibilités pour choisir la chemise, 2 possibilités pour choisir la veste et 4 possibilités pour choisir le pantalon.D'après le principe multiplicatif il a $ 5\times 2\times 4= 40 $ choix .
+
+\subsection*{Partition d'un ensemble}
+\begin{definition}
+Soient $ B_{1},B_{2}, \cdots, B_{p} $ des  parties non vides de $ E. $  On dit qu'elles forment une partition de $ E $ si:
+\begin{itemize}
+\item ils sont deux à deux disjointes 
+\item  et $B_{1}\cup B_{2}\cup  \cdots\cup B_{p} =E $
+\end{itemize}
+\end{definition}
+\begin{example}
+Soit $ E $ l'ensemble tel que $ E= \accol{a, b, c, d, e, f} $
+\begin{itemize}
+\item[\textbullet] les ensembles  $ \accol{a}; \accol{b, c,  f}; \accol{d,e} $ forment une partition de $ E. $
+\item[\textbullet] les ensembles  $ \accol{a}; \accol{b, c,  f}; \accol{a, b,d,e} $ ne  forment pas une partition de $ E$ car ils ne  sont pas disjoints deux à deux.
+\end{itemize}
+\end{example}
+\begin{property}
+Soit $ E $ un ensemble fini et  $ E_{1},E_{2}, \cdots, E_{p} $ des ensembles formant une partition de $ E. $ \\
+On a card$ E= $ card$ E_{1}+ $card$ E_{2} + $card$ E_{3}+ \cdots + $card$ E_{p} $
+\end{property}
+
+\begin{exercice}
+Combien de nombres peut-on former avec des chiffres distincts choisis parmi les éléments de  $ E=\accol{1;2;3;4;5} $?
+\end{exercice}
+\textbf{Réponse}\\
+On peut écrire des nombres de 1, 2, 3, 4, 5 chiffres.\\
+On désignent respectivement par $ A_{1}, A_{2}, A_{3}, A_{4}, A_{5} $ les ensembles ' distincts deux à deux) de ces nombres et par $ A $ la réunion de ces cinq ensembles.\\
+On a card$ A_{1}=5 $\quad card$ A_{2}=5 \times 4 $\quad card$ A_{3}=5 \times 4\times 3 $\quad card$ A_{4}=5 \times 4\times 3\times 2  $\quad card$ A_{5}=5 \times 4\times 3\times 2 \times 1 $\\
+Donc card$ A = 5+20+60+120+120=325$
+\begin{remark}
+Pour résoudre un problème de dénombrement, il peut-être utile d'effectuer une partition de l'ensemble à dénombrer. Le cardinal de cet ensemble est alors la somme des cardinaux des en sembles de la partition.
+\end{remark} 
+\begin{property}
+Nous retrouvons la formule suivante, déjà rencontrée.
+\[\textrm{card}A +\textrm{card}\overline{A}= E \]
+
+Car $ A $ et $\overline{A} $ forment une partition de $ E. $
+\end{property}
+\begin{corollary}{le principe additif}
+Si une situation offre $ p $ choix comportant chacun $ n_{i} $ possibilités alors le nombre de choix possibles est :
+\[n_{1}+ n_{2}+ \cdots + n_{p} \]
+\end{corollary}
+\begin{example}
+On veut choisir deux personnes de nationalités différentes parmi 5 camerounais, 10 malgaches et 6 sénégalais.  Combien y a t-il de possibilité?
+\end{example}
+\textbf{Réponse}\\
+Les deux personnes peuvent être choisies:
+\begin{itemize}
+\item l'une camerounaise et l'autre malgache:  le nombre de choix est égal à $ 5\times 10 $
+\item  ou l'une camerounaise et l'autre sénégalaise: le principe additif égal à $ 5\times 6 $
+\item ou l'une malgache et l'autre sénégalaise:  le nombre de choix est égal à $ 10\times 6 $
+\end{itemize}
+ D'après le principe additif, le nombre de choix possibles  est \\$ 5\times 10 +5\times 6 + 10\times 6 = 140$
+
+
+\subsection{p-listes}
+\begin{definition}
+Soit $ E $ un ensemble à $ n $ éléments et $ p $ un entier naturel non nul.\\
+On appelle  $p-liste$ ou $p-uplet$  de $ E, $ tout élément de $ E^{p} .$
+\end{definition}
+\begin{example}
+$ \centerdot $ $ \paren{1,1,1}; \paren{0,0,1};\paren{0,0,0}; $ sont des 3-listes de l'ensemble $ \accol{0;1} $.\\
+$ \centerdot $  $ \paren{P,P,F,F,F,P,F,P,F,F} $ est une 10-liste de l'ensemble $ \accol{P;F} $: il correspond, par exemple, à un résultat de 10 lancers consécutifs d'une pièce de monnaie(pile ou face).
+\end{example}
+\subsection*{Autre formulation de la définition}
+Une $p-liste$, est liste  de $ p $ éléments choisis parmi les $ n $ éléments de $ E $ \textbf{ordonnés et non nécessairement distincts}.\\
+Dans une $ p-liste $, on tient compte de l'ordre des éléments de la liste et un élément choisi peut être répété plusieurs fois dans la liste.
+\begin{theorem}
+Le nombre de $ p-listes $ d'un ensemble à $ n $ éléments est $ n^{p}. $
+\end{theorem}
+\textbf{Démonstration}\\
+Il y a $ n $ choix possibles pour  le 1\up{ier} élément de la liste.\\
+Il y a $ n $ choix possibles pour  le 2\up{ième} élément de la liste.\\
+Il y a $ n $ choix pour  le 3\up{ième} élément de la liste.\\
+...............................................................\\
+Il y a $ n $ choix possibles pour le p\up{ième} élément de la liste.\\
+D'après le principe multiplicatif, on a $\underbrace{ n \times n \times n \times \cdots \times n }_{p fois}$  $\quad p-listes $.
+\begin{exercice}
+Une urne contient 15 boules numérotées de 1 à 15. On en tire trois successivement en remettant à chaque fois la boule tirée.  Combien y a t-il de tirages  possibles? 
+\end{exercice}
+\textbf{Réponse}\\
+Un résultat d'un tirage peut se représenter par un triplet $ \paren{x_{1}, x_{2},x_{3}} $  où $ x_{1} $ désigne le numéro de la 1\up{ière} boule, $ x_{2} $ celui de la 2\up{ième} boule, $ x_{3} $ celui de la 3\up{ième}.\\
+Donc un résultat est une $ 3-liste $ de l'ensemble des 15 numéros, le nombr de tirages possibles est $ 15^{3} $\\
+\textbf{Conseil}\\
+Dans toute situation où on l'on choisit successivement avec remise $ p $ éléments parmi $ n $ éléments, on applique la formule des $ p-listes $  pour déterminer le nombre de choix possibles.
+\begin{remark}[Nombre d'applications]
+$ n^{p} $ est le nombre d'applications d'un ensemble de départ à p éléments vers un ensemble d'arrivée à n éléments.
+\[\textrm{(cardinal ensemble d'arrivée)}^{\textrm{cardinal ensemble de départ}} \]
+\end{remark}
+\begin{example}
+On veut ranger 15 livres dans un bibliothèque comportant 3 étagères.\\
+C'est le nombre d"applications de l'ensemble des livres vers l'ensemble d'arrivée des étagères; donc il y a  $ 3^{15}=14 348 907 $
+\end{example}
+
+
+\subsection{Arrangements}
+\begin{definition}
+Soit $ E $ un ensemble à $ n $ éléments et $ p $ un entier naturel non nul tel que $p\leq n  $ .\\
+On appelle  arrangement  de $ p  $ éléments  de $ E,$ toute $ p-liste $ d'éléments de $ E $ deux à deux distincts.
+\end{definition}
+\subsection*{Autre formulation de la définition}
+Un arrangement de $ p $ éléments de $ E $, est liste  de $ p $ éléments choisis parmi les $ n $ éléments de $ E $ ordonnés et deux à deux  distincts.\\
+Donc dans un arrangement, on tient compte de l'ordre des éléments de la liste et chaque élément de la liste est  écrit une et une seule fois.
+
+\begin{theorem}
+Le nombre d'arrangements de $ p $ éléments  d'un ensemble $ E $ à $ n $éléments,  noté  $ A_{n}^{p} $  est tel que :
+\[  A_{n}^{p}= n(n-1)(n-2)\cdots (n-p+1)\]
+\end{theorem}
+\textbf{Démonstration}\\
+Pour déterminer le nombre d'arrangements de $ p $ éléments d'un ensemble à $ n $ éléments, on peut utiliser un arbre de choix  à $ p $ niveaux.\\
+Il y a $ n $ choix possibles pour  le 1\up{e} élément.\\
+Il y a $ n-1 $ choix possibles  pour le 2\up{e} élément.\\
+Il y a $ n-2 $ choix possibles pour le 3\up{e} élément.\\
+.....................................................................\\
+Il y a $ n-(p-1) $ choix possibles pour  le p\up{e} élément .\\
+D'après le principe multiplicatif, il y a $ n \times ( n-1) \times (n-2) \times \cdots \times (n-(p-1)) $  arrangements de $ p $  éléments de $ E $.
+\begin{example}
+$ \centerdot  $  Dix athlètes participent à une course. On appelle podium l'arrivée des trois premiers.\\
+On se propose de déterminer le nombre le nombre de podium possibles, en supposant qu'il n'y a pas d'ex æquo.\\
+Il y a autant de podiums  que d'arrangements de trois athlètes pris parmi 10, c'est à dire $ A_{10}^{3} $ . On a : \\
+$A_{10}^{3} =10\times 9\times 8=720.  $\\
+$ \centerdot $ Une urne contient 10 boules numérotées de 1 à 10. On en tire quatre successivement sans  remettre  les boules tirées.  Combien y a t-il de tirages  possibles? \\
+Chaque tirage correspond à un arrangement de 4 éléments de l'ensemble des 10 boules.\\
+Il y a donc $A_{10}^{4} =10\times 9\times 8 \times 7 =5040.  $
+\end{example}
+\begin{remark}
+Si $  p > n $, il est impossible de faire des arrangements.
+\end{remark}
+\textbf{Conseil}: Dans toute situation  où l'on effectue un choix de manière successive sans remise (élection de bureau avec postes, course et ordre d'arrivée...), on applique la formule des arrangements.
+\subsection*{Notation factorielle}
+\begin{itemize}
+\item  Pour un nombre  entier naturel $ n $ non nul, le produit $ 1\rtimes 2\rtimes 3\rtimes \cdots \rtimes (n-1)\rtimes n  $ est appelé \textbf{factorielle n} et est noté $n!$\\
+\item  Par convention $ 0!=1 $
+\end{itemize}
+\begin{example}
+$1!=1$\\
+$6!=1\times 2\times 3\times 4\times 5 \times 6= 720$
+\end{example}
+\begin{property}
+\begin{itemize}
+\item  Soit $ n$ et $p $ deux  nombres  entiers naturels  non nuls tels que :$ p< n $. on a  $A_{n}^{p}= \frac{n!}{(n-p)!} $
+\item  Par convention $ A_{n}^{0}=1 $
+\end{itemize}
+\end{property}
+\subsection{Permutations}
+\begin{definition}
+Soit $ E $ un ensemble à $ n $ éléments.\\
+On appelle permutation de $ E $ un arrangement des $ n $ éléments de $ E. $\\
+Une permutation est un arrangement particulier; donc c'est un choix successif sans remise de $ n $ éléments  parmi les $ n $ éléments de $ E. $
+\end{definition}
+\begin{property}
+Le nombre de permutations d'un ensemble à $ n $ éléments est $ n! $
+\end{property}
+ \begin{example}
+ Un parieur a sélectionné trois chevaux avec lesquels il veut composer son tiercé. De combien de façons  dispose-t-il pour les classer dans l'ordre? 
+  \end{example}
+ \textit{Réponse:}  le nombre de façons est $ 3!= 6 $
+	
+\begin{property}
+ Le nombre de bijections  d'un ensemble à $ n $ éléments vers un ensemble à $ n $ éléments est égal à $ n! $
+ \end{property}
+ \begin{example}
+ Il existe $ 6! $ façons de placer 6 personnes autour d'une table ronde  dont les places sont numérotées de 1 a 6.	
+ \end{example}
+ 
+\subsection*{Anagramme}
+\begin{definition}
+On appelle une  anagramme d'un mot (resp. d'un nombre), tout mot (resp. tout nombre) obtenu à partir de toutes les lettres (resp. tous les chiffres) de ce mot(resp. de ce nombre).
+\end{definition}
+\begin{example}
+\begin{itemize}
+\item Les anagrammes du mot BAC sont: CAB, BCA, BAC, CBA, ABC, ACB.\\
+Il y en a $ 3!=6 $ C'est le nombres de permutations des lettres du mot.\\
+\item Les anagrammes du nombre 123 sont: 123, 321, 213, 132, 231, 312.\\
+Il y en a $ 3!=6 $ C'est le nombres de permutations des chiffres du nombre.\\
+\item Les anagrammes du mot EVE sont: VEE, EVE, EEV .\\
+Il y en a $ \frac{3!}{2!}=\frac{6}{2} =3$. La lettre E se répète  2 fois, donc on a divisé par $ 2! $ \\
+\item Les anagrammes du mot DENOMBREMENT sont au nombre de $ \frac{12!}{3! 2!2!} $\\ La lettre E  se répète  3 fois, les lettres  M et N se répètent  2 fois \\
+\item Les anagrammes du nombre 12322 sont au nombre de $ \frac{5!}{3!} $
+\end{itemize}
+\end{example}
+\textbf{Régle}\\
+\[ \colorbox{yellow}{$\frac{\textrm{nombre de lettres ( ou mot)!}}{\textrm{nombres de répétition!}}$}\]
+\textbf{NB} Les anagrammes sont très importantes pour déterminer le nombre de positions des objets dans les tirages successifs.
+
+\subsection{Combinaisons}
+\begin{definition}
+E étant un ensemble non vide de $ n $ éléments, $ p $ un nombre entier naturel tel que $ p\leq n. $\\
+On appelle combinaison de $ p $ éléments de $ E $ toute partie de $ E $ ayant $ p $ éléments.
+\end{definition}
+\begin{example}
+Considérons l'ensemble $ E=\accol{a; e; i; o; u} $\\
+Donnons toutes les combinaisons  à trois éléments de  de $ E $\\
+\textbf{Comptage}: $ \accol{a; e; o} $,  $ \accol{a; i; o} $, $ \accol{a; u; o} $,$ \accol{e; u; o} $, $ \accol{e; u; i} $, $ \accol{i; u; o} $, $ \accol{i; u; e} $, $ \accol{u; i; a} $,  $ \accol{a; i; e} $, $ \accol{a; u; e} $.\\
+Il y a 10 combinaisons de 3 éléments de $ E. $ On note par $ C_{10}^{3} $ ce nombre.
+\end{example}
+\begin{remark}
+Dans une combinaison, on ne tient pas compte de l'ordre des éléments et il n'y a pas de répétition.
+\end{remark}
+\subsection*{Nombre de combinaisons}
+Désignons par $ C_{n}^{p} $ le nombre de toutes les combinaisons à $ p $ éléments de $ E.$ et calculons $ C_{n}^{p} $ \\
+Chaque partie à $ p $ éléments de $ E $ permet de réaliser $ p! $ permutations.\\
+Or chaque permutation obtenue est un arrangement à $ p $ éléments de $ E $.\\
+Le nombre d'arrangements à $ p $ éléments de $ E $ est donc égal au nombre de combinaisons à $ p $ éléments de $ E.$ multiplié par $ p! $ \\
+Par conséquent:  \qquad  $ A_{n}^{p}= p! \times C_{n}^{p}$
+\begin{property}
+$n $ et $ p$ sont des nombre entiers naturels tels que : $ p\leq n. $\\
+$ E $ est un ensemble à $ n $ éléments.\\
+Le nombre de combinaisons à $ p $ éléments de $ E.$ est : $ \frac{A_{n}^{p}}{p!} $ 
+\end{property}
+\begin{notation}
+  $ C_{n}^{p}=\dfrac{A_{n}^{p}}{p!} $
+\[\textrm{d'où} \quad  C_{n}^{p}=\dfrac{n!}{p!(n-p)!} \]
+\end{notation}
+On montre de même que :\[C_{n}^{n}=1 \qquad  C_{n}^{1}=1  \qquad C_{n}^{n-p}= C_{n}^{p}  \]
+\begin{exercice}
+On tire simultanément cinq jetons dans un sac contenant huit jetons. Combien y a t-il de tirages possibles?
+\end{exercice}
+\textbf{Réponse}\\
+Les jetons étant tirés en même temps donc il n' y a ni d'ordre ni répétition des jetons.
+Un tirage  peut être donc  modélisé par une combinaison 5 éléments dans un ensemble contenant 8 éléments. \\
+Donc il y a $ C_{8}^{5} $ tirages possibles.\\
+Calculons\quad $ C_{8}^{5}= \frac{8 \times7 \times6\times 5\times 4}{5 \times4\times 3\times 2\times 1}=56 $ \\
+Autre façons\quad $ C_{8}^{5}=\dfrac{8!}{5!(8-5)!}=\dfrac{8!}{5!3!}=\dfrac{8\times7\times6\times5\times4\times3\times2\times1}{5\times4\times3\times2\times1\times3\times2\times1}=56 $\\
+\textbf{Conseil}\\
+Dans une situation où l'on effectue un choix sans ordre ni répétition (cas d'un tirage simultané), on utilise  la formule des combinaisons.
+
+\subsection{Principes du dénombrement}
+Pour calculer le cardinal d'un ensemble on peut utiliser : le comptage, les diagrammes, les arbres.\\
+On peut aussi utiliser trois outils fondamentaux:  p-listes,  arrangements,  combinaisons. Comme on le verra, chacune de ces notions peut être \textbf{modélisée} par une situation fréquemment rencontrée dans les problèmes de dénombrement: le tirage de $ p $ éléments dans un ensemble contenant  $ n $  éléments.\\ Dans tous les cas devant un problème de dénombrement, on doit se poser les questions suivantes:
+
+ 
+  $ n= $ nombre d'objets dans lesquels on tire, on choisit etc...\\
+  $ p= $  le nombre d'objets à choisir ou quelques fois le nombre de tirages.\\
+  
+Pour dénombrer un ensemble~, on peut utiliser: le comptage, un diagramme, un arbre de choix, un tableau à double entrée.\\
+On peut aussi utiliser les trois outils fondamentaux:  p-listes,  arrangements,  combinaisons.\\ Chacun de ces outils  modélise  une situation fréquente  dans les problèmes de dénombrement: le tirage (ou choix) de $ p $ éléments dans un ensemble contenant  $ n $  éléments.
+
+ 
+  $ n= $ nombre d'objets dans lesquels on tire, on choisit etc...\\
+  $ p= $  le nombre d'objets à choisir ou quelques fois le nombre de tirages.\\
+  
+Les $A_{n}^{p} $ et  $C_{n}^{p} $ sont des entiers naturels qu'on peut calculer à l'aide de la calculatrice.\\
+ Pour calculer $A_{n}^{p} $, on saisit $ n\; \fbox{n Pr}\; p\;\fbox{=}$\\
+ Pour calculer $C_{n}^{p} $, on saisit  $ n\; \fbox{n Cr}\; p\;\fbox{=}$\\
+
+ \textbf{Dans tous les cas devant un problème de dénombrement, on utiliser le tableau suivants:}\\
+ Tirage de $p$ éléments dans un ensemble à $n$ éléments.
+ \begin{center}
+ \setlength\arrayrulewidth{1.2pt}
+ %\renewcommand{\arraystretch}{2}
+ \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+\hline
+Type & les p éléments sont ordonnés&  les p éléments sont distincts& outil&nombre de tirages\\
+\hline
+tirages successifs avec remise  &   oui  & non &p-liste & $ n^{p} $ \\
+\hline
+tirages successifs sans remise  &  oui&   oui &  arrangement& $ A_{n^{p}} $\\
+\hline
+tirages simultanés \par & non  & oui &combinaison& $C_{n}^{p}$\\
+\hline
+\end{tabularx}
+\end{center}
+  %</content>
+\end{document}

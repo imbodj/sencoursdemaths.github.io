@@ -1,0 +1,334 @@
+\input{../common}
+
+\begin{document}
+  %<*content>
+  \lesson{analysis}{22}{Limites et continuité.}
+  
+ 
+
+\textbf{NB:}\;   Lorsque nous écrivons $ \infty $ cela peut désigner aussi bien $\pinf $ que  $\minf $.
+\subsection{Fonction continue}
+
+\begin{definition}
+Soit  $ f $  une  fonction numérique d'ensemble de définition Df et $ a $ un réel.
+\begin{enumerate}
+ \item On dit que la fonction $ f $    est continue en  $ a $  si: 
+ \begin{itemize}
+ \item[$  \bullet$]  $ a\in $Df
+ \item[$  \bullet$] $ \limi{x}{a}{f(x)}=f(a) $
+\end{itemize}
+ \item On dit que la fonction $ f $    est continue sur un intervalle $ I $  si $ f $  est continue en tout réel de $ I $.
+\end{enumerate}
+Graphiquement, cela signifie que la courbe  de  $ f $ ne présente aucun point de rupture : on
+peut la tracer sans lever le crayon.
+\end{definition}
+
+\begin{corollary}
+
+\begin{itemize}
+\item[$  \bullet$] Les fonctions  monômes  du type \; $ x\longmapsto x^{n} $,\; $ n\in\Nn $  sont continues sur $ \Rr $.
+\item[$  \bullet$] La  fonction  racine carrée $ x\longmapsto \sqrt{x} $  est continue sur $ \intff{0}{\pinf} $.
+\item[$  \bullet$] La fonction valeur absolue $ x\longmapsto \abs{x} $ est continue sur $ \Rr $.
+\item[$  \bullet$] Les fonctions  construites à partir de ces fonctions  par somme, produit ou composition sont continues sur tout intervalle où  elles sont définies.
+\end{itemize}
+
+\end{corollary}
+ 
+
+ \begin{example}
+\begin{itemize}
+\item[$  \bullet$] Les fonctions polynômes sont continues sur $ \Rr $.
+\item[$  \bullet$] Les fonctions  rationnelles sont continues sur tout intervalle  inclus dans leur ensemble de définition.
+\end{itemize}
+
+\end{example}
+
+
+\begin{exercice} 
+ Calculons les limites suivantes.
+ 
+\begin{itemize}
+\item[$  \bullet$] $ \limi{x}{1}{(-3x^{2}+4x+7)}$ 
+ \item[$  \bullet$] $\limi{x}{-2}{\frac{2x+1}{x-3}} $
+ \item[$  \bullet$] $\limi{x}{0}{\sqrt{x} +\abs{x}} $
+  \end{itemize}
+
+\end{exercice}
+
+
+
+
+ \begin{proof}
+ 
+\begin{itemize}
+\item[$  \bullet$]  La fonction $ x\longmapsto  -3x^{2}+4x+7$ est  un polynôme donc continue en  $ 1 $.\\ D'où $ \limi{x}{1}{(-3x^{2}+4x+7)}= -3+4+7=8$. 
+\item[$  \bullet$]  La fonction  rationnelle $ x\longmapsto \frac{2x+1}{x-3}  $ est  définie sur $ \Rr\setminus\accol{3} $   or    $ -2\in \Rr\setminus\accol{3} $ donc f est continue en $ -2 $  \;  d'où \;  $\limi{x}{-2}{\frac{2x+1}{x-3}}=\frac{2(-2)+1}{-2-3}  =\frac{3}{5}$.
+\item[$  \bullet$] $\limi{x}{0}{\sqrt{x} +\abs{x}}=\sqrt{0}+\abs{0}=0+0=0 $
+     
+\end{itemize}
+
+\end{proof}
+ \begin{remark}
+
+$\limi{x}{a}{k}=k $  pour tout réel $ k. $
+\end{remark}
+  
+\begin{property}
+L'image d'un intervalle I par une fonction continue est un
+intervalle f(I).
+
+\end{property}
+
+\subsection*{Limites de fonctions élémentaires}
+\medskip
+
+Soit $ n\in\Nne $
+\begin{center}
+
+\begin{itemize}
+ \item[$  \bullet$] $ \displaystyle\lim_{x \to \pinf}x^{n}= \pinf$ 
+  \item[$  \bullet$] $\displaystyle \lim_{x \to \minf}x^{n}= \begin{cases}
+\pinf & \text{si n pair} \\
+\minf & \text{si  n impair}
+\end{cases}$ 
+  \item[$  \bullet$] $ \displaystyle\lim_{x \to \pinf}\sqrt{x}=\pinf$ 
+  \item[$  \bullet$]$\displaystyle \lim_{x \to \infty} \frac{1}{x^{n}}=0$ 
+ \end{itemize}
+
+
+\end{center}
+
+
+\subsection{  Opérations sur les limites}
+ Dans tout ce qui suit, la notation "FI" désigne une Forme Indéterminée, c'est à dire qu'on ne sait pas calculer par une opération élémentaire.
+
+\subsubsection*{ \underline{Limite d'une somme}}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+Limite de $ f $ & Limite de $ g $ &Limite de $ f+g $ \\
+\hline
+$ l $& $ l' $&$ l+l' $ \\
+\hline
+ $ l $& $ \pinf $& $ \pinf $\\
+\hline
+$ l $ & $ \minf $& $ \minf $\\
+\hline
+$ \pinf $& $ \pinf $& $ \minf $\\
+\hline
+$ \minf $& $ \minf $&$ \pinf $ \\
+\hline
+$ \pinf $& $ \minf $& FI\\
+\hline
+
+\end{tabularx}
+
+\begin{example}
+
+$ \bullet $  \; $ \limi{x}{\minf}{x^{4}+\frac{1}{x}} =\pinf$\\
+$\bullet $  \; $ \limi{x}{0}{\sqrt{x}+x-4} =-4$\\
+$ \bullet $  \; $ \limi{x}{\pinf}{x^{2}-x} $ \;est une forme indéterminée.
+
+\end{example}
+
+
+
+\subsubsection*{\underline{Limite d'un produit}}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+Limite de $ f $ & Limite de $ g $ &Limite de $ f.g $ \\
+\hline
+$ l $& $ l' $&$ l\times l' $ \\
+\hline
+ $ l $& $ \infty$& $ \infty $  \scriptsize{on applique la règle de signes.}\\
+\hline
+$ +\infty $& $ +\infty $& $ +\infty $\\
+\hline
+$ \minf $& $ \minf $& $ \pinf $\\
+\hline
+$ \minf $& $ \pinf $&$ \minf $ \\
+\hline
+
+$ 0 $& $ \infty $& FI\\
+\hline
+\end{tabularx}
+\begin{example}
+
+
+$ \bullet $  \; $ \limi{x}{\pinf}{x^{2}-x}= \limi{x}{\pinf}{x(x-1)}=\pinf $\\
+$ \bullet $  \; $ \limi{x}{\pinf}{\paren{x^{2}+3}\paren{\frac{1}{x}-4}} =\minf$\\
+$\bullet $  \; $ \limi{x}{0}{\frac{2}{x} \paren{x^{2}+5x}} =$FI
+\end{example}
+
+\subsubsection*{\underline{Limite d'un quotient}}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+Limite de $ f $ & Limite de $ g $ &Limite de $ f\diagup g $ \\
+\hline
+$ l $& $ l'\neq 0 $&$ \frac{l}{l'} $ \\
+\hline
+ $ l $& $ \pinf$  ou  $ \minf $& $ 0 $\\
+\hline
+$ \infty $& $l' $& $ \infty $ \scriptsize{on applique la règle de signes.}\\
+\hline
+
+$ \infty $& $ \infty $& FI\\
+\hline
+$ l$ \scriptsize{positif}& $ 0^{+} $& $+ \infty $ \\
+\hline
+$ l$ \scriptsize{positif}& $ 0^{-} $& $ -\infty $ \\
+\hline
+$ l$ \scriptsize{négatif}& $ 0^{+} $& $- \infty $ \\
+\hline
+$ l$ \scriptsize{négatif}& $ 0^{-} $& $ +\infty $ \\
+\hline
+$ \infty $& $ 0 $& $ \infty $ \\
+\hline
+
+$ 0 $& $ 0 $& FI\\
+\hline
+\end{tabularx}
+\begin{example}
+\begin{itemize}
+\item[$ \bullet $ ] $ \limi{x}{\pinf}{\frac{-3}{x^{2}}}=0 $.
+\item[$ \bullet $ ] $ \limi{x}{\minf}{\frac{x^{3}+5}{\frac{1}{x}-3}} =\minf$.
+\item[$ \bullet $ ]$ \limi{x}{0}{\frac{x^{2}-x}{x}} =FI$.
+\item[$ \bullet $ ] $ \limi{x}{\pinf}{\frac{x+2}{x-2}} =$  FI.
+\end{itemize}
+\end{example}
+
+
+\subsubsection*{Limite d'une fonction composée}
+\begin{property}
+Soit $a $, $ b $ et  $ c$ trois réels  ou $ +\infty $  ou $ \minf $.  Soit   $f$  et $g$ deux fonctions numériques.
+ 
+Si \; $ \lim_{x \to a} f(x)=b $ \;  et  \;  $ \lim_{x \to b}g(x)=c  $ \; alors\;  $\lim_{x \to a} g\circ f(x)=c $
+\end{property}
+
+
+\begin{example}
+ Calculons \quad  $  \lim_{x \to 0} \sqrt{x^{3}-2x+4} $ \; et \; $\lim_{x \to -\infty}\sqrt{x^{2}+3}  $
+
+$ \bullet $  \;  Posons  $ f(x)=x^{3}-2x+4 $ \; et \; $ g(x)=\sqrt{x} $.  \; On a\;  $ g \circ f(x)=  \sqrt{x^{3}-2x+4}  $
+
+Or  $  \lim_{x \to 0}f(x)= \lim_{x \to 0} x^{3}-2x+4=4 $ \;  et \; $\lim_{x \to 4}g(x)=  \lim_{x \to 4} \sqrt{x}=2 $\; donc\; $  \lim_{x \to 0} \sqrt{x^{3}-2x+4}=2 $.\\
+$ \bullet $   $ \lim_{x \to -\infty}x^{2}+3  = \pinf $ ~et~ $  \lim_{x \to \pinf} \sqrt{x} = \pinf $~ donc  par composée ~$ \lim_{x \to +\infty}\sqrt{x^{2}+3}=\pinf $
+\end{example}
+
+\subsection{ Méthodes de calcul  de limites}
+Les opérations sur les limites ne permettent pas toujours de déterminer la limite d'une fonction. Il faut alors changer de chemin et modifier l'écriture de cette fonction... afin de pouvoir les appliquer !
+\subsection*{Limite d'un polynôme à l'infini}
+
+\begin{property}
+ La limite en $ +\infty $   ou  en $ -\infty $   d'une fonction polynôme est la limite en      $ +\infty $   ou  en $ -\infty $  du terme de plus haut degré.
+\end{property}
+\begin{example}
+
+
+Déterminons la limite en $ \pinf  $ de la fonction polynôme f définie pour tout réel x par: \\$ f(x)= 3x^{3}-2x^{2}+1.$
+\end{example}
+
+
+
+Au premier abord, lorsque $ x $ tend vers $ \pinf $:
+
+
+$ \begin{cases} 3x^{3}\;\;\;\text{tend vers }\;\pinf  \\
+-2x^{2}\;\;\;\text{tend vers } \;\minf \hspace*{2cm}\text{donc}\;\limi{x}{\pinf}{f(x)}=FI\\ 
+1\; \text{tend vers }\; 1
+ \end{cases}$
+
+L'actuelle écriture de f ne permet pas de conclure. Il nous allons donc appliquer la propriété précédente.\\
+On a: \; $ \limi{x}{\pinf}{3x^{3}-2x^{2}+1}=\limi{x}{\pinf}{3x^{3}} =\pinf$
+
+
+
+\subsection*{Limite d'une fonction rationnelle à l'infini}
+
+\begin{property}
+ La limite en $ +\infty $   ou  en $ -\infty $  d'une fonction rationnelle est la limite en  $ +\infty $   ou  en $ -\infty $  du quotient des termes de plus haut degré du numérateur et du dénominateur.
+\end{property}
+
+\begin{example}
+
+
+On considère la fonction  $ f $ définie par:\; $ f(x)=\frac{3x^{3}+2x+1}{5x^{4}-4x^{3}+4} $. \;Déterminons sa limite en $ \pinf. $ 
+\end{example}
+
+
+Le numérateur   $ 3x^{3}+2x+1  $ tend vers $ \pinf. $\\
+Le dénominateur $ x^{4}-4x^{3}+4 $ tend vers $ \pinf. $\\
+Ainsi la limite de $ f $  est une forme indéterminée.\\
+La présente écriture de $ f $ ne permet pas de conclure. Il nous allons donc appliquer la propriété présidente.\\
+On  a:\;
+$ \limi{x}{\pinf}{\frac{3x^{3}+2x+1}{5x^{4}-4x^{3}+4}}=\limi{x}{\pinf}{\frac{3x^{3}}{5x^{4}}}= \limi{x}{\pinf}{\frac{3}{5x}}=0$
+
+
+\subsection*{Calcul de limite  en  a  d'une fonction non définie en  a.}
+\underline{\textbf{Règle 1}}\\
+Lorsque l'on cherche la limite d'une fonction $ f $ en un réel $ a $ qui annule en
+même temps le numérateur et le dénominateur d'une fonction rationnelle (numérateur et dénominateur polynômes) on factorise le numérateur et le
+dénominateur par $( x - a )$, on simplifie la fonction puis on calcule la limite en $ a $ (lorsque c'est possible )  de la fonction simplifiée.
+\begin{example}
+
+
+Calculons $ \limi{x}{3}{\frac{x^{2}-9}{x-3}} $.\\ On a $ \limi{x}{3}{x^{2}-9}=0 $ et $ \limi{x}{3}{x-3}=0 $.\\Nous pouvons donc factoriser le numérateur et le dénominateur  chacun par $( x -3 )$.\\ On obtient  $ \frac{x^{2}-9}{x-3}=\frac{(x-3)(x+3)}{x-3}=x+3$ donc $ \limi{x}{3}{\frac{x^{2}-9}{x-3}}=\limi{x}{3}{x+3} =6$
+\end{example}
+
+
+
+\underline{\textbf{Règle 2}}\\
+
+Lorsque l'on cherche la limite d'une fonction $ f $ en un réel $ a $ qui annule en même
+temps le numérateur et le dénominateur d'une fonction irrationnelle (expression
+avec radical au dénominateur comme au numérateur), on factorise toujours par
+$( x - a )$ mais cette fois ci en utilisant la ou les expressions conjuguées du
+numérateur et du dénominateur. 
+\begin{example}
+
+Calculons la limite en $ 1 $ de la fonction $ f $ définie par:  \;$ f(x)=\frac{\sqrt{x}-1}{x-1} $\\
+ On a $ \limi{x}{1}{\sqrt{x}-1}=0 $ et $ \limi{x}{1}{x-1}=0 $.\\Transformons l'écriture de  $ \frac{\sqrt{x}-1}{x-1} $ en utilisant l'expression conjuguée du
+numérateur, il vient :\\ $ \frac{\sqrt{x}-1}{x-1}= \frac{\paren{\sqrt{x}-1}\paren{\sqrt{x}+1}}{(x-1)\paren{\sqrt{x}+1}} =\frac{x-1}{(x-1)\paren{\sqrt{x}+1}}=\frac{1}{\sqrt{x}+1}$.\\ $ \limi{x}{1}{\frac{\sqrt{x}-1}{x-1}}= \limi{x}{1}{\frac{1}{\sqrt{x}+1}}=\frac{1}{2}$.
+\end{example}
+
+ \underline{\textbf{Règle 3}}\\
+
+Lorsque l'on cherche la limite d'une fonction $ f $ en un réel $ a $ qui annule uniquement
+ le dénominateur,  on étudie le signe du dénominateur et l'on obtient une limite à droite et une limite à gauche en $ a $ de $ f $.
+\begin{example}
+
+Calculons la limite en $ 4 $ de la fonction $ f $ définie par:  \;$ f(x)=\frac{x^{2}-5x+6}{x-4} $\\
+On a $ \limi{x}{4}{x^{2}-5x+6} =2$ et $ \limi{x}{4}{x-4} =0$\\
+Etudions le signe du dénominateur \;(celui du numérateur étant connu ).
+
+
+
+  \[\begin{array}{|c|ccccccc|}
+\hline
+x & \minf & & 4&  &  & \pinf&\\ 
+\hline
+x-4    & & -~~~\qquad &|& ~~+ &  & &\\
+\hline
+\end{array}\]
+A gauche de $ 4 $, nous pouvons écrire :$\displaystyle \lim_{\substack {x \to 0 \\ x< 4}}x-4 =\limi{x}{4^{-}}{x-4} =0^{-}$
+
+« Lire limite de $x-4$  quand $x$ tend vers $4$ à gauche.» les deux notations sont valables mais il
+faut savoir qu'il n'y a aucun lien entre le signe $ - $ sur le $4$ et celui sur $0$. Il n'en est pas
+toujours ainsi. \\
+Le signe $ - $ sur $4$ traduit le fait que $x$ est inférieur à $4$ donc il est positif, celui
+sur $0$ traduit aussi que la valeur de $(x-4)$ est inférieure à $0$ mais un nombre
+inférieur à $0$ est négatif.\\En conclusion:\\ $ \limi{x}{4}{x^{2}-5x+6} =2$\\$\lim_{\substack {x \to 4 \\ x< 4}}x-4 =\limi{x}{4^{-}}{x-4} =0^{-}$\qquad donc  par quotient de limites  $\displaystyle \lim_{\substack {x \to 4 \\ x< 4}}f(x) =\minf$.\\
+Nous procédons de même pour la limite à droite et nous obtenons :\\
+ $ \limi{x}{4}{x^{2}-5x+6} =2$\\$\displaystyle \lim_{\substack {x \to 4 \\ x>  4}}x-4 =\limi{x}{4^{+}}{x-4} =0^{+}$\\$\displaystyle \lim_{\substack {x \to 4 \\ x>4}}f(x) =\pinf$.
+\end{example}
+La fonction $  f $ n'admet pas de limite en $4$  car la limite à
+droite est différente de celle à gauche.
+\begin{remark}
+
+
+Lorsque  $\displaystyle \lim_{\substack {x \to a \\ x>a}}f(x)= \displaystyle \lim_{\substack {x \to a \\ x< a}}f(x)$ alors $ f $ admet une limite en $ a $.
+\end{remark}
+ 
+  %</content>
+\end{document}
