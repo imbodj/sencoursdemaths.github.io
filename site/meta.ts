@@ -42,9 +42,9 @@ interface SiteMeta {
  * The metadata for the site.
  */
 export const siteMeta: SiteMeta = {
-  title: 'sencoursdemaths',
+  title: 'sencoursdemaths.com',
   description: 'Petit site contenant une flopée de ressources  de mathématiques pour le lycée : plans, exercices, fiches, ...',
-  url: 'http://sencoursdemaths.com',
+  url: 'https://sencoursdemaths.com',
   github: {
     username: 'imbodj',
     repository: 'SenCoursDeMaths',

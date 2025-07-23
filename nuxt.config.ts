@@ -4,11 +4,7 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
-
-const baseUrl = 'SenCoursDeMaths'
-// Configuration dynamique selon l'environnement
-const isDev = process.env.NODE_ENV === 'development'
-const baseURL = isDev ? '/' : `/${baseUrl}/`
+const baseURL = '/'
 
 export default defineNuxtConfig({
   modules: [
@@ -26,7 +22,7 @@ export default defineNuxtConfig({
   ],
   ssr: true,
   app: {
-   baseURL: baseURL,
+
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -38,7 +34,7 @@ export default defineNuxtConfig({
       ],
       link: [
        
-{ rel: 'icon', type: 'image/x-icon', href: `${baseURL}favicon.ico` },
+{ rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
       ],
     },
   },
@@ -51,12 +47,7 @@ export default defineNuxtConfig({
     name: siteMeta.title,
     trailingSlash: true,
   },
- 
-  runtimeConfig: {
-public: {
-baseUrl: isDev ? '' : baseUrl,
-},
-},
+
   experimental: {
     defaults: {
       nuxtLink: {
