@@ -2,12 +2,12 @@
 
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant les mathématiques au lycée. Vous trouverez donc sur ce site :
 
-* Mes [plans de leçons](https://sencoursdemaths.com/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
-* Mon choix des [exercices](https://sencoursdemaths.com/developpements/).
-* Quelques [fiches](https://sencoursdemaths.com/fiches/) de révision.
-* Une liste personnelle de [conseils généraux](https://sencoursdemaths.com/fiches/conseils-generaux/).
+* Mes [plans de leçons](/lecons/) de leçons. Par manque de temps, j'ai fait l'impasse sur  certaines leçons.
+* Mon choix des [exercices](/developpements/).
+* Quelques [fiches](/fiches/) de révision.
+* Une liste personnelle de [conseils généraux](/fiches/conseils-generaux/).
 
-En espérant que le contenu de ce site puisse être utile aussi bien aux élèves qu’aux enseignants dans l’étude et l’enseignement des mathématiques. Si vous avez une remarque, une suggestion ou une correction à me proposer, n’hésitez pas à me contacter via [le formulaire](https://sencoursdemaths.com/#contact) disponible sur le site.
+En espérant que le contenu de ce site puisse être utile aussi bien aux élèves qu’aux enseignants dans l’étude et l’enseignement des mathématiques. Si vous avez une remarque, une suggestion ou une correction à me proposer, n’hésitez pas à me contacter via [le formulaire](/#contact) disponible sur le site.
 
 
 ## Liens utiles
