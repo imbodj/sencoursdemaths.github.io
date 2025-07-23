@@ -4,7 +4,7 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
-const baseURL = '/'
+
 
 export default defineNuxtConfig({
   modules: [
@@ -57,12 +57,7 @@ export default defineNuxtConfig({
     inlineRouteRules: true,
   },
   compatibilityDate: '2024-07-01',
-  nitro: {
-    preset: 'static',
-    prerender: {
-      failOnError: false, // ← Ignore les erreurs pour générer quand même
-    },
-  },
+
   vite: {
     plugins: [
       StylelintPlugin(),
@@ -82,6 +77,9 @@ export default defineNuxtConfig({
       },
     },
   },
+
+
+  
   eslint: {
     config: {
       stylistic: true,
