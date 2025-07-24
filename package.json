@@ -34,6 +34,7 @@
     "marked": "^15.0.7",
     "node-html-parser": "^7.0.1",
     "nuxt": "^3.17.1",
+    "nuxt-cname-generator": "^1.0.1",
     "nuxt-link-checker": "^4.1.1",
     "ofetch": "^1.4.1",
     "sass": "^1.85.1",
