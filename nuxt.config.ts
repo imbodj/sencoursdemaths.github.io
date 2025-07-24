@@ -4,8 +4,6 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
 
-
-
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -19,10 +17,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/icon',
+    'nuxt-cname-generator',
   ],
   ssr: true,
   app: {
-
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
@@ -33,8 +31,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#343a40' },
       ],
       link: [
-       
-{ rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
+        { rel: 'icon', type: 'image/x-icon', href: `/favicon.ico` },
       ],
     },
   },
@@ -78,8 +75,10 @@ export default defineNuxtConfig({
     },
   },
 
+  cname: {
+    host: siteMeta.url,
+  },
 
-  
   eslint: {
     config: {
       stylistic: true,
@@ -109,6 +108,5 @@ export default defineNuxtConfig({
   },
   robots: {
     robotsTxt: false,
-   
   },
 })
