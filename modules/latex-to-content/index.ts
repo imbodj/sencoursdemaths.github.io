@@ -318,7 +318,7 @@ const handleProofs = (root: HTMLElement) => {
     const firstEmphasis = proof.querySelector('em')
     // Replace 'Proof.' with 'Démonstration.' if found in the first emphasis element.
     if (firstEmphasis) {
-      firstEmphasis.replaceWith(firstEmphasis.outerHTML.replace('Proof.', 'Démonstration.'))
+      firstEmphasis.replaceWith(firstEmphasis.outerHTML.replace('Proof.', 'Solution.'))
     }
   }
 }
