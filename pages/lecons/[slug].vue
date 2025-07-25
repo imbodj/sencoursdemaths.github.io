@@ -6,8 +6,7 @@ const route = useRoute()
 const { data: lesson, status, error } = await useFetch<LessonContent>(`/_api/latex/lecons/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
-const config = useRuntimeConfig()
-usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
+usePdfBanner(`/pdf${path}.pdf`)
 useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/main/content/latex${path}.tex`)
 
 usePageHead({ title: 'Affichage d\'une leçon' })

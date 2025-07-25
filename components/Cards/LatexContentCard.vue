@@ -6,8 +6,6 @@ defineProps<{
   linkPrefix: string
   object: LatexContentObject
 }>()
-
-const config = useRuntimeConfig()
 </script>
 
 <template>
@@ -25,7 +23,7 @@ const config = useRuntimeConfig()
         <icon name="bi:box-arrow-in-right" /> {{ btnCheck }}
       </b-button>
       <b-button
-        :href="`/${config.public.baseUrl}/pdf/${linkPrefix}/${object.slug}.pdf`"
+        :href="`/pdf/${linkPrefix}/${object.slug}.pdf`"
         download="true"
         variant="secondary"
       >

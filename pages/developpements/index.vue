@@ -6,8 +6,7 @@ const { data: developments, status, error } = await useFetch<Development[]>('/_a
 
 const route = useRoute()
 const path = removeTrailingSlashIfPossible(route.path)
-const config = useRuntimeConfig()
-usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
+usePdfBanner(`/pdf${path}.pdf`)
 
 usePageHead({ title: 'Liste des exercices' })
 </script>

@@ -6,8 +6,7 @@ const route = useRoute()
 const { data: sheet, status, error } = await useFetch<SheetContent>(`/_api/latex/fiches/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
-const config = useRuntimeConfig()
-usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
+usePdfBanner(`/pdf${path}.pdf`)
 useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/main/content/latex${path}.tex`)
 
 usePageHead({ title: 'Affichage d\'une fiche' })

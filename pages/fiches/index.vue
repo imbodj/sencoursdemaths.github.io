@@ -6,8 +6,7 @@ const { data: sheets, status, error } = await useFetch<Sheet[]>('/_api/latex/fic
 
 const route = useRoute()
 const path = removeTrailingSlashIfPossible(route.path)
-const config = useRuntimeConfig()
-usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
+usePdfBanner(`/pdf${path}.pdf`)
 
 usePageHead({ title: 'Liste des fiches' })
 </script>
