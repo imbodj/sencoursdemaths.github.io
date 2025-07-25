@@ -6,8 +6,7 @@ const { data: lessons, status, error } = await useFetch<Lesson[]>('/_api/latex/l
 
 const route = useRoute()
 const path = removeTrailingSlashIfPossible(route.path)
-const config = useRuntimeConfig()
-usePdfBanner(`/${config.public.baseUrl}/pdf${path}.pdf`)
+usePdfBanner(`/pdf${path}.pdf`)
 
 usePageHead({ title: 'Liste des leçons' })
 </script>
