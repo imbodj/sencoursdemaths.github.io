@@ -16,8 +16,8 @@ import { siteMeta } from '~/site/meta'
         >
           <h2>Copyright</h2>
           <p>
-            Copyright &copy; 2025 - <a href="/contact#contact" >Ismaila Mbodji</a>. Tous droits réservés.
-           
+            Copyright &copy; 2025 - <a href="/contact" >Ismaila Mbodji</a>. Tous droits réservés.
+            <current-commit-sha />
           </p>
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence

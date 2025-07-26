@@ -293,7 +293,7 @@ La somme $u_{p}+u_{p+1}+ \cdots + u_{q} $ comporte $q-p+1$ termes .
    \[S= b+(b-r)+(b-2r)+ (b-3r)+ \cdots +[b-(N-1)r] \]
    En additionnant membre à membre ces deux égalités ,on obtient: 
    \[2S=\underbrace{(a+b)+(a+b)+(a+b)+ \cdots +(a+b)}_{ N \text{fois}} \]
-   \[2S=N(a+b)\]On en déduit que :\[S =N\dfrac{a+b}{2}\]
+   \[2S=N(a+b)\]On en déduit que :\[S =\dfrac{a+b}{2} N\]
    \textbf{A retenir}\\ 
    Cette formule peut se retenir de la façon suivante :\\La somme de termes consécutifs d'une suite arithmétique est égale au produit du nombre de termes  par la demi somme des termes extrêmes.
    \[ S=\text{nombre  de termes}\times\dfrac{\text{premier terme}+\text{dernier terme} }{2} \]
@@ -332,10 +332,10 @@ $ \ast $ La suite $ v_{n} $  définie par $ v_{n}= n3^{n} $ n'est pas une suite 
  \item [\textbullet] Pour montrer qu'une suite est géométrique, on peut  exprimer $ u_{n+1} $ en fonction de  $ u_{n}$ et vérifier que  $ u_{n+1} $ se met sous la forme $ u_{n+1}=qu_{n} $. \\
 (C'est la même chose d'exprimer $ u_{n} $ en fonction de  $ u_{n-1}$ et vérifier que  $ u_{n} $ se met sous la forme   $ u_{n}=qu_{n-1} $ ). 
  \end{itemize}
-\subsection*{Expression du terme général en fonction de n}
+\subsubsection*{Expression du terme général en fonction de n}
 \begin{theorem} Soit $(u_{n})$ une  suite est géométrique de premier terme $u_{0} $ et de raison $ q\neq 0 $. Alors pour tout $ n\in\Nn $  , $$  u_{n}= u_{0}q^{n}$$
 \end{theorem}
-\textbf{Démonstration } On a :\[u_{1}=u_{0}q\]\[u_{2}=u_{1}q\]\[\vdots \qquad \vdots\] \[u_{n-1}=u_{n-2}q\]\[u_{n}=u_{n-1}q\]En multipliant membre à membre ces $ n $ égalités, on obtient :\[u_{1}\times u_{2} \times \cdots \times u_{n-1}\times u_{n}= u_{0}q \times u_{1}q  \times \cdots \times u_{n-1}q\] après  simplification on obtient :\[u_{n}= u_{0}q^{n}\] 
+\textbf{Démonstration } \[u_{1}=u_{0}q\]\[u_{2}=u_{1}q\]\[\vdots \qquad \vdots\] \[u_{n-1}=u_{n-2}q\]\[u_{n}=u_{n-1}q\]En multipliant membre à membre ces $ n $ égalités, on obtient :\[u_{1}\times u_{2} \times \cdots \times u_{n-1}\times u_{n}= u_{0}q \times u_{1}q  \times \cdots \times u_{n-1}q\] après  simplification on obtient :\[u_{n}= u_{0}q^{n}\] 
 \begin{example} 
 
 Soit $(u_{n})$ la  suite est géométrique  de premier terme $u_{0}=-1 $ et de raison $ q=2$, d'après le théorème $ 1.5 $ pour tout $n $ de $\Nn $ , $ u_{n}=u_{0}q^{n}=-1\times 2^{n} $. On peut alors directement calculer n'importe quel terme à partir de son rang. \\Par exemple $ u_{5}=-1\times2^{5}=-32 $.
@@ -364,14 +364,14 @@ Soit $(u_{n})$ une  suite est géométrique  de raison $ q $  et de premier term
   \end{theorem}
    \subsubsection*{Moyenne géométrique}
   Trois réels $ a$, $ b$  et $ c$ sont les termes consécutifs d'une suite géométrique si, et seulement si $ b^{2}=ac $ . On dit que $ a$, $ b$ , $ c$ sont en progression géométrique et que, $ b$ est la moyenne géométrique de $ a $ et $ c$.
-  \subsection*{Somme de termes consécutifs}
+ 
  \subsubsection*{Somme de termes consécutifs d'une suite géométrique}
  \begin{theorem}
   Soit $S$ la somme  de $ N $ termes consécutifs d'une  suite  géométrique  de raison $q $ et $ a $ le premier terme de cette somme. On a  : \[  S = a \dfrac{1-q^{N}}{1-q} \quad \text{si}\quad q\neq 1\]
   \end{theorem}
  
-\textbf{Démonstration} On a :
-  \[S= a+aq+ aq^{2}+ aq^{3}+ \cdots + aq^{N-2}+aq^{N-1}\]
+\textbf{Démonstration} 
+  \[\text{On a :} \; S= a+aq+ aq^{2}+ aq^{3}+ \cdots + aq^{N-2}+aq^{N-1}\]
   Multiplions les deux membres de cette égalité par $ q $ ; on obtient
    \[qS= aq+ aq^{2}+ aq^{3}+ \cdots + aq^{N-1}+aq^{N} \] 
    En soustrayant  membre à membre ces deux égalités ,on obtient:
@@ -426,7 +426,7 @@ Soit $(u_{n})$ est la définie par : $ u_{n}=3+(-\frac{1}{2})^{n} $, $ \forall n
  \end{enumerate}
  \end{enumerate}
  \end{exercice}
- \textbf{Solution}
+ \begin{proof}
  \begin{enumerate}
  \item Calculons $ \displaystyle \lim_{n \to  +\infty} u_{n} $.\\
  On a $ -1< -\frac{1}{2}< 1 $ , donc $\displaystyle \lim_{n \to  +\infty}(-\frac{1}{2})^{n}=0$ d'où $ \displaystyle \lim_{n \to  +\infty} u_{n}=3 $ , la suite $(u_{n})$ converge vers $3.$
@@ -438,12 +438,14 @@ Soit $(u_{n})$ est la définie par : $ u_{n}=3+(-\frac{1}{2})^{n} $, $ \forall n
  Donc la suite $ (v_{n}) $ converge vers $ 0. $
  \end{enumerate}
  \end{enumerate}
- \textbf{NB}
+  \end{proof}
+ \begin{remark}
  \begin{itemize}
  \item Si $ |q|<1 $  alors $ \displaystyle \lim_{n \to  +\infty} q^{n}= 0 $
  \item Si $ q>1 $  alors $ \displaystyle \lim_{n \to  +\infty} q^{n}= +\infty $
- \item Soient $(u_{n})$ et $(v_{n})$ deux suites telles que : $ |u_{n}-\alpha|< v_{n}$  \\           si $ \displaystyle \lim_{n \to  +\infty}v_{n} = 0 $ alors $ \displaystyle \lim_{n \to  +\infty}u_{n} = \alpha .$ 
+ \item Soient $(u_{n})$ et $(v_{n})$ deux suites telles que : $ |u_{n}-\alpha|< v_{n}$  si $ \displaystyle \lim_{n \to  +\infty}v_{n} = 0 $ alors $ \displaystyle \lim_{n \to  +\infty}u_{n} = \alpha .$ 
  \end{itemize}
+  \end{remark}
  \subsection*{Théorèmes de convergence}
  On admettra les théorèmes suivants :
  \begin{theorem}
@@ -479,7 +481,7 @@ Soit $(u_{n})$ est la définie par : $ u_{n}=3+(-\frac{1}{2})^{n} $, $ \forall n
  En déduire la convergence de la suite .
  \item On se propose de calculer la limite de cette suite par deux méthodes .
  \begin{enumerate}
- \item  En utilisant le théorème $ 1.11 $, calculer la limite $ l $ de la suite .
+ \item  En utilisant le théorème $ 53 $, calculer la limite $ l $ de la suite .
  \item Montrer que pour tout $ n$ de $ \Nn $ on a: \[\abs{ u_{n+1} -2}
  \leq \frac{1}{2}\abs{u_{n}-2} \quad \textrm{ puis que }\abs{u_{n}-2}
 \leq\frac{1}{2^{n}}\] En déduire la limite $ l $ de la suite .
@@ -520,8 +522,8 @@ Ecrivons l'inégalité précédente  pour l'indice variant de $ n$ à $1 $
 Par produit membre à membre et après simplification , on obtient : 
 \[ \abs{u_{n} -2}\leq\frac{1}{2^{n}}\abs{u_{0}-2}\]
 Or $ \abs{u_{0}-2}=1 $ donc $ \abs{u_{n} -2}\leq\frac{1}{2^{n}} $\\
-Et puisque $\lim_{n \to  +\infty} \frac{1}{2^{n}}= 0$ on en déduit que $\lim_{n \to  +\infty} \abs{u_{n}-2}=0$ \\
- d'où $\lim_{n \to  +\infty}u_{n}=2$.
+Et puisque $\displaystyle\lim_{n \to  +\infty} \frac{1}{2^{n}}= 0$ on en déduit que $\displaystyle\lim_{n \to  +\infty} \abs{u_{n}-2}=0$ \\
+ d'où $\displaystyle\lim_{n \to  +\infty}u_{n}=2$.
 
 \end{enumerate}
 \end{enumerate}
