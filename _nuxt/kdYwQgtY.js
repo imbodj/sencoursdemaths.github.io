@@ -1,0 +1,1 @@
+import{L as t}from"./D0M_WwPD.js";import{d as o,l as s,o as n,k as r,e as a}from"./DysSUezV.js";const c=["innerHTML"],l=o({__name:"SheetCard",props:{sheet:{}},setup(i){return(e,p)=>(n(),s(t,{"btn-check":"Consulter la fiche","link-prefix":"fiches",object:e.sheet},{default:r(()=>[a("p",{innerHTML:e.sheet.summary},null,8,c)]),_:1},8,["object"]))}});export{l as _};
