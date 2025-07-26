@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8 max-w-xl mx-auto">
+  <div id="contact" class="p-8 max-w-xl mx-auto">
     <h1 class="text-2xl font-bold mb-4">Contactez-moi</h1>
     <form @submit.prevent="submitForm" class="space-y-4">
       <input v-model="form.name" type="text" placeholder="Nom" required class="w-full p-2 border rounded" />
@@ -13,6 +13,7 @@
     <p v-if="errorMessage" class="text-red-600 mt-4">{{ errorMessage }}</p>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'

@@ -16,8 +16,8 @@ import { siteMeta } from '~/site/meta'
         >
           <h2>Copyright</h2>
           <p>
-            Copyright &copy; 2025 - <a href="/">Ismaila Mbodji</a>. Tous droits réservés.
-            <current-commit-sha />
+            Copyright &copy; 2025 - <a href="/contact#contact" >Ismaila Mbodji</a>. Tous droits réservés.
+           
           </p>
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence
@@ -81,9 +81,9 @@ import { siteMeta } from '~/site/meta'
             par conséquent téléchargeables au format PDF.
           </p>
           <ul class="mb-0">
-            <li><a>Plans de leçons</a></li>
-            <li><a >Exercices</a></li>
-            <li><a>Fiches de révision</a></li>
+            <li>Plans de leçons</li>
+            <li>Exercices</li>
+            <li>Fiches de révision</li>
           </ul>
         </b-col>
       </b-row>

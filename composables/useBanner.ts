@@ -52,8 +52,7 @@ export const useBanner = (banner: Banner) => {
 */
 export const usePdfBanner = (url: string) => useBanner({
 type: BannerType.pdf,
-message: `Le contenu de cette page est disponible en version PDF.
-Vous pouvez le télécharger <a href="${url}">ici</a>.`,
+message: ``,
 })
 
 /**

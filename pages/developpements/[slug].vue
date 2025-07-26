@@ -6,7 +6,7 @@ const route = useRoute()
 const { data: development, status, error } = await useFetch<DevelopmentContent>(`/_api/latex/developpements/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
-usePdfBanner(`/pdf${path}.pdf`)
+
 useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/main/content/latex${path}.tex`)
 
 usePageHead({ title: 'Affichage d\'un développement' })
